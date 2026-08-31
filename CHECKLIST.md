@@ -38,9 +38,8 @@ These exist because a long port drifts in predictable ways. They are not advice.
 
 ## Phase 0 — Foundations
 
-- [ ] **P0. Put SkyHaxe under version control.** `git init` here, commit `PLAN.md`,
-      `CHECKLIST.md`, `evidence/`. **Ask the user before running it** — repo creation in
-      `c:/habbo/client/` has not been authorised yet.
+- [x] **P0. Put SkyHaxe under version control.** Initialized on `main`; foundation commit
+      `3eafb63` contains `PLAN.md`, `CHECKLIST.md`, and the initial evidence set.
 - [x] **P1. G0 — asset invariant.** **PASS** 2026-08-31 (exit 0, 0 unreadable, 18,608 files).
       Scanner `evidence/g0_scan_swf_exports.py`, results `evidence/g0_hof_furni.csv.gz`,
       anchors `evidence/PROVENANCE.md`. Re-run it rather than trusting any figure.
@@ -53,10 +52,15 @@ These exist because a long port drifts in predictable ways. They are not advice.
       untracked files: that would capture unrelated in-progress work. Retain the verified
       commit + diff hash + untracked manifest anchor until the client tree naturally reaches a
       clean owner-created commit, then replace the anchor.
-- [ ] **P1c. Extend G0 to the other corpora.** Run the same scanner over
-      `c:/habbo/ngh/gordon/` and `c:/habbo/ngh/dcr/` (whole tree). Expect the 2016
-      `PRODUCTION-…` directory to export sounds and sprites — that is the *old client's build
-      output*, not content. Confirm the content-only sets are clean.
+- [x] **P1c. Extend G0 to the other corpora.** Whole `dcr/`: PASS, 18,611 files, 0 unreadable.
+      Gordon is mixed, so `evidence/g0_gordon_contract.py` derives reachability from current maps,
+      pet config, AS3 literals, public-room naming, and NGHWin's six local files: PASS across
+      3,269 reachable production files, including 24 required MP3 sounds and 1,468 JPEG2 exports.
+      Six checksumless-but-complete CWS files are accepted only after exact header-length checks.
+      Two truly truncated SWFs and all font/sprite exports are confined to unclassified archived
+      client/test files. Four map entries have no configured-production file and remain explicit
+      corpus warnings. Owner decision: ignore the 2,891-file
+      `flash-assets-PRODUCTION-202605152352-294132426` subtree.
 - [ ] **P2. E4X descendant rewrite** in `habbo-client-clean`. **Four first-party sites**, verified
       by `evidence/e4x_api_contract.py`:
       `avatar/alias/AssetAliasCollection.as:43` (`..alias`),
@@ -102,13 +106,15 @@ goes".
 Still not a port. One furni, one room, one window — end to end.
 
 - [ ] **G2. SWF reader.** Haxe reads a real furni SWF and returns a `BitmapData` for a named
-      symbol. Scope is fixed by G0's data, not by assumption: **three containers** — FWS 1,543 ·
-      CWS 17,041 · ZWS 24. SWF LZMA is non-standard: props at byte 12, data at 17, declared size
-      replaced by the unknown-size sentinel. **Four bitmap tags** — `DefineBitsLossless2` (267,506),
-      `DefineBitsJPEG3` (1,135), `DefineBitsLossless` (1 — one file, still real content), and
-      `DefineBitsJPEG2` (5) **only if** `mp3/gamedata` is declared in the content contract. Plus
-      `DefineBinaryData` and `SymbolClass`. **Done when:** output is pixel-identical to the Flash client's for at
-      least 20 assets across several furni, *and* the SWF is fetched **over HTTP, not from `C:\\`**
+      symbol. Scope is fixed by G0/P1c's data, not by assumption: **three containers** — FWS 1,596 ·
+      CWS 20,862 · ZWS 38 in the measured, non-ignored inventory. SWF LZMA is non-standard: props
+      at byte 12, data at 17, declared size replaced by the unknown-size sentinel. Six Gordon CWS
+      streams omit Adler-32 but contain the complete declared body; tolerate only after exact
+      length verification. **Four bitmap tags** — `DefineBitsLossless2`, `DefineBitsJPEG3`,
+      `DefineBitsLossless`, and `DefineBitsJPEG2` (mandatory: 1,468 reachable Gordon exports).
+      Plus `DefineBinaryData`, `DefineSound(MP3)`, and `SymbolClass`. **Done when:** output is
+      pixel-identical to the Flash client's for at least 20 assets across several furni, one
+      Gordon MP3 export decodes and plays, *and* the SWF is fetched **over HTTP, not from `C:\\`**
       — path-loading hides CORS, MIME and caching problems. Record cold and warm load timing.
 - [ ] **G3. XML shim.** **First regenerate the API contract** with
       `evidence/e4x_api_contract.py`, then implement what it lists — currently **~15 members**

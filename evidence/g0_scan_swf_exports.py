@@ -48,16 +48,20 @@ BITMAP_TAGS = {
 }
 BINARY_TAGS = {87: "DefineBinaryData"}
 OTHER_TAGS = {
-    39: ("sprite", "DefineSprite"), 14: ("sound", "DefineSound"),
+    39: ("sprite", "DefineSprite"),
     60: ("video", "DefineVideoStream"),
     2: ("shape", "DefineShape"), 22: ("shape", "DefineShape2"),
     32: ("shape", "DefineShape3"), 83: ("shape", "DefineShape4"),
     48: ("font", "DefineFont2"), 75: ("font", "DefineFont3"),
     37: ("edittext", "DefineEditText"),
 }
+SOUND_FORMATS = {
+    0: "native", 1: "ADPCM", 2: "MP3", 3: "PCM-LE", 4: "Nellymoser-16k",
+    5: "Nellymoser-8k", 6: "Nellymoser", 11: "Speex",
+}
 SYMBOL_CLASS = 76
 
-SUPPORTED_KINDS = {"bitmap", "binary", "root"}
+SUPPORTED_KINDS = {"bitmap", "binary", "sound", "root"}
 
 # --- explicit, machine-readable exclusions -----------------------------------------------
 # A path substring here means: this file is NOT part of the runtime content contract, so its
@@ -100,6 +104,18 @@ def decompress(raw: bytes) -> tuple[str, bytes | None, str | None]:
         try:
             return sig, zlib.decompress(raw[8:]), None
         except Exception as exc:
+            # Six Gordon files contain the entire declared SWF body but omit zlib's four-byte
+            # Adler-32 trailer. Flash accepts them and the reader can too: use streaming inflate,
+            # then require the decompressed length to match the SWF header exactly. This does not
+            # mask genuinely truncated files; those still fail the length check below.
+            try:
+                expected = struct.unpack_from("<I", raw, 4)[0] - 8
+                stream = zlib.decompressobj()
+                body = stream.decompress(raw[8:])
+                if len(body) == expected:
+                    return sig, body, None
+            except Exception:
+                pass
             return sig, None, "zlib: " + repr(exc)[:50]
     if sig == "ZWS":
         try:
@@ -149,6 +165,11 @@ def scan(path: str):
             kind_by_id[struct.unpack_from("<H", body, payload)[0]] = ("bitmap", BITMAP_TAGS[code])
         elif code in BINARY_TAGS:
             kind_by_id[struct.unpack_from("<H", body, payload)[0]] = ("binary", BINARY_TAGS[code])
+        elif code == 14:
+            character_id = struct.unpack_from("<H", body, payload)[0]
+            sound_format = body[payload + 2] >> 4
+            format_name = SOUND_FORMATS.get(sound_format, "format-{}".format(sound_format))
+            kind_by_id[character_id] = ("sound", "DefineSound({})".format(format_name))
         elif code in OTHER_TAGS:
             kind_by_id[struct.unpack_from("<H", body, payload)[0]] = OTHER_TAGS[code]
         elif code == SYMBOL_CLASS:
@@ -193,6 +214,7 @@ def main() -> int:
     tags = collections.Counter()
     sigs = collections.Counter()
     unreadable: list[tuple[str, str]] = []
+    excluded_unreadable: list[tuple[str, str, str]] = []
     findings: list[tuple[str, str, str, str]] = []
     excluded_files = 0
 
@@ -205,17 +227,25 @@ def main() -> int:
         w.writerow(["file", "character_id", "exported_name", "kind", "tag", "excluded"])
         for path in files:
             why = excluded(path)
+            if why:
+                excluded_files += 1
             try:
                 sig, rows, err = scan(path)
             except Exception as exc:
-                unreadable.append((path, repr(exc)[:60]))
+                problem = repr(exc)[:60]
+                if why:
+                    excluded_unreadable.append((path, problem, why))
+                else:
+                    unreadable.append((path, problem))
                 continue
             sigs[sig] += 1
             if rows is None:
-                unreadable.append((path, err or "?"))
+                problem = err or "?"
+                if why:
+                    excluded_unreadable.append((path, problem, why))
+                else:
+                    unreadable.append((path, problem))
                 continue
-            if why:
-                excluded_files += 1
             for cid, name, kind, tag in rows:
                 kinds[kind] += 1
                 if tag != "-":
@@ -227,17 +257,23 @@ def main() -> int:
     print("files found      :", len(files))
     print("containers       :", dict(sigs))
     print("excluded files   :", excluded_files, "({} rule(s))".format(len(EXCLUSIONS)))
+    print("excluded unread. :", len(excluded_unreadable))
     print("unreadable       :", len(unreadable))
     print("\nexported symbols by kind:")
     for kind, n in kinds.most_common():
         print("   {:<10} {:>9}".format(kind, n))
-    print("\nbitmap/binary tag variants the reader must implement:")
+    print("\ncharacter tag variants the reader must implement:")
     for tag, n in tags.most_common():
         print("   {:<22} {:>9}".format(tag, n))
     if unreadable:
         print("\nUNREADABLE ({}):".format(len(unreadable)))
         for row in unreadable[:20]:
             print("   ", row)
+    if excluded_unreadable:
+        print("\nEXCLUDED UNREADABLE ({}; outside reader contract):".format(
+            len(excluded_unreadable)))
+        for path, problem, _ in excluded_unreadable[:20]:
+            print("   ", (path, problem))
     if findings:
         print("\nUNEXPLAINED EXPORTS ({}):".format(len(findings)))
         for row in findings[:20]:

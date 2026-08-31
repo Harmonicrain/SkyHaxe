@@ -36,8 +36,12 @@ then replace it with the new commit id and regenerate the measurements.
 
 | File | Hash |
 |---|---|
-| `g0_scan_swf_exports.py` | `8f1c323312db1b4f` |
-| `g0_hof_furni.csv.gz` | `37a3bcf25005c691` |
+| `g0_scan_swf_exports.py` | `ce01eef67b24e4a6` |
+| `g0_hof_furni.csv.gz` | `6ed0deac0ac8ba75` |
+| `g0_dcr.csv.gz` | `f9aba2d1e86ddbdd` |
+| `g0_gordon_contract.py` | `4b3511d373201114` |
+| `g0_gordon_contract.csv.gz` | `6fb5c807bb1d9d21` |
+| `g0_gordon_contract.json` | `756ee782ff5de708` |
 | `e4x_api_contract.py` | `cb38017167f8e6df` |
 | `e4x_contract.json` | `2edf30485e251749` |
 
@@ -83,11 +87,12 @@ Recorded per row in the CSV, not collapsed into "bitmap":
 | `DefineBinaryData` | 93,200 | **yes** |
 | `DefineBitsJPEG3` | 1,135 | **yes** |
 | `DefineBitsLossless` | 1 | **yes** — one file only, but it is real content |
-| `DefineBitsJPEG2` | 5 | only if `mp3/gamedata` enters the content contract |
-| `DefineSound` | 21 | no — excluded |
+| `DefineBitsJPEG2` | 5 | no for this corpus; **required by Gordon** |
+| `DefineSound(MP3)` | 21 | excluded here; **required by Gordon** |
 | `DefineFont3` | 3 | no — excluded |
 
-So: **three containers, four bitmap tags, `DefineBinaryData`, `SymbolClass`.**
+Global reader scope after P1c: **three containers, four bitmap tags, `DefineBinaryData`,
+`DefineSound(MP3)`, and `SymbolClass`.**
 
 ### Exclusions (machine-readable, in the scanner)
 
@@ -110,12 +115,52 @@ regression test, not a report.
 
 Current scanner fixes all three, matches `.swf` case-insensitively, and fails loudly.
 
-### Not yet covered — checklist task P1c
+### P1c — remaining DCR and Gordon contract
 
-- `c:/habbo/ngh/gordon/` — scanned ad hoc only. The 2016 `PRODUCTION-…` subtree exports 734
-  sounds and 16 sprites; it is the old client's build output, not content, but that needs to be an
-  explicit exclusion rather than a remark.
-- `c:/habbo/ngh/dcr/` outside `hof_furni`.
+Whole DCR re-run:
+
+```
+python evidence/g0_scan_swf_exports.py c:/habbo/ngh/dcr --csv evidence/g0_dcr.csv --gzip
+```
+
+**PASS:** 18,611 files; FWS 1,544 · CWS 17,043 · ZWS 24; zero unreadable. The three files outside
+`hof_furni` add 24 bitmap, 15 binary, and three root exports without expanding reader scope.
+
+Gordon is not one homogeneous set, so its reachability test is separate:
+
+```
+python evidence/g0_gordon_contract.py \
+  --csv evidence/g0_gordon_contract.csv.gz \
+  --json evidence/g0_gordon_contract.json
+```
+
+**Reader contract PASS:** 3,269 configured-production files derived from current `figuremap.xml`,
+`effectmap.xml`, pet configuration, AS3 SWF literals, public-room naming, and NGHWin's six
+`local_include` files. Zero unreadable and zero unsupported exports in that set.
+
+| Reachable Gordon export | Count |
+|---|---:|
+| bitmap | 240,026 |
+| binary | 5,310 |
+| document root | 3,269 |
+| sound | 24 — all `DefineSound(MP3)` |
+
+Required Gordon bitmap variants include `DefineBitsJPEG2` (**1,468**), so JPEG2 is no longer
+conditional. NGHWin's exact local subset is `HabboRoomContent`, `PlaceHolderFurniture`,
+`PlaceHolderWallItem`, `PlaceHolderPet`, `TileCursor`, and `SelectionArrow`.
+
+The non-ignored Gordon inventory is 3,885 SWFs: CWS 3,819 · FWS 52 · ZWS 14. Six CWS files omit
+the Adler-32 trailer but inflate to exactly the SWF-header length; the scanner and future reader
+accept only that exact case. Two genuinely truncated files (`ngh846.swf`, `nghkash2.swf`) and all
+font/sprite exports are in unclassified archived client/test files, not the reachable set.
+
+Four current map references have no file in the configured production directory: `flycarpet.swf`,
+`zombieduck.swf`, `hh_human_50_fx.swf`, and `hh_human_fx.swf`. These are corpus/config completeness
+warnings, not decoder failures.
+
+Owner decision 2026-08-31: **ignore**
+`gordon/flash-assets-PRODUCTION-202605152352-294132426` (2,891 files). The contract script omits it
+and records that exclusion in its JSON; it is not a fallback for missing production assets.
 
 ---
 

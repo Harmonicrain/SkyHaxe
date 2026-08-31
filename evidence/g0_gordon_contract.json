@@ -1,0 +1,217 @@
+{
+  "reader_contract_pass": true,
+  "files_total": 3885,
+  "ignored_files": 2891,
+  "ignored_directories": [
+    "flash-assets-PRODUCTION-202605152352-294132426"
+  ],
+  "ignored_reason": "Owner decision 2026-08-31: not part of the SkyHaxe asset contract.",
+  "file_sets": {
+    "root_content_duplicate": 2,
+    "root_unclassified": 2,
+    "production_unclassified": 612,
+    "production_reachable": 3269
+  },
+  "containers": {
+    "ZWS": 14,
+    "CWS": 3819,
+    "FWS": 52
+  },
+  "supported_kinds": [
+    "binary",
+    "bitmap",
+    "root",
+    "sound"
+  ],
+  "kinds_by_set": {
+    "root_content_duplicate": {
+      "bitmap": 266,
+      "binary": 81,
+      "root": 2
+    },
+    "root_unclassified": {
+      "binary": 2080,
+      "bitmap": 3180,
+      "font": 34,
+      "root": 2,
+      "sound": 26
+    },
+    "production_unclassified": {
+      "binary": 57048,
+      "bitmap": 123193,
+      "font": 886,
+      "root": 610,
+      "sound": 734,
+      "sprite": 16,
+      "MISSING": 16
+    },
+    "production_reachable": {
+      "bitmap": 240026,
+      "binary": 5310,
+      "root": 3269,
+      "sound": 24
+    }
+  },
+  "tags_by_set": {
+    "root_content_duplicate": {
+      "DefineBitsJPEG2": 71,
+      "DefineBinaryData": 81,
+      "DefineBitsLossless2": 195
+    },
+    "root_unclassified": {
+      "DefineBinaryData": 2080,
+      "DefineBitsLossless2": 3180,
+      "DefineFont3": 34,
+      "DefineSound(MP3)": 26
+    },
+    "production_unclassified": {
+      "DefineBinaryData": 57048,
+      "DefineBitsLossless2": 122811,
+      "DefineFont3": 886,
+      "DefineSound(MP3)": 734,
+      "DefineBitsJPEG3": 382,
+      "DefineSprite": 16
+    },
+    "production_reachable": {
+      "DefineBitsLossless2": 237699,
+      "DefineBinaryData": 5310,
+      "DefineBitsJPEG3": 859,
+      "DefineSound(MP3)": 24,
+      "DefineBitsJPEG2": 1468
+    }
+  },
+  "unreadable_by_set": {
+    "production_unclassified": [
+      {
+        "file": "PRODUCTION-201611291003-338511768\\ngh846.swf",
+        "error": "zlib: error('Error -5 while decompressing data: incomple"
+      },
+      {
+        "file": "PRODUCTION-201611291003-338511768\\nghkash2.swf",
+        "error": "zlib: error('Error -5 while decompressing data: incomple"
+      }
+    ],
+    "production_reachable": []
+  },
+  "unsupported_count_by_set": {
+    "root_unclassified": 34,
+    "production_unclassified": 918,
+    "production_reachable": 0
+  },
+  "unsupported_files_by_set": {
+    "root_unclassified": {
+      "johns.swf": 17,
+      "myheadhurts11.swf": 17
+    },
+    "production_unclassified": {
+      "PRODUCTION-201611291003-338511768\\2017.swf": 17,
+      "PRODUCTION-201611291003-338511768\\2018-1.swf": 17,
+      "PRODUCTION-201611291003-338511768\\2018.swf": 17,
+      "PRODUCTION-201611291003-338511768\\2018Test.swf": 17,
+      "PRODUCTION-201611291003-338511768\\2018Testraw.swf": 17,
+      "PRODUCTION-201611291003-338511768\\apiplayer3.swf": 16,
+      "PRODUCTION-201611291003-338511768\\asmd_Habbo2.swf": 17,
+      "PRODUCTION-201611291003-338511768\\asmd_Habbo3.swf": 17,
+      "PRODUCTION-201611291003-338511768\\BobbaBIZ.swf": 17,
+      "PRODUCTION-201611291003-338511768\\BobbaBIZ2.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\blue.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\green.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\grey-dark.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\habbo.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\habbo_base.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\habbo_brokenenables.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\indigo.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\orange.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\pink.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\purple.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\red.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\teal.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\backup\\yellow-dark.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\blue.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\green.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\grey-dark.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\habbo.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\habbo_base.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\indigo.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\orange.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\pink.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\purple.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\red.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\teal.swf": 17,
+      "PRODUCTION-201611291003-338511768\\colorfului\\yellow-dark.swf": 17,
+      "PRODUCTION-201611291003-338511768\\default.swf": 17,
+      "PRODUCTION-201611291003-338511768\\fantasy.swf": 17,
+      "PRODUCTION-201611291003-338511768\\haa.swf": 17,
+      "PRODUCTION-201611291003-338511768\\Habbo.swf": 13,
+      "PRODUCTION-201611291003-338511768\\illuminatest1.swf": 17,
+      "PRODUCTION-201611291003-338511768\\illuminatest3.swf": 17,
+      "PRODUCTION-201611291003-338511768\\john.swf": 17,
+      "PRODUCTION-201611291003-338511768\\john2.swf": 17,
+      "PRODUCTION-201611291003-338511768\\johns.swf": 17,
+      "PRODUCTION-201611291003-338511768\\johns2.swf": 17,
+      "PRODUCTION-201611291003-338511768\\lol.swf": 13,
+      "PRODUCTION-201611291003-338511768\\oasis.swf": 17,
+      "PRODUCTION-201611291003-338511768\\old.swf": 17,
+      "PRODUCTION-201611291003-338511768\\oldprod.swf": 17,
+      "PRODUCTION-201611291003-338511768\\plswork.swf": 13,
+      "PRODUCTION-201611291003-338511768\\pngcamera.swf": 13,
+      "PRODUCTION-201611291003-338511768\\PRODUCTION-201804182203-407320039.swf": 17,
+      "PRODUCTION-201611291003-338511768\\PRODUCTION-201805071207-546529762.swf": 17,
+      "PRODUCTION-201611291003-338511768\\rawcam.swf": 17,
+      "PRODUCTION-201611291003-338511768\\wesley.swf": 17
+    },
+    "production_reachable": {}
+  },
+  "checksumless_complete_cws": [
+    "PRODUCTION-201611291003-338511768\\acc_chest_U_squirtl3.swf",
+    "PRODUCTION-201611291003-338511768\\acc_eye_U_bleed.swf",
+    "PRODUCTION-201611291003-338511768\\acc_eye_U_holloweyes1234.swf",
+    "PRODUCTION-201611291003-338511768\\acc_face_U_mouthsc.swf",
+    "PRODUCTION-201611291003-338511768\\elephants.swf",
+    "PRODUCTION-201611291003-338511768\\penguin.swf"
+  ],
+  "missing_references": [
+    {
+      "file": "flycarpet.swf",
+      "reasons": [
+        "gamedata/effectmap.xml"
+      ],
+      "alternates_elsewhere_in_gordon": []
+    },
+    {
+      "file": "hh_human_50_fx.swf",
+      "reasons": [
+        "gamedata/figuremap.xml"
+      ],
+      "alternates_elsewhere_in_gordon": []
+    },
+    {
+      "file": "hh_human_fx.swf",
+      "reasons": [
+        "gamedata/figuremap.xml"
+      ],
+      "alternates_elsewhere_in_gordon": []
+    },
+    {
+      "file": "zombieduck.swf",
+      "reasons": [
+        "gamedata/effectmap.xml"
+      ],
+      "alternates_elsewhere_in_gordon": []
+    }
+  ],
+  "local_include": [
+    "HabboRoomContent.swf",
+    "PlaceHolderFurniture.swf",
+    "PlaceHolderWallItem.swf",
+    "PlaceHolderPet.swf",
+    "TileCursor.swf",
+    "SelectionArrow.swf"
+  ],
+  "notes": [
+    "Missing references are corpus/config completeness findings, not decoder failures.",
+    "Unclassified files are retained in the report; they are not blanket-excluded.",
+    "flash-assets-PRODUCTION-202605152352-294132426 is owner-excluded and not scanned.",
+    "CWS files missing only the Adler-32 trailer are accepted after exact header-length verification."
+  ]
+}

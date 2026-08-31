@@ -51,12 +51,12 @@ The client's content model is runtime-loaded SWFs: `AssetLibrary.getClass()` cal
 an `applicationDomain` by name.
 
 **G0 has been run.** The claim was originally based on one file; it has now been tested across the
-whole corpus, and the finding is stronger than first stated — but with three corrections.
+whole contracted corpus, and the finding is stronger than first stated — but with four corrections.
 
 **The invariant that matters is not "these SWFs only contain four tags".** It is: *the only symbols
-the client can reach are those exported through `SymbolClass`, and those are exclusively bitmaps
-and binary data.* Odd tags may exist in a file; if they are not exported, `getDefinition(name)`
-can never return them.
+the client can reach are those exported through `SymbolClass`, and the runtime content contract
+exports bitmaps, binary data and MP3 sounds.* Odd tags may exist in an archived client SWF; if
+they are not exported by reachable content, the asset reader never has to serve them.
 
 Measured across **18,608 files** under `c:/habbo/ngh/dcr/hof_furni/` (recursive, case-insensitive).
 Scanner, gzipped per-symbol results and anchors in `evidence/`. **G0 exits non-zero on any
@@ -81,30 +81,35 @@ Containers: **CWS 17,041 · FWS 1,543 · ZWS 24 (LZMA — all decode).**
 | `DefineBinaryData` | 93,200 | yes |
 | `DefineBitsJPEG3` | 1,135 | yes |
 | `DefineBitsLossless` | 1 | **yes** — a single file, but real content |
-| `DefineBitsJPEG2` | 5 | only if `mp3/gamedata` enters the content contract |
+| `DefineBitsJPEG2` | 5 | excluded here, but **required by Gordon** |
 
 Two exclusions, both machine-readable in the scanner: `mp3/gamedata/` (`basicassets.swf`, a client
 bundle in a stray subdirectory — the source of all 21 sound and 3 font exports) and `koekjes.swf`
 (5 obfuscated names with no backing character; owner decision).
 
-**Three corrections to the original claim:**
+**Four corrections to the original claim:**
 
-1. **Three container formats, not one.** CWS 17,041 · **FWS 1,543** · **ZWS 24 — LZMA**, plus 13
-   more in `gordon/`. SWF's LZMA framing is non-standard: props at byte 12, data at 17, and the
+1. **Three container formats, not one.** Across all of `dcr/` and the non-ignored Gordon inventory: CWS 20,862 ·
+   **FWS 1,596** · **ZWS 38 — LZMA**. SWF's LZMA framing is non-standard: props at byte 12, data at 17, and the
    declared size must be replaced with the unknown-size sentinel before liblzma will decode it.
 2. **Four bitmap tags, not one.** `DefineBitsLossless2` dominates, but `DefineBitsJPEG3` (1,135),
    `DefineBitsLossless` (1) and `DefineBitsJPEG2` (5, excluded) all occur. "Two decoder families"
    is fair; "two tags" is not.
-3. **`gordon/PRODUCTION-201611291003-338511768` does export 734 sounds and 16 sprites** — but that
-   directory is the *2016 client's own compiled output* (`HabboSoundManagerFlash10Com` and friends),
-   not content. SkyHaxe compiles its own client, so those SWFs are the thing being replaced, not
-   loaded. Sound effects become OpenFL assets. **This is the one place the original "no conversion
-   pipeline" claim was too broad**: it holds for content, not for the old client's build artefacts,
-   which simply do not carry over.
+3. **Gordon is mixed, not generated wholesale.** NGHWin packages six boot-critical Gordon files
+   (`HabboRoomContent`, three placeholders, `TileCursor`, `SelectionArrow`) and leaves the rest
+   URL-driven. Current maps/config/source reach 3,269 production files; all are readable and stay
+   in the asset contract. The same directory also contains archived client/test SWFs, which is
+   where the fonts and sprites come from. They are reported separately, never path-excluded.
+   `flash-assets-PRODUCTION-202605152352-294132426` is outside the contract by owner decision.
+4. **Sound is real content.** `hh_game_bb.swf` and `hh_game_snowwar.swf` are URL-loaded by the
+   current client and export 24 MP3 sounds which game code actively plays. `DefineSound(MP3)` is
+   therefore reader scope. Gordon also makes `DefineBitsJPEG2` mandatory (1,468 reachable
+   exports), rather than conditional.
 
 So D1 stands, with the reader scoped as: **three containers (FWS/CWS/ZWS), two bitmap decoders
-(lossless + JPEG), `DefineBinaryData`, and `SymbolClass`.** Content assets stay untouched on disk
-and unchanged in hosting.
+(lossless + JPEG), `DefineBinaryData`, `DefineSound(MP3)`, and `SymbolClass`.** Six checksumless
+CWS files require tolerant streaming inflate followed by an exact SWF-header length check. Content
+assets stay untouched on disk and unchanged in hosting.
 
 Rejected alternatives:
 
@@ -117,9 +122,9 @@ Rejected alternatives:
 
 **Confidence:** high — measured reproducibly, per-symbol results retained, gate fails loudly.
 Three earlier passes were each wrong in a different way (flat listing, no LZMA, collapsed tag
-names); the correction history is in `evidence/PROVENANCE.md`. **Re-run the scanner; do not trust
-this prose.** Still outstanding: the same treatment for `gordon/` and the rest of `dcr/` (P1c). The "few hundred lines" estimate for the reader is still a judgement
-call, and LZMA plus JPEG decode push it upward.
+names), and P1c corrected the later Gordon classification error. The correction history is in
+`evidence/PROVENANCE.md`. **Re-run the scanners; do not trust this prose.** The "few hundred lines"
+estimate for the reader is still a judgement call; LZMA, JPEG and MP3 decode push it upward.
 
 ### D2 — E4X: a shim, plus a mechanical rewrite
 
@@ -193,7 +198,7 @@ Each gate is a thing you can look at, not a percentage.
 
 | Gate | Proves | Done when |
 |---|---|---|
-| **G0** | ✅ **PASSED 2026-08-31** | 18,608 files scanned (recursive, case-insensitive), 0 unreadable, all 24 LZMA containers decoded. Every exported symbol is a bitmap, binary blob or root; the 29 exceptions are covered by two machine-readable exclusions. Scanner exits non-zero on any regression |
+| **G0** | ✅ **PASSED 2026-08-31** | All 18,611 `dcr/` SWFs scanned; Gordon's derived runtime contract also passes across 3,269 files. Required exports are bitmap, binary, root, and 24 reachable MP3 sounds. The non-ignored Gordon inventory remains in evidence, including mixed archived-client files. Scanners exit non-zero on reader-contract regressions |
 | **G1** | Toolchain | `haxe`, `haxelib`, `lime`, OpenFL installed; empty HTML5 project builds and runs. **None is installed today** — Node 24 and npm are |
 | **G1b** | Transport | A minimal OpenFL HTML5 page connects through `NitroWebsockets`, exchanges binary frames, completes the opening protocol exchange, then disconnects and reconnects cleanly. Repeat from an **HTTPS page over `wss://`** with the real origin whitelist and proxy config, to surface mixed-content, certificate and origin problems now rather than at G6 |
 | **G1c** | Converter canary | 20–30 deliberately awkward representative files pushed through ax3 and **compiled** by the current Haxe compiler. Pick them to hit the known-hard constructs: `Vector.<T>` (341 files), `Dictionary` (162), `ByteArray` (88), reflection (23), `XMLList` (70). Tells you whether the toolchain cooperates *before* committing to thousands of files |
@@ -238,8 +243,10 @@ one-way tool you may end up patching, not a dependency.
 
 | Risk | Severity | Mitigation |
 |---|---|---|
-| ~~Furni SWFs export something the reader cannot serve~~ | **Closed** | G0 scanned 18,608 files and passes as a regression test |
-| LZMA (`ZWS`) container adds unplanned work | Low | 37 files total; bounded, but must be in the reader from the start |
+| ~~Runtime content exports something the reader cannot serve~~ | **Closed** | G0/P1c derive and scan the DCR and Gordon contracts; both pass |
+| LZMA (`ZWS`) container adds unplanned work | Low | 38 files total; bounded, but must be in the reader from the start |
+| Gordon game packs require SWF sound extraction | Medium | Implement `DefineSound(MP3)` in G2; 24 reachable exports, all MP3 |
+| Four current map entries have no file in the configured production set | Medium | Track as corpus/config completeness: `flycarpet`, `zombieduck`, `hh_human_50_fx`, `hh_human_fx`; the owner-excluded newer subtree is not a fallback |
 | `ByteArray` / endianness differences break the wire format | **High** | G6; the protocol is unforgiving and fails silently |
 | OpenFL `TextField.htmlText` too weak for habbopage | Medium | 150 `flash.text` imports across 74 files; **assess at G4b, not M5** |
 | ax3 output needs more repair than expected | Medium | M2 is the canary — if `core` is painful, reconsider scope |
@@ -265,8 +272,8 @@ one-way tool you may end up patching, not a dependency.
 Superseded by **[CHECKLIST.md](CHECKLIST.md)**, which carries the full task list, the definition
 of done per gate, and the standing rules an implementer must not drift from. In summary:
 
-1. **Put SkyHaxe under version control** — needs the user's go-ahead; not yet a repo.
-2. **G1** empty OpenFL HTML5 build → **G1b** WebSocket transport spike through `NitroWebsockets`,
+1. **P0/P1c are complete** — SkyHaxe is versioned and both remaining asset corpora are measured.
+2. **P2/P3**, then **G1** empty OpenFL HTML5 build → **G1b** WebSocket transport spike through `NitroWebsockets`,
    including `wss://` from an HTTPS page → **G1c** ax3 conversion canary on 20–30 awkward files.
 3. **G2** SWF reader, fetching over HTTP rather than from `C:\`, with pixel and timing checks.
 4. **G3** XML shim against a representative corpus.
