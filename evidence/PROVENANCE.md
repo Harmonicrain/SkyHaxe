@@ -8,11 +8,11 @@ What each measurement was taken from, so it can be re-run and compared rather th
 
 | | |
 |---|---|
-| Repo | `habbo-client-clean`, branch `wired2-ngh` |
+| Repo | `habbo-client-clean`, branch `wired2` |
 | Commit | `9b265927b277` |
-| Working tree | **DIRTY** — 89 tracked files modified, 226 untracked |
-| `git diff HEAD` sha256 (first 16) | `5ce21ff780421d0d` |
-| Date | 2026-08-31 |
+| Working tree | **DIRTY** — 93 tracked files modified, 226 untracked |
+| `git diff HEAD` sha256 (first 16) | `60bfe073e18bbb40` |
+| Date | 2026-09-01 |
 
 **A commit plus the word "dirty" is not reproducible**, because that working tree keeps changing.
 The diff hash above pins the exact modified state at measurement time. To verify you are looking
@@ -20,30 +20,34 @@ at the same tree:
 
 ```
 git rev-parse HEAD                     # expect 9b265927b277...
-git diff HEAD | sha256sum              # expect 5ce21ff780421d0d...
+git diff HEAD --output=client.diff
+Get-FileHash client.diff -Algorithm SHA256  # expect 60bfe073e18bbb40...
 git ls-files --others --exclude-standard | wc -l   # expect 226
 ```
 
 If the diff hash differs, **re-run the scanners before trusting any figure here.** Note `git diff`
 emits CRLF warnings on this checkout; they do not affect the hash of the diff body.
 
-The owner delegated the commit/tag decision on 2026-08-31. SkyHaxe will **not** synthesize a
-commit from 89 tracked modifications and 226 untracked files belonging to other in-progress
-client work. Retain this anchor until that work naturally reaches a clean owner-created commit,
-then replace it with the new commit id and regenerate the measurements.
+The pre-P2/P3 anchor was `5ce21ff780421d0d` with 89 tracked modifications and 226 untracked files.
+The current anchor adds only the four P2 files and P3's one-character fix to that dirty state.
+The owner explicitly prohibited staging, committing, tagging, or pushing on the client side.
+SkyHaxe will **not** synthesize a client commit from unrelated in-progress work.
 
 ### Artefact hashes (sha256, first 16)
 
 | File | Hash |
 |---|---|
-| `g0_scan_swf_exports.py` | `ce01eef67b24e4a6` |
-| `g0_hof_furni.csv.gz` | `6ed0deac0ac8ba75` |
-| `g0_dcr.csv.gz` | `f9aba2d1e86ddbdd` |
-| `g0_gordon_contract.py` | `4b3511d373201114` |
-| `g0_gordon_contract.csv.gz` | `6fb5c807bb1d9d21` |
+| `g0_scan_swf_exports.py` | `23f08f9735b13f4d` |
+| `g0_hof_furni.csv.gz` | `18dbf6474aa985a5` |
+| `g0_dcr.csv.gz` | `14242bb88185ce1e` |
+| `g0_gordon_contract.py` | `e29611559e521856` |
+| `g0_gordon_contract.csv.gz` | `a63b5ec041dcf4e0` |
 | `g0_gordon_contract.json` | `756ee782ff5de708` |
 | `e4x_api_contract.py` | `cb38017167f8e6df` |
-| `e4x_contract.json` | `2edf30485e251749` |
+| `e4x_contract.json` | `ec963a68ddf8584e` |
+
+All three gzip evidence files use header `mtime=0`; identical scanner input now produces identical
+compressed bytes instead of a timestamp-only diff.
 
 ---
 
@@ -188,26 +192,41 @@ guess and is **too small**. Measured first-party surface, by occurrences:
 | `attribute` | 76 |
 | `parent` | 64 |
 | `replace` | 38 |
-| `children` | 37 |
+| `children` | 41 |
 | `hasOwnProperty` | 31 |
 | `appendChild` | 16 |
 | `copy` | 14 |
-| `localName` | 5 |
+| `localName` | 7 |
 | `toXMLString` | 3 |
 
 Vendored third-party trees (`org/openvideoads`, `com/hurlant`, `adobe/`, `deng/`) add
 `(predicate filter)` — the only predicate use in the corpus — and are counted separately because
 they may be dropped rather than ported. **That has to be a decision, not an accident.**
 
-### Descendant sites — 4 first-party, 1 third-party
+### P2/P3 result — 0 first-party descendants, 1 third-party
 
-| File | Form |
-|---|---|
-| `com/sulake/habbo/avatar/alias/AssetAliasCollection.as:43` | `_local_2..alias` |
-| `com/sulake/habbo/avatar/geometry/GeometryBodyPart.as:22` | `k..item` |
-| `com/sulake/habbo/battleball/BattleBallArenaHud.as:362` | `source.descendants()` |
-| `com/sulake/habbo/battleball/BattleBallLobbyWindow.as:385` | `source.descendants()` |
-| `org/openvideoads/vast/config/ConfigPreConverter.as:808` | `k.ads.overlays..overlay` — third-party |
+P2 replaced the four first-party forms below with class-local depth-first `children()` walks:
+
+- `AssetAliasCollection`: collect every descendant `alias` in document order.
+- `GeometryBodyPart`: collect every descendant `item` in document order.
+- `BattleBallArenaHud` and `BattleBallLobbyWindow`: return the first descendant with the requested
+  `bb_id`, preserving the original first-match behavior.
+
+The only remaining site is
+`org/openvideoads/vast/config/ConfigPreConverter.as:808` (`k.ads.overlays..overlay`), which is
+vendored third-party code and was deliberately left untouched.
+
+P3 added the missing semicolon to
+`INCOMING_PACKETS[5210] = FireworkChargeDataEvent;`; no packet mapping changed.
+
+Verification on 2026-09-01:
+
+- `e4x_api_contract.py`: 5,492 files, 231 XML files, **0 first-party descendants**, 1 third-party.
+- Missing-semicolon packet-map grep: 0 findings.
+- Baseline official NGHWin compile: PASS before editing.
+- Post-edit `build.bat compile`: PASS in 73.561s; `HabboAir.swf` 7,258,363 bytes, SHA-256
+  `08d6a9907dad0278`, header version byte 51.
+- No client-side git staging, commit, tag, or push was performed.
 
 Earlier prose said "5 sites" from a naive grep that counted `...args` and `...types` **rest
 parameters** as descendant operators, and missed `.descendants()` entirely. A later fix

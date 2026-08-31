@@ -11,9 +11,9 @@
   "copy": 14,
   "toString": 80,
   "hasOwnProperty": 31,
-  "children": 37,
+  "children": 41,
   "toXMLString": 3,
-  "localName": 5,
+  "localName": 7,
   "parent": 64,
   "replace": 38,
   "@attribute": 486
@@ -31,28 +31,7 @@
   "toXMLString": 3,
   "replace": 1
  },
- "descendant_sites_first_party": [
-  {
-   "file": "com/sulake/habbo/avatar/alias/AssetAliasCollection.as",
-   "line": 43,
-   "source": "for each (_local_3 in _local_2..alias)"
-  },
-  {
-   "file": "com/sulake/habbo/avatar/geometry/GeometryBodyPart.as",
-   "line": 22,
-   "source": "for each (_local_2 in k..item)"
-  },
-  {
-   "file": "com/sulake/habbo/battleball/BattleBallArenaHud.as",
-   "line": 362,
-   "source": "for each (var node:XML in source.descendants())"
-  },
-  {
-   "file": "com/sulake/habbo/battleball/BattleBallLobbyWindow.as",
-   "line": 385,
-   "source": "for each (var node:XML in source.descendants())"
-  }
- ],
+ "descendant_sites_first_party": [],
  "descendant_sites_third_party": [
   {
    "file": "org/openvideoads/vast/config/ConfigPreConverter.as",

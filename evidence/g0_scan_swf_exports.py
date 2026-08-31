@@ -196,6 +196,12 @@ def scan(path: str):
     return sig, rows, None
 
 
+def open_deterministic_gzip_text(path: str):
+    """Open a reproducible gzip text stream (no wall-clock timestamp in the header)."""
+    compressed = gzip.GzipFile(filename=path, mode="wb", mtime=0)
+    return io.TextIOWrapper(compressed, encoding="utf-8", newline="")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("dirs", nargs="+")
@@ -219,7 +225,7 @@ def main() -> int:
     excluded_files = 0
 
     path_out = args.csv + (".gz" if args.gzip else "")
-    opener = (lambda p: gzip.open(p, "wt", newline="", encoding="utf-8")) if args.gzip \
+    opener = open_deterministic_gzip_text if args.gzip \
         else (lambda p: open(p, "w", newline="", encoding="utf-8"))
 
     with opener(path_out) as out:

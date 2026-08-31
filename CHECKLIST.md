@@ -43,10 +43,10 @@ These exist because a long port drifts in predictable ways. They are not advice.
 - [x] **P1. G0 — asset invariant.** **PASS** 2026-08-31 (exit 0, 0 unreadable, 18,608 files).
       Scanner `evidence/g0_scan_swf_exports.py`, results `evidence/g0_hof_furni.csv.gz`,
       anchors `evidence/PROVENANCE.md`. Re-run it rather than trusting any figure.
-- [x] **P1b. Provenance anchored.** Commit `9b265927b277`, `git diff HEAD` sha256
-      `5ce21ff780421d0d`, 89 tracked-modified + 226 untracked, artefact hashes and correction
-      history — `evidence/PROVENANCE.md`. A commit id plus "dirty" is not reproducible; the diff
-      hash is what pins it.
+- [x] **P1b. Provenance anchored.** Commit `9b265927b277`; pre-cleanup `git diff HEAD` sha256
+      `5ce21ff780421d0d` (89 tracked-modified + 226 untracked), and post-P2/P3 sha256
+      `60bfe073e18bbb40` (93 tracked-modified + 226 untracked). Artefact hashes and correction
+      history are in `evidence/PROVENANCE.md`; a commit id plus "dirty" is not reproducible.
 - [x] **P1d. Baseline decision recorded.** The owner delegated this decision on 2026-08-31.
       Do **not** create a synthetic commit from the client's 89 tracked modifications and 226
       untracked files: that would capture unrelated in-progress work. Retain the verified
@@ -61,16 +61,14 @@ These exist because a long port drifts in predictable ways. They are not advice.
       client/test files. Four map entries have no configured-production file and remain explicit
       corpus warnings. Owner decision: ignore the 2,891-file
       `flash-assets-PRODUCTION-202605152352-294132426` subtree.
-- [ ] **P2. E4X descendant rewrite** in `habbo-client-clean`. **Four first-party sites**, verified
-      by `evidence/e4x_api_contract.py`:
-      `avatar/alias/AssetAliasCollection.as:43` (`..alias`),
-      `avatar/geometry/GeometryBodyPart.as:22` (`..item`),
-      `battleball/BattleBallArenaHud.as:362` and `battleball/BattleBallLobbyWindow.as:385`
-      (`.descendants()`). Rewrite to explicit child walks; confirm the client still builds.
-      A fifth site is in vendored `org/openvideoads` — leave it, and decide separately whether that
-      tree is ported at all.
-- [ ] **P3. Fix the ASI reliance** at `habbo-client-clean/src/com/sulake/habbo/communication/HabboMessages.as:1674`
-      (missing semicolon). ax3 has no automatic-semicolon-insertion support.
+- [x] **P2. E4X descendant rewrite** in `habbo-client-clean`. The four first-party sites now use
+      class-local, depth-first `children()` walks, preserving descendant document order and the
+      BattleBall first-match rule. Regenerated contract: **0 first-party descendants**, 1 untouched
+      vendored `org/openvideoads` site. Official NGHWin compile passed 2026-09-01.
+- [x] **P3. Fix the ASI reliance** at
+      `habbo-client-clean/src/com/sulake/habbo/communication/HabboMessages.as:1674`.
+      Added only the missing semicolon after `FireworkChargeDataEvent`; packet ID/class unchanged.
+      The already-dirty file's unrelated leaderboard, ticket, and SnowStorm edits were preserved.
 
 ---
 

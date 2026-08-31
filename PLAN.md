@@ -1,10 +1,10 @@
 # SkyHaxe — porting the Habbo-Sky client to Haxe
 
 A plan, not a commitment. Written 2026-08-31 from measurements of
-`c:/habbo/client/habbo-client-clean` (branch `wired2-ngh`) and the asset tree at `c:/habbo/ngh/`.
+`c:/habbo/client/habbo-client-clean` (branch `wired2`) and the asset tree at `c:/habbo/ngh/`.
 Every number below was counted, not estimated; where something is a judgement call it says so.
 
-Nothing has been built. This document exists to make the three decisions that set the timeline
+No SkyHaxe runtime has been built. This document exists to make the three decisions that set the timeline
 *before* any code is written, because two of them are irreversible in practice.
 
 ---
@@ -138,26 +138,25 @@ Haxe has no E4X. Neither converter handles it well — as3hx "will fail in some 
 | `:XML` / `:XMLList` type annotations | 845 |
 | `new XML(...)` | 35 |
 | `.length()` | 221 |
-| **Descendants `..foo`** | **5** |
+| **Descendants before P2** | **4 first-party + 1 third-party** |
 
-The descendant operator is the hardest part to emulate, and it is used at **4 first-party sites
-plus 1 in vendored third-party code** — `..name` at `AssetAliasCollection.as:43` and
-`GeometryBodyPart.as:22`, `.descendants()` at `BattleBallArenaHud.as:362` and
-`BattleBallLobbyWindow.as:385`.
+The descendant operator was the hardest part to emulate. P2 replaced all **4 first-party sites**
+with explicit depth-first child walks while preserving document order and first-match behavior.
+The 1 remaining site is in vendored third-party code and stays outside the first-party contract.
 
 **The shim is not three methods.** An early draft proposed `att` / `child` / `length`; the
 corpus-derived contract (`evidence/e4x_contract.json`, 231 files touch XML) needs at least:
 
 `length` (685) · `@attribute` (486) · `name` (189) · `text` (88) · `child` (83) · `toString` (80) ·
-`attribute` (76) · `parent` (64) · `replace` (38) · `children` (37) · `hasOwnProperty` (31) ·
-`appendChild` (16) · `copy` (14) · `localName` (5) · `toXMLString` (3)
+`attribute` (76) · `parent` (64) · `children` (41) · `replace` (38) · `hasOwnProperty` (31) ·
+`appendChild` (16) · `copy` (14) · `localName` (7) · `toXMLString` (3)
 
 Predicate filters (`.(@id == "x")`) occur **once**, in vendored third-party code. Whether
 `org/openvideoads`, `com/hurlant`, `adobe/` and `deng/` are ported at all is a decision to take
 explicitly, not to discover mid-conversion.
 
-So E4X is still bounded — but it is a ~15-member shim plus a mechanical rewrite, not a trivial one.
-**Rewrite the 4 first-party descendant sites in AS3 first**, before any converter runs.
+So E4X is still bounded — but it is a ~15-member shim, not a trivial one. **P2 is complete:** the
+regenerated contract reports 0 first-party descendant sites and 1 untouched third-party site.
 
 ### D3 — Target: HTML5 first, desktop second
 
@@ -223,7 +222,7 @@ point rather than a schedule.
 
 | Milestone | Scope | Notes |
 |---|---|---|
-| **M1** | Pre-conversion cleanup in AS3 | Rewrite the 5 descendant uses; fix the ASI reliance at `HabboMessages.as:1674` (ax3 has no automatic-semicolon-insertion support); review the 14 files using namespaces |
+| **M1** | Pre-conversion cleanup in AS3 | P2/P3 complete: 4 first-party descendant uses rewritten and ASI reliance fixed; review the 14 files using namespaces |
 | **M2** | `com.sulake.core` (353 files) | Runtime, window toolkit, communication, assets. Everything else depends on it |
 | **M3** | `com.sulake.room` + `habbo.room` (415) | Renderer and room engine |
 | **M4** | `habbo.communication` (1,885) | Overwhelmingly mechanical — 1,185 message classes of near-identical shape. Good candidate for scripted conversion |
@@ -272,8 +271,8 @@ one-way tool you may end up patching, not a dependency.
 Superseded by **[CHECKLIST.md](CHECKLIST.md)**, which carries the full task list, the definition
 of done per gate, and the standing rules an implementer must not drift from. In summary:
 
-1. **P0/P1c are complete** — SkyHaxe is versioned and both remaining asset corpora are measured.
-2. **P2/P3**, then **G1** empty OpenFL HTML5 build → **G1b** WebSocket transport spike through `NitroWebsockets`,
+1. **P0–P3 are complete** — foundations, asset evidence, E4X cleanup, and ASI cleanup are verified.
+2. **G1** empty OpenFL HTML5 build → **G1b** WebSocket transport spike through `NitroWebsockets`,
    including `wss://` from an HTTPS page → **G1c** ax3 conversion canary on 20–30 awkward files.
 3. **G2** SWF reader, fetching over HTTP rather than from `C:\`, with pixel and timing checks.
 4. **G3** XML shim against a representative corpus.

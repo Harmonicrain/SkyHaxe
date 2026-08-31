@@ -15,6 +15,7 @@ import argparse
 import collections
 import csv
 import gzip
+import io
 import json
 import re
 import struct
@@ -136,7 +137,8 @@ def main() -> int:
     checksumless = []
 
     args.csv.parent.mkdir(parents=True, exist_ok=True)
-    with gzip.open(args.csv, "wt", newline="", encoding="utf-8") as out:
+    compressed = gzip.GzipFile(filename=args.csv, mode="wb", mtime=0)
+    with io.TextIOWrapper(compressed, encoding="utf-8", newline="") as out:
         writer = csv.writer(out)
         writer.writerow([
             "set", "file", "signature", "readable", "error", "reasons", "character_id",
