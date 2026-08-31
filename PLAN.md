@@ -97,9 +97,12 @@ bundle in a stray subdirectory — the source of all 21 sound and 3 font exports
    is fair; "two tags" is not.
 3. **Gordon is mixed, not generated wholesale.** NGHWin packages six boot-critical Gordon files
    (`HabboRoomContent`, three placeholders, `TileCursor`, `SelectionArrow`) and leaves the rest
-   URL-driven. Current maps/config/source reach 3,269 production files; all are readable and stay
-   in the asset contract. The same directory also contains archived client/test SWFs, which is
-   where the fonts and sprites come from. They are reported separately, never path-excluded.
+   URL-driven. Current maps/config/source reach 3,270 production files; all are readable and stay
+   in the asset contract. Runtime variables come from `external_dev_vars.txt`: it adds the live
+   `elephants.swf` pet and explicitly names 12 public-room preload types. Three additional
+   production `hh_room_*` files remain conservatively in scope by naming. The same directory also
+   contains archived client/test SWFs, which is where the fonts and sprites come from. They are
+   reported separately, never path-excluded.
    `flash-assets-PRODUCTION-202605152352-294132426` is outside the contract by owner decision.
 4. **Sound is real content.** `hh_game_bb.swf` and `hh_game_snowwar.swf` are URL-loaded by the
    current client and export 24 MP3 sounds which game code actively plays. `DefineSound(MP3)` is
@@ -108,8 +111,10 @@ bundle in a stray subdirectory — the source of all 21 sound and 3 font exports
 
 So D1 stands, with the reader scoped as: **three containers (FWS/CWS/ZWS), two bitmap decoders
 (lossless + JPEG), `DefineBinaryData`, `DefineSound(MP3)`, and `SymbolClass`.** Six checksumless
-CWS files require tolerant streaming inflate followed by an exact SWF-header length check. Content
-assets stay untouched on disk and unchanged in hosting.
+CWS files require tolerant streaming inflate followed by an exact SWF-header length check. Five
+are reachable production content, including the configured `elephants.swf` pet, so this path is a
+live G2 requirement rather than archive tolerance. Content assets stay untouched on disk and
+unchanged in hosting.
 
 Rejected alternatives:
 
@@ -197,7 +202,7 @@ Each gate is a thing you can look at, not a percentage.
 
 | Gate | Proves | Done when |
 |---|---|---|
-| **G0** | ✅ **PASSED 2026-08-31** | All 18,611 `dcr/` SWFs scanned; Gordon's derived runtime contract also passes across 3,269 files. Required exports are bitmap, binary, root, and 24 reachable MP3 sounds. The non-ignored Gordon inventory remains in evidence, including mixed archived-client files. Scanners exit non-zero on reader-contract regressions |
+| **G0** | ✅ **PASSED 2026-09-01** | All 18,611 `dcr/` SWFs scanned; Gordon's runtime contract derived from `external_dev_vars.txt` passes across 3,270 files. Required exports are bitmap, binary, root, and 24 reachable MP3 sounds. Five live files require checksumless-CWS tolerant inflate, including `elephants.swf`. The non-ignored Gordon inventory remains in evidence, including mixed archived-client files. Scanners exit non-zero on reader-contract regressions |
 | **G1** | Toolchain | `haxe`, `haxelib`, `lime`, OpenFL installed; empty HTML5 project builds and runs. **None is installed today** — Node 24 and npm are |
 | **G1b** | Transport | A minimal OpenFL HTML5 page connects through `NitroWebsockets`, exchanges binary frames, completes the opening protocol exchange, then disconnects and reconnects cleanly. Repeat from an **HTTPS page over `wss://`** with the real origin whitelist and proxy config, to surface mixed-content, certificate and origin problems now rather than at G6 |
 | **G1c** | Converter canary | 20–30 deliberately awkward representative files pushed through ax3 and **compiled** by the current Haxe compiler. Pick them to hit the known-hard constructs: `Vector.<T>` (341 files), `Dictionary` (162), `ByteArray` (88), reflection (23), `XMLList` (70). Tells you whether the toolchain cooperates *before* committing to thousands of files |
@@ -244,6 +249,7 @@ one-way tool you may end up patching, not a dependency.
 |---|---|---|
 | ~~Runtime content exports something the reader cannot serve~~ | **Closed** | G0/P1c derive and scan the DCR and Gordon contracts; both pass |
 | LZMA (`ZWS`) container adds unplanned work | Low | 38 files total; bounded, but must be in the reader from the start |
+| Live Gordon CWS files omit Adler-32 trailers | **High if missed** | G2 must use tolerant streaming inflate and accept only exact SWF-header-length output; five reachable files depend on it, including `elephants.swf` |
 | Gordon game packs require SWF sound extraction | Medium | Implement `DefineSound(MP3)` in G2; 24 reachable exports, all MP3 |
 | Four current map entries have no file in the configured production set | Medium | Track as corpus/config completeness: `flycarpet`, `zombieduck`, `hh_human_50_fx`, `hh_human_fx`; the owner-excluded newer subtree is not a fallback |
 | `ByteArray` / endianness differences break the wire format | **High** | G6; the protocol is unforgiving and fails silently |

@@ -40,9 +40,9 @@ SkyHaxe will **not** synthesize a client commit from unrelated in-progress work.
 | `g0_scan_swf_exports.py` | `23f08f9735b13f4d` |
 | `g0_hof_furni.csv.gz` | `18dbf6474aa985a5` |
 | `g0_dcr.csv.gz` | `14242bb88185ce1e` |
-| `g0_gordon_contract.py` | `e29611559e521856` |
-| `g0_gordon_contract.csv.gz` | `a63b5ec041dcf4e0` |
-| `g0_gordon_contract.json` | `756ee782ff5de708` |
+| `g0_gordon_contract.py` | `2fc0da3907264740` |
+| `g0_gordon_contract.csv.gz` | `120deb9e72765fd2` |
+| `g0_gordon_contract.json` | `b6fa4f68eaf0bb6a` |
 | `e4x_api_contract.py` | `cb38017167f8e6df` |
 | `e4x_contract.json` | `ec963a68ddf8584e` |
 
@@ -138,24 +138,33 @@ python evidence/g0_gordon_contract.py \
   --json evidence/g0_gordon_contract.json
 ```
 
-**Reader contract PASS:** 3,269 configured-production files derived from current `figuremap.xml`,
-`effectmap.xml`, pet configuration, AS3 SWF literals, public-room naming, and NGHWin's six
-`local_include` files. Zero unreadable and zero unsupported exports in that set.
+**Reader contract PASS:** 3,270 configured-production files derived from current `figuremap.xml`,
+`effectmap.xml`, `external_dev_vars.txt`, AS3 SWF literals, public-room configuration plus a
+conservative naming fallback, and NGHWin's six `local_include` files. Zero unreadable and zero
+unsupported exports in that set. `external_battleship_vars.txt` is not the runtime contract.
 
 | Reachable Gordon export | Count |
 |---|---:|
-| bitmap | 240,026 |
-| binary | 5,310 |
-| document root | 3,269 |
+| bitmap | 240,142 |
+| binary | 5,315 |
+| document root | 3,270 |
 | sound | 24 — all `DefineSound(MP3)` |
 
 Required Gordon bitmap variants include `DefineBitsJPEG2` (**1,468**), so JPEG2 is no longer
 conditional. NGHWin's exact local subset is `HabboRoomContent`, `PlaceHolderFurniture`,
 `PlaceHolderWallItem`, `PlaceHolderPet`, `TileCursor`, and `SelectionArrow`.
 
+`public.room.preload.types` confirms 12 `hh_room_<type>.swf` production files. Three more
+production `hh_room_*` files are retained as a conservative naming-derived fallback; the JSON and
+CSV distinguish the two reasons. A root-level `hh_room_gamehall.swf` is also reported separately
+as a duplicate, not another production contract member.
+
 The non-ignored Gordon inventory is 3,885 SWFs: CWS 3,819 · FWS 52 · ZWS 14. Six CWS files omit
-the Adler-32 trailer but inflate to exactly the SWF-header length; the scanner and future reader
-accept only that exact case. Two genuinely truncated files (`ngh846.swf`, `nghkash2.swf`) and all
+the Adler-32 trailer but inflate to exactly the SWF-header length. **Five are reachable production
+content.** In particular, `external_dev_vars.txt` adds `elephants.swf`; its 122 exports are 107
+`DefineBitsJPEG3`, 9 `DefineBitsLossless2`, 5 `DefineBinaryData`, and 1 document root. Therefore
+tolerant streaming inflate with an exact header-length check is load-bearing in G2, not merely
+support for archived junk. Two genuinely truncated files (`ngh846.swf`, `nghkash2.swf`) and all
 font/sprite exports are in unclassified archived client/test files, not the reachable set.
 
 Four current map references have no file in the configured production directory: `flycarpet.swf`,

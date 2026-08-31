@@ -9,8 +9,8 @@
   "file_sets": {
     "root_content_duplicate": 2,
     "root_unclassified": 2,
-    "production_unclassified": 612,
-    "production_reachable": 3269
+    "production_unclassified": 611,
+    "production_reachable": 3270
   },
   "containers": {
     "ZWS": 14,
@@ -37,18 +37,18 @@
       "sound": 26
     },
     "production_unclassified": {
-      "binary": 57048,
-      "bitmap": 123193,
+      "binary": 57043,
+      "bitmap": 123077,
       "font": 886,
-      "root": 610,
+      "root": 609,
       "sound": 734,
       "sprite": 16,
       "MISSING": 16
     },
     "production_reachable": {
-      "bitmap": 240026,
-      "binary": 5310,
-      "root": 3269,
+      "bitmap": 240142,
+      "binary": 5315,
+      "root": 3270,
       "sound": 24
     }
   },
@@ -65,17 +65,17 @@
       "DefineSound(MP3)": 26
     },
     "production_unclassified": {
-      "DefineBinaryData": 57048,
-      "DefineBitsLossless2": 122811,
+      "DefineBinaryData": 57043,
+      "DefineBitsLossless2": 122802,
       "DefineFont3": 886,
       "DefineSound(MP3)": 734,
-      "DefineBitsJPEG3": 382,
+      "DefineBitsJPEG3": 275,
       "DefineSprite": 16
     },
     "production_reachable": {
-      "DefineBitsLossless2": 237699,
-      "DefineBinaryData": 5310,
-      "DefineBitsJPEG3": 859,
+      "DefineBitsLossless2": 237708,
+      "DefineBinaryData": 5315,
+      "DefineBitsJPEG3": 966,
       "DefineSound(MP3)": 24,
       "DefineBitsJPEG2": 1468
     }
@@ -170,6 +170,18 @@
     "PRODUCTION-201611291003-338511768\\elephants.swf",
     "PRODUCTION-201611291003-338511768\\penguin.swf"
   ],
+  "checksumless_complete_cws_by_set": {
+    "production_reachable": [
+      "PRODUCTION-201611291003-338511768\\acc_chest_U_squirtl3.swf",
+      "PRODUCTION-201611291003-338511768\\acc_eye_U_bleed.swf",
+      "PRODUCTION-201611291003-338511768\\acc_eye_U_holloweyes1234.swf",
+      "PRODUCTION-201611291003-338511768\\acc_face_U_mouthsc.swf",
+      "PRODUCTION-201611291003-338511768\\elephants.swf"
+    ],
+    "production_unclassified": [
+      "PRODUCTION-201611291003-338511768\\penguin.swf"
+    ]
+  },
   "missing_references": [
     {
       "file": "flycarpet.swf",
@@ -208,10 +220,45 @@
     "TileCursor.swf",
     "SelectionArrow.swf"
   ],
+  "variables_file": "C:\\habbo\\ngh\\gamedata\\external_dev_vars.txt",
+  "public_room_preload_types": [
+    "nlobby",
+    "netcafe",
+    "floatinggarden",
+    "ballroom",
+    "park",
+    "theater",
+    "rooftop",
+    "sun_terrace",
+    "space_cafe",
+    "gamehall",
+    "bb_arena",
+    "snowwar_arena"
+  ],
+  "public_room_preload_files": [
+    "hh_room_ballroom.swf",
+    "hh_room_bb_arena.swf",
+    "hh_room_floatinggarden.swf",
+    "hh_room_gamehall.swf",
+    "hh_room_netcafe.swf",
+    "hh_room_nlobby.swf",
+    "hh_room_park.swf",
+    "hh_room_rooftop.swf",
+    "hh_room_snowwar_arena.swf",
+    "hh_room_space_cafe.swf",
+    "hh_room_sun_terrace.swf",
+    "hh_room_theater.swf"
+  ],
+  "public_room_naming_fallback_files": [
+    "hh_room_emperors.swf",
+    "hh_room_habburger.swf",
+    "hh_room_park_uk.swf"
+  ],
   "notes": [
     "Missing references are corpus/config completeness findings, not decoder failures.",
     "Unclassified files are retained in the report; they are not blanket-excluded.",
     "flash-assets-PRODUCTION-202605152352-294132426 is owner-excluded and not scanned.",
-    "CWS files missing only the Adler-32 trailer are accepted after exact header-length verification."
+    "CWS files missing only the Adler-32 trailer are accepted after exact header-length verification.",
+    "A checksumless CWS in production_reachable is a live reader requirement, not archived tolerance."
   ]
 }

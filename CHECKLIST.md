@@ -54,9 +54,11 @@ These exist because a long port drifts in predictable ways. They are not advice.
       clean owner-created commit, then replace the anchor.
 - [x] **P1c. Extend G0 to the other corpora.** Whole `dcr/`: PASS, 18,611 files, 0 unreadable.
       Gordon is mixed, so `evidence/g0_gordon_contract.py` derives reachability from current maps,
-      pet config, AS3 literals, public-room naming, and NGHWin's six local files: PASS across
-      3,269 reachable production files, including 24 required MP3 sounds and 1,468 JPEG2 exports.
-      Six checksumless-but-complete CWS files are accepted only after exact header-length checks.
+      `external_dev_vars.txt`, AS3 literals, public-room config plus a naming fallback, and NGHWin's
+      six local files: PASS across 3,270 reachable production files, including 24 required MP3
+      sounds and 1,468 JPEG2 exports. Five of the six checksumless-but-complete CWS files are live
+      reachable content; `elephants.swf` is one of them. G2 must support tolerant inflate followed
+      by an exact header-length check or that configured pet will not load.
       Two truly truncated SWFs and all font/sprite exports are confined to unclassified archived
       client/test files. Four map entries have no configured-production file and remain explicit
       corpus warnings. Owner decision: ignore the 2,891-file

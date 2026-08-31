@@ -3,9 +3,10 @@
 
 The Gordon directory is mixed: runtime content, an owner-excluded newer content tree, and several
 complete client/test SWFs. A path-wide tag histogram cannot distinguish those. This
-script therefore derives the reachable production set from the current gamedata maps, pet config,
-AS3 URL literals, public-room naming, and NGHWin's six local_include files. It scans every Gordon
-SWF, but only the derived runtime/content sets decide the reader-contract result.
+script therefore derives the reachable production set from the current gamedata maps, runtime
+variables, AS3 URL literals, a conservative public-room naming fallback, and NGHWin's six
+local_include files. It scans every Gordon SWF, but only the derived runtime/content sets decide
+the reader-contract result.
 
 The asset corpus is read-only. Outputs are a gzipped per-symbol CSV and a JSON summary.
 """
@@ -56,18 +57,37 @@ def add_reason(reasons: dict[str, set[str]], name: str, reason: str) -> None:
     reasons[key].add(reason)
 
 
-def derive_reasons(gamedata: Path, client: Path, variables: Path) -> dict[str, set[str]]:
+def derive_reasons(
+    gamedata: Path, client: Path, variables: Path
+) -> tuple[dict[str, set[str]], list[str]]:
     reasons: dict[str, set[str]] = collections.defaultdict(set)
+    public_room_types: list[str] = []
     for lib in ET.parse(gamedata / "figuremap.xml").getroot().findall("lib"):
         add_reason(reasons, lib.attrib["id"], "gamedata/figuremap.xml")
     for effect in ET.parse(gamedata / "effectmap.xml").getroot().findall("effect"):
         add_reason(reasons, effect.attrib["lib"], "gamedata/effectmap.xml")
 
     for line in variables.read_text(encoding="utf-8", errors="replace").splitlines():
-        if line.startswith("pet.configuration="):
-            for pet in line.partition("=")[2].split(","):
+        line = line.strip()
+        key, separator, value = line.partition("=")
+        if not separator:
+            continue
+        key = key.strip()
+        if key == "pet.configuration":
+            for pet in (item.strip() for item in value.split(",")):
                 if pet:
                     add_reason(reasons, pet, "pet.configuration")
+        elif key == "public.room.preload.types":
+            public_room_types = [
+                room_type for room_type in (item.strip() for item in value.split(","))
+                if room_type
+            ]
+            for room_type in public_room_types:
+                add_reason(
+                    reasons,
+                    f"hh_room_{room_type}",
+                    "public.room.preload.types",
+                )
 
     for name in LOCAL_INCLUDE:
         add_reason(reasons, name, "NGHWin local_include")
@@ -77,7 +97,7 @@ def derive_reasons(gamedata: Path, client: Path, variables: Path) -> dict[str, s
         text = source.read_text(encoding="utf-8", errors="replace")
         for name in literal.findall(text):
             add_reason(reasons, name, "AS3 SWF literal")
-    return reasons
+    return reasons, public_room_types
 
 
 def main() -> int:
@@ -88,7 +108,7 @@ def main() -> int:
     ap.add_argument(
         "--variables",
         type=Path,
-        default=Path(r"C:\habbo\ngh\gamedata\external_battleship_vars.txt"),
+        default=Path(r"C:\habbo\ngh\gamedata\external_dev_vars.txt"),
     )
     ap.add_argument("--csv", type=Path, default=Path("g0_gordon_contract.csv.gz"))
     ap.add_argument("--json", type=Path, default=Path("g0_gordon_contract.json"))
@@ -101,7 +121,7 @@ def main() -> int:
     if len(production_dirs) != 1:
         raise SystemExit("expected exactly one configured production directory")
     production = production_dirs[0]
-    reasons = derive_reasons(args.gamedata, args.client, args.variables)
+    reasons, public_room_types = derive_reasons(args.gamedata, args.client, args.variables)
     # The broad literal matcher also sees variables such as `k + ".swf"`, event names, and an
     # external Vimeo player. Only hh_* literals are Gordon URL contracts; the six local files
     # already carry their stronger NGHWin reason.
@@ -115,8 +135,13 @@ def main() -> int:
     ]
     all_files = [path for path in discovered_files if path not in ignored_files]
     production_names = {p.name.lower(): p for p in production.glob("*.swf")}
+    configured_public_rooms = {f"hh_room_{room_type}.swf" for room_type in public_room_types}
+    naming_only_public_rooms = sorted(
+        key for key in production_names
+        if key.startswith("hh_room_") and key not in configured_public_rooms
+    )
     for key in production_names:
-        if key.startswith("hh_room_"):
+        if key.startswith("hh_room_") and "public.room.preload.types" not in reasons[key]:
             reasons[key].add("public-room naming contract")
     missing_references = []
     for key in sorted(reasons):
@@ -135,6 +160,7 @@ def main() -> int:
     unreadable: dict[str, list[dict]] = collections.defaultdict(list)
     unsupported: dict[str, list[dict]] = collections.defaultdict(list)
     checksumless = []
+    checksumless_by_set: dict[str, list[str]] = collections.defaultdict(list)
 
     args.csv.parent.mkdir(parents=True, exist_ok=True)
     compressed = gzip.GzipFile(filename=args.csv, mode="wb", mtime=0)
@@ -151,7 +177,7 @@ def main() -> int:
                 set_name = "production_reachable" if key in reasons else "production_unclassified"
             elif production in path.parents:
                 set_name = "production_unclassified"
-            elif path.parent == args.gordon and (key in reasons or key.startswith("hh_room_")):
+            elif path.parent == args.gordon and key in reasons:
                 set_name = "root_content_duplicate"
             else:
                 set_name = "root_unclassified"
@@ -163,8 +189,6 @@ def main() -> int:
                 signature, rows, error = "?", None, repr(exc)[:120]
             signatures[signature] += 1
             why = sorted(reasons.get(key, set()))
-            if key.startswith("hh_room_") and "public-room naming contract" not in why:
-                why.append("public-room naming contract")
             reason_text = "; ".join(why)
 
             if rows is None:
@@ -174,6 +198,7 @@ def main() -> int:
                 continue
             if is_checksumless_complete_cws(path):
                 checksumless.append(str(rel))
+                checksumless_by_set[set_name].append(str(rel))
             for character_id, name, kind, tag in rows:
                 supported = kind in scanner.SUPPORTED_KINDS
                 kinds[set_name][kind] += 1
@@ -208,13 +233,19 @@ def main() -> int:
             for name, rows in unsupported.items()
         },
         "checksumless_complete_cws": checksumless,
+        "checksumless_complete_cws_by_set": dict(checksumless_by_set),
         "missing_references": missing_references,
         "local_include": list(LOCAL_INCLUDE),
+        "variables_file": str(args.variables),
+        "public_room_preload_types": public_room_types,
+        "public_room_preload_files": sorted(configured_public_rooms),
+        "public_room_naming_fallback_files": naming_only_public_rooms,
         "notes": [
             "Missing references are corpus/config completeness findings, not decoder failures.",
             "Unclassified files are retained in the report; they are not blanket-excluded.",
             "flash-assets-PRODUCTION-202605152352-294132426 is owner-excluded and not scanned.",
             "CWS files missing only the Adler-32 trailer are accepted after exact header-length verification.",
+            "A checksumless CWS in production_reachable is a live reader requirement, not archived tolerance.",
         ],
     }
     args.json.parent.mkdir(parents=True, exist_ok=True)
