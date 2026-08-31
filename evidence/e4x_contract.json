@@ -1,0 +1,63 @@
+{
+ "files_scanned": 5492,
+ "files_touching_xml": 231,
+ "api_first_party": {
+  "text": 88,
+  "appendChild": 16,
+  "length": 685,
+  "child": 83,
+  "attribute": 76,
+  "name": 189,
+  "copy": 14,
+  "toString": 80,
+  "hasOwnProperty": 31,
+  "children": 37,
+  "toXMLString": 3,
+  "localName": 5,
+  "parent": 64,
+  "replace": 38,
+  "@attribute": 486
+ },
+ "api_third_party": {
+  "toString": 16,
+  "length": 140,
+  "@attribute": 113,
+  "(predicate filter)": 1,
+  "text": 61,
+  "children": 51,
+  "hasOwnProperty": 6,
+  "attribute": 8,
+  "name": 4,
+  "toXMLString": 3,
+  "replace": 1
+ },
+ "descendant_sites_first_party": [
+  {
+   "file": "com/sulake/habbo/avatar/alias/AssetAliasCollection.as",
+   "line": 43,
+   "source": "for each (_local_3 in _local_2..alias)"
+  },
+  {
+   "file": "com/sulake/habbo/avatar/geometry/GeometryBodyPart.as",
+   "line": 22,
+   "source": "for each (_local_2 in k..item)"
+  },
+  {
+   "file": "com/sulake/habbo/battleball/BattleBallArenaHud.as",
+   "line": 362,
+   "source": "for each (var node:XML in source.descendants())"
+  },
+  {
+   "file": "com/sulake/habbo/battleball/BattleBallLobbyWindow.as",
+   "line": 385,
+   "source": "for each (var node:XML in source.descendants())"
+  }
+ ],
+ "descendant_sites_third_party": [
+  {
+   "file": "org/openvideoads/vast/config/ConfigPreConverter.as",
+   "line": 808,
+   "source": "k.ads.schedule[_local_3].regions[_local_4][_local_6].overlay = k.ads.overlays..overlay;"
+  }
+ ]
+}
