@@ -1,0 +1,11 @@
+{
+  "gate": "G2c-zws-lzma",
+  "verified_utc": "2026-09-01T15:17:56.669Z",
+  "status": "pass",
+  "real_zws_canaries": 3,
+  "browser_assertions_at_subgate": 685,
+  "assets_compared_at_subgate": 92,
+  "integrated_regression_assertions": 926,
+  "implementation": "reconstruct LZMA-alone properties + unknown-size sentinel, use pinned Lime 8.3.2 HTML5 core, normalize its numeric-array return, verify exact SWF header length",
+  "console_errors": 0
+}

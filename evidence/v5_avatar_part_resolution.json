@@ -1,0 +1,559 @@
+{
+  "gate": "V5-live-avatar-part-resolution",
+  "figures": {
+    "Ray": "hr-829-34.lg-281-72.ch-803-62.hd-180-19.sh-295-68",
+    "Tongbits": "hr-987462893-42.hd-3091-23.lg-275-1207.he-987462901-62.ch-3208-82-106.wa-3263-1207-1315",
+    "John": "sh-730-110.cc-3075-1189.ha-3710-0.he-6377-0.hr-811-40.hd-3091-1.lg-720-1408.ch-230-83.wa-2009-62.mc-5810-3072"
+  },
+  "required_parts_by_user": {
+    "Ray": [
+      "bd:1",
+      "ch:501",
+      "ey:1",
+      "fc:1",
+      "hd:2",
+      "hr:504",
+      "hrb:504",
+      "lg:201",
+      "lh:1",
+      "ls:3",
+      "rh:1",
+      "rs:3",
+      "sh:2"
+    ],
+    "Tongbits": [
+      "bd:1",
+      "ch:2342",
+      "ch:2343",
+      "ch:2344",
+      "ey:1",
+      "fc:1",
+      "hd:3",
+      "he:2980",
+      "hr:4445",
+      "hrb:4445",
+      "lg:2",
+      "lh:1",
+      "ls:2342",
+      "ls:2343",
+      "ls:2344",
+      "rh:1",
+      "rs:2342",
+      "rs:2343",
+      "rs:2344",
+      "wa:2444",
+      "wa:2445",
+      "wa:2446"
+    ],
+    "John": [
+      "bd:1",
+      "cc:2122",
+      "ch:5",
+      "ey:1",
+      "fc:1",
+      "ha:3221",
+      "hd:3",
+      "he:7209",
+      "hr:509",
+      "hrb:509",
+      "lc:2122",
+      "lg:6",
+      "lh:1",
+      "ls:1",
+      "mc:6165",
+      "mc:6166",
+      "mcl:6165",
+      "mcl:6166",
+      "mcr:6165",
+      "mcr:6166",
+      "rc:2122",
+      "rh:1",
+      "rs:1",
+      "sh:2",
+      "wa:9"
+    ]
+  },
+  "mapped_libraries": [
+    "Jacket_M_Schooljacket",
+    "acc_head_U_countingsheep",
+    "acc_head_U_gold2",
+    "acc_waist_U_holster",
+    "hair_M_emois3",
+    "hat_U_dianoblecrown",
+    "hh_human_50_acc_head",
+    "hh_human_50_acc_waist",
+    "hh_human_50_body",
+    "hh_human_50_face",
+    "hh_human_50_fx",
+    "hh_human_50_hair",
+    "hh_human_50_hats",
+    "hh_human_50_leg",
+    "hh_human_50_shirt",
+    "hh_human_50_shoe",
+    "hh_human_acc_waist",
+    "hh_human_body",
+    "hh_human_face",
+    "hh_human_hair",
+    "hh_human_leg",
+    "hh_human_shirt",
+    "hh_human_shoe",
+    "misc_U_dreamerpillow",
+    "shirt_M_hawaii"
+  ],
+  "resolution": {
+    "bd:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "cc:2122": {
+      "exact_sh_libraries": [
+        "Jacket_M_Schooljacket"
+      ],
+      "same_type_libraries": [
+        "Jacket_M_Schooljacket",
+        "hh_human_50_shirt",
+        "hh_human_shirt"
+      ]
+    },
+    "ch:2342": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ch:2343": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ch:2344": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ch:5": {
+      "exact_sh_libraries": [
+        "hh_human_50_shirt"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ch:501": {
+      "exact_sh_libraries": [
+        "hh_human_50_shirt"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ey:1": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_face"
+      ]
+    },
+    "fc:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_face"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_face",
+        "hh_human_face"
+      ]
+    },
+    "ha:3221": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hat_U_dianoblecrown",
+        "hh_human_50_hats"
+      ]
+    },
+    "hd:2": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "hd:3": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "he:2980": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "acc_head_U_countingsheep",
+        "acc_head_U_gold2",
+        "hh_human_50_acc_head"
+      ]
+    },
+    "he:7209": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "acc_head_U_countingsheep",
+        "acc_head_U_gold2",
+        "hh_human_50_acc_head"
+      ]
+    },
+    "hr:4445": {
+      "exact_sh_libraries": [
+        "hair_M_emois3"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "hr:504": {
+      "exact_sh_libraries": [
+        "hh_human_50_hair"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "hr:509": {
+      "exact_sh_libraries": [
+        "hh_human_50_hair"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "hrb:4445": {
+      "exact_sh_libraries": [
+        "hair_M_emois3"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "hrb:504": {
+      "exact_sh_libraries": [
+        "hh_human_50_hair"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "hrb:509": {
+      "exact_sh_libraries": [
+        "hh_human_50_hair"
+      ],
+      "same_type_libraries": [
+        "hair_M_emois3",
+        "hh_human_50_hair",
+        "hh_human_hair"
+      ]
+    },
+    "lc:2122": {
+      "exact_sh_libraries": [
+        "Jacket_M_Schooljacket"
+      ],
+      "same_type_libraries": [
+        "Jacket_M_Schooljacket",
+        "hh_human_50_shirt",
+        "hh_human_shirt"
+      ]
+    },
+    "lg:2": {
+      "exact_sh_libraries": [
+        "hh_human_50_leg"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_leg",
+        "hh_human_leg"
+      ]
+    },
+    "lg:201": {
+      "exact_sh_libraries": [
+        "hh_human_50_leg"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_leg",
+        "hh_human_leg"
+      ]
+    },
+    "lg:6": {
+      "exact_sh_libraries": [
+        "hh_human_50_leg"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_leg",
+        "hh_human_leg"
+      ]
+    },
+    "lh:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "ls:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_shirt"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ls:2342": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ls:2343": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ls:2344": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "ls:3": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "mc:6165": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "mc:6166": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "mcl:6165": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "mcl:6166": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "mcr:6165": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "mcr:6166": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "misc_U_dreamerpillow"
+      ]
+    },
+    "rc:2122": {
+      "exact_sh_libraries": [
+        "Jacket_M_Schooljacket"
+      ],
+      "same_type_libraries": [
+        "Jacket_M_Schooljacket",
+        "hh_human_50_shirt",
+        "hh_human_shirt"
+      ]
+    },
+    "rh:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "rs:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_shirt"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "rs:2342": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "rs:2343": {
+      "exact_sh_libraries": [
+        "shirt_M_hawaii"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "rs:2344": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "rs:3": {
+      "exact_sh_libraries": [],
+      "same_type_libraries": [
+        "hh_human_50_shirt",
+        "hh_human_shirt",
+        "shirt_M_hawaii"
+      ]
+    },
+    "sd:1": {
+      "exact_sh_libraries": [
+        "hh_human_50_body"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_body"
+      ]
+    },
+    "sh:2": {
+      "exact_sh_libraries": [
+        "hh_human_50_shoe"
+      ],
+      "same_type_libraries": [
+        "hh_human_50_body",
+        "hh_human_50_shoe",
+        "hh_human_shoe"
+      ]
+    },
+    "wa:2444": {
+      "exact_sh_libraries": [
+        "acc_waist_U_holster"
+      ],
+      "same_type_libraries": [
+        "acc_waist_U_holster",
+        "hh_human_50_acc_waist",
+        "hh_human_acc_waist"
+      ]
+    },
+    "wa:2445": {
+      "exact_sh_libraries": [
+        "acc_waist_U_holster"
+      ],
+      "same_type_libraries": [
+        "acc_waist_U_holster",
+        "hh_human_50_acc_waist",
+        "hh_human_acc_waist"
+      ]
+    },
+    "wa:2446": {
+      "exact_sh_libraries": [
+        "acc_waist_U_holster"
+      ],
+      "same_type_libraries": [
+        "acc_waist_U_holster",
+        "hh_human_50_acc_waist",
+        "hh_human_acc_waist"
+      ]
+    },
+    "wa:9": {
+      "exact_sh_libraries": [
+        "hh_human_50_acc_waist"
+      ],
+      "same_type_libraries": [
+        "acc_waist_U_holster",
+        "hh_human_50_acc_waist",
+        "hh_human_acc_waist"
+      ]
+    }
+  },
+  "unresolved_exact_sh_parts": [
+    "ch:2344",
+    "ey:1",
+    "ha:3221",
+    "he:2980",
+    "he:7209",
+    "ls:2344",
+    "ls:3",
+    "mc:6165",
+    "mc:6166",
+    "mcl:6165",
+    "mcl:6166",
+    "mcr:6165",
+    "mcr:6166",
+    "rs:2344",
+    "rs:3"
+  ],
+  "unresolved_count": 15,
+  "result": "partial"
+}

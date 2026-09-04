@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe G4 Renderer" package="org.nextgenhabbo.skyhaxe.g4.renderer" version="0.1.0" company="NextGenHabbo" />
+    <app main="G4RendererBrowserMain" path="build/tests/g4-renderer" file="g4-renderer" />
+    <window width="960" height="560" background="#10131A" hardware="true" />
+    <source path="src" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

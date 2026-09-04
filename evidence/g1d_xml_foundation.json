@@ -1,0 +1,110 @@
+{
+  "gate": "G1d-xml",
+  "scope": "semantic foundation; representative DefineBinaryData parity remains G3",
+  "source_contract": {
+    "files_scanned": 5492,
+    "files_touching_xml": 231,
+    "measurement_kind": "lexical upper bound; shared member names are not receiver-proven",
+    "api_upper_bound_first_party": {
+      "text": 88,
+      "appendChild": 16,
+      "length": 685,
+      "child": 83,
+      "attribute": 76,
+      "name": 189,
+      "copy": 14,
+      "toString": 80,
+      "hasOwnProperty": 31,
+      "children": 41,
+      "toXMLString": 3,
+      "localName": 7,
+      "parent": 64,
+      "replace": 38,
+      "@attribute": 486
+    },
+    "api_upper_bound_third_party": {
+      "toString": 16,
+      "length": 140,
+      "@attribute": 113,
+      "(predicate filter)": 1,
+      "text": 61,
+      "children": 51,
+      "hasOwnProperty": 6,
+      "attribute": 8,
+      "name": 4,
+      "toXMLString": 3,
+      "replace": 1
+    },
+    "first_party_descendant_sites_after_p2": 0,
+    "third_party_descendant_sites": 1,
+    "syntax_counts": {
+      "direct_attribute_access": 599,
+      "direct_attribute_assignment": 26,
+      "xml_coercion": 122,
+      "xml_list_coercion": 15,
+      "xml_construction": 35
+    }
+  },
+  "implemented_surface": {
+    "XML": [
+      "coerce",
+      "length",
+      "at",
+      "child",
+      "children",
+      "text",
+      "attribute",
+      "setAttribute",
+      "name",
+      "localName",
+      "parent",
+      "hasOwnProperty",
+      "appendChild",
+      "replace",
+      "copy",
+      "toString",
+      "toXMLString"
+    ],
+    "XMLList": [
+      "coerce",
+      "length",
+      "at",
+      "child",
+      "children",
+      "text",
+      "attribute",
+      "setAttribute",
+      "name",
+      "localName",
+      "parent",
+      "hasOwnProperty",
+      "appendChild",
+      "replace",
+      "copy",
+      "iterator",
+      "toString",
+      "toXMLString"
+    ]
+  },
+  "rewrite_rules": [
+    "XML(value) -> XML.coerce(value); new XML(value) remains construction/copy",
+    "XMLList(value) -> XMLList.coerce(value)",
+    "xml.childName -> xml.child(\"childName\")",
+    "xml.@name read/coercion -> xml.attribute(\"name\").toString()",
+    "xml.@name = value -> xml.setAttribute(\"name\", value)",
+    "xmlList[index] and xml[index] -> xmlList.at(index) / xml.at(index)",
+    "for each (node in xmlList) -> for (node in xmlList)",
+    "first-party descendant rewrites remain explicit depth-first children() walks"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/utils/xml/XML.hx": "0fd7b576896d9d21f57010113fdf6a779f5ef70b2a140ef54baa4967bfda777f",
+    "src/com/sulake/core/utils/xml/XMLList.hx": "08da25f9acfd95abc47542c12435d15942941df436af0ccb02ee4001b494ecc3",
+    "test/G1dXmlTest.hx": "b8d8748bdb57209e5db6a258a5d6ce4e8741e67e9413a7d1b2b7dbca41ec2ac2"
+  },
+  "known_limits": [
+    "lexical API counts are upper bounds where member names overlap non-XML types",
+    "namespace selection beyond qualified-name/localName handling is not implemented",
+    "the one predicate filter and one remaining descendant site are vendored third-party code",
+    "G3 must compare representative asset/visualization/logic/index blobs against AS3 values"
+  ]
+}

@@ -1,0 +1,80 @@
+package com.sulake.habbo.catalog
+;
+    import com.sulake.core.runtime.IUnknown;
+    import com.sulake.core.assets.IAssetLibrary;
+    import com.sulake.habbo.window.IHabboWindowManager;
+    import flash.events.IEventDispatcher;
+    import com.sulake.habbo.localization.IHabboLocalizationManager;
+    import com.sulake.core.communication.connection.IConnection;
+    import com.sulake.habbo.navigator.IHabboNavigator;
+    import com.sulake.habbo.session.product.IProductData;
+    import com.sulake.habbo.session.furniture.IFurnitureData;
+    import flash.display.BitmapData;
+    import com.sulake.habbo.catalog.purse.IPurse;
+    import com.sulake.habbo.catalog.recycler.IRecycler;
+    import com.sulake.habbo.catalog.marketplace.IMarketPlace;
+    import com.sulake.core.window.components.IBitmapWrapperWindow;
+    import com.sulake.habbo.catalog.navigation.ICatalogNavigator;
+    import com.sulake.habbo.catalog.offers.IOfferExtension;
+    import com.sulake.habbo.catalog.offers.IOfferCenter;
+
+     interface IHabboCatalog extends IUnknown 
+    {
+        function redeemVoucher(_arg_1:String):Void;
+        function loadCatalogPage(_arg_1:Int, _arg_2:Int, _arg_3:String):Void;
+        function getRecyclerStatus():Void;
+        function getRecyclerPrizes():Void;
+        function sendRecycleItems(_arg_1:Array<ASAny>):Void;
+        var assets(get,never):IAssetLibrary;
+        var windowManager(get,never):IHabboWindowManager;
+        var events(get,never):IEventDispatcher;
+        var localization(get,never):IHabboLocalizationManager;
+        var connection(get,never):IConnection;
+        var navigator(get,never):IHabboNavigator;
+        var videoOffers(get,never):IVideoOfferManager;
+        function toggleCatalog(_arg_1:String, _arg_2:Bool=false, _arg_3:Bool=true):Void;
+        function openCatalog():Void;
+        function openCatalogPage(_arg_1:String, _arg_2:String=null):Void;
+        function openRoomAdCatalogPageInExtendedMode(_arg_1:String, _arg_2:String, _arg_3:String, _arg_4:String, _arg_5:Date, _arg_6:Int):Void;
+        function openCatalogPageById(_arg_1:Int, _arg_2:Int, _arg_3:String):Void;
+        function openCatalogPageByOfferId(_arg_1:Int, _arg_2:String):Void;
+        function openInventoryCategory(_arg_1:String):Void;
+        function openCreditsHabblet():Void;
+        function setupInventoryForRecycler(_arg_1:Bool):Void;
+        function requestInventoryFurniToRecycler():Int;
+        function returnInventoryFurniFromRecycler(_arg_1:Int):Bool;
+        var privateRoomSessionActive(get,never):Bool;
+        var tradingActive(get,never):Bool;
+        function getProductData(_arg_1:String):IProductData;
+        function getFurnitureData(_arg_1:Int, _arg_2:String):IFurnitureData;
+        function getPixelEffectIcon(_arg_1:Int):BitmapData;
+        function getSubscriptionProductIcon(_arg_1:Int):BitmapData;
+        function getPurse():IPurse;
+        function getRecycler():IRecycler;
+        function getMarketPlace():IMarketPlace;
+        function getPublicMarketPlaceOffers(_arg_1:Int, _arg_2:Int, _arg_3:String, _arg_4:Int):Void;
+        function getOwnMarketPlaceOffers():Void;
+        function buyMarketPlaceOffer(_arg_1:Int):Void;
+        function redeemSoldMarketPlaceOffers():Void;
+        function redeemExpiredMarketPlaceOffer(_arg_1:Int):Void;
+        function getMarketplaceItemStats(_arg_1:Int, _arg_2:Int):Void;
+        function showNotEnoughCreditsAlert():Void;
+        function showNotEnoughActivityPointsAlert(_arg_1:Int):Void;
+        function getHabboClubOffers(_arg_1:Int):Void;
+        function openClubCenter():Void;
+        function verifyClubLevel(_arg_1:Int=1):Bool;
+        var giftReceiver(never,set):String;
+        function buySnowWarTokensOffer():Void; //Added Snowstorm Client
+        var imageGalleryHost(get,never):String;
+        function showVipBenefits():Void;
+        function displayProductIcon(_arg_1:String, _arg_2:Int, _arg_3:IBitmapWrapperWindow):Void;
+        function openRentConfirmationWindow(_arg_1:IFurnitureData, _arg_2:Bool, _arg_3:Int=-1, _arg_4:Int=-1, _arg_5:Bool=false):Void;
+        var buildersClubEnabled(get,never):Bool;
+        function toggleToBuildersClub():Void;
+        function canPlaceWithBC():Bool;
+        var catalogType(get,never):String;
+        function getCatalogNavigator(_arg_1:String):ICatalogNavigator;
+        var isDoorModeOverriddenInCurrentRoom(get,never):Bool;
+        function getOfferCenter(_arg_1:IOfferExtension):IOfferCenter;
+    }
+

@@ -1,0 +1,53 @@
+{
+  "gate": "G1d-asset-library",
+  "manifest_contract": {
+    "files": 35,
+    "asset_declarations": 3255,
+    "alias_declarations": 57,
+    "asset_mime_counts": {
+      "application/x-font-truetype": 9,
+      "image/gif": 2,
+      "image/png": 2021,
+      "sound/mp3": 21,
+      "text/plain": 93,
+      "text/xml": 1109
+    },
+    "alias_mime_counts": {
+      "image/png": 46,
+      "text/xml": 11
+    },
+    "real_browser_fixture": "binaryData/HabboCatalogCom_manifest.bin",
+    "real_fixture_supported_assets_and_aliases": 153
+  },
+  "semantic_decisions": [
+    "setAsset overwrite does not dispose the replaced asset; ownership transfers to the caller",
+    "removeAsset transfers an asset without disposal; unload disposes every asset still owned",
+    "asset and alias order follows manifest insertion order",
+    "aliases use new asset wrappers but preserve referenced content identity",
+    "unknown MIME types are skipped during eager manifest loading, matching the AS3 path",
+    "unload clears the name array to preserve the numAssets/nameArray invariant",
+    "network loading and runtime SWF symbol resolution remain G2 responsibilities"
+  ],
+  "intentional_correction": {
+    "as3_site": "AssetLibrary.getAssetTypeDeclarationByFileName",
+    "problem": "decompiled helper coerces indexOf results to Boolean, rejecting index 0 and accepting -1",
+    "evidence": "the active solveAssetTypeDeclarationFromUrl path already uses indexOf(extension) > -1",
+    "haxe_rule": "strip the query string and require fileTypes.indexOf(extension) > -1"
+  },
+  "rewrite_rules": [
+    "Dictionary<String,IAsset> -> haxe.ds.StringMap<IAsset> plus an ordered name array",
+    "resource[name] -> explicit AssetContentResolver(name)",
+    "manifest assets load before aliases",
+    "unsupported asset types return to the relevant later boundary rather than receiving placeholders"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/assets/AssetLibrary.hx": "b6381181afee94de2dd0db8d32a1f66911dd83943c46bcd0a6bcc21beee84f09",
+    "test/G1dAssetLibraryTest.hx": "99fe218268297030a3ed740297516a7e7de31de94f34ce6c63364f1117468cd2",
+    "test/G1dAssetLibraryBrowserMain.hx": "b64472d0e401c688995183c445010bd8188aee83e5803df2f00b1349551be14a",
+    "project.g1d-asset-library.xml": "f212b5e0ffebe95aace965e1dac62584ab189ef615039a261c06acd10d7f7f43"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-asset-library.ps1",
+    "expected_dom_marker": "data-skyhaxe-g1d-asset-library=pass"
+  }
+}

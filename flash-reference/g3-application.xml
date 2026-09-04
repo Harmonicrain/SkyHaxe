@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/51.0">
+    <id>org.nextgenhabbo.skyhaxe.g3xmlreference</id>
+    <filename>G3XmlReference</filename>
+    <name>SkyHaxe G3 XML Reference</name>
+    <versionNumber>0.1.0</versionNumber>
+    <initialWindow>
+        <content>G3XmlReference.swf</content>
+        <visible>true</visible>
+        <width>320</width>
+        <height>200</height>
+    </initialWindow>
+</application>

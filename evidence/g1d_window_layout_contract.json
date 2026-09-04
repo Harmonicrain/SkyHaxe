@@ -1,0 +1,56 @@
+{
+  "gate": "G1d-real-window-layout-canary",
+  "fixture": {
+    "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCatalogCom_redeemItemCodeWidget.bin",
+    "sha256": "1eefe2f10b1802af85415fe5f30db0ff82510c27d0f14ece6eb793308a6fb11a",
+    "bytes": 1121,
+    "layout_name": "redeemItemCodeWidget",
+    "layout_size": [
+      282,
+      50
+    ],
+    "entity_types": [
+      "container",
+      "border",
+      "button",
+      "text"
+    ],
+    "source_tree_policy": "read-only external asset packaged by the test project"
+  },
+  "scope": {
+    "proved": [
+      "layout/window/children hierarchy",
+      "name, caption, style, params, id, position, size, visibility, and limit attributes",
+      "URL-decoded captions",
+      "typed Boolean, String, int, Number, and hex variables",
+      "real OpenFL Sprite/TextField construction and non-transparent rendered pixels"
+    ],
+    "deferred_to_g4b": [
+      "production bitmap skins",
+      "HTML text and links",
+      "input behavior",
+      "scrolling item lists",
+      "masks, filters, and reference-image parity"
+    ]
+  },
+  "rewrite_rules": [
+    "AS3 E4X property access -> explicit XML.child()/attribute()/children() calls",
+    "AS3 unescape(caption/name) -> StringTools.urlDecode with malformed-input fallback",
+    "AS3 XMLPropertyArrayParser variables -> typed StringMap values",
+    "Flash window leaf display objects -> OpenFL Sprite/TextField equivalents"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/window/IWindow.hx": "b68bb3d95130fa5aaa08db0e4050724f965235785af6b2fe1a4d2c23f75ea2c1",
+    "src/com/sulake/core/window/WindowController.hx": "ee6458e5c9ed21ae7d5f683a026327a56d2176ab79dea1c596433f317fdf1f93",
+    "src/com/sulake/core/window/utils/WindowParser.hx": "88204721730e864890be0c408f54e6031098f46f953c12ef7ce6d390a7e202ad",
+    "test/G1dWindowLayoutTest.hx": "fc0bc9f2949ca2f132bd75f2dea3839bde6c104da401b8c65ddee80cb05e4963",
+    "test/G1dWindowLayoutBrowserMain.hx": "70babff6626d3ea09c91a4b295c5a17c84729b4becf31e42c8322667eaea356f",
+    "project.g1d-window-layout.xml": "66aa9b65f38ef00c1652a9e97bc2e615c6806bb5923207ec068990c1864934f5",
+    "scripts/test-g1d-window-layout.ps1": "a584c196d41c463f6aded24932e805586a858f14e5f82e016f6c1131da1ad68c"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-window-layout.ps1",
+    "expected_dom_marker": "data-skyhaxe-g1d-window-layout=pass",
+    "fixture_marker": "data-skyhaxe-g1d-window-layout-fixture=redeemItemCodeWidget"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gate": "V3-message-registry",
+  "generator": "scripts/generate-message-registry.py",
+  "generator_sha256": "85b197f986cfa87ba3616b5ada1487ed4eeb40c3914f85aa72acf4dc6b024103",
+  "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/communication/HabboMessages.as",
+  "source_sha256": "e2f8ff56f6239c72d7f9500fceb3b07ed23de924964b7882e94284744cf5b6f5",
+  "incoming": 600,
+  "outgoing": 581,
+  "output": "generated/com/sulake/habbo/communication/GeneratedHabboMessageRegistry.hx",
+  "output_sha256": "f9845770b7caab20ef28368c6ba134e6737b34a9a6b0372c78e7a3c634f43243"
+}

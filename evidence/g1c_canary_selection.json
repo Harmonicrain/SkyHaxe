@@ -1,0 +1,334 @@
+{
+  "source": "C:/habbo/client/habbo-client-clean/src",
+  "file_count": 24,
+  "coverage_file_counts": {
+    "vector": 7,
+    "dictionary": 11,
+    "bytearray": 9,
+    "reflection": 7,
+    "xml": 13,
+    "namespace": 5
+  },
+  "files": [
+    {
+      "path": "com/sulake/core/runtime/ComponentContext.as",
+      "expected_constructs": [
+        "bytearray",
+        "reflection",
+        "vector",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "reflection",
+        "vector",
+        "xml"
+      ],
+      "lines": 622,
+      "sha256": "ecf623f81f5ccaf92c0a6a8cc93e15b5548370f682bf67b54ec23c94aee5b0db"
+    },
+    {
+      "path": "com/sulake/core/assets/AssetLibrary.as",
+      "expected_constructs": [
+        "bytearray",
+        "dictionary",
+        "reflection",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "dictionary",
+        "reflection",
+        "xml"
+      ],
+      "lines": 844,
+      "sha256": "7be00d0f2185ace4248edb608a6f8bda0ebbcf630c2860eadca887f9cf02e9d1"
+    },
+    {
+      "path": "com/sulake/core/runtime/Component.as",
+      "expected_constructs": [
+        "dictionary",
+        "reflection",
+        "vector"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "reflection",
+        "vector"
+      ],
+      "lines": 383,
+      "sha256": "8b988099a860e5625b91dfe5fbe1f496986ff02b30edbe4f485c1c0e6481982c"
+    },
+    {
+      "path": "com/sulake/core/communication/connection/SocketConnection.as",
+      "expected_constructs": [
+        "bytearray",
+        "reflection",
+        "vector"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "reflection",
+        "vector"
+      ],
+      "lines": 512,
+      "sha256": "8f7dd2320cbf278a82548dce8d804912175767d04d9085ce146728f5f2ee14b7"
+    },
+    {
+      "path": "com/sulake/room/object/visualization/utils/GraphicAssetCollection.as",
+      "expected_constructs": [
+        "bytearray",
+        "dictionary",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "dictionary",
+        "xml"
+      ],
+      "lines": 534,
+      "sha256": "ef66253727e0ce11077f2f76d605ef96853ce1aa0331aea56e09a845bb878533"
+    },
+    {
+      "path": "com/sulake/habbo/window/utils/tableview/TableView.as",
+      "expected_constructs": [
+        "dictionary",
+        "vector",
+        "xml"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "vector",
+        "xml"
+      ],
+      "lines": 557,
+      "sha256": "7e78c3f1aecd58168a540b9a81b928235729303bbc80f100ee1f1db7e04014de"
+    },
+    {
+      "path": "com/sulake/core/utils/Map.as",
+      "expected_constructs": [
+        "dictionary",
+        "namespace"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "namespace"
+      ],
+      "lines": 218,
+      "sha256": "0d1e1566f09e61f46852452c8c01a6a73f04325d876a6dee40e165071a926f9e"
+    },
+    {
+      "path": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "expected_constructs": [
+        "dictionary",
+        "reflection"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "reflection"
+      ],
+      "lines": 139,
+      "sha256": "0049a8cbc73f7d153c7649d685c5d50f43cfa974f3c3f3afa1dd92b68602572b"
+    },
+    {
+      "path": "com/sulake/core/runtime/events/EventDispatcherWrapper.as",
+      "expected_constructs": [
+        "dictionary",
+        "reflection"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "reflection"
+      ],
+      "lines": 197,
+      "sha256": "a5c4157da498ee4eeb81bf78b726a3ef919a5a9565f8e40f86ff90be54a6aa55"
+    },
+    {
+      "path": "com/sulake/habbo/utils/Base64.as",
+      "expected_constructs": [
+        "bytearray",
+        "vector"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "vector"
+      ],
+      "lines": 90,
+      "sha256": "53127bf766520b55dc89e0774536ed65fe2eced3f91c2ff765b62775ff4aa543"
+    },
+    {
+      "path": "com/sulake/habbo/communication/encryption/ArcFour.as",
+      "expected_constructs": [
+        "bytearray",
+        "vector"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "vector"
+      ],
+      "lines": 101,
+      "sha256": "b4480bb0364bf57f182f75f758e96a12e9cda91a4d3a9c24167fa39f5ec25835"
+    },
+    {
+      "path": "com/sulake/core/assets/XmlAsset.as",
+      "expected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "lines": 119,
+      "sha256": "047a8da568a1c47aa1a4f79418e4867148f234d49072011c4b180589682f5ce1"
+    },
+    {
+      "path": "com/sulake/core/assets/TextAsset.as",
+      "expected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "lines": 94,
+      "sha256": "677a27abf44332f610143c680b4702746885959a8381b70dba03ca0e179939bb"
+    },
+    {
+      "path": "com/sulake/core/assets/UnknownAsset.as",
+      "expected_constructs": [
+        "reflection",
+        "xml"
+      ],
+      "detected_constructs": [
+        "reflection",
+        "xml"
+      ],
+      "lines": 69,
+      "sha256": "9d4651c0de67fdc865276a955b3b6e214a5b62f21a9097920e2844137dc9c2b5"
+    },
+    {
+      "path": "com/sulake/core/assets/BitmapDataAsset.as",
+      "expected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "detected_constructs": [
+        "bytearray",
+        "xml"
+      ],
+      "lines": 351,
+      "sha256": "06d4e3e8fc4a54313c18ded672c1a7b8239272e14d3909013d05d5a0a87a855d"
+    },
+    {
+      "path": "com/sulake/habbo/window/utils/SkinParserUtil.as",
+      "expected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "lines": 140,
+      "sha256": "4316d5292c56aecf0d7cb06700571c752a212b6f3bfdef85226e78787bb20f2b"
+    },
+    {
+      "path": "com/sulake/core/window/utils/WindowParser.as",
+      "expected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "lines": 541,
+      "sha256": "82371fef86e319db81a9b44d9b405ef72c2cd6eb4cce6c81e690fd901cbcfd1e"
+    },
+    {
+      "path": "com/sulake/core/runtime/IContext.as",
+      "expected_constructs": [
+        "vector",
+        "xml"
+      ],
+      "detected_constructs": [
+        "vector",
+        "xml"
+      ],
+      "lines": 41,
+      "sha256": "697ccc6e79ed9cd7470b2352658a29654b7c8168557bb86497023839a96ef86e"
+    },
+    {
+      "path": "com/sulake/habbo/avatar/alias/AssetAliasCollection.as",
+      "expected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "lines": 97,
+      "sha256": "5b0aa0cc31c3bab3dafeddd994e60d245a6d0e2be444e379360ada533130f2b3"
+    },
+    {
+      "path": "com/sulake/habbo/avatar/geometry/GeometryBodyPart.as",
+      "expected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "detected_constructs": [
+        "dictionary",
+        "xml"
+      ],
+      "lines": 184,
+      "sha256": "df570ce25d2f364ae817831695f5bea8defcdedcc9cd17dde0b53a8dadbd09c9"
+    },
+    {
+      "path": "com/sulake/core/window/iterators/SelectorIterator.as",
+      "expected_constructs": [
+        "namespace"
+      ],
+      "detected_constructs": [
+        "namespace"
+      ],
+      "lines": 78,
+      "sha256": "f9ba66a659b718eedab197684f41574fe6be23c7f21856bcbbbdfe0d100bff95"
+    },
+    {
+      "path": "com/sulake/core/window/iterators/ItemListIterator.as",
+      "expected_constructs": [
+        "namespace"
+      ],
+      "detected_constructs": [
+        "namespace"
+      ],
+      "lines": 61,
+      "sha256": "cdf984520b2809e2149899d42f4f09602f483e72a789c9b194b050152124d50f"
+    },
+    {
+      "path": "com/sulake/core/window/iterators/EmptyIterator.as",
+      "expected_constructs": [
+        "namespace"
+      ],
+      "detected_constructs": [
+        "namespace"
+      ],
+      "lines": 44,
+      "sha256": "7169b4bf8e8000718b32ff93d28b27371ce2f044b7e9ceb130439dedbc26a3ff"
+    },
+    {
+      "path": "com/sulake/core/utils/SingleWriteMap.as",
+      "expected_constructs": [
+        "namespace"
+      ],
+      "detected_constructs": [
+        "namespace"
+      ],
+      "lines": 19,
+      "sha256": "17477d4a32307aa19fd47b5f6b9047e80c7d3878d32d4451f8d04f6b7eb1a6f7"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "gate": "G1d-map",
+  "strategy": "hand-port Flash-semantic boundary; ax3 remains for leaves and DTOs",
+  "source": {
+    "client_src": "C:\\habbo\\client\\habbo-client-clean\\src",
+    "as3_file_count": 5492,
+    "custom_map_import_file_count": 252,
+    "api_call_syntax_in_importing_files": {
+      "add": 338,
+      "unshift": 7,
+      "remove": 148,
+      "getWithIndex": 139,
+      "getKey": 35,
+      "getKeys": 53,
+      "hasKey": 28,
+      "getValue": 413,
+      "setValue": 2,
+      "getValues": 50,
+      "hasValue": 0,
+      "indexOf": 224,
+      "concatenate": 3,
+      "clone": 104,
+      "reset": 87,
+      "dispose": 775
+    },
+    "api_call_syntax_total": 2406,
+    "literal_null_add_or_unshift_files": [],
+    "single_write_packet_assignments": {
+      "incoming": 601,
+      "outgoing": 584,
+      "total": 1185
+    },
+    "sha256": {
+      "com/sulake/core/utils/Map.as": "0d1e1566f09e61f46852452c8c01a6a73f04325d876a6dee40e165071a926f9e",
+      "com/sulake/core/utils/SingleWriteMap.as": "17477d4a32307aa19fd47b5f6b9047e80c7d3878d32d4451f8d04f6b7eb1a6f7",
+      "com/sulake/core/runtime/IDisposable.as": "0901ad1872525fda2ba483ed5c969e02f48a37b3c5612fc2c9cf74c503a30dfb"
+    }
+  },
+  "haxe": {
+    "sha256": {
+      "src/com/sulake/core/runtime/IDisposable.hx": "5f5608447d7da1b89669e227efa0f82383a6b06f01d5e26d83743a0758f6ccfa",
+      "src/com/sulake/core/utils/Map.hx": "d2cfdc137efc2d27ac6ca1e96bc39ea0672dd6d2923d25b7a7b26d5336e2e57d",
+      "src/com/sulake/core/utils/SingleWriteMap.hx": "ad3669ef9c71a2d6670a08f3f07dc15025b41877d74b0a9a9d37eb1687dd9e5e",
+      "test/G1dMapTest.hx": "d45c7e28a3c6fa14b9758dc38cf19306513a07a0b0f98bdb07e18c451b9a8205"
+    },
+    "test_entry_point": "test/G1dMapTest.hx",
+    "test_script": "scripts/test-g1d-map.ps1"
+  },
+  "proxy_rewrite_rules": [
+    "map[key] -> map.getValue(key)",
+    "map[key] = value -> map.setValue(key, value)",
+    "for (key in map) may remain: Haxe iterator yields ordered keys",
+    "for each (value in map) -> for (value in map.getValues())",
+    "QName bracket keys -> pass qname.localName to getValue/setValue"
+  ],
+  "parity_decisions": [
+    "preserve insertion order and defensive getKeys/getValues copies",
+    "preserve dynamic primitive distinction and object identity on JavaScript",
+    "preserve duplicate-null-key behavior from Dictionary value-based add/unshift checks",
+    "preserve shared-value removal behavior from Array.indexOf(value)",
+    "SingleWriteMap setValue throws on overwrite, matching Proxy assignment"
+  ]
+}

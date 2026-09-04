@@ -1,0 +1,36 @@
+{
+    "gate":  "G1d-xml",
+    "verified_utc":  "2026-09-01T13:55:59.4657348Z",
+    "status":  "pass",
+    "targets":  {
+                    "javascript":  {
+                                       "assertions":  44,
+                                       "pass_marker":  true
+                                   },
+                    "interpreter":  {
+                                        "assertions":  44,
+                                        "pass_marker":  true
+                                    },
+                    "openfl_html5":  {
+                                         "built":  true,
+                                         "index_sha256":  "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+                                     }
+                },
+    "toolchain":  {
+                      "haxe":  "4.3.7",
+                      "node":  "v24.14.0"
+                  },
+    "read_only_checks":  {
+                             "clean_client_git_status_unchanged":  true,
+                             "clean_client_status_entries":  165,
+                             "external_dev_vars_sha256_before":  "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+                             "external_dev_vars_sha256_after":  "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+                             "external_dev_vars_unchanged":  true
+                         },
+    "commands":  [
+                     "python evidence/e4x_api_contract.py C:/habbo/client/habbo-client-clean/src --json evidence/e4x_contract.json",
+                     "python evidence/g1d_xml_contract.py",
+                     "scripts/test-g1d-xml.ps1",
+                     "scripts/build-html5.ps1 -SkipBootstrap"
+                 ]
+}

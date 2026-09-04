@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe V5 Generated Avatar Closure" package="org.nextgenhabbo.skyhaxe.v5.avatar" version="0.1.0" company="NextGenHabbo" />
+    <app main="V5AvatarCompileMain" path="build/tests/v5-avatar" file="v5-avatar" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <!-- Same class-path order as project.m2-runtime.xml: generated wins, src supplies only the
+         adapters (ByteArray, Map) that have no generated counterpart. -->
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

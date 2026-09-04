@@ -1,0 +1,44 @@
+{
+  "gate": "G1d-non-visual-assets",
+  "verified_utc": "2026-09-01T11:57:17.182Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a real browser over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8766/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-assets",
+      "value": "pass"
+    },
+    "assertions": 29,
+    "console_marker": "SKYHAXE_G1D_ASSETS_PASS assertions=29",
+    "console_errors": 0
+  },
+  "coverage": [
+    "asset declaration metadata and ordered file types",
+    "opaque content identity and copying",
+    "TextAsset String, ByteArray, fallback, null, and copy paths",
+    "XmlAsset lazy String, XML, ByteArray, and copy paths",
+    "ByteArray position advancement",
+    "wrong-type copy failures",
+    "idempotent disposal and reference clearing"
+  ],
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "external_dev_vars_sha256_before": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_sha256_after": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_unchanged": true
+  },
+  "note": "The real OpenFL HTML5 browser is authoritative because OpenFL ByteArray is not supported reliably by the Haxe interpreter.",
+  "commands": [
+    "python evidence/g1d_assets_contract.py",
+    "scripts/test-g1d-assets.ps1",
+    "python -m http.server 8766 --bind 127.0.0.1 --directory build/tests/g1d-assets/html5/bin",
+    "browser check of DOM marker and console",
+    "scripts/build-html5.ps1 -SkipBootstrap"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "gate": "G2-swf-reader",
+  "verified_utc": "2026-09-02T13:58:41.4806384Z",
+  "status": "pass",
+  "browser": {
+    "target": "OpenFL HTML5 in a fresh real-browser tab over same-origin localhost HTTP",
+    "assertions": 927,
+    "exports_compared": 118,
+    "console_marker": "G2_SWF_READER_PASS assertions=927 compared=118 mp3_playback=pass",
+    "console_errors": 0,
+    "cold_fetch_parse_seconds": 0.043,
+    "warm_fetch_parse_seconds": 0.025,
+    "containers": ["FWS", "CWS", "CWS-no-adler", "ZWS"],
+    "jpeg_characters": 18,
+    "png_characters": 11,
+    "jpeg_alpha_differences": 0,
+    "jpeg_max_rgb_channel_difference_vs_pillow": 1,
+    "jpeg_mean_rgb_channel_difference_vs_pillow": 0.1931,
+    "mp3_exports": 24,
+    "mp3_playback_position_ms": 154
+  },
+  "flash_reference": {
+    "runtime": "Harman AIR 51.2.2",
+    "assets_compared_exact_rgba": 20,
+    "furni_files": 3,
+    "status": "pass",
+    "evidence": "evidence/g2e_flash_reference.json"
+  },
+  "implementation_sha256": {
+    "src/com/sulake/core/assets/swf/SwfFile.hx": "e658e2d7d2e2c4c2f5f9f20dbb45bd2414161ec13130d8fbb8f8ce049829bccb",
+    "src/com/sulake/core/assets/swf/SwfBitmap.hx": "e0fca3475d3d8a2d2b7495127942a97f4ecaff18073f42c84ad8d3270bf1dc63",
+    "src/com/sulake/core/assets/swf/SwfSound.hx": "44c2b9f76d2c5038adfe7e82024d6538eacd6a4bf5095efb17bdb70179e6d16d",
+    "test/G2SwfReaderTest.hx": "d7800366ca04a839f6b4a2a65283aa793da2a86c389ab6e34be2c258a35808d5",
+    "test/G2SwfReaderBrowserMain.hx": "18dfb27edd2729741e2397695d9ac655b59315d8094e5516a1598067cc1dccbe",
+    "evidence/g2_reader_contract.py": "0a026be8c20d99fa62323d6ce18eda1fa159fb49a22b8b641dab9d50bbfdc7bf",
+    "evidence/g2_reader_contract.json": "674432f6e5913cb1b2692df9484cf20a69a045d65decca3a62840d4071a31f1a",
+    "flash-reference/G2FlashReference.as": "17f33091958c40283083ddab01e7e0780e89594d66a482cffff2345c37adfb8f",
+    "evidence/g2e_flash_reference.json": "874dc3d1a2385976e71d1aa6b78feedc7d8a6770cca7fa51729f26930dc9179f"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256": "3b09de0e9fe2e254d6483780e84e34988af500f23f8ff9f1b677af43421ba0d8",
+    "corpus_mutated": false
+  },
+  "normal_openfl_html5_build": "pass",
+  "git_diff_check": "pass"
+}

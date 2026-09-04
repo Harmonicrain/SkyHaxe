@@ -1,0 +1,146 @@
+{
+  "gate": "G4-renderer-contract",
+  "generated_utc": "2026-09-01T23:36:03.417637+00:00",
+  "source_root": "C:\\habbo\\client\\habbo-client-clean\\src",
+  "files": {
+    "canvas": {
+      "relative": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "lines": 1260,
+      "sha256": "431bf9439fa589f6a33c05f97c1d1aecd6a2a7de30e6e762b550c984c9fd918f"
+    },
+    "extended_sprite": {
+      "relative": "com/sulake/room/renderer/utils/ExtendedSprite.as",
+      "lines": 202,
+      "sha256": "989fe0aa4a309be0666fa507d09944314efed84184d5e5543798a9419521a596"
+    },
+    "room_object_sprite": {
+      "relative": "com/sulake/room/object/visualization/RoomObjectSprite.as",
+      "lines": 409,
+      "sha256": "ba8526ed751dd185085ef0bbf0b5425e89973e33e1faed04d7edc00da1b60502"
+    },
+    "alpha_tolerance": {
+      "relative": "com/sulake/room/object/enum/AlphaTolerance.as",
+      "lines": 10,
+      "sha256": "e7fac541a5ad4398d8ef2bb905909b8799f48fd705b6d20b70fe2a00ac97fdcf"
+    }
+  },
+  "assertions": {
+    "display_list_sort": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        421
+      ]
+    },
+    "display_add": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        680
+      ]
+    },
+    "display_insert": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        685
+      ]
+    },
+    "display_mask": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 2,
+      "lines": [
+        190,
+        361
+      ]
+    },
+    "pool_pop": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        655
+      ]
+    },
+    "pool_push": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        708
+      ]
+    },
+    "blend_mode": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        668
+      ]
+    },
+    "filters": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        669
+      ]
+    },
+    "alpha_tolerance_copy": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        677
+      ]
+    },
+    "front_to_back_pick": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 3,
+      "lines": [
+        1016,
+        1056,
+        1093
+      ]
+    },
+    "local_hit_test": {
+      "file": "com/sulake/room/renderer/RoomSpriteCanvas.as",
+      "count": 1,
+      "lines": [
+        1097
+      ]
+    },
+    "signed_alpha_shift": {
+      "file": "com/sulake/room/renderer/utils/ExtendedSprite.as",
+      "count": 1,
+      "lines": [
+        192
+      ]
+    },
+    "strict_threshold_compare": {
+      "file": "com/sulake/room/renderer/utils/ExtendedSprite.as",
+      "count": 1,
+      "lines": [
+        193
+      ]
+    },
+    "match_all": {
+      "file": "com/sulake/room/object/enum/AlphaTolerance.as",
+      "count": 1,
+      "lines": [
+        5
+      ]
+    },
+    "match_opaque": {
+      "file": "com/sulake/room/object/enum/AlphaTolerance.as",
+      "count": 1,
+      "lines": [
+        6
+      ]
+    },
+    "match_nothing": {
+      "file": "com/sulake/room/object/enum/AlphaTolerance.as",
+      "count": 1,
+      "lines": [
+        7
+      ]
+    }
+  },
+  "missing": [],
+  "note": "AIR runtime capture is authoritative for the signed-shift boundary: alpha 127 does not hit, while 128 and 129 do at tolerance 128."
+}

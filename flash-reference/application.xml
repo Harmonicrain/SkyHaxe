@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/51.0">
+    <id>org.nextgenhabbo.skyhaxe.g2flashreference</id>
+    <filename>G2FlashReference</filename>
+    <name>SkyHaxe G2 Flash Reference</name>
+    <versionNumber>0.1.0</versionNumber>
+    <initialWindow>
+        <content>G2FlashReference.swf</content>
+        <visible>true</visible>
+        <width>320</width>
+        <height>200</height>
+    </initialWindow>
+</application>

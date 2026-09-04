@@ -1,0 +1,60 @@
+{
+  "gate": "G1",
+  "status": "PASS",
+  "verified_date": "2026-09-01",
+  "toolchain": {
+    "haxe": "4.3.7",
+    "neko": "2.4.1",
+    "haxelib": "4.1.1",
+    "lime": "8.3.2",
+    "openfl": "9.5.2"
+  },
+  "archives": {
+    "haxe-4.3.7-win64.zip": "29f7acb0fb9fc66a2b9f6bd9453af3474ccb14ebd9fd0142f351d7311c4010c9",
+    "neko-2.4.1-win64.zip": "3902933da42320e8bc04dbee07959ee9ff09a7848e9af48072396400cc3618c9",
+    "lime-8.3.2.zip": "ab44323146dff6512458fcb03b1c32cb9c492c64f2c0e574de9d5d929b929dff",
+    "openfl-9.5.2.zip": "873fa3739d80cc9ac0f48d3e27cc5684bfd60331f68caf647979de6ff437d273"
+  },
+  "build": {
+    "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\build-html5.ps1",
+    "target": "html5",
+    "configuration": "debug",
+    "result": "PASS",
+    "outputs": {
+      "build/html5/bin/index.html": {
+        "bytes": 1311,
+        "sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+      },
+      "build/html5/bin/skyhaxe.js": {
+        "bytes": 2740395,
+        "sha256_observed": "fc36f54040848a5a335c40120e6db5fe5d070041ca0b9b8a647e81fbd6c796c5",
+        "sha256_reproducible": false,
+        "normalized_sha256": "12d873f5905dd524c936fc8c542c1900b7bed67e09ae4e0af5ad4e4cdfe4eb6b",
+        "normalization": "Replace the one generated lime.utils.AssetCache.version integer with 0",
+        "reason": "Lime 8.3.2 AssetsMacro.cacheVersion() intentionally uses Math.random()"
+      }
+    }
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8765/",
+    "title": "SkyHaxe",
+    "document_marker": {
+      "name": "data-skyhaxe-g1",
+      "value": "ready"
+    },
+    "console_marker": "SKYHAXE_G1_READY",
+    "console_errors": 0,
+    "canvas": {
+      "intrinsic_width": 960,
+      "intrinsic_height": 540,
+      "rendered_width": 1280,
+      "rendered_height": 720
+    },
+    "result": "PASS"
+  },
+  "scope": {
+    "habbo_client_clean_modified_by_g1": false,
+    "bulk_conversion_started": false,
+    "generated_toolchain_is_project_local": true
+  }
+}

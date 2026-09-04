@@ -1,0 +1,58 @@
+{
+  "gate": "G3-real-xml-blob-parity",
+  "verified_utc": "2026-09-01T15:42:33.3513099Z",
+  "status": "pass",
+  "selection": {
+    "records": 25,
+    "files": 5,
+    "categories": {
+      "assets": 5,
+      "visualization": 5,
+      "logic": 5,
+      "index": 5,
+      "manifest": 5
+    },
+    "includes_live_elephants": true
+  },
+  "browser": {
+    "target": "OpenFL HTML5 in a fresh real-browser tab over same-origin localhost HTTP",
+    "assertions": 375,
+    "records_compared": 25,
+    "marker": "G3_XML_BLOB_PASS assertions=375 compared=25",
+    "console_errors": 0
+  },
+  "fields_compared": [
+    "raw byte length",
+    "raw SHA-256",
+    "root name",
+    "element count",
+    "attribute count",
+    "text-node count",
+    "maximum depth",
+    "per-tag counts",
+    "ordered canonical MD5"
+  ],
+  "air_native_e4x": {
+    "runtime": "Harman AIR 51.2.2",
+    "records_compared": 25,
+    "status": "pass",
+    "evidence": "evidence/g3_flash_reference.json"
+  },
+  "implementation_sha256": {
+    "evidence/g3_xml_blob_contract.py": "1868cf21e5129882a3f5f20a3ee3f10e40c449887aad0300049fd0e84e010fa0",
+    "evidence/g3_xml_blob_contract.json": "623a6930526f219b23bb78a0a62926d1886493b122ee0289ee3f59b08c6d640e",
+    "test/G3XmlBlobTest.hx": "a4d3d1bf989334312e74e3c1a1ee371a7d65feed831874b5dd90da34b398e36a",
+    "test/G3XmlBlobBrowserMain.hx": "a988634134099032c252854f49f99e37fb01b2b1704e7eabbe2134e39f081213",
+    "flash-reference/G3XmlReference.as": "c97dba82947f4c5b1eb85f5f4b6adc5a77e0e93ba0d23b1d3b97dca673f151ad",
+    "evidence/g3_flash_reference.json": "7c4722ddaf7cef38627b4084c172560348eabcfd2272db836448436f5557712b"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "corpus_mutated": false
+  },
+  "normal_openfl_html5_build": "pass",
+  "git_diff_check": "pass"
+}

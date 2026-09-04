@@ -1,0 +1,66 @@
+{
+  "gate": "G1d-component-runtime-primitives",
+  "files_scanned": 5492,
+  "lexical_counts": {
+    "iid_implementations": 50,
+    "iid_constructions": 432,
+    "component_dependency_constructions": 324,
+    "component_subclasses": 46,
+    "queue_interface_occurrences": 61
+  },
+  "files_with_pattern": {
+    "iid_implementations": 50,
+    "iid_constructions": 47,
+    "component_dependency_constructions": 40,
+    "component_subclasses": 46,
+    "queue_interface_occurrences": 13
+  },
+  "embedded_manifest_contract": {
+    "manifest_files": 35,
+    "component_declarations": 35,
+    "unique_component_classes": 35,
+    "interface_declarations": 36,
+    "unique_iid_classes": 36,
+    "components_without_interfaces": [
+      "com.sulake.bootstrap.HabboCommunicationDemoBootstrap"
+    ]
+  },
+  "semantic_decisions": [
+    "IID remains a marker interface; identity is the AS3-compatible qualified class name, not object identity",
+    "InterfaceStruct reserve/release is explicit and release floors at zero",
+    "InterfaceStructList preserves insertion order, duplicate providers, and implementor identity matching",
+    "disposing an interface struct clears the record but does not dispose its implementor",
+    "deferred interface receivers preserve AS3 registration order via unshift plus pop",
+    "embedded manifest component and IID names resolve through the explicit DCE-safe DefinitionRegistry",
+    "the Component dependency lifecycle is platform-neutral: required injection controls locking while optional injection may arrive later",
+    "dependency disposal clears setters, detaches listeners, and releases each acquired interface exactly once",
+    "the context broker queues unavailable interfaces by IID class name and fulfills receivers in registration order",
+    "locked providers attach without announcing and explicitly announce all exported interfaces when unlocked",
+    "detaching a provider removes all of its interface records without disposing the provider",
+    "the final Component/ComponentContext OpenFL shell remains separate because it crosses assets, events, loaders, and configuration"
+  ],
+  "rewrite_rules": [
+    "Vector.<InterfaceStruct> -> Array<InterfaceStruct> while preserving ordered traversal",
+    "uint reference counters -> non-negative Int counters on Haxe targets",
+    "getQualifiedClassName(iid) comparisons -> ClassUtils.getQualifiedClassName(iid)",
+    "Function interface callbacks -> typed InterfaceReceiver",
+    "Function dependency setters -> DependencySetter at the runtime boundary, with typed adapters at component call sites",
+    "Component dependency injection -> ComponentDependencyLifecycle with explicit request and listener adapters",
+    "ComponentContext interface routing -> ComponentInterfaceBroker attach/detach/announce operations"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/runtime/IID.hx": "d47a6401f74935b535341ff837fe80db359860def5a9d184f1b68c4b1b26a8f8",
+    "src/com/sulake/core/runtime/IUnknown.hx": "3ea9f74ace945128a42792f8719d35ad9f86033a41744e2fa315619007a7dbd2",
+    "src/com/sulake/core/runtime/ComponentDependency.hx": "95e61d38713bf86ba1aeb8991c79c9f1020d6529123dd5cb5f0370df789d9923",
+    "src/com/sulake/core/runtime/InterfaceStruct.hx": "42286ec0347603d6b2d6e1578a07e766ac48ead1a3c77a397b9a14e85929e540",
+    "src/com/sulake/core/runtime/InterfaceStructList.hx": "85279868a31a99e327677e65c6a0b47f8f432bcc6ebf4ba7a3ad0865e2927997",
+    "src/com/sulake/core/runtime/ComponentInterfaceQueue.hx": "118dfdf3298bc758b4e564aeecc110dccab679a89643ad26abf8ad3df6a098c5",
+    "src/com/sulake/core/runtime/ComponentManifest.hx": "2acf73f2459d32ceeffbedf575f99dfcedb53e90c5309babbb9ad199a6b1f351",
+    "src/com/sulake/core/runtime/ComponentDependencyLifecycle.hx": "7a56e6c02aa5bcc63835ff93b1842ccdd91d59cc6e5ab632daacb5013115b38b",
+    "src/com/sulake/core/runtime/ComponentInterfaceBroker.hx": "a9b584ab72ce59c73f747c189d093f43bd8e76778f60ba3dbf3e87576466f32d",
+    "test/G1dRuntimeTest.hx": "4585a12c3300299655acf21f77c0d6c286a30d0efbc4dce2a7a5df4ebfc688c3"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-runtime.ps1"
+  }
+}

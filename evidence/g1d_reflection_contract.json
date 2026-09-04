@@ -1,0 +1,444 @@
+{
+  "gate": "G1d-reflection",
+  "files_scanned": 5492,
+  "api_counts": {
+    "first_party": {
+      "describeType": 1,
+      "getDefinitionByName": 4,
+      "getQualifiedClassName": 47,
+      "getQualifiedSuperclassName": 0,
+      "getClassByAlias": 0,
+      "registerClassAlias": 0
+    },
+    "third_party": {
+      "describeType": 4,
+      "getDefinitionByName": 0,
+      "getQualifiedClassName": 1,
+      "getQualifiedSuperclassName": 0,
+      "getClassByAlias": 0,
+      "registerClassAlias": 0
+    }
+  },
+  "sites": [
+    {
+      "scope": "third_party",
+      "api": "describeType",
+      "file": "adobe/serialization/json/JSONEncoder.as",
+      "line": 141,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/assets/AssetLibrary.as",
+      "line": 840,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/assets/UnknownAsset.as",
+      "line": 65,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/connection/SocketConnection.as",
+      "line": 259,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getDefinitionByName",
+      "file": "com/sulake/core/communication/connection/SocketConnection.as",
+      "line": 260,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/connection/SocketConnection.as",
+      "line": 386,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/connection/SocketConnection.as",
+      "line": 387,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 54,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 68,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 78,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 100,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 124,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/communication/messages/MessageClassManager.as",
+      "line": 127,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 69,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 165,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 168,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 208,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 295,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/Component.as",
+      "line": 308,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getDefinitionByName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 253,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getDefinitionByName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 280,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 379,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 421,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 426,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 438,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 444,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/ComponentContext.as",
+      "line": 547,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/CoreComponentContext.as",
+      "line": 449,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/CoreComponentContext.as",
+      "line": 506,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/CoreComponentContext.as",
+      "line": 548,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/CoreComponentContext.as",
+      "line": 758,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/events/EventDispatcherWrapper.as",
+      "line": 109,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/events/EventDispatcherWrapper.as",
+      "line": 113,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/exceptions/Exception.as",
+      "line": 54,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/InterfaceStruct.as",
+      "line": 18,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/InterfaceStructList.as",
+      "line": 57,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/InterfaceStructList.as",
+      "line": 71,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/InterfaceStructList.as",
+      "line": 85,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/runtime/InterfaceStructList.as",
+      "line": 99,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "describeType",
+      "file": "com/sulake/core/utils/ClassUtils.as",
+      "line": 11,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/utils/ClassUtils.as",
+      "line": 11,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/utils/ClassUtils.as",
+      "line": 16,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/utils/FontEnum.as",
+      "line": 41,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/utils/FontEnum.as",
+      "line": 47,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/utils/profiler/ProfilerAgent.as",
+      "line": 14,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/window/utils/PropertyStruct.as",
+      "line": 155,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/window/utils/PropertyStruct.as",
+      "line": 166,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/core/window/WindowController.as",
+      "line": 741,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/habbo/friendbar/view/tabs/FriendEntityTab.as",
+      "line": 642,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "com/sulake/habbo/friendbar/view/tabs/NewFriendEntityTab.as",
+      "line": 650,
+      "occurrences": 1
+    },
+    {
+      "scope": "third_party",
+      "api": "describeType",
+      "file": "deng/fzip/FZipFile.as",
+      "line": 25,
+      "occurrences": 1
+    },
+    {
+      "scope": "third_party",
+      "api": "describeType",
+      "file": "deng/fzip/FZipFile.as",
+      "line": 26,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getDefinitionByName",
+      "file": "HabboAir.as",
+      "line": 597,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "HabboAir.as",
+      "line": 1505,
+      "occurrences": 1
+    },
+    {
+      "scope": "first_party",
+      "api": "getQualifiedClassName",
+      "file": "HabboMain.as",
+      "line": 49,
+      "occurrences": 1
+    },
+    {
+      "scope": "third_party",
+      "api": "describeType",
+      "file": "org/openvideoads/vast/overlay/VPAIDWrapper.as",
+      "line": 37,
+      "occurrences": 1
+    },
+    {
+      "scope": "third_party",
+      "api": "getQualifiedClassName",
+      "file": "org/openvideoads/vast/overlay/VPAIDWrapper.as",
+      "line": 150,
+      "occurrences": 1
+    }
+  ],
+  "semantic_decisions": [
+    "getQualifiedClassName becomes ClassUtils.getQualifiedClassName and preserves AS3 package::Class spelling",
+    "describeType interface tests become Type.createEmptyInstance plus Std.isOfType without constructor execution",
+    "getDefinitionByName becomes DefinitionRegistry.resolve",
+    "manifest-only classes require explicit generated registration to survive dead-code elimination",
+    "vendored describeType feature probes and OpenVideoAds reflection remain outside the first-party boundary"
+  ],
+  "rewrite_rules": [
+    "getQualifiedClassName(value) -> ClassUtils.getQualifiedClassName(value)",
+    "getDefinitionByName(name) -> DefinitionRegistry.resolve(name)",
+    "ClassUtils AS3 API keeps its existing call shape",
+    "component bootstrap generation registers every manifest-only class"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/utils/ClassUtils.hx": "11f0710e5e0a881b09bea986138e5351dabea638b6665620c7dba8a026a1eb15",
+    "src/com/sulake/core/utils/DefinitionRegistry.hx": "299c71bf3e04eef448ace10f4ea9a74df2e55026fd2cb3257371f1e31b10dc10",
+    "test/G1dReflectionTest.hx": "69f3acb3f7ddb2a098989973ada266fd773260e04683c7cf2db9890a4db797b3"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-reflection.ps1"
+  }
+}

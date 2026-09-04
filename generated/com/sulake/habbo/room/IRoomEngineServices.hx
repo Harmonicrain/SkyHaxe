@@ -1,0 +1,74 @@
+package com.sulake.habbo.room
+;
+    import com.sulake.room.IRoomInstance;
+    import com.sulake.room.object.IRoomObject;
+    import com.sulake.habbo.room.utils.SelectedRoomObjectData;
+    import com.sulake.core.communication.connection.IConnection;
+    import flash.events.IEventDispatcher;
+    import com.sulake.habbo.game.IHabboGameManager;
+    import com.sulake.habbo.room.utils.LegacyWallGeometry;
+    import com.sulake.habbo.room.utils.FurniStackingHeightMap;
+    import com.sulake.habbo.room.utils.TileObjectMap;
+    import com.sulake.room.object.IRoomObjectController;
+    import com.sulake.room.renderer.IRoomRenderingCanvas;
+    import com.sulake.core.runtime.IHabboConfigurationManager;
+    import com.sulake.habbo.session.IRoomSessionManager;
+    import com.sulake.habbo.session.ISessionDataManager;
+    import com.sulake.habbo.toolbar.IHabboToolbar;
+    import com.sulake.habbo.catalog.IHabboCatalog;
+    import com.sulake.habbo.window.IHabboWindowManager;
+
+     interface IRoomEngineServices extends IRoomObjectCreator 
+    {
+        function getRoom(_arg_1:Int):IRoomInstance;
+        function getRoomObjectCategory(_arg_1:String):Int;
+        function getRoomObject(_arg_1:Int, _arg_2:Int, _arg_3:Int):IRoomObject;
+        function getRoomObjectWithIndex(_arg_1:Int, _arg_2:Int, _arg_3:Int):IRoomObject;
+        function getRoomObjectCount(_arg_1:Int, _arg_2:Int):Int;
+        function updateObjectRoomWindow(_arg_1:Int, _arg_2:Int, _arg_3:Bool=true):Void;
+        function setObjectMoverIconSprite(_arg_1:Int, _arg_2:Int, _arg_3:Bool, _arg_4:String=null, _arg_5:IStuffData=null, _arg_6:Int=-1, _arg_7:Int=-1, _arg_8:String=null):Void;
+        function setObjectMoverIconSpriteVisible(_arg_1:Bool):Void;
+        function removeObjectMoverIconSprite():Void;
+        function getSelectedObjectData(_arg_1:Int):ISelectedRoomObjectData;
+        function setSelectedObjectData(_arg_1:Int, _arg_2:SelectedRoomObjectData):Void;
+        function setPlacedObjectData(_arg_1:Int, _arg_2:SelectedRoomObjectData):Void;
+        function getPlacedObjectData(_arg_1:Int):ISelectedRoomObjectData;
+        var connection(get,never):IConnection;
+        var events(get,never):IEventDispatcher;
+        var gameEngine(get,never):IHabboGameManager;
+        var areaSelectionManager(get,never):IRoomAreaSelectionManager;
+        function isAreaSelectionMode():Bool;
+        function setMoveBlocked(_arg_1:Bool):Void;
+        function isMoveBlocked():Bool;
+        function isWhereYouClickWhereYouGo():Bool;
+        function setClickSettings(_arg_1:String, _arg_2:Bool, _arg_3:Bool):Void;
+        var clickThroughUsers(get,never):Bool;
+        var clickThroughFurni(get,never):Bool;
+        var activeRoomHasHanditemControlBlocked(get,never):Bool;
+        var activeRoomHasChooserDisabled(get,never):Bool;
+        var activeRoomHasFreeFurniMovementsMode(get,never):Bool;
+        function getLegacyGeometry(_arg_1:Int):LegacyWallGeometry;
+        function getFurniStackingHeightMap(_arg_1:Int):FurniStackingHeightMap;
+        function getTileObjectMap(_arg_1:Int):TileObjectMap;
+        function getSelectionArrow(_arg_1:Int):IRoomObjectController;
+        function getTileCursor(_arg_1:Int):IRoomObjectController;
+        function getIsPlayingGame(_arg_1:Int):Bool;
+        function getActiveRoomIsPlayingGame():Bool;
+        function requestRoomAdImage(_arg_1:Int, _arg_2:Int, _arg_3:Int, _arg_4:String, _arg_5:String):Void;
+        function requestMouseCursor(_arg_1:String, _arg_2:Int, _arg_3:String):Void;
+        function addFloorHole(_arg_1:Int, _arg_2:Int):Void;
+        function removeFloorHole(_arg_1:Int, _arg_2:Int):Void;
+        function getActiveRoomActiveCanvas():IRoomRenderingCanvas;
+        function requestBadgeImageAsset(_arg_1:Int, _arg_2:Int, _arg_3:Int, _arg_4:String, _arg_5:Bool=true):Void;
+        function requestFurniIconAsset(_arg_1:Int, _arg_2:Int, _arg_3:Int, _arg_4:Bool, _arg_5:Int, _arg_6:String):Void;
+        var getIsSelectedObjectInValidPosition(get,never):Bool;
+        var setIsSelectedObjectInValidPosition(get,never):Bool;
+        var playerUnderCursor(get,never):Int;
+        var configuration(get,never):IHabboConfigurationManager;
+        var roomSessionManager(get,never):IRoomSessionManager;
+        var sessionDataManager(get,never):ISessionDataManager;
+        var toolbar(get,never):IHabboToolbar;
+        var catalog(get,never):IHabboCatalog;
+        var windowManager(get,never):IHabboWindowManager;
+    }
+

@@ -1,0 +1,69 @@
+{
+  "gate": "V6-room-interaction-runtime",
+  "date": "2026-09-02",
+  "status": "partial_pass",
+  "production_path": {
+    "url": "http://localhost:8765/",
+    "room_id": 17413,
+    "room_type": "netcafe",
+    "authenticated_user": "John"
+  },
+  "tile_cursor": {
+    "source": "C:/habbo/ngh/gordon/PRODUCTION-201611291003-338511768/TileCursor.swf",
+    "source_sha256": "a4f90d43eb81bc28f4ca597820ac20ea44c42fac20f5fc5d85ad95a54d29035b",
+    "export": "TileCursor_tile_cursor_32_a_0_0",
+    "decoded_size": [34, 19],
+    "authored_registration": {"x": 16, "y": 10, "relative_depth": -2.9},
+    "floor_map_packet": 1301,
+    "floor_map_parser": "generated FloorHeightMapMessageParser",
+    "floor_map_size": [25, 24],
+    "walkable_tiles": 400,
+    "visible_hover_observed": {"x": 17, "y": 13, "z": 0},
+    "hides_over_non_room_space": true
+  },
+  "walking": {
+    "outgoing_id": 3320,
+    "registry_name": "MoveAvatarMessageComposer",
+    "fields": ["Int32(x)", "Int32(y)"],
+    "request_observed": {"x": 17, "y": 13},
+    "server_user_update_observed": true,
+    "john_room_index": 28,
+    "john_started_at": {"x": 22, "y": 12},
+    "john_finished_at": {"x": 17, "y": 13},
+    "local_teleport_used": false,
+    "room_drag_threshold_preserved_px": 15
+  },
+  "avatar_lifecycle": {
+    "user_remove_packet": 2661,
+    "user_remove_parser": "generated UserRemoveMessageParser",
+    "individual_remove_disposes_compositor_and_bitmap": true,
+    "room_ready_clears_previous_unit_map": true,
+    "same_room_reentry_ghost_prevented_by_lifecycle_reset": true,
+    "live_reentry_drill_available": false,
+    "live_reentry_note": "The navigator UI needed to leave and re-enter in one page is not ported yet; the reset is invoked unconditionally by every RoomReady packet and the build is verified."
+  },
+  "idle_avatar_stability": {
+    "separate_display_snapshot_from_mutable_compositor_buffer": true,
+    "idle_images_not_recomposed_by_animation_tick": true,
+    "sample_interval_ms": 75,
+    "consecutive_idle_frames_compared": 30,
+    "ray_identical_frames": 30,
+    "tongbits_identical_frames": 30
+  },
+  "builds": {
+    "production_html5": "pass",
+    "v5_generated_closure": "pass"
+  },
+  "authoritative_client": {
+    "path": "C:/habbo/client/habbo-client-clean",
+    "head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "staged_files": 0,
+    "written_by_this_slice": false
+  },
+  "open": [
+    "Live leave-and-re-enter drill once navigator room switching is available",
+    "Furniture surface cursor heights and furniture interaction routing",
+    "Full generated RoomPlaneParser/room-event closure replacing the two narrow protocol compatibility declarations"
+  ],
+  "gate_complete": false
+}

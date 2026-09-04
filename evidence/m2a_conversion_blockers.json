@@ -1,0 +1,72 @@
+{
+  "gate": "M2a-conversion-progress",
+  "package": "com/sulake/core",
+  "source_files": 353,
+  "original_parser_blockers": 4,
+  "original_parser_blockers_remaining": 0,
+  "guarded_pre_rules": 21,
+  "converter_patches": 13,
+  "converter": "converter-m2.jar",
+  "converter_sha256": "245cf7d85599dab785f2272568954b82b26f1b4e042698e36212dec1a42e7a04",
+  "patch_script": "evidence/m2_patch_ax3.py",
+  "cleared": [
+    {
+      "family": "E4X predicate filter",
+      "resolution": "one count-guarded normalization plus an explicit XMLList compatibility method"
+    },
+    {
+      "family": "E4X XML literal",
+      "resolution": "the one script/CDATA literal is byte-preserved as JSON-escaped new XML(...) input"
+    },
+    {
+      "family": "try/finally without catch",
+      "resolution": "the two ItemGrid sites, which contain no return/break/continue, restore state on both normal and exceptional exits"
+    },
+    {
+      "family": "AS3 function-scoped variables",
+      "resolution": "the measured cross-block uses are hoisted in the staged copy; the clean-client source is never edited"
+    }
+  ],
+  "passing_batch": {
+    "scope": "com/sulake/core[assets+runtime+utils]",
+    "staged_as3_files": 77,
+    "core_source_files": 353,
+    "source_slice_percent": 21.8,
+    "excluded_from_slice": "all 245 com/sulake/core/window files",
+    "generated_haxe_files": 79,
+    "generated_tree_sha256": "502d05503df13bd96124426f98dd4fa88080f1286c1e70a50c1245108760d0ec",
+    "deterministic_two_runs": true,
+    "unpinned_rules": 0,
+    "clean_client_modified": false,
+    "compiled_identity_count": 35,
+    "compiled_generated_percent": 44.3,
+    "generated_precedence_compiler_enforced": true,
+    "same_identity_collision_canaries": 10,
+    "compiled_identity_manifest": "test/M2RuntimeCompileMain.hx",
+    "compiled_identity_evidence": "evidence/m2_compile_frontier.json",
+    "compile_target": "OpenFL 9.5.2 HTML5",
+    "one_file_update_drill": {
+      "status": "pass",
+      "source_delta": "com/sulake/core/runtime/IIDCore.as",
+      "generated_delta": "com/sulake/core/runtime/IIDCore.hx",
+      "unrelated_generated_deltas": 0,
+      "real_clean_client_modified": false
+    }
+  },
+  "whole_core_status": {
+    "status": "not yet converting as one unit",
+    "next_fatal_family": "ax3 typed-expression limitations after parsing, currently including the TextController dynamic/string + case",
+    "nonfatal_diagnostics_already_visible": [
+      "crypto overload arity",
+      "dynamic arithmetic",
+      "dynamic array access",
+      "Class manifest field access"
+    ],
+    "selective_cutover_finding": "Generated output must win generally, with a generated selective override layer for true semantic boundaries such as Proxy-backed Map. Blanket src precedence breaks generated implementations against deliberately narrow transitional interfaces such as IAsset.",
+    "next_frontier_blockers": [
+      "TypeFaceAsset reaches global Habbo logging outside the scoped core batch",
+      "Proxy-backed Map cannot be the generated implementation"
+    ]
+  },
+  "m2a_status": "INCOMPLETE: deterministic scoped conversion and the copied-source one-file update drill pass, but production generated/manual cutover is not complete."
+}

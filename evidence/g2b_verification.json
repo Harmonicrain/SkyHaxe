@@ -1,0 +1,68 @@
+{
+  "gate": "G2b-browser-png-jpeg-payloads",
+  "verified_utc": "2026-09-01T15:14:17.6499328Z",
+  "status": "pass",
+  "scope_note": "G2b closes encoded PNG/JPEG payload decoding only; G2c through G2e remain open.",
+  "target": "OpenFL HTML5 in a fresh real-browser tab over the same-origin read-only corpus server",
+  "browser": {
+    "url": "http://127.0.0.1:8769/",
+    "document_marker": {
+      "name": "data-skyhaxe-g2-swf-reader",
+      "value": "pass"
+    },
+    "assertions": 499,
+    "assets_compared": 68,
+    "console_marker": "G2_SWF_READER_PASS assertions=499 compared=68",
+    "console_errors": 0,
+    "cold_fetch_parse_seconds": 0.064,
+    "warm_fetch_parse_seconds": 0.354
+  },
+  "browser_decoded": {
+    "jpeg_characters": 18,
+    "jpeg_alpha_differences": 0,
+    "jpeg_max_rgb_channel_difference": 1,
+    "jpeg_mean_rgb_channel_difference": 0.1931,
+    "jpeg_regression_bounds": {
+      "maximum_channel_difference": 2,
+      "mean_channel_difference_per_character": 0.5
+    },
+    "png_characters": 1,
+    "png_straight_rgba_byte_identical": true,
+    "mixed_codec_file": "dcr/hof_furni/godin.swf"
+  },
+  "contract_corrections": [
+    "lossy JPEG output is compared with bounded per-channel error, not invalid cross-decoder SHA-256 equality",
+    "fully transparent PNG pixels are canonicalized to transparent black before hashing because hidden RGB is not BitmapData-visible content"
+  ],
+  "implementation_sha256": {
+    "src/com/sulake/core/assets/swf/SwfBitmap.hx": "3b15077289d53e89319a43dd144049773393149072aef7f8660340bdf6feb7a9",
+    "src/com/sulake/core/assets/swf/SwfCharacter.hx": "b51386714fe3c629eca2e5eff28ffc0bbd899fc4ea3637f31e41092af49bb577",
+    "src/com/sulake/core/assets/swf/SwfFile.hx": "d2e3597504912fed5c52d8a6c9ce1d020e3d29cb2a7e5c0af6ec87d90727ad62",
+    "test/G2SwfReaderTest.hx": "daaf226733ebbd97e0979700fc48dba235772b7771c46c045acf61c803548152",
+    "test/G2SwfReaderBrowserMain.hx": "cce29aae63f49faab0967ad1ac31b2893e152526cc4f4a090d5feda4e453bfb9",
+    "project.g2-swf-reader.xml": "a62766e73563f74e55ac2c1bfbcb8ddc59dc5d2489fce8ca4c2ca77d54d74727",
+    "scripts/serve-g2.py": "2c4700b2d0f123fc72111ef5dfcfe872f8fc3e8cc769f7cf5ed388a593079414",
+    "scripts/test-g2-swf-reader.ps1": "fa98caf7bb486cf620f2caa08ed9266699a8b0b123b32660eac97bc4c2904084",
+    "evidence/g2_reader_contract.py": "9ef46e7d58f8ddfd5694fded91ecf57e5becf72ce2d62c6b4d4c405df1293a2d",
+    "evidence/g2_reader_contract.json": "96ee3c0074c06d811a541387a567a176a0538458f48f56b0b489ccda0070f4d6"
+  },
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "corpus_served_read_only": true
+  },
+  "commands": [
+    "python evidence/g2_reader_contract.py",
+    "scripts/test-g2-swf-reader.ps1",
+    "python scripts/serve-g2.py --port 8769",
+    "fresh browser-tab check of DOM marker, report, and console",
+    "scripts/build-html5.ps1 -SkipBootstrap"
+  ]
+}

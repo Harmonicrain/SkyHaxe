@@ -1,0 +1,516 @@
+{
+  "gate": "G3-real-xml-blobs",
+  "reference": "independent Python SWF parser + xml.etree.ElementTree",
+  "canonicalization": "ordered E/A/T/X tokens; attributes sorted; whitespace-only text ignored",
+  "files": [
+    "dcr/hof_furni/15pillow.swf",
+    "dcr/hof_furni/01_dragonlamp_skream.swf",
+    "dcr/hof_furni/BW_HeadmasterChair.swf",
+    "dcr/hof_furni/godin.swf",
+    "gordon/PRODUCTION-201611291003-338511768/elephants.swf"
+  ],
+  "records": [
+    {
+      "file": "dcr/hof_furni/15pillow.swf",
+      "symbol": "pillow_index",
+      "category": "index",
+      "bytes": 128,
+      "raw_sha256": "658ac7d237339e1fb3fe8cc8e14894e18d80df565219a3644d378cd425c2fbbe",
+      "root": "object",
+      "elements": 1,
+      "attributes": 3,
+      "text_nodes": 0,
+      "max_depth": 0,
+      "tag_counts": {
+        "object": 1
+      },
+      "canonical_md5": "07be8ba5d3a6101de1cabb84bcbeea27"
+    },
+    {
+      "file": "dcr/hof_furni/15pillow.swf",
+      "symbol": "pillow_manifest",
+      "category": "manifest",
+      "bytes": 1153,
+      "raw_sha256": "6a2532b3809aa710e57cc5ffcd030e6ab66e632c5c1d0a04e188b7ea37eaf2a6",
+      "root": "manifest",
+      "elements": 19,
+      "attributes": 34,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "asset": 16,
+        "assets": 1,
+        "library": 1,
+        "manifest": 1
+      },
+      "canonical_md5": "1b7f08b179f20e8b776b62dc99a21adc"
+    },
+    {
+      "file": "dcr/hof_furni/15pillow.swf",
+      "symbol": "pillow_pillow_assets",
+      "category": "assets",
+      "bytes": 3101,
+      "raw_sha256": "387fb24d52aa0b422ca7654e6bdbc26dfed1e27e18e75db7a369b70a95ff0b4b",
+      "root": "assets",
+      "elements": 43,
+      "attributes": 176,
+      "text_nodes": 0,
+      "max_depth": 1,
+      "tag_counts": {
+        "asset": 42,
+        "assets": 1
+      },
+      "canonical_md5": "285d84952665764a3c329e99a32dbec4"
+    },
+    {
+      "file": "dcr/hof_furni/15pillow.swf",
+      "symbol": "pillow_pillow_logic",
+      "category": "logic",
+      "bytes": 321,
+      "raw_sha256": "911d6048d9ef5f04a0e6ac57586848ece05555d2e402da5aee6bb278aab403d9",
+      "root": "objectData",
+      "elements": 8,
+      "attributes": 8,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "dimensions": 1,
+        "direction": 4,
+        "directions": 1,
+        "model": 1,
+        "objectData": 1
+      },
+      "canonical_md5": "9277a2261b29def1c329e571319d294e"
+    },
+    {
+      "file": "dcr/hof_furni/15pillow.swf",
+      "symbol": "pillow_pillow_visualization",
+      "category": "visualization",
+      "bytes": 4870,
+      "raw_sha256": "121e8dd8d767192213d4ec5f133f314ed5010513340aa87c92cb44a05fcbb455",
+      "root": "visualizationData",
+      "elements": 109,
+      "attributes": 157,
+      "text_nodes": 0,
+      "max_depth": 4,
+      "tag_counts": {
+        "color": 30,
+        "colorLayer": 50,
+        "colors": 3,
+        "direction": 9,
+        "directions": 3,
+        "layer": 8,
+        "layers": 2,
+        "visualization": 3,
+        "visualizationData": 1
+      },
+      "canonical_md5": "78b385966c4335760b150d6dd3fe7306"
+    },
+    {
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf",
+      "symbol": "01_dragonlamp_skream_01_dragonlamp_skream_assets",
+      "category": "assets",
+      "bytes": 3571,
+      "raw_sha256": "069e31f4d599f3b6b6355407160d717cdfc239da38954e6fe27c51d7da7cb8c8",
+      "root": "assets",
+      "elements": 42,
+      "attributes": 163,
+      "text_nodes": 0,
+      "max_depth": 1,
+      "tag_counts": {
+        "asset": 41,
+        "assets": 1
+      },
+      "canonical_md5": "f79e27ce9648f2e234a0361621d27883"
+    },
+    {
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf",
+      "symbol": "01_dragonlamp_skream_01_dragonlamp_skream_logic",
+      "category": "logic",
+      "bytes": 351,
+      "raw_sha256": "1b9ee2a14e40dbe65d34e0b6ba289ddf01c2c410af5b859d613e93c4d3f1266f",
+      "root": "objectData",
+      "elements": 9,
+      "attributes": 8,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "dimensions": 1,
+        "direction": 2,
+        "directions": 1,
+        "model": 1,
+        "objectData": 1,
+        "particlesystem": 2,
+        "particlesystems": 1
+      },
+      "canonical_md5": "94ddea193dd3c69b4c73a1ed5324a5db"
+    },
+    {
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf",
+      "symbol": "01_dragonlamp_skream_01_dragonlamp_skream_visualization",
+      "category": "visualization",
+      "bytes": 2949,
+      "raw_sha256": "390fbbae5a52102f9bdc73022db4fbbb844535f97e6d28bf229ea37bbf83afa9",
+      "root": "visualizationData",
+      "elements": 73,
+      "attributes": 60,
+      "text_nodes": 0,
+      "max_depth": 7,
+      "tag_counts": {
+        "animation": 4,
+        "animationLayer": 12,
+        "animations": 2,
+        "colors": 2,
+        "direction": 4,
+        "directions": 2,
+        "frame": 18,
+        "frameSequence": 12,
+        "gestures": 2,
+        "graphics": 1,
+        "layer": 6,
+        "layers": 2,
+        "postures": 2,
+        "visualization": 3,
+        "visualizationData": 1
+      },
+      "canonical_md5": "9b621213a81f226ab3c70a944e292e07"
+    },
+    {
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf",
+      "symbol": "01_dragonlamp_skream_index",
+      "category": "index",
+      "bytes": 146,
+      "raw_sha256": "d468a72760b7d525278c05200c71a019092d7fa731fd21e4ec04b5e224239031",
+      "root": "object",
+      "elements": 1,
+      "attributes": 3,
+      "text_nodes": 0,
+      "max_depth": 0,
+      "tag_counts": {
+        "object": 1
+      },
+      "canonical_md5": "0665e9e55082490e5e237c9eadd2a7ac"
+    },
+    {
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf",
+      "symbol": "01_dragonlamp_skream_manifest",
+      "category": "manifest",
+      "bytes": 1958,
+      "raw_sha256": "a736e8ac3f42a3a17ba8f2806e9da5503af18cfd9d551599cc9aedd21576f6d8",
+      "root": "manifest",
+      "elements": 28,
+      "attributes": 52,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "asset": 25,
+        "assets": 1,
+        "library": 1,
+        "manifest": 1
+      },
+      "canonical_md5": "fae2fd51f7eb5ef9f1d2979666c59f26"
+    },
+    {
+      "file": "dcr/hof_furni/BW_HeadmasterChair.swf",
+      "symbol": "BW_HeadmasterChair_BW_HeadmasterChair_assets",
+      "category": "assets",
+      "bytes": 1128,
+      "raw_sha256": "f4b3bf4e3df8efe20e52666c63fbb3d0923399ed07a623ab90858997efe82be9",
+      "root": "assets",
+      "elements": 14,
+      "attributes": 51,
+      "text_nodes": 0,
+      "max_depth": 1,
+      "tag_counts": {
+        "asset": 13,
+        "assets": 1
+      },
+      "canonical_md5": "173af98d8e3fcaf0f68d1da5dcb51560"
+    },
+    {
+      "file": "dcr/hof_furni/BW_HeadmasterChair.swf",
+      "symbol": "BW_HeadmasterChair_BW_HeadmasterChair_logic",
+      "category": "logic",
+      "bytes": 244,
+      "raw_sha256": "9839d4a9d898084c4c626db2d7a9c820b6356b394effee112467c2498c2c921c",
+      "root": "objectData",
+      "elements": 6,
+      "attributes": 6,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "dimensions": 1,
+        "direction": 2,
+        "directions": 1,
+        "model": 1,
+        "objectData": 1
+      },
+      "canonical_md5": "73ff67a8d1bb7801fcc5041c166de89b"
+    },
+    {
+      "file": "dcr/hof_furni/BW_HeadmasterChair.swf",
+      "symbol": "BW_HeadmasterChair_BW_HeadmasterChair_visualization",
+      "category": "visualization",
+      "bytes": 913,
+      "raw_sha256": "737541d570e634de30a411be1059e3cfe84e0c285b4e8ca958052331599a8575",
+      "root": "visualizationData",
+      "elements": 27,
+      "attributes": 20,
+      "text_nodes": 0,
+      "max_depth": 4,
+      "tag_counts": {
+        "animations": 2,
+        "colors": 2,
+        "direction": 4,
+        "directions": 2,
+        "gestures": 3,
+        "graphics": 1,
+        "layer": 4,
+        "layers": 2,
+        "postures": 3,
+        "visualization": 3,
+        "visualizationData": 1
+      },
+      "canonical_md5": "ceb640987f0f4419ff2e3b1bdc89a733"
+    },
+    {
+      "file": "dcr/hof_furni/BW_HeadmasterChair.swf",
+      "symbol": "BW_HeadmasterChair_index",
+      "category": "index",
+      "bytes": 137,
+      "raw_sha256": "3bd624b652b68ef4895b765e2e531b61dab355b541ca51db7803d1170eb6ea2e",
+      "root": "object",
+      "elements": 1,
+      "attributes": 3,
+      "text_nodes": 0,
+      "max_depth": 0,
+      "tag_counts": {
+        "object": 1
+      },
+      "canonical_md5": "c93bb30934aec1b69837945eb8240395"
+    },
+    {
+      "file": "dcr/hof_furni/BW_HeadmasterChair.swf",
+      "symbol": "BW_HeadmasterChair_manifest",
+      "category": "manifest",
+      "bytes": 914,
+      "raw_sha256": "04b10c4cdfca1a0feb29501bfc990d6b50205e33d7d9084ea288a55604d0f6c9",
+      "root": "manifest",
+      "elements": 14,
+      "attributes": 24,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "asset": 11,
+        "assets": 1,
+        "library": 1,
+        "manifest": 1
+      },
+      "canonical_md5": "7a1eecaed294b4dae38d03d5b225b9e2"
+    },
+    {
+      "file": "dcr/hof_furni/godin.swf",
+      "symbol": "godin_godin_assets",
+      "category": "assets",
+      "bytes": 212,
+      "raw_sha256": "d846cd8b8b30e96eee727a79e4fcad37e3c277956857ea108ff730dacc99b1de",
+      "root": "assets",
+      "elements": 4,
+      "attributes": 9,
+      "text_nodes": 0,
+      "max_depth": 1,
+      "tag_counts": {
+        "asset": 3,
+        "assets": 1
+      },
+      "canonical_md5": "5ca21b797ebceb9bc531024bd004e575"
+    },
+    {
+      "file": "dcr/hof_furni/godin.swf",
+      "symbol": "godin_godin_logic",
+      "category": "logic",
+      "bytes": 225,
+      "raw_sha256": "516f287394650f18a9b1aa96797ee48f775e303fc6ce3a1e0a175f12e1bd069e",
+      "root": "objectData",
+      "elements": 5,
+      "attributes": 5,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "dimensions": 1,
+        "direction": 1,
+        "directions": 1,
+        "model": 1,
+        "objectData": 1
+      },
+      "canonical_md5": "2aeb908e3cd80818bd9ea2a9706567cd"
+    },
+    {
+      "file": "dcr/hof_furni/godin.swf",
+      "symbol": "godin_godin_visualization",
+      "category": "visualization",
+      "bytes": 572,
+      "raw_sha256": "10b6c1caa841982409efa37ff8444f95b5add143dcd214ac68ec346e81957325",
+      "root": "visualizationData",
+      "elements": 11,
+      "attributes": 13,
+      "text_nodes": 0,
+      "max_depth": 4,
+      "tag_counts": {
+        "direction": 3,
+        "directions": 3,
+        "graphics": 1,
+        "visualization": 3,
+        "visualizationData": 1
+      },
+      "canonical_md5": "5d2a8d43ca85947e67aacddfd4ca533f"
+    },
+    {
+      "file": "dcr/hof_furni/godin.swf",
+      "symbol": "godin_index",
+      "category": "index",
+      "bytes": 127,
+      "raw_sha256": "bba5c59dbc21d1fa24e14566c5624fcfa73363ecf802cb62c611aa1807701b30",
+      "root": "object",
+      "elements": 1,
+      "attributes": 3,
+      "text_nodes": 0,
+      "max_depth": 0,
+      "tag_counts": {
+        "object": 1
+      },
+      "canonical_md5": "91f77852fe55e2013b25f55bcbfc0c30"
+    },
+    {
+      "file": "dcr/hof_furni/godin.swf",
+      "symbol": "godin_manifest",
+      "category": "manifest",
+      "bytes": 579,
+      "raw_sha256": "777edfc964a51b13e7461caaea506960826b0ee2296b67a6109e9793a7f1ebe7",
+      "root": "manifest",
+      "elements": 10,
+      "attributes": 16,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "asset": 7,
+        "assets": 1,
+        "library": 1,
+        "manifest": 1
+      },
+      "canonical_md5": "0f17225392d386ebc897d6b8c6a1ce78"
+    },
+    {
+      "file": "gordon/PRODUCTION-201611291003-338511768/elephants.swf",
+      "symbol": "elephants_elephants_assets",
+      "category": "assets",
+      "bytes": 17631,
+      "raw_sha256": "d07094fa4408fd292f0c3f9d73917c79ce98d59d926f316cf3646c83df4b8ff9",
+      "root": "assets",
+      "elements": 247,
+      "attributes": 960,
+      "text_nodes": 0,
+      "max_depth": 1,
+      "tag_counts": {
+        "asset": 246,
+        "assets": 1
+      },
+      "canonical_md5": "0ef9d336c70febbf2d447be41334175e"
+    },
+    {
+      "file": "gordon/PRODUCTION-201611291003-338511768/elephants.swf",
+      "symbol": "elephants_elephants_logic",
+      "category": "logic",
+      "bytes": 505,
+      "raw_sha256": "8df2057bc4806dbebed09c46405727108d589fcdaec3c6fe78203e580c451e72",
+      "root": "objectData",
+      "elements": 15,
+      "attributes": 14,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "dimensions": 1,
+        "direction": 8,
+        "directions": 1,
+        "model": 1,
+        "objectData": 1,
+        "particlesystem": 2,
+        "particlesystems": 1
+      },
+      "canonical_md5": "b12a425da9d2051d745304bb58d4f448"
+    },
+    {
+      "file": "gordon/PRODUCTION-201611291003-338511768/elephants.swf",
+      "symbol": "elephants_elephants_visualization",
+      "category": "visualization",
+      "bytes": 6036,
+      "raw_sha256": "e220b206d13e903690eb1400283fb980f42d398543f1be2044b267a97d19c4d9",
+      "root": "visualizationData",
+      "elements": 145,
+      "attributes": 149,
+      "text_nodes": 0,
+      "max_depth": 7,
+      "tag_counts": {
+        "animation": 26,
+        "animationLayer": 20,
+        "animations": 2,
+        "colors": 2,
+        "direction": 16,
+        "directions": 2,
+        "frame": 33,
+        "frameSequence": 19,
+        "gestures": 2,
+        "graphics": 1,
+        "layers": 2,
+        "posture": 14,
+        "postures": 2,
+        "visualization": 3,
+        "visualizationData": 1
+      },
+      "canonical_md5": "39abf585d109b33f00437bf260896428"
+    },
+    {
+      "file": "gordon/PRODUCTION-201611291003-338511768/elephants.swf",
+      "symbol": "elephants_index",
+      "category": "index",
+      "bytes": 112,
+      "raw_sha256": "84cf9da4b7d090a90228004e22c5175299515b0b25d91153ec67d145805b2a6f",
+      "root": "object",
+      "elements": 1,
+      "attributes": 3,
+      "text_nodes": 0,
+      "max_depth": 0,
+      "tag_counts": {
+        "object": 1
+      },
+      "canonical_md5": "9cd4bedc02e7ce5cc038746168974f12"
+    },
+    {
+      "file": "gordon/PRODUCTION-201611291003-338511768/elephants.swf",
+      "symbol": "elephants_manifest",
+      "category": "manifest",
+      "bytes": 7786,
+      "raw_sha256": "4362437a2b25dca8ff0641baacec3d01bc6bde9e2cacf3b1007120f29e0a6506",
+      "root": "manifest",
+      "elements": 123,
+      "attributes": 242,
+      "text_nodes": 0,
+      "max_depth": 3,
+      "tag_counts": {
+        "asset": 120,
+        "assets": 1,
+        "library": 1,
+        "manifest": 1
+      },
+      "canonical_md5": "580cdc6b056d8e3da7f6cb6ba3708c61"
+    }
+  ],
+  "record_count": 25,
+  "categories": {
+    "assets": 5,
+    "index": 5,
+    "logic": 5,
+    "manifest": 5,
+    "visualization": 5
+  }
+}

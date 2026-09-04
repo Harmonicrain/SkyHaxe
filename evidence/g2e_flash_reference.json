@@ -1,0 +1,154 @@
+{
+  "gate": "G2e-flash-runtime-reference",
+  "status": "pass",
+  "runtime": "Harman AIR 51.2.2 (Flash VM/display semantics)",
+  "comparison": "exact straight-RGBA MD5 equality with the shared independent contract",
+  "assets_compared": 20,
+  "files_compared": [
+    "dcr/hof_furni/01_dragonlamp_skream.swf",
+    "dcr/hof_furni/15pillow.swf",
+    "dcr/hof_furni/vip_sof5.swf"
+  ],
+  "assets": [
+    {
+      "rgba_md5": "33c3b250de5ce854ea156be0bfc7a5cf",
+      "width": 36,
+      "name": "pillow_pillow_32_sd_0_0",
+      "height": 17,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "736e8e72a25f5c20d088269c9c5a2e38",
+      "width": 72,
+      "name": "pillow_pillow_64_sd_0_0",
+      "height": 35,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "4b482ee20d7e3aff361cd27d176bc1cf",
+      "width": 30,
+      "name": "pillow_pillow_icon_b",
+      "height": 18,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "f1d3ff8443297732862df21dc4e57262",
+      "width": 1,
+      "name": "pillow_pillow_32_b_0_0",
+      "height": 1,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "f6958fca5e738f675c8ea4d6f475b267",
+      "width": 3,
+      "name": "pillow_pillow_32_d_0_0",
+      "height": 1,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "cfd97ec2676ca9238d1367757724d7d3",
+      "width": 1,
+      "name": "pillow_pillow_64_b_0_0",
+      "height": 2,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "00283d67ca927168ecd36069e100804c",
+      "width": 7,
+      "name": "pillow_pillow_64_d_0_0",
+      "height": 2,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "1ba0a4dfb6b788591f925cc8996cfe2d",
+      "width": 72,
+      "name": "pillow_pillow_64_c_0_0",
+      "height": 22,
+      "file": "dcr/hof_furni/15pillow.swf"
+    },
+    {
+      "rgba_md5": "a297a2f54c686c6baa91ba95a3a6c8b7",
+      "width": 62,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_sd_4_0",
+      "height": 20,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+      "width": 1,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_32_b_4_0",
+      "height": 1,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "bec96ff27834426a0a8442df9c1f4810",
+      "width": 22,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_3",
+      "height": 37,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "880d67dbc98a04761232b0149aff3b5d",
+      "width": 22,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_4",
+      "height": 39,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "45fdb3c8e9e85baadffe28263b77018a",
+      "width": 19,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_1",
+      "height": 41,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "d68e36cca9f2eba768e06e05774f8a21",
+      "width": 20,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_2",
+      "height": 35,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "62efbe598a56dc2963d5201e8360ef98",
+      "width": 31,
+      "name": "01_dragonlamp_skream_01_dragonlamp_skream_32_sd_4_0",
+      "height": 10,
+      "file": "dcr/hof_furni/01_dragonlamp_skream.swf"
+    },
+    {
+      "rgba_md5": "86e45a0db8c82ba3cd5bee31a5835c33",
+      "width": 59,
+      "name": "vip_sof5_vip_sof5_64_b_6_0",
+      "height": 40,
+      "file": "dcr/hof_furni/vip_sof5.swf"
+    },
+    {
+      "rgba_md5": "18a164bd1d8ee24dce280f7bfd40b0e3",
+      "width": 27,
+      "name": "vip_sof5_vip_sof5_icon_a",
+      "height": 21,
+      "file": "dcr/hof_furni/vip_sof5.swf"
+    },
+    {
+      "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+      "width": 1,
+      "name": "vip_sof5_vip_sof5_32_g_2_0",
+      "height": 1,
+      "file": "dcr/hof_furni/vip_sof5.swf"
+    },
+    {
+      "rgba_md5": "36429cbe45ce53cf67c1f0c252de1078",
+      "width": 127,
+      "name": "vip_sof5_vip_sof5_64_sd_0_0",
+      "height": 61,
+      "file": "dcr/hof_furni/vip_sof5.swf"
+    },
+    {
+      "rgba_md5": "b47a7fd5f0057e94b7d9fcfd25e54bbc",
+      "width": 33,
+      "name": "vip_sof5_vip_sof5_64_e_6_0",
+      "height": 41,
+      "file": "dcr/hof_furni/vip_sof5.swf"
+    }
+  ]
+}

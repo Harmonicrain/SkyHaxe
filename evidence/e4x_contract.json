@@ -1,7 +1,8 @@
 {
+ "measurement_kind": "lexical upper bound; shared member names are not receiver-proven",
  "files_scanned": 5492,
  "files_touching_xml": 231,
- "api_first_party": {
+ "api_upper_bound_first_party": {
   "text": 88,
   "appendChild": 16,
   "length": 685,
@@ -18,7 +19,7 @@
   "replace": 38,
   "@attribute": 486
  },
- "api_third_party": {
+ "api_upper_bound_third_party": {
   "toString": 16,
   "length": 140,
   "@attribute": 113,

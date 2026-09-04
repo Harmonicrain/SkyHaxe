@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe G3 XML Blobs" package="org.nextgenhabbo.skyhaxe.g3.xmlblobs" version="0.1.0" company="NextGenHabbo" />
+    <app main="G3XmlBlobBrowserMain" path="build/tests/g3-xml-blobs" file="g3-xml-blobs" />
+    <window width="960" height="500" background="#10131A" hardware="true" />
+    <source path="src" />
+    <source path="test" />
+    <assets path="evidence/g3_xml_blob_contract.json" rename="fixtures/g3_xml_blob_contract.json" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

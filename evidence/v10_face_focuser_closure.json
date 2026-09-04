@@ -1,0 +1,16 @@
+{
+  "closure": [
+    "com/sulake/habbo/utils/HabboFaceFocuser.as"
+  ],
+  "context": [
+    "com/sulake/habbo/avatar/IAvatarFigureContainer.as",
+    "com/sulake/habbo/avatar/IAvatarImage.as",
+    "com/sulake/habbo/avatar/actions/IActionDefinition.as",
+    "com/sulake/habbo/avatar/actions/IActiveActionData.as",
+    "com/sulake/habbo/avatar/animation/IAnimation.as",
+    "com/sulake/habbo/avatar/animation/IAnimationLayerData.as",
+    "com/sulake/habbo/avatar/animation/IAvatarDataContainer.as",
+    "com/sulake/habbo/avatar/animation/ISpriteDataContainer.as",
+    "com/sulake/habbo/avatar/structure/figure/IPartColor.as"
+  ]
+}

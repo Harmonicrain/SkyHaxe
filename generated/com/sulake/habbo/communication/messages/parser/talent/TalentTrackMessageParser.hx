@@ -1,0 +1,31 @@
+package com.sulake.habbo.communication.messages.parser.talent
+;
+    import com.sulake.core.communication.messages.IMessageParser;
+    import com.sulake.core.communication.messages.IMessageDataWrapper;
+
+     class TalentTrackMessageParser implements IMessageParser
+    {
+        var _talentTrack:TalentTrack;
+
+
+        public function flush():Bool
+        {
+            this._talentTrack = null;
+            return true;
+        }
+
+        public function parse(k:IMessageDataWrapper):Bool
+        {
+            this._talentTrack = new TalentTrack();
+            this._talentTrack.parse(k);
+            return true;
+        }
+
+        public function _Str_23534():TalentTrack
+        {
+            return this._talentTrack;
+        }
+
+	public function new() {}
+    }
+

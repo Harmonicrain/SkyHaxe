@@ -1,0 +1,51 @@
+package com.sulake.habbo.communication.messages.parser.room.pets
+;
+    import com.sulake.core.communication.messages.IMessageParser;
+    import com.sulake.habbo.communication.messages.incoming.room.pets.PetBreedingResultData;
+    import com.sulake.core.communication.messages.IMessageDataWrapper;
+
+     class PetBreedingResultParser implements IMessageParser 
+    {
+        var _Str_3111:PetBreedingResultData;
+        var _Str_11472:PetBreedingResultData;
+
+
+        public var _Str_3713(get,never):PetBreedingResultData;
+function  get__Str_3713():PetBreedingResultData
+        {
+            return this._Str_3111;
+        }
+
+        public var _Str_5840(get,never):PetBreedingResultData;
+function  get__Str_5840():PetBreedingResultData
+        {
+            return this._Str_11472;
+        }
+
+        public function flush():Bool
+        {
+            return true;
+        }
+
+        function _Str_19638(k:IMessageDataWrapper):PetBreedingResultData
+        {
+            var _local_2= k.readInteger();
+            var _local_3= k.readInteger();
+            var _local_4= k.readString();
+            var _local_5= k.readInteger();
+            var _local_6= k.readString();
+            var _local_7= k.readInteger();
+            var _local_8= k.readBoolean();
+            return new PetBreedingResultData(_local_2, _local_3, _local_4, _local_5, _local_6, _local_7, _local_8);
+        }
+
+        public function parse(k:IMessageDataWrapper):Bool
+        {
+            this._Str_3111 = this._Str_19638(k);
+            this._Str_11472 = this._Str_19638(k);
+            return true;
+        }
+
+	public function new() {}
+    }
+

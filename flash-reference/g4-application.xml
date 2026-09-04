@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/51.0">
+    <id>org.nextgenhabbo.skyhaxe.g4rendererreference</id>
+    <filename>G4RendererReference</filename>
+    <name>SkyHaxe G4 Renderer Reference</name>
+    <versionNumber>0.1.0</versionNumber>
+    <initialWindow>
+        <content>G4RendererReference.swf</content>
+        <visible>false</visible>
+        <width>64</width>
+        <height>64</height>
+    </initialWindow>
+</application>

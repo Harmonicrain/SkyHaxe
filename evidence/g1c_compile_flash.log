@@ -1,0 +1,285 @@
+Warning : (WDeprecated) -swf-header has been deprecated, use -D swf-header instead
+Redefinition of variable width in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable color in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable alpha in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable name in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable dynamicStyle in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable y in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable x in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable position in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable caption in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable style in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable blend in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable state in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable id in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable rectangle in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable visible in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable type in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable tags in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable height in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable clipping in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable background in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+Redefinition of variable mouseThreshold in subclass is not allowed. Previously declared at com.sulake.core.window.WindowModel
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/SingleWriteMap.hx:9: characters 38-43 : Unknown identifier : QName
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/SingleWriteMap.hx:9: characters 38-43 : ... For function argument 't'
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:181: characters 30-35 : Unknown identifier : QName
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:181: characters 30-35 : ... For function argument 't'
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:179: characters 34-45 : Field setProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:14: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:179: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:179: characters 34-45 : ... have: (Dynamic, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:179: characters 34-45 : ... want: (ASAny, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:23: characters 34-45 : Field getProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:8: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:23: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:23: characters 34-45 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:23: characters 34-45 : ... want: (ASAny) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:28: characters 34-45 : Field setProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:14: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:28: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:28: characters 34-45 : ... have: (Dynamic, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:28: characters 34-45 : ... want: (ASAny, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:30: characters 34-45 : Field getProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:8: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:30: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:30: characters 34-45 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:30: characters 34-45 : ... want: (ASAny) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:35: characters 34-45 : Field setProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:14: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:35: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:35: characters 34-45 : ... have: (Dynamic, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:35: characters 34-45 : ... want: (ASAny, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:30: characters 34-45 : Field getProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:8: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:30: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:30: characters 34-45 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:30: characters 34-45 : ... want: (ASAny) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:35: characters 34-45 : Field setProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:14: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:35: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:35: characters 34-45 : ... have: (Dynamic, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:35: characters 34-45 : ... want: (ASAny, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/habbo/avatar/geometry/GeometryBodyPart.hx:148: characters 27-42 : error: Float should be Int
+.toolchain/g1c/haxe-v18/com/sulake/habbo/avatar/geometry/GeometryBodyPart.hx:148: characters 27-42 : ... have: (...) -> Float
+.toolchain/g1c/haxe-v18/com/sulake/habbo/avatar/geometry/GeometryBodyPart.hx:148: characters 27-42 : ... want: (...) -> Int
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:67: characters 38-65 : ASDictionary<ASAny, ASAny> should be flash.utils.Dictionary
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:67: characters 38-65 : ... For function argument 'p1'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:70: characters 38-66 : ASDictionary<ASAny, ASAny> should be flash.utils.Dictionary
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:70: characters 38-66 : ... For function argument 'p1'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:141: characters 45-66 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:141: characters 45-66 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:388: characters 17-32 : Int cannot be called
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:207: characters 54-59 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:207: characters 47-59 : Void should be UInt
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:221: characters 44-64 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:221: characters 44-64 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:239: characters 116-123 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:239: characters 109-123 : Void should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:382: characters 20-51 : Int cannot be called
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:270: characters 97-107 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:270: characters 97-107 : ... For function argument 's'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:271: characters 109-114 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:271: characters 109-114 : ... For function argument 's'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:272: characters 94-102 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:272: characters 94-102 : ... For function argument 's'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:273: characters 109-114 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:273: characters 109-114 : ... For function argument 's'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:274: characters 109-123 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:274: characters 109-123 : ... For function argument 's'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:275: characters 26-33 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:279: characters 26-31 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:283: characters 26-33 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:287: characters 26-34 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:291: characters 26-36 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:295: characters 26-40 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:299: characters 88-90 : Too many arguments
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:299: characters 64-91 : Void should be UInt
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:300: characters 26-31 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:304: characters 40-61 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:304: characters 40-61 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/window/utils/WindowParser.hx:327: characters 44-45 : This expression cannot be accessed for reading
+.toolchain/g1c/haxe-v18/com/sulake/habbo/window/utils/SkinParserUtil.hx:59: characters 38-46 : ASDictionary<ASAny, ASAny> should be flash.utils.Dictionary
+.toolchain/g1c/haxe-v18/com/sulake/habbo/window/utils/SkinParserUtil.hx:59: characters 38-46 : ... For function argument 'p1'
+.toolchain/g1c/haxe-v18/com/sulake/habbo/window/utils/SkinParserUtil.hx:62: characters 39-47 : ASDictionary<ASAny, ASAny> should be flash.utils.Dictionary
+.toolchain/g1c/haxe-v18/com/sulake/habbo/window/utils/SkinParserUtil.hx:62: characters 39-47 : ... For function argument 'p1'
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:127: characters 20-38 : Not enough arguments, expected pos:Int, end:Null<Int>
+.toolchain/g1c/haxe-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.hx:262: characters 63-65 : Too many arguments
+.toolchain/g1c/haxe-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.hx:268: characters 63-65 : Too many arguments
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:142: characters 20-39 : Not enough arguments, expected pos:Int, end:Null<Int>
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:172: characters 30-35 : Unknown identifier : QName
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:172: characters 30-35 : ... For function argument 't'
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:170: characters 34-45 : Field getProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:8: characters 70-81 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:170: characters 34-45 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:170: characters 34-45 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:170: characters 34-45 : ... want: (ASAny) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:214: characters 34-46 : Field callProperty overrides parent class with different or incomplete type
+C:\habbo\client\SkyHaxe\.toolchain\haxe-4.3.7\std/flash/utils/Proxy.hx:5: characters 70-82 : ... Base field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:214: characters 34-46 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:214: characters 34-46 : ... have: (Dynamic, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/utils/Map.hx:214: characters 34-46 : ... want: (ASAny, ...) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:122: characters 36-42 : compat.XML has no field assets
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:125: characters 43-54 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:125: characters 43-54 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:175: characters 36-43 : compat.XML has no field aliases
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:178: characters 43-54 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:178: characters 43-54 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:828: characters 36-42 : compat.XML has no field assets
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:831: characters 43-54 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:831: characters 43-54 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:232: characters 82-98 : Not enough arguments, expected x:String
+.toolchain/g1c/haxe-v18/com/sulake/core/assets/AssetLibrary.hx:443: characters 9-14 : Break outside loop
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/ComponentContext.hx:246: characters 36-69 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/ComponentContext.hx:246: characters 36-69 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/ComponentContext.hx:247: characters 36-69 : compat.XML should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/ComponentContext.hx:247: characters 36-69 : ... For function argument 'x'
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:359: characters 103-109 : Null<ASDictionary<ASAny, ASAny>> should be Null<flash.utils.Dictionary>
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:359: characters 103-109 : ... For optional function argument 'p2'
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:359: characters 60-110 : Void should be String
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:18: characters 25-32 : Field indexOf has different type than in com.sulake.core.window.utils.IIterator
+C:/habbo/apps/NGHWin/build/HabboAir.swf@com.sulake.core.window.utils.IIterator:1: character 1 : ... Interface field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:18: characters 25-32 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:18: characters 25-32 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/EmptyIterator.hx:18: characters 25-32 : ... want: (ASAny) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:25: characters 25-32 : Field indexOf has different type than in com.sulake.core.window.utils.IIterator
+C:/habbo/apps/NGHWin/build/HabboAir.swf@com.sulake.core.window.utils.IIterator:1: character 1 : ... Interface field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:25: characters 25-32 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:25: characters 25-32 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/ItemListIterator.hx:25: characters 25-32 : ... want: (ASAny) -> ...
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:25: characters 25-32 : Field indexOf has different type than in com.sulake.core.window.utils.IIterator
+C:/habbo/apps/NGHWin/build/HabboAir.swf@com.sulake.core.window.utils.IIterator:1: character 1 : ... Interface field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:25: characters 25-32 : ... error: ASAny should be Dynamic
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:25: characters 25-32 : ... have: (Dynamic) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/window/iterators/SelectorIterator.hx:25: characters 25-32 : ... want: (ASAny) -> ...
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field y has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field x has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field width has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field visible has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field type has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field tags has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field style has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field state has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,never))
+Field rectangle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field position has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field mouseThreshold has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field id has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field height has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field dynamicStyle has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field color has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field clipping has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field caption has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field blend has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field background has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field alpha has different property access than in com.sulake.core.window.IWindow ((never,set) should be (get,set))
+Field name has different property access than in com.sulake.core.window.graphics.IGraphicContextHost ((never,set) should be (get,never))
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:357: characters 25-36 : Field getProperty has different type than in com.sulake.core.runtime.IHabboConfigurationManager
+C:/habbo/apps/NGHWin/build/HabboAir.swf@com.sulake.core.runtime.IHabboConfigurationManager:1: character 1 : ... Interface field is defined here
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:357: characters 25-36 : ... error: Null<ASDictionary<ASAny, ASAny>> should be Null<flash.utils.Dictionary>
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:357: characters 25-36 : ... have: (..., Null<...>) -> ...
+.toolchain/g1c/haxe-v18/com/sulake/core/runtime/Component.hx:357: characters 25-36 : ... want: (..., Null<...>) -> ...

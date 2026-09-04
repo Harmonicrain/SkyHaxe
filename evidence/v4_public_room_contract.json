@@ -1,0 +1,19 @@
+{
+  "gate": "V4-public-room-contract",
+  "room_type": "netcafe",
+  "variables": "C:\\habbo\\ngh\\gamedata\\external_dev_vars.txt",
+  "variables_sha256": "3b09de0e9fe2e254d6483780e84e34988af500f23f8ff9f1b677af43421ba0d8",
+  "flash_client_url": "http://localhost/ngh/gordon/PRODUCTION-201611291003-338511768/",
+  "swf": "C:\\habbo\\ngh\\gordon\\PRODUCTION-201611291003-338511768\\hh_room_netcafe.swf",
+  "swf_sha256": "072bdc2b62b253532ea9a1a235a84af412a54622ed610d0c700121782534839a",
+  "swf_signature": "CWS",
+  "layout_count": 1,
+  "layers": 44,
+  "unique_selected_assets": 25,
+  "additive_layers": 15,
+  "flipped_layers": 3,
+  "alpha_overridden_layers": 2,
+  "missing_asset_rows": [],
+  "missing_bitmap_exports": [],
+  "result": "pass"
+}

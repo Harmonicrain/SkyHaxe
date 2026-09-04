@@ -1,5 +1,10 @@
+.claude/
+.haxelib/
+.toolchain/
+build/
 __pycache__/
 *.py[cod]
 *.csv
 *.tmp
-
+node_modules/
+public/assets/truffle/

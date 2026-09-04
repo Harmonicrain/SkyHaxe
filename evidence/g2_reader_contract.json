@@ -1,0 +1,1509 @@
+{
+  "gate": "G2-swf-reader",
+  "corpus": "C:\\habbo\\ngh",
+  "corpus_policy": "read-only; the reader fetches over HTTP, never from a local path",
+  "pixel_contract": "straight (un-premultiplied) RGBA8888, row-major, 4 bytes per pixel",
+  "reference_implementation": "independent: Python zlib/lzma + PIL, versus Haxe/OpenFL + the browser JPEG decoder",
+  "reference_limitation": "this proves two independent decoders agree, not parity with the Flash client itself; that comparison is tracked separately",
+  "hashed_symbols_by_tag": {
+    "DefineBitsLossless2": 34,
+    "DefineBinaryData": 30,
+    "DefineSound": 24,
+    "DefineBitsJPEG3": 19,
+    "DefineBitsJPEG2": 10,
+    "DefineBitsLossless": 1
+  },
+  "hashed_symbols_total": 118,
+  "files": {
+    "dcr/hof_furni/15pillow.swf": {
+      "signature": "CWS",
+      "bytes": 6391,
+      "tag_counts": {
+        "DefineBitsLossless2": 11,
+        "DefineBitsLossless2:zlib": 11,
+        "DefineBinaryData": 5
+      },
+      "exported_total": 17,
+      "symbols": [
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 36,
+          "height": 17,
+          "rgba_sha256": "71016d039f50e1299ed047ec7feae164dd2add08258488057d9e6efe95b79bff",
+          "rgba_md5": "33c3b250de5ce854ea156be0bfc7a5cf",
+          "character_id": 1,
+          "name": "pillow_pillow_32_sd_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 72,
+          "height": 35,
+          "rgba_sha256": "4281f9cfa0ca33543c7455ec1853e80348addcb94b11373e06a7712d13b77dd1",
+          "rgba_md5": "736e8e72a25f5c20d088269c9c5a2e38",
+          "character_id": 2,
+          "name": "pillow_pillow_64_sd_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 30,
+          "height": 18,
+          "rgba_sha256": "acc3987b3ef34072cb2159de820cacc6fa40aa737a3eb8a4cb887960b88aac85",
+          "rgba_md5": "4b482ee20d7e3aff361cd27d176bc1cf",
+          "character_id": 3,
+          "name": "pillow_pillow_icon_a"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 30,
+          "height": 18,
+          "rgba_sha256": "acc3987b3ef34072cb2159de820cacc6fa40aa737a3eb8a4cb887960b88aac85",
+          "rgba_md5": "4b482ee20d7e3aff361cd27d176bc1cf",
+          "character_id": 3,
+          "name": "pillow_pillow_icon_b"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "rgba_md5": "f1d3ff8443297732862df21dc4e57262",
+          "character_id": 4,
+          "name": "pillow_pillow_32_b_0_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 128,
+          "sha256": "658ac7d237339e1fb3fe8cc8e14894e18d80df565219a3644d378cd425c2fbbe",
+          "character_id": 5,
+          "name": "pillow_index"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 3,
+          "height": 1,
+          "rgba_sha256": "d902630de7a821f7f213eb196cd7d1738b53e5df32c34b5c51a82d4de253506a",
+          "rgba_md5": "f6958fca5e738f675c8ea4d6f475b267",
+          "character_id": 6,
+          "name": "pillow_pillow_32_d_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 2,
+          "rgba_sha256": "c1b7f3079dca28fe46caecd19a6d6178cfe482ec6ebd31bf528b9dcf57c2afdf",
+          "rgba_md5": "cfd97ec2676ca9238d1367757724d7d3",
+          "character_id": 7,
+          "name": "pillow_pillow_64_b_0_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 4870,
+          "sha256": "121e8dd8d767192213d4ec5f133f314ed5010513340aa87c92cb44a05fcbb455",
+          "character_id": 8,
+          "name": "pillow_pillow_visualization"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 1153,
+          "sha256": "6a2532b3809aa710e57cc5ffcd030e6ab66e632c5c1d0a04e188b7ea37eaf2a6",
+          "character_id": 9,
+          "name": "pillow_manifest"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 7,
+          "height": 2,
+          "rgba_sha256": "14ce09606b6f26ff74ca853961fe40f1138f76d444a1e72fb5aeb4353174a414",
+          "rgba_md5": "00283d67ca927168ecd36069e100804c",
+          "character_id": 10,
+          "name": "pillow_pillow_64_d_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 72,
+          "height": 22,
+          "rgba_sha256": "c75df6106cd2b490a6aa9f3a61334ac923892e8792eeaa8b33155619b0757f5c",
+          "rgba_md5": "1ba0a4dfb6b788591f925cc8996cfe2d",
+          "character_id": 11,
+          "name": "pillow_pillow_64_c_0_0"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "CWS container; DefineBitsLossless2 + DefineBinaryData, the corpus baseline",
+      "sha256": "e69be3d14dfb3e7e6813b2e625ba2e228b5e7848efc7d7f90c461a1f6cc2a30b"
+    },
+    "dcr/hof_furni/01_dragonlamp_skream.swf": {
+      "signature": "FWS",
+      "bytes": 30014,
+      "tag_counts": {
+        "DefineBitsLossless2": 18,
+        "DefineBitsLossless2:zlib": 18,
+        "DefineBinaryData": 5
+      },
+      "exported_total": 26,
+      "symbols": [
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 62,
+          "height": 20,
+          "rgba_sha256": "0198b8fec21178f8baa4c863e2a88c66abf4f14ac49b7f42b4638187c6e898d2",
+          "rgba_md5": "a297a2f54c686c6baa91ba95a3a6c8b7",
+          "character_id": 1,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_sd_4_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 2,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_32_b_4_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 2,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_32_c_4_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 2,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 2,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_c_4_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 3571,
+          "sha256": "069e31f4d599f3b6b6355407160d717cdfc239da38954e6fe27c51d7da7cb8c8",
+          "character_id": 3,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_assets"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 146,
+          "sha256": "d468a72760b7d525278c05200c71a019092d7fa731fd21e4ec04b5e224239031",
+          "character_id": 4,
+          "name": "01_dragonlamp_skream_index"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 1958,
+          "sha256": "a736e8ac3f42a3a17ba8f2806e9da5503af18cfd9d551599cc9aedd21576f6d8",
+          "character_id": 5,
+          "name": "01_dragonlamp_skream_manifest"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 22,
+          "height": 37,
+          "rgba_sha256": "38551d7ca83dee51f53b65fc9452264635ceb104ef4901e5aa6256217c14b360",
+          "rgba_md5": "bec96ff27834426a0a8442df9c1f4810",
+          "character_id": 6,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_3"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 2949,
+          "sha256": "390fbbae5a52102f9bdc73022db4fbbb844535f97e6d28bf229ea37bbf83afa9",
+          "character_id": 7,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_visualization"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 22,
+          "height": 39,
+          "rgba_sha256": "3f09feab7789ca1d1bc57f8d6f2b78e329e7ebd6097bf3fe7159c704e7d10533",
+          "rgba_md5": "880d67dbc98a04761232b0149aff3b5d",
+          "character_id": 8,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_4"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 19,
+          "height": 41,
+          "rgba_sha256": "c72607d045e827f60386805b21950479680c97031e8b7e0fed2eb4ca5913057f",
+          "rgba_md5": "45fdb3c8e9e85baadffe28263b77018a",
+          "character_id": 9,
+          "name": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_1"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "FWS container, uncompressed body",
+      "sha256": "8d39d72c453aac00c6c1b1fda3293e1239d1240f4af6ff0c1c6857795a40534c"
+    },
+    "dcr/hof_furni/ads_tvoh_crate1.swf": {
+      "signature": "ZWS",
+      "bytes": 14150,
+      "tag_counts": {
+        "DefineBinaryData": 10,
+        "DefineBitsLossless2": 3,
+        "DefineBitsLossless2:zlib": 3
+      },
+      "exported_total": 13,
+      "symbols": [
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 267,
+          "sha256": "44b614decac6d679dda10db549bd01eda9ed8c25cec1411b1911f42ba60ed476",
+          "character_id": 1,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_logic"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 66,
+          "height": 66,
+          "rgba_sha256": "c90018eb331e236e2e570005a8481020d561c7b8e35018e46f6c0df7881fe7f9",
+          "rgba_md5": "5d2d57656ef6de37aaa0a7e432cb45c2",
+          "character_id": 2,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_64_a_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 25,
+          "height": 26,
+          "rgba_sha256": "dd1ce0a1fd3164e49046b3b8edb35159a31e63ab682d19b31a96db7a5fb9cf65",
+          "rgba_md5": "0a2467c850588613bd56915af9ccb70c",
+          "character_id": 3,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_icon_a"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 135,
+          "sha256": "70e7c40533ec39392e5f345199aa6a892f7e4ebed70dec060fbdacbb25fb8bb8",
+          "character_id": 4,
+          "name": "ads_tvoh_crate1_index"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 242,
+          "sha256": "fadd2d2bafe2d659549a40d18416e230e1497fc3dabd1411e24ae30f78aa9715",
+          "character_id": 5,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_assets"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 679,
+          "sha256": "fe6ab4a1fb3c7a8ec412e489c34f2bec96188c816be1d2d4ea8364e923cfff88",
+          "character_id": 6,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_visualization"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 649,
+          "sha256": "8307114e64085371c13262c49545198414fd5f43469d813b4eb230f99fea0ea9",
+          "character_id": 7,
+          "name": "ads_tvoh_crate1_manifest"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 66,
+          "height": 66,
+          "rgba_sha256": "dc51fa0790b304e0715ccbee0591a4ff3ca94c55304c26f1cd7f470012e3fb43",
+          "rgba_md5": "5301ec9cb1b541dbcf0b906b6463dd7e",
+          "character_id": 8,
+          "name": "ads_tvoh_crate1_ads_tvoh_crate1_64_a_2_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 110,
+          "sha256": "cc9684a97cec62a9a9b7336c29df186f1f08c28206a57bff343308f5fa72f031",
+          "character_id": 9,
+          "name": "_a_-_-__"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 33,
+          "sha256": "0e680ab3eef27f9de95b23adb5d446430a2df04bdb5420c7390758402bd99835",
+          "character_id": 10,
+          "name": "_a_-_"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 4,
+          "sha256": "bde15654b20a505109e7cdb037638eb60b9361f316b2c091ea303745ac4804eb",
+          "character_id": 11,
+          "name": "_a_---"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 124,
+          "sha256": "fbf784a69161c9f13dee4209369e2aad3b982daa79e6321a6599e4364d5d2e1e",
+          "character_id": 12,
+          "name": "_o_--_-"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "ZWS container; non-standard SWF LZMA framing",
+      "sha256": "b7a6d3fc8a85d292d71ec9eb38d03b9e78d69b7cd869d522b1a6540400f13a89"
+    },
+    "dcr/hof_furni/vip_sof5.swf": {
+      "signature": "FWS",
+      "bytes": 78773,
+      "tag_counts": {
+        "DefineBitsJPEG3": 18,
+        "DefineBitsJPEG3:jpeg": 18,
+        "DefineBitsLossless2": 7,
+        "DefineBitsLossless2:zlib": 7,
+        "DefineBinaryData": 5,
+        "DefineBitsLossless": 1,
+        "DefineBitsLossless:zlib": 1
+      },
+      "exported_total": 36,
+      "symbols": [
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 59,
+          "height": 40,
+          "rgba_sha256": "27d7875b5f72418b5a2d19a0650530da727aa7d77028f36471838ca1fc6d4522",
+          "rgba_md5": "86e45a0db8c82ba3cd5bee31a5835c33",
+          "character_id": 1,
+          "name": "vip_sof5_vip_sof5_64_b_6_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless",
+          "encoding": "zlib",
+          "width": 27,
+          "height": 21,
+          "rgba_sha256": "b1bdb83c3faf47e4dc7d344e60b29a6e85e043daee552cd186248e36300aff5c",
+          "rgba_md5": "18a164bd1d8ee24dce280f7bfd40b0e3",
+          "character_id": 2,
+          "name": "vip_sof5_vip_sof5_icon_a"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_32_e_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_32_f_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_32_g_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_64_e_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_64_f_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 1,
+          "height": 1,
+          "rgba_sha256": "e3820096cb82366b860b8a4e668453a7aaaf423af03bdf289fa308ea03a79332",
+          "rgba_md5": "bbd822615535efc59c0719b820e06fd9",
+          "character_id": 3,
+          "name": "vip_sof5_vip_sof5_64_g_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 30,
+          "height": 21,
+          "rgba_sha256": "2e4b6b508effecae3e6166c4762c27239d54ae72831990653640a795fb63ef96",
+          "rgba_md5": "ea0f191b80f2773c85de3f20d2408ae2",
+          "reference_rgba_zlib_base64": "eNqllvtPW2UYx99DT2lZgUFXCwSVyVZ6JdVCV2AQKOWy9bJSesPCWAGzMefEodvActmyu0Tm9st0m7qpm4kxhgRUjBusGejYRV2MP+xX/wF/WuIKydf3HFrWykCQN/k2p03P+3m+z/s8zzmErGAxVAIqMdV6EiRS0ksyyU2SSvJIMv0tiUQ/kshaFsNEWdw2QioR1ToSMDRuenToStvc8dF9ODH2BqzvGB9nF0v+kKnSfPz/uNjYNYQQY3Je0olb43nu4Z7LO2ZbPqxCzQkl+sMtGLzTgiNUPeMBmN/WROTGlAdSpdhJJPSelFVymQR/Vo09Z2bvZVfkyK0g+qZfhXn4edguKrF/og69vzh59d/14dh0B7qvNkNeLnhiaMqbujh2ahvnPTkauiC69bLMVGLOt6aH2y/URgbDOzE404TQfTdCD1w48FM99k5UIvSbi//ed8+DQxONcJwtROmhHLx5zYXhm13ov9D0d9fr1TeqdbLK9byFeXbCYqP+UohpY1XmePPp2tmOj+vg+8SA3rsu9PzqoLJS2ak/xzyPxnFw0g7nBS1MPTJ0XrVg6NZr6PnCCUu7HK9sJdhWxMKmET3Zrs4Yq9FmGdOiZSmKIul5yLPLRCNNQ+VzR8NtCE22oORoNmrPbUb3bQfPijE53uFwI3Z/ZYFtSIPOa3U4E96N0HUPHO15KDYR1JawcBgEaNAycCtZNCqFcKnWRRwqydc0Bq2ULxlCyn368KXwabw3tZ+vlb57Tej8wYI931kw8OBpjg9O2+G7okfx4Qw4T+ngeFeNs992wnWgALoKAnOpGDZDCho0AngKkuArILz8iiRe3HWjkp2zqdM+r9NmbKQHb6gOlFwf+HLf4/P3D+Po3VbeF8fjzi9024vAZ1vwck8qPB/pcXKqAydHg3DvUcFgJLCYBLAWC2DXErgo060kC0xOXsXTay4eykaDisVCv6QSY1mb6pvQSHD23O9dGLjjR/O1Yui7JfB+YODP7/0fO+DozoeijKCqTAxrUQqc6iTKSkpgLadYHAu9yi70z5byNu1o9cBm7DivxXHqb3iiE/63dNAWUX+lLLYbn+3PryAr5pPYbIqfUWIiODbStXVocv/3DSEdXqL+KraKsb04BQ7NvD/Pv/LJMZsKmEX7+5WJv3G55u5fpo/JpdFjIrsz31JjktywFgrRwOeULGJyufMqFscR75+rLY7JnW17eTaeOUNic1lI+LFXo5NJ7Oo0W4NSFOb6Ilav3mXyGmPO+2NpL4mxsyQXu8wKlOaxWHJ2RXPORvud6zmLRpZuU6e7Kf/n+F5ZKrc8UyVEwJSFlmolSgqkc/J1ZITuV7jSsZ1M5r1zfb9NI81wqiSfuguEfyX0KuV5lQL+/FzqZAS2yLGrahMq1ZmzOalknO5hWnZWL8Fm4/gyKrsqPUjZiTVD/fmNUjRXKWDWZUVy00mYtomZjUvj/11sNO/UdwXNOe/PrUqGv2gDWivzUa/PiuStJzOUZxWskRX/MI9x6yh3h0YMnyEDrVWbUW94YfbFTOYh5bnZ/3r+rYLLMIIFLvd8CdToK7h6cRhz5/IzySNaL4EYi2GYNb7zMDEqLxL3qpUvE1XkbRD+Sf0FV+vvH7npXro=",
+          "character_id": 4,
+          "name": "vip_sof5_vip_sof5_32_b_6_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 39,
+          "height": 29,
+          "rgba_sha256": "064bffc24d5b4a7b29163bc58413017a754d26f66f4ca1517f7363f7369171e9",
+          "rgba_md5": "90f73329d43f73cceda63757c64fd3e0",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 5,
+          "name": "vip_sof5_vip_sof5_32_a_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 127,
+          "height": 61,
+          "rgba_sha256": "e373df04b9bd17d025af67b29d92ed268dae1a9756a6ff3c7e2713b0a5c25378",
+          "rgba_md5": "36429cbe45ce53cf67c1f0c252de1078",
+          "character_id": 6,
+          "name": "vip_sof5_vip_sof5_64_sd_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 32,
+          "height": 48,
+          "rgba_sha256": "e351caf6fbd0fed542d9e50dfe44c3b452eabe6d6cfec23799a299edbc78048d",
+          "rgba_md5": "9ac74ef8db14c36a41e4c25dd4b1727a",
+          "reference_rgba_zlib_base64": "eNrFmPtvFFUUx+/MblvaAoJWXhXRpN3dtmhfEAhKBUl8QEufu9uWRy1o9AeJD0pBKLSsDdhCeFqUKC2I8IsxxqhNpCCmLQUKRf8Hf8FHjGgCP8nXc+88dnZ2dnZmITjJyczs3Nzv+Zxz7tk7w5jMmDD7Q5KSPbcYwKfNIpvKwGaQzSabo157jYOS6zs6JHWqNLJM0sgme4Rh7OYgRn7/CsN/fIlhOl+5+T1YOj2TyWymske28JtuJdJjuQznbw1g8M5RfHvnECKX16Hz8hpExlqwZ/gNHDjfhp9/GVR8cKFvjLEkeWJ5J9FcUxhGfvsaQ38PoGs8jB03KrH9+mp0jNcgciWEvaNrcfDH18GmM0g0fnF5NpLnXbK8F2fSlnOUnF4QvIfRdWUtdo6H8N6NKrJqdF4l3ZFWfHhuk/AvnZiXl8jY0lyMyiLZsb44J+A9/89JdJEO590xUY2O67Xifu/YOhy4+KrOW1GSifbmhaguSEODT0bIx+Cqvjwqb67C+93tI5RbhXfHRBXpKrx7RltxZMjAW8rQvqYEVYUyaXtR5/c609d409V65rxUv+du9Qu+7ROrBO/Oa7V6fg9ffC3KW5qBrU0LUct5/UxYvV8Wxq+D+TTOEN/Y+jLk9zGtnqP5NfLq+Z0cze/W5hJilVEXkHVWbsGApPihXtuuX0M9dxrya+Q99ENsfjlvTUDhDauaRtPioPmhreNEvHzdKrzVwjqvNuKD0Q06b0aGwqvl18xrZWG/pF8rTUPNcRbD6K/fRHkpxmL9Xq9XeePr2chrp5nIDxF3irfnCYaLf55F9+hGVTvKy+u5b+htvZ6fK3XHazZed7o+56Y4XvjrDN6/1IrO8QbKb2Jevn5rAl5RP+b57OKc6Dfm49qnRY/eea2B6rtZ1PORobdi+lUMrxrrMOk2+jx0lnUftPoK+z10LxvOim59vhQTr8Hbx9BN3N2kL/rzhY0679JSm/zmKfqhPEnoa2yafkhoyAYfVP98sfnqIObIpTXE+6bgzSDeZcWSdX7zYuNnFd/kpvml3G/7qRLdY83ge4QlZVPQ3rTIkpezhvNZCnrJ9Fdi7yXSp7X3TvMzqClM13k1TbOukTsa79SM8/dS/L0U961NS1EfSI/TtuO+V/1lfTnoGVmr6Dc+S+sq7T7F2d40v7dNVKJ+ny9O382avhf95cdmond4ndBvJ/06f1qMdurxlU1mPY7vkep682P0zX7y/6pEPfRe9Vf0zSb+Fl3f6X8J7znCDL3FrXUHixDqfRytkSJM8ir61Xxv5EKfswXzJVc53x0sQWd4gdBq2zQPPbsq8DCzjn+q9af0Zj4+qh0JFWNXqIz66mS8UJiDuR6G/i2LsKf1Kcwy6LupceNYXhP6fV70OefdFSrHqkAWXi6YhpmkNZWMXs1wsOVJnGhbhtkO+e14G32SwqvuvbobnibtMqwuUHjneBXdbHW7Q9tp9vm75ehZX6Dra/0vFX2xJmjP2dVQjC7SrQ5kYhXxzlJ5M0jPa3iv4nu+Q+vnoX9zRRy/UlOyxbpTfjf25bCBl+tWBbLxUkEOcol3monX/E53ZvMC9LYUWsTfft1q2rw38Px2BcvjeCcZeI37e+M+PxG/ed/A9Zr8UX/c8mr65vfa05sXoueV+bp+rc9r4I/Ws2tes67GbtLf3+LDp20r9PUn+p857i7zK+mvMlLce5X5ON72IiKtizGDJei/VM8Kb5klb5qqE/0m4fT7hXJs27ASuWkMOXr+vYK3KcB55yfllSUW/97o4qC58MUn+zBd6FcI/t1B6hshnt8M4p1qmV8n3w2c+HLqxGGcPXEAD9H8vEd1hJeg0p+VkNe8hhNpJKp38zEw0IfP+o9iCuk8XzSXfHhU582y4HWaV6fjB05+jFP9HyGTvoVNlpjwI8umX9l+/0rh6B84DqohkBY8STXvvz6lCNqnJcmiV6Yad2t/4ycE4MzuquZ0PP5Vzfr5XdUcz+9a36X93/pWeoZY4UHbA9L/D8LyKC4=",
+          "character_id": 7,
+          "name": "vip_sof5_vip_sof5_64_g_6_0"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "the corpus's only DefineBitsLossless (tag 20) file",
+      "sha256": "eb1709a01febdefe467c3d3db53ac0c9e92415f7d9c80c798318bb5c4f0e59f0"
+    },
+    "dcr/hof_furni/BW_HeadmasterChair.swf": {
+      "signature": "CWS",
+      "bytes": 30309,
+      "tag_counts": {
+        "DefineBitsLossless2": 6,
+        "DefineBitsLossless2:zlib": 6,
+        "DefineBinaryData": 5,
+        "DefineBitsJPEG3": 1,
+        "DefineBitsJPEG3:jpeg": 1
+      },
+      "exported_total": 12,
+      "symbols": [
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 55,
+          "height": 30,
+          "rgba_sha256": "96c0ebe1a2a44fb298c8e15670afb5dd043b4c3f5dc23e1bbae52ebfef7d7633",
+          "rgba_md5": "06bf0d5572d56f7465100e7c1ddeddde",
+          "character_id": 1,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_64_sd_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 27,
+          "height": 16,
+          "rgba_sha256": "7d0ca35c9de4a64d455c860bb1b7b8e45e4f0900f32c4e8674f67ebbfcf5f88a",
+          "rgba_md5": "7963836b43eab68e4593526009aecbb3",
+          "character_id": 2,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_32_sd_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 52,
+          "height": 101,
+          "rgba_sha256": "494cf0390ccb849a6ab90cb14193e4c7332b273ae213356375c822e59e839307",
+          "rgba_md5": "f3d9ca46cec484c71fc6accf06ad445f",
+          "character_id": 3,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_32_a_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 63,
+          "height": 148,
+          "rgba_sha256": "6a95b1f61c2d903e32afeee28cd45195825032a30fd388d07dc1a5827c982b94",
+          "rgba_md5": "adab7665e5615bcd28a169de643b2ff1",
+          "character_id": 4,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_64_a_2_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 137,
+          "sha256": "3bd624b652b68ef4895b765e2e531b61dab355b541ca51db7803d1170eb6ea2e",
+          "character_id": 5,
+          "name": "BW_HeadmasterChair_index"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 17,
+          "height": 30,
+          "rgba_sha256": "5440917d81f0d243c9c6d1b614c6b2da0005ad0ca5210e649c8206ed2244047a",
+          "rgba_md5": "47d711e284bfb56c734e625593d087bb",
+          "character_id": 6,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_icon_a"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsLossless2",
+          "encoding": "zlib",
+          "width": 15,
+          "height": 14,
+          "rgba_sha256": "aab44c95e3bd29fd3f1cbb0f23cc2b6c4cdb8d5a90b76b999c6ff9258245edc8",
+          "rgba_md5": "fa743b8b899fac22862fc7ab7ebca468",
+          "character_id": 7,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_32_b_2_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 40,
+          "height": 40,
+          "rgba_sha256": "06647fb5d390da76ddc868f7bc9f1b27951d1f0de86a6ee012d40e2c8016029e",
+          "rgba_md5": "69632a4fb18f44f4ee32dc1570169c9e",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 8,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_64_b_2_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 1128,
+          "sha256": "f4b3bf4e3df8efe20e52666c63fbb3d0923399ed07a623ab90858997efe82be9",
+          "character_id": 9,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_assets"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 244,
+          "sha256": "9839d4a9d898084c4c626db2d7a9c820b6356b394effee112467c2498c2c921c",
+          "character_id": 10,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_logic"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 914,
+          "sha256": "04b10c4cdfca1a0feb29501bfc990d6b50205e33d7d9084ea288a55604d0f6c9",
+          "character_id": 11,
+          "name": "BW_HeadmasterChair_manifest"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 913,
+          "sha256": "737541d570e634de30a411be1059e3cfe84e0c285b4e8ca958052331599a8575",
+          "character_id": 12,
+          "name": "BW_HeadmasterChair_BW_HeadmasterChair_visualization"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "DefineBitsJPEG3, JPEG colour plus zlib alpha channel",
+      "sha256": "b4b3fdb8d4b8a9276c0a1eb35651a02b1c821c59aea7062d941a20db22843a3d"
+    },
+    "dcr/hof_furni/godin.swf": {
+      "signature": "FWS",
+      "bytes": 31121,
+      "tag_counts": {
+        "DefineBinaryData": 5,
+        "DefineBitsJPEG3": 3,
+        "DefineBitsJPEG3:jpeg": 2,
+        "DefineBitsJPEG3:png": 1
+      },
+      "exported_total": 8,
+      "symbols": [
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 579,
+          "sha256": "777edfc964a51b13e7461caaea506960826b0ee2296b67a6109e9793a7f1ebe7",
+          "character_id": 1,
+          "name": "godin_manifest"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 212,
+          "sha256": "d846cd8b8b30e96eee727a79e4fcad37e3c277956857ea108ff730dacc99b1de",
+          "character_id": 2,
+          "name": "godin_godin_assets"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 225,
+          "sha256": "516f287394650f18a9b1aa96797ee48f775e303fc6ce3a1e0a175f12e1bd069e",
+          "character_id": 3,
+          "name": "godin_godin_logic"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 26,
+          "height": 29,
+          "rgba_sha256": "9d2c430112769d96d97bed1b4977e5685bb24466e43f978d343cce9d908bfa9a",
+          "rgba_md5": "9a1e74f75c9dc0607014c02a3309b080",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 4,
+          "name": "godin_godin_32_a_0_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 127,
+          "sha256": "bba5c59dbc21d1fa24e14566c5624fcfa73363ecf802cb62c611aa1807701b30",
+          "character_id": 5,
+          "name": "godin_index"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 27,
+          "height": 30,
+          "rgba_sha256": "3b795db59d9e22aa4dc07d727c4b0a1075625bb107ab662656aa09da4ecd5002",
+          "rgba_md5": "d9db39fe568456e3f8ffccacba119e07",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 6,
+          "name": "godin_godin_icon_a"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 572,
+          "sha256": "10b6c1caa841982409efa37ff8444f95b5add143dcd214ac68ec346e81957325",
+          "character_id": 7,
+          "name": "godin_godin_visualization"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "png",
+          "width": 50,
+          "height": 56,
+          "rgba_sha256": "aea404dd33bf4fbac760c4bedfbe100607445e8f4476feda4d307c795e646cee",
+          "rgba_md5": "541bf4f6ec239d73d8a3c025709949f3",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 8,
+          "name": "godin_godin_64_a_0_0"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "one SWF mixing JPEG3/JPEG and JPEG3/PNG; codec chosen per character",
+      "sha256": "b7ca6122de47d120bfcd05efd750164e74f2b0ef12dad89d95a0d6fc530b1076"
+    },
+    "gordon/PRODUCTION-201611291003-338511768/hh_game_bb_room.swf": {
+      "signature": "ZWS",
+      "bytes": 361104,
+      "tag_counts": {
+        "DefineBitsJPEG2": 311,
+        "DefineBitsJPEG2:png": 311,
+        "DefineBinaryData": 88
+      },
+      "exported_total": 399,
+      "symbols": [
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 337,
+          "sha256": "008d2da8a69dd800aacb8471db5e234786d4c33ccd4727748a86b84e2e9fab9f",
+          "character_id": 1,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_chair_logic"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 51,
+          "height": 24,
+          "rgba_sha256": "1dd60ce8247111008410f25fb2c6d48d4d86aa16071ddb59c9bec6640ef1653c",
+          "rgba_md5": "211470d2cb25faef06bbd2f9a6d0f5ae",
+          "reference_rgba_zlib_base64": "eNrt0aFrAnEYxvE7589jJzuEY4LDgUwEYQga5IIrLhjEMItLV4SBZSYFw8DginBJMYjNZrKtrC0t7H/6Tn55cc0nPPHhfT68Jp3mNp/nqdViPR7zs93+me/Nhq/Vis8k4WO55LhYcJjP2c9m7CYT201GI96HQ97imOlgwGu/z0uvR9zp8Nxu2xvdKOKx0eChViOqVqmXy9yXSlSKRe4KBbvlJgy5zuUIg4Agm+XK9/E9j8tMBs8YzGnzRSpl47oujuPYGFn+xdLUX2SRRRZZZJFFFllkkUUWWWSRRZYzsvwCXSb7Hw==",
+          "character_id": 2,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb2_efct_pu_cannon_5_0"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 342,
+          "sha256": "ca049154127ad5e787ac675238a7427902e4305afe172a68b419deb607a5bc81",
+          "character_id": 3,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_corner1out_logic"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "61e35f193468d014d71258b57cba9df4891ec8828a57cf1c0077279e46d4074e",
+          "rgba_md5": "891a2488de04333e595f6b4382485ea9",
+          "reference_rgba_zlib_base64": "eNq91GEKwCAIBWCv5X08j1fe2CAoqcVeT4UH/Qg/EkwEK1W9nkhRNc/M3mT70Yth+zPP3Ycw/S8vvpXh//EY/omH+EwP8fu7p97Mb+fVvNnmzsvy0X2q9lA/67+s9lY+2uAGnMvlvA==",
+          "character_id": 4,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "eedf127de64a2286544bd1289c60912c67ad62f187ab8d920bb4ef724ebae093",
+          "rgba_md5": "8cb9f645222ff96717809fcd00ec30de",
+          "reference_rgba_zlib_base64": "eNpjYCAPqLGw/AdhBjoBG37+/9gwre1L5VbAiqltPzb7ql0DUDA17cdnH7pfqWE/KfZRw35K7CPHflBeQLeTXPsI2Q+zBzn/weylhn3Y7IfZiy+8qW0vqemLnvZRw35qlx/0tI8Y+2lpH678Tq4BAJcLYH4=",
+          "character_id": 5,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_1"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "be2f7f937ece58ed0835f8df08af3de157bb32ab13812c956f075eaa214356cd",
+          "rgba_md5": "a79fcea379296442dbc59468306f0324",
+          "reference_rgba_zlib_base64": "eNrF1bsNwCAMBNCbI3tlg5QsxWCZBZLCEiCLj7k4lq7lychgwFYBSG/gVPGxtHzt3TjUsH3NS+dVhen3vLZXhr/iMfwdz+KHYiZ3vZEvTvn+xGV4mi9u777Z7up8eXoMn/1/eHozfvxhP1gPyEnrut4=",
+          "character_id": 6,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_2"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "50fa9f75e5f348a7f03fc2695f89e0ca3f963cf25da8c29cbc06fff9b185120e",
+          "rgba_md5": "690fdabd56fde9fd41cfefb3a2e9c12a",
+          "reference_rgba_zlib_base64": "eNq908ENgCAMBVB2wgtbsIATcGYUJ3AGRnIOtEaw1KqAIMlPxGBfaKwQdctK6SHipzUr5SF+GPaEfXdvHNm09lnPuTQN/UeP3reBn+UZk+aDX+RZm6bCh1kI75bt+baf2KT35WxSZ0EOnr/oTtPp43Ae55PvcM23fsOZkFhD62tfad/hDPJCSv+viw91sY+9w6z1ivwOXm7/e3lvfm/vbt5rC6xMb0yb",
+          "character_id": 7,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_3"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "452da9548592711fc2070a8338c005c44f7bcbd340017c36676ba9c364a1bde8",
+          "rgba_md5": "581ba149055e9acb763fa8b88aef619a",
+          "reference_rgba_zlib_base64": "eNq9kr0OgjAURmF24BVcfQAW4+s48W4OxIGJgZmFgYHERRPj7ztc+0kuLdBiK9YmJzTl3u9wgSD4bm0XS9pEEQV/WvCxk68+/exTXTp8zUdJouVXfqMvz/XM9Bt9RSG5Xvqo9xz9w2/X+bKspSyJ7rcW7FXUc67/4B/5wrDvA+cT0fNBVFXToAa1ai+yRKbJT+sVvYljCTI4p67t4OcEahbmEZjed+fe72QPstKUqGmmQQ1quY8zRKbt/zWaHSAXHA99+HxY7+Bz8nvwWfk9+qz8Hn1a/wzfC1ioV18=",
+          "character_id": 8,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_4"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "23087e8c573eb6a9cc1eb23d7df7fc3ebe8c92390ababee37bf5c5fca8d0bc4b",
+          "rgba_md5": "fc33a13447e9d806a6f168cd3045fa20",
+          "reference_rgba_zlib_base64": "eNpjYCAPMPHq/wdhBjoBfimb/9gwre3jVkjFiqltPzb7TJ0qUDA17cdnH7pfqWE/KfZRw35K7CPHflBeQLeTXPsI2Q+zBzn/weylhn3Y7IfZiy+8qW0vqemLnvZRw35qlx/0tI8Y+2lpH678Tq4BAJS5X8w=",
+          "character_id": 9,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_5"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "305e1ca5cc231d36a048f5e7406f934c1d89984a765a6a65ccb10f9c8012a203",
+          "rgba_md5": "b7ce0fd1a13d569567efe414761bd12a",
+          "reference_rgba_zlib_base64": "eNpjYCATqPT9B2N6AfWN/7FiWtvn8hE7prb9WOxzyP2PgqlqPx770P1KFftJsI8q9lNgH1n2g/ICmp3k2kfQfpg9yPkPai817MNmP9xefOFNZXtJTl/0tI8a9lO7/KCnfcTYT0v7cOV3MgEA72zqKg==",
+          "character_id": 10,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_6"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "46ea82bff701f40db2aa78de513a1b57c1f756dc00d2efdae17a1a6fe28feb47",
+          "rgba_md5": "a3a1b871de6ee0963e5a73890706e21a",
+          "reference_rgba_zlib_base64": "eNpjYCAT6Hf/B2N6AZul/0GYN+U/GMP4tLbPr/c/Vkx1+7HYN203Kqaq/XjsQ/crVewnwr646aiYIvtJsC9zHiomy35QXkCzE5s+ZDvR/YvNbmzmwO1Gzn9APnPs//9Z87CnV2z2YbMfm16QmSCzCYU3SA0II+s1qMIMV/RwB6lB1gMzh9T0hW4/yFxk+5HtQ7aTLPtIsJ8m9hEZ/jSzD4/9dLEPR34nVz8A0klYMQ==",
+          "character_id": 11,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_7"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG2",
+          "encoding": "png",
+          "width": 30,
+          "height": 15,
+          "rgba_sha256": "82f8eb3933d14ab2aaa7b341e4ec43fe1e88645fd43e03a3ca5f99891ab1eb90",
+          "rgba_md5": "22aecd37fe530ee27cbd54a2ddd257fc",
+          "reference_rgba_zlib_base64": "eNq9kj0KwkAUhNOL2FvZegfP4Cm08CziEfQY9hZaWIhgEVADGvxBBMUTjAzhsZtlN26Ma+AjYTNvvmySKPruqLX6aDQ7iP500CdOOYf0i0932Qi1v8EEVn7ld/kWWztV/S7fMlEcH3n0e2X95reT+VmcsToAp2cGr3X0dcl/8pu+ei/vI/s7cHkBm7QYZpjVZ9nFTpe/PQRId6Rgh/TEZz/kOYneRTdxvW9xj+dqhl3TNbC7FsMMszInHez0/b/MvRP2kuSWR9bNfBlfGX8In48/pM/HH9Jn81fxvQHQR3xJ",
+          "character_id": 12,
+          "name": "hh_game_bb_room_hh_game_bb_room_bb_tile_32_a_0_8"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "DefineBitsJPEG2 at volume (311 exports), mandatory per P1c",
+      "sha256": "a30b09e787bd3efae2b2a82537d35ea31087b081568471ce0343b0fa97a4a2f5"
+    },
+    "gordon/PRODUCTION-201611291003-338511768/hh_game_bb.swf": {
+      "signature": "ZWS",
+      "bytes": 413690,
+      "tag_counts": {
+        "DefineSound": 14,
+        "DefineBinaryData": 6
+      },
+      "exported_total": 20,
+      "symbols": [
+        {
+          "character_id": 1,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 51840,
+          "seek_samples": 0,
+          "mp3_bytes": 9404,
+          "mp3_sha256": "9e3fc499c2222a4322d87e8ee449ab49dd623cb959485391f44fa40b54da600d",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_5_mp3$4b50afb67338bd80b7b7bf753c65dc37180499846"
+        },
+        {
+          "character_id": 2,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 87552,
+          "seek_samples": 0,
+          "mp3_bytes": 15882,
+          "mp3_sha256": "28d9149d2bd08dce12d53b9d50769d1b1958ebedb4d18acb4a2cfcee8b39ef9e",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_1_mp3$4d7220f344bcb2d5dbbc5947ce43ead7176936834"
+        },
+        {
+          "character_id": 3,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 41472,
+          "seek_samples": 0,
+          "mp3_bytes": 7523,
+          "mp3_sha256": "d87228d2853049dcd1f6bfe349965d0561e0de2e489ebec911742e527bb48b9f",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_6_mp3$32a364613cd29532419e7383736dc80e181415417"
+        },
+        {
+          "character_id": 4,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 112896,
+          "seek_samples": 0,
+          "mp3_bytes": 20480,
+          "mp3_sha256": "e80bda90db74afcbbb760a5ec7012de67f5978d95e13de678abba9e2f8b3a58d",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_10_stunned_mp3$02d1fa576e3a3011266cc43bb247d7d8-1505856044"
+        },
+        {
+          "character_id": 5,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 29952,
+          "seek_samples": 0,
+          "mp3_bytes": 5433,
+          "mp3_sha256": "2d1017f6f311df4edbc649acfd5b8e945b8bd326ffa34b6caf058900bca9efd9",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_3_mp3$058086404c00a3be273ce98b860f34f9183493764"
+        },
+        {
+          "character_id": 6,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 12672,
+          "seek_samples": 0,
+          "mp3_bytes": 2298,
+          "mp3_sha256": "a1ed55992d53e66a528be6ce7d437b9ea4a90b0f72a4071716d780d7a3ea0785",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_18_poweruppickup_mp3$1bc1539d023aea78edeb3eff56d785e21302987527"
+        },
+        {
+          "character_id": 7,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 44928,
+          "seek_samples": 0,
+          "mp3_bytes": 8150,
+          "mp3_sha256": "59efc1244256d0661a0839480a58317adfc26b29f012e6997100c74b743d2f03",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_8_mp3$5bff4816eca33ceda724f580afa9f96d171211515"
+        },
+        {
+          "character_id": 8,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 149760,
+          "seek_samples": 0,
+          "mp3_bytes": 27167,
+          "mp3_sha256": "526bd9ab90f60c455f69065fe81379d40490389cb758583a5ecf7666a226f965",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_LS_C64_loose_1_mp3$17067f1d4960e0dbb759757857f4f8bc-1506714429"
+        },
+        {
+          "character_id": 9,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 226944,
+          "seek_samples": 0,
+          "mp3_bytes": 41168,
+          "mp3_sha256": "ef171c566a7d5f93faeefa75a69770c93a8b465eae1baa27dec7535078e7168b",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb__5sec_powerup_activation_v1_mp3$c6f5fa1d58df25355fac7bbb5fff002e776589980"
+        },
+        {
+          "character_id": 10,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 140544,
+          "seek_samples": 0,
+          "mp3_bytes": 25495,
+          "mp3_sha256": "c768468c0d52f62c3148ec72bffc3491b0a398f870f4aaa904c1b87de474cfeb",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_LS_C64_win_1_mp3$93e5084ea508fcfe580cd02cd9e837d6-405328127"
+        },
+        {
+          "character_id": 11,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 1390464,
+          "seek_samples": 0,
+          "mp3_bytes": 252238,
+          "mp3_sha256": "69770216dc51ab8feead62fcb4bca19bbaaf07ea8caf56e80ec08c26d406e515",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_BB2_musicloop_mp3$17e8583dfa3f8f3c38e1dbe4e6c109661476542617"
+        },
+        {
+          "character_id": 12,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 46080,
+          "seek_samples": 0,
+          "mp3_bytes": 8359,
+          "mp3_sha256": "eb501a1e9662eedd40b31a030e247800ac08a3c1cc2016adedd1da9bb74dde81",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_4_mp3$a16984565f6471e5db6767361f51ac6a184294407"
+        },
+        {
+          "character_id": 13,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 11520,
+          "seek_samples": 0,
+          "mp3_bytes": 2089,
+          "mp3_sha256": "d6ac13b544a1dbff6b0e9c342db0f621522903088bbb53d5ed5164e18c7541b5",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_2_mp3$7ea0e3d516aa169251aa1e69f314435e177852165"
+        },
+        {
+          "character_id": 14,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 46080,
+          "seek_samples": 0,
+          "mp3_bytes": 8359,
+          "mp3_sha256": "5b65c6009eea94624e642425881054f5f47404cb60967a0eb9e5b9037b177d37",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_bb_SFX_7_mp3$089ff7dad68bd9409d920f580bd0ce0f170280312"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "DefineSound(MP3), 14 reachable exports the game code plays",
+      "sha256": "c60f25a08acb484fd182d26496c46ddbc6ae5381198d491935b2f1fc6b3907b7"
+    },
+    "gordon/PRODUCTION-201611291003-338511768/hh_game_snowwar.swf": {
+      "signature": "ZWS",
+      "bytes": 77039,
+      "tag_counts": {
+        "DefineSound": 10,
+        "DefineBinaryData": 6
+      },
+      "exported_total": 16,
+      "symbols": [
+        {
+          "character_id": 1,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 165888,
+          "seek_samples": 0,
+          "mp3_bytes": 15725,
+          "mp3_sha256": "7a6cc8ca9777a321c6391b923290cd303c8d5dbb54fb97d5e92b6f1cc8f5d77f",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_C64_win_1_mp3$1c3e535dedf85426f4fd1d5d4017e786-89596644"
+        },
+        {
+          "character_id": 2,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 8064,
+          "seek_samples": 0,
+          "mp3_bytes": 1462,
+          "mp3_sha256": "1bb0544dd40ad976a798f47211653296cd5305af82930f8039d0b621dfc8eac2",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_getsnowball_mp3$a26d4ca1a27126f22ceebc3d0558fbbf1898112148"
+        },
+        {
+          "character_id": 3,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 54144,
+          "seek_samples": 0,
+          "mp3_bytes": 9822,
+          "mp3_sha256": "be96dc770260209b149135956f037fcaa7c32028d02b481e3719faa7836deb6a",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_walk_loop_1_mp3$50648abb898af757dfb5e99ef26a0eab-962644904"
+        },
+        {
+          "character_id": 4,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 50688,
+          "seek_samples": 0,
+          "mp3_bytes": 9195,
+          "mp3_sha256": "f131abbbc554bf96638f3788ee4c2512abd291c8588e4cad51d9a74bf67c399b",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_hit_3_mp3$fcfd2b1e4dba2f877284ba45bf4f6988206409381"
+        },
+        {
+          "character_id": 5,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 26496,
+          "seek_samples": 0,
+          "mp3_bytes": 4806,
+          "mp3_sha256": "e3c0deb0d80a3301652f7038fa9de629b8840c9e37de06edc6ce21300790abc8",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_hit_1_mp3$2fb19b97c743a3bfd630a12a1b7330df208232867"
+        },
+        {
+          "character_id": 6,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 14976,
+          "seek_samples": 0,
+          "mp3_bytes": 2821,
+          "mp3_sha256": "5380a63859d2064820a98ce43055dc443e6ef5d2fba1711920a98940f0960e54",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_throw_mp3$f2246ebb7a2b6b0de311d5b51e67a1bf1138682306"
+        },
+        {
+          "character_id": 7,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 161280,
+          "seek_samples": 0,
+          "mp3_bytes": 15307,
+          "mp3_sha256": "98f73a94944d084c5d767c6f84ee5985ce9ba11b568e22334c0b5f7192394c62",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_C64_draw_1_mp3$18b198b1b358c21143e99e6ffe255a4d1224082874"
+        },
+        {
+          "character_id": 8,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 31104,
+          "seek_samples": 0,
+          "mp3_bytes": 5642,
+          "mp3_sha256": "a9236ec4dd76e54865011db52dd4e7ff7b9b0477c404767ee4225ad1ab26b980",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_hit_2_mp3$02610928dfc37e7c17e86a0f4e9ac689209688866"
+        },
+        {
+          "character_id": 9,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 20736,
+          "seek_samples": 0,
+          "mp3_bytes": 3918,
+          "mp3_sha256": "9ce20ab0606c2c4156920ea676f83a77cbc5d78876b302bd2408cc969610b9f5",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_miss_mp3$7bde4ee912f151445e1f47d3cf558f091766644402"
+        },
+        {
+          "character_id": 10,
+          "format": "MP3",
+          "rate_hz": 44100,
+          "bits": 16,
+          "channels": 1,
+          "sample_count": 160128,
+          "seek_samples": 0,
+          "mp3_bytes": 15411,
+          "mp3_sha256": "dba50dc9fc04fa4336254e23cda4bfa39f8a5f489898357a5a09310f8a242cfe",
+          "supported": true,
+          "kind": "sound",
+          "tag": "DefineSound",
+          "name": "hh_game_snowwar_LS_C64_loose_1_mp3$45916922eb1c92144c229583234095d2-232717026"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 32,
+          "sha256": "50f2c38878b11dabc87ba7aecddc38920054e005a715d01fa51223d72b113c1c",
+          "character_id": 11,
+          "name": "hh_game_snowwar_index"
+        },
+        {
+          "kind": "binary",
+          "tag": "DefineBinaryData",
+          "bytes": 165,
+          "sha256": "5522d93663bc8671f3f978ce6e4c6737995f54124840cf5e676dfd7f824f09e2",
+          "character_id": 12,
+          "name": "hh_game_snowwar_snowwar_loungemenu_thread_index_data"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "DefineSound(MP3), the other 10 reachable game exports",
+      "sha256": "4f285635e34d5b55d337632ebbd62ec46865bd962cafa5a257c561824d65993e"
+    },
+    "gordon/PRODUCTION-201611291003-338511768/elephants.swf": {
+      "signature": "CWS-no-adler",
+      "bytes": 117836,
+      "tag_counts": {
+        "DefineBitsJPEG3": 89,
+        "DefineBitsJPEG3:jpeg": 89,
+        "DefineBitsLossless2": 9,
+        "DefineBitsLossless2:zlib": 9,
+        "DefineBinaryData": 5
+      },
+      "exported_total": 121,
+      "symbols": [
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 21,
+          "rgba_sha256": "ddb13e57fca56a175a838705e7e5dce6e3a2cdbdaa982e43972d984f3d1a8dab",
+          "rgba_md5": "2df81d519509e9c0592de8fd75994af2",
+          "reference_rgba_zlib_base64": "eNqVVklMm0cU/m3cJq3UBYmIQtgxq42NMYtxjdnBgNlSzO4N72DsH684YHCTkKRCitIccqh67p0Dl6rKjWtV5RJVvURRLz30wgFFQtXXmfmx+SFQUUufRv/Mm/e9982bN+a4G/4kZ8j9pAIkeXQsyuOkGQkny2hbO18b+0dQWdt4wElkWsFG5EYi4bj/yymgSqFUvVU2qd8RxoxB2/77VjiKSCCE/j4TPKs8Yqk0Fu0uyOsbDklcuhulca2RVN5p7H3n8gextGiHqdOAtNuH54kU4k7CUV6D5rav0abvgTuwjujmNvTG3mNBl+vyZZrFCDIE0zkNmUYyn76778+V1XXMLDnRY+xHyuXFi1gCP+4+RJjEMGGeRiSZxkogjOaOLswsWEH28Zc5RVw6lbbjxOpehdMfwoRlCepWHYm7k4x6LDm8CPAJ+EIxmCYtmBqbxgOSy4t4EnuRBEYHTHD7Qth9/Axbj/aJDx4DI5MnhFN3Dad+aGTivScYQXhzF3zqwRky4JO72NjMMLBvAvdaFL09QzCqNPBbFuC2ujE7a0MonsZabAuzdj/MFhsWSJylFTUHtNYu61lWVXPo8KzBH07m+FIP9rHz5HkOid2nuTX3egIuHw+vLwhti47ltxLYgH/jPuyBCOaca2y0usm6ziA6z/NR3dJxQrVwBeMkz2+Z3+j2HhKZ7wQQvo37D9l8ML4Dhz8KB/HpCPBQthnYuBZLI7bzBDyxs5J4xkieVm+YnKn9PcfJ9Od1wWoxpWhuZ/pTPzSHLG+WJ4tQMoOVtRixjZyBR9eAGdPzDqZpnMS2tfcMdn8Ykk/zsewJwROMobC4/FDMqda2ntIayXJm4eNTTKssvOFNNu9cjV7gHJ9ZhqF/jGm7nhBqwccnEd9+xL4dvjAGR6dOSa4GylleLX81NnkPQ6QGL3LyLFZxDJdBubO2ihY9bJ51Nke1CES2GGicdv8GW6tXNP98lmuG1PIvtH4ucwqI3AA85u0+1KnaMWieYXUjXl90BdkcyfUfwtd9VkOGYfO908va3pQvC7q/ul71t7xB/RvlEPuj+S+7AiBc6dxdqaw9tOVy5XP+smdGzyQ7snniQ9BezBlCXaP6D6LblyWVNb/WKjS0JzAN6F7L8grtSenzOypjPYHuE8CzXkPvoIt8U5CaZ31J3W6Aqq2LobPHhOyeZacHpWVVP1zol5x0NE92+3Hf8DhmrS4UlpS/EveFO0Ulx7Q/qwjoqNR0IO/256857qNdAnruCwQm87QlF9es1cPsKYrKql5+0MsF37dILzqyEW1rGlUQczZpWo+pvrN2L+ZsXsap0rQTTmmBOPYKed2R3RvK2dG8LYs2qtvLq/sqmf34k/0F28qVnEIvirK7Rnu7Sq0hvrh6sR3lpHY2oju16x0yQ9OmQ8GdwjfXvYE5zvomMad+cFQ4T1YPgSCmLPPo6NSRPLmCqzipXTCags3lA3nDYTQa35y/j2JxpbdITR3NW5346uJ5xuzkLaTvWEd3H/qGR9Hd04f8/C9+uiiShHHSmqK1PzAyjuq6ehSX3P2LrCqufOc56WcKdQu+mVsU3RUh/tJK+YGyWYu75VUYHDKhtlaO0pJiz4f/H6RVDUrN20a1FiUVlaipq4VCofj+v//zSAezfP8CXUEuBg==",
+          "character_id": 1,
+          "name": "elephants_elephants_32_a_1_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 21,
+          "rgba_sha256": "ddb13e57fca56a175a838705e7e5dce6e3a2cdbdaa982e43972d984f3d1a8dab",
+          "rgba_md5": "2df81d519509e9c0592de8fd75994af2",
+          "reference_rgba_zlib_base64": "eNqVVklMm0cU/m3cJq3UBYmIQtgxq42NMYtxjdnBgNlSzO4N72DsH684YHCTkKRCitIccqh67p0Dl6rKjWtV5RJVvURRLz30wgFFQtXXmfmx+SFQUUufRv/Mm/e9982bN+a4G/4kZ8j9pAIkeXQsyuOkGQkny2hbO18b+0dQWdt4wElkWsFG5EYi4bj/yymgSqFUvVU2qd8RxoxB2/77VjiKSCCE/j4TPKs8Yqk0Fu0uyOsbDklcuhulca2RVN5p7H3n8gextGiHqdOAtNuH54kU4k7CUV6D5rav0abvgTuwjujmNvTG3mNBl+vyZZrFCDIE0zkNmUYyn76778+V1XXMLDnRY+xHyuXFi1gCP+4+RJjEMGGeRiSZxkogjOaOLswsWEH28Zc5RVw6lbbjxOpehdMfwoRlCepWHYm7k4x6LDm8CPAJ+EIxmCYtmBqbxgOSy4t4EnuRBEYHTHD7Qth9/Axbj/aJDx4DI5MnhFN3Dad+aGTivScYQXhzF3zqwRky4JO72NjMMLBvAvdaFL09QzCqNPBbFuC2ujE7a0MonsZabAuzdj/MFhsWSJylFTUHtNYu61lWVXPo8KzBH07m+FIP9rHz5HkOid2nuTX3egIuHw+vLwhti47ltxLYgH/jPuyBCOaca2y0usm6ziA6z/NR3dJxQrVwBeMkz2+Z3+j2HhKZ7wQQvo37D9l8ML4Dhz8KB/HpCPBQthnYuBZLI7bzBDyxs5J4xkieVm+YnKn9PcfJ9Od1wWoxpWhuZ/pTPzSHLG+WJ4tQMoOVtRixjZyBR9eAGdPzDqZpnMS2tfcMdn8Ykk/zsewJwROMobC4/FDMqda2ntIayXJm4eNTTKssvOFNNu9cjV7gHJ9ZhqF/jGm7nhBqwccnEd9+xL4dvjAGR6dOSa4GylleLX81NnkPQ6QGL3LyLFZxDJdBubO2ihY9bJ51Nke1CES2GGicdv8GW6tXNP98lmuG1PIvtH4ucwqI3AA85u0+1KnaMWieYXUjXl90BdkcyfUfwtd9VkOGYfO908va3pQvC7q/ul71t7xB/RvlEPuj+S+7AiBc6dxdqaw9tOVy5XP+smdGzyQ7snniQ9BezBlCXaP6D6LblyWVNb/WKjS0JzAN6F7L8grtSenzOypjPYHuE8CzXkPvoIt8U5CaZ31J3W6Aqq2LobPHhOyeZacHpWVVP1zol5x0NE92+3Hf8DhmrS4UlpS/EveFO0Ulx7Q/qwjoqNR0IO/256857qNdAnruCwQm87QlF9es1cPsKYrKql5+0MsF37dILzqyEW1rGlUQczZpWo+pvrN2L+ZsXsap0rQTTmmBOPYKed2R3RvK2dG8LYs2qtvLq/sqmf34k/0F28qVnEIvirK7Rnu7Sq0hvrh6sR3lpHY2oju16x0yQ9OmQ8GdwjfXvYE5zvomMad+cFQ4T1YPgSCmLPPo6NSRPLmCqzipXTCags3lA3nDYTQa35y/j2JxpbdITR3NW5346uJ5xuzkLaTvWEd3H/qGR9Hd04f8/C9+uiiShHHSmqK1PzAyjuq6ehSX3P2LrCqufOc56WcKdQu+mVsU3RUh/tJK+YGyWYu75VUYHDKhtlaO0pJiz4f/H6RVDUrN20a1FiUVlaipq4VCofj+v//zSAezfP8CXUEuBg==",
+          "character_id": 1,
+          "name": "elephants_elephants_32_a_1_300"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 56,
+          "rgba_sha256": "056ee4bf55e77b5fd42c1dc15dd58246b57a75557e4524dbb61159786bfd69a1",
+          "rgba_md5": "09177d8884e21a036fcde8e548b4b34a",
+          "reference_rgba_zlib_base64": "eNqlWVtXGzcQtl0IzV8roXCKneS4JQ6QnNgtwQu80AuGkMOlHErIYwv9pW1W1TejkUZayTb0YbB3Lc0nzX0GY0zLWKottdoL9s+iabUttRZM7X57KBGvlvBaos+6sObNux2zPdwlwnecoX4UXifiBQJ/vQ7PeH9y8clMLm7M61FltkZ7vLbdyeLWjhp4bfDaMZvDiviA3/H5jXk7fB/hYh3WTC5uzZGj16N9eid3nZegl63R2OExL+DyXRdNrc4G/kcKc0K4lX2/y/qFrmdRa5Hkg30pL7wHn9rLdYfOksdkXNHLpqP0+Y29Gz4hn4Elzeu380/Ej+/aobNpzImTK/CEBkOW1fEl6zsm3sP6Y7zB6MDxAPZnddcxY9r74nzgd+TxNKbsvS3QZyI5K/A0Jr7L75vOfgVT7pliaYplfxPpg2zuR4s1dKT2BVk4TCfb4/PrSJ6eR4I7cKTXDfSaBJPtoSJ/2Xr33unTxoLhTy4GLDqbyN/zoQQ+uA/44pN9tGMkboD+df4luDmCzZd+E/JyIj9bYL4k0zgW1XXtfXpzFMctTavdfoPSNXLmbefb9axYifgw2uHY/L/oqfdHMwcm9qx0fyjQK0f535+tf++/M/b0PCExacXK61nP7u9Z3s8H9OmpO2BS7xprenImyP4l5YksnpX72nqf1z7fID45W0x5g8rrFG4iY7bdRbO6zrLL8ah+PvWk8fz7w4+NWMDYjNuwWbon67Dp+4y3d8iksXOUOy/pNqkVcG/YPH6T2COY4DM+/FDE3PvlI/9uP+XZxwTHC3yhN7mr2CrZnJXVYLg3U7bAQIwdR/gnxTgNfUFvcldgr62/9JjTYpnw17E+yLScG9iOX5EsJX/CrkqYPs5b+4CdjIuYKg8kstL+I7lsxelS277OKcTDYVZWX8D69XI+TOG53BtkMeGT2r9zcpV7Ti45/4vtaFxg5vw4YC5Esl3ubhRtZ5KpE+idrXdK/qLxRJ+p3Wq5aj7l2oTvPFFyhl2HHLpvvu1tOLzgo8DW8QCkZbbndDgVV2Hq+wITeY0w26qmtpjIB2FN0x9T2UqNk9pvA9PKLMXUsi1hRviOSs85vXpMK9svNeOJDaU+Miu2PiTuahtqdZ7Qd+g5V+uVeGp9p8/Z+Ac/dPkF/unj+3D+mk7rS9eYg7T2jOLf4zGzdxoeNHLgPJilnDItx+TXVDMxV5Q+Hy3bQp8jhPiWYkocgny3RgczMeHP3Gvmewt9lhD/BPNJFG+R58hHM72KvOP++6mv27lX3M/qU8f4kD9Vzu7mckqlet8Yi5+XqG4X3PR+kCk+fcxtfxXHeIcpOU0wwS/wr1QPJf3BUtRX5XIZ19g6xoe8Atzl9bh2Db1H4I38pTG1buVuzTyW5pV+sU5vYlZ+3pCepZSrV5MaV9eauT2yDzrhOrhPPTbqZXmetRc2ozGlB4T9l/ZJLyAY6JsfgpnW1L53UHuXHeneCHbV6nxNGJDlVEylI6mDcj2SxvzG2sFydNZge/Bn+Af5eDvUqhGusokV55cB74u3XV1bN3u6vqrDO2at+8L3lvRs92KN1g/kwn4Z+jL08xoTManZx/azs1Wp35iPzAuWpuxv9qC4w1vr+7k+nWYfM3p0mcXOu19sCL1Tbkax+t2LuTBFvprSnpdlG2bG25kZDWZVH86vGntymKdn1zx7sjFJZjphNmrjLGYzGrMdMEPuVrPUmZgdsgc/a1T5fzMzpxZM3Ono/A+Viyo/V7r7+x6Mw77aEeG1zN3dnzSroDNHc81b4kuYdRMTMoRsZD4e4mwB0wTM+/u/HOauP6/MIRmzE2Hq2f3p2ZXFvlZ0RfPAaTbk5/52HZ/7mujk7He2hSkzovh/FJoWlC/W2f8FiO3He7nv+yfR/X9YW8hz",
+          "character_id": 2,
+          "name": "elephants_elephants_64_a_7_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 56,
+          "rgba_sha256": "056ee4bf55e77b5fd42c1dc15dd58246b57a75557e4524dbb61159786bfd69a1",
+          "rgba_md5": "09177d8884e21a036fcde8e548b4b34a",
+          "reference_rgba_zlib_base64": "eNqlWVtXGzcQtl0IzV8roXCKneS4JQ6QnNgtwQu80AuGkMOlHErIYwv9pW1W1TejkUZayTb0YbB3Lc0nzX0GY0zLWKottdoL9s+iabUttRZM7X57KBGvlvBaos+6sObNux2zPdwlwnecoX4UXifiBQJ/vQ7PeH9y8clMLm7M61FltkZ7vLbdyeLWjhp4bfDaMZvDiviA3/H5jXk7fB/hYh3WTC5uzZGj16N9eid3nZegl63R2OExL+DyXRdNrc4G/kcKc0K4lX2/y/qFrmdRa5Hkg30pL7wHn9rLdYfOksdkXNHLpqP0+Y29Gz4hn4Elzeu380/Ej+/aobNpzImTK/CEBkOW1fEl6zsm3sP6Y7zB6MDxAPZnddcxY9r74nzgd+TxNKbsvS3QZyI5K/A0Jr7L75vOfgVT7pliaYplfxPpg2zuR4s1dKT2BVk4TCfb4/PrSJ6eR4I7cKTXDfSaBJPtoSJ/2Xr33unTxoLhTy4GLDqbyN/zoQQ+uA/44pN9tGMkboD+df4luDmCzZd+E/JyIj9bYL4k0zgW1XXtfXpzFMctTavdfoPSNXLmbefb9axYifgw2uHY/L/oqfdHMwcm9qx0fyjQK0f535+tf++/M/b0PCExacXK61nP7u9Z3s8H9OmpO2BS7xprenImyP4l5YksnpX72nqf1z7fID45W0x5g8rrFG4iY7bdRbO6zrLL8ah+PvWk8fz7w4+NWMDYjNuwWbon67Dp+4y3d8iksXOUOy/pNqkVcG/YPH6T2COY4DM+/FDE3PvlI/9uP+XZxwTHC3yhN7mr2CrZnJXVYLg3U7bAQIwdR/gnxTgNfUFvcldgr62/9JjTYpnw17E+yLScG9iOX5EsJX/CrkqYPs5b+4CdjIuYKg8kstL+I7lsxelS277OKcTDYVZWX8D69XI+TOG53BtkMeGT2r9zcpV7Ti45/4vtaFxg5vw4YC5Esl3ubhRtZ5KpE+idrXdK/qLxRJ+p3Wq5aj7l2oTvPFFyhl2HHLpvvu1tOLzgo8DW8QCkZbbndDgVV2Hq+wITeY0w26qmtpjIB2FN0x9T2UqNk9pvA9PKLMXUsi1hRviOSs85vXpMK9svNeOJDaU+Miu2PiTuahtqdZ7Qd+g5V+uVeGp9p8/Z+Ac/dPkF/unj+3D+mk7rS9eYg7T2jOLf4zGzdxoeNHLgPJilnDItx+TXVDMxV5Q+Hy3bQp8jhPiWYkocgny3RgczMeHP3Gvmewt9lhD/BPNJFG+R58hHM72KvOP++6mv27lX3M/qU8f4kD9Vzu7mckqlet8Yi5+XqG4X3PR+kCk+fcxtfxXHeIcpOU0wwS/wr1QPJf3BUtRX5XIZ19g6xoe8Atzl9bh2Db1H4I38pTG1buVuzTyW5pV+sU5vYlZ+3pCepZSrV5MaV9eauT2yDzrhOrhPPTbqZXmetRc2ozGlB4T9l/ZJLyAY6JsfgpnW1L53UHuXHeneCHbV6nxNGJDlVEylI6mDcj2SxvzG2sFydNZge/Bn+Af5eDvUqhGusokV55cB74u3XV1bN3u6vqrDO2at+8L3lvRs92KN1g/kwn4Z+jL08xoTManZx/azs1Wp35iPzAuWpuxv9qC4w1vr+7k+nWYfM3p0mcXOu19sCL1Tbkax+t2LuTBFvprSnpdlG2bG25kZDWZVH86vGntymKdn1zx7sjFJZjphNmrjLGYzGrMdMEPuVrPUmZgdsgc/a1T5fzMzpxZM3Ono/A+Viyo/V7r7+x6Mw77aEeG1zN3dnzSroDNHc81b4kuYdRMTMoRsZD4e4mwB0wTM+/u/HOauP6/MIRmzE2Hq2f3p2ZXFvlZ0RfPAaTbk5/52HZ/7mujk7He2hSkzovh/FJoWlC/W2f8FiO3He7nv+yfR/X9YW8hz",
+          "character_id": 2,
+          "name": "elephants_elephants_64_a_7_200"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 56,
+          "rgba_sha256": "056ee4bf55e77b5fd42c1dc15dd58246b57a75557e4524dbb61159786bfd69a1",
+          "rgba_md5": "09177d8884e21a036fcde8e548b4b34a",
+          "reference_rgba_zlib_base64": "eNqlWVtXGzcQtl0IzV8roXCKneS4JQ6QnNgtwQu80AuGkMOlHErIYwv9pW1W1TejkUZayTb0YbB3Lc0nzX0GY0zLWKottdoL9s+iabUttRZM7X57KBGvlvBaos+6sObNux2zPdwlwnecoX4UXifiBQJ/vQ7PeH9y8clMLm7M61FltkZ7vLbdyeLWjhp4bfDaMZvDiviA3/H5jXk7fB/hYh3WTC5uzZGj16N9eid3nZegl63R2OExL+DyXRdNrc4G/kcKc0K4lX2/y/qFrmdRa5Hkg30pL7wHn9rLdYfOksdkXNHLpqP0+Y29Gz4hn4Elzeu380/Ej+/aobNpzImTK/CEBkOW1fEl6zsm3sP6Y7zB6MDxAPZnddcxY9r74nzgd+TxNKbsvS3QZyI5K/A0Jr7L75vOfgVT7pliaYplfxPpg2zuR4s1dKT2BVk4TCfb4/PrSJ6eR4I7cKTXDfSaBJPtoSJ/2Xr33unTxoLhTy4GLDqbyN/zoQQ+uA/44pN9tGMkboD+df4luDmCzZd+E/JyIj9bYL4k0zgW1XXtfXpzFMctTavdfoPSNXLmbefb9axYifgw2uHY/L/oqfdHMwcm9qx0fyjQK0f535+tf++/M/b0PCExacXK61nP7u9Z3s8H9OmpO2BS7xprenImyP4l5YksnpX72nqf1z7fID45W0x5g8rrFG4iY7bdRbO6zrLL8ah+PvWk8fz7w4+NWMDYjNuwWbon67Dp+4y3d8iksXOUOy/pNqkVcG/YPH6T2COY4DM+/FDE3PvlI/9uP+XZxwTHC3yhN7mr2CrZnJXVYLg3U7bAQIwdR/gnxTgNfUFvcldgr62/9JjTYpnw17E+yLScG9iOX5EsJX/CrkqYPs5b+4CdjIuYKg8kstL+I7lsxelS277OKcTDYVZWX8D69XI+TOG53BtkMeGT2r9zcpV7Ti45/4vtaFxg5vw4YC5Esl3ubhRtZ5KpE+idrXdK/qLxRJ+p3Wq5aj7l2oTvPFFyhl2HHLpvvu1tOLzgo8DW8QCkZbbndDgVV2Hq+wITeY0w26qmtpjIB2FN0x9T2UqNk9pvA9PKLMXUsi1hRviOSs85vXpMK9svNeOJDaU+Miu2PiTuahtqdZ7Qd+g5V+uVeGp9p8/Z+Ac/dPkF/unj+3D+mk7rS9eYg7T2jOLf4zGzdxoeNHLgPJilnDItx+TXVDMxV5Q+Hy3bQp8jhPiWYkocgny3RgczMeHP3Gvmewt9lhD/BPNJFG+R58hHM72KvOP++6mv27lX3M/qU8f4kD9Vzu7mckqlet8Yi5+XqG4X3PR+kCk+fcxtfxXHeIcpOU0wwS/wr1QPJf3BUtRX5XIZ19g6xoe8Atzl9bh2Db1H4I38pTG1buVuzTyW5pV+sU5vYlZ+3pCepZSrV5MaV9eauT2yDzrhOrhPPTbqZXmetRc2ozGlB4T9l/ZJLyAY6JsfgpnW1L53UHuXHeneCHbV6nxNGJDlVEylI6mDcj2SxvzG2sFydNZge/Bn+Af5eDvUqhGusokV55cB74u3XV1bN3u6vqrDO2at+8L3lvRs92KN1g/kwn4Z+jL08xoTManZx/azs1Wp35iPzAuWpuxv9qC4w1vr+7k+nWYfM3p0mcXOu19sCL1Tbkax+t2LuTBFvprSnpdlG2bG25kZDWZVH86vGntymKdn1zx7sjFJZjphNmrjLGYzGrMdMEPuVrPUmZgdsgc/a1T5fzMzpxZM3Ono/A+Viyo/V7r7+x6Mw77aEeG1zN3dnzSroDNHc81b4kuYdRMTMoRsZD4e4mwB0wTM+/u/HOauP6/MIRmzE2Hq2f3p2ZXFvlZ0RfPAaTbk5/52HZ/7mujk7He2hSkzovh/FJoWlC/W2f8FiO3He7nv+yfR/X9YW8hz",
+          "character_id": 2,
+          "name": "elephants_elephants_64_a_7_300"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 15,
+          "height": 28,
+          "rgba_sha256": "586d85985529385f4b96eeea8a8dbeef62b9b882e56d7afacd964b7425bf9c62",
+          "rgba_md5": "b155453ff300ea97f70953302ced9a1e",
+          "reference_rgba_zlib_base64": "eNqlVc1TUlEUfxhNu6ZMU1McBVFQgRqg1ADFjxLDgEgS/AJeDvhUfCAl9MSQzGqcrP+irYu2LNq0bdlf0fZtXJzuOXjJalrFzJnzzvmd3733fNyLoNEKHd09n28674LBNPhN0FxoFH77NZyJttFgGvhmc4xAR7fxc813UdnMPYdi+RBESYZrLTc+/YonDsm16+2fVqUMxa3nCsB8Skd3XzWv7MPLw2PY3n0Fgcgi2G67ANfHs9gcQ6QDkWXCS4fvSXd291YH7cOw9/oIpGwR4ms5JjLklAqtVX7zgXSuuH+G5UDa3iW+lfGs9juws3cAybUsJNI1fDWzA1uF/bqgjRiKKOUoHnmdemO1y2j+OjkdUhNpuRYjbdf34VLjyjDpC6gYr+syVnk9+m3OH/aRMbA63SS9Fif0DNhJo21xuMDJ8AGr/Qevo0ZzAfWwyWJXfcEIzD5e/KcgbjRZVLbXMN/T0NevPoomICZKdL6UXISFp5vgn1smjTb6F5IShObjoO9DPvXXM+T2nsZTW4Sv50sgFyt/CdaXck9l4bZ76lTQaD2tOkPVH47CSnqLSZbwtZzC+nQAysF70mjzmmGMP7wAre1dVb3ZxnKJwXxCquPYk3zpEPbefCSNNseiyXXK3dh/Ezg3GE2yfDcgvVWE7ItXUKy8g9LbYyhUjkBmNuaMeCgmErfHbAFBc0nBOcSzYE7ZQgV2Xx+zPY+JW2J7K8zmOWMczqeguaggNxyL03kyO2WKwRx3yu/qgjb6Ece4cCwJeId62JkjSyL5xI1nNIO8tnh2/o1+xDEusrSKfaZ8Ofe8JNfzsPFsj/SfGHJxz//lYp2x9vwOkrBZGfeFoHY/5L96hHVu6dDTbPjnFs/4MutXHFwTD4gzOuGnOcS7hTjOKZ8NrJc/9ITWQv98Ig1jviDh2UIZcF3vdJBmB/HZuTjMhKKsR1oF53nY5T3lXNwfv/XmW5DK5CkvzIn8kRWKoXkWtB7WY8HQO6ByLuqHc0vEia2I1IsA457Hf92jBuFqc6uK58C1R+89BJ3e9B3P06br+oK609D33TM1S/gMy+9Kc1udaxq0qWarg96JIfcENLXpTmpva+1+N7W2n6AfcYzDeM613HKoYjrD6pqBZTEFlxubT86/0WgvJdOEP13bBIzn2IjHqypnb/vY1DQEwo/ZvDY4BQ39MTiDoTB4J32wynClfAB3R8frXFZvVur7qntyBtg60Hi9JUO8Gldoam7JjLjHYZThLu+UivHI+wklK9Bq",
+          "character_id": 3,
+          "name": "elephants_elephants_32_a_7_0"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 15,
+          "height": 28,
+          "rgba_sha256": "586d85985529385f4b96eeea8a8dbeef62b9b882e56d7afacd964b7425bf9c62",
+          "rgba_md5": "b155453ff300ea97f70953302ced9a1e",
+          "reference_rgba_zlib_base64": "eNqlVc1TUlEUfxhNu6ZMU1McBVFQgRqg1ADFjxLDgEgS/AJeDvhUfCAl9MSQzGqcrP+irYu2LNq0bdlf0fZtXJzuOXjJalrFzJnzzvmd3733fNyLoNEKHd09n28674LBNPhN0FxoFH77NZyJttFgGvhmc4xAR7fxc813UdnMPYdi+RBESYZrLTc+/YonDsm16+2fVqUMxa3nCsB8Skd3XzWv7MPLw2PY3n0Fgcgi2G67ANfHs9gcQ6QDkWXCS4fvSXd291YH7cOw9/oIpGwR4ms5JjLklAqtVX7zgXSuuH+G5UDa3iW+lfGs9juws3cAybUsJNI1fDWzA1uF/bqgjRiKKOUoHnmdemO1y2j+OjkdUhNpuRYjbdf34VLjyjDpC6gYr+syVnk9+m3OH/aRMbA63SS9Fif0DNhJo21xuMDJ8AGr/Qevo0ZzAfWwyWJXfcEIzD5e/KcgbjRZVLbXMN/T0NevPoomICZKdL6UXISFp5vgn1smjTb6F5IShObjoO9DPvXXM+T2nsZTW4Sv50sgFyt/CdaXck9l4bZ76lTQaD2tOkPVH47CSnqLSZbwtZzC+nQAysF70mjzmmGMP7wAre1dVb3ZxnKJwXxCquPYk3zpEPbefCSNNseiyXXK3dh/Ezg3GE2yfDcgvVWE7ItXUKy8g9LbYyhUjkBmNuaMeCgmErfHbAFBc0nBOcSzYE7ZQgV2Xx+zPY+JW2J7K8zmOWMczqeguaggNxyL03kyO2WKwRx3yu/qgjb6Ece4cCwJeId62JkjSyL5xI1nNIO8tnh2/o1+xDEusrSKfaZ8Ofe8JNfzsPFsj/SfGHJxz//lYp2x9vwOkrBZGfeFoHY/5L96hHVu6dDTbPjnFs/4MutXHFwTD4gzOuGnOcS7hTjOKZ8NrJc/9ITWQv98Ig1jviDh2UIZcF3vdJBmB/HZuTjMhKKsR1oF53nY5T3lXNwfv/XmW5DK5CkvzIn8kRWKoXkWtB7WY8HQO6ByLuqHc0vEia2I1IsA457Hf92jBuFqc6uK58C1R+89BJ3e9B3P06br+oK609D33TM1S/gMy+9Kc1udaxq0qWarg96JIfcENLXpTmpva+1+N7W2n6AfcYzDeM613HKoYjrD6pqBZTEFlxubT86/0WgvJdOEP13bBIzn2IjHqypnb/vY1DQEwo/ZvDY4BQ39MTiDoTB4J32wynClfAB3R8frXFZvVur7qntyBtg60Hi9JUO8Gldoam7JjLjHYZThLu+UivHI+wklK9Bq",
+          "character_id": 3,
+          "name": "elephants_elephants_32_a_7_200"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 15,
+          "height": 28,
+          "rgba_sha256": "586d85985529385f4b96eeea8a8dbeef62b9b882e56d7afacd964b7425bf9c62",
+          "rgba_md5": "b155453ff300ea97f70953302ced9a1e",
+          "reference_rgba_zlib_base64": "eNqlVc1TUlEUfxhNu6ZMU1McBVFQgRqg1ADFjxLDgEgS/AJeDvhUfCAl9MSQzGqcrP+irYu2LNq0bdlf0fZtXJzuOXjJalrFzJnzzvmd3733fNyLoNEKHd09n28674LBNPhN0FxoFH77NZyJttFgGvhmc4xAR7fxc813UdnMPYdi+RBESYZrLTc+/YonDsm16+2fVqUMxa3nCsB8Skd3XzWv7MPLw2PY3n0Fgcgi2G67ANfHs9gcQ6QDkWXCS4fvSXd291YH7cOw9/oIpGwR4ms5JjLklAqtVX7zgXSuuH+G5UDa3iW+lfGs9juws3cAybUsJNI1fDWzA1uF/bqgjRiKKOUoHnmdemO1y2j+OjkdUhNpuRYjbdf34VLjyjDpC6gYr+syVnk9+m3OH/aRMbA63SS9Fif0DNhJo21xuMDJ8AGr/Qevo0ZzAfWwyWJXfcEIzD5e/KcgbjRZVLbXMN/T0NevPoomICZKdL6UXISFp5vgn1smjTb6F5IShObjoO9DPvXXM+T2nsZTW4Sv50sgFyt/CdaXck9l4bZ76lTQaD2tOkPVH47CSnqLSZbwtZzC+nQAysF70mjzmmGMP7wAre1dVb3ZxnKJwXxCquPYk3zpEPbefCSNNseiyXXK3dh/Ezg3GE2yfDcgvVWE7ItXUKy8g9LbYyhUjkBmNuaMeCgmErfHbAFBc0nBOcSzYE7ZQgV2Xx+zPY+JW2J7K8zmOWMczqeguaggNxyL03kyO2WKwRx3yu/qgjb6Ece4cCwJeId62JkjSyL5xI1nNIO8tnh2/o1+xDEusrSKfaZ8Ofe8JNfzsPFsj/SfGHJxz//lYp2x9vwOkrBZGfeFoHY/5L96hHVu6dDTbPjnFs/4MutXHFwTD4gzOuGnOcS7hTjOKZ8NrJc/9ITWQv98Ig1jviDh2UIZcF3vdJBmB/HZuTjMhKKsR1oF53nY5T3lXNwfv/XmW5DK5CkvzIn8kRWKoXkWtB7WY8HQO6ByLuqHc0vEia2I1IsA457Hf92jBuFqc6uK58C1R+89BJ3e9B3P06br+oK609D33TM1S/gMy+9Kc1udaxq0qWarg96JIfcENLXpTmpva+1+N7W2n6AfcYzDeM613HKoYjrD6pqBZTEFlxubT86/0WgvJdOEP13bBIzn2IjHqypnb/vY1DQEwo/ZvDY4BQ39MTiDoTB4J32wynClfAB3R8frXFZvVur7qntyBtg60Hi9JUO8Gldoam7JjLjHYZThLu+UivHI+wklK9Bq",
+          "character_id": 3,
+          "name": "elephants_elephants_32_a_7_300"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 47,
+          "height": 48,
+          "rgba_sha256": "50ecbf64dba2370e5215c9b0de5781cc3175d51a718a9700fa19b941f3b0c261",
+          "rgba_md5": "fd771a437bf4144d48d026d55ce8ad60",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 4,
+          "name": "elephants_elephants_64_a_0_103"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 47,
+          "height": 45,
+          "rgba_sha256": "5bb358a77e892b712ab88f7839639329fa15766ce7f954cad7f7426c3f1d4c78",
+          "rgba_md5": "f3863b79d1c2d285fbe1bc240bba12eb",
+          "reference_rgba_zlib_base64": "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",
+          "character_id": 5,
+          "name": "elephants_elephants_64_a_0_104"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 29,
+          "height": 56,
+          "rgba_sha256": "056ee4bf55e77b5fd42c1dc15dd58246b57a75557e4524dbb61159786bfd69a1",
+          "rgba_md5": "09177d8884e21a036fcde8e548b4b34a",
+          "reference_rgba_zlib_base64": "eNqlWVtXGzcQtl0IzV8roXCKneS4JQ6QnNgtwQu80AuGkMOlHErIYwv9pW1W1TejkUZayTb0YbB3Lc0nzX0GY0zLWKottdoL9s+iabUttRZM7X57KBGvlvBaos+6sObNux2zPdwlwnecoX4UXifiBQJ/vQ7PeH9y8clMLm7M61FltkZ7vLbdyeLWjhp4bfDaMZvDiviA3/H5jXk7fB/hYh3WTC5uzZGj16N9eid3nZegl63R2OExL+DyXRdNrc4G/kcKc0K4lX2/y/qFrmdRa5Hkg30pL7wHn9rLdYfOksdkXNHLpqP0+Y29Gz4hn4Elzeu380/Ej+/aobNpzImTK/CEBkOW1fEl6zsm3sP6Y7zB6MDxAPZnddcxY9r74nzgd+TxNKbsvS3QZyI5K/A0Jr7L75vOfgVT7pliaYplfxPpg2zuR4s1dKT2BVk4TCfb4/PrSJ6eR4I7cKTXDfSaBJPtoSJ/2Xr33unTxoLhTy4GLDqbyN/zoQQ+uA/44pN9tGMkboD+df4luDmCzZd+E/JyIj9bYL4k0zgW1XXtfXpzFMctTavdfoPSNXLmbefb9axYifgw2uHY/L/oqfdHMwcm9qx0fyjQK0f535+tf++/M/b0PCExacXK61nP7u9Z3s8H9OmpO2BS7xprenImyP4l5YksnpX72nqf1z7fID45W0x5g8rrFG4iY7bdRbO6zrLL8ah+PvWk8fz7w4+NWMDYjNuwWbon67Dp+4y3d8iksXOUOy/pNqkVcG/YPH6T2COY4DM+/FDE3PvlI/9uP+XZxwTHC3yhN7mr2CrZnJXVYLg3U7bAQIwdR/gnxTgNfUFvcldgr62/9JjTYpnw17E+yLScG9iOX5EsJX/CrkqYPs5b+4CdjIuYKg8kstL+I7lsxelS277OKcTDYVZWX8D69XI+TOG53BtkMeGT2r9zcpV7Ti45/4vtaFxg5vw4YC5Esl3ubhRtZ5KpE+idrXdK/qLxRJ+p3Wq5aj7l2oTvPFFyhl2HHLpvvu1tOLzgo8DW8QCkZbbndDgVV2Hq+wITeY0w26qmtpjIB2FN0x9T2UqNk9pvA9PKLMXUsi1hRviOSs85vXpMK9svNeOJDaU+Miu2PiTuahtqdZ7Qd+g5V+uVeGp9p8/Z+Ac/dPkF/unj+3D+mk7rS9eYg7T2jOLf4zGzdxoeNHLgPJilnDItx+TXVDMxV5Q+Hy3bQp8jhPiWYkocgny3RgczMeHP3Gvmewt9lhD/BPNJFG+R58hHM72KvOP++6mv27lX3M/qU8f4kD9Vzu7mckqlet8Yi5+XqG4X3PR+kCk+fcxtfxXHeIcpOU0wwS/wr1QPJf3BUtRX5XIZ19g6xoe8Atzl9bh2Db1H4I38pTG1buVuzTyW5pV+sU5vYlZ+3pCepZSrV5MaV9eauT2yDzrhOrhPPTbqZXmetRc2ozGlB4T9l/ZJLyAY6JsfgpnW1L53UHuXHeneCHbV6nxNGJDlVEylI6mDcj2SxvzG2sFydNZge/Bn+Af5eDvUqhGusokV55cB74u3XV1bN3u6vqrDO2at+8L3lvRs92KN1g/kwn4Z+jL08xoTManZx/azs1Wp35iPzAuWpuxv9qC4w1vr+7k+nWYfM3p0mcXOu19sCL1Tbkax+t2LuTBFvprSnpdlG2bG25kZDWZVH86vGntymKdn1zx7sjFJZjphNmrjLGYzGrMdMEPuVrPUmZgdsgc/a1T5fzMzpxZM3Ono/A+Viyo/V7r7+x6Mw77aEeG1zN3dnzSroDNHc81b4kuYdRMTMoRsZD4e4mwB0wTM+/u/HOauP6/MIRmzE2Hq2f3p2ZXFvlZ0RfPAaTbk5/52HZ/7mujk7He2hSkzovh/FJoWlC/W2f8FiO3He7nv+yfR/X9YW8hz",
+          "character_id": 6,
+          "name": "elephants_elephants_64_a_7_301"
+        },
+        {
+          "kind": "bitmap",
+          "tag": "DefineBitsJPEG3",
+          "encoding": "jpeg",
+          "width": 16,
+          "height": 25,
+          "rgba_sha256": "f78fea05554472faf5a8feaea8aa770e02786bca9922c2530f41d44aa77f97bf",
+          "rgba_md5": "863b028520f6bb15414df46802311e43",
+          "reference_rgba_zlib_base64": "eNqFlFtPG1cQxxfqqK+9KE0pCaFFkBIWyxhTYi/YgC9Y2IamDbRA8f2K7V1fMDY2BlKRlLaKw1Me+QD5APk4lcJjXqLkKQ+o/86cxTatkLrS6Jyd+f/mnDNnZyXpytPDdkOWegxNGpu3bg+efafMn0s9Hzcl6Qb5DLKuka55es39twdfLi6tXBR36yju7iO/U8fe0VNkSzVoNHd6/Rd9dwZeEm/u5BBjr8Xp8b2LpQooVA9RrB2JsXH8J5onLZQPjlHY032RtIqFRd87qafXQhzxH0myafIts9ouafZ+7Vjj+Bmav52i3Hza8W2X6yIHMzpvKP4SSfwdSRegVv+fV6sHgmeGWbJGOJFBm9dqj4Wu1DjG/pOW4KuP/+j4mQ+n8ojEM6CaNrq8imS+QrpD/ayX6x8Qv0Pra/TOORJqRWh13tDgHLP2BdiVBdisDsQzmjhjtlRHrrJPdoDsTkP4ohSzWe2wz8yDGeZHjZY3+WwBR/kitFAU1ukZrG3FqMYBzAlbESP7HlBMC4VJq0HbLuD+uPmNeWIaFa2M02oDT7QSBgeGMG13YXl1k2zr0jaFb3Dga6E5rdZRVctg1mo0o5YroNU4RD4Yg93hEvutUc26diJ8IhaKCW2d9sws225WQ4lqGtoII5rIkbaJyuEJ2e+Xo85HkjmhYS0zzPb19cMfeIjVtU3EU6q4x3CmdK1xjDWsDfgfou/LO/js1ldnHt8K7tNZQkkVP4UzWAulhYXSRWHtd46xRiYt9Qk+/6L/rH3/8qQVQcodZIbWCtL3HE7pPM9DmbKej3gjabv3bxhRHAuvLdZZbERS+DmWgc0VEPuNEhPZLou5Qr71aFZoWEv3/5q+/xHRA1JvePjb8QtlzgOHx4+bA8Niv+1z8/pD8hTFlqHMuTA8Kl8wc6X3pf6737yVJ6ZofzlRp/a6V2vHMdawVl+3y4+Om/56tL6Fee+yOGOHu8zDPrvbx30H1v6Xpzpm+R7Ww2nMOH16/Tr7V4VvI0L1j2+DtdfxwVhK/GP8P27C98OGfg4ynrv9j0QsmS1ey98dGnkViqf13iTGaFZEL7KNmR90crGGtf/mJYfT5fmwSf3H30KMckxYFCQzKhLpPExTisgbTND9kWbO5f5A/03HFb747HkLbo+X+naJNDG4vQGsfL+KAJl7aVn4OOZc9KJ1+hzMdP/54gwVmzL73jQxiXtjMj759OaLMdl0TrU+t9rnX9wbM9KZJmGbUd6TvtJe+R+9qaLt",
+          "character_id": 7,
+          "name": "elephants_elephants_32_a_3_0"
+        }
+      ],
+      "symbols_capped_at": 12,
+      "reason": "checksumless CWS: complete body, no Adler-32 trailer",
+      "sha256": "99118cdda7378426765bd4dbcd8e23e315b59b6e2eb145081ee536a6147b109c"
+    }
+  }
+}

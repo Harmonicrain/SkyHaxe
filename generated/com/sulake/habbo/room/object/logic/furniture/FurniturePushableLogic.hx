@@ -1,0 +1,123 @@
+package com.sulake.habbo.room.object.logic.furniture
+;
+    import com.sulake.room.utils.Vector3d;
+    import com.sulake.room.utils.IVector3d;
+    import com.sulake.habbo.room.messages.RoomObjectMoveUpdateMessage;
+    import com.sulake.habbo.room.messages.RoomObjectDataUpdateMessage;
+    import com.sulake.room.messages.RoomObjectUpdateMessage;
+    import com.sulake.habbo.room.object.data.LegacyStuffData;
+
+     class FurniturePushableLogic extends FurnitureMultistateLogic 
+    {
+        static inline final ANIMATION_NOT_MOVING= 0;
+        static inline final ANIMATION_MOVING= 1;
+        static inline final MAX_ANIMATION_COUNT= 10;
+
+        var _oldLocation:Vector3d = null;
+
+        public function new()
+        {
+            super();
+            moveUpdateInterval = com.sulake.habbo.room.object.logic.MovingObjectLogic.DEFAULT_UPDATE_INTERVAL;
+            this._oldLocation = new Vector3d();
+        }
+
+        override public function processUpdateMessage(k:RoomObjectUpdateMessage)
+        {
+            var _local_4:IVector3d;
+            var _local_5:IVector3d;
+            var _local_6:IVector3d;
+            if (k == null)
+            {
+                return;
+            }
+            var _local_2= Std.downcast(k , RoomObjectMoveUpdateMessage);
+            if (((!(object == null)) && (_local_2 == null)))
+            {
+                if (k.loc != null)
+                {
+                    _local_4 = object.getLocation();
+                    _local_5 = Vector3d.dif(k.loc, _local_4);
+                    if (_local_5 != null)
+                    {
+                        if (((Math.abs(_local_5.x) < 2) && (Math.abs(_local_5.y) < 2)))
+                        {
+                            _local_6 = _local_4;
+                            if (((Math.abs(_local_5.x) > 1) || (Math.abs(_local_5.y) > 1)))
+                            {
+                                _local_6 = Vector3d.sum(_local_4, Vector3d.product(_local_5, 0.5));
+                            }
+                            _local_2 = new RoomObjectMoveUpdateMessage(_local_6, k.loc, k.dir);
+                            super.processUpdateMessage(_local_2);
+                            return;
+                        }
+                    }
+                }
+            }
+            if (((!(k.loc == null)) && (_local_2 == null)))
+            {
+                _local_2 = new RoomObjectMoveUpdateMessage(k.loc, k.loc, k.dir);
+                super.processUpdateMessage(_local_2);
+            }
+            var _local_3= Std.downcast(k , RoomObjectDataUpdateMessage);
+            if (_local_3 != null)
+            {
+                if (_local_3.state > 0)
+                {
+                    //moveUpdateInterval = (DEFAULT_UPDATE_INTERVAL / this.getUpdateIntervalValue(_local_3.state));
+                    moveUpdateInterval = com.sulake.habbo.room.object.logic.MovingObjectLogic.DEFAULT_UPDATE_INTERVAL;
+                }
+                else
+                {
+                    moveUpdateInterval = 1;
+                }
+                this._Str_9796__com_sulake_habbo_room_object_logic_furniture_FurniturePushableLogic(_local_3);
+                return;
+            }
+            if (((_local_2 != null) && _local_2.isSlideUpdate))
+            {
+                moveUpdateInterval = com.sulake.habbo.room.object.logic.MovingObjectLogic.DEFAULT_UPDATE_INTERVAL;
+            }
+            super.processUpdateMessage(k);
+        }
+
+        function getUpdateIntervalValue(k:Int):Int
+        {
+            return Std.int(k / MAX_ANIMATION_COUNT);
+        }
+
+        function getAnimationValue(k:Int):Int
+        {
+            return k % MAX_ANIMATION_COUNT;
+        }
+
+        function _Str_9796__com_sulake_habbo_room_object_logic_furniture_FurniturePushableLogic/*redefined private*/(k:RoomObjectDataUpdateMessage)
+        {
+            var _local_3:LegacyStuffData;
+            var _local_2= this.getAnimationValue(k.state);
+            if (_local_2 != k.state)
+            {
+                _local_3 = new LegacyStuffData();
+                _local_3.setString(Std.string(_local_2));
+                k = new RoomObjectDataUpdateMessage(_local_2, _local_3, k.extra);
+            }
+            super.processUpdateMessage(k);
+        }
+
+        override public function update(k:Int)
+        {
+            if (object != null)
+            {
+                this._oldLocation.assign(object.getLocation());
+                super.update(k);
+                if (Vector3d.dif(object.getLocation(), this._oldLocation).length == 0)
+                {
+                    if (object.getState(0) != ANIMATION_NOT_MOVING)
+                    {
+                        object.setState(ANIMATION_NOT_MOVING, 0);
+                    }
+                }
+            }
+        }
+    }
+

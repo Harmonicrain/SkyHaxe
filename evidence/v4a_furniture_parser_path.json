@@ -1,0 +1,54 @@
+{
+  "gate": "V4a-furniture-parser-path",
+  "verified_utc": "2026-09-02T16:04:23.056369Z",
+  "status": "incomplete",
+  "headline": "The floor-furniture, wall-item and user parsers convert through the general ax3 pipeline. They do not yet compile: two of the 19 closure files fail conversion.",
+  "key_finding": "These parsers do NOT need the bespoke IMessageParser generator. ax3 converts ObjectsMessageParser, ObjectDataParser, ItemsMessageParser and UsersMessageParser directly, including the delegated per-element struct build the bespoke generator rejects. The generator is for narrow straight-line shapes; the general converter covers the rest.",
+  "closure": {
+    "files": 19,
+    "source_lines": 2053,
+    "packages": 8,
+    "skipped_hand_written": [
+      "com/sulake/core/communication/messages/IMessageDataWrapper.as",
+      "com/sulake/core/utils/Map.as"
+    ]
+  },
+  "converted": 17,
+  "blocked": [
+    {
+      "file": "adobe/serialization/json/JSONDecoder.as",
+      "reason": "ax3: non-terminal expression inside a switch case",
+      "disposition": "vendored third-party. PLAN.md already lists porting-or-dropping the vendored trees as a decision to take explicitly, not to discover mid-conversion. StuffDataBase uses it for legacy stuff data."
+    },
+    {
+      "file": "com/sulake/core/communication/messages/IMessageParser.as",
+      "reason": "not emitted \u2014 the batch aborted on the JSONDecoder failure",
+      "disposition": "expected to convert once the blocker above is resolved"
+    }
+  ],
+  "also_outstanding": {
+    "missing_default_constructors": 7,
+    "detail": "AS3 gives a class with no constructor an implicit one; Haxe requires new(). ax3 does not emit it, so LegacyStuffData, StuffDataFactory, ObjectDataParser and four others fail to compile. This is a converter gap and belongs in an ax3 patch, not a pre-rule."
+  },
+  "pipeline_fixes_made": [
+    "generated/ was wiped on every sync run, so dependency-ordered batches were impossible \u2014 each batch destroyed the last. Now only the package being regenerated is cleared.",
+    "added --closure: convert an explicit dependency closure rather than a package. The furniture path needs 19 files across 8 packages; converting those packages whole would drag in several hundred unrelated classes.",
+    "determinism hash scoped to the batch, since an accumulating tree would otherwise fold unrelated packages into the comparison.",
+    "closure walker respects the exception manifest, so a generated copy cannot silently shadow a hand-written override such as the Proxy-backed Map."
+  ],
+  "my_own_errors_corrected": [
+    "The closure walker first followed only import statements, missing same-package base classes reached through the extends clause. StuffDataBase was invisible even though every StuffData class extends it, so the first closure measurement of 20 files was wrong in both directions.",
+    "Reported generated-file counts were scoped to the default --package in closure mode, showing 4 of 20 when all 20 had in fact converted."
+  ],
+  "artefacts": {
+    "evidence/v4_furniture_closure.py": "02301b064757af48b8bbc01981176d0bb67b6d975cb6ac9475c10d131ca44166",
+    "scripts/sync.py": "d3d0dad90dac8789bbb291b81aaf3f074a094893997c9d51447caaf903534749",
+    "project.v4-furniture.xml": "bef61162438a87bdfdf40856047fe2310f6d8eef550c2ca12642e01f850c855b",
+    "test/V4FurnitureCompileMain.hx": "321904e1c9ed56aed998499e971ada60e947a92433d39463429b1dff6b15a1e9"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_modified": false
+  }
+}

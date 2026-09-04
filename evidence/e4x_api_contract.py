@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Derive the E4X API surface the Haxe XML shim must implement.
+"""Derive a conservative upper bound for the E4X API surface.
 
 PLAN.md originally proposed a three-method shim (att/child/length). That was a guess. This
-enumerates what the source actually uses, so D2's scope comes from the corpus instead.
+enumerates method/property spellings in XML-touching files, so D2's candidate scope comes from
+the corpus instead. Shared names such as `length`, `name`, `parent`, `replace`, `copy`, and
+`toString` are not receiver-proven by this lexical scan; they are explicitly reported as an upper
+bound and must be confirmed by typed call-site review or behavior tests.
 
 Two things make a naive grep wrong, and both are handled here:
 
@@ -101,10 +104,10 @@ def main() -> int:
 
     print("files scanned          :", len(files))
     print("files touching XML     :", len(xml_files))
-    print("\nE4X API surface in first-party code (occurrences):")
+    print("\nE4X candidate API upper bound in first-party XML-touching files (occurrences):")
     for member, n in counts["all"].most_common():
         print("   {:<22} {:>6}".format(member, n))
-    print("\nsame, in vendored third-party trees:")
+    print("\nsame upper bound, in vendored third-party trees:")
     for member, n in counts["third_party"].most_common():
         print("   {:<22} {:>6}".format(member, n))
 
@@ -118,10 +121,11 @@ def main() -> int:
         print("   [3rd] {}:{}  {}".format(rel, lineno, src))
 
     out = {
+        "measurement_kind": "lexical upper bound; shared member names are not receiver-proven",
         "files_scanned": len(files),
         "files_touching_xml": len(xml_files),
-        "api_first_party": dict(counts["all"]),
-        "api_third_party": dict(counts["third_party"]),
+        "api_upper_bound_first_party": dict(counts["all"]),
+        "api_upper_bound_third_party": dict(counts["third_party"]),
         "descendant_sites_first_party": [
             {"file": r, "line": l, "source": s} for r, l, s in first],
         "descendant_sites_third_party": [

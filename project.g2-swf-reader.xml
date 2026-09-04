@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe G2 SWF Reader" package="org.nextgenhabbo.skyhaxe.g2.swfreader" version="0.1.0" company="NextGenHabbo" />
+    <app main="G2SwfReaderBrowserMain" path="build/tests/g2-swf-reader" file="g2-swf-reader" />
+    <window width="960" height="560" background="#10131A" hardware="true" />
+    <source path="src" />
+    <source path="test" />
+    <assets path="evidence/g2_reader_contract.json" rename="fixtures/g2_reader_contract.json" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

@@ -1,0 +1,41 @@
+{
+  "gate": "G1d-component-shell",
+  "source_contract": {
+    "component_subclasses": 46,
+    "component_context_subclasses": 1,
+    "direct_component_context_constructions": 0,
+    "queue_interface_occurrences": 61,
+    "component_dependency_constructions": 324,
+    "topology": "CoreComponentContext is the sole ComponentContext subclass and is self-rooted"
+  },
+  "semantic_decisions": [
+    "OpenFL EventDispatcher is the real event surface; no event stub is introduced",
+    "each Component owns an AssetLibrary unless one is supplied explicitly",
+    "required dependencies lock initialization and announce exported interfaces only after unlock",
+    "ComponentContext owns attached components and disposes them with the root context",
+    "COMPONENT_FLAG_INTERFACE detaches and disposes a provider when its final interface reference is released",
+    "direct component disposal detaches it from the context",
+    "late delivery to a disposed dependency waiter immediately releases the already-acquired interface"
+  ],
+  "rewrite_rules": [
+    "AS3 Component dependency getter -> overridable getDependencies():Array<ComponentDependency>",
+    "EventDispatcherWrapper boundary -> OpenFL EventDispatcher for the HTML5-first shell",
+    "Component requiredDependencyIids -> InterfaceStructList",
+    "ComponentContext attach/detach/queue -> ComponentInterfaceBroker",
+    "Core self-context constructor -> nullable parent only for COMPONENT_FLAG_CONTEXT, then self-root assignment"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/runtime/IContext.hx": "3956218432cbd0f03b17dbb9fdafd8b7578bb372f9786de72e29264ba6565acd",
+    "src/com/sulake/core/runtime/Component.hx": "4825e6637413c1189045c968ec39df183a6463778b2008feea0cda78838932a2",
+    "src/com/sulake/core/runtime/ComponentContext.hx": "087fe68171f373d728844ef80c9a438ba01e7124f6af31cd892472f3a81a151e",
+    "src/com/sulake/core/runtime/ComponentDependencyLifecycle.hx": "7a56e6c02aa5bcc63835ff93b1842ccdd91d59cc6e5ab632daacb5013115b38b",
+    "test/G1dComponentShellTest.hx": "46a048e372cd8f821b58edf92a291b1eb6d785170b0718a5b560fbbbbb21f803",
+    "test/G1dComponentShellBrowserMain.hx": "38aa2f77d4b2b5a36f6cf7307fd67ee5681c2b5bbe71df8b28fb29a3f5013b31",
+    "project.g1d-component-shell.xml": "859f8341593f20ce73ee068b27a49c31ec1494008c467e0afb732c6d95371b3e"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-component-shell.ps1",
+    "expected_dom_marker": "data-skyhaxe-g1d-component-shell=pass",
+    "lower_runtime_verifier": "scripts/verify-g1d-runtime.ps1"
+  }
+}

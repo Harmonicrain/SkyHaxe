@@ -1,0 +1,54 @@
+{
+  "gate": "V5-avatar-room-runtime",
+  "date": "2026-09-02",
+  "status": "partial_pass",
+  "production_path": {
+    "url": "http://localhost:8765/",
+    "room_id": 17413,
+    "room_type": "netcafe",
+    "variables": "C:/habbo/ngh/gamedata/external_dev_vars.txt",
+    "authenticated_user": "John",
+    "scale": "sh"
+  },
+  "live_room": {
+    "users": 3,
+    "sprites": 3,
+    "names": ["Ray", "Tongbits", "John"],
+    "directions_observed": {"Ray": [0, 4], "John": [2]},
+    "ray_tiles_observed": [9, 10, 11, 12],
+    "ray_walked_both_ways": true,
+    "persistent_compositor_instances": true,
+    "display_frame_interpolation": true,
+    "animation_interval_ms": 82,
+    "sample_tick_report": {"renders": 743, "advances": 109, "moving": 0, "animating": 3},
+    "idle_display_snapshots": true,
+    "idle_frame_comparisons": {"interval_ms": 75, "frames": 30, "ray_identical": 30, "tongbits_identical": 30}
+  },
+  "depth_contract": {
+    "room_geometry_depth_direction": [-135, 0.5, 0],
+    "avatar_relative_depth": -0.01,
+    "public_object_layer_formula": "(authored_z / -1000 - layer_index * 0.001) * sqrt(0.5)",
+    "public_objects": 74,
+    "public_object_sprites": 81,
+    "single_shared_sorted_list": true
+  },
+  "build_and_regressions": {
+    "v5_generated_closure_files": 77,
+    "v5_generated_closure_deterministic_two_runs": true,
+    "v5_compile": "pass",
+    "production_html5_build": "pass",
+    "g4_renderer_build": "pass",
+    "g1d_asset_library_build": "pass"
+  },
+  "open": {
+    "unresolved_reported_part_keys": [
+      "ch:2344", "ey:1", "ha:3221", "he:2980", "he:7209", "ls:2344",
+      "ls:3", "mc:6165", "mc:6166", "mcl:6165", "mcl:6166", "mcr:6165",
+      "mcr:6166", "rs:2344", "rs:3"
+    ],
+    "note": "The three avatars render, but the part-resolution diagnostic still reports 15 keys. Some may be small-library alias false positives; classify and eliminate the diagnostic gap before marking V5 complete.",
+    "full_avatar_action_surface": false,
+    "full_room_object_engine": false
+  },
+  "gate_complete": false
+}

@@ -1,0 +1,82 @@
+{
+  "gate": "G1d-bytearray",
+  "strategy": "thin Flash-default adapter over OpenFL ByteArray",
+  "source_contract": {
+    "bytearray_files": 57,
+    "constructor_calls": 51,
+    "method_syntax_counts_in_bytearray_files": {
+      "readByte": 12,
+      "readUnsignedByte": 13,
+      "readShort": 3,
+      "readUnsignedShort": 10,
+      "readInt": 4,
+      "readUnsignedInt": 14,
+      "readFloat": 8,
+      "readDouble": 1,
+      "readBoolean": 1,
+      "readUTF": 2,
+      "readUTFBytes": 22,
+      "readBytes": 10,
+      "readObject": 1,
+      "writeByte": 28,
+      "writeShort": 23,
+      "writeInt": 8,
+      "writeUnsignedInt": 31,
+      "writeFloat": 13,
+      "writeDouble": 0,
+      "writeBoolean": 1,
+      "writeUTF": 5,
+      "writeUTFBytes": 7,
+      "writeBytes": 21,
+      "writeObject": 1,
+      "compress": 7,
+      "uncompress": 4,
+      "deflate": 2,
+      "inflate": 3,
+      "clear": 4
+    },
+    "property_syntax_counts_in_bytearray_files": {
+      "position": 87,
+      "length": 327,
+      "bytesAvailable": 25,
+      "endian": 16,
+      "objectEncoding": 0
+    },
+    "explicit_endian_assignments": 14,
+    "object_serialization_sites": [
+      {
+        "file": "org/openvideoads/vast/model/VideoAdServingTemplate.as",
+        "line": 1248
+      },
+      {
+        "file": "org/openvideoads/vast/model/VideoAdServingTemplate.as",
+        "line": 1250
+      }
+    ],
+    "object_serialization_scope": "vendored org/openvideoads only"
+  },
+  "semantic_decision": {
+    "problem": "OpenFL non-Flash ByteArray defaults to platform endian; Flash/AIR defaults big-endian",
+    "fix": "custom constructor and OpenFL adaptation normalize to Endian.BIG_ENDIAN",
+    "preserved": "call sites can still explicitly select Endian.LITTLE_ENDIAN",
+    "openfl_source_sha256": "c0870bdd86a3d9561534fd1e086c4f35cf79c9d8fd10d4efdde8e55cb53d59c1"
+  },
+  "rewrite_rules": [
+    "import flash.utils.ByteArray -> import com.sulake.core.utils.ByteArray",
+    "import flash.utils.Endian -> import openfl.utils.Endian",
+    "new ByteArray() remains new ByteArray(); adapter supplies Flash default endian",
+    "OpenFL-provided buffers assigned to the adapter are normalized at the boundary",
+    "do not port vendored readObject/writeObject unless org/openvideoads is explicitly retained"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/utils/ByteArray.hx": "3a4de0ac0786cd0f1b7b2f46068e1e16ccb1b307361d08a2503792eee0af6916",
+    "test/G1dByteArrayTest.hx": "d14a523a5fea9147c102525153e7a121d1aa2319a3155e38c6245d17757d6f3d",
+    "test/G1dByteArrayBrowserMain.hx": "ec968b6b8039f706a1ebb736fcc86044479236f09cf08395759bf337059db9a4",
+    "project.g1d-bytearray.xml": "9be5f19e23a161280c6423c19b48288a42b95f935cc36508eb4e8868cc838431"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-bytearray.ps1",
+    "browser_project": "project.g1d-bytearray.xml",
+    "expected_dom_marker": "data-skyhaxe-g1d-bytearray=pass"
+  }
+}

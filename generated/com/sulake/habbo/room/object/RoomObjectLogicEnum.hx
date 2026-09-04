@@ -1,0 +1,86 @@
+package com.sulake.habbo.room.object
+;
+     class RoomObjectLogicEnum 
+    {
+        public static inline final FURNITURE_BASIC= "furniture_basic";
+        public static inline final FURNITURE_MULTISTATE= "furniture_multistate";
+        public static inline final FURNITURE_MULTIHEIGHT= "furniture_multiheight";
+        public static inline final FURNITURE_RANDOMSTATE= "furniture_randomstate";
+        public static inline final FURNITURE_PLACEHOLDER= "furniture_placeholder";
+        public static inline final FURNITURE_CREDIT= "furniture_credit";
+        public static inline final FURNITURE_STICKIE= "furniture_stickie";
+        public static inline final FURNITURE_PRESENT= "furniture_present";
+        public static inline final FURNITURE_TROPHY= "furniture_trophy";
+        public static inline final FURNITURE_FURNI_CHEST= "furniture_furnichest";
+        public static inline final FURNITURE_COINS_CHEST= "furniture_coinschest";
+        public static inline final FURNITURE_ECOTRON_BOX= "furniture_ecotron_box";
+        public static inline final FURNITURE_DICE= "furniture_dice";
+        public static inline final FURNITURE_HOCKEY_SCORE= "furniture_hockey_score";
+        public static inline final FURNITURE_HABBOWHEEL= "furniture_habbowheel";
+        public static inline final FURNITURE_ONE_WAY_DOOR= "furniture_one_way_door";
+        public static inline final FURNITURE_PLANET_SYSTEM= "furniture_planet_system";
+        public static inline final FURNITURE_WINDOW= "furniture_window";
+        public static inline final FURNITURE_EXTERNAL_IMAGE_WALLITEM= "furniture_external_image_wallitem";
+        public static inline final FURNITURE_ROOMDIMMER= "furniture_roomdimmer";
+        public static inline final FURNITURE_SOUND_MACHINE= "furniture_sound_machine";
+        public static inline final FURNITURE_JUKEBOX= "furniture_jukebox";
+        public static inline final FURNITURE_CRACKABLE= "furniture_crackable";
+        public static inline final FURNITURE_PUSHABLE= "furniture_pushable";
+        public static inline final FURNITURE_CLOTHING_CHANGE= "furniture_clothing_change";
+        public static inline final FURNITURE_COUNTER_CLOCK= "furniture_counter_clock";
+        public static inline final FURNITURE_SCORE= "furniture_score";
+        public static inline final FURNITURE_ES= "furniture_es";
+        public static inline final FURNITURE_FIREWORKS= "furniture_fireworks";
+        public static inline final FURNITURE_SONG_DISK= "furniture_song_disk";
+        public static inline final FURNITURE_BB= "furniture_bb";
+        public static inline final FURNITURE_BG= "furniture_bg";
+        public static inline final FURNITURE_WELCOME_GIFT= "furniture_welcome_gift";
+        public static inline final FURNITURE_FLOOR_HOLE= "furniture_floor_hole";
+        public static inline final FURNITURE_MANNEQUIN= "furniture_mannequin";
+        public static inline final FURNITURE_GUILD_CUSTOMIZED= "furniture_guild_customized";
+        public static inline final FURNITURE_GROUP_FORUM_TERMINAL= "furniture_group_forum_terminal";
+        public static inline final FURNITURE_PET_CUSTOMIZATION= "furniture_pet_customization";
+        public static inline final FURNITURE_CUCKOO_CLOCK= "furniture_cuckoo_clock";
+        public static inline final FURNITURE_VOTE_COUNTER= "furniture_vote_counter";
+        public static inline final FURNITURE_VOTE_MAJORITY= "furniture_vote_majority";
+        public static inline final FURNITURE_SOUNDBLOCK= "furniture_soundblock";
+        public static inline final FURNITURE_RANDOM_TELEPORT= "furniture_random_teleport";
+        public static inline final FURNITURE_MONSTERPLANT_SEED= "furniture_monsterplant_seed";
+        public static inline final FURNITURE_PURCHASABLE_CLOTHING= "furniture_purchasable_clothing";
+        public static inline final FURNITURE_BACKGROUND_COLOR= "furniture_background_color";
+        public static inline final FURNITURE_AREA_HIDE= "furniture_area_hide";
+        public static inline final FURNITURE_MYSTERYBOX= "furniture_mysterybox";
+        public static inline final FURNITURE_EFFECTBOX= "furniture_effectbox";
+        public static inline final FURNITURE_MYSTERYTROPHY= "furniture_mysterytrophy";
+        public static inline final FURNITURE_ACHIEVEMENT_RESOLUTION= "furniture_achievement_resolution";
+        public static inline final FURNITURE_LOVELOCK= "furniture_lovelock";
+        public static inline final FURNITURE_WILDWEST_WANTED= "furniture_wildwest_wanted";
+        public static inline final FURNITURE_HWEEN_LOVELOCK= "furniture_hween_lovelock";
+        public static inline final FURNITURE_BADGE_DISPLAY= "furniture_badge_display";
+        public static inline final FURNITURE_HIGH_SCORE= "furniture_high_score";
+        public static inline final FURNITURE_INTERNAL_LINK= "furniture_internal_link";
+        public static inline final FURNITURE_CUSTOM_STACK_HEIGHT= "furniture_custom_stack_height";
+        public static inline final FURNITURE_YOUTUBE= "furniture_youtube";
+        public static inline final FURNITURE_RENTABLE_SPACE= "furniture_rentable_space";
+        public static inline final FURNITURE_CHANGE_STATE_WHEN_STEP_ON= "furniture_change_state_when_step_on";
+        public static inline final FURNITURE_VIMEO= "furniture_vimeo";
+        public static inline final FURNITURE_EDITABLE_INTERNAL_LINK= "furniture_editable_internal_link";
+        public static inline final FURNITURE_EDITABLE_ROOM_LINK= "furniture_editable_room_link";
+        public static inline final FURNITURE_CRAFTING_GIZMO= "furniture_crafting_gizmo";
+        public static inline final ROOM= "room";
+        public static inline final PUBLIC_ROOM= "room_public";
+        public static inline final PUBLIC_ROOM_PARK= "room_public_park";
+        public static inline final USER= "user";
+        public static inline final BOT= "bot";
+        public static inline final RENTABLE_BOT= "rentable_bot";
+        public static inline final PET= "pet";
+        public static inline final TILE_CURSOR= "tile_cursor";
+        public static inline final SELECTION_ARROW= "selection_arrow";
+        public static inline final GAME_SNOWBALL= "game_snowball";
+        public static inline final GAME_SHOCKWAVE_SNOWBALL= "game_shockwave_snowball";
+        public static inline final GAME_SHOCKWAVE_SNOWSPLASH= "game_shockwave_snowsplash";
+        public static inline final GAME_SNOWSPLASH= "game_snowsplash";
+
+	public function new() {}
+    }
+

@@ -1,0 +1,23 @@
+{
+  "name": "skyhaxe",
+  "version": "1.0.0",
+  "description": "Measured Haxe/OpenFL port of the NGH Habbo client with a generated room-engine path.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-html5.ps1",
+    "test": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "truffle-text": "^2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "gate": "V5-avatar-library-naming-contract",
+  "gordon": "C:\\habbo\\ngh\\gordon\\PRODUCTION-201611291003-338511768",
+  "libraries": [
+    {
+      "library": "hh_human_50_hair",
+      "signature": "CWS",
+      "exports": 1092,
+      "binary_exports": [
+        "hh_human_50_hair_manifest"
+      ],
+      "manifest_export_matches_library_manifest": true,
+      "bitmap_exports": 1090,
+      "bitmap_exports_carrying_library_prefix": 1090,
+      "manifest_assets": 1090,
+      "manifest_assets_resolved_by_short_name": 1090,
+      "manifest_assets_with_offset": 1090,
+      "example_symbol": "hh_human_50_hair_sh_lay_hr_10_2_0",
+      "example_manifest_asset": "sh_std_hr_1_0_0"
+    },
+    {
+      "library": "hh_human_50_body",
+      "signature": "CWS",
+      "exports": 181,
+      "binary_exports": [
+        "hh_human_50_body_manifest"
+      ],
+      "manifest_export_matches_library_manifest": true,
+      "bitmap_exports": 179,
+      "bitmap_exports_carrying_library_prefix": 179,
+      "manifest_assets": 179,
+      "manifest_assets_resolved_by_short_name": 179,
+      "manifest_assets_with_offset": 179,
+      "example_symbol": "hh_human_50_body_OLD_sh_drk_rh_1_7_0_OLD",
+      "example_manifest_asset": "sh_std_bd_1_0_0"
+    },
+    {
+      "library": "hh_human_hair",
+      "signature": "CWS",
+      "exports": 904,
+      "binary_exports": [
+        "hh_human_hair_manifest"
+      ],
+      "manifest_export_matches_library_manifest": true,
+      "bitmap_exports": 902,
+      "bitmap_exports_carrying_library_prefix": 902,
+      "manifest_assets": 902,
+      "manifest_assets_resolved_by_short_name": 902,
+      "manifest_assets_with_offset": 902,
+      "example_symbol": "hh_human_hair_h_lay_hr_10_2_0",
+      "example_manifest_asset": "h_std_hr_1_0_0"
+    }
+  ],
+  "result": "pass",
+  "note": "SwfAssetLibrary strips the library prefix from each bitmap symbol and registers through AssetLibrary.loadFromManifest, so the manifest supplies the names, the aliases and the offsets."
+}

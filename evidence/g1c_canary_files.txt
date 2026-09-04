@@ -1,0 +1,26 @@
+# Relative to habbo-client-clean/src. The second column is the construct coverage expected in the
+# original AS3 source; g1c_select_canary.py validates every declaration before copying anything.
+com/sulake/core/runtime/ComponentContext.as	vector,bytearray,reflection,xml
+com/sulake/core/assets/AssetLibrary.as	dictionary,bytearray,reflection,xml
+com/sulake/core/runtime/Component.as	vector,dictionary,reflection
+com/sulake/core/communication/connection/SocketConnection.as	vector,bytearray,reflection
+com/sulake/room/object/visualization/utils/GraphicAssetCollection.as	dictionary,bytearray,xml
+com/sulake/habbo/window/utils/tableview/TableView.as	vector,dictionary,xml
+com/sulake/core/utils/Map.as	dictionary,namespace
+com/sulake/core/communication/messages/MessageClassManager.as	dictionary,reflection
+com/sulake/core/runtime/events/EventDispatcherWrapper.as	dictionary,reflection
+com/sulake/habbo/utils/Base64.as	vector,bytearray
+com/sulake/habbo/communication/encryption/ArcFour.as	vector,bytearray
+com/sulake/core/assets/XmlAsset.as	bytearray,xml
+com/sulake/core/assets/TextAsset.as	bytearray,xml
+com/sulake/core/assets/UnknownAsset.as	reflection,xml
+com/sulake/core/assets/BitmapDataAsset.as	bytearray,xml
+com/sulake/habbo/window/utils/SkinParserUtil.as	dictionary,xml
+com/sulake/core/window/utils/WindowParser.as	dictionary,xml
+com/sulake/core/runtime/IContext.as	vector,xml
+com/sulake/habbo/avatar/alias/AssetAliasCollection.as	dictionary,xml
+com/sulake/habbo/avatar/geometry/GeometryBodyPart.as	dictionary,xml
+com/sulake/core/window/iterators/SelectorIterator.as	namespace
+com/sulake/core/window/iterators/ItemListIterator.as	namespace
+com/sulake/core/window/iterators/EmptyIterator.as	namespace
+com/sulake/core/utils/SingleWriteMap.as	namespace

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe G4b Window" package="org.nextgenhabbo.skyhaxe.g4b.window" version="0.1.0" company="NextGenHabbo" />
+    <app main="G4bWindowBrowserMain" path="build/tests/g4b-window" file="g4b-window" />
+    <!-- width/height 0 makes Lime size the canvas to its container instead of embedding a
+         fixed 1024x520 and CSS-scaling it. With stage.scaleMode = NO_SCALE that gives one
+         stage pixel per screen pixel, which is the only way to judge skin fidelity by eye. -->
+    <window width="0" height="0" background="#10131A" hardware="true" resizable="true" />
+    <source path="src" />
+    <source path="test" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboCommunicationDemoCom_login_window.bin" rename="layouts/login_window.bin" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboCatalogCom_layout_frontpage_featured.bin" rename="layouts/frontpage_featured.bin" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_frame_3_xml.bin" rename="skins/frame_3.xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_4_xml.bin" rename="skins/border_4.xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_thick_xml.bin" rename="skins/button_shiny_thick.xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_colorless_xml.bin" rename="skins/border_colorless.xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_default_xml.bin" rename="skins/button_shiny.xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbo_blue_skin_png.png" rename="skins/habbo_blue.png" type="image" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbo_skin_ubuntu_png.png" rename="skins/habbo_ubuntu.png" type="image" />
+    <!-- The control theme: 332 (type, style) rows binding skins and internal layouts. -->
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_element_description_xml.bin" rename="theme/element_description.xml" />
+    <!-- Internal layouts: each declares a control's own child windows, tags and styles. -->
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_thick_xml.bin" rename="theme/habbo_window_layout_button_shiny_thick_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_3_xml.bin" rename="theme/habbo_window_layout_frame_3_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_3_xml.bin" rename="theme/habbo_window_layout_header_3_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_xml.bin" rename="theme/habbo_window_layout_button_shiny_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_xml.bin" rename="theme/habbo_window_layout_frame_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_xml.bin" rename="theme/habbo_window_layout_header_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_thick_xml.bin" rename="theme/habbo_window_layout_button_thick_xml" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_xml.bin" rename="theme/habbo_window_layout_button_xml" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

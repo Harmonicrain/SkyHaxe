@@ -1,0 +1,27 @@
+{
+  "gate": "G2d-define-sound-mp3",
+  "verified_utc": "2026-09-01T15:33:03.210Z",
+  "status": "pass",
+  "exports": 24,
+  "source_files": [
+    "gordon/PRODUCTION-201611291003-338511768/hh_game_bb.swf",
+    "gordon/PRODUCTION-201611291003-338511768/hh_game_snowwar.swf"
+  ],
+  "per_export_checks": [
+    "format",
+    "sample rate",
+    "sample bits",
+    "channels",
+    "sample count",
+    "seek samples",
+    "MP3 byte length",
+    "MP3 SHA-256"
+  ],
+  "openfl_playback": {
+    "trusted_user_gesture": true,
+    "position_ms_before_stop": 154,
+    "volume": 0.04,
+    "stopped_cleanly": true
+  },
+  "console_errors": 0
+}

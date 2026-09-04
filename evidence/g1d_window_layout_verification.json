@@ -1,0 +1,73 @@
+{
+  "gate": "G1d-real-window-layout-canary",
+  "verified_utc": "2026-09-01T13:57:00.588094Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a real browser tab over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8767/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-window-layout",
+      "value": "pass"
+    },
+    "fixture_marker": {
+      "name": "data-skyhaxe-g1d-window-layout-fixture",
+      "value": "redeemItemCodeWidget"
+    },
+    "assertions": 30,
+    "console_marker": "SKYHAXE_G1D_WINDOW_LAYOUT_PASS assertions=30",
+    "console_errors": 0,
+    "canvas": {
+      "intrinsic_width": 480,
+      "intrinsic_height": 440
+    },
+    "test_index_sha256": "f432bdcca092bbcce74bae6f3e4714f1ff6ad2332c3583912949763ca03f451e"
+  },
+  "coverage": [
+    "real 1,121-byte HabboCatalogCom_redeemItemCodeWidget.bin parsed, not a synthetic fixture",
+    "layout/window/children hierarchy and child counts",
+    "name, type, position, size, style, param, and limit attributes",
+    "URL-decoded captions including an untranslated localization key",
+    "typed Boolean, String, int, and Number layout variables",
+    "real OpenFL TextField construction for button and text captions",
+    "non-transparent rendered pixels sampled from BitmapData.draw of the parsed tree"
+  ],
+  "lower_xml_regression": {
+    "status": "pass",
+    "javascript_assertions": 44,
+    "interpreter_assertions": 44,
+    "verification": "evidence/g1d_xml_verification.json"
+  },
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256_before": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_sha256_after": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_unchanged": true,
+    "fixture_access": "packaged read-only by project.g1d-window-layout.xml; the client tree was not written"
+  },
+  "commands": [
+    "python evidence/g1d_window_layout_contract.py",
+    "scripts/test-g1d-window-layout.ps1",
+    "python -m http.server 8767 --bind 127.0.0.1 --directory build/tests/g1d-window-layout/html5/bin",
+    "browser-tab check of DOM markers, console marker, and console errors",
+    "scripts/verify-g1d-xml.ps1"
+  ],
+  "tooling_correction": {
+    "finding": "scripts/verify-g1d-{map,reflection,runtime,xml}.ps1 could not complete on Windows PowerShell 5.1",
+    "cause": "Set-Content -Encoding utf8NoBOM is PowerShell 7 only and threw a parameter-binding error at the final write",
+    "resolution": "write the JSON with System.IO.File.WriteAllText and UTF8Encoding(false), which behaves the same on 5.1 and 7",
+    "implementation_weakened": false,
+    "all_four_reran_clean": true,
+    "reproduced_assertion_counts": {
+      "xml": 44,
+      "map": 75,
+      "reflection": 21,
+      "runtime": 91
+    }
+  }
+}

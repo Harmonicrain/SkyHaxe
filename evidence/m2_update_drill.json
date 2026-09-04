@@ -1,0 +1,31 @@
+{
+  "gate": "M2a-one-file-update-drill",
+  "verified_utc": "2026-09-02T12:25:00.846609Z",
+  "status": "pass",
+  "scope": "com/sulake/core[assets+runtime+utils]",
+  "fixture": "temporary copy of habbo-client-clean/src/com/sulake/core",
+  "source_delta": [
+    "com/sulake/core/runtime/IIDCore.as"
+  ],
+  "generated_delta": [
+    "com/sulake/core/runtime/IIDCore.hx"
+  ],
+  "generated_file_count": 79,
+  "baseline_generated_tree_sha256": "502d05503df13bd96124426f98dd4fa88080f1286c1e70a50c1245108760d0ec",
+  "changed_generated_tree_sha256": "098a84db10f000e043b6b518e91aa3f068ecf1584ba3447f91ad2184757330c6",
+  "both_runs_deterministic": true,
+  "stable_manifest_sections": [
+    "package",
+    "subpackages",
+    "scope",
+    "tooling",
+    "rules",
+    "exceptions",
+    "asset_inputs"
+  ],
+  "real_clean_client": {
+    "modified": false,
+    "source_tree_unchanged": true,
+    "git_status_unchanged": true
+  }
+}

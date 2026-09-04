@@ -1,0 +1,42 @@
+{
+  "closure": [
+    "com/sulake/habbo/room/object/visualization/data/AnimationData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationFrame.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationFrameData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationFrameDirectionalData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationFrameSequenceData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationLayerData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationSizeData.as",
+    "com/sulake/habbo/room/object/visualization/data/AnimationStateData.as",
+    "com/sulake/habbo/room/object/visualization/furniture/AnimatedFurnitureVisualizationData.as",
+    "com/sulake/habbo/room/object/visualization/furniture/FurnitureAnimatedVisualization.as"
+  ],
+  "context": [
+    "com/sulake/habbo/room/object/RoomObjectVariableEnum.as",
+    "com/sulake/habbo/room/object/visualization/data/ColorData.as",
+    "com/sulake/habbo/room/object/visualization/data/DirectionData.as",
+    "com/sulake/habbo/room/object/visualization/data/DirectionalOffsetData.as",
+    "com/sulake/habbo/room/object/visualization/data/LayerData.as",
+    "com/sulake/habbo/room/object/visualization/data/SizeData.as",
+    "com/sulake/habbo/room/object/visualization/furniture/FurnitureVisualization.as",
+    "com/sulake/habbo/room/object/visualization/furniture/FurnitureVisualizationData.as",
+    "com/sulake/room/events/RoomSpriteMouseEvent.as",
+    "com/sulake/room/object/IRoomObject.as",
+    "com/sulake/room/object/IRoomObjectModel.as",
+    "com/sulake/room/object/enum/AlphaTolerance.as",
+    "com/sulake/room/object/enum/RoomObjectSpriteType.as",
+    "com/sulake/room/object/logic/IRoomObjectMouseHandler.as",
+    "com/sulake/room/object/visualization/IRoomObjectGraphicVisualization.as",
+    "com/sulake/room/object/visualization/IRoomObjectSprite.as",
+    "com/sulake/room/object/visualization/IRoomObjectSpriteVisualization.as",
+    "com/sulake/room/object/visualization/IRoomObjectVisualization.as",
+    "com/sulake/room/object/visualization/IRoomObjectVisualizationData.as",
+    "com/sulake/room/object/visualization/RoomObjectSprite.as",
+    "com/sulake/room/object/visualization/RoomObjectSpriteVisualization.as",
+    "com/sulake/room/object/visualization/utils/IGraphicAsset.as",
+    "com/sulake/room/object/visualization/utils/IGraphicAssetCollection.as",
+    "com/sulake/room/utils/IRoomGeometry.as",
+    "com/sulake/room/utils/IVector3d.as",
+    "com/sulake/room/utils/XMLValidator.as"
+  ]
+}

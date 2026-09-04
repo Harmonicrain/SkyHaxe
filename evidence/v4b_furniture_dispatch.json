@@ -1,0 +1,23 @@
+{
+  "gate": "V4b-furniture-dispatch",
+  "verified_utc": "2026-09-02T16:43:14.872301Z",
+  "status": "blocked",
+  "done": [
+    "ax3 patched to emit a default constructor when an AS3 class declares none. AS3 grants one implicitly, Haxe does not, so every generated class was unusable from hand-written code. Subclasses get new() { super(); }.",
+    "project.xml now puts the ax3 compat layer on the class path; generated code references ASAny and ASCompat, so any project consuming it needs them.",
+    "client dispatches packet 1778 (ObjectsMessageEvent) to the generated ObjectsMessageParser and reports the object count plus a five-object sample as DOM markers.",
+    "StuffData, ObjectMessageData and the room/engine parsers all reconverted with the patched converter."
+  ],
+  "blocked_on": {
+    "what": "adobe/serialization/json \u2014 JSONTokenizer and JSONEncoder will not lex",
+    "detail": "ax3 rejects the escape sequences these two use. Guarded rules replaced the form-feed and doubled-backslash literals and the offsets moved, so the rewrite lands, but the lexer still refuses.",
+    "why_it_matters": "StuffDataBase is the only consumer, and it needs JSONDecoder for legacy stuff data. Without it the furniture path does not compile.",
+    "decision_needed": "PLAN.md already lists porting-or-dropping the vendored trees as an explicit decision. Haxe ships haxe.Json, so the clean option is to declare the Adobe library an exception and route StuffDataBase through haxe.Json. That is a behavioural change (strict mode, error text) and is the owner call, not mine."
+  },
+  "guard_activity": "The count guard aborted three more runs this session and was right each time: the for-loop counter rule matched 13 sites not 1, and the form-feed rule 2 not 1.",
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_modified": false
+  }
+}

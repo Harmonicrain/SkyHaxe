@@ -1,0 +1,95 @@
+{
+  "gate": "G2a-swf-container-and-zlib-bitmaps",
+  "verified_utc": "2026-09-01T14:38:07.930832Z",
+  "status": "pass",
+  "scope_note": "G2a is the first of four G2 sub-gates. It does NOT close G2; see CHECKLIST.",
+  "target": "OpenFL HTML5 in a fresh real-browser tab; SWFs fetched over HTTP, never from a local path",
+  "browser": {
+    "url": "http://127.0.0.1:8769/",
+    "document_marker": {
+      "name": "data-skyhaxe-g2-swf-reader",
+      "value": "pass"
+    },
+    "assertions": 348,
+    "assets_compared_byte_for_byte": 44,
+    "console_marker": "G2_SWF_READER_PASS assertions=348 compared=44",
+    "console_errors": 0
+  },
+  "http_fetch": {
+    "server": "scripts/serve-g2.py",
+    "page_root": "build/tests/g2-swf-reader/html5/bin",
+    "corpus_mount": "/ngh/ -> C:/habbo/ngh (read-only, GET/HEAD, path-escape checked)",
+    "same_origin_rationale": "a second port would fail on CORS as an artefact of the rig, not the client",
+    "cold_fetch_parse_seconds": 0.065,
+    "warm_fetch_parse_seconds": 0.033,
+    "timing_note": "aggregate across the five parsed canaries, cold then browser-cached"
+  },
+  "proved": {
+    "containers": [
+      "FWS",
+      "CWS",
+      "CWS-no-adler"
+    ],
+    "tags": [
+      "DefineBitsLossless2",
+      "DefineBitsLossless",
+      "DefineBinaryData"
+    ],
+    "contract": "straight (un-premultiplied) RGBA8888 and raw binary blobs, compared by SHA-256 against an independent Python/PIL decoder",
+    "checksumless_cws": "elephants.swf inflates without an Adler-32 trailer and is accepted only after its length matches the SWF header exactly"
+  },
+  "deferred": {
+    "G2b": "PNG/JPEG bitmap payloads decoded through the browser",
+    "G2c": "ZWS/LZMA container - three canaries deferred, asserted as exactly three",
+    "G2d": "DefineSound(MP3) extraction and playback",
+    "G2e": "parity against the Flash client itself, not just a second independent decoder"
+  },
+  "corpus_finding": {
+    "summary": "the SWF JPEG-family tags are containers, not a codec",
+    "measured_by": "evidence/g2_embedded_format_survey.py",
+    "gordon_reachable": {
+      "DefineBitsJPEG2 -> png": 1468,
+      "DefineBitsJPEG3 -> jpeg": 734,
+      "DefineBitsJPEG3 -> png": 57
+    },
+    "dcr": {
+      "DefineBitsJPEG3 -> jpeg": 1036,
+      "DefineBitsJPEG2 -> jpeg": 3,
+      "DefineBitsJPEG3 -> png": 2,
+      "DefineBitsJPEG2 -> png": 2
+    },
+    "files_mixing_encodings": 3,
+    "consequence": "decoder scope is zlib + JPEG + PNG, chosen per character by payload magic; PLAN/CHECKLIST previously said two decoder families"
+  },
+  "reference_correction": {
+    "finding": "the first reference decoder forced every JPEG-tag payload to RGB and set alpha 255",
+    "effect": "would have silently dropped the alpha channel of all 1,468 PNG-in-JPEG2 characters",
+    "resolution": "detect payload magic; PNG/GIF keep their own alpha and ignore the JPEG3 alpha block"
+  },
+  "implementation_sha256": {
+    "src/com/sulake/core/assets/swf/SwfFile.hx": "d2e3597504912fed5c52d8a6c9ce1d020e3d29cb2a7e5c0af6ec87d90727ad62",
+    "src/com/sulake/core/assets/swf/SwfTag.hx": "2091d839b57a2d447df1e3a1cc9b175918e91c28e393b1caf711e42ed03ca246",
+    "src/com/sulake/core/assets/swf/SwfCharacter.hx": "b51386714fe3c629eca2e5eff28ffc0bbd899fc4ea3637f31e41092af49bb577",
+    "src/com/sulake/core/assets/swf/SwfBitmap.hx": "38adc3081b5203d078b3781f31933a1942df71a58dd8a79e3d791ad8391a6885",
+    "src/com/sulake/core/assets/swf/SwfError.hx": "d2e21ef427eab773e70b6b64db3d4f7e5e214798d4bf585a1b9d0de6798486f9",
+    "test/G2SwfReaderTest.hx": "d7b7aa08a0c227e89a4330a2f60e27a22f9f820ec5dac1290d9ad2e6cf3ddcfc",
+    "test/G2SwfReaderBrowserMain.hx": "cce29aae63f49faab0967ad1ac31b2893e152526cc4f4a090d5feda4e453bfb9",
+    "project.g2-swf-reader.xml": "a62766e73563f74e55ac2c1bfbcb8ddc59dc5d2489fce8ca4c2ca77d54d74727",
+    "scripts/serve-g2.py": "2c4700b2d0f123fc72111ef5dfcfe872f8fc3e8cc769f7cf5ed388a593079414",
+    "scripts/test-g2-swf-reader.ps1": "fa98caf7bb486cf620f2caa08ed9266699a8b0b123b32660eac97bc4c2904084"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "corpus_served_read_only": true
+  },
+  "commands": [
+    "python evidence/g2_reader_contract.py",
+    "python evidence/g2_embedded_format_survey.py",
+    "scripts/test-g2-swf-reader.ps1",
+    "python scripts/serve-g2.py --port 8769",
+    "fresh browser-tab check of DOM markers, console marker, and console errors"
+  ]
+}

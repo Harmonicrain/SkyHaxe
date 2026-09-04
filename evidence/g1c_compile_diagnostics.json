@@ -1,0 +1,31 @@
+{
+  "gate": "G1c-converter-canary",
+  "records": "a FAILED gate; reproducing the failure is the pass condition",
+  "source_located_lines_in_canary_tree": 123,
+  "canary_files_with_diagnostics": 12,
+  "per_file": {
+    "com/sulake/core/window/utils/WindowParser.hx": 36,
+    "com/sulake/core/utils/Map.hx": 18,
+    "com/sulake/core/window/iterators/EmptyIterator.hx": 12,
+    "com/sulake/core/window/iterators/ItemListIterator.hx": 12,
+    "com/sulake/core/window/iterators/SelectorIterator.hx": 12,
+    "com/sulake/core/assets/AssetLibrary.hx": 11,
+    "com/sulake/core/runtime/Component.hx": 7,
+    "com/sulake/habbo/window/utils/SkinParserUtil.hx": 4,
+    "com/sulake/core/runtime/ComponentContext.hx": 4,
+    "com/sulake/habbo/avatar/geometry/GeometryBodyPart.hx": 3,
+    "com/sulake/core/utils/SingleWriteMap.hx": 2,
+    "com/sulake/room/object/visualization/utils/GraphicAssetCollection.hx": 2
+  },
+  "excluded": {
+    "lines_without_a_source_location": 149,
+    "reason": "SWF type-library cascades describing the real client's own class hierarchy (\"Redefinition of variable ... WindowModel\"), plus the -swf-header deprecation warning",
+    "located_lines_outside_the_canary_tree": 13
+  },
+  "expected": {
+    "lines": 123,
+    "files": 12
+  },
+  "reproduced": true,
+  "log": "evidence/g1c_compile_flash.log"
+}

@@ -1,0 +1,100 @@
+{
+  "gate": "G4-renderer-load",
+  "verified_utc": "2026-09-01T23:36:20.1974370Z",
+  "status": "pass",
+  "browser": {
+    "gate": "G4-renderer-load",
+    "assertions": 33,
+    "duration_seconds": 180.022,
+    "frames": 13495,
+    "real_asset_instances": 160,
+    "assets": [
+      {"file": "dcr/hof_furni/15pillow.swf", "symbol": "pillow_pillow_64_sd_0_0", "width": 72, "height": 35},
+      {"file": "dcr/hof_furni/01_dragonlamp_skream.swf", "symbol": "01_dragonlamp_skream_01_dragonlamp_skream_64_b_4_3", "width": 22, "height": 37},
+      {"file": "dcr/hof_furni/BW_HeadmasterChair.swf", "symbol": "BW_HeadmasterChair_BW_HeadmasterChair_64_a_2_0", "width": 63, "height": 148},
+      {"file": "dcr/hof_furni/godin.swf", "symbol": "godin_godin_64_a_0_0", "width": 50, "height": 56},
+      {"file": "dcr/hof_furni/vip_sof5.swf", "symbol": "vip_sof5_vip_sof5_64_b_6_0", "width": 59, "height": 40}
+    ],
+    "display": {
+      "created": 160,
+      "reused": 2700,
+      "released": 2700,
+      "active": 160,
+      "pooled": 0,
+      "masked": true,
+      "filtered_sprites": 7,
+      "additive_sprites": 6
+    },
+    "timing_ms": {
+      "render_p50": 0,
+      "render_p95": 0.1,
+      "render_p99": 0.1,
+      "render_max": 0.5,
+      "frame_interval_p95": 14
+    },
+    "heap_mib": {
+      "samples": 89,
+      "start": 70.07330322265625,
+      "end": 65.97975254058838,
+      "min": 64.371,
+      "max": 70.073,
+      "range": 5.702,
+      "gc_drops_over_0_5_mib": 21
+    },
+    "picking_hits": 164,
+    "flash_comparable": {
+      "alpha_127_hit": false,
+      "alpha_128_hit": true,
+      "alpha_129_hit": true,
+      "order": ["exact-back", "exact-front"],
+      "front_blend_mode_add": true,
+      "mask_outside_alpha": 0,
+      "capture_argb_hex": [
+        "FF404000", "FF404000", "FF404000", "00000000", "00000000", "00000000",
+        "FF404000", "FF404000", "FF404000", "00000000", "00000000", "00000000",
+        "FF404000", "FF404000", "FF404000", "00000000", "00000000", "00000000",
+        "00000000", "00000000", "00000000", "00000000", "00000000", "00000000",
+        "00000000", "00000000", "00000000", "00000000", "00000000", "00000000",
+        "00000000", "00000000", "00000000", "00000000", "00000000", "00000000"
+      ]
+    },
+    "console_marker": "G4_RENDERER_PASS assertions=33 frames=13495 p95_ms=0.1",
+    "console_errors": 0,
+    "target": "OpenFL HTML5 in a real browser over same-origin localhost HTTP"
+  },
+  "flash_reference": {
+    "runtime": "Harman AIR 51.2.2 / native Flash display list",
+    "pixels_compared_exact_argb": 36,
+    "alpha_boundaries_compared": [127, 128, 129],
+    "status": "exact_match",
+    "evidence": "evidence/g4_flash_reference.json"
+  },
+  "source_contract": {
+    "assertions": 16,
+    "missing": 0,
+    "evidence": "evidence/g4_renderer_contract.json"
+  },
+  "implementation_sha256": {
+    "src/com/sulake/room/object/visualization/RoomObjectSprite.hx": "0df56b1b855a68548f756a6fe4165815133df4888e8cb318cd14ef5da20f088d",
+    "src/com/sulake/room/renderer/utils/ExtendedSprite.hx": "d55305fe740c614614817e08c977f398e92c58b28054c1195796ebaa2d559990",
+    "src/com/sulake/room/renderer/RoomSpriteCanvas.hx": "c0f5412f23425dae971bbd226b6c4700ac82fbc80a485986fe96d30b202288a8",
+    "src/com/sulake/core/assets/swf/SwfBitmap.hx": "83d17f0dd09a97fa46c743f72bc1b85c661b95aaed20e5312ea3f2867c61768c",
+    "test/G4RendererBrowserMain.hx": "a294b6238d6a5e4317543314aa8d9163f94bcfea7601981a54f3a03cd7013405",
+    "evidence/g4_renderer_contract.py": "531c392f08999ff6aa3a16889e21379bf91ec14a288e2bd7aa66cab139573fbe",
+    "evidence/g4_renderer_contract.json": "1f5b6a6aa5dc495eb6e01de6da3ffc72ca5dbcc1b6de54449b66731c22b1ac0b",
+    "flash-reference/G4RendererReference.as": "5e44410d858daa295bfeee382b62d6ae96aa9e234a5e6823c42e3ae90fb289db",
+    "evidence/g4_flash_reference.json": "6acf8f6a767a77aca3adfcf06bcf9bfcec48b98597489c734d393b3619bf96a9",
+    "scripts/serve-g4.py": "b692e915459e7f79bf6d9db39840abb17d1072986f8c4120bf85496904ca5784"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "external_dev_vars_sha256": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "corpus_mutated": false
+  },
+  "normal_openfl_html5_build": "pass",
+  "g2_reader_build_regression": "pass",
+  "g3_xml_build_regression": "pass",
+  "git_diff_check": "pass"
+}

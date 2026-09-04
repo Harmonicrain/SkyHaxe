@@ -1,0 +1,51 @@
+{
+  "gate": "G1d-asset-library",
+  "verified_utc": "2026-09-01T12:04:32.018Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a real browser over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8766/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-asset-library",
+      "value": "pass"
+    },
+    "assertions": 43,
+    "console_marker": "SKYHAXE_G1D_ASSET_LIBRARY_PASS assertions=43",
+    "console_errors": 0
+  },
+  "real_manifest": {
+    "file": "C:/habbo/client/habbo-client-clean/src/binaryData/HabboCatalogCom_manifest.bin",
+    "served_as": "fixtures/HabboCatalogCom_manifest.bin",
+    "supported_assets_and_aliases_loaded": 153,
+    "known_source_checked": "layout_default_3x3",
+    "known_alias_checked": "layout_default_3x3_extrainfo",
+    "unsupported_bitmap_deferred": "bot_thumb_bg"
+  },
+  "coverage": [
+    "shared and local MIME, class, and extension lookup",
+    "query-string extension handling and duplicate registration failures",
+    "ordered name/index/content lookup",
+    "overwrite refusal and replacement ownership",
+    "remove without disposal and unload with disposal",
+    "synthetic manifest assets, aliases, missing MIME, and bad references",
+    "real catalog manifest text/XML assets and aliases"
+  ],
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "external_dev_vars_sha256_before": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_sha256_after": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_unchanged": true
+  },
+  "commands": [
+    "python evidence/g1d_asset_library_contract.py",
+    "scripts/test-g1d-asset-library.ps1",
+    "python -m http.server 8766 --bind 127.0.0.1 --directory build/tests/g1d-asset-library/html5/bin",
+    "browser check of DOM marker, console, and real manifest request",
+    "scripts/build-html5.ps1 -SkipBootstrap"
+  ]
+}

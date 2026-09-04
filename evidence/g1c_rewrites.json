@@ -1,0 +1,206 @@
+{
+  "source": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18",
+  "rule_count": 40,
+  "changes": [
+    {
+      "rule": "terminate local variable declaration",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "terminate expression statement",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "terminate initialized local variable declaration",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/ComponentContext.as",
+      "replacements": 1
+    },
+    {
+      "rule": "narrow singleton manifest XMLList before child call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 2
+    },
+    {
+      "rule": "narrow singleton manifest XMLList before child call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "hoist for-in variable reused by a later loop",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "redeclare function-scoped for-in key for ax3 loop scoping",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "redeclare function-scoped for-in key for ax3 loop scoping",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/AssetLibrary.as",
+      "replacements": 1
+    },
+    {
+      "rule": "iterate custom Map keys through its public getKeys API",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/messages/MessageClassManager.as",
+      "replacements": 1
+    },
+    {
+      "rule": "use custom Map public API instead of Proxy iteration or indexing",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/messages/MessageClassManager.as",
+      "replacements": 1
+    },
+    {
+      "rule": "use custom Map public API instead of Proxy iteration or indexing",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/messages/MessageClassManager.as",
+      "replacements": 1
+    },
+    {
+      "rule": "use custom Map public API instead of Proxy iteration or indexing",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/messages/MessageClassManager.as",
+      "replacements": 1
+    },
+    {
+      "rule": "narrow singleton E4X child list before appendChild calls",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/ComponentContext.as",
+      "replacements": 1
+    },
+    {
+      "rule": "narrow singleton E4X child list before children call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/window/utils/WindowParser.as",
+      "replacements": 2
+    },
+    {
+      "rule": "narrow singleton E4X child list before children call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/window/utils/WindowParser.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite unsupported as-XML expression as equivalent XML coercion",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/XmlAsset.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite unsupported as-XML expression as equivalent XML coercion",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/ComponentContext.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite unsupported as-XML expression as equivalent XML coercion",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/habbo/window/utils/SkinParserUtil.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite unsupported as-XML expression as equivalent XML coercion",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/habbo/window/utils/tableview/TableView.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite unsupported as-XML expression as equivalent XML coercion",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/habbo/window/utils/tableview/TableView.as",
+      "replacements": 1
+    },
+    {
+      "rule": "iterate through a local variable before assigning the loop value to a field",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/connection/SocketConnection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "iterate custom Map keys through its public getKeys API",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "iterate custom Map keys through its public getKeys API",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "read custom Map through its public getValue API",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "read custom Map through its public getValue API",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/room/object/visualization/utils/GraphicAssetCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove redundant Object super call from class with no explicit base",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/assets/BitmapDataAsset.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove redundant Object super call from class with no explicit base",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/Component.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove redundant Object super call from class with no explicit base",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/events/EventDispatcherWrapper.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove redundant Object super call from class with no explicit base",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/communication/messages/MessageClassManager.as",
+      "replacements": 1
+    },
+    {
+      "rule": "parenthesize outer immediately-invoked function",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/Component.as",
+      "replacements": 1
+    },
+    {
+      "rule": "parenthesize inner immediately-invoked function",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/Component.as",
+      "replacements": 1
+    },
+    {
+      "rule": "close inner immediately-invoked function before call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/Component.as",
+      "replacements": 1
+    },
+    {
+      "rule": "close outer immediately-invoked function before call",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/core/runtime/Component.as",
+      "replacements": 1
+    },
+    {
+      "rule": "rewrite E4X XML literal as an XML constructor",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/habbo/avatar/alias/AssetAliasCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove semicolon left by decompiled multiline XML literal",
+      "file": "C:/habbo/client/SkyHaxe/.toolchain/g1c/as3-v18/com/sulake/habbo/avatar/alias/AssetAliasCollection.as",
+      "replacements": 1
+    },
+    {
+      "rule": "remove explicit Vector imports",
+      "file": "<canary corpus>",
+      "replacements": 6
+    },
+    {
+      "rule": "remove wildcard Vector imports",
+      "file": "<canary corpus>",
+      "replacements": 5
+    },
+    {
+      "rule": "remove flash_proxy imports",
+      "file": "<canary corpus>",
+      "replacements": 5
+    },
+    {
+      "rule": "remove flash_proxy use directives",
+      "file": "<canary corpus>",
+      "replacements": 5
+    },
+    {
+      "rule": "make flash_proxy overrides public",
+      "file": "<canary corpus>",
+      "replacements": 19
+    }
+  ]
+}

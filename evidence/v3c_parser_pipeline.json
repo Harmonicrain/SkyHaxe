@@ -1,0 +1,72 @@
+{
+  "gate": "V3c-parser-pipeline",
+  "verified_utc": "2026-09-02T16:12:43.315118Z",
+  "status": "pass",
+  "headline": "All 559 message parsers convert through the ordinary ax3 pipeline. 557 compile. The bespoke parser generator was redundant and has been removed.",
+  "conversion": {
+    "attempted": 559,
+    "converted": 559,
+    "exit_code": 0,
+    "command": "python scripts/sync.py --package com/sulake/habbo/communication/messages/parser"
+  },
+  "compile": {
+    "root": "test/M2ParserCompileMain.hx",
+    "project": "project.m2-parsers.xml",
+    "target": "OpenFL 9.5.2 HTML5",
+    "compiling": 557,
+    "failing": 2,
+    "generated_tree_total": 1319
+  },
+  "five_files_blocked_all_559": [
+    {
+      "files": [
+        "GameListMessageParser",
+        "FloorHeightMapMessageParser",
+        "RoomDimmerPresetsMessageParser"
+      ],
+      "cause": "ax3 typed the global parseInt as one-argument, rejecting every radix call",
+      "fix": "ax3 patch: accept a trailing argument and emit ASCompat.parseInt, which implements the radix. Mapping straight to Std.parseInt would have compiled for base 10 and silently misread furniture colours (base 16) and floor height maps (base 36)."
+    },
+    {
+      "files": [
+        "SnowStormMessageParser"
+      ],
+      "cause": "a later for-loop reuses a counter an earlier loop declared; AS3 var is function-scoped",
+      "fix": "guarded pre-rule, 13 sites -- all local counters named index or i, none a field"
+    },
+    {
+      "files": [
+        "UsersMessageParser"
+      ],
+      "cause": "ax3 types an untyped Array indexOf as Dynamic, so adding it to an int fails",
+      "fix": "guarded pre-rule making the int() cast explicit"
+    }
+  ],
+  "still_failing": [
+    {
+      "file": "CompetitionVotingInfoMessageParser",
+      "cause": "its import is com.sulake.habbo.communication.enum.CompetitionVotingInfoResult, and enum is a reserved Haxe keyword so the package segment cannot be used verbatim",
+      "precedent": "G1c hit the same collision with WindowParam and rewrote the generated import"
+    },
+    {
+      "file": "BattleBallMessageParser",
+      "cause": "needs com.sulake.habbo.battleball.BattleBallProtocol, a package not yet converted"
+    }
+  ],
+  "removed_as_redundant": [
+    "scripts/generate-message-parsers.py",
+    "scripts/m2_parser_shapes.py",
+    "scripts/message-parser-exceptions.json",
+    "evidence/v3_parser_shape_census.py",
+    "evidence/v3_parser_shape_census.json",
+    "evidence/v3b_parser_generator_reach.json",
+    "evidence/v3_parser_generation.json",
+    "src/com/sulake/habbo/communication/messages/parser/room/engine/FurnitureAliasesMessageParser.hx"
+  ],
+  "why_removed": "The bespoke generator recognised a narrow subset of parse bodies and reached 228 of 559. ax3 converts all 559, including the delegated per-element struct shapes the bespoke one rejected outright. Keeping both would mean two sources of truth for the same output and a second grammar to maintain.",
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_modified": false
+  }
+}

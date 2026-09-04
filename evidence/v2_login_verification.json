@@ -1,0 +1,43 @@
+{
+  "gate": "V2-runnable-login",
+  "status": "PASS",
+  "verified_date": "2026-09-02",
+  "page": "http://localhost:8765/",
+  "configuration": {
+    "source": "C:/habbo/ngh/gamedata/external_dev_vars.txt",
+    "url": "/ngh/gamedata/external_dev_vars.txt",
+    "sha256": "3b09de0e9fe2e254d6483780e84e34988af500f23f8ff9f1b677af43421ba0d8",
+    "mount": "read-only GET/HEAD server"
+  },
+  "runtime": {
+    "initial_state": "login-ready",
+    "submitted_from": "the real name_field in HabboCommunicationDemoCom_login_window.bin",
+    "websocket": "ws://localhost:2096/",
+    "authenticated_state": "authenticated",
+    "authenticated_username": "John",
+    "login_view_closed": true,
+    "socket_behavior": "left open after UserObject; Ping is answered with Pong",
+    "console_errors": 0,
+    "credential_recorded": false
+  },
+  "protocol": {
+    "outgoing": ["ClientHello(4000)", "UniqueID(2490)", "SSOTicket(2419)", "InfoRetrieve(357)"],
+    "incoming": ["UniqueMachineID(1488)", "AuthenticationOK(2491)", "UserObject(2725)"],
+    "result_marker": "SKYHAXE_AUTHENTICATED user=John"
+  },
+  "artifacts": {
+    "src/com/sulake/habbo/communication/connection/Html5HabboConnection.hx": "83883403e8465b0429a05bf869b0d6cace157b9274e9b78230cff73742f2dd81",
+    "src/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx": "c2875582c1c1d66c94260b793fa0b4715d70cdc5da33934dd211f8922d55c467",
+    "project.xml": "f7d487951fc25685df9f236f64efbfc6786800ba881caad1db734d12d70505e3",
+    "scripts/serve-client.py": "b6a5fa7ca472d37ac4de09daed7f566f7e3784dd5be21e4f1a3f8b84412d66d5",
+    "build/html5/bin/skyhaxe.js": "40cf518a22e25a8728c93c91f725f45001d3e01bdb74fcc24c249998e5db5285"
+  },
+  "boundaries": {
+    "full_component_graph_loaded": false,
+    "post_auth_message_dispatch": false,
+    "dh_rc4": false,
+    "room_entered": false,
+    "habbo_client_clean_modified": false,
+    "arcturus_or_plugin_modified": false
+  }
+}

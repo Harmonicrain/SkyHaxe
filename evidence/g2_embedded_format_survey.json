@@ -1,0 +1,61 @@
+{
+  "gate": "G2-swf-reader",
+  "question": "which image codecs do the SWF JPEG-family tags actually carry?",
+  "corpora": {
+    "dcr": {
+      "files_examined": 188,
+      "characters_by_tag_and_encoding": {
+        "DefineBitsJPEG3 -> jpeg": 1036,
+        "DefineBitsJPEG2 -> jpeg": 3,
+        "DefineBitsJPEG3 -> png": 2,
+        "DefineBitsJPEG2 -> png": 2
+      },
+      "payload_bytes_by_encoding": {
+        "jpeg": 4365462,
+        "png": 69535
+      },
+      "files_mixing_encodings": [
+        {
+          "file": "C:\\habbo\\ngh\\dcr\\hof_furni\\godin.swf",
+          "encodings": [
+            "jpeg",
+            "png"
+          ]
+        },
+        {
+          "file": "C:\\habbo\\ngh\\dcr\\hof_furni\\mp3\\gamedata\\basejump.swf",
+          "encodings": [
+            "jpeg",
+            "png"
+          ]
+        },
+        {
+          "file": "C:\\habbo\\ngh\\dcr\\hof_furni\\raiin.swf",
+          "encodings": [
+            "jpeg",
+            "png"
+          ]
+        }
+      ]
+    },
+    "gordon_reachable": {
+      "files_examined": 41,
+      "characters_by_tag_and_encoding": {
+        "DefineBitsJPEG2 -> png": 1468,
+        "DefineBitsJPEG3 -> jpeg": 734,
+        "DefineBitsJPEG3 -> png": 57
+      },
+      "payload_bytes_by_encoding": {
+        "png": 2365253,
+        "jpeg": 1153747
+      },
+      "files_mixing_encodings": []
+    }
+  },
+  "decoder_families_required": [
+    "jpeg",
+    "png",
+    "zlib"
+  ],
+  "finding": "the JPEG-family tags are containers, not a codec: scope the reader by payload magic (PNG / GIF / JPEG) rather than by tag id"
+}

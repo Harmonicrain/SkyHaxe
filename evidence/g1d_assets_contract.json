@@ -1,0 +1,63 @@
+{
+  "gate": "G1d-non-visual-assets",
+  "source_contract": {
+    "ported_classes": [
+      "AssetTypeDeclaration",
+      "IAsset",
+      "ILazyAsset",
+      "UnknownAsset",
+      "TextAsset",
+      "XmlAsset"
+    ],
+    "asset_type_declaration_constructions": 12,
+    "text_asset_input_branches": [
+      "String",
+      "embedded Class",
+      "ByteArray",
+      "TextAsset",
+      "toString fallback"
+    ],
+    "xml_asset_input_branches": [
+      "embedded Class",
+      "ByteArray",
+      "String",
+      "XML",
+      "XmlAsset"
+    ],
+    "xml_asset_is_lazy": true,
+    "copy_type_checks": {
+      "TextAsset": true,
+      "XmlAsset": true
+    }
+  },
+  "semantic_decisions": [
+    "OpenFL ByteArray is an abstract; runtime input checks use its documented ByteArrayData representation",
+    "TextAsset and XmlAsset consume bytes from the current position and advance it, matching readUTFBytes",
+    "XmlAsset retains lazy parsing and direct XML identity",
+    "UnknownAsset and cross-asset copies preserve content identity rather than cloning",
+    "disposal is idempotent and clears content, declaration, and URL references"
+  ],
+  "rewrite_rules": [
+    "flash XML/XMLList -> com.sulake.core.utils.xml.XML/XMLList",
+    "flash.utils.ByteArray runtime type checks -> openfl.utils.ByteArray.ByteArrayData",
+    "AS3 rest file types -> Haxe rest arguments with preserved order",
+    "AS3 `is` asset checks -> Std.isOfType with explicit failure on wrong copy type",
+    "embedded asset Class construction -> Type.createInstance followed by ByteArrayData validation"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/assets/AssetTypeDeclaration.hx": "2496dbf13a68d5c3da50f7258126bf4d2b926d5aeef6ccbc697b8b1fc7cf9167",
+    "src/com/sulake/core/assets/IAsset.hx": "9a4f808d592dd1fdf94a47eb31f38999a36fc02eeb55134110e53326b105ad5e",
+    "src/com/sulake/core/assets/ILazyAsset.hx": "731a15fdbdfc245acfaab614459462f0e4006640eb8be723cadafb2583e53ea8",
+    "src/com/sulake/core/assets/UnknownAsset.hx": "ca326bd7ab0c8627d14706391ee44dbb5d978f07386458f7efc1ed04c317c8ef",
+    "src/com/sulake/core/assets/TextAsset.hx": "e4bf9a88ced2abee298a1ea12cd8d011e00fd56ce3f758d867d26a8bc445e57e",
+    "src/com/sulake/core/assets/XmlAsset.hx": "1e9e24c280d7b3eb971823ceee91aed8e5ba4176563ebcbd4d6e95599b904894",
+    "test/G1dAssetsTest.hx": "711d73fe026674ad3c6ffa4b5974a702fa4e4288a3ec2f7f7ef739c3034759d2",
+    "test/G1dAssetsBrowserMain.hx": "b18cf6f631c4a74e0195d83fe944d293bfe879c32de8c375e808a961756d40c9",
+    "project.g1d-assets.xml": "acbb1fa6f178fa9cc4c931feeec3b134aedfed2a4727cac9ef15f87be7dea9dc"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-assets.ps1",
+    "browser_project": "project.g1d-assets.xml",
+    "expected_dom_marker": "data-skyhaxe-g1d-assets=pass"
+  }
+}

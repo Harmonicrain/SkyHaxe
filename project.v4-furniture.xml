@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe V4 Furniture Path" package="org.nextgenhabbo.skyhaxe.v4.furniture" version="0.1.0" company="NextGenHabbo" />
+    <app main="V4FurnitureCompileMain" path="build/tests/v4-furniture" file="v4-furniture" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

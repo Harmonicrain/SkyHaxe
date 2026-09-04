@@ -1,0 +1,53 @@
+{
+  "gate": "V4-public-room-shell",
+  "date": "2026-09-02",
+  "status": "partial_pass",
+  "production_path": {
+    "room_id": 17413,
+    "room_type_source": "RoomReadyMessageParser.roomType",
+    "room_type": "netcafe",
+    "content_base_source": "external_dev_vars.txt:flash.client.url",
+    "entry_protocol_completed": true,
+    "public_room_shell_integrated_after_room_ready": true
+  },
+  "browser_canary": {
+    "url": "http://localhost:8777/",
+    "result": "pass",
+    "swf_url": "/ngh/gordon/PRODUCTION-201611291003-338511768/hh_room_netcafe.swf",
+    "swf_signature": "CWS",
+    "authored_layers": 44,
+    "unique_bitmaps": 25,
+    "missing_exports": 0,
+    "console_warnings_or_errors": 0,
+    "canvas_backing_size": [1024, 720]
+  },
+  "independent_contract": "evidence/v4_public_room_contract.json",
+  "differences_found_and_fixed": [
+    {
+      "symptom": "The public room rendered blue/purple instead of green/brown.",
+      "cause": "SwfBitmap.toBitmapData wrote Flash ARGB bytes into an OpenFL ByteArray whose HTML5 default is host little-endian.",
+      "fix": "Set ByteArray.endian to BIG_ENDIAN before BitmapData.setPixels.",
+      "regression": "G2 now asserts the known netcafe RGBA sample survives BitmapData upload; integrated G2 passes 927 assertions and 118 comparisons."
+    },
+    {
+      "symptom": "The opaque black 720x490 room bitmap rectangle was visible against a dark-grey stage.",
+      "cause": "The production OpenFL project retained the prototype #10131A stage background while the AIR client uses black.",
+      "fix": "Set the production project window background to #000000."
+    }
+  ],
+  "renderer_contract": {
+    "positions": "SWF visualization XML plus the clean client's default RoomGeometry projection and LayoutRasterizer anchor",
+    "depth": "LayoutRasterizer relativeDepth formula",
+    "blend_modes": ["normal", "add", "subtract", "darken"],
+    "flips": "cached transformed BitmapData, matching the clean RoomSpriteCanvas boundary",
+    "flip_regression": "G4 short browser regression passed 34 assertions"
+  },
+  "not_yet_rendered": [
+    "server-supplied furniture and wall items",
+    "users and avatars",
+    "room interaction and navigation UI",
+    "room effects and dynamic state"
+  ],
+  "gate_complete": false,
+  "reason_not_complete": "V4 requires one complete real room, not only its authored public-room shell."
+}

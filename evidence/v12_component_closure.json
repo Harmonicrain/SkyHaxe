@@ -1,0 +1,15 @@
+{
+  "closure": [
+    "com/sulake/core/runtime/events/UnknownEvent.as",
+    "com/sulake/core/runtime/exceptions/ComponentDisposedException.as",
+    "com/sulake/core/runtime/exceptions/InvalidComponentException.as",
+    "com/sulake/core/runtime/Component.as"
+  ],
+  "context": [
+    "com/sulake/core/runtime/IHabboConfigurationManager.as",
+    "com/sulake/core/runtime/IUpdateReceiver.as",
+    "com/sulake/core/runtime/events/EventDispatcherWrapper.as",
+    "com/sulake/core/runtime/events/EventListenerStruct.as",
+    "com/sulake/core/runtime/exceptions/Exception.as"
+  ]
+}

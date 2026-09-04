@@ -1,0 +1,76 @@
+package com.sulake.habbo.session
+;
+    import com.sulake.habbo.communication.messages.incoming.roomsettings.RoomModerationSettings;
+
+     interface IRoomSession 
+    {
+        var roomId(get,never):Int;
+        var roomResources(get,never):String;
+        var state(get,never):String;
+        function start():Bool;
+        function sendChatMessage(_arg_1:String, _arg_2:Int=0):Void;
+        function sendChangeMottoMessage(_arg_1:String):Void;
+        function sendShoutMessage(_arg_1:String, _arg_2:Int=0):Void;
+        function sendWhisperMessage(_arg_1:String, _arg_2:String, _arg_3:Int=0):Void;
+        function sendChatTypingMessage(_arg_1:Bool):Void;
+        function sendAvatarExpressionMessage(_arg_1:Int):Void;
+        function sendSignMessage(_arg_1:Int):Void;
+        function sendDanceMessage(_arg_1:Int):Void;
+        function sendChangePostureMessage(_arg_1:Int):Void;
+        function sendCreditFurniRedeemMessage(_arg_1:Int):Void;
+        function sendPresentOpenMessage(_arg_1:Int):Void;
+        function sendOpenPetPackageMessage(_arg_1:Int, _arg_2:String):Void;
+        function sendRoomDimmerGetPresetsMessage():Void;
+        function sendRoomDimmerSavePresetMessage(_arg_1:Int, _arg_2:Int, _arg_3:UInt, _arg_4:Int, _arg_5:Bool):Void;
+        function sendRoomDimmerChangeStateMessage():Void;
+        function sendConversionPoint(_arg_1:String, _arg_2:String, _arg_3:String, _arg_4:String=null, _arg_5:Int=0):Void;
+        function sendPollStartMessage(_arg_1:Int):Void;
+        function sendPollRejectMessage(_arg_1:Int):Void;
+		function votePoll(counter:Int):Void;
+        function sendPollAnswerMessage(_arg_1:Int, _arg_2:Int, _arg_3:Array<ASAny>):Void;
+        function sendPeerUsersClassificationMessage(_arg_1:String):Void;
+        function sendRoomUsersClassificationMessage(_arg_1:String):Void;
+        function sendVisitFlatMessage(_arg_1:Int):Void;
+        function sendVisitUserMessage(_arg_1:String):Void;
+        function ambassadorAlert(_arg_1:Int):Void;
+        function kickUser(_arg_1:Int):Void;
+        function banUserWithDuration(_arg_1:Int, _arg_2:String):Void;
+        function muteUser(userId:Int, minutes:Int):Void;
+        function assignRights(_arg_1:Int):Void;
+        function removeRights(_arg_1:Int):Void;
+        function letUserIn(_arg_1:String, _arg_2:Bool):Void;
+        function pickUpPet(_arg_1:Int):Void;
+        function mountPet(_arg_1:Int):Void;
+        function togglePetRidingPermission(_arg_1:Int):Void;
+        function dismountPet(_arg_1:Int):Void;
+        function removeSaddleFromPet(_arg_1:Int):Void;
+        function requestPetCommands(_arg_1:Int):Void;
+        function useProductForPet(_arg_1:Int, _arg_2:Int):Void;
+        function plantSeed(_arg_1:Int):Void;
+        function quit():Void;
+        function changeQueue(_arg_1:Int):Void;
+        function sendUpdateClothingChangeFurniture(_arg_1:Int, _arg_2:String, _arg_3:String):Void;
+        function receivedChatWithTrackingId(_arg_1:Int):Void;
+                var ownUserRoomId(get,set):Int;
+                var isRoomOwner(get,set):Bool;
+                var roomControllerLevel(get,set):Int;
+                var playTestMode(get,set):Bool;
+                var isGuildRoom(get,set):Bool;
+        var isNoobRoom(get,never):Bool;
+        var doorMode(never,set):Int;
+                var tradeMode(get,set):Int;
+        var isPrivateRoom(get,never):Bool;
+        var userDataManager(get,never):UserDataManager;
+                var isSpectatorMode(get,set):Bool;
+                var arePetsAllowed(get,set):Bool;
+        var areBotsAllowed(get,never):Bool;
+                var isUserDecorating(get,set):Bool;
+        var isGameSession(get,never):Bool;
+                var roomModerationSettings(get,set):RoomModerationSettings;
+                var isNuxNotComplete(get,set):Bool;
+        function harvestPet(_arg_1:Int):Void;
+        function togglePetBreedingPermission(_arg_1:Int):Void;
+        function compostPlant(_arg_1:Int):Void;
+        function sendScriptProceed():Void;
+    }
+

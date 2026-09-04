@@ -1,0 +1,34 @@
+{
+  "gate": "G1d-bytearray",
+  "verified_utc": "2026-09-01T11:29:57.488Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a real browser over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8766/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-bytearray",
+      "value": "pass"
+    },
+    "assertions": 41,
+    "console_marker": "SKYHAXE_G1D_BYTEARRAY_PASS assertions=41",
+    "console_errors": 0
+  },
+  "coverage": [
+    "Flash big-endian default",
+    "explicit little-endian override",
+    "signed and unsigned integer widths",
+    "float and double round trips",
+    "UTF and UTFBytes",
+    "readBytes and writeBytes slices",
+    "length, position, bytesAvailable, and indexed access",
+    "zlib compress/uncompress",
+    "raw deflate/inflate",
+    "OpenFL buffer adaptation without copying"
+  ],
+  "note": "The Haxe interpreter is not a supported OpenFL runtime and produced invalid Lime UTF storage before the test could be treated as evidence. The actual HTML5 target is authoritative for this slice.",
+  "commands": [
+    "scripts/test-g1d-bytearray.ps1",
+    "python -m http.server 8766 --bind 127.0.0.1 --directory build/tests/g1d-bytearray/html5/bin",
+    "browser check of DOM marker and console"
+  ]
+}

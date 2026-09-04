@@ -1,0 +1,57 @@
+{
+  "gate": "G1d-component-shell",
+  "verified_utc": "2026-09-01T12:18:24.188Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a fresh real-browser tab over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8766/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-component-shell",
+      "value": "pass"
+    },
+    "assertions": 27,
+    "console_marker": "SKYHAXE_G1D_COMPONENT_SHELL_PASS assertions=27",
+    "console_errors": 0
+  },
+  "coverage": [
+    "self-rooted ComponentContext and owned AssetLibrary lifecycle",
+    "immediate and deferred required dependency injection",
+    "locked interface suppression and unlock announcement",
+    "OpenFL running events",
+    "interface acquisition and release counts",
+    "component/context attach, detach, and disposal",
+    "COMPONENT_FLAG_INTERFACE automatic zero-reference disposal",
+    "late dependency delivery balancing after waiter disposal"
+  ],
+  "lower_runtime_regression": {
+    "status": "pass",
+    "javascript_assertions": 91,
+    "interpreter_assertions": 91,
+    "verification": "evidence/g1d_runtime_verification.json"
+  },
+  "test_correction": {
+    "initial_failure": "the test expected release() to return the pre-release count",
+    "resolution": "expect the AS3 post-release count of zero and update subsequent live-reference totals",
+    "implementation_weakened": false,
+    "fresh_tab_retest": true
+  },
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "external_dev_vars_sha256_before": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_sha256_after": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_unchanged": true
+  },
+  "commands": [
+    "scripts/verify-g1d-runtime.ps1",
+    "python evidence/g1d_component_shell_contract.py",
+    "scripts/test-g1d-component-shell.ps1",
+    "python -m http.server 8766 --bind 127.0.0.1 --directory build/tests/g1d-component-shell/html5/bin",
+    "fresh browser-tab check of DOM marker and console",
+    "scripts/build-html5.ps1 -SkipBootstrap"
+  ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe M2 Generated Parsers" package="org.nextgenhabbo.skyhaxe.m2.parsers" version="0.1.0" company="NextGenHabbo" />
+    <app main="M2ParserCompileMain" path="build/tests/m2-parsers" file="m2-parsers" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <!-- Same class-path order as project.m2-runtime.xml: generated wins, src supplies only the
+         adapters (ByteArray, Map) that have no generated counterpart. -->
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

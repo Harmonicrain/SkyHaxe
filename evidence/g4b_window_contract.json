@@ -1,0 +1,83 @@
+{
+  "gate": "G4b-source-contract",
+  "client_root": "C:\\habbo\\client\\habbo-client-clean",
+  "primary": {
+    "file": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCommunicationDemoCom_login_window.bin",
+    "layout": "habbo_login_dialog",
+    "size": [
+      360,
+      242
+    ],
+    "role": "complete first-visible AIR client window",
+    "elements": {
+      "DropShadowFilter": 1,
+      "border": 1,
+      "button_thick": 1,
+      "children": 2,
+      "filters": 1,
+      "frame": 1,
+      "input": 2,
+      "label": 1,
+      "layout": 1,
+      "text": 2,
+      "var": 29,
+      "variables": 6,
+      "window": 1
+    },
+    "skins": {
+      "frame:3": "frame_3",
+      "border:4": "border_4",
+      "button_thick:3": "button_shiny_thick"
+    },
+    "theme_content_placeholder_offset": [
+      3,
+      36
+    ],
+    "runtime_content_offset": [
+      6,
+      25
+    ],
+    "runtime_content_size": [
+      348,
+      210
+    ],
+    "runtime_rule": "the app layout's margin_* variables override the theme placeholder"
+  },
+  "secondary": {
+    "file": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCatalogCom_layout_frontpage_featured.bin",
+    "layout": "layout_frontpage_featured",
+    "role": "real HTML/input/scroll-list/mask coverage absent from login XML",
+    "elements": {
+      "border": 5,
+      "button": 1,
+      "children": 11,
+      "container": 5,
+      "formatted_text": 1,
+      "html": 2,
+      "input": 1,
+      "layout": 1,
+      "region": 2,
+      "scrollable_itemlist_vertical": 1,
+      "static_bitmap": 2,
+      "text": 2,
+      "var": 60,
+      "variables": 9,
+      "window": 1
+    },
+    "link_localization": "camera.competition.info",
+    "link_text_sha256": "8a57c17cb9ba5fd3d73e9442645a2bdfbd556820255d0e5fc98d37943e038eac"
+  },
+  "sources": {
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCommunicationDemoCom_login_window.bin": "753334f7d6bf7a5fcea3cc69b4dd37d1ef85d6acbe3818c3cbd0a24a8bba7734",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCatalogCom_layout_frontpage_featured.bin": "52920afb4089ce45fae3bf7d37ceb9120a1d46879e9be7bffec952a65af16625",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_frame_3_xml.bin": "3526859bc8d0dd1907d98b45360a7d0ad53c52641707f64e8488923d16bdecad",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_frame_3_xml.bin": "5974667524c61c1c29030a943681448c6e8f03a441e106cf0620c38d8a5f550c",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_border_4_xml.bin": "86eceeec3d20a8ca405f8bcb45825c47d34f5a57cdfd686bd61fa3a7972a8841",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_button_shiny_thick_xml.bin": "eace199f41bcb8f092a7fe3719648a2db9fabb9221e91a4c42928e86ef2bd125",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_border_colorless_xml.bin": "78c6e707903c933c4627adf8d30fa1eba4407c9d15ced5d45dd025de04896e84",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_button_shiny_default_xml.bin": "c3d700233e4076baac7f50dc5beb7219380d91d6981cbf8dbd53c85cc12667cf",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\images\\HabboWindowManagerCom_habbo_blue_skin_png.png": "c7fc591d357fa0fcb95ec02770a572a6ab7bbbca3316d435f53ccd212792d9c9",
+    "C:\\habbo\\client\\habbo-client-clean\\src\\images\\HabboWindowManagerCom_habbo_skin_ubuntu_png.png": "002dd86b33c265b699ee6bd638bffe40223a1fd34e268f7fce43c16b51a0f5a5",
+    "C:\\habbo\\ngh\\gamedata\\external_dev_texts.txt": "4a702ee18fd2e9038af745aa7d1266177a71f93f5e99b005a081f99b9574d2d1"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "gate": "G1d-bitmap-data-asset",
+  "source_contract": {
+    "bitmap_data_asset_files": 111,
+    "constructor_calls": 6,
+    "owns_data_assignments": 0,
+    "parameter_keys": [
+      "offset",
+      "region",
+      "flipH",
+      "flipV"
+    ],
+    "manifest_png_assets": 2021,
+    "manifest_png_aliases": 46
+  },
+  "semantic_decisions": [
+    "owned BitmapData is counted exactly once and disposed exactly once",
+    "setFromOtherAsset creates a borrowed wrapper and copies metadata without cloning pixels",
+    "AssetLibrary aliases use setFromOtherAsset so aliases cannot double-own shared bitmap pixels",
+    "borrowed-wrapper disposal leaves owner pixels readable",
+    "encoded ByteArray input fails explicitly until the G2 SWF/image decoder supplies BitmapData",
+    "offset, region, flipH, and flipV remain metadata and do not mutate source pixels"
+  ],
+  "as3_ownership_correction": {
+    "problem": "AS3 aliases share BitmapData but default ownsData to true; allocation accounting can subtract uncounted shared bytes",
+    "haxe_fix": "source owns and accounts pixels; aliases borrow through setFromOtherAsset; accounting cannot underflow",
+    "corpus_owns_data_assignments": 0
+  },
+  "rewrite_rules": [
+    "BitmapData aliases -> BitmapDataAsset.setFromOtherAsset(source)",
+    "ByteArray image content -> decode to BitmapData in G2 before setUnknownContent",
+    "bitmap parameter XML -> explicit offset/region/flip metadata parsing"
+  ],
+  "haxe_sha256": {
+    "src/com/sulake/core/assets/BitmapDataAsset.hx": "e97284105fc4149f0f431a7cfd995759b8411e7a40461fcd5d6b919a1ef59b36",
+    "src/com/sulake/core/assets/AssetLibrary.hx": "2b939b5e1b7995e29d3078523b32f7b2c674c57b2f0948a609ed8297c9834158",
+    "test/G1dBitmapDataAssetTest.hx": "48283f39abc0579dff1f076f56a44cb06ef4058be8f03b4431ccb9c8e6f0249c",
+    "test/G1dBitmapDataAssetBrowserMain.hx": "47ab3ea5ac5b9a2a4650454ca5473e76c3dd1ccd5ff59fc9944d249829375aee",
+    "project.g1d-bitmap-asset.xml": "7c3ab25f38cf8660210cb9c75a0ded639ea77526b2d4125663522dd0b1c86dd5"
+  },
+  "verification": {
+    "test_script": "scripts/test-g1d-bitmap-asset.ps1",
+    "expected_dom_marker": "data-skyhaxe-g1d-bitmap-asset=pass"
+  }
+}

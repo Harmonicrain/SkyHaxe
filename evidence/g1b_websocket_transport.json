@@ -1,0 +1,80 @@
+{
+  "gate": "G1b-local",
+  "status": "PASS",
+  "verified_date": "2026-09-01",
+  "scope": "localhost HTTP page to ws:// NitroWebsockets; production HTTPS/wss is deferred",
+  "client": {
+    "page_origin": "http://localhost:8765",
+    "websocket_endpoint": "ws://localhost:2096/",
+    "document_marker": { "name": "data-skyhaxe-g1b", "value": "pass" },
+    "console_marker": "SKYHAXE_G1B_PASS",
+    "canvas": {
+      "intrinsic_width": 960,
+      "intrinsic_height": 540,
+      "rendered_width": 1280,
+      "rendered_height": 720
+    },
+    "credential_handling": "The runtime SSO was supplied in the URL fragment and is not present in source, evidence, or the HTTP request target"
+  },
+  "protocol": {
+    "cycles": 2,
+    "clean_closes": 2,
+    "reconnects": 1,
+    "authenticated_username": "John",
+    "client_headers": {
+      "4000": "ClientHello",
+      "2490": "UniqueID",
+      "2419": "SSOTicket",
+      "357": "InfoRetrieve"
+    },
+    "server_headers": {
+      "1488": "UniqueMachineID",
+      "2491": "AuthenticationOK",
+      "2725": "UserObject"
+    },
+    "result": "PASS"
+  },
+  "server": {
+    "checkout": "C:/habbo/server/arcturus-community",
+    "branch": "wired2",
+    "commit": "f96376d6b9561dda8558d2545595163652c7e340",
+    "working_tree_at_verification": { "tracked_changes": 33, "untracked_files": 139 },
+    "jar_sha256": "987ed40061490136909b53ab23a2401702cdfe3247703206ede03f80149e6a83",
+    "nitro_plugin": {
+      "file": "plugins/NitroWebsockets-3.2.jar",
+      "sha256": "c10a55edb8ee188e8ad6ed38f6a514a2313ca80ce0e65dceadd052c0aa61ee9f",
+      "modified_by_g1b": false
+    },
+    "source_modified_by_g1b": false
+  },
+  "build": {
+    "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\build-html5.ps1 -SkipBootstrap",
+    "result": "PASS",
+    "outputs": {
+      "build/html5/bin/index.html": {
+        "bytes": 1311,
+        "sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+      },
+      "build/html5/bin/skyhaxe.js": {
+        "bytes": 2749338,
+        "sha256_observed": "5950c32849b62f525005cd6090c74bfe979071b01dcc0420651ce0eef5a06392",
+        "sha256_reproducible": false,
+        "normalized_sha256": "c3f250713c4a9c6138bfd8615d08b2688c55a98fdc7a656305f7a908462c7d80",
+        "normalization": "Replace the one generated lime.utils.AssetCache.version integer with 0"
+      }
+    }
+  },
+  "origin_check": {
+    "http://127.0.0.1:8765": "rejected by Nitro as not matching the configured hostname whitelist",
+    "http://localhost:8765": "accepted"
+  },
+  "deferred": {
+    "https_wss": "Deferred for the real deployment origin, certificate, and proxy configuration; no local TLS files were changed"
+  },
+  "boundaries": {
+    "habbo_client_clean_modified_by_g1b": false,
+    "arcturus_source_modified_by_g1b": false,
+    "nitro_plugin_modified_by_g1b": false,
+    "bulk_conversion_started": false
+  }
+}

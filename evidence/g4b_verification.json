@@ -1,0 +1,166 @@
+{
+  "gate": "G4b-window-text",
+  "verified_utc": "2026-09-02T14:14:11.9458886Z",
+  "status": "pass",
+  "supersedes": "the 2026-09-02T01:03 run, whose test still asserted the theme placeholder instead of the app layout's runtime margins",
+  "browser": {
+    "url": "http://127.0.0.1:8776/",
+    "assertions": 39,
+    "console_errors": 0,
+    "stage": "NO_SCALE at authored size; one stage pixel per screen pixel",
+    "production_pointer_check": {
+      "url": "http://localhost:8765/",
+      "window_drag_delta": [-40, -12],
+      "login_button_state": "hovering",
+      "window_remained_fully_rendered": true
+    }
+  },
+  "differences_found_and_fixed": [
+    {
+      "defect": "button caption rendered white",
+      "cause": "colour hardcoded as frameTitle||button ? white : black",
+      "truth": "ButtonController.as:152 only overrides on a TEXT_COLOR property; text_styles_css declares no colour, so TextStyleManager default 0 (black) applies"
+    },
+    {
+      "defect": "button rendered at the authored 120px",
+      "cause": "parser honoured the layout width",
+      "truth": "ButtonController.as:26 forces EXPAND_TO_ACCOMMODATE_CHILDREN and :93 sets width=0 on child resize; WindowController.as:1671 resizes to the child bounding box"
+    },
+    {
+      "defect": "button drifted left once narrowed",
+      "cause": "x left at the authored 114",
+      "truth": "params=918545 includes ON_RESIZE_ALIGN_CENTER; setRectangle (:776-806) shifts x by half the width delta"
+    },
+    {
+      "defect": "button caption not bold",
+      "cause": "style defaulted to u_regular",
+      "truth": "habbo_window_layout_button_shiny_thick_xml declares text_style=button_shiny_bold with 10px side margins"
+    },
+    {
+      "defect": "frame title left-aligned",
+      "cause": "x hardcoded to 10",
+      "truth": "habbo_window_layout_header_3_xml declares header_title_text with relative_horizontal_scale_center"
+    },
+    {
+      "defect": "page rendered ~1.87x and interpolated",
+      "cause": "Lime embedded a fixed 1024x520 stage and CSS-scaled it",
+      "truth": "window width/height 0 plus StageScaleMode.NO_SCALE renders at authored size"
+    },
+    {
+      "defect": "test asserted frame content at 3,36 after the renderer changed to 6,25",
+      "cause": "3,36 is the frame_3 theme document's design-time _CONTENT placeholder",
+      "truth": "FrameController applies the login layout's margin_left/top/right/bottom values: 6,25,6,7, producing a 348x210 runtime content area"
+    },
+    {
+      "defect": "runtime login status updates rendered through an obsolete OpenFL TextField",
+      "cause": "HabboCommunicationDemo wrote status.textField.text directly, bypassing caption invalidation and Truffle",
+      "truth": "the clean IWindow caption is writable; WindowController.setCaption now re-rasterizes dynamic labels through their configured Truffle style"
+    },
+    {
+      "defect": "the AIR hotel-view artwork was absent behind the login window",
+      "cause": "the HTML5 shell never mounted HabboAir's two embedded login images",
+      "truth": "LoginBackgroundView consumes the two clean-client images and implements HabboAir's cover/background and bottom-right/foreground resize formulas"
+    },
+    {
+      "defect": "the login window could not be dragged by its titlebar",
+      "cause": "WindowParam dragging flags were parsed but had no behavior",
+      "truth": "frame_3 declares titlebar as mouse_dragging_trigger and login's frame params=32769 declares the target; WindowController now executes that generic ancestor relationship"
+    },
+    {
+      "defect": "buttons never changed appearance on hover or press",
+      "cause": "WindowController always requested the default skin state",
+      "truth": "the production skin XML maps default, hovering, pressed, and disabled templates; mouse state now selects those templates and swaps bitmap data in place"
+    }
+  ],
+  "theme_driven_rendering": {
+    "summary": "control appearance now comes from the data the client ships, not from constants",
+    "element_description_rows": 332,
+    "internal_layouts_packaged": 8,
+    "internal_layouts_available": 44,
+    "removed_from_code": [
+      "BUTTON_TEXT_INSET",
+      "TITLE_BAR_TEXT_Y",
+      "resolveButtonWidth",
+      "button_shiny_bold/u_frame_title style defaults",
+      "per-control caption positioning",
+      "hardcoded frame_3 content offset 3,36"
+    ],
+    "now_generic": [
+      "inherit_caption propagation across the theme boundary",
+      "expand_to_accommodate_children plus on_resize_align",
+      "relative_horizontal/vertical_scale_center and _strech",
+      "_CONTENT supplies contentHost geometry",
+      "internal children inherit the host style when they declare none",
+      "mouse_dragging_trigger resolves its ancestor mouse_dragging_target",
+      "button hover and pressed states select templates from production skin XML"
+    ],
+    "emergent": "the title bar help and close buttons appeared without being written"
+  },
+  "measured_geometry": {
+    "title_bar_centre": 174,
+    "title_centre": 174.125,
+    "login_button": {
+      "x": 148.35,
+      "width": 51.3,
+      "centre": 174
+    },
+    "authored_button_centre": 174
+  },
+  "typography": {
+    "engine": "truffle-text 2.0.0 (HarfBuzz shaping, FreeType hinting, bundled Ubuntu/Volter)",
+    "why": "OpenFL TextField cannot reproduce Ubuntu at advanced anti-alias with sharpness 80 / thickness -15",
+    "styles_resolved_from_theme": true,
+    "textfield_retained_for": [
+      "input (live caret and selection)",
+      "html (htmlText link events)"
+    ],
+    "payload_served_not_bundled_mib": 99
+  },
+  "hand_written_files_that_should_be_generated": [
+    {
+      "haxe": "src/com/sulake/core/window/utils/ParamCodeTable.hx",
+      "as3": "src/com/sulake/core/window/utils/ParamCodeTable.as"
+    },
+    {
+      "haxe": "src/com/sulake/core/window/enums/WindowParam.hx",
+      "as3": "src/com/sulake/core/window/enum/WindowParam.as"
+    }
+  ],
+  "genuine_exceptions_no_as3_counterpart": [
+    "src/com/sulake/core/window/text/TruffleText.hx",
+    "src/com/sulake/core/window/theme/ElementDescription.hx",
+    "src/com/sulake/core/window/theme/InternalLayouts.hx"
+  ],
+  "known_gaps": [
+    "only 8 of 44 internal layouts are packaged; controls outside this window are unexercised",
+    "ElementDescription keys on type+style and ignores intent; unverified across all 332 rows",
+    "WindowController remains a transitional subset of the original 148 functions; the last formal M2 re-cost predates these interaction additions and measured 17"
+  ],
+  "implementation_sha256": {
+    "src/com/sulake/core/window/WindowController.hx": "46ddd07e3ff90e66f03cffb4bb6d422c08216bc3552b443bf8eaef816fa1b674",
+    "src/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx": "180f18f2824a16ae1131f49915a8b2d7632c85f92f1ba104d7233e7eb2729daf",
+    "src/com/sulake/habbo/communication/demo/LoginBackgroundView.hx": "68b7ec4f9326ef4fce6e342eb7bb449d39a45cd995b225ee8abd72855f9a8f50",
+    "src/com/sulake/core/window/utils/WindowParser.hx": "3dce6388f3518d1270f7ea9666f6886ee987495d1a1a24cfce2eccf4024e1e04",
+    "src/com/sulake/core/window/utils/ParamCodeTable.hx": "58b6a2fd4ccb7277d3f49d9cc212e29fe4a29d46ecae5853b1c96439f4e6c7f7",
+    "src/com/sulake/core/window/enums/WindowParam.hx": "2c956b2768b847fa2327a9cef63ef1fb285da425a588c5019c58c8f1e83651e6",
+    "src/com/sulake/core/window/theme/ElementDescription.hx": "17e29e695fa41f7baaad23235d3ef4f079007f63bc5bae667c792853b156fd3b",
+    "src/com/sulake/core/window/theme/InternalLayouts.hx": "1b38b1fe83d9d6c0a73788c763fd8aa20c98e85dcc9dba4640185e8a6dcf482d",
+    "src/com/sulake/core/window/text/TruffleText.hx": "4f964eeadb44058835c2f35f6dd8ff5ab96bdb49220080a0563a9b8bfd5fe96e",
+    "test/G4bWindowBrowserMain.hx": "3be5812e0ad6d82458a334573325bec21666846fb279cc9ce98e4a137e21cc53",
+    "project.xml": "7a020a544b0068ab63e2c83e0c13fd28b2f896d9063b960c51787e0dc595dfa4",
+    "project.g4b-window.xml": "845d01be6209d2f7fbad623ac90ac1b7acd75973e9a46df9f93175ee0b943877",
+    "scripts/serve-g4b.py": "ff180ac11e15fe8b295178570c0456cf6ddb15c45c728f14699056cd5824e9a0",
+    "scripts/build-truffle.mjs": "5345fd5bea3813edf2218adb5a8d7ae1a666f5f0d8c51bf32bf3724ded5482a9",
+    "evidence/g4b_window_contract.json": "387e6ca8abbe1f013a3ab73c4cc96213c6bbcdaae42c65c40f8659d2013c7744"
+  },
+  "read_only_checks": {
+    "clean_client_head": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "clean_client_status_entries": 165,
+    "clean_client_diff_sha256": "60bfe073e18bbb4034310afc5c827bcd66c1bfec391d17736721f9fd8283ea4e",
+    "client_modified": false
+  },
+  "clean_client_login_assets": {
+    "HabboAir_LoginBackground.png": "7b488c6882db0581a48426d08d7a51f2a85ab32b3b22cc2d28f394839566f211",
+    "HabboAir_LoginForeground.png": "d6a5adab9da011b753123a231391adf42c0eb79fe9f012447c30f463e37b8f99"
+  }
+}

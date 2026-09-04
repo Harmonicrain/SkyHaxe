@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe M2 Generated Runtime" package="org.nextgenhabbo.skyhaxe.m2.runtime" version="0.1.0" company="NextGenHabbo" />
+    <app main="M2RuntimeCompileMain" path="build/tests/m2-runtime" file="m2-runtime" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <!-- Haxe searches class paths in reverse declaration order. Generated wins here so every
+         listed identity proves converter output, while src supplies only non-overlapping target
+         adapters such as ASError and the big-endian ByteArray boundary. -->
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path="test" />
+    <haxeflag name="--macro" value="M2GeneratedPrecedence.assertGenerated()" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

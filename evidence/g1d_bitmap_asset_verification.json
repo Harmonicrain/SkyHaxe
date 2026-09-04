@@ -1,0 +1,49 @@
+{
+  "gate": "G1d-bitmap-data-asset",
+  "verified_utc": "2026-09-01T12:10:06.294Z",
+  "status": "pass",
+  "target": "OpenFL HTML5 in a fresh real-browser tab over localhost HTTP",
+  "browser": {
+    "url": "http://127.0.0.1:8766/",
+    "document_marker": {
+      "name": "data-skyhaxe-g1d-bitmap-asset",
+      "value": "pass"
+    },
+    "assertions": 31,
+    "console_marker": "SKYHAXE_G1D_BITMAP_ASSET_PASS assertions=31",
+    "console_errors": 0
+  },
+  "coverage": [
+    "lazy owned BitmapData adoption and exact byte accounting",
+    "default and explicit rectangles, offsets, and flip flags",
+    "source pixel integrity",
+    "borrowed copy identity and survival after borrower disposal",
+    "Bitmap wrapper ownership transfer",
+    "AssetLibrary bitmap alias borrowing and balanced unload",
+    "wrong-type copy and undecoded ByteArray failures"
+  ],
+  "test_correction": {
+    "initial_failure": "owner allocation was asserted before lazy content preparation",
+    "resolution": "the test now reads owner.content before checking allocation",
+    "implementation_weakened": false,
+    "fresh_tab_retest": true
+  },
+  "normal_openfl_html5": {
+    "built": true,
+    "index_sha256": "c0e917283c3e3e709959f62a40bd14732325fb76b88ad81b02d42223cded2641"
+  },
+  "read_only_checks": {
+    "clean_client_git_status_unchanged": true,
+    "clean_client_status_entries": 165,
+    "external_dev_vars_sha256_before": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_sha256_after": "f7d1eca1424fd4869270a38ecf44707a0da7cc55c66bd19dafeb227494669ec3",
+    "external_dev_vars_unchanged": true
+  },
+  "commands": [
+    "python evidence/g1d_bitmap_asset_contract.py",
+    "scripts/test-g1d-bitmap-asset.ps1",
+    "python -m http.server 8766 --bind 127.0.0.1 --directory build/tests/g1d-bitmap-asset/html5/bin",
+    "fresh browser-tab check of DOM marker and console",
+    "scripts/build-html5.ps1 -SkipBootstrap"
+  ]
+}

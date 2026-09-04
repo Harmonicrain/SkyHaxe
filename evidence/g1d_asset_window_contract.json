@@ -1,0 +1,75 @@
+{
+  "gate": "G1d-asset-window-boundary",
+  "status": "measured_not_implemented",
+  "scope": {
+    "asset_files": 25,
+    "window_files": 245,
+    "asset_implementations": [
+      "com/sulake/core/assets/DisplayAsset.as",
+      "com/sulake/core/assets/SoundAsset.as",
+      "com/sulake/core/assets/TextAsset.as",
+      "com/sulake/core/assets/TypeFaceAsset.as",
+      "com/sulake/core/assets/UnknownAsset.as"
+    ],
+    "lazy_asset_implementations": [
+      "com/sulake/core/assets/BitmapDataAsset.as",
+      "com/sulake/core/assets/XmlAsset.as"
+    ]
+  },
+  "flash_family_occurrences": {
+    "assets": {
+      "display": 7,
+      "text": 1,
+      "filters": 0,
+      "geometry": 2,
+      "events": 33,
+      "network": 20,
+      "sound": 2
+    },
+    "window": {
+      "display": 56,
+      "text": 33,
+      "filters": 4,
+      "geometry": 125,
+      "events": 36,
+      "network": 2,
+      "sound": 0
+    }
+  },
+  "behaviour_occurrences": {
+    "assets": {
+      "bitmap_data": 13,
+      "html_text": 0,
+      "text_field": 0,
+      "mask": 0,
+      "filters": 0,
+      "blend_mode": 0,
+      "hit_test_point": 0,
+      "scroll": 0
+    },
+    "window": {
+      "bitmap_data": 90,
+      "html_text": 12,
+      "text_field": 26,
+      "mask": 3,
+      "filters": 15,
+      "blend_mode": 0,
+      "hit_test_point": 0,
+      "scroll": 79
+    }
+  },
+  "ordered_subgates": [
+    "non-visual AssetTypeDeclaration/IAsset/TextAsset/XmlAsset/UnknownAsset contracts",
+    "AssetLibrary name/type/alias ownership needed to consume G2 and G3 output",
+    "BitmapDataAsset ownership and pixel-copy behaviour in a real OpenFL HTML5 browser",
+    "minimal final Component shell over verified runtime and asset/event boundaries",
+    "window interfaces and one real XML layout browser canary; full UI parity remains G4b"
+  ],
+  "semantic_decisions": [
+    "Haxe interpreter results are not evidence for OpenFL BitmapData, display-list, text, mask, filter, or hit-testing behaviour",
+    "do not bulk-port 245 window files into G1d; establish interfaces and a real layout canary, then enforce full parity at G4b",
+    "asset ownership must distinguish borrowed versus owned BitmapData to prevent double disposal",
+    "TextAsset and XmlAsset ByteArray reads inherit the verified Flash big-endian/position-compatible adapter",
+    "no placeholder asset or event stubs may be introduced merely to make Component compile"
+  ]
+}
