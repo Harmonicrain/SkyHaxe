@@ -279,8 +279,11 @@ predictable, but `com.sulake.core.window` still leans on Flash display semantics
 
 **End-goal invariant, confirmed by the owner 2026-09-02:** `habbo-client-clean` stays authoritative.
 Updating it must normally mean rerunning a deterministic conversion pipeline and reviewing a
-bounded generated diff—not substantially rewriting SkyHaxe. Hand-maintained semantic adapters are
-allowed only through an explicit exception manifest that fails when its AS3 counterpart changes.
+bounded generated diff—not substantially rewriting SkyHaxe. Existing room, protocol, lifecycle,
+interaction, and UI ownership must be converted rather than recreated as new hand-written layers.
+Hand-maintained code is restricted to the smallest unavoidable HTML5/OpenFL boundary adapter and
+must be declared through an explicit exception manifest that fails when its AS3 counterpart
+changes. Temporary adapters are deleted as soon as the converted owner can replace them.
 
 The Phase 2 exit review is saved in `evidence/m2_recost.md`. M2 is re-costed as 26–42 focused
 engineering days across seven bounded gates. This is a planning range, not a delivery promise.

@@ -2,6 +2,10 @@
 
 What each measurement was taken from, so it can be re-run and compared rather than believed.
 
+This is an append-only measurement journal. Earlier frontier statements describe the code at the
+date of that measurement and are not current project guidance. The authoritative current status
+and porting rules live in `README.md`, `CHECKLIST.md`, and `PLAN.md`.
+
 ## Anchors
 
 ### Client tree

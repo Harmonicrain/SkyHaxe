@@ -10,6 +10,16 @@ The legacy room renderer has been removed. Room shell, floor and wall furniture,
 cursor/walking, room dragging, backgrounds, ads, state changes, and animation share the generated
 engine path. Cross-origin photo loading is deliberately deferred; it is not a baseline failure.
 
+## Porting rule
+
+`habbo-client-clean` is the behavioural and architectural source of truth. Convert its existing
+components and preserve their ownership boundaries; do not replace them with new hand-written
+room, protocol, lifecycle, interaction, or UI layers. Hand-written Haxe is permitted only for an
+unavoidable target boundary—such as browser transport, same-origin URL handling, SWF decoding,
+or OpenFL integration—and must remain the smallest adapter that lets converted client code run.
+Temporary adapters are removed when the converted owner becomes available. Files under
+`generated/` are reproducible output and are never edited directly.
+
 ## G1 toolchain
 
 The setup is local to this checkout. It does not add Haxe to the machine PATH or modify the

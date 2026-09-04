@@ -43,6 +43,11 @@ These exist because a long port drifts in predictable ways. They are not advice.
     a second source tree maintained by hand. Never edit generated Haxe. Every hand-maintained
     replacement belongs in a machine-readable exception manifest with its AS3 source hash and
     contract tests; an upstream change to that source must fail the sync and demand review.
+11. **Do not invent a parallel client architecture.** Room, protocol, lifecycle, interaction, and
+    UI behaviour must come from converted clean-client components whenever they exist. A
+    hand-written layer is allowed only at an unavoidable HTML5/OpenFL boundary, must be kept
+    minimal, and must be deleted when its converted owner can take over. Convenience and faster
+    visible progress are not sufficient reasons to duplicate Flash behaviour.
 
 ---
 
