@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "fixture": "test/window-runtime.html",
+  "browser_exit": 0,
+  "body": "V22_WINDOW_RUNTIME_PASS visible=57046 hover click list infostand-layout dispose styles=frame:0,button:0,frame:1,button:1,frame:2,button:2,frame:3,button:3,frame:4,button:4,button:5,button:6,frame:7,frame:10000,frame:100,frame:101,frame:102,frame:103,button:100,button:101,button:102,button:103,button:104,button:105,frame:200,button:200,button:106,frame:10001,frame:10002,frame:10003,frame:10004,frame:10005,frame:10006,frame:10007",
+  "error": null,
+  "http_errors": [
+    "code 404, message File not found"
+  ],
+  "browser_stderr_tail": []
+}

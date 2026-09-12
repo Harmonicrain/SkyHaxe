@@ -5,6 +5,12 @@ import haxe.io.BytesInput;
 import haxe.zip.InflateImpl;
 import lime.utils.Bytes as LimeBytes;
 import lime.utils.CompressionAlgorithm;
+#if (js && html5)
+import js.lib.Promise as JsPromise;
+import js.lib.Uint8Array;
+import lime.app.Future;
+import lime.app.Promise;
+#end
 
 /**
  * Container and tag layer of the SWF reader (gate G2).
@@ -14,8 +20,8 @@ import lime.utils.CompressionAlgorithm;
  * exposes exactly the characters named in `SymbolClass` and nothing else. A shape or font left
  * over from authoring is unreachable in the Flash client and stays unreachable here.
  *
- * Scope comes from measurement, not assumption. See `evidence/g0_scan_swf_exports.py`,
- * `evidence/g0_gordon_contract.py`, and `evidence/g2_embedded_format_survey.py`.
+ * Scope comes from measurement, not assumption. See `historical/evidence/g0_scan_swf_exports.py`,
+ * `historical/evidence/g0_gordon_contract.py`, and `historical/evidence/g2_embedded_format_survey.py`.
  */
 class SwfFile {
 	/** Exported characters, keyed by the name in SymbolClass. */
@@ -55,6 +61,41 @@ class SwfFile {
 		file.readTags(body);
 		return file;
 	}
+
+	/** Browser-native asynchronous CWS inflate; tag indexing stays deterministic. */
+	#if (js && html5)
+	public static function readAsync(raw:Bytes):Future<SwfFile> {
+		var signature = String.fromCharCode(raw.get(0)) + String.fromCharCode(raw.get(1))
+			+ String.fromCharCode(raw.get(2));
+		if (signature != "CWS" || !untyped js.Syntax.code("typeof DecompressionStream !== 'undefined'"))
+			return Future.withValue(read(raw));
+
+		var promise = new Promise<SwfFile>();
+		var declared = raw.getInt32(4) - 8;
+		var compressed = new Uint8Array(raw.sub(8, raw.length - 8).getData());
+		var native:JsPromise<js.lib.ArrayBuffer> = untyped js.Syntax.code(
+			"new Response(new Blob([{0}]).stream().pipeThrough(new DecompressionStream('deflate'))).arrayBuffer()",
+			compressed);
+		native.then(function(buffer) {
+			try {
+				var body = Bytes.ofData(buffer);
+				if (body.length < declared)
+					throw new SwfError('truncated body: ${body.length} bytes, header declares $declared');
+				var file = new SwfFile();
+				file.signature = "CWS";
+				file.bodyBytes = body.length;
+				file.readTags(body);
+				promise.complete(file);
+			} catch (error:Dynamic) promise.error(error);
+			return null;
+		}).catchError(function(_) {
+			// Some legacy files omit the Adler trailer. The proven reader validates their length.
+			try promise.complete(read(raw)) catch (error:Dynamic) promise.error(error);
+			return null;
+		});
+		return promise.future;
+	}
+	#end
 
 	/**
 	 * SWF does not store an ordinary LZMA-alone stream. Its five property bytes start at offset

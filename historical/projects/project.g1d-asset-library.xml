@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe G1d AssetLibrary" package="org.nextgenhabbo.skyhaxe.g1d.assetlibrary" version="0.1.0" company="NextGenHabbo" />
+    <app main="G1dAssetLibraryBrowserMain" path="build/tests/g1d-asset-library" file="g1d-asset-library" />
+    <window width="320" height="180" background="#10131A" hardware="true" />
+    <source path="generated" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="src" />
+    <source path="test" />
+    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboCatalogCom_manifest.bin" rename="fixtures/HabboCatalogCom_manifest.bin" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

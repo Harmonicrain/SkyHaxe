@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <!-- Keep the proven runnable client untouched; reuse only its browser assets and libraries. -->
+    <define name="skyhaxe_full_candidate" />
+    <include path="project.xml" />
+    <meta title="SkyHaxe v32 component graph" package="org.nextgenhabbo.skyhaxe.v32.runtime" version="0.1.0" />
+    <app main="V32BrowserMain" path="build/v32" file="skyhaxe-v32" />
+    <prebuild command="python evidence/prepare_browser_asset_loader_candidate.py" />
+    <source path=".toolchain/v32/generated" />
+    <haxeflag name="-cp" value=".toolchain/v32/platform" />
+    <source path="candidate/v32" />
+    <!-- template, not assets: the point of a config file is that it can be edited in the
+         output and reloaded, which an embedded asset baked into the bundle cannot be. -->
+    <template path="candidate/v32/config.ini" rename="config.ini" />
+    <template path="public/swf-decode-worker.js" rename="swf-decode-worker.js" />
+    <haxedef name="skyhaxe_component_embed_manifest" value="evidence/component_library_embeds.json" />
+    <include path=".toolchain/v32/component-library-assets.xml" />
+</project>

@@ -1,0 +1,1137 @@
+package com.sulake.habbo.ui.widget.infostand
+;
+    import com.sulake.core.window.components.IItemListWindow;
+    import com.sulake.core.window.IWindowContainer;
+    import com.sulake.core.window.IWindow;
+    import com.sulake.core.window.components.IBorderWindow;
+    import com.sulake.habbo.catalog.IHabboCatalog;
+    import com.sulake.habbo.tracking.IHabboTracking;
+    import com.sulake.habbo.tracking.HabboTracking;
+    import com.sulake.core.assets.XmlAsset;
+    import com.sulake.habbo.session.SecurityLevelEnum;
+    import com.sulake.core.window.events.WindowMouseEvent;
+    import com.sulake.core.window.components.IRegionWindow;
+    import com.sulake.core.utils.Map;
+    import com.sulake.core.window.events.WindowEvent;
+    import com.sulake.habbo.session.furniture.IFurnitureData;
+    import com.sulake.habbo.room.object.RoomObjectCategoryEnum;
+    import com.sulake.room.object.IRoomObject;
+    import com.sulake.habbo.room.object.RoomObjectVariableEnum;
+    import com.sulake.habbo.catalog._enum.CatalogType;
+    import com.sulake.core.window.components.ITextWindow;
+    import flash.display.BitmapData;
+    import flash.utils.Timer;
+    import flash.events.TimerEvent;
+    import com.sulake.core.window.components.IBitmapWrapperWindow;
+    import com.sulake.habbo.utils.FriendlyTime;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetFurniActionMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetGetBadgeDetailsMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetOpenProfileMessage;
+    import com.sulake.core.window.components.IIconWindow;
+    import com.sulake.habbo.utils._Str_6093;
+    import com.sulake.habbo.session._enum.RoomControllerLevel;
+    import com.sulake.habbo.ui.widget.enums.RoomWidgetEnumItemExtradataParameter;
+    import com.sulake.habbo.ui.widget.enums.RoomWidgetFurniInfoUsagePolicyEnum;
+    import com.sulake.habbo.ui.widget.events.RoomWidgetFurniInfostandUpdateEvent;
+    import com.sulake.core.window.events.WindowKeyboardEvent;
+    import com.sulake.core.window.components.IWidgetWindow;
+    import com.sulake.habbo.window.widgets.ILimitedItemPreviewOverlayWidget;
+    import com.sulake.habbo.room.IStuffData;
+    import com.sulake.habbo.window.widgets._Str_4520;
+    import com.sulake.habbo.window.widgets.IBadgeImageWidget;
+
+     class InfoStandFurniView 
+    {
+        static inline final BCW_OWNER_ID= -12345678;
+
+        static inline final PICKUP_MODE_NONE= 0;
+        static inline final PICKUP_MODE_EJECT= 1;
+        static inline final PICKUP_MODE_FULL= 2;
+
+        static inline final OFFSET_REPEAT_DELAY= 400;
+        static inline final OFFSET_REPEAT_INTERVAL= 110;
+
+        var _offsetRepeatTimer:Timer;
+        var _offsetRepeatInput:IWindow;
+        var _offsetRepeatDir:Int = 0;
+
+        var _window:IItemListWindow;
+        var _customVarsWindow:IWindowContainer;
+        var _customVarsItemTemplate:IWindow;
+        var _border:IBorderWindow;
+        var _buttons:IItemListWindow;
+        var _catalog:IHabboCatalog;
+        var _habboTracking:IHabboTracking;
+        var _Str_3793:IWindow;
+        var _Str_3823:IWindow;
+        var _Str_3747:IWindow;
+        var _Str_3810:IWindow;
+        var _bcPlaceButton:IWindow;
+        var _pickupMode:Int = 0;
+        var _ownerId:Int = 0;
+        var _widget:InfoStandWidget;
+        var _infoElements:IItemListWindow;
+
+        public function new(k:InfoStandWidget, _arg_2:String, _arg_3:IHabboCatalog)
+        {
+            this._pickupMode = InfoStandFurniView.PICKUP_MODE_NONE;
+            this._widget = k;
+            this._catalog = _arg_3;
+            this._habboTracking = HabboTracking.getInstance();
+            this.createWindow(_arg_2);
+        }
+
+        public function dispose()
+        {
+            this.stopOffsetRepeat();
+            if (this._offsetRepeatTimer != null)
+            {
+                this._offsetRepeatTimer.removeEventListener(TimerEvent.TIMER, (this.onOffsetRepeat : ASAny));
+                this._offsetRepeatTimer = null;
+            }
+            this._catalog = null;
+            this._widget = null;
+            this._window.dispose();
+            this._window = null;
+        }
+
+        public var window(get,never):IItemListWindow;
+public function  get_window():IItemListWindow
+        {
+            return this._window;
+        }
+
+        function createWindow(k:String)
+        {
+var wiredInspect:IWindow  = null;            var _local_4:IWindow = null;
+            var _local_7 = 0;
+            var _local_2= Std.downcast(this._widget.assets.getAssetByName("furni_view") , XmlAsset);
+            this._window = Std.downcast(this._widget.windowManager.buildFromXML(((_local_2.content : com.sulake.core.utils.xml.XML) )) , IItemListWindow);
+            if (this._window == null)
+            {
+                throw new ASError("Failed to construct window from XML!");
+            }
+            this._border = Std.downcast(this._window.getListItemByName("info_border") , IBorderWindow);
+            this._buttons = Std.downcast(this._window.getListItemByName("button_list") , IItemListWindow);
+            if (this._buttons != null &&
+                this._buttons.getListItemByName("wired_inspect") == null &&
+                this._buttons.numListItems > 0)
+            {
+wiredInspect=
+                    this._buttons.getListItemAt(0).clone();
+                wiredInspect.name = "wired_inspect";
+                wiredInspect.caption =
+                    "${infostand.button.wired_inspect}";
+                wiredInspect.visible = false;
+                this._buttons.addListItem(wiredInspect);
+            }
+            this._customVarsWindow = Std.downcast(this._window.getListItemByName("custom_variables") , IWindowContainer);
+            if (!this._widget.handler.container.sessionDataManager.hasSecurity(SecurityLevelEnum.MODERATOR))
+            {
+                this._customVarsWindow.dispose();
+                this._customVarsWindow = null;
+            }
+            if (this._customVarsWindow != null)
+            {
+                this._customVarsWindow.procedure = this.customVarsWindowProcedure;
+                this._customVarsItemTemplate = cast(this._customVarsWindow.findChildByName("variable_list"), IItemListWindow).removeListItemAt(0);
+            }
+            if (this._border != null)
+            {
+                this._infoElements = Std.downcast(this._border.findChildByName("infostand_element_list") , IItemListWindow);
+            }
+            this._window.name = k;
+            this._widget.mainContainer.addChild(this._window);
+            var _local_3= this._border.findChildByTag("close");
+            if (_local_3 != null)
+            {
+                _local_3.addEventListener(WindowMouseEvent.CLICK, this.onCloseHandler);
+            }
+            if (this._buttons != null)
+            {
+                _local_7 = 0;
+                while (_local_7 < this._buttons.numListItems)
+                {
+                    _local_4 = this._buttons.getListItemAt(_local_7);
+                    _local_4.addEventListener(WindowMouseEvent.CLICK, this.onButtonClicked);
+                    _local_7++;
+                }
+            }
+            this._Str_3793 = this._border.findChildByTag("catalog");
+            if (this._Str_3793 != null)
+            {
+                this._Str_3793.addEventListener(WindowMouseEvent.CLICK, this._Str_12960);
+            }
+            this._Str_3823 = this._border.findChildByName("rent_button");
+            if (this._Str_3823 != null)
+            {
+                this._Str_3823.addEventListener(WindowMouseEvent.CLICK, this._Str_12518);
+            }
+            this._Str_3747 = this._border.findChildByName("extend_button");
+            if (this._Str_3747 != null)
+            {
+                this._Str_3747.addEventListener(WindowMouseEvent.CLICK, this._Str_15302);
+            }
+            this._Str_3810 = this._border.findChildByName("buyout_button");
+            if (this._Str_3810 != null)
+            {
+                this._Str_3810.addEventListener(WindowMouseEvent.CLICK, this._Str_15887);
+            }
+            this._bcPlaceButton = this._border.findChildByName("bc_place_button");
+            if (this._bcPlaceButton != null)
+            {
+                this._bcPlaceButton.addEventListener(WindowMouseEvent.CLICK, this.onBcPlaceMoreButtonClicked);
+            }
+            var _local_5= Std.downcast(this._infoElements.getListItemByName("owner_region") , IRegionWindow);
+            if (_local_5 != null)
+            {
+                _local_5.addEventListener(WindowMouseEvent.CLICK, this._Str_4711);
+                _local_5.addEventListener(WindowMouseEvent.OVER, this._Str_4711);
+                _local_5.addEventListener(WindowMouseEvent.OUT, this._Str_4711);
+            }
+            var _local_6= this._border.findChildByName("group_details_container");
+            if (_local_6 != null)
+            {
+                _local_6.addEventListener(WindowMouseEvent.CLICK, this._Str_23310);
+            }
+        }
+
+        function customVarsWindowProcedure(k:WindowEvent, _arg_2:IWindow)
+        {
+            var _local_3:Map = null;
+            var _local_4:IItemListWindow = null;
+            var _local_5 = 0;
+            var _local_6:IWindowContainer = null;
+            if (((!(k.type == WindowMouseEvent.CLICK)) || (!(!(this._customVarsWindow == null)))))
+            {
+                return;
+            }
+            switch (_arg_2.name)
+            {
+                case "set_values":
+                    _local_3 = new Map();
+                    _local_4 = Std.downcast(this._customVarsWindow.findChildByName("variable_list") , IItemListWindow);
+                    _local_5 = 0;
+                    while (_local_5 < _local_4.numListItems)
+                    {
+                        _local_6 = Std.downcast(_local_4.getListItemAt(_local_5) , IWindowContainer);
+                        _local_3.setProperty(_local_6.name, _local_6.findChildByName("value").caption);
+                        _local_5++;
+                    }
+                    this._widget.handler.setObjectData(_local_3);
+                    return;
+            }
+        }
+
+        function _Str_15887(k:WindowMouseEvent)
+        {
+            var _local_2:IFurnitureData = null;
+            if ((((!(this._catalog == null)) && (this._widget != null)) && (this._widget.furniData != null)))
+            {
+                _local_2 = this.getFurnitureData(this._widget.furniData);
+                if (_local_2 != null)
+                {
+                    this._catalog.openRentConfirmationWindow(_local_2, true, this._widget.furniData.id);
+                }
+            }
+        }
+
+        function _Str_15302(k:WindowMouseEvent)
+        {
+            var _local_2:IFurnitureData = null;
+            if ((((!(this._catalog == null)) && (this._widget != null)) && (this._widget.furniData != null)))
+            {
+                _local_2 = this.getFurnitureData(this._widget.furniData);
+                if (_local_2 != null)
+                {
+                    this._catalog.openRentConfirmationWindow(_local_2, false, this._widget.furniData.id);
+                }
+            }
+        }
+
+        function getRoomObject(k:Int):IRoomObject
+        {
+            var _local_2= this._widget.handler.container.roomSession.roomId;
+            var _local_3= this._widget.handler.container.roomEngine.getRoomObject(_local_2, k, RoomObjectCategoryEnum.OBJECT_CATEGORY_FURNITURE);
+            if (_local_3 == null)
+            {
+                _local_3 = this._widget.handler.container.roomEngine.getRoomObject(_local_2, k, RoomObjectCategoryEnum.OBJECT_CATEGORY_WALLITEM);
+            }
+            return _local_3;
+        }
+
+        function getFurnitureData(k:InfoStandFurniData):IFurnitureData
+        {
+            var _local_5:IFurnitureData = null;
+            var _local_2= this.getRoomObject(k.id);
+            if (_local_2 == null)
+            {
+                return null;
+            }
+            var _local_3:ASAny = (this._widget.furniData.category == RoomObjectCategoryEnum.OBJECT_CATEGORY_WALLITEM);
+            var _local_4= Std.int(_local_2.getModel().getNumber(RoomObjectVariableEnum.FURNITURE_TYPE_ID));
+            if (_local_3)
+            {
+                _local_5 = this._widget.handler.container.sessionDataManager.getWallItemData(_local_4);
+            }
+            else
+            {
+                _local_5 = this._widget.handler.container.sessionDataManager.getFloorItemData(_local_4);
+            }
+            return _local_5;
+        }
+
+        function _Str_12518(k:WindowMouseEvent)
+        {
+            if (this._catalog != null)
+            {
+                this._catalog.openCatalogPageByOfferId(this._widget.furniData.rentOfferId, CatalogType.NORMAL);
+            }
+        }
+
+        function onCloseHandler(k:WindowMouseEvent)
+        {
+            this._widget.close();
+        }
+
+        public var name(never,set):String;
+public function  set_name(k:String):String        {
+            var _local_2= Std.downcast(this._infoElements.getListItemByName("name_text") , ITextWindow);
+            if (_local_2 == null)
+            {
+                return k;
+            }
+            _local_2.text = k;
+            _local_2.visible = true;
+            _local_2.height = Std.int(_local_2.textHeight + 5);
+            this.updateWindow();
+return k;
+        }
+
+        public var _Str_24341(never,set):BitmapData;
+public function  set__Str_24341(k:BitmapData):BitmapData        {
+            this.setImage(k, "image");
+return k;
+        }
+
+        function setImage(k:BitmapData, _arg_2:String)
+        {
+            var _local_3= Std.downcast(this._border.findChildByName(_arg_2) , IBitmapWrapperWindow);
+            if (_local_3 == null)
+            {
+                return;
+            }
+            if (k == null)
+            {
+                k = new BitmapData(_local_3.width, 40, true);
+            }
+            _local_3.height = Std.int(Math.min(k.height, 200));
+            _local_3.bitmap = k.clone();
+            _local_3.visible = true;
+            this.updateWindow();
+        }
+
+        public var description(never,set):String;
+public function  set_description(k:String):String        {
+            var _local_2= Std.downcast(this._infoElements.getListItemByName("description_text") , ITextWindow);
+            if (_local_2 == null)
+            {
+                return k;
+            }
+            _local_2.text = k;
+            _local_2.height = Std.int(_local_2.textHeight + 5);
+            this.updateWindow();
+return k;
+        }
+
+        public function _Str_25318(k:Int, _arg_2:String)
+        {
+            var _local_3:IRegionWindow = null;
+            var _local_4:ITextWindow = null;
+            var _local_5:IWindow = null;
+            var _local_6:IWindow = null;
+            this._ownerId = k;
+            if (this._ownerId == 0)
+            {
+                this.showWindow("owner_region", false);
+                this.showWindow("owner_spacer", false);
+            }
+            else
+            {
+                _local_3 = Std.downcast(this._infoElements.getListItemByName("owner_region") , IRegionWindow);
+                _local_4 = Std.downcast(_local_3.findChildByName("owner_name") , ITextWindow);
+                _local_5 = _local_3.findChildByName("owner_link");
+                _local_6 = _local_3.findChildByName("bcw_icon");
+                if (this._ownerId != BCW_OWNER_ID)
+                {
+                    _local_4.text = _arg_2;
+                    _local_3.toolTipCaption = this._widget.localizations.getLocalization("infostand.profile.link.tooltip", "");
+                    _local_3.toolTipDelay = 100;
+                    _local_5.visible = true;
+                    if (_local_6 != null)
+                    {
+                        _local_6.visible = false;
+                    }
+                }
+                else
+                {
+                    _local_4.text = "${builder.catalog.title}";
+                    _local_3.toolTipCaption = "";
+                    _local_5.visible = false;
+                    if (_local_6 != null)
+                    {
+                        _local_6.visible = true;
+                    }
+                }
+                this.showWindow("owner_region", true);
+                this.showWindow("owner_spacer", true);
+            }
+            this.updateWindow();
+        }
+
+        var expiration(never,set):Int;
+function  set_expiration(k:Int):Int        {
+            var _local_2= this._infoElements.getListItemByName("expiration_text");
+            if (_local_2 == null)
+            {
+                return k;
+            }
+            this._widget.localizations.registerParameter("infostand.rent.expiration", "time", FriendlyTime.format(this._widget.handler.container.localization, k));
+            _local_2.visible = ((k >= 0) && (this._ownerId == this._widget.handler.container.sessionDataManager.userId));
+            this.updateWindow();
+return k;
+        }
+
+        function onButtonClicked(k:WindowMouseEvent)
+        {
+            var _local_2:RoomWidgetMessage = null;
+            var _local_3:String = null;
+            var _local_4:String = null;
+            var _local_5= k.target ;
+            switch (_local_5.name)
+            {
+                case "rotate":
+                    _local_3 = RoomWidgetFurniActionMessage.RWFUAM_ROTATE;
+                    
+                case "move":
+                    _local_3 = RoomWidgetFurniActionMessage.RWFAM_MOVE;
+                    
+                case "pickup":
+                    if (this._pickupMode == InfoStandFurniView.PICKUP_MODE_FULL)
+                    {
+                        _local_3 = RoomWidgetFurniActionMessage.RWFAM_PICKUP;
+                    }
+                    else
+                    {
+                        _local_3 = RoomWidgetFurniActionMessage.RWFAM_EJECT;
+                    }
+                    this._widget.close();
+                    
+                case "save_branding_configuration":
+                    if (this._widget.handler.container.sessionDataManager.hasSecurity(SecurityLevelEnum.EMPLOYEE))
+                    {
+                        _local_3 = RoomWidgetFurniActionMessage.RWFAM_SAVE_STUFF_DATA;
+                        _local_4 = this._Str_22904();
+                    }
+                    else
+                    {
+                        _local_3 = RoomWidgetFurniActionMessage.RWFAM_USE;
+                    }
+                    
+                case "use":
+                    _local_3 = RoomWidgetFurniActionMessage.RWFAM_USE;
+                    
+                case "wired_inspect":
+                    _local_3 =
+                        RoomWidgetFurniActionMessage.RWFAM_WIRED_INSPECT;
+                    
+            }
+            if (_local_3 != null)
+            {
+                _local_2 = new RoomWidgetFurniActionMessage(_local_3, this._widget.furniData.id, this._widget.furniData.category, this._widget.furniData.purchaseOfferId, _local_4);
+                this._widget.messageListener.processWidgetMessage(_local_2);
+            }
+        }
+
+        function _Str_23310(k:WindowMouseEvent)
+        {
+            this._widget.messageListener.processWidgetMessage(new RoomWidgetGetBadgeDetailsMessage(false, this._widget.furniData.groupId));
+        }
+
+        function _Str_12960(k:WindowMouseEvent)
+        {
+            if (this._catalog != null)
+            {
+                this._catalog.openCatalogPageByOfferId(this._widget.furniData.purchaseOfferId, CatalogType.NORMAL);
+                if (((this._habboTracking != null) && (!this._habboTracking.disposed)))
+                {
+                    this._habboTracking.trackGoogle("infostandCatalogButton", "offer", this._widget.furniData.purchaseOfferId);
+                }
+            }
+        }
+
+        function onBcPlaceMoreButtonClicked(k:WindowMouseEvent)
+        {
+            this._widget.requestItemToMover();
+        }
+
+        function _Str_4711(k:WindowMouseEvent)
+        {
+            if (k.type == WindowMouseEvent.CLICK)
+            {
+                if (this._ownerId == BCW_OWNER_ID)
+                {
+                    this._widget.handler.container.catalog.toggleToBuildersClub();
+                }
+                else
+                {
+                    this._widget.messageListener.processWidgetMessage(new RoomWidgetOpenProfileMessage(RoomWidgetOpenProfileMessage.RWOPEM_OPEN_USER_PROFILE, this._ownerId, "infoStand_furniView"));
+                }
+            }
+            if (k.type == WindowMouseEvent.OUT)
+            {
+                cast(cast(k.target, IRegionWindow).findChildByName("owner_link"), IIconWindow).style = 21;
+            }
+            if (k.type == WindowMouseEvent.OVER)
+            {
+                cast(cast(k.target, IRegionWindow).findChildByName("owner_link"), IIconWindow).style = 22;
+            }
+        }
+
+        function updateWindow()
+        {
+            if ((((this._infoElements == null) || (this._border == null)) || (this._buttons == null)))
+            {
+                return;
+            }
+            this._infoElements.arrangeListItems();
+            this._buttons.width = Std.int(this._buttons.scrollableRegion.width);
+            this._infoElements.height = Std.int(this._infoElements.scrollableRegion.height);
+            this._border.height = (this._infoElements.height + 20);
+            this._window.width = Std.int(Math.max(this._border.width, this._buttons.width));
+            this._window.height = Std.int(this._window.scrollableRegion.height);
+            if (this._border.width < this._buttons.width)
+            {
+                this._border.x = (this._window.width - this._border.width);
+                this._buttons.x = 0;
+            }
+            else
+            {
+                this._buttons.x = (this._window.width - this._buttons.width);
+                this._border.x = 0;
+            }
+            if (this._customVarsWindow != null)
+            {
+                this._customVarsWindow.x = this._border.x;
+            }
+            this._widget._Str_10301();
+        }
+
+        public function update(k:RoomWidgetFurniInfostandUpdateEvent)
+        {
+            if (this._border != null)
+            {
+                this._border.color = (_Str_6093._Str_7070(k.id) ? 0xD77900 : 0xFFFFFF);
+            }
+            this.name = k.name;
+            this.description = k.description;
+            this._Str_24341 = k.image;
+            this.expiration = k.expiration;
+            this._Str_25318((_Str_6093._Str_7070(k.id) ? BCW_OWNER_ID : k.ownerId), k.ownerName);
+            var roomSession=
+                this._widget.handler.container.roomSession;
+            var playTestMode=
+                roomSession != null && roomSession.playTestMode;
+            var freeFurniMovements= roomSession != null
+                && this._widget.handler.container.roomEngine
+                    .activeRoomHasFreeFurniMovementsMode;
+            var _local_2 = false;
+            var _local_3 = false;
+            var _local_4 = false;
+            var _local_5 = false;
+            if (freeFurniMovements || (!playTestMode
+                && ((((k.roomControllerLevel >= RoomControllerLevel.GUEST)
+                    || k.isOwner) || k.isRoomOwner) || k.isAnyRoomController)))
+            {
+                _local_2 = true;
+                _local_3 = (!k.isWallItem);
+            }
+            if (k.isAnyRoomController)
+            {
+                _local_4 = true;
+            }
+            var _local_6:ASAny = (k.roomControllerLevel >= RoomControllerLevel.GUEST);
+            var useButtonEnabled=
+                this._widget.config.getBoolean("infostand.use.button.enabled");
+            if (useButtonEnabled)
+            {
+                if (k.usagePolicy == RoomWidgetFurniInfoUsagePolicyEnum.EVERYBODY)
+                {
+                    _local_5 = true;
+                }
+                if (!playTestMode
+                    && (((k.usagePolicy
+                        == RoomWidgetFurniInfoUsagePolicyEnum.CONTROLLER)
+                        && ASCompat.toBool(_local_6))
+                        || ((k.extraParam
+                            == RoomWidgetEnumItemExtradataParameter.JUKEBOX)
+                            && ASCompat.toBool(_local_6))
+                        || ((k.extraParam
+                            == RoomWidgetEnumItemExtradataParameter.USABLE_PRODUCT)
+                            && ASCompat.toBool(_local_6))))
+                {
+                    _local_5 = true;
+                }
+                if (freeFurniMovements)
+                {
+                    _local_5 = true;
+                }
+            }
+            var showWiredInspect= !playTestMode
+                && this._widget.handler.container.userDefinedRoomEvents
+                    .showInspectButton();
+            this._Str_25151(k, playTestMode);
+            this.showButton("move", _local_2);
+            this.showButton("rotate", _local_3);
+            this.showButton("use", _local_5);
+            this.showButton("wired_inspect", showWiredInspect);
+            this.showAdFurnitureDetails(_local_4);
+            this._Str_22883((k.groupId > 0));
+            this._Str_22377(k.isOwner, (k.expiration >= 0), (k.purchaseOfferId >= 0), (k.rentOfferId >= 0), k.purchaseCouldBeUsedForBuyout, k.rentCouldBeUsedForBuyout, (((_Str_6093._Str_7070(k.id) && (k.bcOfferId >= 0)) && k.availableForBuildersClub) && this._catalog.canPlaceWithBC()));
+            this._Str_22365((k.stuffData.uniqueSerialNumber > 0), k.stuffData);
+            this._Str_16559((k.stuffData.rarityLevel >= 0), k.stuffData);
+            this._buttons.visible = ((((_local_2 || _local_3) ||
+                (!(this._pickupMode == InfoStandFurniView.PICKUP_MODE_NONE))) || _local_5) ||
+                showWiredInspect);
+            this._Str_25743();
+            this.updateWindow();
+        }
+
+        function _Str_25743()
+        {
+            var _local_5:String = null;
+            var _local_6:IWindowContainer = null;
+            if (((this._customVarsWindow == null) || (this._widget.furniData == null)))
+            {
+                return;
+            }
+            var k= this.getRoomObject(this._widget.furniData.id);
+            if (k == null)
+            {
+                return;
+            }
+            var _local_2= k.getModel().getStringArray(RoomObjectVariableEnum.FURNITURE_CUSTOM_VARIABLES);
+            this._customVarsWindow.visible = ((!(_local_2 == null)) && (_local_2.length > 0));
+            if (!this._customVarsWindow.visible)
+            {
+                return;
+            }
+            var _local_3= Std.downcast(this._customVarsWindow.findChildByName("variable_list") , IItemListWindow);
+            _local_3.destroyListItems();
+            var _local_4= k.getModel().getStringToStringMap(RoomObjectVariableEnum.FURNITURE_DATA);
+            if (checkNullIteratee(_local_2)) for (_tmp_ in _local_2)
+            {
+_local_5  = _tmp_;
+                _local_6 = Std.downcast(this._customVarsItemTemplate.clone() , IWindowContainer);
+                _local_6.name = _local_5;
+                _local_6.findChildByName("name").caption = _local_5;
+                _local_6.findChildByName("value").caption = _local_4.getValue(_local_5);
+                _local_3.addListItem(_local_6);
+            }
+        }
+
+        function _Str_25151(
+            k:RoomWidgetFurniInfostandUpdateEvent,
+            playTestMode:Bool)
+        {
+            this._pickupMode = InfoStandFurniView.PICKUP_MODE_NONE;
+            if (!playTestMode)
+            {
+                if ((k.isOwner || k.isAnyRoomController))
+                {
+                    this._pickupMode = InfoStandFurniView.PICKUP_MODE_FULL;
+                }
+                else if ((k.isRoomOwner
+                    || (k.roomControllerLevel >= RoomControllerLevel.GUILD_ADMIN)))
+                {
+                    this._pickupMode = InfoStandFurniView.PICKUP_MODE_EJECT;
+                }
+                if (k._Str_17541)
+                {
+                    this._pickupMode = InfoStandFurniView.PICKUP_MODE_NONE;
+                }
+            }
+            this.showButton("pickup", (!(this._pickupMode == InfoStandFurniView.PICKUP_MODE_NONE)));
+            this._Str_25214(this._pickupMode);
+        }
+
+        function _Str_25214(k:Int)
+        {
+            if (this._buttons == null)
+            {
+                return;
+            }
+            var _local_2= this._buttons.getListItemByName("pickup");
+            if (_local_2 != null)
+            {
+                if (k == InfoStandFurniView.PICKUP_MODE_EJECT)
+                {
+                    _local_2.caption = "${infostand.button.eject}";
+                }
+                else
+                {
+                    _local_2.caption = "${infostand.button.pickup}";
+                }
+            }
+        }
+
+        function _Str_22934(k:String, _arg_2:String)
+        {
+            var _local_3:XmlAsset = null;
+            var _local_4:IWindowContainer = null;
+            var _local_5:IWindow = null;
+            var _local_6:IWindow = null;
+            var _local_7 = false;
+            var _local_8:IWindow = null;
+            var _local_9:IWindow = null;
+            if (this._infoElements != null)
+            {
+                _local_7 = this.isOffsetKey(k);
+                _local_3 = Std.downcast(this._widget.assets.getAssetByName(_local_7 ? "furni_view_branding_element_numeric" : "furni_view_branding_element") , XmlAsset);
+                if (_local_3 != null)
+                {
+                    _local_4 = Std.downcast(this._widget.windowManager.buildFromXML(((_local_3.content : com.sulake.core.utils.xml.XML) )) , IWindowContainer);
+                    if (_local_4 != null)
+                    {
+                        _local_5 = _local_4.findChildByName("element_name");
+                        if (_local_5 != null)
+                        {
+                            _local_5.caption = k;
+                        }
+                        _local_6 = _local_4.findChildByName("element_value");
+                        if (_local_6 != null)
+                        {
+                            _local_6.caption = _arg_2;
+                            _local_6.addEventListener(WindowKeyboardEvent.WINDOW_EVENT_KEY_DOWN, this._Str_24509);
+                        }
+                        if (_local_7)
+                        {
+                            _local_8 = _local_4.findChildByName("element_minus");
+                            if (_local_8 != null)
+                            {
+                                _local_8.addEventListener(WindowMouseEvent.DOWN, this.onOffsetButtonDown);
+                                _local_8.addEventListener(WindowMouseEvent.UP, this.onOffsetButtonUp);
+                                _local_8.addEventListener(WindowMouseEvent.UP_OUTSIDE, this.onOffsetButtonUp);
+                                _local_8.addEventListener(WindowMouseEvent.OUT, this.onOffsetButtonUp);
+                            }
+                            _local_9 = _local_4.findChildByName("element_plus");
+                            if (_local_9 != null)
+                            {
+                                _local_9.addEventListener(WindowMouseEvent.DOWN, this.onOffsetButtonDown);
+                                _local_9.addEventListener(WindowMouseEvent.UP, this.onOffsetButtonUp);
+                                _local_9.addEventListener(WindowMouseEvent.UP_OUTSIDE, this.onOffsetButtonUp);
+                                _local_9.addEventListener(WindowMouseEvent.OUT, this.onOffsetButtonUp);
+                            }
+                        }
+                        if (((!(_local_5 == null)) && (!(_local_6 == null))))
+                        {
+                            this._infoElements.addListItem(_local_4);
+                        }
+                    }
+                }
+            }
+        }
+
+        function isOffsetKey(k:String):Bool
+        {
+            return (((k == "offsetX") || (k == "offsetY")) || (k == "offsetZ"));
+        }
+
+        function onOffsetButtonDown(k:WindowMouseEvent)
+        {
+            var _local_2= this.findOffsetButton(k.target );
+            if (_local_2 == null)
+            {
+                return;
+            }
+            var _local_3= ((_local_2.name == "element_minus") ? -1 : 1);
+            var _local_4= this.findOffsetInput(_local_2);
+            if (_local_4 == null)
+            {
+                return;
+            }
+            this.stepOffset(_local_4, _local_3);
+            this._offsetRepeatInput = _local_4;
+            this._offsetRepeatDir = _local_3;
+            if (this._offsetRepeatTimer == null)
+            {
+                this._offsetRepeatTimer = new Timer(OFFSET_REPEAT_DELAY, 0);
+                this._offsetRepeatTimer.addEventListener(TimerEvent.TIMER, (this.onOffsetRepeat : ASAny));
+            }
+            this._offsetRepeatTimer.reset();
+            this._offsetRepeatTimer.delay = OFFSET_REPEAT_DELAY;
+            this._offsetRepeatTimer.start();
+        }
+
+        function onOffsetButtonUp(k:WindowMouseEvent=null)
+        {
+            this.stopOffsetRepeat();
+        }
+
+        function onOffsetRepeat(k:TimerEvent)
+        {
+            if (this._offsetRepeatInput == null)
+            {
+                this.stopOffsetRepeat();
+                return;
+            }
+            if (this._offsetRepeatTimer != null)
+            {
+                this._offsetRepeatTimer.delay = OFFSET_REPEAT_INTERVAL;
+            }
+            this.stepOffset(this._offsetRepeatInput, this._offsetRepeatDir);
+        }
+
+        function stopOffsetRepeat()
+        {
+            if (this._offsetRepeatTimer != null)
+            {
+                this._offsetRepeatTimer.stop();
+            }
+            this._offsetRepeatInput = null;
+            this._offsetRepeatDir = 0;
+        }
+
+        function findOffsetButton(k:IWindow):IWindow
+        {
+            var _local_2= k;
+            while (_local_2 != null)
+            {
+                if (((_local_2.name == "element_minus") || (_local_2.name == "element_plus")))
+                {
+                    return _local_2;
+                }
+                _local_2 = _local_2.parent;
+            }
+            return null;
+        }
+
+        function findOffsetInput(k:IWindow):IWindow
+        {
+            var _local_2= k.parent;
+            var _local_3:IWindow = null;
+            while (_local_2 != null)
+            {
+                if (Std.is(_local_2 , IWindowContainer))
+                {
+                    _local_3 = cast(_local_2, IWindowContainer).findChildByName("element_value");
+                    if (_local_3 != null)
+                    {
+                        return _local_3;
+                    }
+                }
+                _local_2 = _local_2.parent;
+            }
+            return null;
+        }
+
+        function stepOffset(k:IWindow, _arg_2:Int)
+        {
+            var _local_3:Float = ASCompat.parseInt(k.caption);
+            if (Math.isNaN(_local_3))
+            {
+                _local_3 = 0;
+            }
+            var _local_4= (Std.int(_local_3) + _arg_2);
+            k.caption = Std.string(_local_4);
+            this.sendBrandingSave();
+        }
+
+        function sendBrandingSave()
+        {
+            var _local_2:RoomWidgetMessage = null;
+            if (this._widget == null)
+            {
+                return;
+            }
+            if (!this._widget.handler.container.sessionDataManager.hasSecurity(SecurityLevelEnum.EMPLOYEE))
+            {
+                return;
+            }
+            _local_2 = new RoomWidgetFurniActionMessage(RoomWidgetFurniActionMessage.RWFAM_SAVE_STUFF_DATA, this._widget.furniData.id, this._widget.furniData.category, this._widget.furniData.purchaseOfferId, this._Str_22904());
+            this._widget.messageListener.processWidgetMessage(_local_2);
+        }
+
+        function getAdFurnitureExtraParams():Map
+        {
+            var _local_2:String = null;
+            var _local_3:Array<ASAny> = null;
+            var _local_4:String = null;
+            var _local_5:Array<ASAny> = null;
+            var _local_6:String = null;
+            var _local_7:String = null;
+            var k= new Map();
+            if (this._widget != null)
+            {
+                _local_2 = this._widget.furniData.extraParam.substr(RoomWidgetEnumItemExtradataParameter.BRANDING_OPTIONS.length);
+                _local_3 = (cast _local_2.split("\t"));
+                if (_local_3 != null)
+                {
+                    if (checkNullIteratee(_local_3)) for (_tmp_ in _local_3)
+                    {
+_local_4  = _tmp_;
+                        _local_5 = (cast ASCompat.stringSplit(_local_4, "=", 2));
+                        if (((!(_local_5 == null)) && (_local_5.length == 2)))
+                        {
+                            _local_6 = _local_5[0];
+                            _local_7 = _local_5[1];
+                            k.add(_local_6, _local_7);
+                        }
+                    }
+                }
+            }
+            return k;
+        }
+
+        function _Str_22904():String
+        {
+            var _local_2:Array<ASAny> = null;
+            var _local_3:IWindowContainer = null;
+            var _local_4:IWindow = null;
+            var _local_5:IWindow = null;
+            var _local_6:String = null;
+            var _local_7:String = null;
+            var k= "";
+            if (this._border != null)
+            {
+                _local_2 = [];
+                this._border.groupChildrenWithTag("branding_element", _local_2, -1);
+                if (_local_2.length > 0)
+                {
+                    if (checkNullIteratee(_local_2)) for (_tmp_ in _local_2)
+                    {
+_local_3  = _tmp_;
+                        _local_4 = _local_3.findChildByName("element_name");
+                        _local_5 = _local_3.findChildByName("element_value");
+                        if (((!(_local_4 == null)) && (!(_local_5 == null))))
+                        {
+                            _local_6 = this._Str_19333(_local_4.caption);
+                            _local_7 = this._Str_19333(_local_5.caption);
+                            k = (k + (((_local_6 + "=") + _local_7) + "\t"));
+                        }
+                    }
+                }
+            }
+            return k;
+        }
+
+        function _Str_19333(k:String):String
+        {
+            if (k != null)
+            {
+                if (k.indexOf("\t") != -1)
+                {
+                    return ASCompat.stringReplace(k, "\t", "");
+                }
+            }
+            return k;
+        }
+
+        function showAdFurnitureDetails(k:Bool)
+        {
+            var _local_6:IWindow = null;
+            var _local_7:String = null;
+            var _local_8:Map = null;
+            var _local_9:String = null;
+            var _local_10:String = null;
+            if (((this._widget == null) || (this._border == null)))
+            {
+                return;
+            }
+            var _local_2= this._border.findChildByName("furni_details_spacer");
+            if (_local_2 != null)
+            {
+                _local_2.visible = k;
+            }
+            var _local_3:Array<ASAny> = [];
+            this._border.groupChildrenWithTag("branding_element", _local_3, -1);
+            if (_local_3.length > 0)
+            {
+                if (checkNullIteratee(_local_3)) for (_tmp_ in _local_3)
+                {
+_local_6  = _tmp_;
+                    this._border.removeChild(_local_6);
+                    _local_6.dispose();
+                }
+            }
+            var _local_4 = false;
+            var _local_5:IWindow = Std.downcast(this._border.findChildByName("furni_details_text") , ITextWindow);
+            if (_local_5 != null)
+            {
+                _local_5.visible = k;
+                _local_7 = ("id: " + Std.string(this._widget.furniData.id));
+                _local_8 = this.getAdFurnitureExtraParams();
+                if (_local_8.length > 0)
+                {
+                    _local_4 = true;
+                    final _iter_ = _local_8.getKeys(); if (checkNullIteratee(_iter_)) for (_tmp_ in _iter_)
+                    {
+_local_9  = _tmp_;
+                        _local_10 = _local_8.getValue(_local_9);
+                        this._Str_22934(_local_9, _local_10);
+                    }
+                }
+                _local_5.caption = _local_7;
+            }
+            this.showButton("save_branding_configuration", _local_4);
+        }
+
+        function _Str_22883(k:Bool)
+        {
+            this.showWindow("group_details_spacer", k);
+            this.showWindow("group_details_container", k);
+            this.showWindow("group_badge_image", false);
+            this.showWindow("group_name", false);
+        }
+
+        function showWindow(k:String, _arg_2:Bool)
+        {
+            var _local_3= this._border.findChildByName(k);
+            if (_local_3 != null)
+            {
+                _local_3.visible = _arg_2;
+            }
+        }
+
+        function _Str_24509(k:WindowEvent=null, _arg_2:IWindow=null)
+        {
+        }
+
+        function showButton(k:String, _arg_2:Bool)
+        {
+            if (this._buttons == null)
+            {
+                return;
+            }
+            var _local_3= this._buttons.getListItemByName(k);
+            if (_local_3 != null)
+            {
+                _local_3.visible = _arg_2;
+                this._buttons.arrangeListItems();
+            }
+        }
+
+        function _Str_22377(k:Bool, _arg_2:Bool, _arg_3:Bool, _arg_4:Bool, _arg_5:Bool, _arg_6:Bool, _arg_7:Bool)
+        {
+            var _local_8= false;
+            var _local_9= (this._widget.config.getBoolean("infostand.place_more.enabled") && _arg_7);
+            var _local_10= (k && _arg_2);
+            var _local_11= (_local_10 && _arg_6);
+            var _local_12= (_local_10 && _arg_5);
+            var _local_13= ((!_local_10) && _arg_3);
+            var _local_14= ((!_local_10) && _arg_4);
+            if (this._bcPlaceButton != null)
+            {
+                this._bcPlaceButton.visible = _local_9;
+                _local_8 = (_local_8 || _local_9);
+            }
+            if (this._Str_3793 != null)
+            {
+                this._Str_3793.visible = _local_13;
+                _local_8 = (_local_8 || _local_13);
+            }
+            if (this._Str_3823 != null)
+            {
+                this._Str_3823.visible = _local_14;
+                _local_8 = (_local_8 || _local_14);
+            }
+            if (this._Str_3747 != null)
+            {
+                this._Str_3747.visible = _local_11;
+                _local_8 = (_local_8 || _local_11);
+            }
+            if (this._Str_3810 != null)
+            {
+                this._Str_3810.visible = _local_12;
+                _local_8 = (_local_8 || _local_12);
+            }
+            var _local_15= Std.downcast(this._infoElements.getListItemByName("purchase_buttons") , IItemListWindow);
+            if (_local_15 != null)
+            {
+                _local_15.arrangeListItems();
+                _local_15.visible = _local_8;
+            }
+            this._infoElements.arrangeListItems();
+        }
+
+        public var groupName(never,set):String;
+public function  set_groupName(k:String):String        {
+            var _local_2= this._border.findChildByName("group_name");
+            if (_local_2 != null)
+            {
+                _local_2.caption = k;
+                _local_2.visible = true;
+            }
+return k;
+        }
+
+        function _Str_22365(k:Bool, _arg_2:IStuffData)
+        {
+            var _local_5:IWidgetWindow = null;
+            var _local_6:ILimitedItemPreviewOverlayWidget = null;
+            var _local_3= Std.downcast(this._border.findChildByName("unique_item_background_container") , IWindowContainer);
+            var _local_4= Std.downcast(this._border.findChildByName("unique_item_overlay_container") , IWindowContainer);
+            if (((!(_local_3 != null)) || (!(_local_4 != null))))
+            {
+                return;
+            }
+            if (!k)
+            {
+                _local_3.visible = false;
+                _local_4.visible = false;
+            }
+            else
+            {
+                _local_3.visible = true;
+                _local_4.visible = true;
+                _local_5 = cast(_local_4.findChildByName("unique_item_plaque_widget"), IWidgetWindow);
+                _local_6 = cast(_local_5.widget, ILimitedItemPreviewOverlayWidget);
+                _local_6.serialNumber = _arg_2.uniqueSerialNumber;
+                _local_6.seriesSize = _arg_2.uniqueSeriesSize;
+            }
+        }
+
+        function _Str_16559(k:Bool, _arg_2:IStuffData)
+        {
+            var _local_4:IWidgetWindow = null;
+            var _local_5:_Str_4520 = null;
+            var _local_3= Std.downcast(this._border.findChildByName("rarity_item_overlay_container") , IWindowContainer);
+            if (_local_3 == null)
+            {
+                return;
+            }
+            if (!k)
+            {
+                _local_3.visible = false;
+            }
+            else
+            {
+                _local_3.visible = true;
+                _local_4 = cast(_local_3.findChildByName("rarity_item_overlay_widget"), IWidgetWindow);
+                _local_5 = cast(_local_4.widget, _Str_4520);
+                _local_5.rarityLevel = _arg_2.rarityLevel;
+            }
+        }
+
+        public var groupBadgeId(never,set):String;
+public function  set_groupBadgeId(k:String):String        {
+            var _local_2= Std.downcast(this._border.findChildByName("group_badge_image") , IWidgetWindow);
+            var _local_3= Std.downcast(_local_2.widget , IBadgeImageWidget);
+            _local_3.badgeId = k;
+            _local_3.groupId = this._widget.furniData.groupId;
+            _local_2.visible = true;
+return k;
+        }
+    }
+

@@ -65,7 +65,9 @@ class RoomContentLoader extends SkyRoomContentLoader {
             if (!response.ok) throw 'HTTP ${response.status} for $url';
             return response.text();
         }).then(function(text) {
+            skyhaxe.BootMetrics.mark("room-furnidata-downloaded");
             readFurnidata(new com.sulake.core.utils.xml.XML(text));
+            skyhaxe.BootMetrics.mark("room-furnidata-parsed");
             dispatcher.dispatchEvent(new Event(RCL_LOADER_READY));
             return null;
         }).catchError(function(error) {

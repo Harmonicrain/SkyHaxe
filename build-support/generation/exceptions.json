@@ -1,0 +1,2828 @@
+{
+  "gate": "M2a-exception-manifest",
+  "generated_by": "build-support/generation/generate-exceptions.py",
+  "rule": "Every hand-maintained Haxe file under com/sulake/core is listed. Files with an AS3 counterpart pin that source's hash: the sync stops if it changes.",
+  "core_haxe_files": 57,
+  "tracked_haxe_files": 72,
+  "hand_written_ports": 33,
+  "platform_exceptions": 39,
+  "unannotated": [],
+  "note": "Ports are not legitimate exceptions. They are the current cost of having reached G2-G4b before the conversion pipeline existed, and M2b/M2d must replace them with generated output.",
+  "exceptions": [
+    {
+      "haxe": "src/com/sulake/core/assets/AssetLibrary.hx",
+      "haxe_sha256": "f55cd0bd76670bf7c99dd6fd37fb2b12015a20ccbd541a3703b645b8ffcb846e",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetLibraryTest.hx",
+        "test/G1dAssetLibraryBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/AssetLibrary.as",
+      "as3_sha256": "7be00d0f2185ace4248edb608a6f8bda0ebbcf630c2860eadca887f9cf02e9d1",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "assetLoadEventHandler",
+          "createAsset",
+          "dispose",
+          "fetchAssetFromResource",
+          "fetchLibraryContents",
+          "finalizeLoaderEventHandler",
+          "get:assetLibraryRefArray",
+          "get:isReady",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssetLibraryInstances",
+          "get:numAssets",
+          "get:url",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetByName",
+          "getAssetIndex",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "getClass",
+          "hasAsset",
+          "libraryLoadedHandler",
+          "loadAssetFromFile",
+          "loadErrorHandler",
+          "loadFromFile",
+          "loadFromResource",
+          "new",
+          "onLoadProgress",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "setAsset",
+          "solveAssetTypeDeclarationFromUrl",
+          "toString",
+          "unload"
+        ],
+        "haxe_declared": [
+          "addSharedType",
+          "assetNames",
+          "assets",
+          "createAsset",
+          "dispose",
+          "ensureSharedTypes",
+          "forward",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetByName",
+          "getAssetIndex",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "get_assetLibraryRefArray",
+          "get_disposed",
+          "get_isReady",
+          "get_manifest",
+          "get_name",
+          "get_nameArray",
+          "get_numAssetLibraryInstances",
+          "get_numAssets",
+          "get_url",
+          "hasAsset",
+          "loadAssetFromFile",
+          "loadFromManifest",
+          "loadManifestAlias",
+          "loadManifestAsset",
+          "localTypes",
+          "localTypesByMime",
+          "new",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "same",
+          "setAsset",
+          "toString",
+          "unload"
+        ],
+        "source_names_absent_from_haxe": [
+          "assetLoadEventHandler",
+          "fetchAssetFromResource",
+          "fetchLibraryContents",
+          "finalizeLoaderEventHandler",
+          "get:assetLibraryRefArray",
+          "get:isReady",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssetLibraryInstances",
+          "get:numAssets",
+          "get:url",
+          "getClass",
+          "libraryLoadedHandler",
+          "loadErrorHandler",
+          "loadFromFile",
+          "loadFromResource",
+          "onLoadProgress",
+          "solveAssetTypeDeclarationFromUrl"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/AssetLibraryCollection.hx",
+      "haxe_sha256": "66bdbfcc21247d4a5438d1a32a36605188a432b22eeca43a9848c8be37b1f7f7",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/AssetLibraryCollection.as",
+      "as3_sha256": "36127b73a1fa9c12e10ac8e03c32b09a73dcccf9f6f7146e9e6f36d2b8068b71",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "addAssetLibrary",
+          "applyManifestNodes",
+          "buildManifest",
+          "createAsset",
+          "dispose",
+          "get:binLibrary",
+          "get:isReady",
+          "get:loaderContext",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssets",
+          "get:url",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetByName",
+          "getAssetIndex",
+          "getAssetLibraryByName",
+          "getAssetLibraryByUrl",
+          "getAssetNameArray",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "getAssetsByName",
+          "getManifests",
+          "getNumAssets",
+          "hasAsset",
+          "hasAssetLibrary",
+          "loadAssetFromFile",
+          "loadEventHandler",
+          "loadFromFile",
+          "loadFromResource",
+          "new",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "set:loaderContext",
+          "setAsset",
+          "unload"
+        ],
+        "haxe_declared": [
+          "addAssetLibrary",
+          "describeLibraries",
+          "getAssetByName",
+          "getAssetLibrary",
+          "getManifests",
+          "get_name",
+          "hasAsset",
+          "hasAssetLibrary",
+          "new",
+          "removeAssetLibrary",
+          "replaceAssetLibrary"
+        ],
+        "source_names_absent_from_haxe": [
+          "applyManifestNodes",
+          "buildManifest",
+          "createAsset",
+          "dispose",
+          "get:binLibrary",
+          "get:isReady",
+          "get:loaderContext",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssets",
+          "get:url",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetIndex",
+          "getAssetLibraryByName",
+          "getAssetLibraryByUrl",
+          "getAssetNameArray",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "getAssetsByName",
+          "getNumAssets",
+          "loadAssetFromFile",
+          "loadEventHandler",
+          "loadFromFile",
+          "loadFromResource",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "set:loaderContext",
+          "setAsset",
+          "unload"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/AssetTypeDeclaration.hx",
+      "haxe_sha256": "2496dbf13a68d5c3da50f7258126bf4d2b926d5aeef6ccbc697b8b1fc7cf9167",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/AssetTypeDeclaration.as",
+      "as3_sha256": "6f6d470588c9f3850f6ec1af4ecc72a8ba60454653db9cc4c85785e1a2ffd44f",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "get:assetClass",
+          "get:fileTypes",
+          "get:loaderClass",
+          "get:mimeType",
+          "new"
+        ],
+        "haxe_declared": [
+          "get_assetClass",
+          "get_fileTypes",
+          "get_loaderClass",
+          "get_mimeType",
+          "new"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:assetClass",
+          "get:fileTypes",
+          "get:loaderClass",
+          "get:mimeType"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/BitmapDataAsset.hx",
+      "haxe_sha256": "e97284105fc4149f0f431a7cfd995759b8411e7a40461fcd5d6b919a1ef59b36",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dBitmapDataAssetTest.hx",
+        "test/G1dBitmapDataAssetBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/BitmapDataAsset.as",
+      "as3_sha256": "06d4e3e8fc4a54313c18ded672c1a7b8239272e14d3909013d05d5a0a87a855d",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "compress",
+          "dispose",
+          "get:allocatedByteCount",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:flipH",
+          "get:flipV",
+          "get:instances",
+          "get:offset",
+          "get:rectangle",
+          "get:url",
+          "new",
+          "onLoaderComplete",
+          "prepareLazyContent",
+          "set:ownsData",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "swapToDisk"
+        ],
+        "haxe_declared": [
+          "accountBitmap",
+          "adopt",
+          "borrowFrom",
+          "dispose",
+          "get_allocatedByteCount",
+          "get_content",
+          "get_declaration",
+          "get_disposed",
+          "get_flipH",
+          "get_flipV",
+          "get_instances",
+          "get_offset",
+          "get_ownsData",
+          "get_rectangle",
+          "get_url",
+          "new",
+          "parse",
+          "prepareLazyContent",
+          "releaseCurrentBitmap",
+          "requireValues",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "set_ownsData",
+          "unaccountBitmap"
+        ],
+        "source_names_absent_from_haxe": [
+          "compress",
+          "get:allocatedByteCount",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:flipH",
+          "get:flipV",
+          "get:instances",
+          "get:offset",
+          "get:rectangle",
+          "get:url",
+          "onLoaderComplete",
+          "set:ownsData",
+          "swapToDisk"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/IAsset.hx",
+      "haxe_sha256": "9a4f808d592dd1fdf94a47eb31f38999a36fc02eeb55134110e53326b105ad5e",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/IAsset.as",
+      "as3_sha256": "01058b28b502f77ac52aee8e2d98b35ddf62fef4dc0019f8de774a602487f601",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "get:content",
+          "get:declaration",
+          "get:url",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "haxe_declared": [
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:content",
+          "get:declaration",
+          "get:url"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/IAssetLibrary.hx",
+      "haxe_sha256": "459d11281669f28d4398e73b76e2d1d20f97f67840f5166ed947fe4ad7123c59",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/IAssetLibrary.as",
+      "as3_sha256": "e9a26f97f819c62ba056f2201f1c47b655d920ee2eddbdebca1a0bee4368abb8",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "createAsset",
+          "get:isReady",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssets",
+          "get:url",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetByName",
+          "getAssetIndex",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "hasAsset",
+          "loadAssetFromFile",
+          "loadFromFile",
+          "loadFromResource",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "setAsset",
+          "unload"
+        ],
+        "haxe_declared": [
+          "createAsset",
+          "dispose",
+          "getAssetByContent",
+          "getAssetByIndex",
+          "getAssetByName",
+          "getAssetIndex",
+          "getAssetTypeDeclarationByClass",
+          "getAssetTypeDeclarationByFileName",
+          "getAssetTypeDeclarationByMimeType",
+          "hasAsset",
+          "loadAssetFromFile",
+          "registerAssetTypeDeclaration",
+          "removeAsset",
+          "setAsset"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:isReady",
+          "get:manifest",
+          "get:name",
+          "get:nameArray",
+          "get:numAssets",
+          "get:url",
+          "loadFromFile",
+          "loadFromResource",
+          "unload"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/ILazyAsset.hx",
+      "haxe_sha256": "731a15fdbdfc245acfaab614459462f0e4006640eb8be723cadafb2583e53ea8",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/ILazyAsset.as",
+      "as3_sha256": "dc41e8182a1386524a6047b66fb9aa477011f2f7155493aaa3ba2f737181102a",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "covered by name",
+        "source_declared": [
+          "prepareLazyContent"
+        ],
+        "haxe_declared": [
+          "prepareLazyContent"
+        ],
+        "source_names_absent_from_haxe": []
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/SoundAsset.hx",
+      "haxe_sha256": "be254f00298e8003e9f8b9c3f134e21cd3684430f5fea07e1da4a2edabfcd656",
+      "reason": "Platform adapter for the sound/mp3 asset type on the SWF-library path. Flash embedded an MP3 as a class extending Sound and decoded it in the VM; nothing constructs a Sound on HTML5, so the frames SwfSound extracts are handed to one explicitly and lazily. The component-library path reaches Sound through ComponentLibraryEmbedFactory instead, which is where the missing sound support was actually crashing playSound.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/SoundAsset.as",
+      "as3_sha256": "3d2dc1a1f9e1126f2794300381417a19a10a62a1584a2a4848f943d98076775b",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url",
+          "new",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "haxe_declared": [
+          "borrowFrom",
+          "dispose",
+          "fromMp3",
+          "get_content",
+          "get_declaration",
+          "get_disposed",
+          "get_url",
+          "new",
+          "prepareLazyContent",
+          "releaseCurrentSound",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/TextAsset.hx",
+      "haxe_sha256": "e4bf9a88ced2abee298a1ea12cd8d011e00fd56ce3f758d867d26a8bc445e57e",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/TextAsset.as",
+      "as3_sha256": "677a27abf44332f610143c680b4702746885959a8381b70dba03ca0e179939bb",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url",
+          "new",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "get_content",
+          "get_declaration",
+          "get_disposed",
+          "get_url",
+          "new",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/UnknownAsset.hx",
+      "haxe_sha256": "ca326bd7ab0c8627d14706391ee44dbb5d978f07386458f7efc1ed04c317c8ef",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/UnknownAsset.as",
+      "as3_sha256": "9d4651c0de67fdc865276a955b3b6e214a5b62f21a9097920e2844137dc9c2b5",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url",
+          "new",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "toString"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "get_content",
+          "get_declaration",
+          "get_disposed",
+          "get_url",
+          "new",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "toString"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/XmlAsset.hx",
+      "haxe_sha256": "1e9e24c280d7b3eb971823ceee91aed8e5ba4176563ebcbd4d6e95599b904894",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dAssetsTest.hx",
+        "test/G1dAssetsBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/assets/XmlAsset.as",
+      "as3_sha256": "047a8da568a1c47aa1a4f79418e4867148f234d49072011c4b180589682f5ce1",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url",
+          "new",
+          "prepareLazyContent",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "toString"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "get_content",
+          "get_declaration",
+          "get_disposed",
+          "get_url",
+          "new",
+          "parseBytes",
+          "prepareLazyContent",
+          "setFromOtherAsset",
+          "setParamsDesc",
+          "setUnknownContent",
+          "toString"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:content",
+          "get:declaration",
+          "get:disposed",
+          "get:url"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/communication/messages/IMessageDataWrapper.hx",
+      "haxe_sha256": "4f11eae0c1b3776cb047a850d8b6a20995aca3893d5c0bcf18538cf17133fc92",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "historical/evidence/g1b_websocket_transport.json",
+        "historical/evidence/v2_login_verification.json"
+      ],
+      "as3_source": "src/com/sulake/core/communication/messages/IMessageDataWrapper.as",
+      "as3_sha256": "80a82bc1f9085f2819db65d2476eeb2ed0b653b26cb01d04e30d6c2b8ab52421",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "get:bytesAvailable",
+          "getID",
+          "readBoolean",
+          "readByte",
+          "readDouble",
+          "readFloat",
+          "readInteger",
+          "readLong",
+          "readShort",
+          "readString"
+        ],
+        "haxe_declared": [
+          "getID",
+          "readBoolean",
+          "readByte",
+          "readDouble",
+          "readFloat",
+          "readInteger",
+          "readLong",
+          "readShort",
+          "readString"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:bytesAvailable"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/communication/wireformat/EvaMessageDataWrapper.hx",
+      "haxe_sha256": "5c3e029352c6c31523942ddd2529c0c3d0dbc037dffb4731be45c36c34545c70",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "historical/evidence/g1b_websocket_transport.json",
+        "historical/evidence/v2_login_verification.json"
+      ],
+      "as3_source": "src/com/sulake/core/communication/wireformat/EvaMessageDataWrapper.as",
+      "as3_sha256": "36bb666fbd52d35db784b3f100f8c5a2024eb2685984febdb4e0f83c0b0714b9",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "get:bytesAvailable",
+          "getID",
+          "new",
+          "readBoolean",
+          "readByte",
+          "readDouble",
+          "readFloat",
+          "readInteger",
+          "readLong",
+          "readShort",
+          "readString",
+          "toString"
+        ],
+        "haxe_declared": [
+          "getID",
+          "get_bytesAvailable",
+          "new",
+          "readBoolean",
+          "readByte",
+          "readDouble",
+          "readFloat",
+          "readInteger",
+          "readLong",
+          "readShort",
+          "readString",
+          "require"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:bytesAvailable",
+          "toString"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/Core.hx",
+      "haxe_sha256": "f0af5f673dd9aa424e84c977e7fb726adc4c7f4aa17b8e43c2ce69569e70828d",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/V5AvatarCompileMain.hx",
+        "historical/evidence/v5_avatar_closure.json",
+        "test/V22WindowRuntimeTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/Core.as",
+      "as3_sha256": "3fed5cb7aae5278af354d650158c2ec0e7e2ad1979264aa6f4b49f5afd008abf",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "crash",
+          "debug",
+          "dispose",
+          "error",
+          "get:instance",
+          "get:version",
+          "instantiate",
+          "purge",
+          "warning"
+        ],
+        "haxe_declared": [
+          "crash",
+          "debug",
+          "error",
+          "get_displayObjectContainer",
+          "hibernate",
+          "new",
+          "purge",
+          "resume",
+          "warning"
+        ],
+        "source_names_absent_from_haxe": [
+          "dispose",
+          "get:instance",
+          "get:version",
+          "instantiate"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/localization/Localization.hx",
+      "haxe_sha256": "0243e1ea19d51ad231f4b475fc9b683f7cb7f9aa7ed865ac37e7481c7add36ab",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/localization/Localization.as",
+      "as3_sha256": "473316dde3279d1bddd92481b853bc4480ce80dfa37adcab5e02e0d60e197ef1",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "fillParameterValues",
+          "get:isInitialized",
+          "get:raw",
+          "get:value",
+          "new",
+          "registerListener",
+          "registerParameter",
+          "removeListener",
+          "setValue",
+          "updateListeners"
+        ],
+        "haxe_declared": [
+          "find",
+          "load",
+          "parse",
+          "resolve"
+        ],
+        "source_names_absent_from_haxe": [
+          "fillParameterValues",
+          "get:isInitialized",
+          "get:raw",
+          "get:value",
+          "new",
+          "registerListener",
+          "registerParameter",
+          "removeListener",
+          "setValue",
+          "updateListeners"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/Component.hx",
+      "haxe_sha256": "4825e6637413c1189045c968ec39df183a6463778b2008feea0cda78838932a2",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/Component.as",
+      "as3_sha256": "8b988099a860e5625b91dfe5fbe1f496986ff02b30edbe4f485c1c0e6481982c",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "allDependenciesRequested",
+          "dispose",
+          "get:allRequiredDependenciesInjected",
+          "get:assets",
+          "get:context",
+          "get:dependencies",
+          "get:disposed",
+          "get:events",
+          "get:flags",
+          "get:locked",
+          "getBoolean",
+          "getInteger",
+          "getProperty",
+          "initComponent",
+          "injectDependency",
+          "interpolate",
+          "lock",
+          "new",
+          "propertyExists",
+          "purge",
+          "queueInterface",
+          "registerUpdateReceiver",
+          "release",
+          "removeUpdateReceiver",
+          "requiredDependencyIids",
+          "setProperty",
+          "toString",
+          "toXMLString",
+          "unlock",
+          "updateUrlProtocol"
+        ],
+        "haxe_declared": [
+          "attachDependencyListener",
+          "componentReady",
+          "detachDependencyListener",
+          "dispose",
+          "getDependencies",
+          "get_allRequiredDependenciesInjected",
+          "get_assets",
+          "get_context",
+          "get_disposed",
+          "get_events",
+          "get_flags",
+          "get_locked",
+          "initComponent",
+          "new",
+          "queueInterface",
+          "registerInterfaces",
+          "release",
+          "requestInterface",
+          "setContext",
+          "toString"
+        ],
+        "source_names_absent_from_haxe": [
+          "allDependenciesRequested",
+          "get:allRequiredDependenciesInjected",
+          "get:assets",
+          "get:context",
+          "get:dependencies",
+          "get:disposed",
+          "get:events",
+          "get:flags",
+          "get:locked",
+          "getBoolean",
+          "getInteger",
+          "getProperty",
+          "injectDependency",
+          "interpolate",
+          "lock",
+          "propertyExists",
+          "purge",
+          "registerUpdateReceiver",
+          "removeUpdateReceiver",
+          "requiredDependencyIids",
+          "setProperty",
+          "toXMLString",
+          "unlock",
+          "updateUrlProtocol"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentContext.hx",
+      "haxe_sha256": "df8f4e1a416fe3f8f89b0ac16313486e30ffc6ccc9a591bc30c00ebcc9d33145",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/ComponentContext.as",
+      "as3_sha256": "ecf623f81f5ccaf92c0a6a8cc93e15b5548370f682bf67b54ec23c94aee5b0db",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "addLinkEventTracker",
+          "addQueueeForInterface",
+          "announceInterfaceAvailability",
+          "attachComponent",
+          "createLinkEvent",
+          "debug",
+          "detachComponent",
+          "dispose",
+          "error",
+          "get:configuration",
+          "get:displayObjectContainer",
+          "get:linkEventTrackers",
+          "get:root",
+          "getLastDebugMessage",
+          "getLastErrorMessage",
+          "getLastWarningMessage",
+          "getQueueForInterface",
+          "hasQueueForInterface",
+          "loadDebugHandler",
+          "loadErrorHandler",
+          "loadFromFile",
+          "loadReadyHandler",
+          "new",
+          "prepareAssetLibrary",
+          "prepareComponent",
+          "purge",
+          "queueInterface",
+          "removeLibraryLoader",
+          "removeLinkEventTracker",
+          "set:configuration",
+          "toXMLString",
+          "unlockEventHandler",
+          "warning"
+        ],
+        "haxe_declared": [
+          "addLinkEventTracker",
+          "attachComponent",
+          "createLinkEvent",
+          "debug",
+          "detachComponent",
+          "dispose",
+          "error",
+          "getLastDebugMessage",
+          "getLastErrorMessage",
+          "getLastWarningMessage",
+          "get_linkEventTrackers",
+          "get_root",
+          "new",
+          "queueInterface",
+          "removeLinkEventTracker",
+          "warning"
+        ],
+        "source_names_absent_from_haxe": [
+          "addQueueeForInterface",
+          "announceInterfaceAvailability",
+          "get:configuration",
+          "get:displayObjectContainer",
+          "get:linkEventTrackers",
+          "get:root",
+          "getQueueForInterface",
+          "hasQueueForInterface",
+          "loadDebugHandler",
+          "loadErrorHandler",
+          "loadFromFile",
+          "loadReadyHandler",
+          "prepareAssetLibrary",
+          "prepareComponent",
+          "purge",
+          "removeLibraryLoader",
+          "set:configuration",
+          "toXMLString",
+          "unlockEventHandler"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentDependency.hx",
+      "haxe_sha256": "95e61d38713bf86ba1aeb8991c79c9f1020d6529123dd5cb5f0370df789d9923",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/ComponentDependency.as",
+      "as3_sha256": "81d6ff7135af4aa5b1bd78951566c600fbe31acdb0c59971dd165d889831a0c7",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "get:dependencySetter",
+          "get:eventListeners",
+          "get:identifier",
+          "get:isRequired",
+          "new"
+        ],
+        "haxe_declared": [
+          "get_dependencySetter",
+          "get_eventListeners",
+          "get_identifier",
+          "get_isRequired",
+          "new"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:dependencySetter",
+          "get:eventListeners",
+          "get:identifier",
+          "get:isRequired"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentInterfaceQueue.hx",
+      "haxe_sha256": "118dfdf3298bc758b4e564aeecc110dccab679a89643ad26abf8ad3df6a098c5",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/ComponentInterfaceQueue.as",
+      "as3_sha256": "275913028e1014178759be8ea70481f13bcd634962a67730c0d979f524e5cf1f",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:disposed",
+          "get:identifier",
+          "get:receivers",
+          "new"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "get_disposed",
+          "get_identifier",
+          "get_receivers",
+          "new"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:disposed",
+          "get:identifier",
+          "get:receivers"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/IContext.hx",
+      "haxe_sha256": "982df0e6de1a89440be9f271e57babe669c4711ff2b1678054a54984a9b6be69",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/IContext.as",
+      "as3_sha256": "697ccc6e79ed9cd7470b2352658a29654b7c8168557bb86497023839a96ef86e",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "addLinkEventTracker",
+          "attachComponent",
+          "createLinkEvent",
+          "debug",
+          "detachComponent",
+          "error",
+          "get:assets",
+          "get:configuration",
+          "get:displayObjectContainer",
+          "get:events",
+          "get:linkEventTrackers",
+          "get:root",
+          "getLastDebugMessage",
+          "getLastErrorMessage",
+          "getLastWarningMessage",
+          "loadFromFile",
+          "prepareAssetLibrary",
+          "prepareComponent",
+          "registerUpdateReceiver",
+          "removeLinkEventTracker",
+          "removeUpdateReceiver",
+          "set:configuration",
+          "toXMLString",
+          "warning"
+        ],
+        "haxe_declared": [
+          "addLinkEventTracker",
+          "attachComponent",
+          "createLinkEvent",
+          "debug",
+          "detachComponent",
+          "error",
+          "getLastDebugMessage",
+          "getLastErrorMessage",
+          "getLastWarningMessage",
+          "registerUpdateReceiver",
+          "removeLinkEventTracker",
+          "removeUpdateReceiver",
+          "warning"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:assets",
+          "get:configuration",
+          "get:displayObjectContainer",
+          "get:events",
+          "get:linkEventTrackers",
+          "get:root",
+          "loadFromFile",
+          "prepareAssetLibrary",
+          "prepareComponent",
+          "set:configuration",
+          "toXMLString"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/IDisposable.hx",
+      "haxe_sha256": "5f5608447d7da1b89669e227efa0f82383a6b06f01d5e26d83743a0758f6ccfa",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/IDisposable.as",
+      "as3_sha256": "0901ad1872525fda2ba483ed5c969e02f48a37b3c5612fc2c9cf74c503a30dfb",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:disposed"
+        ],
+        "haxe_declared": [
+          "dispose"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:disposed"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/IID.hx",
+      "haxe_sha256": "d47a6401f74935b535341ff837fe80db359860def5a9d184f1b68c4b1b26a8f8",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/IID.as",
+      "as3_sha256": "9877f2ee02d15b1181c5812a68b9bfc23846aa9397d345035037e2e624714549",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "covered by name",
+        "source_declared": [],
+        "haxe_declared": [],
+        "source_names_absent_from_haxe": []
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/InterfaceStruct.hx",
+      "haxe_sha256": "42286ec0347603d6b2d6e1578a07e766ac48ead1a3c77a397b9a14e85929e540",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/InterfaceStruct.as",
+      "as3_sha256": "3c4a5d057e20cc799181f20debba783d60ff8f474b2f5d8e9cf84ddae986dc9c",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "get:disposed",
+          "get:iid",
+          "get:iis",
+          "get:references",
+          "get:unknown",
+          "new",
+          "release",
+          "reserve"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "get_disposed",
+          "get_iid",
+          "get_iis",
+          "get_references",
+          "get_unknown",
+          "new",
+          "release",
+          "reserve"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:disposed",
+          "get:iid",
+          "get:iis",
+          "get:references",
+          "get:unknown"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/InterfaceStructList.hx",
+      "haxe_sha256": "85279868a31a99e327677e65c6a0b47f8f432bcc6ebf4ba7a3ad0865e2927997",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/InterfaceStructList.as",
+      "as3_sha256": "51d76e963881ed14c13a28f6c46a942a0a00b25c02de22670327210476ea8d2e",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "dispose",
+          "find",
+          "get:disposed",
+          "get:length",
+          "getIndexByImplementor",
+          "getIndexByInterface",
+          "getStructByImplementor",
+          "getStructByIndex",
+          "getStructByInterface",
+          "getTotalReferenceCount",
+          "insert",
+          "mapStructsByImplementor",
+          "mapStructsByInterface",
+          "new",
+          "remove"
+        ],
+        "haxe_declared": [
+          "dispose",
+          "find",
+          "getIndexByImplementor",
+          "getIndexByInterface",
+          "getStructByImplementor",
+          "getStructByIndex",
+          "getStructByInterface",
+          "getTotalReferenceCount",
+          "get_disposed",
+          "get_length",
+          "insert",
+          "items",
+          "mapStructsByImplementor",
+          "mapStructsByInterface",
+          "new",
+          "remove"
+        ],
+        "source_names_absent_from_haxe": [
+          "get:disposed",
+          "get:length"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/IUnknown.hx",
+      "haxe_sha256": "0a1b44c1b0611eac77932da7c21b20fa5aa3c01195755ab2d035b1cff1015401",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/runtime/IUnknown.as",
+      "as3_sha256": "9e6edb8dc8b688c14c2ed77585277b1ea6226ed5adfaa9ab0c800bf3a1b9d3e0",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "covered by name",
+        "source_declared": [
+          "queueInterface",
+          "release"
+        ],
+        "haxe_declared": [
+          "queueInterface",
+          "release"
+        ],
+        "source_names_absent_from_haxe": []
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/ClassUtils.hx",
+      "haxe_sha256": "11f0710e5e0a881b09bea986138e5351dabea638b6665620c7dba8a026a1eb15",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dReflectionTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/utils/ClassUtils.as",
+      "as3_sha256": "d841a75ec17d7c1e48e159a47ac48fd09ed857c836fe1d3925c7395c66a3a96a",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "covered by name",
+        "source_declared": [
+          "getSimpleQualifiedClassName",
+          "implementsInterface"
+        ],
+        "haxe_declared": [
+          "classObjectName",
+          "getQualifiedClassName",
+          "getSimpleQualifiedClassName",
+          "implementsInterface",
+          "toActionScriptName",
+          "toHaxeName"
+        ],
+        "source_names_absent_from_haxe": []
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/Map.hx",
+      "haxe_sha256": "5424400ab170f14f9773db86f9c6c50c26fe02e7b1eec007c2ea2377623c0b3f",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dMapTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/utils/Map.as",
+      "as3_sha256": "0d1e1566f09e61f46852452c8c01a6a73f04325d876a6dee40e165071a926f9e",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "add",
+          "callProperty",
+          "clone",
+          "concatenate",
+          "dispose",
+          "get:disposed",
+          "get:length",
+          "getKey",
+          "getKeys",
+          "getProperty",
+          "getValue",
+          "getValues",
+          "getWithIndex",
+          "hasKey",
+          "hasValue",
+          "indexOf",
+          "new",
+          "nextName",
+          "nextNameIndex",
+          "nextValue",
+          "remove",
+          "reset",
+          "setProperty",
+          "unshift"
+        ],
+        "haxe_declared": [
+          "add",
+          "canonicalDictionaryKey",
+          "clearDictionary",
+          "clone",
+          "concatenate",
+          "createDictionary",
+          "dictionaryDelete",
+          "dictionaryGet",
+          "dictionarySet",
+          "dispose",
+          "getKey",
+          "getKeys",
+          "getValue",
+          "getValues",
+          "getWithIndex",
+          "get_disposed",
+          "get_length",
+          "hasKey",
+          "hasValue",
+          "indexIn",
+          "indexOf",
+          "iterator",
+          "new",
+          "remove",
+          "requireActive",
+          "reset",
+          "same",
+          "setValue",
+          "toString",
+          "unshift"
+        ],
+        "source_names_absent_from_haxe": [
+          "callProperty",
+          "get:disposed",
+          "get:length",
+          "getProperty",
+          "nextName",
+          "nextNameIndex",
+          "nextValue",
+          "setProperty"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/SingleWriteMap.hx",
+      "haxe_sha256": "ad3669ef9c71a2d6670a08f3f07dc15025b41877d74b0a9a9d37eb1687dd9e5e",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dMapTest.hx"
+      ],
+      "as3_source": "src/com/sulake/core/utils/SingleWriteMap.as",
+      "as3_sha256": "17477d4a32307aa19fd47b5f6b9047e80c7d3878d32d4451f8d04f6b7eb1a6f7",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "setProperty"
+        ],
+        "haxe_declared": [
+          "new",
+          "setValue"
+        ],
+        "source_names_absent_from_haxe": [
+          "setProperty"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/enums/WindowParam.hx",
+      "haxe_sha256": "2c956b2768b847fa2327a9cef63ef1fb285da425a588c5019c58c8f1e83651e6",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/window/enum/WindowParam.as",
+      "as3_sha256": "d2ea27792cf0688d830e85c5fb2fda132719d215971b76a285269f0573c720fb",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "covered by name",
+        "source_declared": [],
+        "haxe_declared": [],
+        "source_names_absent_from_haxe": []
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/IWindow.hx",
+      "haxe_sha256": "4ca436392f8a907bec48e48264e03149954ae19b78c3b21c19c7d7a69f3b4768",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/window/IWindow.as",
+      "as3_sha256": "c64f6d99610e4107cbf05eed2d75e6ffe4bd972b6686a64adff2fe6dc263f616",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "activate",
+          "activateChildren",
+          "addEventListener",
+          "buildFromXML",
+          "center",
+          "clone",
+          "convertPointFromGlobalToLocalSpace",
+          "convertPointFromLocalToGlobalSpace",
+          "createProperty",
+          "deactivate",
+          "destroy",
+          "disable",
+          "enable",
+          "enableChildren",
+          "fetchDrawBuffer",
+          "findParentByName",
+          "get:alpha",
+          "get:background",
+          "get:blend",
+          "get:bottom",
+          "get:caption",
+          "get:clipping",
+          "get:color",
+          "get:context",
+          "get:debug",
+          "get:desktop",
+          "get:dynamicStyle",
+          "get:dynamicStyleColor",
+          "get:etchingPoint",
+          "get:filters",
+          "get:height",
+          "get:host",
+          "get:id",
+          "get:immediateClickMode",
+          "get:left",
+          "get:limits",
+          "get:mouseThreshold",
+          "get:name",
+          "get:param",
+          "get:parent",
+          "get:position",
+          "get:procedure",
+          "get:properties",
+          "get:rectangle",
+          "get:renderingHeight",
+          "get:renderingRectangle",
+          "get:renderingWidth",
+          "get:renderingX",
+          "get:renderingY",
+          "get:right",
+          "get:state",
+          "get:style",
+          "get:tags",
+          "get:top",
+          "get:type",
+          "get:visible",
+          "get:width",
+          "get:x",
+          "get:y",
+          "getAbsoluteMousePosition",
+          "getDefaultProperty",
+          "getDrawRegion",
+          "getGlobalPosition",
+          "getGlobalRectangle",
+          "getLocalPosition",
+          "getLocalRectangle",
+          "getMouseRegion",
+          "getParamFlag",
+          "getRelativeMousePosition",
+          "getStateFlag",
+          "getStyleFlag",
+          "hasEventListener",
+          "hitTestGlobalPoint",
+          "hitTestGlobalRectangle",
+          "hitTestLocalPoint",
+          "hitTestLocalRectangle",
+          "invalidate",
+          "isEnabled",
+          "lock",
+          "maximize",
+          "minimize",
+          "offset",
+          "removeEventListener",
+          "resolve",
+          "resolveHorizontalScale",
+          "resolveVerticalScale",
+          "restore",
+          "scale",
+          "set:alpha",
+          "set:background",
+          "set:blend",
+          "set:caption",
+          "set:clipping",
+          "set:color",
+          "set:debug",
+          "set:dynamicStyle",
+          "set:dynamicStyleColor",
+          "set:etching",
+          "set:filters",
+          "set:height",
+          "set:id",
+          "set:immediateClickMode",
+          "set:mouseThreshold",
+          "set:name",
+          "set:parent",
+          "set:position",
+          "set:procedure",
+          "set:properties",
+          "set:rectangle",
+          "set:style",
+          "set:visible",
+          "set:width",
+          "set:x",
+          "set:y",
+          "setGlobalPosition",
+          "setGlobalRectangle",
+          "setParamFlag",
+          "setStateFlag",
+          "setStyleFlag",
+          "setVisibleChildren",
+          "testParamFlag",
+          "testStateFlag",
+          "testStyleFlag",
+          "toString",
+          "unlock"
+        ],
+        "haxe_declared": [
+          "displayObject"
+        ],
+        "source_names_absent_from_haxe": [
+          "activate",
+          "activateChildren",
+          "addEventListener",
+          "buildFromXML",
+          "center",
+          "clone",
+          "convertPointFromGlobalToLocalSpace",
+          "convertPointFromLocalToGlobalSpace",
+          "createProperty",
+          "deactivate",
+          "destroy",
+          "disable",
+          "enable",
+          "enableChildren",
+          "fetchDrawBuffer",
+          "findParentByName",
+          "get:alpha",
+          "get:background",
+          "get:blend",
+          "get:bottom",
+          "get:caption",
+          "get:clipping",
+          "get:color",
+          "get:context",
+          "get:debug",
+          "get:desktop",
+          "get:dynamicStyle",
+          "get:dynamicStyleColor",
+          "get:etchingPoint",
+          "get:filters",
+          "get:height",
+          "get:host",
+          "get:id",
+          "get:immediateClickMode",
+          "get:left",
+          "get:limits",
+          "get:mouseThreshold",
+          "get:name",
+          "get:param",
+          "get:parent",
+          "get:position",
+          "get:procedure",
+          "get:properties",
+          "get:rectangle",
+          "get:renderingHeight",
+          "get:renderingRectangle",
+          "get:renderingWidth",
+          "get:renderingX",
+          "get:renderingY",
+          "get:right",
+          "get:state",
+          "get:style",
+          "get:tags",
+          "get:top",
+          "get:type",
+          "get:visible",
+          "get:width",
+          "get:x",
+          "get:y",
+          "getAbsoluteMousePosition",
+          "getDefaultProperty",
+          "getDrawRegion",
+          "getGlobalPosition",
+          "getGlobalRectangle",
+          "getLocalPosition",
+          "getLocalRectangle",
+          "getMouseRegion",
+          "getParamFlag",
+          "getRelativeMousePosition",
+          "getStateFlag",
+          "getStyleFlag",
+          "hasEventListener",
+          "hitTestGlobalPoint",
+          "hitTestGlobalRectangle",
+          "hitTestLocalPoint",
+          "hitTestLocalRectangle",
+          "invalidate",
+          "isEnabled",
+          "lock",
+          "maximize",
+          "minimize",
+          "offset",
+          "removeEventListener",
+          "resolve",
+          "resolveHorizontalScale",
+          "resolveVerticalScale",
+          "restore",
+          "scale",
+          "set:alpha",
+          "set:background",
+          "set:blend",
+          "set:caption",
+          "set:clipping",
+          "set:color",
+          "set:debug",
+          "set:dynamicStyle",
+          "set:dynamicStyleColor",
+          "set:etching",
+          "set:filters",
+          "set:height",
+          "set:id",
+          "set:immediateClickMode",
+          "set:mouseThreshold",
+          "set:name",
+          "set:parent",
+          "set:position",
+          "set:procedure",
+          "set:properties",
+          "set:rectangle",
+          "set:style",
+          "set:visible",
+          "set:width",
+          "set:x",
+          "set:y",
+          "setGlobalPosition",
+          "setGlobalRectangle",
+          "setParamFlag",
+          "setStateFlag",
+          "setStyleFlag",
+          "setVisibleChildren",
+          "testParamFlag",
+          "testStateFlag",
+          "testStyleFlag",
+          "toString",
+          "unlock"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/utils/ParamCodeTable.hx",
+      "haxe_sha256": "58b6a2fd4ccb7277d3f49d9cc212e29fe4a29d46ecae5853b1c96439f4e6c7f7",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/window/utils/ParamCodeTable.as",
+      "as3_sha256": "e8e9dc85159b3ad0da9625d4eda4358401b801a4a6094f7b4836dc0cd923c9d8",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "_Str_8871"
+        ],
+        "haxe_declared": [
+          "code",
+          "mask",
+          "table"
+        ],
+        "source_names_absent_from_haxe": [
+          "_Str_8871"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/utils/WindowParser.hx",
+      "haxe_sha256": "13e2a71ba7b7aa35fb7e65cf1737febd14c0e2634a261f6453830d043716ff47",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/window/utils/WindowParser.as",
+      "as3_sha256": "82371fef86e319db81a9b44d9b405ef72c2cd6eb4cce6c81e690fd901cbcfd1e",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "_Str_20744",
+          "buildBitmapFilter",
+          "dispose",
+          "filterToXmlString",
+          "get:disposed",
+          "hasAttribute",
+          "new",
+          "parseAndConstruct",
+          "parseAttribute",
+          "parseProperties",
+          "parseSingleWindowEntity",
+          "windowToXMLString"
+        ],
+        "haxe_declared": [
+          "applyFilters",
+          "buildInternalChildren",
+          "decode",
+          "intAttribute",
+          "namedParams",
+          "new",
+          "numberAttribute",
+          "optionalNumberAttribute",
+          "parseEntity",
+          "parseLayout",
+          "parseVariables",
+          "stringAttribute"
+        ],
+        "source_names_absent_from_haxe": [
+          "_Str_20744",
+          "buildBitmapFilter",
+          "dispose",
+          "filterToXmlString",
+          "get:disposed",
+          "hasAttribute",
+          "parseAndConstruct",
+          "parseAttribute",
+          "parseProperties",
+          "parseSingleWindowEntity",
+          "windowToXMLString"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/WindowController.hx",
+      "haxe_sha256": "188bcd151f2614224b318fc9925ec7632c8475f2c461b0ac6cbca9bcc268d018",
+      "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": "src/com/sulake/core/window/WindowController.as",
+      "as3_sha256": "c9c3b45c7ad41103be7ec2bacc0497a64c5b8d332e39da021e7f9b5d9b06fa01",
+      "state": "hand-written port -- must become converter output",
+      "retire_at": "M2b/M2d",
+      "api_surface_check": {
+        "mode": "declared-function-name comparison",
+        "status": "transitional subset",
+        "source_declared": [
+          "activate",
+          "activateChildren",
+          "addChild",
+          "addChildAt",
+          "addEventListener",
+          "applyDynamicStyleByState",
+          "buildFromXML",
+          "calculateMouseRegion",
+          "center",
+          "clone",
+          "cloneChildWindows",
+          "convertPointFromGlobalToLocalSpace",
+          "convertPointFromLocalToGlobalSpace",
+          "createAdHocProperty",
+          "createProperty",
+          "deactivate",
+          "destroy",
+          "disable",
+          "dispose",
+          "enable",
+          "enableChildren",
+          "expandToAccommodateChild",
+          "fetchDrawBuffer",
+          "findChildByName",
+          "findChildByTag",
+          "findParentByName",
+          "focus",
+          "get:children",
+          "get:debug",
+          "get:desktop",
+          "get:dynamicStyleColor",
+          "get:filters",
+          "get:host",
+          "get:immediateClickMode",
+          "get:limits",
+          "get:numChildren",
+          "get:parent",
+          "get:procedure",
+          "get:properties",
+          "getAbsoluteMousePosition",
+          "getChildAt",
+          "getChildByID",
+          "getChildByName",
+          "getChildByTag",
+          "getChildIndex",
+          "getChildUnderPoint",
+          "getDefaultProperty",
+          "getDrawRegion",
+          "getGlobalPosition",
+          "getGlobalRectangle",
+          "getGraphicContext",
+          "getLocalPosition",
+          "getLocalRectangle",
+          "getMouseRegion",
+          "getParamFlag",
+          "getRegionProperties",
+          "getRelativeMousePosition",
+          "getStateFlag",
+          "getStyleFlag",
+          "groupChildrenUnderPoint",
+          "groupChildrenWithID",
+          "groupChildrenWithTag",
+          "groupParameterFilteredChildrenUnderPoint",
+          "hasEventListener",
+          "hasGraphicsContext",
+          "hitTestGlobalPoint",
+          "hitTestGlobalRectangle",
+          "hitTestLocalPoint",
+          "hitTestLocalRectangle",
+          "immediateClickHandler",
+          "invalidate",
+          "isCapableOfUsingSharedGraphicContext",
+          "isChildWindow",
+          "isEnabled",
+          "lock",
+          "maximize",
+          "minimize",
+          "new",
+          "notifyChildren",
+          "notifyEventListeners",
+          "nullEventProc",
+          "offset",
+          "populate",
+          "recursivelyUpdateChildrensDynamicStyles",
+          "releaseGraphicsContext",
+          "removeChild",
+          "removeChildAt",
+          "removeEventListener",
+          "renderDynamicStyle",
+          "requiresOwnGraphicContext",
+          "resizeToAccommodateChildren",
+          "resolve",
+          "resolveHorizontalScale",
+          "resolveVerticalScale",
+          "restore",
+          "scale",
+          "scaleToAccommodateChildren",
+          "set:alpha",
+          "set:background",
+          "set:blend",
+          "set:caption",
+          "set:clipping",
+          "set:color",
+          "set:debug",
+          "set:dynamicStyle",
+          "set:dynamicStyleColor",
+          "set:etching",
+          "set:filters",
+          "set:height",
+          "set:id",
+          "set:immediateClickMode",
+          "set:mouseThreshold",
+          "set:name",
+          "set:offsetX",
+          "set:offsetY",
+          "set:parent",
+          "set:position",
+          "set:procedure",
+          "set:properties",
+          "set:rectangle",
+          "set:state",
+          "set:style",
+          "set:tags",
+          "set:type",
+          "set:visible",
+          "set:width",
+          "set:x",
+          "set:y",
+          "setChildIndex",
+          "setGlobalPosition",
+          "setGlobalRectangle",
+          "setParamFlag",
+          "setRectangle",
+          "setRegionProperties",
+          "setStateFlag",
+          "setStyleFlag",
+          "setVisibleChildren",
+          "setupGraphicsContext",
+          "swapChildren",
+          "swapChildrenAt",
+          "testLocalPointHitAgainstAlpha",
+          "toString",
+          "unfocus",
+          "unlock",
+          "update",
+          "updateScaleRelativeToParent",
+          "validateGlobalPointIntersection",
+          "validateLocalPointIntersection"
+        ],
+        "haxe_declared": [
+          "accommodateChildren",
+          "addWindowChild",
+          "applyScaleParams",
+          "attachInternalChildren",
+          "attachParamBehaviors",
+          "beginParamDrag",
+          "boolProperty",
+          "buildInternalChildren",
+          "captionFormat",
+          "childWindows",
+          "childrenWithTag",
+          "configureContentHost",
+          "continueParamDrag",
+          "delegatesCaption",
+          "describe",
+          "displayObject",
+          "dispose",
+          "drawDiagnosticSkin",
+          "drawNamedBitmap",
+          "drawSkin",
+          "drawText",
+          "drawTruffleCaption",
+          "endParamDrag",
+          "finalizeLayout",
+          "findChildByName",
+          "get_disposed",
+          "hasParam",
+          "hasTag",
+          "inheritCaption",
+          "isButton",
+          "isScrollable",
+          "isTextual",
+          "layoutWindow",
+          "margin",
+          "new",
+          "onButtonMouseDown",
+          "onButtonRollOut",
+          "onButtonRollOver",
+          "onButtonStageMouseUp",
+          "onMouseWheel",
+          "onTextLink",
+          "parseTags",
+          "redrawSkin",
+          "renderedSkinWidth",
+          "resizeTo",
+          "resolveIntrinsicSize",
+          "rewriteLinks",
+          "setAssetBitmap",
+          "setCaption",
+          "setHtmlText",
+          "setSkinState",
+          "set_scrollV",
+          "stretchTo",
+          "themeSaysInvisible",
+          "truffleLayoutOptions",
+          "truffleStyle",
+          "updateScrollBounds"
+        ],
+        "source_names_absent_from_haxe": [
+          "activate",
+          "activateChildren",
+          "addChild",
+          "addChildAt",
+          "addEventListener",
+          "applyDynamicStyleByState",
+          "buildFromXML",
+          "calculateMouseRegion",
+          "center",
+          "clone",
+          "cloneChildWindows",
+          "convertPointFromGlobalToLocalSpace",
+          "convertPointFromLocalToGlobalSpace",
+          "createAdHocProperty",
+          "createProperty",
+          "deactivate",
+          "destroy",
+          "disable",
+          "enable",
+          "enableChildren",
+          "expandToAccommodateChild",
+          "fetchDrawBuffer",
+          "findChildByTag",
+          "findParentByName",
+          "focus",
+          "get:children",
+          "get:debug",
+          "get:desktop",
+          "get:dynamicStyleColor",
+          "get:filters",
+          "get:host",
+          "get:immediateClickMode",
+          "get:limits",
+          "get:numChildren",
+          "get:parent",
+          "get:procedure",
+          "get:properties",
+          "getAbsoluteMousePosition",
+          "getChildAt",
+          "getChildByID",
+          "getChildByName",
+          "getChildByTag",
+          "getChildIndex",
+          "getChildUnderPoint",
+          "getDefaultProperty",
+          "getDrawRegion",
+          "getGlobalPosition",
+          "getGlobalRectangle",
+          "getGraphicContext",
+          "getLocalPosition",
+          "getLocalRectangle",
+          "getMouseRegion",
+          "getParamFlag",
+          "getRegionProperties",
+          "getRelativeMousePosition",
+          "getStateFlag",
+          "getStyleFlag",
+          "groupChildrenUnderPoint",
+          "groupChildrenWithID",
+          "groupChildrenWithTag",
+          "groupParameterFilteredChildrenUnderPoint",
+          "hasEventListener",
+          "hasGraphicsContext",
+          "hitTestGlobalPoint",
+          "hitTestGlobalRectangle",
+          "hitTestLocalPoint",
+          "hitTestLocalRectangle",
+          "immediateClickHandler",
+          "invalidate",
+          "isCapableOfUsingSharedGraphicContext",
+          "isChildWindow",
+          "isEnabled",
+          "lock",
+          "maximize",
+          "minimize",
+          "notifyChildren",
+          "notifyEventListeners",
+          "nullEventProc",
+          "offset",
+          "populate",
+          "recursivelyUpdateChildrensDynamicStyles",
+          "releaseGraphicsContext",
+          "removeChild",
+          "removeChildAt",
+          "removeEventListener",
+          "renderDynamicStyle",
+          "requiresOwnGraphicContext",
+          "resizeToAccommodateChildren",
+          "resolve",
+          "resolveHorizontalScale",
+          "resolveVerticalScale",
+          "restore",
+          "scale",
+          "scaleToAccommodateChildren",
+          "set:alpha",
+          "set:background",
+          "set:blend",
+          "set:caption",
+          "set:clipping",
+          "set:color",
+          "set:debug",
+          "set:dynamicStyle",
+          "set:dynamicStyleColor",
+          "set:etching",
+          "set:filters",
+          "set:height",
+          "set:id",
+          "set:immediateClickMode",
+          "set:mouseThreshold",
+          "set:name",
+          "set:offsetX",
+          "set:offsetY",
+          "set:parent",
+          "set:position",
+          "set:procedure",
+          "set:properties",
+          "set:rectangle",
+          "set:state",
+          "set:style",
+          "set:tags",
+          "set:type",
+          "set:visible",
+          "set:width",
+          "set:x",
+          "set:y",
+          "setChildIndex",
+          "setGlobalPosition",
+          "setGlobalRectangle",
+          "setParamFlag",
+          "setRectangle",
+          "setRegionProperties",
+          "setStateFlag",
+          "setStyleFlag",
+          "setVisibleChildren",
+          "setupGraphicsContext",
+          "swapChildren",
+          "swapChildrenAt",
+          "testLocalPointHitAgainstAlpha",
+          "toString",
+          "unfocus",
+          "unlock",
+          "update",
+          "updateScaleRelativeToParent",
+          "validateGlobalPointIntersection",
+          "validateLocalPointIntersection"
+        ]
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/loaders/Html5AssetLoader.hx",
+      "haxe_sha256": "46098e6af9f6303993ac01120f892afe3370d9c71561c9f34e48b4c13e5b5ccd",
+      "reason": "Unavoidable browser individual-file transport and image decode boundary, exposing the original AssetLoaderStruct event contract without Flash LibraryLoader/FZip.",
+      "contract_tests": [
+        "test/V22AssetLoadingTest.hx",
+        "historical/tooling/scripts/verify-window-services.ps1"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfAssetLibrary.hx",
+      "haxe_sha256": "36e151257c9402e32fb12af05a4a105357b9b792af783bf1cc0136c5045436a0",
+      "reason": "Turns a library SWF into an AssetLibrary of named bitmaps. Flash got this from Loader plus the SymbolClass tag binding each character to a class; with no player, the port has to read the container and register the exports itself. Every avatar part is addressed by its exported name, so this mapping is the whole contract between the asset SWFs and the compositor.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfBitmap.hx",
+      "haxe_sha256": "241aa4af32aa63d8312637b48495acbe1b1825c2cb5ef5e59edf9411624de8d9",
+      "reason": "SWF bitmap decoding, as above.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfByteCache.hx",
+      "haxe_sha256": "1c6d6edf4535af33fe19ecabe14f88ef90d315d82769b08a5a9db18bf3893357",
+      "reason": "Browser SWF transport boundary. It deduplicates immutable response bytes and keeps a bounded revision-aware session cache; mutable decoded assets remain separately owned.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfCharacter.hx",
+      "haxe_sha256": "9a655416e95a661d87c32eee0186e41a4131d7957a631b5cb5b82adb297c9184",
+      "reason": "SWF character model, as above.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfDecodeWorkerPool.hx",
+      "haxe_sha256": "00a541c64ed22c4b225a1c6c204c57e9f9f94c8a88fc3018524e7bcf903cc1b3",
+      "reason": "Browser worker scheduler for the existing deterministic lossless SWF decoder. Flash decoded these images natively; HTML5 must keep that CPU work off the UI/network thread.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfError.hx",
+      "haxe_sha256": "d2e21ef427eab773e70b6b64db3d4f7e5e214798d4bf585a1b9d0de6798486f9",
+      "reason": "SWF reader error type, as above.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfFile.hx",
+      "haxe_sha256": "d2978dcbd296d9a0707b4584af17688542f71fc12b95e5fb4fc17d2ce13e5cb0",
+      "reason": "SWF container reader. Flash loaded SWFs natively; nothing in the AS3 corresponds to parsing one by hand.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfLoadMetrics.hx",
+      "haxe_sha256": "8cae1048b4bfd3fe4b8bf28788d2e93b1f340b508f01140f5680892abbdf92c6",
+      "reason": "Browser-only phase telemetry for measuring SWF fetch, parse, decode and registration without changing the converted client lifecycle.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfSound.hx",
+      "haxe_sha256": "44c2b9f76d2c5038adfe7e82024d6538eacd6a4bf5095efb17bdb70179e6d16d",
+      "reason": "SWF sound extraction, as above.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/SwfTag.hx",
+      "haxe_sha256": "2091d839b57a2d447df1e3a1cc9b175918e91c28e393b1caf711e42ed03ca246",
+      "reason": "SWF tag constants, as above.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentDependencyLifecycle.hx",
+      "haxe_sha256": "7a56e6c02aa5bcc63835ff93b1842ccdd91d59cc6e5ab632daacb5013115b38b",
+      "reason": "HTML5 lifecycle helper used by the G1d component-shell contract. It separates the generated component API from host scheduling and has no AS3 class identity.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentInterfaceBroker.hx",
+      "haxe_sha256": "a9b584ab72ce59c73f747c189d093f43bd8e76778f60ba3dbf3e87576466f32d",
+      "reason": "HTML5 interface-broker helper used by the G1d component-shell contract. The clean client obtains this behavior through WindowContext/runtime wiring rather than a class with this identity.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/runtime/ComponentManifest.hx",
+      "haxe_sha256": "2acf73f2459d32ceeffbedf575f99dfcedb53e90c5309babbb9ad199a6b1f351",
+      "reason": "Typed representation of component XML manifests for the HTML5 host. Flash supplied the embedded-resource boundary; SkyHaxe must parse it explicitly.",
+      "contract_tests": [
+        "test/G1dRuntimeTest.hx",
+        "test/G1dComponentShellTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/ASNumericType.hx",
+      "haxe_sha256": "22170fe24fad65e0b425d853e1921e852bfade0b78928583ec551645d947a354",
+      "reason": "AS3 numeric type-test boundary: Haxe UInt is an erased abstract on JavaScript, so uint instance tests require a numeric/range check rather than a class object.",
+      "contract_tests": [
+        "test/V21ConverterRegressionTest.hx",
+        "historical/tooling/scripts/verify-window-text.ps1"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/ASProxy.hx",
+      "haxe_sha256": "7dc8ee9b6834d9cb211567da663a32e8463168a490bfa97b194f4dc6198eb6ac",
+      "reason": "Flash VM enumeration adapter: invokes the converted nextNameIndex/nextValue hooks for window IIterator values; never enumerates implementation fields.",
+      "contract_tests": [
+        "test/V21ConverterRegressionTest.hx",
+        "historical/tooling/scripts/verify-window-text.ps1"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/ByteArray.hx",
+      "haxe_sha256": "bb04d4920d961d55825823e355c8197b1cafec7f904838d200713d292feb4975",
+      "reason": "HTML5 replacement for flash.utils.ByteArray, whose VM implementation is unavailable on the JavaScript target.",
+      "contract_tests": [
+        "test/G1dByteArrayTest.hx",
+        "test/G1dByteArrayBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/DefinitionRegistry.hx",
+      "haxe_sha256": "299c71bf3e04eef448ace10f4ea9a74df2e55026fd2cb3257371f1e31b10dc10",
+      "reason": "HTML5 replacement for Flash runtime definition lookup. JavaScript has no application domain class registry equivalent, so generated reflection calls route through it.",
+      "contract_tests": [
+        "test/G1dReflectionTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/xml/XML.hx",
+      "haxe_sha256": "9502bfee29c36867e071929ed6bd23f4487f49307576c9352b7afca9df4d3241",
+      "reason": "HTML5 E4X compatibility adapter. Haxe/JavaScript has no native AS3 XML type.",
+      "contract_tests": [
+        "test/G1dXmlTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/utils/xml/XMLList.hx",
+      "haxe_sha256": "8aa5d601d4251112f8d683e97f1bd71fb34cb9b282b5084d03631b0edb4e3c4c",
+      "reason": "HTML5 E4X XMLList compatibility adapter. It implements the measured clean-client API surface rather than duplicating a clean-client class.",
+      "contract_tests": [
+        "test/G1dXmlTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/graphics/WindowSkinRenderer.hx",
+      "haxe_sha256": "355da9cd3e580df3466bd24279d5fcb3068b2c11c4dd83bbbe9d8534a48c41ec",
+      "reason": "HTML5 bitmap-skin renderer. AIR's window stack consumed the same theme data through Flash display APIs; the JavaScript target needs an explicit OpenFL renderer.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/text/TruffleText.hx",
+      "haxe_sha256": "74aacd44d826de96b6135d7a04617b96aadca90baeb9aa3e70d994915a28a6cf",
+      "reason": "Platform adapter. Flash rasterised text in the VM; HTML5 needs an explicit engine to reproduce Ubuntu at advanced anti-aliasing with sharpness 80 and thickness -15.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/theme/ElementDescription.hx",
+      "haxe_sha256": "17e29e695fa41f7baaad23235d3ef4f079007f63bc5bae667c792853b156fd3b",
+      "reason": "Loader for habbo_element_description_xml.bin. The AS3 reaches this table through SkinParserUtil and the component factory; SkyHaxe reads it directly.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/window/theme/InternalLayouts.hx",
+      "haxe_sha256": "1b38b1fe83d9d6c0a73788c763fd8aa20c98e85dcc9dba4640185e8a6dcf482d",
+      "reason": "Registry for the habbo_window_layout_* documents. Registration is host-specific: SkyHaxe packages them as OpenFL assets, the client embeds them.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/Habbo.hx",
+      "haxe_sha256": "5e90ab4a56ae9e6e233feb620028ba57ca85af433b0c8437932fc22b85e995fb",
+      "reason": "HTML5 document-root boundary for converted HabboMain. The original Habbo.as is a Flash MovieClip preloader; this host retains its component-visible progress-log and crash-report contract without recreating SWF preloading.",
+      "contract_tests": [
+        "test/V32HabboHostTest.hx",
+        "historical/projects/project.v32-component-graph.xml"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/openfl/events/GesturePhase.hx",
+      "haxe_sha256": "d70412d5617afc06c92256a834dc05be6c62b5f09b95a6031df1b5811931b5ee",
+      "reason": "AIR event vocabulary missing from OpenFL. HTML5 never advertises AIR mobile or synthesizes these gestures.",
+      "contract_tests": [
+        "test/V24PlatformBoundaryTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/openfl/events/TransformGestureEvent.hx",
+      "haxe_sha256": "2c987bdd4d1d91865e1173b0ecba6cb8863d500f373f8825d07fdd6832626f74",
+      "reason": "Explicit unsupported AIR gesture type boundary for the original Android controller's non-AIR path; construction throws rather than pretending browser pinch support exists.",
+      "contract_tests": [
+        "test/V24PlatformBoundaryTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/LazySwfBitmap.hx",
+      "haxe_sha256": "455dd010b4b90c20c8419c2620d9c4480bf2c62e6783c56ece825917b44f5608",
+      "reason": "Flash exposed a lossless SymbolClass immediately and materialized its pixels on construction. Preserves that contract so a downloaded component SWF does not decode every bitmap it contains up front.",
+      "contract_tests": [
+        "test/SwfBitmapDecodeTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/NativeImageDecodeQueue.hx",
+      "haxe_sha256": "4ac6ae92717e45cedf189f330651da7913098f16d769e20aac009fd35400575b",
+      "reason": "Bounded decode queue for SWF-embedded PNG/JPEG symbols. Lime routes blob images through the same 17-slot queue as HTTP, so a component SWF burst of two thousand images delays unrelated client traffic; this keeps native browser decoding but isolates it from networking.",
+      "contract_tests": [
+        "test/SwfBitmapDecodeTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/DeferredStaticMacro.hx",
+      "haxe_sha256": "9155a4e4396d6928969310cbeca29dd71abf9157f01b37a28f5d8a3c15fef09f",
+      "reason": "Narrow AVM2/OpenFL boot boundary for the original stage-dependent Motions timer; retains its initializer and evaluates once on first use, not at JS script load.",
+      "contract_tests": [
+        "test/V22WindowRuntimeTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/mx/core/BitmapAsset.hx",
+      "haxe_sha256": "dc9ef1c7c26c999e23692719558044a616c6a51a3d28d28dc24ffacb5f3a8080",
+      "reason": "Flex Embed bitmap VM boundary. Generated data subclasses receive hash-checked preloaded original pixels, not a feature reimplementation.",
+      "contract_tests": [
+        "test/V22EmbeddedAssetsTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/mx/core/ByteArrayAsset.hx",
+      "haxe_sha256": "e6606f6d034a8eb6aee5783917806f7a298e5fed0cf5ed68264deec536a1dcba",
+      "reason": "Flex Embed binary VM boundary. Generated data subclasses receive hash-pinned compile-time bytes, available before the preloader, with Flash endianness and position.",
+      "contract_tests": [
+        "test/V22EmbeddedAssetsTest.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/mx/core/FontAsset.hx",
+      "haxe_sha256": "823a373a83aa8aaf1fe80167d2871294ab369d24940d8662260e498fde3a444a",
+      "reason": "Flex embedded-font identity boundary. Generated FontAsset subclasses retain their hash-pinned AS3 family/style metadata while Truffle owns all browser glyph measurement and rasterization.",
+      "contract_tests": [
+        "test/V21FontCoverageTest.hx",
+        "historical/evidence/prepare_embedded_candidate.py"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/mx/core/SimpleApplication.hx",
+      "haxe_sha256": "b5c339d02bcd71f629c29cbaf4e84dc3dee00dff1532df241f727a383c53f8cb",
+      "reason": "Flex SWF document-root boundary. Generated component-library wrappers require its Sprite lifecycle and compile-time Embed materialization; HTML preloading and frame construction are owned by the browser boot pipeline.",
+      "contract_tests": [
+        "test/V21ConverterRegressionTest.hx",
+        "historical/projects/project.compile-all.xml",
+        "historical/projects/project.v32-component-graph.xml"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/ComponentLibraryEmbedMacro.hx",
+      "haxe_sha256": "0c93d3e485511c6d0766fdd68985e92ebce024aa6130dffbb679773d595ebc9e",
+      "reason": "Compile-time Flex [Embed] boundary for original *Com component owners. It restores their generated static asset-class initializers from a hash-pinned source/asset manifest; component behavior remains generated.",
+      "contract_tests": [
+        "historical/evidence/prepare_component_library_embeds.py",
+        "historical/projects/project.v32-component-graph.xml"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/ComponentLibraryEmbedFactory.hx",
+      "haxe_sha256": "f27d9f2a28b02a1231ed50999afe4420eda335d34d29119abc7f86dd26c2d08c",
+      "reason": "Runtime Flex anonymous Embed-class boundary used by generated component manifests and assets. It returns JavaScript constructors with Haxe class identity and the original ByteArray/BitmapAsset content contract.",
+      "contract_tests": [
+        "historical/evidence/prepare_component_library_embeds.py",
+        "historical/projects/project.v32-component-graph.xml"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/SwfEmbedFactory.hx",
+      "haxe_sha256": "7c23f9125f4b9f27da14bcb3fd5b691d03618d0664938e74eddc67553b8f6324",
+      "reason": "Runtime class factory for assets decoded from library SWFs on HTML5. Flash created SymbolClass constructors while loading; the browser adapter must expose the same class-shaped resource values.",
+      "contract_tests": [
+        "test/G2SwfReaderBrowserMain.hx",
+        "historical/projects/project.v32-runtime.xml"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/skyhaxe/assets/EmbeddedAssetMacro.hx",
+      "haxe_sha256": "bcd9e33472869c606bac45c5a4d15397f8f8e668feb9ede22ec04b5298e052c4",
+      "reason": "Compile-time translation of AS3 Embed wrappers using a hash-pinned source/asset manifest; rejects drift, embeds static binary bytes and requires bitmap predecoding.",
+      "contract_tests": [
+        "test/V22EmbeddedAssetsTest.hx",
+        "historical/evidence/prepare_embedded_candidate.py"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    },
+    {
+      "haxe": "src/ASError.hx",
+      "haxe_sha256": "44c9b45a9908660ccabc7a88d2ab7ea75b46c5dfe70ffe1621fac71484f598f4",
+      "reason": "Global-name-safe AS3 Error boundary. Generated code maps the Flash root Error type here because defining a global Haxe Error breaks compiler/OpenFL code.",
+      "contract_tests": [
+        "test/M2RuntimeCompileMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- mapped AS3 VM type with no client class counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 client class identity",
+        "status": "covered by generated OpenFL compile contract"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "fixture": "test/font-coverage.html",
+  "browser_exit": 0,
+  "body": "test/V21FontCoverageTest.hx:21: V21_FONT_COVERAGE_PASS actual-ttf present absent-unicode bold unknown-face",
+  "error": null
+}

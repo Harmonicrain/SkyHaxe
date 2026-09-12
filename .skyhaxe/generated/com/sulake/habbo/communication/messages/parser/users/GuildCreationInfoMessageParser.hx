@@ -1,0 +1,32 @@
+package com.sulake.habbo.communication.messages.parser.users
+;
+    import com.sulake.core.communication.messages.IMessageParser;
+    import com.sulake.habbo.communication.messages.incoming.users.GuildCreationData;
+    import com.sulake.core.communication.messages.IMessageDataWrapper;
+
+     class GuildCreationInfoMessageParser implements IMessageParser
+    {
+        var _data:GuildCreationData;
+
+
+        public function flush():Bool
+        {
+            this._data = null;
+            return true;
+        }
+
+        public function parse(k:IMessageDataWrapper):Bool
+        {
+            this._data = new GuildCreationData(k);
+            return true;
+        }
+
+        public var data(get,never):GuildCreationData;
+public function  get_data():GuildCreationData
+        {
+            return this._data;
+        }
+
+	public function new() {}
+    }
+

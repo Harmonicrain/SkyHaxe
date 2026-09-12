@@ -135,9 +135,14 @@ class AvatarRoomRenderer {
         failures.push(onError);
         if (loading) return;
         loading = true;
-        fetchText("/ngh/gamedata/figuredata.xml", function(figures) {
-            fetchText("/ngh/gamedata/figuremap.xml", function(map) {
-                fetchText(sameOriginBase(contentBase) + "HabboAvatarActions.xml", function(actions) {
+        js.lib.Promise.all([
+            fetchDocument("/ngh/gamedata/figuredata.xml"),
+            fetchDocument("/ngh/gamedata/figuremap.xml"),
+            fetchDocument(sameOriginBase(contentBase) + "HabboAvatarActions.xml")
+        ]).then(function(documents) {
+                    var figures = documents[0];
+                    var map = documents[1];
+                    var actions = documents[2];
                     try {
                         figureData = new XML(figures);
                         figureMap = new XML(map);
@@ -162,6 +167,7 @@ class AvatarRoomRenderer {
                             request: requestFigureLibraries
                         });
                         manager.setEffectManager(effectManager);
+                        loadAdditionAssets();
                         ready = true;
                         loading = false;
                         var callbacks = waiting;
@@ -169,12 +175,59 @@ class AvatarRoomRenderer {
                         failures = [];
                         for (callback in callbacks) callback();
                     } catch (error:Dynamic) failAll(error);
-                }, failAll);
-            }, failAll);
-        }, failAll);
+                    return null;
+        }).catchError(function(error) { failAll(error); return null; });
     }
 
     /** The figure string is all the part scan needs; room state is irrelevant to it. */
+    /**
+     * The avatar addition art, under the AS3 embed names the additions ask for.
+     *
+     * `FloatingIdleZ` and its siblings resolve their bitmaps through
+     * `AvatarRenderManager.assets`, which held nothing until now -- so an idle avatar threw a
+     * TypeError out of the room's update loop on every frame, abandoning the rest of that
+     * tick. These are the client's own HabboAvatarRenderLib images, declared in project.xml.
+     */
+    static final ADDITION_ASSETS = [
+        "number_1_png",
+        "number_1_small_png",
+        "number_2_png",
+        "number_2_small_png",
+        "number_3_png",
+        "number_3_small_png",
+        "number_4_png",
+        "number_4_small_png",
+        "number_5_png",
+        "number_5_small_png",
+        "user_blowkiss_png",
+        "user_blowkiss_small_png",
+        "user_guide_bubble_png",
+        "user_guide_requester_bubble_png",
+        "user_idle_left_1_png",
+        "user_idle_left_1_small_png",
+        "user_idle_left_2_png",
+        "user_idle_left_2_small_png",
+        "user_idle_right_1_png",
+        "user_idle_right_1_small_png",
+        "user_idle_right_2_png",
+        "user_idle_right_2_small_png",
+        "user_muted_png",
+        "user_muted_small_png",
+        "user_typing_png",
+        "user_typing_small_png"
+    ];
+
+    static function loadAdditionAssets():Void {
+        for (name in ADDITION_ASSETS) {
+            var bitmap = try Assets.getBitmapData("avatar/additions/" + name + ".png")
+                catch (error:Dynamic) null;
+            if (bitmap == null) {
+                Browser.console.warn('SKYHAXE_AVATAR_ADDITION_ABSENT $name');
+                continue;
+            }
+            manager.setAdditionAsset(name, bitmap);
+        }
+    }
     static function partKeysForFigures(figures:Array<String>):StringMap<Bool> {
         var requested = new StringMap<Bool>();
         for (figure in figures) {
@@ -374,6 +427,13 @@ class AvatarRoomRenderer {
             onLoaded(text);
             return null;
         }).catchError(onError);
+    }
+
+    static function fetchDocument(url:String):js.lib.Promise<String> {
+        return Browser.window.fetch(url).then(function(response) {
+            if (!response.ok) throw 'HTTP ${response.status} for $url';
+            return response.text();
+        });
     }
 
     static function sameOriginBase(value:String):String {

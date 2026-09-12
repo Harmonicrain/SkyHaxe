@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe v32 component graph compile" package="org.nextgenhabbo.skyhaxe.v32" version="0.1.0" />
+    <app main="V32ComponentGraphCompileMain" path="build/tests/v32-component-graph" file="v32-component-graph" />
+    <window width="1" height="1" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path=".toolchain/v32/generated" />
+    <haxeflag name="-cp" value=".toolchain/v32/platform" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <haxedef name="skyhaxe_component_embed_manifest" value="evidence/component_library_embeds.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+    <include path=".toolchain/v32/component-library-assets.xml" />
+</project>

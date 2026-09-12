@@ -1,0 +1,132 @@
+{
+  "fonts._Str_10176": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10176.as",
+    "source_sha256": "5dcfa8801eb62febea9cd102ebaa20c1ae0c743bbfc8f40167e13dce0a9fdefa",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/UbuntuMedium.ttf",
+    "asset_sha256": "f366671c299e3966efabc737b055c9e952bd08b4040a6ec2e907019effbb7462",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10176.ttf",
+    "name": "Ubuntu Medium",
+    "style": "regular"
+  },
+  "fonts._Str_10339": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10339.as",
+    "source_sha256": "6319789cb968abb1b89d669f36a53ba1ba1ad8bae3dc5127cc68d700febb8fd5",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Volter Bold.ttf",
+    "asset_sha256": "691755ece08961f8fc3c601c4245cc149687cec6fb6b507a549f594985358303",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10339.ttf",
+    "name": "Volter Bold",
+    "style": "regular"
+  },
+  "fonts._Str_10363": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10363.as",
+    "source_sha256": "fe9aeeb58cadf77d2e68177c82adc99ce39cd5e27bd9a0e60cf927de402951cd",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Volter.ttf",
+    "asset_sha256": "bc2928ff227ccbf47a1ba62a1bc70bb48c65fd21ae120c8f20e65e0d421b1b0e",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10363.ttf",
+    "name": "Volter",
+    "style": "regular"
+  },
+  "fonts._Str_10537": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10537.as",
+    "source_sha256": "ad21e1e6bd6125be64e772fc9eaeecc549dc58d175888675e1d548f5e4244bd0",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/UbuntuThick.ttf",
+    "asset_sha256": "08220c74dc0ceb56a72b3245bb8942b940e5a5d6dc5d7e19056b0e79f58e7e59",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10537.ttf",
+    "name": "UbuntuThick",
+    "style": "regular"
+  },
+  "fonts._Str_10581": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10581.as",
+    "source_sha256": "3a0450645ce7ec273ca72288cd8013eade4289a500030a1c81b81a7a2dc805eb",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(4).ttf",
+    "asset_sha256": "0bbdeaeb07e32767e1d89e67e2cf96ffb4161df89328a5cf0d3e48e916ba015d",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10581.ttf",
+    "name": "Ubuntu",
+    "style": "boldItalic"
+  },
+  "fonts._Str_10940": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_10940.as",
+    "source_sha256": "b075d4c52070b70366c6519832dce7b40426e7a6349da4fa9df01b9709daf3dd",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(2).ttf",
+    "asset_sha256": "d125989e22cde87333220b0baa1e468da8665cd45d68a2088e26d969e5754705",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_10940.ttf",
+    "name": "Ubuntu",
+    "style": "regular"
+  },
+  "fonts._Str_11108": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_11108.as",
+    "source_sha256": "938843e8fd00a5453cb1c079d69dbd01ee9d78d6c9fd8ea640fd828a76b09f8d",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/UbuntuCondensed.ttf",
+    "asset_sha256": "ef13e5a7e31587cb7dd0bf8480a3e84cb1f2a2c303c34e2f27ae9b625a59c53c",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_11108.ttf",
+    "name": "Ubuntu condensed",
+    "style": "regular"
+  },
+  "fonts._Str_11970": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_11970.as",
+    "source_sha256": "d3847cf914bc559021e633040602508086eaefb736482475fb52a98a1cd6f4a2",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(3).ttf",
+    "asset_sha256": "f83a7ef40526edcf01fff1c15065420ed0ff86f84663ec7b9894ef7d8396945e",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_11970.ttf",
+    "name": "Ubuntu",
+    "style": "bold"
+  },
+  "fonts._Str_11991": {
+    "source": "C:/habbo/client/habbo-client-clean/src/fonts/_Str_11991.as",
+    "source_sha256": "61029578967f907926a3b8f06185ddc45736dc79d34ddc042fa772944abe583e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(5).ttf",
+    "asset_sha256": "c96c55cfc3e3883d555912ceb92460730536ad61829fe85ffe79d2de1edacb88",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/fonts/_Str_11991.ttf",
+    "name": "Ubuntu",
+    "style": "italic"
+  },
+  "onBoardingHcUi._Str_1000": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/_Str_1000.as",
+    "source_sha256": "a3e3f26d6acfae70dc616c1c14958110ce55490891bf28f204d6bf9e89fc34f9",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(4).ttf",
+    "asset_sha256": "0bbdeaeb07e32767e1d89e67e2cf96ffb4161df89328a5cf0d3e48e916ba015d",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/_Str_1000.ttf",
+    "name": "Ubuntu Italic",
+    "style": "regular"
+  },
+  "onBoardingHcUi._Str_666": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/_Str_666.as",
+    "source_sha256": "a0c3fe6a9b058f8139e89b076b5cbc4975981c79e2f0115b83507a5657351e27",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(5).ttf",
+    "asset_sha256": "c96c55cfc3e3883d555912ceb92460730536ad61829fe85ffe79d2de1edacb88",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/_Str_666.ttf",
+    "name": "Ubuntu Bold Italic",
+    "style": "regular"
+  },
+  "onBoardingHcUi._Str_771": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/_Str_771.as",
+    "source_sha256": "395f3f5dd0f1961bef44c66149355d94eef79f6293fc543b80a1e509b8101eb7",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu.ttf",
+    "asset_sha256": "aac9255878dbd9c3fff6bd91b3f856eb610beaba34bc7fe4e5a67eee22c6925e",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/_Str_771.ttf",
+    "name": "Ubuntu",
+    "style": "regular"
+  },
+  "onBoardingHcUi._Str_955": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/_Str_955.as",
+    "source_sha256": "fa9122fad9840995deb617d2625fb748910b2d52180a561234bc2f0e6c80b9f3",
+    "asset": "C:/habbo/client/habbo-client-clean/src/fonts/Ubuntu(3).ttf",
+    "asset_sha256": "f83a7ef40526edcf01fff1c15065420ed0ff86f84663ec7b9894ef7d8396945e",
+    "kind": "FontAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/_Str_955.ttf",
+    "name": "Ubuntu bold",
+    "style": "regular"
+  }
+}

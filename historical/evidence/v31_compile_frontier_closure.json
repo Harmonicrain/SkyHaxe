@@ -1,0 +1,20 @@
+{
+  "gate": "V31-compile-frontier-refresh",
+  "roots": [],
+  "closure": [
+    "com/hurlant/crypto/hash/MD5.as",
+    "com/hurlant/math/BigInteger.as",
+    "com/hurlant/util/Memory.as",
+    "com/sulake/habbo/freeflowchat/history/visualization/enum/ChatHistoryLayoutEnum.as",
+    "com/sulake/habbo/freeflowchat/viewer/visualization/ChatBubble.as",
+    "com/sulake/habbo/freeflowchat/viewer/visualization/PooledChatBubble.as",
+    "com/sulake/habbo/inventory/trading/TradingView.as",
+    "com/sulake/habbo/roomevents/userdefinedroomevents/conditions/DateRangeActive.as",
+    "com/sulake/habbo/utils/HabboWebTools.as",
+    "deng/fzip/FZipFile.as"
+  ],
+  "seams": [],
+  "notes": [
+    "Compile-frontier refresh only; the authoritative full candidate remains v31_full_client_candidate_closure.json."
+  ]
+}

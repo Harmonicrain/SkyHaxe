@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "fixture": "test/infostand-runtime.html",
+  "browser_exit": 0,
+  "body": "V24_INFOSTAND_RUNTIME_PASS original-factory desktop-routing move rotate pickup widget-construction disposal Truffle",
+  "error": null,
+  "http_errors": [
+    "code 404, message File not found"
+  ],
+  "browser_stderr_tail": []
+}

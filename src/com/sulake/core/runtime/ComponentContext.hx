@@ -4,13 +4,32 @@ import com.sulake.core.assets.AssetLibrary;
 import com.sulake.core.runtime.IUnknown.InterfaceReceiver;
 import haxe.ds.ObjectMap;
 import openfl.events.Event;
+import com.sulake.core.runtime.events.ILinkEventTracker;
 
 class ComponentContext extends Component implements IContext {
     public var root(get, never):IContext;
+    private final _linkEventTrackers = new openfl.Vector<ILinkEventTracker>();
+    public var linkEventTrackers(get, never):openfl.Vector<ILinkEventTracker>;
+    private function get_linkEventTrackers():openfl.Vector<ILinkEventTracker> return _linkEventTrackers;
+    public function addLinkEventTracker(tracker:ILinkEventTracker):Void {
+        if (_linkEventTrackers.indexOf(tracker) < 0) _linkEventTrackers.push(tracker);
+    }
+    public function removeLinkEventTracker(tracker:ILinkEventTracker):Void {
+        var index = _linkEventTrackers.indexOf(tracker);
+        if (index >= 0) _linkEventTrackers.splice(index, 1);
+    }
+    public function createLinkEvent(link:String):Void {
+        for (tracker in _linkEventTrackers)
+            if (tracker.linkPattern.length == 0 || link.substr(0, tracker.linkPattern.length) == tracker.linkPattern)
+                tracker.linkReceived(link);
+    }
 
     private var _broker:Null<ComponentInterfaceBroker>;
     private var _components:Null<Array<Component>>;
     private var _unlockListeners:Null<ObjectMap<Component, Event -> Void>>;
+    private var _lastError = "";
+    private var _lastDebug = "";
+    private var _lastWarning = "";
 
     public function new(?parent:IContext, flags:Int = 0, ?assets:AssetLibrary) {
         super(parent, flags | Component.COMPONENT_FLAG_CONTEXT, assets);
@@ -61,6 +80,25 @@ class ComponentContext extends Component implements IContext {
         _components.remove(component);
     }
 
+    public function error(message:String, fatal:Bool, category:Int = -1, cause:Dynamic = null):Void {
+        _lastError = message;
+        com.sulake.core.Core.error(message, fatal, category, cause);
+    }
+
+    public function debug(message:String):Void {
+        _lastDebug = message;
+        com.sulake.core.Core.debug(message);
+    }
+
+    public function warning(message:String):Void {
+        _lastWarning = message;
+        com.sulake.core.Core.warning(message);
+    }
+
+    public function getLastErrorMessage():String return _lastError;
+    public function getLastDebugMessage():String return _lastDebug;
+    public function getLastWarningMessage():String return _lastWarning;
+
     override public function dispose():Void {
         if (disposed) return;
         var children = _components == null ? [] : _components.copy();
@@ -71,6 +109,7 @@ class ComponentContext extends Component implements IContext {
         _broker = null;
         _components = null;
         _unlockListeners = null;
+        _linkEventTrackers.length = 0;
         super.dispose();
     }
 }

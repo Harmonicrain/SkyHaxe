@@ -1,0 +1,2671 @@
+{
+  "gate": "M2a-sync-pipeline",
+  "ok": true,
+  "published": true,
+  "package": "com/sulake/core",
+  "subpackages": null,
+  "scope": "closure:v33_loading_screen_closure",
+  "source_profile": null,
+  "client": {
+    "root": "C:\\habbo\\client\\habbo-client-clean",
+    "commit": "9b265927b2779d0756cdf4821af2098cdfa6c27f",
+    "package_tree_sha256_before": "d29e397417ea6500be45fc410504cd3980f27137e51bd765ce5c14bcdf93cd1a",
+    "package_tree_sha256_after": "d29e397417ea6500be45fc410504cd3980f27137e51bd765ce5c14bcdf93cd1a",
+    "source_files": 353,
+    "source_files_after": 353,
+    "modified_by_sync": false
+  },
+  "tooling": {
+    "converter": ".toolchain/ax3/converter-m2.jar",
+    "converter_sha256": "db76c62d7243f2e947e7fdaede8c43856aff846e6464d9cd8b10bf801f34479b",
+    "swc": [
+      {
+        "path": "C:/flex/frameworks/libs/player/32.0/playerglobal.swc",
+        "sha256": "b3045adb27c0ddbcb17e051f582e7dbd8ac5acc98664fd80b3586a401d0f975d"
+      },
+      {
+        "path": "C:/flex/frameworks/libs/air/airglobal.swc",
+        "sha256": "6132254bee64aa96f3f451e3facf69d6c811bfa57282948774cacaa405a2c43c"
+      },
+      {
+        "path": "C:/flex/frameworks/libs/framework.swc",
+        "sha256": "235a642dde9d7b44dd4c5fa0d2e0979c4e034d9fac8a10c7ac744e3682e516f3"
+      },
+      {
+        "path": "C:/flex/frameworks/libs/mx/mx.swc",
+        "sha256": "21b3cc5c9d60d07a63222545df3bbca24a41f67494c6949cd3bd56cec5301c35"
+      },
+      {
+        "path": "C:/flex/frameworks/libs/air/airframework.swc",
+        "sha256": "0bf99ab42683fa844ef0a7866611c52d9f0394d1e0c4d39e691f40685ccc1d32"
+      },
+      {
+        "path": "C:/habbo/client/SkyHaxe/.toolchain/g1c/habbo-client.swc",
+        "sha256": "e2734c6db2071c321d7d406053518c1ad77648cc846c06293e8fea1a4a2c28a9"
+      }
+    ],
+    "rules_script_sha256": "53a39fa0a4f797c27b814f75544d78d74be29865473c5ba69b2143280b858108",
+    "sync_script_sha256": "b86e862959074a0748745f7afb13a76f37117417aa96462993d4870e6851b3f9",
+    "converter_build_script_sha256": "6a71826fb3e0d43930156559bd35eb8742950e785409b2d2e61eace27646cc7c",
+    "patch_script_sha256": "f4e2186c2d37ba7fe1ebbca357e42bcea63dfde269845c5903cf2631614a68c7",
+    "converter_additions_sha256": "fe57221429dfbbdf92152e9ab60c7dd62facf711f206ecc0f9cdbf2e6fd4c6a1",
+    "exception_manifest_sha256": "b5ef23ffb17934d26f8199228719a1e4072acc86e0e7a92aa6b6c38a7463d389",
+    "exception_generator_sha256": "f799be42259b7f8bc3ae805881a1c01bc7885be1ed55ec6458084cbfdbc9eaf0",
+    "asset_inputs_manifest_sha256": "60e54f7b202801ebd6a6ee7a40c8e8ad2f8ea179be930013f67b519949d2bd4c",
+    "asset_inputs_generator_sha256": "dd7c8fc67b3abd710fc65091c34db9922876ee7f5990619a048cd2c5f4a053c9",
+    "python": "3.14.3",
+    "java": "java version \"21.0.9\" 2025-10-21 LTS"
+  },
+  "rules": [
+    {
+      "id": "toolbar-promo-button-listener-cast",
+      "reason": "The decompiler placed IButtonWindow() around addEventListener's Void return. Restore the cast of findChildByName before registering the original callback.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/toolbar/extensions/CitizenshipVipDiscountPromoExtension.as",
+        "com/sulake/habbo/toolbar/extensions/CitizenshipVipQuestsPromoExtension.as"
+      ],
+      "pattern": "IButtonWindow\\((k\\.findChildByName\\(\"[^\"]+\"\\))\\.addEventListener\\((WindowMouseEvent\\.CLICK, this\\.onButtonClicked)\\)\\);",
+      "replacement": "IButtonWindow(\\1).addEventListener(\\2);",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 2,
+        "closure:v30_full_client_compile_dependencies_closure": 2
+      }
+    },
+    {
+      "id": "json-encoder-e4x-readable-properties",
+      "reason": "Normalize JSONEncoder's describeType descendant predicate onto a named XMLList compatibility operation; ax3 cannot parse E4X wildcard predicates.",
+      "kind": "regex",
+      "paths": [
+        "adobe/serialization/json/JSONEncoder.as"
+      ],
+      "pattern": "classInfo\\.\\.\\*\\.\\(\\(name\\(\\) == \"variable\"\\) \\|\\| \\(\\(name\\(\\) == \"accessor\"\\) && \\(attribute\\(\"access\"\\)\\.charAt\\(0\\) == \"r\"\\)\\)\\)",
+      "replacement": "classInfo.descendants(\"*\").filterVariablesAndReadableAccessors()",
+      "expect": {
+        "closure:v30_full_client_compile_dependencies_closure": 1
+      }
+    },
+    {
+      "id": "json-encoder-e4x-metadata-filter",
+      "reason": "Normalize JSONEncoder's E4X metadata attribute predicate onto the XMLList compatibility API; ax3 cannot parse dot-parenthesized E4X predicates.",
+      "kind": "regex",
+      "paths": [
+        "adobe/serialization/json/JSONEncoder.as"
+      ],
+      "pattern": "\\.\\(@name == \"Transient\"\\)",
+      "replacement": ".filterAttributeEquals(\"name\", \"Transient\")",
+      "expect": {
+        "closure:v30_full_client_compile_dependencies_closure": 1
+      }
+    },
+    {
+      "id": "player-version-string-split",
+      "reason": "Capabilities.version.split returns an untyped AS3 Array. Its second element is the version string; make the implicit AS3 String coercion explicit before split.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/utils/Player.as"
+      ],
+      "pattern": "data\\[1\\]\\.split\\(\",\"\\)",
+      "replacement": "String(data[1]).split(\",\")",
+      "expect": {
+        "closure:v30_full_client_compile_dependencies_closure": 1
+      }
+    },
+    {
+      "id": "sound-manager-drop-unreachable-case-tail",
+      "reason": "The decompiler left an assignment and second break after the CAMERA_SHUTTER case's unconditional break. Those statements are unreachable in the authoritative AS3 and Haxe correctly rejects the stray retained break; remove only that dead tail.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/sound/HabboSoundManagerFlash10.as"
+      ],
+      "pattern": "(case HabboSoundTypesEnum\\.CAMERA_SHUTTER:\\s*_local_2 = \"sound_camera_shutter\";\\s*break;)\\s*_local_2 = k;\\s*break;",
+      "replacement": "\\1",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 1
+      }
+    },
+    {
+      "id": "trax-sample-hoist-set-indexes",
+      "reason": "AS3 var declarations are function-scoped. TraxSample.setSample declares two write indexes inside its first branch and reuses them in later branches.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/sound/trax/TraxSample.as"
+      ],
+      "pattern": "(public function setSample\\([^\\n]+\\):int\\s*\\{\\s*var _local_8:int;\\s*var _local_9:int;\\s*var _local_10:int;)",
+      "replacement": "\\1\\n            var _local_11:*;\\n            var _local_12:*;",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 1
+      }
+    },
+    {
+      "id": "trax-sample-hoist-add-indexes",
+      "reason": "AS3 var declarations are function-scoped. TraxSample.addSample likewise reuses three indexes outside the branches where the decompiler wrote them.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/sound/trax/TraxSample.as"
+      ],
+      "pattern": "(public function addSample\\([^\\n]+\\):int\\s*\\{\\s*var _local_7:int;\\s*var _local_8:int;\\s*var _local_9:int;)",
+      "replacement": "\\1\\n            var _local_10:*;\\n            var _local_11:*;\\n            var _local_12:*;",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 1
+      }
+    },
+    {
+      "id": "trax-sample-preserve-index-assignments",
+      "reason": "Companion to the two TraxSample function-scope hoists: retain the original assignment sites without redeclaring their variables in Haxe block scope.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/sound/trax/TraxSample.as"
+      ],
+      "pattern": "var (_local_(?:10|11|12)):\\* =",
+      "replacement": "\\1 =",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 5
+      }
+    },
+    {
+      "id": "status-pane-notification-listener-removal",
+      "reason": "The decompiler copied the minimize callback into the notification-button cleanup. Restore the callback paired with that button's addEventListener.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/notifications/feed/view/pane/StatusPane.as"
+      ],
+      "pattern": "(findChildByName\\(NOTIFICATION_FEED_BUTTON\\)\\.removeEventListener\\(WindowMouseEvent\\.CLICK, this\\.)_Str_15286",
+      "replacement": "\\1_Str_23102",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 1
+      }
+    },
+    {
+      "id": "status-pane-stream-listener-removal",
+      "reason": "The decompiler lost removeEventListener at the stream-button cleanup call. Restore the inverse of its constructor registration.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/notifications/feed/view/pane/StatusPane.as"
+      ],
+      "pattern": "\\(window\\.findChildByName\\(STREAM_FEED_BUTTON\\)\\(WindowMouseEvent\\.CLICK, this\\._Str_15286\\)\\);",
+      "replacement": "window.findChildByName(STREAM_FEED_BUTTON).removeEventListener(WindowMouseEvent.CLICK, this._Str_22735);",
+      "expect": {
+        "closure:v28_friend_list_required_services_closure": 1
+      }
+    },
+    {
+      "id": "product-icon-conditional-breaks",
+      "reason": "Both conditional switch exits are at the end of previewImage; returning skips exactly the remaining case body without breaking a nonexistent Haxe loop.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/window/widgets/ProductIconWidget.as"
+      ],
+      "pattern": "(this\\.clearPreviewer\\(\\);\\s*)break;(\\s*\\}\\s*this\\.imageResult)",
+      "replacement": "\\1return;\\2",
+      "expect": {
+        "closure:v22_window_manager_closure": 2,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v7_guest_room_closure": 0
+      }
+    },
+    {
+      "id": "chest-glyph-function-scope",
+      "reason": "AS3's block-local glyph declaration is function-scoped and reused in the later loop; hoist without changing its assignment.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/window/utils/ChestItemOverlayNumberBitmapGenerator.as"
+      ],
+      "pattern": "var totalWidth:int = 0;",
+      "replacement": "var totalWidth:int = 0;\n            var glyph:BitmapDataAsset;",
+      "expect": {
+        "closure:v22_window_manager_closure": 1,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v7_guest_room_closure": 0
+      }
+    },
+    {
+      "id": "chest-glyph-preserve-assignment",
+      "reason": "Companion to the function-scope declaration hoist; keep the original lookup at its original execution site.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/window/utils/ChestItemOverlayNumberBitmapGenerator.as"
+      ],
+      "pattern": "var glyph:BitmapDataAsset =",
+      "replacement": "glyph =",
+      "expect": {
+        "closure:v22_window_manager_closure": 1,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v7_guest_room_closure": 0
+      }
+    },
+    {
+      "id": "illumina-innermost-loop-label",
+      "reason": "This continue targets the immediately enclosing for loop, even inside the switch; the AS3 label is redundant and ax3 cannot parse it.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/window/widgets/IlluminaBorderWidget.as"
+      ],
+      "pattern": "(?m)^\\s*_loop_1:\\s*$|(?<=continue) _loop_1(?=;)",
+      "replacement": "",
+      "expect": {
+        "closure:v22_window_manager_closure": 2,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v7_guest_room_closure": 0
+      }
+    },
+    {
+      "id": "window-diagnostics-platform-logger",
+      "reason": "Window error diagnostics must use the existing HTML5 Logger adapter instead of pulling in the AS3 Habbo application root just for trackLoginStep.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/utils/FontEnum.as",
+        "com/sulake/core/window/WindowContext.as",
+        "com/sulake/habbo/window/HabboWindowManagerComponent.as",
+        "com/sulake/core/assets/AssetLoaderStruct.as",
+        "com/sulake/habbo/ui/widget/avatarinfo/AvatarContextInfoView.as",
+        "com/sulake/habbo/ui/widget/avatarinfo/AvatarContextInfoButtonView.as"
+      ],
+      "pattern": "\\bHabbo\\.trackLoginStep\\(",
+      "replacement": "Logger.log(",
+      "expect": {
+        "closure:v21_window_runtime_closure": 3,
+        "closure:v22_window_manager_closure": 5,
+        "closure:v22_link_contract_closure": 1,
+        "closure:v20_infostand_closure": 0,
+        "closure:v7_guest_room_closure": 0
+      }
+    },
+    {
+      "id": "e4x-predicate-filter",
+      "reason": "the one E4X predicate in core is normalized to an explicit compatibility method. The clean-client source remains untouched; ax3 and Haxe have no native `.(@attribute == value)` syntax",
+      "kind": "regex",
+      "pattern": "\\.\\(@type == getQualifiedClassName\\(interfaceClass\\)\\)",
+      "replacement": ".filterAttributeEquals(\"type\", getQualifiedClassName(interfaceClass))",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "e4x-xml-cdata-literal",
+      "reason": "ax3 cannot lex XML literals. Preserve the complete script/CDATA bytes in a quoted `new XML(...)` value; the transformation JSON-escapes the capture",
+      "kind": "xml-cdata",
+      "pattern": "(?s)<script><!\\[CDATA\\[.*?\\]\\]></script>",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "item-grid-try-finally",
+      "reason": "Haxe has no finally. These measured single-cleanup sites contain no return/break/continue, so duplicating cleanup on normal and exceptional exits is semantics-preserving and count-guarded",
+      "kind": "regex",
+      "pattern": "(?ms)^([ \\t]*)(try\\s*\\n\\1\\{.*?^\\1\\})\\s*\\n\\1finally\\s*\\n\\1\\{\\s*\\n(.*?)^\\1\\}",
+      "replacement": "\\1\\2\\n\\1catch (_m2_finally_error:*)\\n\\1{\\n\\3\\n\\1    throw _m2_finally_error;\\n\\1}\\n\\3",
+      "expect": {
+        "com/sulake/core": 2
+      }
+    },
+    {
+      "id": "hoist-function-scoped-asset-library",
+      "reason": "AS3 `var` is function-scoped but Haxe `var` is block-scoped. Normalize the one load-bearing core site by declaring it before the loop and assigning inside",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)for \\(var i:uint; i < this\\._fileLoadQueue\\.length; i\\+\\+\\)\\s*\\n\\1\\{\\s*\\n\\1    var assetLibrary:IAssetLibrary =",
+      "replacement": "\\1var assetLibrary:IAssetLibrary;\\n\\1for (var i:uint; i < this._fileLoadQueue.length; i++)\\n\\1{\\n\\1    assetLibrary =",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "drop-implicit-object-super",
+      "reason": "AS3 permits `super()` in a class with no explicit base, meaning Object. Haxe has no callable implicit Object constructor, so those calls must be omitted; classes with an explicit `extends` clause are deliberately excluded",
+      "kind": "regex",
+      "pattern": "(?ms)((?:public|internal)\\s+(?:final\\s+)?class \\w+(?:\\s+implements[^{]+)?\\s*\\{.*?)(^[ \\t]*super\\(\\);[ \\t]*\\n)",
+      "replacement": "\\1",
+      "expect": {
+        "com/sulake/core": 13
+      }
+    },
+    {
+      "id": "escape-backspace",
+      "reason": "AS3 \\b has no Haxe spelling; \\x08 is the same character",
+      "kind": "regex",
+      "pattern": "(?<!\\\\)\\\\b",
+      "replacement": "\\\\x08",
+      "expect": {
+        "adobe/serialization/json": 2
+      }
+    },
+    {
+      "id": "escape-formfeed",
+      "reason": "AS3 \\f has no Haxe spelling; \\x0C is the same character",
+      "kind": "regex",
+      "pattern": "(?<!\\\\)\\\\f",
+      "replacement": "\\\\x0C",
+      "expect": {
+        "adobe/serialization/json": 2
+      }
+    },
+    {
+      "id": "escape-vertical-tab",
+      "reason": "AS3 \\v has no Haxe spelling; \\x0B is the same character",
+      "kind": "regex",
+      "pattern": "(?<!\\\\)\\\\v",
+      "replacement": "\\\\x0B",
+      "expect": {
+        "adobe/serialization/json": 0
+      }
+    },
+    {
+      "id": "json-switch-case-terminal",
+      "reason": "ax3 requires each switch case to end in a terminal expression. `parseError` always throws, so the trailing return is unreachable and changes no behaviour",
+      "kind": "regex",
+      "pattern": "(this\\.tokenizer\\.parseError\\(\\(\\\"Unexpected \\\" \\+ this\\.token\\.value\\)\\);)\\n(\\s*)(default:)",
+      "replacement": "\\1\\n\\2    return null;\\n\\2\\3",
+      "expect": {
+        "adobe/serialization/json": 1
+      }
+    },
+    {
+      "id": "snowstorm-for-index-redeclaration",
+      "reason": "AS3 `var` is function-scoped, so a later `for (index = 0; ...)` reuses a counter declared by an earlier loop in the same function. Haxe scopes per block, so the bare reuse is an unknown identifier. Each Haxe loop gets its own scope, so re-declaring is equivalent",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*for[ \\t]*\\()(\\w+)([ \\t]*=[ \\t]*0;)",
+      "replacement": "\\1var \\2:int\\3",
+      "expect": {
+        "com/sulake/habbo/communication/messages/parser": 13
+      }
+    },
+    {
+      "id": "mapstuffdata-proxy-array-access",
+      "reason": "AS3 `Map` extends flash.utils.Proxy, so `map[key]` routes through its getProperty. SkyHaxe's Map is a documented seam that exposes those reads as getValue/setValue instead, and ax3 emits the array access verbatim -- which compiles to a plain JS property read and always yields null. Scoped to MapStuffData because IntArrayStuffData and StringArrayStuffData index a real Array with the same field name, and rewriting those would be wrong",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/room/object/data/MapStuffData.as"
+      ],
+      "pattern": "this\\._data\\[([^\\]]+)\\]",
+      "replacement": "this._data.getValue(\\1)",
+      "expect": {
+        "closure:v4_furniture_closure": 5
+      }
+    },
+    {
+      "id": "charcodeat-default-index",
+      "reason": "AS3 String.charCodeAt() defaults its index to 0; Haxe's requires one, so the converted call is a compile error. Making the implicit 0 explicit preserves the AS3 semantics exactly",
+      "kind": "regex",
+      "pattern": "\\.charCodeAt\\(\\)",
+      "replacement": ".charCodeAt(0)",
+      "expect": {
+        "closure:v8_room_background_closure": 1
+      }
+    },
+    {
+      "id": "array-indexof-int-cast",
+      "reason": "ax3 types an untyped Array's `indexOf` as Dynamic, so adding it to an int is a 'Dynamic + operation'. AS3 `Array.indexOf` returns int; making that explicit preserves the original type rather than changing behaviour",
+      "kind": "regex",
+      "pattern": "(\\w+) = (\\w+\\.indexOf\\([^()]*\\));",
+      "replacement": "\\1 = int(\\2);",
+      "expect": {
+        "com/sulake/habbo/communication/messages/parser": 1
+      }
+    },
+    {
+      "id": "e4x-elements-child-collision",
+      "reason": "the child element is called `elements`, colliding with XML's elements() method",
+      "kind": "regex",
+      "pattern": "k\\.elements\\.element\\b",
+      "replacement": "k.child(\"elements\").child(\"element\")",
+      "paths": [
+        "com/sulake/habbo/room/object/visualization/room/publicroom/rasterizer/LayoutRasterizerData.as"
+      ],
+      "expect": {
+        "closure:v7_guest_room_closure": 1
+      }
+    },
+    {
+      "id": "e4x-credit-attribute-after-list-index",
+      "reason": "`list[0].@value` -- the index erases the XML type the attribute read needs",
+      "kind": "regex",
+      "pattern": "_local_2\\[0\\]\\.@value",
+      "replacement": "_local_2[0].attribute(\"value\")",
+      "paths": [
+        "com/sulake/habbo/room/object/logic/furniture/FurnitureCreditLogic.as"
+      ],
+      "expect": {
+        "closure:v14_logic_component_closure": 1
+      }
+    },
+    {
+      "id": "e4x-attribute-after-list-index",
+      "reason": "`list[0].@frames` -- the index erases the XML type the attribute read needs",
+      "kind": "regex",
+      "pattern": "_local_3\\[0\\]\\.@frames",
+      "replacement": "_local_3[0].attribute(\"frames\")",
+      "paths": [
+        "com/sulake/habbo/room/object/visualization/room/publicroom/rasterizer/LayoutRasterizerData.as"
+      ],
+      "expect": {
+        "closure:v7_guest_room_closure": 1
+      }
+    },
+    {
+      "id": "canvas-alpha-mask-logical-and",
+      "reason": "restore the bitwise AND the ARGB composition needs",
+      "kind": "regex",
+      "pattern": "\\(\\(k\\) && \\(0xFF000000\\)\\)",
+      "replacement": "((k) & (0xFF000000))",
+      "paths": [
+        "com/sulake/habbo/utils/Canvas.as"
+      ],
+      "expect": {
+        "closure:v7_guest_room_closure": 1
+      }
+    },
+    {
+      "id": "e4x-xml-literal-interpolated",
+      "reason": "E4X literals whose attribute values are {expressions}; ax3 can lex neither the literal nor the interpolation",
+      "kind": "regex",
+      "pattern": "<hole id=\\{(\\w+)\\} x=\\{([\\w.]+)\\} y=\\{([\\w.]+)\\} width=\\{([\\w.]+)\\} height=\\{([\\w.]+)\\} invert=\"(true|false)\"/>",
+      "replacement": "new XML((\"<hole id=\\\"\" + \\1 + \"\\\" x=\\\"\" + \\2 + \"\\\" y=\\\"\" + \\3 + \"\\\" width=\\\"\" + \\4 + \"\\\" height=\\\"\" + \\5 + \"\\\" invert=\\\"\\6\\\"/>\"))",
+      "paths": [
+        "com/sulake/habbo/room/object/RoomPlaneParser.as"
+      ],
+      "expect": {
+        "closure:v7_guest_room_closure": 2
+      }
+    },
+    {
+      "id": "habbomain-config-e4x-literal",
+      "reason": "HabboMain's nested startup config is one of only three E4X literals in the source corpus with expression-valued attributes. Express the same XML document as an AS3 XML constructor so ax3 can parse the executable owner.",
+      "kind": "regex",
+      "paths": [
+        "HabboMain.as"
+      ],
+      "pattern": "(?s)<config>\\s*<asset-libraries>\\s*<library url=\\{assetBase \\+ \"hh_human_body\\.swf\"\\}/>\\s*<library url=\\{assetBase \\+ \"hh_human_item\\.swf\"\\}/>\\s*</asset-libraries>\\s*<service-libraries/>\\s*<component-libraries/>\\s*</config>",
+      "replacement": "new XML(((\"<config><asset-libraries><library url=\\\"\" + assetBase + \"hh_human_body.swf\\\"/><library url=\\\"\" + assetBase + \"hh_human_item.swf\\\"/></asset-libraries><service-libraries/><component-libraries/></config>\")))",
+      "expect": {}
+    },
+    {
+      "id": "e4x-xml-literal",
+      "reason": "the avatar package's hardcoded XML fallbacks; ax3 has no E4X literal syntax",
+      "kind": "xml-cdata",
+      "pattern": "<([a-z][\\w-]*)(?:\\s+[\\w:-]+=\"[^\"]*\")*\\s*>.*?</\\1>|<[a-z][\\w-]*(?:\\s+[\\w:-]+=\"[^\"]*\")*\\s*/>",
+      "expect": {
+        "closure:v5_avatar_closure": 6
+      }
+    },
+    {
+      "id": "asi-terminate-const-string",
+      "reason": "same missing terminator, on a field rather than a local: GeometryType's last constant has no semicolon, so the closing brace of the class parses as part of the declaration. Restricted to string-literal initializers, where nothing can be continued onto the next line",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*(?:public|private|protected|internal)[ \\t]+(?:static[ \\t]+)?(?:const|var)[ \\t]+\\w+:[\\w.]+[ \\t]*=[ \\t]*\"[^\"\\n]*\")[ \\t]*$",
+      "replacement": "\\1;",
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "e4x-child-after-list-index",
+      "reason": "ax3 loses E4X typing after XMLList[0], so the following `.part` is emitted as a Haxe field instead of the equivalent child query. Spell the child call explicitly in the staged copy; the authoritative AS3 remains untouched",
+      "kind": "regex",
+      "pattern": "\\.partSet\\[0\\]\\.part\\b",
+      "replacement": ".partSet[0].child(\"part\")",
+      "paths": [
+        "com/sulake/habbo/avatar/structure/PartSetsData.as"
+      ],
+      "expect": {
+        "closure:v5_avatar_closure": 2
+      }
+    },
+    {
+      "id": "e4x-numeric-attribute-comparison",
+      "reason": "AS3 applies ToNumber when an XML attribute is compared with a number. ax3 types attribute access as String for assignment compatibility; make this one numeric comparison explicit in the staged source",
+      "kind": "regex",
+      "pattern": "if \\(_local_6\\.@repeats > 1\\)",
+      "replacement": "if (Number(_local_6.@repeats) > 1)",
+      "paths": [
+        "com/sulake/habbo/avatar/animation/Animation.as"
+      ],
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "guild-customized-click-fallthrough",
+      "reason": "case CLICK falls into default, so a click also runs the base mouseEvent",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)this\\.openContextMenu\\(\\);\\n(?=[ \\t]*default:)",
+      "replacement": "\\1this.openContextMenu();\\n\\1super.mouseEvent(k, _arg_2);\\n\\1break;\\n",
+      "paths": [
+        "com/sulake/habbo/room/object/logic/furniture/FurnitureGuildCustomizedLogic.as"
+      ],
+      "expect": {
+        "closure:v14_logic_component_closure": 1
+      }
+    },
+    {
+      "id": "infostand-branding-use-fallthrough",
+      "reason": "InfoStandFurniView's save-branding case falls through to use when the user is not staff. Haxe has no switch fall-through, so make the two outcomes explicit while retaining the shared terminal break.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/ui/widget/infostand/InfoStandFurniView.as"
+      ],
+      "pattern": "(?ms)(case \"save_branding_configuration\":\\s*if \\((.*?)\\)\\s*\\{\\s*(_local_3 = RoomWidgetFurniActionMessage\\.RWFAM_SAVE_STUFF_DATA;\\s*_local_4 = this\\._Str_22904\\(\\);)\\s*break;\\s*\\})\\s*(case \"use\":)",
+      "replacement": "case \"save_branding_configuration\":\\n                    if (\\2)\\n                    {\\n                        \\3\\n                    }\\n                    else\\n                    {\\n                        _local_3 = RoomWidgetFurniActionMessage.RWFAM_USE;\\n                    }\\n                    break;\\n                \\4",
+      "expect": {
+        "closure:v20_infostand_closure": 1
+      }
+    },
+    {
+      "id": "textcontroller-textformat-margins",
+      "reason": "Flash TextFormat exposes nullable Object-valued margins. This arithmetic site relies on AS3 int(null)==0; make those coercions explicit so the generated Haxe retains the same numeric calculation.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/window/components/TextController.as"
+      ],
+      "pattern": "_local_16 = \\(\\(\\(_local_2 \\+ _local_15\\.indent\\) \\+ _local_15\\.leftMargin\\) \\+ _local_15\\.rightMargin\\);",
+      "replacement": "_local_16 = (((_local_2 + int(_local_15.indent)) + int(_local_15.leftMargin)) + int(_local_15.rightMargin));",
+      "expect": {
+        "closure:v21_window_runtime_closure": 1
+      }
+    },
+    {
+      "id": "htmltext-drop-air-allowed-domains",
+      "reason": "TextField.allowedDomains is an AIR application-sandbox extension and has no HTML5 equivalent. Browser image access is governed by CORS, so omit this guarded AIR-only assignment from generated Haxe.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/window/components/HTMLTextController.as"
+      ],
+      "pattern": "(?ms)\\s*// Whitelist the image hosts.*?\\n\\s*if \\(\\(\"allowedDomains\" in _field\\)\\)\\s*\\{\\s*_field\\[\"allowedDomains\"\\] = new <String>\\[.*?\\];\\s*\\}",
+      "replacement": "",
+      "expect": {
+        "closure:v21_window_runtime_closure": 1
+      }
+    },
+    {
+      "id": "infostand-object-removed-conditional-breaks",
+      "reason": "AS3 uses conditional break statements to select the one visible infostand view before leaving the switch. Haxe switches do not accept break; an if/else-if chain preserves that single-view choice.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/ui/widget/infostand/InfoStandWidget.as"
+      ],
+      "pattern": "(?ms)(case RoomWidgetRoomObjectUpdateEvent\\.USER_REMOVED:\\s*)if \\((.*?)\\)\\s*\\{\\s*(_local_2 = \\(k\\.id == this\\._userData\\.userRoomId\\);)\\s*break;\\s*\\}\\s*if \\((.*?)\\)\\s*\\{\\s*(_local_2 = \\(k\\.id == this\\._petData\\.roomIndex\\);)\\s*break;\\s*\\}\\s*if \\((.*?)\\)\\s*\\{\\s*(_local_2 = \\(k\\.id == this\\._userData\\.userRoomId\\);)\\s*break;\\s*\\}\\s*if \\((.*?)\\)\\s*\\{\\s*(_local_2 = \\(k\\.id == this\\._rentableBotdata\\.userRoomId\\);)\\s*break;\\s*\\}",
+      "replacement": "\\1if (\\2)\\n                    {\\n                        \\3\\n                    }\\n                    else if (\\4)\\n                    {\\n                        \\5\\n                    }\\n                    else if (\\6)\\n                    {\\n                        \\7\\n                    }\\n                    else if (\\8)\\n                    {\\n                        \\9\\n                    }",
+      "expect": {
+        "closure:v20_infostand_closure": 1
+      }
+    },
+    {
+      "id": "infostand-report-conditional-breaks",
+      "reason": "AS3's two guard breaks leave the REPORT switch case. Express the same guard positively because Haxe switch cases terminate without break.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/ui/handler/InfoStandWidgetHandler.as"
+      ],
+      "pattern": "(?ms)(case RoomWidgetUserActionMessage\\.RWUAM_REPORT:)\\s*if \\(\\(\\(this\\._container == null\\) \\|\\| \\(this\\._container\\.habboHelp == null\\)\\)\\) break;\\s*if \\(_local_3 == null\\) break;\\s*this\\._container\\.habboHelp\\.reportUser\\(_local_2, -1, null\\);\\s*break;",
+      "replacement": "\\1\\n                    if (((this._container != null) && (this._container.habboHelp != null)) && (_local_3 != null))\\n                    {\\n                        this._container.habboHelp.reportUser(_local_2, -1, null);\\n                    }\\n                    break;",
+      "expect": {
+        "closure:v20_infostand_closure": 1
+      }
+    },
+    {
+      "id": "avatar-suppression-braceless-delete",
+      "reason": "ax3 mis-parses a braceless else whose body is `delete`, silently dropping the file",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)if \\(suppressed\\)\\n[ \\t]*this\\._primaryAvatarSpriteSuppressions\\[sourceId\\] = true;\\n[ \\t]*else\\n[ \\t]*delete this\\._primaryAvatarSpriteSuppressions\\[sourceId\\];",
+      "replacement": "\\1if (suppressed)\\n\\1{\\n\\1    this._primaryAvatarSpriteSuppressions[sourceId] = true;\\n\\1}\\n\\1else\\n\\1{\\n\\1    delete this._primaryAvatarSpriteSuppressions[sourceId];\\n\\1}",
+      "paths": [
+        "com/sulake/habbo/room/object/visualization/avatar/AvatarVisualization.as"
+      ],
+      "expect": {
+        "closure:v13_visualization_factory_closure": 1
+      }
+    },
+    {
+      "id": "isometric-thumbnail-name-mixed-array",
+      "reason": "join() over a mixed array literal: Haxe cannot type it, concatenation is the same string",
+      "kind": "regex",
+      "pattern": "return \\[type, k, \"thumb\", _arg_2\\]\\.join\\(\"_\"\\);",
+      "replacement": "return ((((type + \"_\") + k) + \"_thumb_\") + _arg_2);",
+      "paths": [
+        "com/sulake/habbo/room/object/visualization/furniture/IsometricImageFurniVisualization.as"
+      ],
+      "expect": {
+        "closure:v13_visualization_factory_closure": 1
+      }
+    },
+    {
+      "id": "tile-object-map-mixed-ternary",
+      "reason": "int/String ternary in a debug dump; Haxe needs both branches to agree",
+      "kind": "regex",
+      "pattern": "\\(\\(_local_2\\) \\? _local_2.getId\\(\\) : \"x\"\\)",
+      "replacement": "((_local_2) ? String(_local_2.getId()) : \"x\")",
+      "paths": [
+        "com/sulake/habbo/room/utils/TileObjectMap.as"
+      ],
+      "expect": {
+        "closure:v16_room_message_handler_closure": 1
+      }
+    },
+    {
+      "id": "drop-flash-3d-rotation",
+      "reason": "rotationX is Flash 3D; OpenFL has no such property and nothing to preserve",
+      "kind": "lines",
+      "match": "rotationX",
+      "paths": [
+        "com/sulake/room/renderer/RoomSpriteCanvas.as"
+      ],
+      "expect": {
+        "closure:v17_room_renderer_closure": 3
+      }
+    },
+    {
+      "id": "placeholder-avatar-super-append-action",
+      "reason": "Function.apply on a super method; Haxe has no closure for one",
+      "kind": "regex",
+      "pattern": "super\\.appendAction\\.apply\\(null, \\[k\\].concat\\(_args\\)\\);",
+      "replacement": "super.appendAction(k, _local_3);",
+      "paths": [
+        "com/sulake/habbo/avatar/PlaceholderAvatarImage.as"
+      ],
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "placeholder-avatar-super-add-action-data",
+      "reason": "Function.apply on a super method; Haxe has no closure for one",
+      "kind": "regex",
+      "pattern": "super\\.addActionData\\.apply\\(null, \\[k\\].concat\\(_args\\)\\);",
+      "replacement": "super.addActionData(k, ((_local_3 == null) ? \"\" : _local_3));",
+      "paths": [
+        "com/sulake/habbo/avatar/PlaceholderAvatarImage.as"
+      ],
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "avatar-posture-lay-fallthrough",
+      "reason": "POSTURE_LAY falls through WALK (sets _actionsSorted) and STAND (sets it again) into the addActionData tail. Give it that tail directly",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)\\}\\n(?=[ \\t]*case AvatarAction\\.POSTURE_WALK:)",
+      "replacement": "\\1}\\n\\1this._actionsSorted = true;\\n\\1this.addActionData(_local_3);\\n\\1break;\\n",
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "avatar-posture-sorted-fallthrough",
+      "reason": "and WALK and STAND each fall through to the same tail",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)this\\._actionsSorted = true;\\n(?=[ \\t]*case AvatarAction\\.POSTURE)",
+      "replacement": "\\1this._actionsSorted = true;\\n\\1this.addActionData(_local_3);\\n\\1break;\\n",
+      "expect": {
+        "closure:v5_avatar_closure": 2
+      }
+    },
+    {
+      "id": "vector3d-static-instance-collision",
+      "reason": "Haxe has one namespace per type; AS3 has two, and Vector3D uses both for the same three names",
+      "kind": "regex",
+      "pattern": "(public static function )(_Str_2224|_Str_1645|subtract)\\(",
+      "replacement": "\\1\\2Of(",
+      "paths": [
+        "com/sulake/habbo/avatar/geometry/Vector3D.as"
+      ],
+      "expect": {
+        "closure:v5_avatar_closure": 3
+      }
+    },
+    {
+      "id": "fzip-drop-player-feature-detection",
+      "reason": "FZip decides at class-init whether the running Flash Player's ByteArray has uncompress(algorithm) and inflate(), by reading describeType() output with an E4X predicate. Both are always present on the port's ByteArray, so the answer is a constant -- and the predicate is E4X ax3 cannot parse. FZip itself is unreachable from SkyHaxe, which reads SWFs with its own SwfFile, but it is in the closure because AvatarAssetDownloadLibrary reaches LibraryLoader",
+      "kind": "regex",
+      "pattern": "\\(describeType\\(ByteArray\\)\\.factory\\.method\\.\\(@name == \"(?:uncompress|inflate)\"\\)[^;]*\\)",
+      "replacement": "true",
+      "expect": {
+        "closure:v5_avatar_closure": 2
+      }
+    },
+    {
+      "id": "avatar-effect-fallthrough",
+      "reason": "the same pattern one switch out: EFFECT conditionally sets _actionsSorted and then falls through DANCE, TALK and the expressions into their shared addActionData tail. Note this tail takes both arguments, unlike the posture one",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)\\}\\n(?=[ \\t]*case AvatarAction\\.DANCE:)",
+      "replacement": "\\1}\\n\\1this.addActionData(k, _local_3);\\n\\1break;\\n",
+      "expect": {
+        "closure:v5_avatar_closure": 1
+      }
+    },
+    {
+      "id": "asi-terminate-declaration",
+      "reason": "decompiled output leaves some declarations unterminated; ax3 has no automatic-semicolon-insertion, so `var content:ByteArray` fails to parse",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*var [A-Za-z_]\\w*:[\\w.<>]+(?:[ \\t]*=[ \\t]*\\[\\])?)[ \\t]*$",
+      "replacement": "\\1;",
+      "expect": {
+        "com/sulake/core": 2
+      }
+    },
+    {
+      "id": "asi-terminate-call",
+      "reason": "same artefact for a call statement; only rewritten when the next line clearly starts a new statement, so a wrapped argument list is never joined",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*[\\w.]+\\([^()\\n]*\\))[ \\t]*\\n(?=[ \\t]*(?:(?:if|var|while|for|return|switch|this|super)\\b|\\w+\\.\\w+[ \\t]*=))",
+      "replacement": "\\1;\n",
+      "expect": {
+        "com/sulake/core": 2
+      }
+    },
+    {
+      "id": "drop-vec-imports",
+      "reason": "Haxe supplies Vector; the AS3 `__AS3__.vec` imports do not resolve",
+      "kind": "line-drop",
+      "match": "import __AS3__.vec.",
+      "expect": {
+        "com/sulake/core": 37
+      }
+    },
+    {
+      "id": "morphshape-to-shape",
+      "reason": "OpenFL has no MorphShape display class on HTML5. Window GraphicContext only constructs it as a drawable shape container, so the supported Shape class provides the same surface used by this client.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/window/graphics/GraphicContext.as"
+      ],
+      "pattern": "MorphShape",
+      "replacement": "Shape",
+      "expect": {
+        "closure:v21_window_runtime_closure": 2
+      }
+    },
+    {
+      "id": "map-proxy-qname-normalization",
+      "reason": "QName only reaches these branches as Flash Proxy's property token. Generated Haxe has no Proxy dispatch and passes map keys explicitly, so remove the two unreachable QName normalization blocks rather than inventing a QName class.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/utils/Map.as",
+        "com/sulake/core/utils/MAP.as"
+      ],
+      "pattern": "(?ms)\\s*if \\(\\(key is QName\\)\\)\\s*\\{\\s*key = QName\\(key\\)\\.localName;\\s*\\}",
+      "replacement": "",
+      "expect": {
+        "closure:v20_infostand_closure": 0,
+        "closure:v21_window_runtime_closure": 0
+      }
+    },
+    {
+      "id": "drop-flash-proxy-base",
+      "reason": "Flash Proxy has no OpenFL target class. The generated methods are made public by the companion proxy rule, so these collection wrappers can use their ordinary concrete methods without inheriting the Flash interception base.",
+      "kind": "regex",
+      "pattern": " extends Proxy",
+      "replacement": "",
+      "expect": {
+        "closure:v20_infostand_closure": 0,
+        "closure:v21_window_runtime_closure": 6
+      }
+    },
+    {
+      "id": "drop-flash-proxy-namespace",
+      "reason": "ax3 cannot parse `use namespace`. The Proxy members it scopes become public instead, which is what the publicise-proxy-overrides rule below does",
+      "kind": "line-drop",
+      "match": "use namespace flash.utils.flash_proxy;",
+      "expect": {
+        "com/sulake/core": 8
+      }
+    },
+    {
+      "id": "drop-flash-proxy-import",
+      "reason": "the namespace import is dead once the directive is gone",
+      "kind": "line-drop",
+      "match": "import flash.utils.flash_proxy;",
+      "expect": {
+        "com/sulake/core": 8
+      }
+    },
+    {
+      "id": "publicise-proxy-overrides",
+      "reason": "these members were flash_proxy-scoped; after dropping Flash's unavailable Proxy base they become ordinary public Haxe methods, not overrides",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)override (?:flash_proxy )?(function (?:getProperty|setProperty|callProperty|hasProperty|deleteProperty|getDescendants|nextNameIndex|nextName|nextValue)\\b)",
+      "replacement": "\\1public \\2",
+      "expect": {
+        "com/sulake/core": 31
+      }
+    },
+    {
+      "id": "drop-stray-import-expression",
+      "reason": "decompiler artefact: `import a.b.C; C;` leaves a bare expression statement after the import, which ax3 reads as a namespace access",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*import [\\w.]+\\.(\\w+);)[ \\t]*\\2;[ \\t]*$",
+      "replacement": "\\1",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "wrap-component-iife-open",
+      "reason": "two Component callbacks are immediately invoked function expressions nested inside another call. Haxe requires the function expression parenthesized",
+      "kind": "regex",
+      "pattern": "(_dependencyDisposalActions\\.push\\(|this\\.queueInterface\\(identifier, )function ",
+      "replacement": "\\1(function ",
+      "expect": {
+        "com/sulake/core": 2
+      }
+    },
+    {
+      "id": "wrap-component-iife-close",
+      "reason": "close the two explicit IIFE parentheses inserted by wrap-component-iife-open",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)\\}\\(([^()\\n]*(?:\\([^()\\n]*\\)[^()\\n]*)*)\\)\\);[ \\t]*$",
+      "replacement": "\\1})(\\2));",
+      "expect": {
+        "com/sulake/core": 2
+      }
+    },
+    {
+      "id": "hoist-function-scoped-library-loader-declare",
+      "reason": "LibraryLoader.throttle reuses an AS3 function-scoped loop variable in its second loop; declare it at function scope for Haxe",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)(var activeDownloadsCounter:int = \\(_activeDownloads\\.length - 1\\);)$",
+      "replacement": "\\1var loader:LibraryLoader;\\n\\1\\2",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "hoist-function-scoped-library-loader-assign",
+      "reason": "assignment half of hoist-function-scoped-library-loader-declare",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)var loader:LibraryLoader = \\(_activeDownloads\\[activeDownloadsCounter\\] as LibraryLoader\\);$",
+      "replacement": "\\1loader = (_activeDownloads[activeDownloadsCounter] as LibraryLoader);",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "hoist-function-scoped-loader-queue",
+      "reason": "LibraryLoaderQueue.dispose reuses its first AS3 for-each variable in a second loop; make the function scope explicit for Haxe",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*)for each \\(var loader:LibraryLoader in this\\._loaders\\)(?=[\\s\\S]{0,300}for each \\(loader in this\\._queue\\))$",
+      "replacement": "\\1var loader:LibraryLoader;\\n\\1for each (loader in this._loaders)",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "declare-for-in-variable",
+      "reason": "decompiled `for (type in map)` drops the declaration AS3 requires; ax3 reads the loop variable as an undefined identifier. `for each` is left alone -- it has its own handling",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*for[ \\t]*\\()(?!var\\b|each\\b)([A-Za-z_]\\w*)([ \\t]+in[ \\t])",
+      "replacement": "\\1var \\2:String\\3",
+      "expect": {
+        "com/sulake/core": 30
+      }
+    },
+    {
+      "id": "drop-stray-block-semicolon",
+      "reason": "decompiler artefact: an empty statement immediately after a block opener",
+      "kind": "regex",
+      "pattern": "(?m)^([ \\t]*\\{);[ \\t]*$",
+      "replacement": "\\1",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "error-super-message",
+      "reason": "AS3 permits inherited property access as `super.message`; Haxe only permits methods through super. `this.message` resolves the same inherited Error value",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/runtime/exceptions/Exception.as"
+      ],
+      "pattern": "\\bsuper\\.message\\b",
+      "replacement": "this.message",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "error-tostring-override",
+      "reason": "the SWC Error base owns toString although the decompiled client omitted the AS3 override modifier; Haxe requires it explicitly on the ASError boundary",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/runtime/exceptions/Exception.as"
+      ],
+      "pattern": "(?m)^([ \\t]*)public function toString\\(\\):String$",
+      "replacement": "\\1override public function toString():String",
+      "expect": {
+        "com/sulake/core": 1
+      }
+    },
+    {
+      "id": "furni-chooser-labelled-filter-loop",
+      "reason": "ax3 cannot parse the labelled for-each; an explicit match flag preserves continue-to-outer-loop behavior.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/ui/widget/chooser/FurniChooserView.as"
+      ],
+      "pattern": "(?ms)            loop0:\\r?\\n            for each \\(item in this\\._widget\\.items\\)\\r?\\n            \\{\\r?\\n                for each \\(term in terms\\)\\r?\\n                \\{\\r?\\n                    if \\(item\\.lowerCaseName\\.indexOf\\(term\\) != -1\\)\\r?\\n                    \\{\\r?\\n                        continue;\\r?\\n                    \\}\\r?\\n                    continue loop0;\\r?\\n                \\}",
+      "replacement": "            for each (item in this._widget.items)\n            {\n                var matches:Boolean = true;\n                for each (term in terms)\n                {\n                    if (item.lowerCaseName.indexOf(term) == -1)\n                    {\n                        matches = false;\n                        break;\n                    }\n                }\n                if (!matches) continue;",
+      "expect": {}
+    },
+    {
+      "id": "vimeo-graphics-with-block",
+      "reason": "Qualify the four Graphics calls explicitly; this is the exact AS3 with-block receiver and ax3 has no with statement.",
+      "kind": "regex",
+      "paths": [
+        "com/vimeo/api/VimeoPlayer.as"
+      ],
+      "pattern": "(?ms)            with \\(_local_2\\)\\r?\\n            \\{\\r?\\n                beginFill\\(0, 1\\);\\r?\\n                drawRect\\(container\\.x, container\\.y, _Str_16225, _Str_17880\\);\\r?\\n                endFill\\(\\);\\r?\\n            \\}",
+      "replacement": "            _local_2.beginFill(0, 1);\n            _local_2.drawRect(container.x, container.y, _Str_16225, _Str_17880);\n            _local_2.endFill();",
+      "expect": {}
+    },
+    {
+      "id": "snowwar-missing-import-semicolon",
+      "reason": "Restore two semicolons omitted by the decompiler so the original imports parse.",
+      "kind": "regex",
+      "paths": [
+        "snowwar/ui/GameEndingViewController.as",
+        "snowwar/ui/GamesMainViewController.as"
+      ],
+      "pattern": "(?m)^(\\s*import com\\.sulake\\.core\\.window\\.(?:components\\.IItemListWindow|events\\.WindowMouseEvent))$",
+      "replacement": "\\1;",
+      "expect": {}
+    },
+    {
+      "id": "snowwar-open-club-center-semicolon",
+      "reason": "Terminate the call before a decompiler-retained comment that otherwise swallows the semicolon.",
+      "kind": "regex",
+      "paths": [
+        "snowwar/SnowWarEngine.as"
+      ],
+      "pattern": "this\\._catalog\\.openClubCenter\\(\\) //_SafeStr_2308\\.ANY, \\\"HabboGameManager\\\"\\);",
+      "replacement": "this._catalog.openClubCenter(); //_SafeStr_2308.ANY, \"HabboGameManager\");",
+      "expect": {}
+    },
+    {
+      "id": "battleball-hoist-tile-object-id",
+      "reason": "AS3 var declarations are function scoped; hoist the tile id so cleanup after the creation loop retains the same variable.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/battleball/BattleBallArena.as"
+      ],
+      "pattern": "(?m)^([ \\t]*)var seen:Object = \\{\\};\\r?\\n\\1for each \\(var tile:Object in model\\.tiles\\)([\\s\\S]*?)\\bvar id:int = TILE_OBJECT_ID_BASE",
+      "replacement": "\\1var seen:Object = {};\\n\\1var id:int;\\n\\1for each (var tile:Object in model.tiles)\\2id = TILE_OBJECT_ID_BASE",
+      "expect": {}
+    },
+    {
+      "id": "battleball-e4x-explicit-children-node",
+      "reason": "Disambiguate an E4X child named children from the children() method before invoking descendants on that node.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/battleball/BattleBallArenaHud.as"
+      ],
+      "pattern": "source\\.window\\.children\\(\\)\\[0\\]\\.children\\.children\\(\\)",
+      "replacement": "XML(XML(source.window.children()[0]).child(\"children\")[0]).children()",
+      "expect": {}
+    },
+    {
+      "id": "e4x-empty-xmllist-constructor",
+      "reason": "AS3 new XMLList() means an empty E4X list; express it as the existing XMLList coercion because XMLList is a builtin abstract, not an instantiable class in Haxe.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/battleball/BattleBallLobbyWindow.as",
+        "com/sulake/habbo/snowstorm/SnowStormScoreWindows.as",
+        "com/sulake/habbo/snowstorm/SnowStormLobbyWindow.as",
+        "com/sulake/habbo/snowstorm/SnowStormCountdownWindow.as"
+      ],
+      "pattern": "new XMLList\\(\\)",
+      "replacement": "XMLList([])",
+      "expect": {}
+    },
+    {
+      "id": "friendbar-message-loop-label",
+      "reason": "The label names the immediately enclosing while loop; remove the redundant AS3 label while preserving continue behavior.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/friendbar/groupforums/MessageListView.as"
+      ],
+      "pattern": "(?m)^\\s*_loop_1:\\s*$|(?<=continue) _loop_1(?=;)",
+      "replacement": "",
+      "expect": {}
+    },
+    {
+      "id": "drop-invalid-composer-unwatch",
+      "reason": "Remove a decompiler artefact: this final composer has no superclass and no caller for the impossible super.unwatch method.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/communication/messages/outgoing/groupforums/UpdateThreadMessageComposer.as"
+      ],
+      "pattern": "(?ms)\\r?\\n        public function unwatch\\(k:String\\):void\\r?\\n        \\{\\r?\\n            super\\.unwatch\\(k\\);\\r?\\n        \\}",
+      "replacement": "",
+      "expect": {}
+    },
+    {
+      "id": "battleball-window-arrow-loop-branches",
+      "reason": "Brace both conditional for loops and retain the existing function-scoped row declaration.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/battleball/BattleBallWindowSurface.as"
+      ],
+      "pattern": "(?ms)            if \\(down\\)\\r?\\n                for \\(var row:int = 0; row < 4; row\\+\\+\\)\\r?\\n(                    data\\.fillRect\\([^;]+;)\\r?\\n            else\\r?\\n                for \\(var row:int = 0; row < 7; row\\+\\+\\)\\r?\\n(                    data\\.fillRect\\([\\s\\S]*?0xFF000000 \\| colour\\);)",
+      "replacement": "            if (down)\\n            {\\n                for (row = 0; row < 4; row++)\\n\\1\\n            }\\n            else\\n            {\\n                for (row = 0; row < 7; row++)\\n\\2\\n            }",
+      "expect": {}
+    },
+    {
+      "id": "variables-diff-declare-id",
+      "reason": "Restore the String declaration omitted from the for-each loop by the decompiler.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/communication/messages/outgoing/userdefinedroomevents/RequestVariablesDiffMessageComposer.as"
+      ],
+      "pattern": "for each \\(id in ids\\)",
+      "replacement": "for each (var id:String in ids)",
+      "expect": {}
+    },
+    {
+      "id": "battleball-arena-window-declare-object",
+      "reason": "Restore the decompiler-omitted declaration on the second object iteration.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/battleball/BattleBallArenaWindow.as"
+      ],
+      "pattern": "for each \\(object in values\\)",
+      "replacement": "for each (var object:Object in values)",
+      "expect": {}
+    },
+    {
+      "id": "game-manager-urlvariables-dynamic-fields",
+      "reason": "URLVariables is a dynamic Flash property bag; use indexed property access so ax3 does not require nonexistent declared instance fields.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/game/HabboGameManager.as"
+      ],
+      "pattern": "variables\\.(gameTypeId|flashVersion|errorId|errorMessage|debugData)",
+      "replacement": "variables[\"\\1\"]",
+      "expect": {}
+    },
+    {
+      "id": "wired-trading-hoist-grid-cell",
+      "reason": "AS3 var declarations are function scoped; hoist the cell used by both grid-clearing loops.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/inventory/wired_trading/WiredTradingView.as"
+      ],
+      "pattern": "(?m)^([ \\t]*)var i:int = 0;([\\s\\S]*?)\\bvar cell:IWindowContainer =",
+      "replacement": "\\1var i:int = 0;\\n\\1var cell:IWindowContainer;\\2cell =",
+      "expect": {}
+    },
+    {
+      "id": "moderation-textformat-right-margin-number",
+      "reason": "Flash TextFormat.rightMargin is dynamically nullable; explicit int coercion preserves AS3 numeric addition semantics for ax3.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/moderation/ChatlogCtrl.as"
+      ],
+      "pattern": "_local_6\\.getTextFormat\\(\\)\\.rightMargin \\+ 10",
+      "replacement": "int(_local_6.getTextFormat().rightMargin) + 10",
+      "expect": {}
+    },
+    {
+      "id": "vector-remove-at-to-splice",
+      "reason": "AS3 Vector.removeAt(index) removes one element; OpenFL's compatible operation is splice(index, 1). No corpus call consumes the removed value.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/habbo/roomevents/wired_trading/reward_notification/RewardNotificationController.as",
+        "com/sulake/habbo/roomevents/wired_tradinging/ContractRuleEditorState.as",
+        "com/sulake/habbo/roomevents/wired_trading/ContractRuleEditorState.as",
+        "com/sulake/habbo/roomevents/wired_trading/chests/WiredChestController.as",
+        "com/sulake/habbo/roomevents/wired_trading/chests/subcontrollers/views/FurniChestView.as",
+        "com/sulake/habbo/roomevents/wired_trading/chests/subcontrollers/views/FurniChestItemView.as",
+        "com/sulake/habbo/roomevents/WiredVariablesSynchronizer.as",
+        "com/sulake/habbo/roomevents/wired_setup/uibuilder/presets/contracts/TradeRuleListEditorPreset.as",
+        "com/sulake/habbo/roomevents/wired_setup/uibuilder/presets/contracts/TradeRuleEditorPreset.as"
+      ],
+      "pattern": "\\.removeAt\\(([^\\r\\n;]+)\\)",
+      "replacement": ".splice(\\1, 1)",
+      "expect": {}
+    },
+    {
+      "id": "snowwar-human-tile-map-method-call",
+      "reason": "The decompiler emitted three property-style references to the tileMap() method in constructor diagnostics; invoke it so the code observes the returned Array as intended.",
+      "kind": "regex",
+      "paths": [
+        "snowwar/_Str_39/HumanGameObject.as"
+      ],
+      "pattern": "k\\.tileMap(?!\\s*\\()",
+      "replacement": "k.tileMap()",
+      "expect": {}
+    },
+    {
+      "id": "hurlant-bigint-restore-zero-fill",
+      "reason": "Restore the array target lost by the decompiler in JSBN's divisor zero-fill loop; y.(...) is not valid AS3 and the canonical operation fills y.a.",
+      "kind": "regex",
+      "paths": [
+        "com/hurlant/math/BigInteger.as"
+      ],
+      "pattern": "y\\.\\(y\\.t\\+\\+, 0\\)",
+      "replacement": "y.a[y.t++] = 0",
+      "expect": {
+        "closure:v24_infostand_profile_closure": 0,
+        "closure:v22_link_contract_closure": 0,
+        "closure:v22_window_manager_closure": 0,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v19_room_engine_closure": 0,
+        "closure:v18_avatar_render_manager_closure": 0,
+        "closure:v17_room_renderer_closure": 0,
+        "com/sulake/habbo/communication/messages/incoming": 0,
+        "closure:v16_room_message_handler_closure": 0,
+        "closure:v15_room_engine_completion_closure": 0,
+        "closure:v14_logic_component_closure": 0,
+        "closure:v13_visualization_factory_closure": 0,
+        "closure:v12_component_closure": 0,
+        "closure:v11_room_manager_closure": 0,
+        "closure:v10_face_focuser_closure": 0,
+        "closure:v9_animated_furniture_closure": 0,
+        "closure:v8_room_background_closure": 0,
+        "closure:v7_guest_room_closure": 0,
+        "closure:v5_avatar_closure": 0,
+        "closure:v4_furniture_closure": 0,
+        "com/sulake/core[assets+runtime+utils]": 0,
+        "com/sulake/core[runtime]": 0,
+        "closure:v25_infostand_services_closure": 0,
+        "closure:v26_room_session_services_closure": 0,
+        "closure:v27_friend_list_services_closure": 0,
+        "closure:v28_friend_list_required_services_closure": 0,
+        "closure:v31_full_client_candidate_closure": 1
+      }
+    },
+    {
+      "id": "hurlant-bigint-restore-result-chunk-access",
+      "reason": "Restore JSBN's omitted backing-array qualifier; BigInteger is sealed and the decompiled r[i] assignment cannot represent the original chunk write.",
+      "kind": "regex",
+      "paths": [
+        "com/hurlant/math/BigInteger.as"
+      ],
+      "pattern": "r\\[i\\] = DM&~a\\[i\\]",
+      "replacement": "r.a[i] = DM&~a[i]",
+      "expect": {
+        "closure:v24_infostand_profile_closure": 0,
+        "closure:v22_link_contract_closure": 0,
+        "closure:v22_window_manager_closure": 0,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v19_room_engine_closure": 0,
+        "closure:v18_avatar_render_manager_closure": 0,
+        "closure:v17_room_renderer_closure": 0,
+        "com/sulake/habbo/communication/messages/incoming": 0,
+        "closure:v16_room_message_handler_closure": 0,
+        "closure:v15_room_engine_completion_closure": 0,
+        "closure:v14_logic_component_closure": 0,
+        "closure:v13_visualization_factory_closure": 0,
+        "closure:v12_component_closure": 0,
+        "closure:v11_room_manager_closure": 0,
+        "closure:v10_face_focuser_closure": 0,
+        "closure:v9_animated_furniture_closure": 0,
+        "closure:v8_room_background_closure": 0,
+        "closure:v7_guest_room_closure": 0,
+        "closure:v5_avatar_closure": 0,
+        "closure:v4_furniture_closure": 0,
+        "com/sulake/core[assets+runtime+utils]": 0,
+        "com/sulake/core[runtime]": 0,
+        "closure:v25_infostand_services_closure": 0,
+        "closure:v26_room_session_services_closure": 0,
+        "closure:v27_friend_list_services_closure": 0,
+        "closure:v28_friend_list_required_services_closure": 0,
+        "closure:v31_full_client_candidate_closure": 1,
+        "closure:v31_vendor_dependency_closure": 1
+      }
+    },
+    {
+      "id": "hurlant-bigint-restore-prime-chunk-access",
+      "reason": "Restore JSBN's omitted backing-array qualifier in the low-prime fast path; x[0] is invalid on the sealed BigInteger class.",
+      "kind": "regex",
+      "paths": [
+        "com/hurlant/math/BigInteger.as"
+      ],
+      "pattern": "x\\[0\\]==lowprimes\\[i\\]",
+      "replacement": "x.a[0]==lowprimes[i]",
+      "expect": {
+        "closure:v24_infostand_profile_closure": 0,
+        "closure:v22_link_contract_closure": 0,
+        "closure:v22_window_manager_closure": 0,
+        "closure:v21_window_runtime_closure": 0,
+        "closure:v20_infostand_closure": 0,
+        "closure:v19_room_engine_closure": 0,
+        "closure:v18_avatar_render_manager_closure": 0,
+        "closure:v17_room_renderer_closure": 0,
+        "com/sulake/habbo/communication/messages/incoming": 0,
+        "closure:v16_room_message_handler_closure": 0,
+        "closure:v15_room_engine_completion_closure": 0,
+        "closure:v14_logic_component_closure": 0,
+        "closure:v13_visualization_factory_closure": 0,
+        "closure:v12_component_closure": 0,
+        "closure:v11_room_manager_closure": 0,
+        "closure:v10_face_focuser_closure": 0,
+        "closure:v9_animated_furniture_closure": 0,
+        "closure:v8_room_background_closure": 0,
+        "closure:v7_guest_room_closure": 0,
+        "closure:v5_avatar_closure": 0,
+        "closure:v4_furniture_closure": 0,
+        "com/sulake/core[assets+runtime+utils]": 0,
+        "com/sulake/core[runtime]": 0,
+        "closure:v25_infostand_services_closure": 0,
+        "closure:v26_room_session_services_closure": 0,
+        "closure:v27_friend_list_services_closure": 0,
+        "closure:v28_friend_list_required_services_closure": 0,
+        "closure:v31_full_client_candidate_closure": 1,
+        "closure:v31_vendor_dependency_closure": 1
+      }
+    },
+    {
+      "id": "media-rss-namespace-uri",
+      "reason": "AS3's Namespace value identifies E4X children by URI, while Haxe/JS has no namespace-qualified member syntax. Keep the URI as a String for the explicit XML compatibility operation used by the companion selector rule.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/vast/playlist/mrss/MediaRSSPlaylist.as"
+      ],
+      "pattern": "var _local_2:Namespace = new Namespace\\(\"http://search\\.yahoo\\.com/mrss/\"\\);",
+      "replacement": "var _local_2:String = \"http://search.yahoo.com/mrss/\";",
+      "expect": {}
+    },
+    {
+      "id": "media-rss-namespace-attribute-selectors",
+      "reason": "Expose MediaRSSPlaylist's namespaced content attributes through the namespace-aware XML boundary. Selection remains URI-based and String() preserves the assignment coercion performed by Flash.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/vast/playlist/mrss/MediaRSSPlaylist.as"
+      ],
+      "pattern": "_local_5\\._local_2::content\\.@(url|type|duration)",
+      "replacement": "String(_local_5.childByNamespace(_local_2, \"content\").attribute(\"\\1\"))",
+      "expect": {}
+    },
+    {
+      "id": "media-rss-namespace-child-selector",
+      "reason": "Expose the namespaced media title through the same URI-aware XML boundary; String() retains E4X simple-content coercion.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/vast/playlist/mrss/MediaRSSPlaylist.as"
+      ],
+      "pattern": "_local_5\\._local_2::title",
+      "replacement": "String(_local_5.childByNamespace(_local_2, \"title\"))",
+      "expect": {}
+    },
+    {
+      "id": "openvideoads-inherited-loader-data",
+      "reason": "AS3 permits an inherited property read through super, while Haxe reserves super for methods. TransformingLoader is reading URLLoader.data, so this.data is the equivalent inherited-property access.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/util/TransformingLoader.as"
+      ],
+      "pattern": "\\bsuper\\.data\\b",
+      "replacement": "this.data",
+      "expect": {}
+    },
+    {
+      "id": "openvideoads-transform-command-value",
+      "reason": "Decompiler corruption repeated hasOwnProperty(command) in the true branch where RegExp expects the command string stored by the object.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/util/TransformingLoader.as"
+      ],
+      "pattern": "this\\._Str_3676\\[_local_2\\]\\.hasOwnProperty\\(\"command\"\\) : \"g\"",
+      "replacement": "this._Str_3676[_local_2].command : \"g\"",
+      "expect": {}
+    },
+    {
+      "id": "openvideoads-rtmp-subscribe-setter",
+      "reason": "Decompiler corruption self-assigned the backing field instead of the setter argument; restore the normal property assignment used by its sibling setter.",
+      "kind": "regex",
+      "paths": [
+        "org/openvideoads/vast/config/groupings/ProvidersConfigGroup.as"
+      ],
+      "pattern": "this\\._Str_26468 = this\\._Str_26468;",
+      "replacement": "this._Str_26468 = k;",
+      "expect": {}
+    },
+    {
+      "id": "apdev-stringutils-drop-self-assignment",
+      "reason": "Decompiler artefact: trim converts its already-String parameter with `k = String(k)`; ax3 correctly reduces that cast to `k`, after which Haxe rejects the resulting no-op self-assignment.",
+      "kind": "regex",
+      "paths": [
+        "com/apdevblog/utils/StringUtils.as"
+      ],
+      "pattern": "(?m)^[ \\t]*k = String\\(k\\);[ \\t]*$",
+      "replacement": "",
+      "expect": {}
+    },
+    {
+      "id": "single-write-map-qname-key",
+      "reason": "QName is only a Flash Proxy property-token possibility. The browser Map path passes explicit keys, so use that key directly instead of inventing QName.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/utils/SingleWriteMap.as"
+      ],
+      "pattern": "\\(\\(key is QName\\) \\? QName\\(key\\)\\.localName : key\\)",
+      "replacement": "key",
+      "expect": {}
+    },
+    {
+      "id": "single-write-map-restore-override",
+      "reason": "The generic Proxy normalization publicises setProperty, but SingleWriteMap still extends the generated concrete Map and therefore remains an override.",
+      "kind": "regex",
+      "paths": [
+        "com/sulake/core/utils/SingleWriteMap.as"
+      ],
+      "pattern": "(?m)^([ \\t]*)public function setProperty\\(",
+      "replacement": "\\1override public function setProperty(",
+      "expect": {}
+    }
+  ],
+  "runs": [
+    {
+      "generated_files": 57,
+      "staged_files": 57,
+      "unconverted_files": 0,
+      "generated_tree_sha256": "5207f4879caec64cc081303693822e62d063262a0dc87e422abd9c03da276bd3",
+      "runtime_support_sha256": "6238c3e85df0fb2babb8349a3de9cdc05e1b3fa6d08b1a0ee18c8a2c5648ae4f",
+      "rules": [
+        {
+          "id": "toolbar-promo-button-listener-cast",
+          "reason": "The decompiler placed IButtonWindow() around addEventListener's Void return. Restore the cast of findChildByName before registering the original callback.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-encoder-e4x-readable-properties",
+          "reason": "Normalize JSONEncoder's describeType descendant predicate onto a named XMLList compatibility operation; ax3 cannot parse E4X wildcard predicates.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-encoder-e4x-metadata-filter",
+          "reason": "Normalize JSONEncoder's E4X metadata attribute predicate onto the XMLList compatibility API; ax3 cannot parse dot-parenthesized E4X predicates.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "player-version-string-split",
+          "reason": "Capabilities.version.split returns an untyped AS3 Array. Its second element is the version string; make the implicit AS3 String coercion explicit before split.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "sound-manager-drop-unreachable-case-tail",
+          "reason": "The decompiler left an assignment and second break after the CAMERA_SHUTTER case's unconditional break. Those statements are unreachable in the authoritative AS3 and Haxe correctly rejects the stray retained break; remove only that dead tail.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-hoist-set-indexes",
+          "reason": "AS3 var declarations are function-scoped. TraxSample.setSample declares two write indexes inside its first branch and reuses them in later branches.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-hoist-add-indexes",
+          "reason": "AS3 var declarations are function-scoped. TraxSample.addSample likewise reuses three indexes outside the branches where the decompiler wrote them.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-preserve-index-assignments",
+          "reason": "Companion to the two TraxSample function-scope hoists: retain the original assignment sites without redeclaring their variables in Haxe block scope.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "status-pane-notification-listener-removal",
+          "reason": "The decompiler copied the minimize callback into the notification-button cleanup. Restore the callback paired with that button's addEventListener.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "status-pane-stream-listener-removal",
+          "reason": "The decompiler lost removeEventListener at the stream-button cleanup call. Restore the inverse of its constructor registration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "product-icon-conditional-breaks",
+          "reason": "Both conditional switch exits are at the end of previewImage; returning skips exactly the remaining case body without breaking a nonexistent Haxe loop.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "chest-glyph-function-scope",
+          "reason": "AS3's block-local glyph declaration is function-scoped and reused in the later loop; hoist without changing its assignment.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "chest-glyph-preserve-assignment",
+          "reason": "Companion to the function-scope declaration hoist; keep the original lookup at its original execution site.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "illumina-innermost-loop-label",
+          "reason": "This continue targets the immediately enclosing for loop, even inside the switch; the AS3 label is redundant and ax3 cannot parse it.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "window-diagnostics-platform-logger",
+          "reason": "Window error diagnostics must use the existing HTML5 Logger adapter instead of pulling in the AS3 Habbo application root just for trackLoginStep.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-predicate-filter",
+          "reason": "the one E4X predicate in core is normalized to an explicit compatibility method. The clean-client source remains untouched; ax3 and Haxe have no native `.(@attribute == value)` syntax",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-cdata-literal",
+          "reason": "ax3 cannot lex XML literals. Preserve the complete script/CDATA bytes in a quoted `new XML(...)` value; the transformation JSON-escapes the capture",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "item-grid-try-finally",
+          "reason": "Haxe has no finally. These measured single-cleanup sites contain no return/break/continue, so duplicating cleanup on normal and exceptional exits is semantics-preserving and count-guarded",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-asset-library",
+          "reason": "AS3 `var` is function-scoped but Haxe `var` is block-scoped. Normalize the one load-bearing core site by declaring it before the loop and assigning inside",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-implicit-object-super",
+          "reason": "AS3 permits `super()` in a class with no explicit base, meaning Object. Haxe has no callable implicit Object constructor, so those calls must be omitted; classes with an explicit `extends` clause are deliberately excluded",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-backspace",
+          "reason": "AS3 \\b has no Haxe spelling; \\x08 is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-formfeed",
+          "reason": "AS3 \\f has no Haxe spelling; \\x0C is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-vertical-tab",
+          "reason": "AS3 \\v has no Haxe spelling; \\x0B is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-switch-case-terminal",
+          "reason": "ax3 requires each switch case to end in a terminal expression. `parseError` always throws, so the trailing return is unreachable and changes no behaviour",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowstorm-for-index-redeclaration",
+          "reason": "AS3 `var` is function-scoped, so a later `for (index = 0; ...)` reuses a counter declared by an earlier loop in the same function. Haxe scopes per block, so the bare reuse is an unknown identifier. Each Haxe loop gets its own scope, so re-declaring is equivalent",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "mapstuffdata-proxy-array-access",
+          "reason": "AS3 `Map` extends flash.utils.Proxy, so `map[key]` routes through its getProperty. SkyHaxe's Map is a documented seam that exposes those reads as getValue/setValue instead, and ax3 emits the array access verbatim -- which compiles to a plain JS property read and always yields null. Scoped to MapStuffData because IntArrayStuffData and StringArrayStuffData index a real Array with the same field name, and rewriting those would be wrong",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "charcodeat-default-index",
+          "reason": "AS3 String.charCodeAt() defaults its index to 0; Haxe's requires one, so the converted call is a compile error. Making the implicit 0 explicit preserves the AS3 semantics exactly",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "array-indexof-int-cast",
+          "reason": "ax3 types an untyped Array's `indexOf` as Dynamic, so adding it to an int is a 'Dynamic + operation'. AS3 `Array.indexOf` returns int; making that explicit preserves the original type rather than changing behaviour",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-elements-child-collision",
+          "reason": "the child element is called `elements`, colliding with XML's elements() method",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-credit-attribute-after-list-index",
+          "reason": "`list[0].@value` -- the index erases the XML type the attribute read needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-attribute-after-list-index",
+          "reason": "`list[0].@frames` -- the index erases the XML type the attribute read needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "canvas-alpha-mask-logical-and",
+          "reason": "restore the bitwise AND the ARGB composition needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-literal-interpolated",
+          "reason": "E4X literals whose attribute values are {expressions}; ax3 can lex neither the literal nor the interpolation",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "habbomain-config-e4x-literal",
+          "reason": "HabboMain's nested startup config is one of only three E4X literals in the source corpus with expression-valued attributes. Express the same XML document as an AS3 XML constructor so ax3 can parse the executable owner.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-literal",
+          "reason": "the avatar package's hardcoded XML fallbacks; ax3 has no E4X literal syntax",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-const-string",
+          "reason": "same missing terminator, on a field rather than a local: GeometryType's last constant has no semicolon, so the closing brace of the class parses as part of the declaration. Restricted to string-literal initializers, where nothing can be continued onto the next line",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-child-after-list-index",
+          "reason": "ax3 loses E4X typing after XMLList[0], so the following `.part` is emitted as a Haxe field instead of the equivalent child query. Spell the child call explicitly in the staged copy; the authoritative AS3 remains untouched",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-numeric-attribute-comparison",
+          "reason": "AS3 applies ToNumber when an XML attribute is compared with a number. ax3 types attribute access as String for assignment compatibility; make this one numeric comparison explicit in the staged source",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "guild-customized-click-fallthrough",
+          "reason": "case CLICK falls into default, so a click also runs the base mouseEvent",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-branding-use-fallthrough",
+          "reason": "InfoStandFurniView's save-branding case falls through to use when the user is not staff. Haxe has no switch fall-through, so make the two outcomes explicit while retaining the shared terminal break.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "textcontroller-textformat-margins",
+          "reason": "Flash TextFormat exposes nullable Object-valued margins. This arithmetic site relies on AS3 int(null)==0; make those coercions explicit so the generated Haxe retains the same numeric calculation.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "htmltext-drop-air-allowed-domains",
+          "reason": "TextField.allowedDomains is an AIR application-sandbox extension and has no HTML5 equivalent. Browser image access is governed by CORS, so omit this guarded AIR-only assignment from generated Haxe.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-object-removed-conditional-breaks",
+          "reason": "AS3 uses conditional break statements to select the one visible infostand view before leaving the switch. Haxe switches do not accept break; an if/else-if chain preserves that single-view choice.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-report-conditional-breaks",
+          "reason": "AS3's two guard breaks leave the REPORT switch case. Express the same guard positively because Haxe switch cases terminate without break.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-suppression-braceless-delete",
+          "reason": "ax3 mis-parses a braceless else whose body is `delete`, silently dropping the file",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "isometric-thumbnail-name-mixed-array",
+          "reason": "join() over a mixed array literal: Haxe cannot type it, concatenation is the same string",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "tile-object-map-mixed-ternary",
+          "reason": "int/String ternary in a debug dump; Haxe needs both branches to agree",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-3d-rotation",
+          "reason": "rotationX is Flash 3D; OpenFL has no such property and nothing to preserve",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "placeholder-avatar-super-append-action",
+          "reason": "Function.apply on a super method; Haxe has no closure for one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "placeholder-avatar-super-add-action-data",
+          "reason": "Function.apply on a super method; Haxe has no closure for one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-posture-lay-fallthrough",
+          "reason": "POSTURE_LAY falls through WALK (sets _actionsSorted) and STAND (sets it again) into the addActionData tail. Give it that tail directly",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-posture-sorted-fallthrough",
+          "reason": "and WALK and STAND each fall through to the same tail",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vector3d-static-instance-collision",
+          "reason": "Haxe has one namespace per type; AS3 has two, and Vector3D uses both for the same three names",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "fzip-drop-player-feature-detection",
+          "reason": "FZip decides at class-init whether the running Flash Player's ByteArray has uncompress(algorithm) and inflate(), by reading describeType() output with an E4X predicate. Both are always present on the port's ByteArray, so the answer is a constant -- and the predicate is E4X ax3 cannot parse. FZip itself is unreachable from SkyHaxe, which reads SWFs with its own SwfFile, but it is in the closure because AvatarAssetDownloadLibrary reaches LibraryLoader",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-effect-fallthrough",
+          "reason": "the same pattern one switch out: EFFECT conditionally sets _actionsSorted and then falls through DANCE, TALK and the expressions into their shared addActionData tail. Note this tail takes both arguments, unlike the posture one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-declaration",
+          "reason": "decompiled output leaves some declarations unterminated; ax3 has no automatic-semicolon-insertion, so `var content:ByteArray` fails to parse",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-call",
+          "reason": "same artefact for a call statement; only rewritten when the next line clearly starts a new statement, so a wrapped argument list is never joined",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-vec-imports",
+          "reason": "Haxe supplies Vector; the AS3 `__AS3__.vec` imports do not resolve",
+          "sites": 3,
+          "files": 2
+        },
+        {
+          "id": "morphshape-to-shape",
+          "reason": "OpenFL has no MorphShape display class on HTML5. Window GraphicContext only constructs it as a drawable shape container, so the supported Shape class provides the same surface used by this client.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "map-proxy-qname-normalization",
+          "reason": "QName only reaches these branches as Flash Proxy's property token. Generated Haxe has no Proxy dispatch and passes map keys explicitly, so remove the two unreachable QName normalization blocks rather than inventing a QName class.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-base",
+          "reason": "Flash Proxy has no OpenFL target class. The generated methods are made public by the companion proxy rule, so these collection wrappers can use their ordinary concrete methods without inheriting the Flash interception base.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-namespace",
+          "reason": "ax3 cannot parse `use namespace`. The Proxy members it scopes become public instead, which is what the publicise-proxy-overrides rule below does",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-import",
+          "reason": "the namespace import is dead once the directive is gone",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "publicise-proxy-overrides",
+          "reason": "these members were flash_proxy-scoped; after dropping Flash's unavailable Proxy base they become ordinary public Haxe methods, not overrides",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-stray-import-expression",
+          "reason": "decompiler artefact: `import a.b.C; C;` leaves a bare expression statement after the import, which ax3 reads as a namespace access",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wrap-component-iife-open",
+          "reason": "two Component callbacks are immediately invoked function expressions nested inside another call. Haxe requires the function expression parenthesized",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wrap-component-iife-close",
+          "reason": "close the two explicit IIFE parentheses inserted by wrap-component-iife-open",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-library-loader-declare",
+          "reason": "LibraryLoader.throttle reuses an AS3 function-scoped loop variable in its second loop; declare it at function scope for Haxe",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-library-loader-assign",
+          "reason": "assignment half of hoist-function-scoped-library-loader-declare",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-loader-queue",
+          "reason": "LibraryLoaderQueue.dispose reuses its first AS3 for-each variable in a second loop; make the function scope explicit for Haxe",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "declare-for-in-variable",
+          "reason": "decompiled `for (type in map)` drops the declaration AS3 requires; ax3 reads the loop variable as an undefined identifier. `for each` is left alone -- it has its own handling",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-stray-block-semicolon",
+          "reason": "decompiler artefact: an empty statement immediately after a block opener",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "error-super-message",
+          "reason": "AS3 permits inherited property access as `super.message`; Haxe only permits methods through super. `this.message` resolves the same inherited Error value",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "error-tostring-override",
+          "reason": "the SWC Error base owns toString although the decompiled client omitted the AS3 override modifier; Haxe requires it explicitly on the ASError boundary",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "furni-chooser-labelled-filter-loop",
+          "reason": "ax3 cannot parse the labelled for-each; an explicit match flag preserves continue-to-outer-loop behavior.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vimeo-graphics-with-block",
+          "reason": "Qualify the four Graphics calls explicitly; this is the exact AS3 with-block receiver and ax3 has no with statement.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-missing-import-semicolon",
+          "reason": "Restore two semicolons omitted by the decompiler so the original imports parse.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-open-club-center-semicolon",
+          "reason": "Terminate the call before a decompiler-retained comment that otherwise swallows the semicolon.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-hoist-tile-object-id",
+          "reason": "AS3 var declarations are function scoped; hoist the tile id so cleanup after the creation loop retains the same variable.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-e4x-explicit-children-node",
+          "reason": "Disambiguate an E4X child named children from the children() method before invoking descendants on that node.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-empty-xmllist-constructor",
+          "reason": "AS3 new XMLList() means an empty E4X list; express it as the existing XMLList coercion because XMLList is a builtin abstract, not an instantiable class in Haxe.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "friendbar-message-loop-label",
+          "reason": "The label names the immediately enclosing while loop; remove the redundant AS3 label while preserving continue behavior.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-invalid-composer-unwatch",
+          "reason": "Remove a decompiler artefact: this final composer has no superclass and no caller for the impossible super.unwatch method.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-window-arrow-loop-branches",
+          "reason": "Brace both conditional for loops and retain the existing function-scoped row declaration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "variables-diff-declare-id",
+          "reason": "Restore the String declaration omitted from the for-each loop by the decompiler.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-arena-window-declare-object",
+          "reason": "Restore the decompiler-omitted declaration on the second object iteration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "game-manager-urlvariables-dynamic-fields",
+          "reason": "URLVariables is a dynamic Flash property bag; use indexed property access so ax3 does not require nonexistent declared instance fields.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wired-trading-hoist-grid-cell",
+          "reason": "AS3 var declarations are function scoped; hoist the cell used by both grid-clearing loops.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "moderation-textformat-right-margin-number",
+          "reason": "Flash TextFormat.rightMargin is dynamically nullable; explicit int coercion preserves AS3 numeric addition semantics for ax3.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vector-remove-at-to-splice",
+          "reason": "AS3 Vector.removeAt(index) removes one element; OpenFL's compatible operation is splice(index, 1). No corpus call consumes the removed value.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-human-tile-map-method-call",
+          "reason": "The decompiler emitted three property-style references to the tileMap() method in constructor diagnostics; invoke it so the code observes the returned Array as intended.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-zero-fill",
+          "reason": "Restore the array target lost by the decompiler in JSBN's divisor zero-fill loop; y.(...) is not valid AS3 and the canonical operation fills y.a.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-result-chunk-access",
+          "reason": "Restore JSBN's omitted backing-array qualifier; BigInteger is sealed and the decompiled r[i] assignment cannot represent the original chunk write.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-prime-chunk-access",
+          "reason": "Restore JSBN's omitted backing-array qualifier in the low-prime fast path; x[0] is invalid on the sealed BigInteger class.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-uri",
+          "reason": "AS3's Namespace value identifies E4X children by URI, while Haxe/JS has no namespace-qualified member syntax. Keep the URI as a String for the explicit XML compatibility operation used by the companion selector rule.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-attribute-selectors",
+          "reason": "Expose MediaRSSPlaylist's namespaced content attributes through the namespace-aware XML boundary. Selection remains URI-based and String() preserves the assignment coercion performed by Flash.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-child-selector",
+          "reason": "Expose the namespaced media title through the same URI-aware XML boundary; String() retains E4X simple-content coercion.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-inherited-loader-data",
+          "reason": "AS3 permits an inherited property read through super, while Haxe reserves super for methods. TransformingLoader is reading URLLoader.data, so this.data is the equivalent inherited-property access.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-transform-command-value",
+          "reason": "Decompiler corruption repeated hasOwnProperty(command) in the true branch where RegExp expects the command string stored by the object.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-rtmp-subscribe-setter",
+          "reason": "Decompiler corruption self-assigned the backing field instead of the setter argument; restore the normal property assignment used by its sibling setter.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "apdev-stringutils-drop-self-assignment",
+          "reason": "Decompiler artefact: trim converts its already-String parameter with `k = String(k)`; ax3 correctly reduces that cast to `k`, after which Haxe rejects the resulting no-op self-assignment.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "single-write-map-qname-key",
+          "reason": "QName is only a Flash Proxy property-token possibility. The browser Map path passes explicit keys, so use that key directly instead of inventing QName.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "single-write-map-restore-override",
+          "reason": "The generic Proxy normalization publicises setProperty, but SingleWriteMap still extends the generated concrete Map and therefore remains an override.",
+          "sites": 0,
+          "files": 0
+        }
+      ],
+      "unpinned_rules": [],
+      "conversion": {
+        "exit_code": 0,
+        "seconds": 5.66,
+        "stdout_tail": [
+          "[0.070s][warning][exceptions] Class java.lang.Object in throws clause of method void ax3.Main.checkParseTree(java.lang.String, java.lang.String, java.lang.Object) is not a subtype of class java.lang.Throwable",
+          "[0.070s][warning][exceptions] Class java.lang.Object in throws clause of method void ax3.Main.main() is not a subtype of class java.lang.Throwable",
+          "parsing   0.14299917221069336",
+          "swcs      4.680000066757202",
+          "typing    0.08300018310546875",
+          "filters   0.3469998836517334",
+          "output    0.11899995803833008",
+          "-- TOTAL  5.394999980926514"
+        ],
+        "stderr_tail": [],
+        "stderr_head": []
+      }
+    },
+    {
+      "generated_files": 57,
+      "staged_files": 57,
+      "unconverted_files": 0,
+      "generated_tree_sha256": "5207f4879caec64cc081303693822e62d063262a0dc87e422abd9c03da276bd3",
+      "runtime_support_sha256": "6238c3e85df0fb2babb8349a3de9cdc05e1b3fa6d08b1a0ee18c8a2c5648ae4f",
+      "rules": [
+        {
+          "id": "toolbar-promo-button-listener-cast",
+          "reason": "The decompiler placed IButtonWindow() around addEventListener's Void return. Restore the cast of findChildByName before registering the original callback.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-encoder-e4x-readable-properties",
+          "reason": "Normalize JSONEncoder's describeType descendant predicate onto a named XMLList compatibility operation; ax3 cannot parse E4X wildcard predicates.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-encoder-e4x-metadata-filter",
+          "reason": "Normalize JSONEncoder's E4X metadata attribute predicate onto the XMLList compatibility API; ax3 cannot parse dot-parenthesized E4X predicates.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "player-version-string-split",
+          "reason": "Capabilities.version.split returns an untyped AS3 Array. Its second element is the version string; make the implicit AS3 String coercion explicit before split.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "sound-manager-drop-unreachable-case-tail",
+          "reason": "The decompiler left an assignment and second break after the CAMERA_SHUTTER case's unconditional break. Those statements are unreachable in the authoritative AS3 and Haxe correctly rejects the stray retained break; remove only that dead tail.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-hoist-set-indexes",
+          "reason": "AS3 var declarations are function-scoped. TraxSample.setSample declares two write indexes inside its first branch and reuses them in later branches.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-hoist-add-indexes",
+          "reason": "AS3 var declarations are function-scoped. TraxSample.addSample likewise reuses three indexes outside the branches where the decompiler wrote them.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "trax-sample-preserve-index-assignments",
+          "reason": "Companion to the two TraxSample function-scope hoists: retain the original assignment sites without redeclaring their variables in Haxe block scope.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "status-pane-notification-listener-removal",
+          "reason": "The decompiler copied the minimize callback into the notification-button cleanup. Restore the callback paired with that button's addEventListener.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "status-pane-stream-listener-removal",
+          "reason": "The decompiler lost removeEventListener at the stream-button cleanup call. Restore the inverse of its constructor registration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "product-icon-conditional-breaks",
+          "reason": "Both conditional switch exits are at the end of previewImage; returning skips exactly the remaining case body without breaking a nonexistent Haxe loop.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "chest-glyph-function-scope",
+          "reason": "AS3's block-local glyph declaration is function-scoped and reused in the later loop; hoist without changing its assignment.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "chest-glyph-preserve-assignment",
+          "reason": "Companion to the function-scope declaration hoist; keep the original lookup at its original execution site.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "illumina-innermost-loop-label",
+          "reason": "This continue targets the immediately enclosing for loop, even inside the switch; the AS3 label is redundant and ax3 cannot parse it.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "window-diagnostics-platform-logger",
+          "reason": "Window error diagnostics must use the existing HTML5 Logger adapter instead of pulling in the AS3 Habbo application root just for trackLoginStep.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-predicate-filter",
+          "reason": "the one E4X predicate in core is normalized to an explicit compatibility method. The clean-client source remains untouched; ax3 and Haxe have no native `.(@attribute == value)` syntax",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-cdata-literal",
+          "reason": "ax3 cannot lex XML literals. Preserve the complete script/CDATA bytes in a quoted `new XML(...)` value; the transformation JSON-escapes the capture",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "item-grid-try-finally",
+          "reason": "Haxe has no finally. These measured single-cleanup sites contain no return/break/continue, so duplicating cleanup on normal and exceptional exits is semantics-preserving and count-guarded",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-asset-library",
+          "reason": "AS3 `var` is function-scoped but Haxe `var` is block-scoped. Normalize the one load-bearing core site by declaring it before the loop and assigning inside",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-implicit-object-super",
+          "reason": "AS3 permits `super()` in a class with no explicit base, meaning Object. Haxe has no callable implicit Object constructor, so those calls must be omitted; classes with an explicit `extends` clause are deliberately excluded",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-backspace",
+          "reason": "AS3 \\b has no Haxe spelling; \\x08 is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-formfeed",
+          "reason": "AS3 \\f has no Haxe spelling; \\x0C is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "escape-vertical-tab",
+          "reason": "AS3 \\v has no Haxe spelling; \\x0B is the same character",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "json-switch-case-terminal",
+          "reason": "ax3 requires each switch case to end in a terminal expression. `parseError` always throws, so the trailing return is unreachable and changes no behaviour",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowstorm-for-index-redeclaration",
+          "reason": "AS3 `var` is function-scoped, so a later `for (index = 0; ...)` reuses a counter declared by an earlier loop in the same function. Haxe scopes per block, so the bare reuse is an unknown identifier. Each Haxe loop gets its own scope, so re-declaring is equivalent",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "mapstuffdata-proxy-array-access",
+          "reason": "AS3 `Map` extends flash.utils.Proxy, so `map[key]` routes through its getProperty. SkyHaxe's Map is a documented seam that exposes those reads as getValue/setValue instead, and ax3 emits the array access verbatim -- which compiles to a plain JS property read and always yields null. Scoped to MapStuffData because IntArrayStuffData and StringArrayStuffData index a real Array with the same field name, and rewriting those would be wrong",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "charcodeat-default-index",
+          "reason": "AS3 String.charCodeAt() defaults its index to 0; Haxe's requires one, so the converted call is a compile error. Making the implicit 0 explicit preserves the AS3 semantics exactly",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "array-indexof-int-cast",
+          "reason": "ax3 types an untyped Array's `indexOf` as Dynamic, so adding it to an int is a 'Dynamic + operation'. AS3 `Array.indexOf` returns int; making that explicit preserves the original type rather than changing behaviour",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-elements-child-collision",
+          "reason": "the child element is called `elements`, colliding with XML's elements() method",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-credit-attribute-after-list-index",
+          "reason": "`list[0].@value` -- the index erases the XML type the attribute read needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-attribute-after-list-index",
+          "reason": "`list[0].@frames` -- the index erases the XML type the attribute read needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "canvas-alpha-mask-logical-and",
+          "reason": "restore the bitwise AND the ARGB composition needs",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-literal-interpolated",
+          "reason": "E4X literals whose attribute values are {expressions}; ax3 can lex neither the literal nor the interpolation",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "habbomain-config-e4x-literal",
+          "reason": "HabboMain's nested startup config is one of only three E4X literals in the source corpus with expression-valued attributes. Express the same XML document as an AS3 XML constructor so ax3 can parse the executable owner.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-xml-literal",
+          "reason": "the avatar package's hardcoded XML fallbacks; ax3 has no E4X literal syntax",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-const-string",
+          "reason": "same missing terminator, on a field rather than a local: GeometryType's last constant has no semicolon, so the closing brace of the class parses as part of the declaration. Restricted to string-literal initializers, where nothing can be continued onto the next line",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-child-after-list-index",
+          "reason": "ax3 loses E4X typing after XMLList[0], so the following `.part` is emitted as a Haxe field instead of the equivalent child query. Spell the child call explicitly in the staged copy; the authoritative AS3 remains untouched",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-numeric-attribute-comparison",
+          "reason": "AS3 applies ToNumber when an XML attribute is compared with a number. ax3 types attribute access as String for assignment compatibility; make this one numeric comparison explicit in the staged source",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "guild-customized-click-fallthrough",
+          "reason": "case CLICK falls into default, so a click also runs the base mouseEvent",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-branding-use-fallthrough",
+          "reason": "InfoStandFurniView's save-branding case falls through to use when the user is not staff. Haxe has no switch fall-through, so make the two outcomes explicit while retaining the shared terminal break.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "textcontroller-textformat-margins",
+          "reason": "Flash TextFormat exposes nullable Object-valued margins. This arithmetic site relies on AS3 int(null)==0; make those coercions explicit so the generated Haxe retains the same numeric calculation.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "htmltext-drop-air-allowed-domains",
+          "reason": "TextField.allowedDomains is an AIR application-sandbox extension and has no HTML5 equivalent. Browser image access is governed by CORS, so omit this guarded AIR-only assignment from generated Haxe.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-object-removed-conditional-breaks",
+          "reason": "AS3 uses conditional break statements to select the one visible infostand view before leaving the switch. Haxe switches do not accept break; an if/else-if chain preserves that single-view choice.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "infostand-report-conditional-breaks",
+          "reason": "AS3's two guard breaks leave the REPORT switch case. Express the same guard positively because Haxe switch cases terminate without break.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-suppression-braceless-delete",
+          "reason": "ax3 mis-parses a braceless else whose body is `delete`, silently dropping the file",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "isometric-thumbnail-name-mixed-array",
+          "reason": "join() over a mixed array literal: Haxe cannot type it, concatenation is the same string",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "tile-object-map-mixed-ternary",
+          "reason": "int/String ternary in a debug dump; Haxe needs both branches to agree",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-3d-rotation",
+          "reason": "rotationX is Flash 3D; OpenFL has no such property and nothing to preserve",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "placeholder-avatar-super-append-action",
+          "reason": "Function.apply on a super method; Haxe has no closure for one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "placeholder-avatar-super-add-action-data",
+          "reason": "Function.apply on a super method; Haxe has no closure for one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-posture-lay-fallthrough",
+          "reason": "POSTURE_LAY falls through WALK (sets _actionsSorted) and STAND (sets it again) into the addActionData tail. Give it that tail directly",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-posture-sorted-fallthrough",
+          "reason": "and WALK and STAND each fall through to the same tail",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vector3d-static-instance-collision",
+          "reason": "Haxe has one namespace per type; AS3 has two, and Vector3D uses both for the same three names",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "fzip-drop-player-feature-detection",
+          "reason": "FZip decides at class-init whether the running Flash Player's ByteArray has uncompress(algorithm) and inflate(), by reading describeType() output with an E4X predicate. Both are always present on the port's ByteArray, so the answer is a constant -- and the predicate is E4X ax3 cannot parse. FZip itself is unreachable from SkyHaxe, which reads SWFs with its own SwfFile, but it is in the closure because AvatarAssetDownloadLibrary reaches LibraryLoader",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "avatar-effect-fallthrough",
+          "reason": "the same pattern one switch out: EFFECT conditionally sets _actionsSorted and then falls through DANCE, TALK and the expressions into their shared addActionData tail. Note this tail takes both arguments, unlike the posture one",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-declaration",
+          "reason": "decompiled output leaves some declarations unterminated; ax3 has no automatic-semicolon-insertion, so `var content:ByteArray` fails to parse",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "asi-terminate-call",
+          "reason": "same artefact for a call statement; only rewritten when the next line clearly starts a new statement, so a wrapped argument list is never joined",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-vec-imports",
+          "reason": "Haxe supplies Vector; the AS3 `__AS3__.vec` imports do not resolve",
+          "sites": 3,
+          "files": 2
+        },
+        {
+          "id": "morphshape-to-shape",
+          "reason": "OpenFL has no MorphShape display class on HTML5. Window GraphicContext only constructs it as a drawable shape container, so the supported Shape class provides the same surface used by this client.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "map-proxy-qname-normalization",
+          "reason": "QName only reaches these branches as Flash Proxy's property token. Generated Haxe has no Proxy dispatch and passes map keys explicitly, so remove the two unreachable QName normalization blocks rather than inventing a QName class.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-base",
+          "reason": "Flash Proxy has no OpenFL target class. The generated methods are made public by the companion proxy rule, so these collection wrappers can use their ordinary concrete methods without inheriting the Flash interception base.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-namespace",
+          "reason": "ax3 cannot parse `use namespace`. The Proxy members it scopes become public instead, which is what the publicise-proxy-overrides rule below does",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-flash-proxy-import",
+          "reason": "the namespace import is dead once the directive is gone",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "publicise-proxy-overrides",
+          "reason": "these members were flash_proxy-scoped; after dropping Flash's unavailable Proxy base they become ordinary public Haxe methods, not overrides",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-stray-import-expression",
+          "reason": "decompiler artefact: `import a.b.C; C;` leaves a bare expression statement after the import, which ax3 reads as a namespace access",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wrap-component-iife-open",
+          "reason": "two Component callbacks are immediately invoked function expressions nested inside another call. Haxe requires the function expression parenthesized",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wrap-component-iife-close",
+          "reason": "close the two explicit IIFE parentheses inserted by wrap-component-iife-open",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-library-loader-declare",
+          "reason": "LibraryLoader.throttle reuses an AS3 function-scoped loop variable in its second loop; declare it at function scope for Haxe",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-library-loader-assign",
+          "reason": "assignment half of hoist-function-scoped-library-loader-declare",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hoist-function-scoped-loader-queue",
+          "reason": "LibraryLoaderQueue.dispose reuses its first AS3 for-each variable in a second loop; make the function scope explicit for Haxe",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "declare-for-in-variable",
+          "reason": "decompiled `for (type in map)` drops the declaration AS3 requires; ax3 reads the loop variable as an undefined identifier. `for each` is left alone -- it has its own handling",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-stray-block-semicolon",
+          "reason": "decompiler artefact: an empty statement immediately after a block opener",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "error-super-message",
+          "reason": "AS3 permits inherited property access as `super.message`; Haxe only permits methods through super. `this.message` resolves the same inherited Error value",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "error-tostring-override",
+          "reason": "the SWC Error base owns toString although the decompiled client omitted the AS3 override modifier; Haxe requires it explicitly on the ASError boundary",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "furni-chooser-labelled-filter-loop",
+          "reason": "ax3 cannot parse the labelled for-each; an explicit match flag preserves continue-to-outer-loop behavior.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vimeo-graphics-with-block",
+          "reason": "Qualify the four Graphics calls explicitly; this is the exact AS3 with-block receiver and ax3 has no with statement.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-missing-import-semicolon",
+          "reason": "Restore two semicolons omitted by the decompiler so the original imports parse.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-open-club-center-semicolon",
+          "reason": "Terminate the call before a decompiler-retained comment that otherwise swallows the semicolon.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-hoist-tile-object-id",
+          "reason": "AS3 var declarations are function scoped; hoist the tile id so cleanup after the creation loop retains the same variable.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-e4x-explicit-children-node",
+          "reason": "Disambiguate an E4X child named children from the children() method before invoking descendants on that node.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "e4x-empty-xmllist-constructor",
+          "reason": "AS3 new XMLList() means an empty E4X list; express it as the existing XMLList coercion because XMLList is a builtin abstract, not an instantiable class in Haxe.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "friendbar-message-loop-label",
+          "reason": "The label names the immediately enclosing while loop; remove the redundant AS3 label while preserving continue behavior.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "drop-invalid-composer-unwatch",
+          "reason": "Remove a decompiler artefact: this final composer has no superclass and no caller for the impossible super.unwatch method.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-window-arrow-loop-branches",
+          "reason": "Brace both conditional for loops and retain the existing function-scoped row declaration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "variables-diff-declare-id",
+          "reason": "Restore the String declaration omitted from the for-each loop by the decompiler.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "battleball-arena-window-declare-object",
+          "reason": "Restore the decompiler-omitted declaration on the second object iteration.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "game-manager-urlvariables-dynamic-fields",
+          "reason": "URLVariables is a dynamic Flash property bag; use indexed property access so ax3 does not require nonexistent declared instance fields.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "wired-trading-hoist-grid-cell",
+          "reason": "AS3 var declarations are function scoped; hoist the cell used by both grid-clearing loops.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "moderation-textformat-right-margin-number",
+          "reason": "Flash TextFormat.rightMargin is dynamically nullable; explicit int coercion preserves AS3 numeric addition semantics for ax3.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "vector-remove-at-to-splice",
+          "reason": "AS3 Vector.removeAt(index) removes one element; OpenFL's compatible operation is splice(index, 1). No corpus call consumes the removed value.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "snowwar-human-tile-map-method-call",
+          "reason": "The decompiler emitted three property-style references to the tileMap() method in constructor diagnostics; invoke it so the code observes the returned Array as intended.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-zero-fill",
+          "reason": "Restore the array target lost by the decompiler in JSBN's divisor zero-fill loop; y.(...) is not valid AS3 and the canonical operation fills y.a.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-result-chunk-access",
+          "reason": "Restore JSBN's omitted backing-array qualifier; BigInteger is sealed and the decompiled r[i] assignment cannot represent the original chunk write.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "hurlant-bigint-restore-prime-chunk-access",
+          "reason": "Restore JSBN's omitted backing-array qualifier in the low-prime fast path; x[0] is invalid on the sealed BigInteger class.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-uri",
+          "reason": "AS3's Namespace value identifies E4X children by URI, while Haxe/JS has no namespace-qualified member syntax. Keep the URI as a String for the explicit XML compatibility operation used by the companion selector rule.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-attribute-selectors",
+          "reason": "Expose MediaRSSPlaylist's namespaced content attributes through the namespace-aware XML boundary. Selection remains URI-based and String() preserves the assignment coercion performed by Flash.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "media-rss-namespace-child-selector",
+          "reason": "Expose the namespaced media title through the same URI-aware XML boundary; String() retains E4X simple-content coercion.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-inherited-loader-data",
+          "reason": "AS3 permits an inherited property read through super, while Haxe reserves super for methods. TransformingLoader is reading URLLoader.data, so this.data is the equivalent inherited-property access.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-transform-command-value",
+          "reason": "Decompiler corruption repeated hasOwnProperty(command) in the true branch where RegExp expects the command string stored by the object.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "openvideoads-rtmp-subscribe-setter",
+          "reason": "Decompiler corruption self-assigned the backing field instead of the setter argument; restore the normal property assignment used by its sibling setter.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "apdev-stringutils-drop-self-assignment",
+          "reason": "Decompiler artefact: trim converts its already-String parameter with `k = String(k)`; ax3 correctly reduces that cast to `k`, after which Haxe rejects the resulting no-op self-assignment.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "single-write-map-qname-key",
+          "reason": "QName is only a Flash Proxy property-token possibility. The browser Map path passes explicit keys, so use that key directly instead of inventing QName.",
+          "sites": 0,
+          "files": 0
+        },
+        {
+          "id": "single-write-map-restore-override",
+          "reason": "The generic Proxy normalization publicises setProperty, but SingleWriteMap still extends the generated concrete Map and therefore remains an override.",
+          "sites": 0,
+          "files": 0
+        }
+      ],
+      "unpinned_rules": [],
+      "conversion": {
+        "exit_code": 0,
+        "seconds": 5.5,
+        "stdout_tail": [
+          "[0.066s][warning][exceptions] Class java.lang.Object in throws clause of method void ax3.Main.main() is not a subtype of class java.lang.Throwable",
+          "[0.067s][warning][exceptions] Class java.lang.Object in throws clause of method void ax3.Main.checkParseTree(java.lang.String, java.lang.String, java.lang.Object) is not a subtype of class java.lang.Throwable",
+          "parsing   0.11699986457824707",
+          "swcs      4.647000074386597",
+          "typing    0.07800006866455078",
+          "filters   0.3210000991821289",
+          "output    0.11399984359741211",
+          "-- TOTAL  5.293999910354614"
+        ],
+        "stderr_tail": [],
+        "stderr_head": []
+      }
+    }
+  ],
+  "deterministic": true,
+  "generated_tree_sha256": "5207f4879caec64cc081303693822e62d063262a0dc87e422abd9c03da276bd3",
+  "exceptions": {
+    "declared": 69,
+    "drifted": [],
+    "missing_source": [],
+    "missing_haxe": [],
+    "unlisted_haxe": [],
+    "stale_entries": [],
+    "unannotated": [],
+    "missing_contract": [],
+    "missing_api_check": []
+  },
+  "asset_inputs": {
+    "missing_manifest": false,
+    "missing": [],
+    "drifted": [],
+    "declared": 55
+  }
+}

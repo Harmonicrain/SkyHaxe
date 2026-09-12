@@ -12,10 +12,14 @@ import com.sulake.core.utils.xml.XML;
  * pulling in a zip decoder it will never run: SkyHaxe reads SWFs with `SwfFile`.
  *
  * So the seam is drawn here. This interface keeps everything that reads a loaded library and drops
- * everything that fetches one; loading is the port's own concern and stays out of the AS3 shape.
- * `AssetLibrary` implements it.
+ * the SWF-library downloader. Individual text/image files retain the original loadAssetFromFile
+ * ticket/events API through a browser transport; that does not reintroduce LibraryLoader/FZip.
+ * `AssetLibrary` implements it. Persistent AIR cache hints remain explicitly unsupported.
  */
 interface IAssetLibrary {
+    /** Individual files use a browser loader; this does not restore LibraryLoader/SWF loading. */
+    public function loadAssetFromFile(name:String, request:openfl.net.URLRequest, type:String = null,
+        cacheKey:String = null, cacheRevision:Int = -1, priority:Int = -1):AssetLoaderStruct;
     public var url(get, never):Null<String>;
     public var name(get, never):Null<String>;
     public var isReady(get, never):Bool;

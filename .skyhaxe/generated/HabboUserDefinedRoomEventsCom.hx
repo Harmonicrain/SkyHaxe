@@ -1,0 +1,107 @@
+ 
+
+    import mx.core.SimpleApplication;
+    import com.sulake.bootstrap.HabboUserDefinedRoomEventsBootstrap;
+    import com.sulake.iid.IIDHabboUserDefinedRoomEvents;
+
+     class HabboUserDefinedRoomEventsCom extends SimpleApplication 
+    {
+        public static var icon_action_png:Class<Dynamic>;
+        public static var icon_condition_png:Class<Dynamic>;
+        public static var icon_trigger_png:Class<Dynamic>;
+        public static var move_0_png:Class<Dynamic>;
+        public static var move_2_png:Class<Dynamic>;
+        public static var move_4_png:Class<Dynamic>;
+        public static var move_6_png:Class<Dynamic>;
+        public static var move_diag_png:Class<Dynamic>;
+        public static var move_rnd_png:Class<Dynamic>;
+        public static var move_vrt_png:Class<Dynamic>;
+        public static var rotate_ccw_png:Class<Dynamic>;
+        public static var rotate_cw_png:Class<Dynamic>;
+        public static var slider_bg_png:Class<Dynamic>;
+        public static var slider_obj_png:Class<Dynamic>;
+        public static var wired_styles_volter_slider_bg:Class<Dynamic>;
+        public static var wired_styles_illumina_slider_obj:Class<Dynamic>;
+        public static var manifest:Class<Dynamic>;
+        public static var ude_main_xml:Class<Dynamic>;
+        public static var ude_help_xml:Class<Dynamic>;
+        public static var ude_slider_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_0_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_3_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_6_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_7_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_12_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_10_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_13_xml:Class<Dynamic>;
+        public static var ude_trigger_inputs_14_xml:Class<Dynamic>;
+        public static var ude_action_inputs_3_xml:Class<Dynamic>;
+        public static var ude_action_inputs_4_xml:Class<Dynamic>;
+        public static var ude_action_inputs_6_xml:Class<Dynamic>;
+        public static var ude_action_inputs_7_xml:Class<Dynamic>;
+        public static var ude_action_inputs_9_xml:Class<Dynamic>;
+        public static var ude_action_inputs_13_xml:Class<Dynamic>;
+        public static var ude_action_inputs_14_xml:Class<Dynamic>;
+        public static var ude_action_inputs_16_xml:Class<Dynamic>;
+        public static var ude_action_inputs_17_xml:Class<Dynamic>;
+        public static var ude_action_inputs_17_reward_xml:Class<Dynamic>;
+        public static var ude_action_inputs_19_xml:Class<Dynamic>;
+        public static var ude_action_inputs_20_xml:Class<Dynamic>;
+        public static var ude_action_inputs_21_xml:Class<Dynamic>;
+        public static var ude_action_inputs_22_xml:Class<Dynamic>;
+        public static var ude_action_inputs_23_xml:Class<Dynamic>;
+        public static var ude_action_inputs_24_xml:Class<Dynamic>;
+        public static var ude_action_inputs_25_xml:Class<Dynamic>;
+        public static var ude_action_inputs_26_xml:Class<Dynamic>;
+        public static var ude_action_inputs_27_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_0_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_3_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_4_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_5_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_6_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_7_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_9_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_11_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_12_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_18_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_24_xml:Class<Dynamic>;
+        public static var ude_condition_inputs_25_xml:Class<Dynamic>;
+        public static var container_view_xml:Class<Dynamic>;
+        public static var growing_container_view_xml:Class<Dynamic>;
+        public static var horizontal_list_view_xml:Class<Dynamic>;
+        public static var vertical_list_view_xml:Class<Dynamic>;
+        public static var radio_group_view_xml:Class<Dynamic>;
+        public static var vertical_scroll_list_view_xml:Class<Dynamic>;
+        public static var static_bitmap_view_xml:Class<Dynamic>;
+        public static var bitmap_wrapper_view_xml:Class<Dynamic>;
+        public static var border_view_xml:Class<Dynamic>;
+        public static var search_tree_dropdown_xml:Class<Dynamic>;
+        public static var wired_style_illumina_xml:Class<Dynamic>;
+        public static var wired_style_ubuntu_xml:Class<Dynamic>;
+        public static var wired_menu_view_xml:Class<Dynamic>;
+        public static var wired_menu_logs_overview_xml:Class<Dynamic>;
+        public static var wired_menu_variables_management_overview_xml:Class<Dynamic>;
+        public static var wired_menu_variables_management_detail_xml:Class<Dynamic>;
+        public static var wired_menu_error_info_view_xml:Class<Dynamic>;
+        public static var chest_generic_xml:Class<Dynamic>;
+        public static var coins_chest_contents_xml:Class<Dynamic>;
+        public static var furni_chest_contents_xml:Class<Dynamic>;
+        public static var chest_upgrade_xml:Class<Dynamic>;
+        public static var chest_wired_upgrade_xml:Class<Dynamic>;
+        public static var transaction_overview_xml:Class<Dynamic>;
+        public static var transaction_details_xml:Class<Dynamic>;
+        public static var table_view_xml:Class<Dynamic>;
+        public static var floor_editor_border_N:Class<Dynamic>;
+        public static var floor_editor_border_NE:Class<Dynamic>;
+        public static var floor_editor_border_E:Class<Dynamic>;
+        public static var floor_editor_border_SE:Class<Dynamic>;
+        public static var floor_editor_border_S:Class<Dynamic>;
+        public static var floor_editor_border_SW:Class<Dynamic>;
+        public static var floor_editor_border_W:Class<Dynamic>;
+        public static var floor_editor_border_NW:Class<Dynamic>;
+        public static var floor_editor_tile_base:Class<Dynamic>;
+        public static var floor_editor_tile_entry:Class<Dynamic>;
+        public static var requiredClasses:Array<ASAny> = [HabboUserDefinedRoomEventsBootstrap, IIDHabboUserDefinedRoomEvents];
+
+	public function new() { super(); }
+    }
+

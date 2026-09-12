@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "name": "SkyHaxe working v32 client with v33 original loading screen",
+  "authoritative_as3": {
+    "default_root": "C:/habbo/client/habbo-client-clean",
+    "commit": "9b265927b2779d0756cdf4821af2098cdfa6c27f"
+  },
+  "conversion_batches": [
+    {
+      "name": "v32-component-graph",
+      "closure": "evidence/v32_component_graph_boot_closure.json",
+      "closure_sha256": "ee4818b2cca7ac80b071d2931341676c11ac125dcf54f6066bfaef4acc15373d",
+      "source_files": 5328
+    },
+    {
+      "name": "v33-original-loading-screen",
+      "closure": "evidence/v33_loading_screen_closure.json",
+      "closure_sha256": "ed86668e9ba87da1172d091a78d973ea5892d77d0826ee857ef1ba036f6c814e",
+      "source_files": 57
+    }
+  ],
+  "tracked_inputs": [
+    {"path": "scripts/sync.py", "sha256": "7585ebd8f3b8d44158504733dcde705f254d42dfcc1104a9f9da3bc796cadeb2"},
+    {"path": "scripts/m2_rules.py", "sha256": "5bc709f551c05fb8c433592b5a91d0e10fd7acaeedf02d82c758af160846fcf3"},
+    {"path": "evidence/m2_exceptions.json", "sha256": "cb27526e8e27ada43848e196ad849a30daaa349cc599e41db6d757440c46af79"},
+    {"path": "evidence/m2_asset_inputs.json", "sha256": "60e54f7b202801ebd6a6ee7a40c8e8ad2f8ea179be930013f67b519949d2bd4c"},
+    {"path": "evidence/m2_patch_ax3.py", "sha256": "19f7d2d8eadb79854ed9f1536bb41eefe56b0808b0e98da1f1435db087a2ba1c"},
+    {"path": "evidence/m2_build_exceptions.py", "sha256": "4e407f6c9b374f21d409e10b24024e29686a47132568e98b69637fb904fa3a2a"},
+    {"path": "scripts/build-m2-converter.ps1", "sha256": "6a71826fb3e0d43930156559bd35eb8742950e785409b2d2e61eace27646cc7c"}
+  ],
+  "binary_inputs": [
+    {"path": ".toolchain/ax3/converter-m2.jar", "sha256": "db76c62d7243f2e947e7fdaeDE8c43856aff846e6464d9cd8b10bf801f34479b"},
+    {"path": "C:/flex/frameworks/libs/player/32.0/playerglobal.swc", "sha256": "b3045adb27c0ddbcb17e051f582e7dbd8ac5acc98664fd80b3586a401d0f975d"},
+    {"path": "C:/flex/frameworks/libs/air/airglobal.swc", "sha256": "6132254bee64aa96f3f451e3facf69d6c811bfa57282948774cacaa405a2c43c"},
+    {"path": "C:/flex/frameworks/libs/framework.swc", "sha256": "235a642dde9d7b44dd4c5fa0d2e0979c4e034d9fac8a10c7ac744e3682e516f3"},
+    {"path": "C:/flex/frameworks/libs/mx/mx.swc", "sha256": "21b3cc5c9d60d07a63222545df3bbca24a41f67494c6949cd3bd56cec5301c35"},
+    {"path": "C:/flex/frameworks/libs/air/airframework.swc", "sha256": "0bf99ab42683fa844ef0a7866611c52d9f0394d1e0c4d39e691f40685ccc1d32"},
+    {"path": ".toolchain/g1c/habbo-client.swc", "sha256": "e2734c6db2071c321d7d406053518c1ad77648cc846c06293e8feA1a4a2c28a9"}
+  ],
+  "post_generation_patch": {
+    "path": "reproducibility/v32/patches/generated-working.patch",
+    "sha256": "7f992575b00525db8264e1b81c312370815543da24b8d3fdd87b3ad50ab443c8",
+    "adaptations": [
+      "Cooperative HabboMain component preparation with readiness gates",
+      "Cooperative RoomContentLoader furniture registration",
+      "Infostand main-container visibility reset",
+      "WindowRenderer byte parity (terminal blank-line removal)"
+    ]
+  },
+  "platform_patch": {
+    "path": "reproducibility/v32/patches/platform-working.patch",
+    "sha256": "eef5ba15689b82bdc08426a2cbfcd90ba8f07d6fd75ec9ae9aec5ff036f49963",
+    "generated_bases": [
+      {"path": "com/sulake/core/assets/loaders/BitmapFileLoader.hx", "sha256": "44cb8921e4fdc728b7cb8a8178f63c42cf5b89cc072fa32a7e6936a247a9e0a6"},
+      {"path": "com/sulake/core/window/services/WindowMouseOperator.hx", "sha256": "ba00a9e10f99dbaf16b0ef1b3df3c8be68d0beb1d669e63d9380f08862428751"},
+      {"path": "com/sulake/core/window/utils/MouseEventQueue.hx", "sha256": "23a3d7a1591f4ead0d89f20cd70b87a66fbf3da4e189ca74da198dc93690d1bf"}
+    ],
+    "openfl_bases": [
+      {"path": "openfl/display/_internal/CanvasTextField.hx", "sha256": "4cabda18c92f323fa71b189addf482ec49b84e7de68af9f733ba1832048cf5a3"},
+      {"path": "openfl/text/TextField.hx", "sha256": "99942a9340f005ee8fc7c4be18cdc4117bd0434fca356c0313aed13f07d23687"},
+      {"path": "openfl/text/_internal/TextEngine.hx", "sha256": "2327d18d73fcbd5c1f678864b211eb8dd90351d734bc5d98d55f4475fac65af4"},
+      {"path": "openfl/ui/Mouse.hx", "sha256": "adce2e45b56dea1e399f49ac2cf5caa1ddea29c760624c3853012015f8d75324"}
+    ],
+    "new_adapters": [
+      "openfl/ui/MouseCursorData.hx",
+      "skyhaxe/assets/EmbeddedFontCatalog.hx"
+    ],
+    "adaptations": [
+      "Browser-safe bitmap loading and CORS fallback behavior",
+      "Window mouse routing and queued-event parity",
+      "Joint source/destination bitmap clipping",
+      "Cursor data and browser cursor support",
+      "Truffle-backed embedded font discovery and OpenFL text integration"
+    ]
+  },
+  "compatibility_source": ".toolchain/ax3/compat",
+  "baseline_manifest": "C:/Users/John/Documents/SkyHaxe-Baselines/v32-working-20260911T134136/metadata/working-implementation-tree.json",
+  "expected_trees": {
+    "generated": {"file_count": 5387, "total_bytes": 21484216, "aggregate_sha256": "71c9579339b550dcc8e7ed3a58b6377bcce9dd0a369ef2b61020f8cc9a59b265"},
+    "platform": {"file_count": 9, "total_bytes": 227749, "aggregate_sha256": "1a9981ef3009f9a90dda24b609c3029185b1873408ea431f3891b345835fc2c5"},
+    "compat": {"file_count": 15, "total_bytes": 68950, "aggregate_sha256": "998ee7f375e35003c923fbecc0d213e48b6e2cca92f8eaf6d9fbe535131c7c6e"}
+  }
+}

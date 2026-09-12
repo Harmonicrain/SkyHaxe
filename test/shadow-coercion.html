@@ -1,0 +1,14 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>SkyHaxe generated shadow regression</title>
+<body>RUNNING</body>
+<script>
+window.onerror = function(message) { document.body.textContent = "FAIL: " + message; };
+const originalLog = console.log;
+console.log = function(...args) {
+  originalLog.apply(console, args);
+  if (args.join(" ").includes("V7_SHADOW_COERCION_PASS"))
+    document.body.textContent = args.join(" ");
+};
+</script>
+<script src="../.toolchain/v7-shadow/test.js"></script>

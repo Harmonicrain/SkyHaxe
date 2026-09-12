@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "fixture": "build/tests/v22-embedded/html5/bin/index.html",
+  "browser_exit": 0,
+  "body": "V22_EMBEDDED_PASS\n\t\n\t",
+  "error": null,
+  "http_errors": [],
+  "browser_stderr_tail": []
+}

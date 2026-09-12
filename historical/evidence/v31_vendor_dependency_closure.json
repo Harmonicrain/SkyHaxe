@@ -1,0 +1,28 @@
+{
+  "gate": "V31-vendor-dependency-converter-canary",
+  "closure": [
+    "com/hurlant/crypto/hash/IHash.as",
+    "com/hurlant/crypto/hash/MD5.as",
+    "com/hurlant/crypto/prng/ARC4.as",
+    "com/hurlant/crypto/prng/IPRNG.as",
+    "com/hurlant/crypto/prng/Random.as",
+    "com/hurlant/crypto/symmetric/ICipher.as",
+    "com/hurlant/crypto/symmetric/IStreamCipher.as",
+    "com/hurlant/crypto/tls/TLSError.as",
+    "com/hurlant/math/BarrettReduction.as",
+    "com/hurlant/math/BigInteger.as",
+    "com/hurlant/math/ClassicReduction.as",
+    "com/hurlant/math/IReduction.as",
+    "com/hurlant/math/MontgomeryReduction.as",
+    "com/hurlant/math/NullReduction.as",
+    "com/hurlant/util/Hex.as",
+    "com/hurlant/util/Memory.as",
+    "deng/fzip/FZip.as",
+    "deng/fzip/FZipFile.as",
+    "deng/fzip/_Str_661.as",
+    "deng/fzip/_Str_897.as",
+    "deng/utils/ChecksumUtil.as"
+  ],
+  "context": [],
+  "note": "Fast deterministic converter canary for original crypto and ZIP types required by the full generated graph. Runtime wiring still selects browser platform boundaries where appropriate."
+}

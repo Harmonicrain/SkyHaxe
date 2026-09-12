@@ -139,8 +139,29 @@ class SkyRoomContentLoader implements IRoomContentLoader {
      * RoomManager passes its own event dispatcher, because that is what drives the
      * placeholder-to-real swap.
      */
+    /**
+     * Timing probe for the ~1.1s stall a furni interaction provokes.
+     *
+     * The stall sits inside `_context.update()` and involves no network, so the suspicion is the
+     * engine's own deferred content swap: `RoomManager.update` drains `processLoadedContentTypes`,
+     * and `updateObjectContents` then rebuilds every object of that type across every room. That
+     * is converted code and cannot be instrumented directly, but it is driven entirely by the
+     * RCLE_SUCCESS this class dispatches -- so timestamping the dispatch places the trigger
+     * against the blocking task, and the gap between the two says whether the engine picked it up
+     * on the very next tick.
+     *
+     * Remove with the investigation.
+     */
+    static inline var TRACE = true;
+
+    static inline function trace(message:String):Void {
+        if (TRACE) Browser.console.info("SKYHAXE_CONTENT_TRACE "
+            + Std.string(Math.round(Browser.window.performance.now())) + " " + message);
+    }
+
     public function loadObjectContent(type:String, dispatcher:IEventDispatcher):Bool {
         if (type == null || _content.exists(type) || _loading.exists(type)) return false;
+        trace('loadObjectContent $type');
         _loading.set(type, true);
         var placeHolder = PLACE_HOLDER_LIBRARIES.exists(type);
         var publicRoom = StringTools.startsWith(type, "hh_room_");
@@ -180,8 +201,10 @@ class SkyRoomContentLoader implements IRoomContentLoader {
                     if (StringTools.startsWith(type, "hh_room_") && type == library)
                         registerPublicRoomChildren(library, file, assetLibrary);
                     _loading.remove(type);
+                    trace('dispatch RCLE_SUCCESS $type');
                     dispatcher.dispatchEvent(
                         new RoomContentLoadedEvent(RoomContentLoadedEvent.RCLE_SUCCESS, type));
+                    trace('returned from RCLE_SUCCESS $type');
                 } catch (error:Dynamic) {
                     Browser.console.warn('SKYHAXE_CONTENT_FAILED $type: ' + Std.string(error));
                     fail(type, dispatcher);

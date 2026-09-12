@@ -4,6 +4,8 @@ import com.sulake.core.runtime.IDisposable;
 import com.sulake.core.utils.ClassUtils;
 import com.sulake.core.utils.xml.XML;
 import haxe.ds.StringMap;
+import com.sulake.core.assets.loaders.Html5AssetLoader;
+import com.sulake.core.assets.loaders.AssetLoaderEvent;
 
 typedef AssetContentResolver = String -> Dynamic;
 
@@ -37,6 +39,7 @@ class AssetLibrary implements IDisposable implements IAssetLibrary {
     private var _assetNames:Null<Array<String>>;
     private var _localTypesByMime:Null<StringMap<AssetTypeDeclaration>>;
     private var _localTypes:Null<Array<AssetTypeDeclaration>>;
+    private final _fileLoads = new StringMap<AssetLoaderStruct>();
 
     public function new(name:String, ?manifest:XML) {
         ensureSharedTypes();
@@ -59,6 +62,17 @@ class AssetLibrary implements IDisposable implements IAssetLibrary {
         addSharedType(new AssetTypeDeclaration("text/xml", XmlAsset, null, "xml"));
         addSharedType(new AssetTypeDeclaration("text/html", XmlAsset, null, "htm", "html"));
         addSharedType(new AssetTypeDeclaration("text/plain", TextAsset, null, "txt"));
+        addSharedType(new AssetTypeDeclaration("image/png", BitmapDataAsset, null, "png"));
+        addSharedType(new AssetTypeDeclaration("image/jpeg", BitmapDataAsset, null, "jpg", "jpeg"));
+        addSharedType(new AssetTypeDeclaration("image/gif", BitmapDataAsset, null, "gif"));
+        // The MIME the converted AssetLibrary declares for sound, and the one the component
+        // manifests use. Its absence was not a silent one: `loadManifestAsset` returns early when
+        // a mimeType has no declaration, so every sample in HabboSoundManagerFlash10Com registered
+        // as nothing, and the converted `playSound` -- which assigns `volume` on the looked-up
+        // asset with no null check, exactly as the AS3 does -- threw on every message send,
+        // respect, purchase and camera shutter, taking the rest of the window-context update pass
+        // with it.
+        addSharedType(new AssetTypeDeclaration("sound/mp3", SoundAsset, null, "mp3"));
     }
 
     private static function addSharedType(type:AssetTypeDeclaration):Void {
@@ -101,6 +115,47 @@ class AssetLibrary implements IDisposable implements IAssetLibrary {
 
     public function getAssetByName(name:String):Null<IAsset> {
         return assets().get(name);
+    }
+
+    public function loadAssetFromFile(name:String, request:openfl.net.URLRequest, type:String = null,
+        cacheKey:String = null, cacheRevision:Int = -1, priority:Int = -1):AssetLoaderStruct {
+        if (_disposed) throw new haxe.Exception("AssetLibrary is disposed");
+        if (hasAsset(name)) throw new haxe.Exception("Asset with name " + name + " already exists!");
+        if (cacheKey != null || cacheRevision != -1 || priority != -1)
+            throw new haxe.Exception("Persistent asset-cache hints are not supported by the browser file boundary");
+        var pending = _fileLoads.get(request.url);
+        if (pending != null && !pending.disposed && pending.assetName == name) return pending;
+        var declaration = type == null ? getAssetTypeDeclarationByFileName(request.url.split("?")[0].split("#")[0])
+            : getAssetTypeDeclarationByMimeType(type);
+        if (declaration == null) throw new haxe.Exception("Unknown asset type for " + request.url);
+        if (!StringTools.startsWith(declaration.mimeType, "image/") && declaration.mimeType != "text/plain"
+                && declaration.mimeType != "text/xml" && declaration.mimeType != "text/html")
+            throw new haxe.Exception("Unsupported browser file type: " + declaration.mimeType);
+        var loader = new Html5AssetLoader(declaration.mimeType);
+        var ticket = new AssetLoaderStruct(name, loader);
+        _fileLoads.set(request.url, ticket);
+        function forward(event:AssetLoaderEvent):Void {
+            if (_disposed || ticket.disposed) return;
+            var kind = event.type;
+            if (kind == AssetLoaderEvent.ASSETLOADEREVENTCOMPLETE) {
+                var asset:IAsset = Type.createInstance(declaration.assetClass, [declaration, request.url]);
+                try { asset.setUnknownContent(loader.content); setAsset(name, asset); }
+                catch (_:Dynamic) { asset.dispose(); kind = AssetLoaderEvent.ASSETLOADEREVENTERROR; }
+            }
+            // The original resource manager reads ticket.target and requires the asset already registered.
+            ticket.dispatchEvent(new AssetLoaderEvent(kind, event.status));
+            // AS3 keeps the ticket alive during callbacks, then removes/disposes it on terminal events.
+            if (kind == AssetLoaderEvent.ASSETLOADEREVENTCOMPLETE || kind == AssetLoaderEvent.ASSETLOADEREVENTERROR) {
+                if (_fileLoads.get(request.url) == ticket) _fileLoads.remove(request.url);
+                ticket.dispose();
+            }
+        }
+        for (kind in [AssetLoaderEvent.ASSETLOADEREVENTCOMPLETE, AssetLoaderEvent.ASSETLOADEREVENTERROR,
+            AssetLoaderEvent.ASSETLOADEREVENTPROGRESS, AssetLoaderEvent.ASSETLOADEREVENTSTATUS, AssetLoaderEvent.ASSETLOADEREVENTOPEN])
+            loader.addEventListener(kind, forward);
+        try { loader.load(request); }
+        catch (error:Dynamic) { _fileLoads.remove(request.url); ticket.dispose(); throw error; }
+        return ticket;
     }
 
     public function getAssetByIndex(index:Int):Null<IAsset> {
@@ -278,6 +333,8 @@ class AssetLibrary implements IDisposable implements IAssetLibrary {
     }
 
     public function unload():Void {
+        for (ticket in _fileLoads) ticket.dispose();
+        _fileLoads.clear();
         if (_assets == null) return;
         for (name in assetNames()) {
             var asset = assets().get(name);

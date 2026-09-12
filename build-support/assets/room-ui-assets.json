@@ -1,0 +1,3212 @@
+{
+  "manifest": {
+    "id": "room-ui/manifest.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_manifest.bin",
+    "sha256": "6054950f2619bdb86e3ddb6bb44dd78b00ae2977a85ac9dd2aa77ff9dbd8d9e0",
+    "image": false
+  },
+  "room_desktop_layout_xml": {
+    "id": "room-ui/room_desktop_layout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_desktop_layout_xml.bin",
+    "sha256": "6e5ae3945d3676abdff1ec80e74f334fdfc9eb793a2a61bdb3f477a4ef32ff9e",
+    "image": false
+  },
+  "room_view_container_xml": {
+    "id": "room-ui/room_view_container_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_view_container_xml.bin",
+    "sha256": "93986530e27bfd5abf1bd0ea3e813a2b74281bf1d0659e82f36a4a0eb3946cc6",
+    "image": false
+  },
+  "spectator_mode_xml": {
+    "id": "room-ui/spectator_mode_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_spectator_mode_xml.bin",
+    "sha256": "09e0476099f1c2609bee2a807769177c1b3716cddb2a3c5e6733626ce298a283",
+    "image": false
+  },
+  "habbiconselector_menu_xml": {
+    "id": "room-ui/habbiconselector_menu_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_habbiconselector_menu_xml.bin",
+    "sha256": "c732fbc131ef185c9a5bed132fb24ed19a5097faec7acbc5f41afe6ed6de0557",
+    "image": false
+  },
+  "spec_top_left_png": {
+    "id": "room-ui/spec_top_left_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_top_left_png.png",
+    "sha256": "a8b348e6cfad918abf7779eb1d38049363cc924611fecafa71db82e392db2fb0",
+    "image": true
+  },
+  "spec_top_middle_png": {
+    "id": "room-ui/spec_top_middle_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_top_middle_png.png",
+    "sha256": "85741a82c02049937f57397ea21febbc94ad30a25b3beba917ec860ce501895b",
+    "image": true
+  },
+  "spec_top_right_png": {
+    "id": "room-ui/spec_top_right_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_top_right_png.png",
+    "sha256": "3e649afb0bc0aa1a9fd492d7c090c1c2b93db5576bf2184ff2a3f233a5edf88d",
+    "image": true
+  },
+  "spec_middle_left_png": {
+    "id": "room-ui/spec_middle_left_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_middle_left_png.png",
+    "sha256": "836c6028331a46f0eee6ace6469e5697020d0d56bd893affbd90d67b2d479d0f",
+    "image": true
+  },
+  "spec_middle_right_png": {
+    "id": "room-ui/spec_middle_right_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_middle_right_png.png",
+    "sha256": "ebd7b6c1766cc645c41c2efdffff0208789743b148e53d662f208d29d37896c8",
+    "image": true
+  },
+  "spec_bottom_left_png": {
+    "id": "room-ui/spec_bottom_left_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_bottom_left_png.png",
+    "sha256": "dc3646212d3e489d9ce522c2cd49fa316a4d24f327b287e91d99a94d547f352b",
+    "image": true
+  },
+  "spec_bottom_middle_png": {
+    "id": "room-ui/spec_bottom_middle_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_bottom_middle_png.png",
+    "sha256": "7a40b46ca7ca32badbe14b36e0f2b47fad96106cb7642efb7c67fc88178c4c7e",
+    "image": true
+  },
+  "spec_bottom_right_png": {
+    "id": "room-ui/spec_bottom_right_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_spec_bottom_right_png.png",
+    "sha256": "cab0ae17b8c32624609b134dea9dc03b9e648c047a51653599f0f2d965288455",
+    "image": true
+  },
+  "chatinput_bubble_left": {
+    "id": "room-ui/chatinput_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chatinput_bubble_left.png",
+    "sha256": "8297da4986bc06f6c5eee71ef3139c608a640852fdc83832cd7c6cd4bd85baae",
+    "image": true
+  },
+  "chatinput_bubble_middle": {
+    "id": "room-ui/chatinput_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chatinput_bubble_middle.png",
+    "sha256": "68b5e1c489a58f300cd5d210eb030064f623a60bbdd8f0b04e5e5df4bf43adfb",
+    "image": true
+  },
+  "chatinput_bubble_right": {
+    "id": "room-ui/chatinput_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chatinput_bubble_right.png",
+    "sha256": "0955bfc50345b1731f95667d16b9d32f43e7e4fc81b51247f9a2eccefdd77dfc",
+    "image": true
+  },
+  "packagecard_icon_hc": {
+    "id": "room-ui/packagecard_icon_hc.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_packagecard_icon_hc.png",
+    "sha256": "0115e5ebd4b90c41b3e35e75f57670f313725418ce73a6d38943fae981012fda",
+    "image": true
+  },
+  "packagecard_icon_floor": {
+    "id": "room-ui/packagecard_icon_floor.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_packagecard_icon_floor.png",
+    "sha256": "3a14d75e7d5bafbe45c234e31494ab583a3cbeb8b8c88ae24a160feebab151c9",
+    "image": true
+  },
+  "packagecard_icon_landscape": {
+    "id": "room-ui/packagecard_icon_landscape.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_packagecard_icon_landscape.png",
+    "sha256": "3760564f15f185b48db74e406e9a137b7172bdd26072f7d6c0f55d7ee83cb4c1",
+    "image": true
+  },
+  "packagecard_icon_wallpaper": {
+    "id": "room-ui/packagecard_icon_wallpaper.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_packagecard_icon_wallpaper.png",
+    "sha256": "ce8c2afe2a6ff0b1f4475936c909aff5626eaf7f2d878aaa13e0802e3515fefc",
+    "image": true
+  },
+  "stickie_blanco": {
+    "id": "room-ui/stickie_blanco.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_blanco.png",
+    "sha256": "edb16f1553aebe448c581ea7a8609f5d91eab491d72c8b747dedc56d84fbc4c0",
+    "image": true
+  },
+  "stickie_close": {
+    "id": "room-ui/stickie_close.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_close.png",
+    "sha256": "662fd4f80a68e991b556a14ac5c482642bbbbfca348b1bbc7d515d2eccf2ec10",
+    "image": true
+  },
+  "stickie_remove": {
+    "id": "room-ui/stickie_remove.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_remove.png",
+    "sha256": "1e004bb144c8238333d24427d173f8dbc7abdd9f66baf71a88022642e4a66785",
+    "image": true
+  },
+  "stickie_vd": {
+    "id": "room-ui/stickie_vd.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_vd.png",
+    "sha256": "b74aa21b07449beb03ade52005a2a859fe2b687b7e9e2c3318389c75046ad487",
+    "image": true
+  },
+  "stickie_xmas": {
+    "id": "room-ui/stickie_xmas.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_xmas.png",
+    "sha256": "82b765dd603fde470529d442baf7ccd15e82d26942c76275b14c43773d4c989d",
+    "image": true
+  },
+  "stickie_dreams": {
+    "id": "room-ui/stickie_dreams.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_dreams.png",
+    "sha256": "de3dea54767a9cc973f26e7d60a50fc1e32e2224cf4e09753ffe87f3f916b30b",
+    "image": true
+  },
+  "stickie_juninas": {
+    "id": "room-ui/stickie_juninas.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_juninas.png",
+    "sha256": "273a0e192b99a816a3bc553892642704ab322627c7b39a86bcb6e963d8003f78",
+    "image": true
+  },
+  "stickie_shakesp": {
+    "id": "room-ui/stickie_shakesp.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_stickie_shakesp.png",
+    "sha256": "3aa042e0583691b84209ce8cef9e9051d9a1d8f285422dc5d899e548e1fc5293",
+    "image": true
+  },
+  "trophy_bg_bronze": {
+    "id": "room-ui/trophy_bg_bronze.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_trophy_bg_bronze.png",
+    "sha256": "a9f726d363ac5ba205000ae977ec79f5ac6015e48d96eb2bb54cd027c8830815",
+    "image": true
+  },
+  "trophy_bg_gold": {
+    "id": "room-ui/trophy_bg_gold.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_trophy_bg_gold.png",
+    "sha256": "278c9f5c0cdb92f1ce4bedfbc190a69e2c0db0ede099448d15f683a6e7e1ca08",
+    "image": true
+  },
+  "trophy_bg_silver": {
+    "id": "room-ui/trophy_bg_silver.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_trophy_bg_silver.png",
+    "sha256": "5c4bad66f21fe8468261c9a9c3df62a4d47aeeb51e8ea2587b3d3c258fd6b662",
+    "image": true
+  },
+  "dimmer_color_button": {
+    "id": "room-ui/dimmer_color_button.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_color_button.png",
+    "sha256": "4ee8e6fd9a9cf1a6be0121e28233a80df92f90abb4234b5bd87705f27a08e417",
+    "image": true
+  },
+  "dimmer_color_frame": {
+    "id": "room-ui/dimmer_color_frame.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_color_frame.png",
+    "sha256": "985c89855f5a1c7054e31be00c011524298e50e43036a38deacd4a2c32e54090",
+    "image": true
+  },
+  "dimmer_color_selected": {
+    "id": "room-ui/dimmer_color_selected.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_color_selected.png",
+    "sha256": "1b60841ebb70c9a7a2f5f3086146a21957957515ff76388a91bb2bebb9d92423",
+    "image": true
+  },
+  "dimmer_slider_base": {
+    "id": "room-ui/dimmer_slider_base.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_slider_base.png",
+    "sha256": "4009fe047da28cad5cb4cc53c75b281c67ee5cb114bdaf9d6b5b416499d09e30",
+    "image": true
+  },
+  "dimmer_slider_button": {
+    "id": "room-ui/dimmer_slider_button.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_slider_button.png",
+    "sha256": "4a0e10c70be22e380e15a32ac8f8b56b2e6e3206b04302dac0e2640d7778b38e",
+    "image": true
+  },
+  "dimmer_info": {
+    "id": "room-ui/dimmer_info.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dimmer_info.png",
+    "sha256": "1d51b2dfcad514df6558eed679271997ea4e186febe360e0a78bf8f09e362a22",
+    "image": true
+  },
+  "icon_home": {
+    "id": "room-ui/icon_home.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_home.png",
+    "sha256": "6fdd214338649f0e298c4ea90af626ea35d768ac5235c34dab391fbb4534f8ed",
+    "image": true
+  },
+  "badges_color": {
+    "id": "room-ui/badges_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_badges_color.png",
+    "sha256": "4acdaf342fe2fa22d7733ad9bef15f18ac9835b37274fa939b89fee711172f7b",
+    "image": true
+  },
+  "badges_white": {
+    "id": "room-ui/badges_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_badges_white.png",
+    "sha256": "2d569f0dbce803fe1c428c13948e7db3c462014409cedae103938763ea857ed5",
+    "image": true
+  },
+  "clothes_color": {
+    "id": "room-ui/clothes_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_clothes_color.png",
+    "sha256": "be963b9fe1c5362070cc74190d92dcf14fd0b80fc06794736c930d976b98edf3",
+    "image": true
+  },
+  "clothes_highlighter": {
+    "id": "room-ui/clothes_highlighter.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_clothes_highlighter.png",
+    "sha256": "d0e7dca2cb25d650029284c517372cf1f8b5843a4d2752881fd330c8bbbe96c3",
+    "image": true
+  },
+  "clothes_white": {
+    "id": "room-ui/clothes_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_clothes_white.png",
+    "sha256": "bfef764c98d9dd24db746399f9d94ce75dc6a584154d32f9d02252ec89da0617",
+    "image": true
+  },
+  "clothes_highlighter_blue": {
+    "id": "room-ui/clothes_highlighter_blue.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_clothes_highlighter_blue.png",
+    "sha256": "2120414079c93fb95e92dd9ed86e3e47fb3fa6553f61ecf52825f0dac8c608be",
+    "image": true
+  },
+  "dance_color": {
+    "id": "room-ui/dance_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dance_color.png",
+    "sha256": "cfd3889037657f162c2133b8aea7292818bc9c9b56c7af37eff02a8d8ce96832",
+    "image": true
+  },
+  "dance_white": {
+    "id": "room-ui/dance_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_dance_white.png",
+    "sha256": "0ac2bfad47a59648e00e077e5ac442e0867dc16d2180d9e91028903e888a09e4",
+    "image": true
+  },
+  "effects_color": {
+    "id": "room-ui/effects_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_effects_color.png",
+    "sha256": "8fdef3794c92f35b2b2d6ba658b7272328988aaad0cb85cef25b1cfa7065755e",
+    "image": true
+  },
+  "effects_white": {
+    "id": "room-ui/effects_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_effects_white.png",
+    "sha256": "50fbf4e384c16d58eb77ae8132c9843ab3e8e6dc5611dcadcbc8173aa6dcf29f",
+    "image": true
+  },
+  "gohome_color": {
+    "id": "room-ui/gohome_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_gohome_color.png",
+    "sha256": "7c43f80954e80f6938468f55bf5759474f54489add0164326fad0925b9b0f814",
+    "image": true
+  },
+  "gohome_white": {
+    "id": "room-ui/gohome_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_gohome_white.png",
+    "sha256": "a10b937b3884e19d3e83445b727f26a4a4cc23b898603d096afe1140703d9ca1",
+    "image": true
+  },
+  "compass_color": {
+    "id": "room-ui/compass_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_compass_color.png",
+    "sha256": "c288ec76ee4e2b166788065fe376359641383be2de06b90e614ea86b552ea034",
+    "image": true
+  },
+  "compass_white": {
+    "id": "room-ui/compass_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_compass_white.png",
+    "sha256": "090b5a123ab2de55dacaed21dfa03187f3e698dce67eb6d46635e50295e40663",
+    "image": true
+  },
+  "memenu_fx_pause": {
+    "id": "room-ui/memenu_fx_pause.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_memenu_fx_pause.png",
+    "sha256": "74ee398401d920af563be0a8f90aebfc9445f52e26474c57fcc427468bb98fdc",
+    "image": true
+  },
+  "memenu_fx_play": {
+    "id": "room-ui/memenu_fx_play.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_memenu_fx_play.png",
+    "sha256": "8130812c2155b362d54270d0dec6f2249cc26b2dc35d0b6fced60883b203a834",
+    "image": true
+  },
+  "wave_color": {
+    "id": "room-ui/wave_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_wave_color.png",
+    "sha256": "a666b5b3b2be8eb20b3a46a7fe8aea08e32dfc55816e29b33a9e39ae1e30df78",
+    "image": true
+  },
+  "wave_white": {
+    "id": "room-ui/wave_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_wave_white.png",
+    "sha256": "d99cd93d4d808febdf04cd81bf18306250c3edf146c36585acf01f388bb1918b",
+    "image": true
+  },
+  "settings_color": {
+    "id": "room-ui/settings_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_settings_color.png",
+    "sha256": "88367f069a21f65da6d7d8444e0eb3a6879d3625a07d38a854f376dd789b4f3c",
+    "image": true
+  },
+  "settings_white": {
+    "id": "room-ui/settings_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_settings_white.png",
+    "sha256": "8b9b8fe84f2bf5e992002ea52545f0b7fbfde01531fa9876b38c82ca08df5588",
+    "image": true
+  },
+  "sounds_off_color": {
+    "id": "room-ui/sounds_off_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sounds_off_color.png",
+    "sha256": "3c5f02d3e8d453fa8ef16f21bb1f24eab367bc7315c1e7b2c0b145b6f75285b9",
+    "image": true
+  },
+  "sounds_off_white": {
+    "id": "room-ui/sounds_off_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sounds_off_white.png",
+    "sha256": "9f5fe8115bda750434647de87155aec032b304df740e498205826cfcbaf68dcc",
+    "image": true
+  },
+  "sounds_on_color": {
+    "id": "room-ui/sounds_on_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sounds_on_color.png",
+    "sha256": "2fa6275c90b08816622bc5602dcd9e5142acf706861bf7902d3ea64f5fd18091",
+    "image": true
+  },
+  "sounds_on_white": {
+    "id": "room-ui/sounds_on_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sounds_on_white.png",
+    "sha256": "2ccf2528c5d97b26d06e564d3d441279708d7bd0ddb209801940897215469dfd",
+    "image": true
+  },
+  "achievements_color": {
+    "id": "room-ui/achievements_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_achievements_color.png",
+    "sha256": "9180142354be584de66fd26b8494827385909d056bf6d333e811116e47cef689",
+    "image": true
+  },
+  "achievements_white": {
+    "id": "room-ui/achievements_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_achievements_white.png",
+    "sha256": "ef708ac9cd6e28fd2d04895f10343a62b3f0dcca19db56067c8407c3ae823a99",
+    "image": true
+  },
+  "lighthouse_color": {
+    "id": "room-ui/lighthouse_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_lighthouse_color.png",
+    "sha256": "9027ab997fd83f3db1d8f16171b31721d25bc69d14f5e9ce922f8450e2b413d4",
+    "image": true
+  },
+  "lighthouse_white": {
+    "id": "room-ui/lighthouse_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_lighthouse_white.png",
+    "sha256": "1e291eccd7b945ee14cf7dbdc8e2a8c935b6d1d4f89872d6f6290a163459a26d",
+    "image": true
+  },
+  "memenu_settings_slider_base": {
+    "id": "room-ui/memenu_settings_slider_base.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_memenu_settings_slider_base.png",
+    "sha256": "61df5c032fb6f457ab18f900a8de16bd7eedf70f47c6e6ed0e2fcd79bc6ce663",
+    "image": true
+  },
+  "memenu_settings_slider_button": {
+    "id": "room-ui/memenu_settings_slider_button.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_memenu_settings_slider_button.png",
+    "sha256": "30da4227f2eec44decf0a941c813f34ab3585aec1c1fd3d461a022ab7af411df",
+    "image": true
+  },
+  "chat_grapbar_bg": {
+    "id": "room-ui/chat_grapbar_bg.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_bg.png",
+    "sha256": "cbaa0afc3bf0faf727156bfb5e5582fdba54def5610d1b12ab732b3e57081663",
+    "image": true
+  },
+  "chat_grapbar_grip": {
+    "id": "room-ui/chat_grapbar_grip.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_grip.png",
+    "sha256": "071605320427b7d96a754a0e396fc4278436c2f414fd89abaa65d42ba392ff73",
+    "image": true
+  },
+  "chat_grapbar_handle": {
+    "id": "room-ui/chat_grapbar_handle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_handle.png",
+    "sha256": "a2aaf45c875c2c55f3693ccc1572c913663a3d7243a7d45dfdbc405eab696ec0",
+    "image": true
+  },
+  "chat_grapbar_x": {
+    "id": "room-ui/chat_grapbar_x.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_x.png",
+    "sha256": "492a8d9da1b2aa7a946355957c4ba4721efecd7dc1e89b85181852c0fb56d7a1",
+    "image": true
+  },
+  "chat_grapbar_x_hi": {
+    "id": "room-ui/chat_grapbar_x_hi.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_x_hi.png",
+    "sha256": "c41940af534e6e8996e8eb50c5721f60c8eb12ea2141b890a514cde536e5a9fb",
+    "image": true
+  },
+  "chat_grapbar_x_pr": {
+    "id": "room-ui/chat_grapbar_x_pr.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_grapbar_x_pr.png",
+    "sha256": "5564a2ec51e6e0e9ff8bde1859c5f7d4d6e8de86be6cc953bb326896484fd825",
+    "image": true
+  },
+  "chat_history_bg": {
+    "id": "room-ui/chat_history_bg.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_chat_history_bg.png",
+    "sha256": "c4591a509c89ed0b9ecbd977c54bcb0e2c08553ebffbc5b4055a96f8017c2acb",
+    "image": true
+  },
+  "icon_petrespect": {
+    "id": "room-ui/icon_petrespect.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_petrespect.png",
+    "sha256": "d2bbff4a5fc5b4a41ce418ef60180c6f844fcf227479d5d87c70f97062ce2de0",
+    "image": true
+  },
+  "icon_pet_skill": {
+    "id": "room-ui/icon_pet_skill.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pet_skill.png",
+    "sha256": "2e3b271a09032a14e10e9118279cb8ad79d07954533aee96aea593e1fbe8b7db",
+    "image": true
+  },
+  "icon_pet_wellbeing": {
+    "id": "room-ui/icon_pet_wellbeing.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pet_wellbeing.png",
+    "sha256": "bcc86a51fbecca56512145e4eb66a25829fb136274a2ba5792551ba5b746bf88",
+    "image": true
+  },
+  "jb_icon_composer": {
+    "id": "room-ui/jb_icon_composer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_jb_icon_composer.png",
+    "sha256": "a99664a7d1bbde3c79a73dd3d19864e856c1a438cdd7197846ef4744080371e9",
+    "image": true
+  },
+  "jb_icon_disc": {
+    "id": "room-ui/jb_icon_disc.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_jb_icon_disc.png",
+    "sha256": "5664a474db5ec95ac7517267249dc2201e634a157a168b2dcb11e4b3500537a9",
+    "image": true
+  },
+  "small_pen": {
+    "id": "room-ui/small_pen.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_small_pen.png",
+    "sha256": "28f852a4b66633ae06f6a297b2b10720df72e2dd47cbe1a411a405d48aa60555",
+    "image": true
+  },
+  "credits_color": {
+    "id": "room-ui/credits_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_credits_color.png",
+    "sha256": "57ee80920cce04d653eee516b77159685831679211d9569cc6a5d7027315e0f7",
+    "image": true
+  },
+  "credits_white": {
+    "id": "room-ui/credits_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_credits_white.png",
+    "sha256": "f39c065abf515d86577f697ada54e62ae16f51275493d55ff010928a8c4b27f3",
+    "image": true
+  },
+  "minimail_color": {
+    "id": "room-ui/minimail_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_minimail_color.png",
+    "sha256": "398be124739bf8385de99b852f0db33872be0048aa72a7c6dae89ddfa19f0a84",
+    "image": true
+  },
+  "minimail_white": {
+    "id": "room-ui/minimail_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_minimail_white.png",
+    "sha256": "109a1a2789cefe47c45ab88f27975973744e1dc8a5c89fa831c819915729072e",
+    "image": true
+  },
+  "club_color": {
+    "id": "room-ui/club_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_club_color.png",
+    "sha256": "a5b6812333397c5765b7d1c01bd5bbe55e7b8e87301ffe43155c702fc6ce7a0b",
+    "image": true
+  },
+  "club_white": {
+    "id": "room-ui/club_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_club_white.png",
+    "sha256": "78c51a0181af15412de9cac7c1032867385f14c135baa3d317f8ecb96d03acdb",
+    "image": true
+  },
+  "vip_color": {
+    "id": "room-ui/vip_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_vip_color.png",
+    "sha256": "e2036e63f521a923aa04b6c690021b5b8c77e50c3903bf7410a492a44b0dedc8",
+    "image": true
+  },
+  "vip_white": {
+    "id": "room-ui/vip_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_vip_white.png",
+    "sha256": "f611d5e94aa50639b19d0b4c1f5d49f33ed0b282d77f20faa6f974c5149d14e8",
+    "image": true
+  },
+  "icon_pet_energy": {
+    "id": "room-ui/icon_pet_energy.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pet_energy.png",
+    "sha256": "ad5cb0737daedfc3d5c01b7ae93cf6a59b67eb22883527c5bf234bb15b19b939",
+    "image": true
+  },
+  "icon_pet_experience": {
+    "id": "room-ui/icon_pet_experience.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pet_experience.png",
+    "sha256": "d0d2f2739a1a63da41c772a6a43292bf562dc2bcf5a8e6fc2a17cee4efc870c7",
+    "image": true
+  },
+  "icon_pet_happiness": {
+    "id": "room-ui/icon_pet_happiness.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pet_happiness.png",
+    "sha256": "d946f7934ca2a3af7fffbb15be3ba63b056936f9e31bf0fc3ff40341cd4cced8",
+    "image": true
+  },
+  "edit_pen_icon": {
+    "id": "room-ui/edit_pen_icon.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_edit_pen_icon.png",
+    "sha256": "45991839794712348206b89c0f6ba5bc9d5900fdfd97b88b7b073ce7e764a3f9",
+    "image": true
+  },
+  "email_icon": {
+    "id": "room-ui/email_icon.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_email_icon.png",
+    "sha256": "99ad56d7c1e6a11c5c0a5a420aef2746e340143ec75579e4c9a14bd4133d3fb1",
+    "image": true
+  },
+  "ok_icon": {
+    "id": "room-ui/ok_icon.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_ok_icon.png",
+    "sha256": "1332d6a465a56e474cf4c1f62650aa7a69e5f895913cbd57bd0dba9680764010",
+    "image": true
+  },
+  "gift_background": {
+    "id": "room-ui/gift_background.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_gift_background.png",
+    "sha256": "82deaf76023d9926e2ac1b8e25b7fac865e3725bfad8837961552a0d5fc064eb",
+    "image": true
+  },
+  "giftbox_full": {
+    "id": "room-ui/giftbox_full.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_giftbox_full.png",
+    "sha256": "5d73c44bda210dfc7d358b7293da72a0ba5199e30a5d17894edeedbbaffeef4d",
+    "image": true
+  },
+  "progressbar_100": {
+    "id": "room-ui/progressbar_100.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_progressbar_100.png",
+    "sha256": "021e3a3376adccb14a6ca353a5ba8b97931ecaf5b862c33e6e3e39cc125838b1",
+    "image": true
+  },
+  "progressbar_50": {
+    "id": "room-ui/progressbar_50.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_progressbar_50.png",
+    "sha256": "28e3d0550361e9fa30ea6697d1a5619dba373ff2441314f77e76303ccd92fe7f",
+    "image": true
+  },
+  "yellow_highlight": {
+    "id": "room-ui/yellow_highlight.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_yellow_highlight.png",
+    "sha256": "11ffda6d0383266ac51bb93e01b950591edcfcab093eb148d90300709a8d4495",
+    "image": true
+  },
+  "icon_arrow": {
+    "id": "room-ui/icon_arrow.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_arrow.png",
+    "sha256": "0f9a62c65246f6472634b9d8ad85fabea36b75870ca796486fab546843622924",
+    "image": true
+  },
+  "icon_arrow_left": {
+    "id": "room-ui/icon_arrow_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_arrow_left.png",
+    "sha256": "1803a11830f42924f525e0944cd8ee1572925848963d278d5736dbdf4a86b26a",
+    "image": true
+  },
+  "icon_cd_big": {
+    "id": "room-ui/icon_cd_big.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_cd_big.png",
+    "sha256": "5fa30f4afac9e076b346e9d72f48fb7c3d877b7b4ce0d84524d1c209d30a3f5c",
+    "image": true
+  },
+  "icon_cd_small": {
+    "id": "room-ui/icon_cd_small.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_cd_small.png",
+    "sha256": "3088a18df5025aff79712c55c3c2c9275e928bc1e1cb3064271e4524de495e38",
+    "image": true
+  },
+  "icon_notes_small": {
+    "id": "room-ui/icon_notes_small.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_notes_small.png",
+    "sha256": "7aeaf52fcb56a6d134e54ca4a5caa0a6dc07559698250d27b9c7942cece43dd2",
+    "image": true
+  },
+  "icon_pause": {
+    "id": "room-ui/icon_pause.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pause.png",
+    "sha256": "2be6d3eeb2ff422b8397ab092f6f0376ac89cf6c1fa34a2fba1b2d8bc474e144",
+    "image": true
+  },
+  "icon_play": {
+    "id": "room-ui/icon_play.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_play.png",
+    "sha256": "b03f1583c283ffbe0f624a1d7ed864be608fc8a89f2463bba6c7cbc774846259",
+    "image": true
+  },
+  "icon_pause_large": {
+    "id": "room-ui/icon_pause_large.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_pause_large.png",
+    "sha256": "05d4a14f2da41326134f42a63a82490b930a12e5d3e4d0951e9c778325833c78",
+    "image": true
+  },
+  "icon_download": {
+    "id": "room-ui/icon_download.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_icon_download.png",
+    "sha256": "8b64a67231abc1371d2b23ac5241d16c19c67c7bdeaf2743a5f84e8061183489",
+    "image": true
+  },
+  "title_fader": {
+    "id": "room-ui/title_fader.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_title_fader.png",
+    "sha256": "8cffb93068e1efd8f0372383598b301b369063ff7e2da528652c2ec79e699768",
+    "image": true
+  },
+  "profile_color": {
+    "id": "room-ui/profile_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_profile_color.png",
+    "sha256": "48cbdaf62f51c8a007c990127abf20cfb3e40544beae8327bef748931bd82366",
+    "image": true
+  },
+  "profile_white": {
+    "id": "room-ui/profile_white.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_profile_white.png",
+    "sha256": "7103f13fd64825ad163e576474784cd66157293ffc35614faadda84a30c003b9",
+    "image": true
+  },
+  "chatinput_window": {
+    "id": "room-ui/chatinput_window.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatinput_window.bin",
+    "sha256": "09100b5c9b7dd3fa43c6f89108d946fb03243d5c736ac7f93e051387f0e8ed2a",
+    "image": false
+  },
+  "chatinput_window_new": {
+    "id": "room-ui/chatinput_window_new.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatinput_window_new.bin",
+    "sha256": "18c7e9d491643d0329df177a0d684216ac570ce6d4684a8671d9e6d4e7eec792",
+    "image": false
+  },
+  "chooser_item": {
+    "id": "room-ui/chooser_item.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chooser_item.bin",
+    "sha256": "45731a35d16fec002018f8f75f2407cc5c5bbfd6a03e16eef8a6eb9a5adde3d8",
+    "image": false
+  },
+  "chooser_view": {
+    "id": "room-ui/chooser_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chooser_view.bin",
+    "sha256": "f732e158845117529160ce363c3c52c4f4b254b1513acac7b061f32ef5d9a307",
+    "image": false
+  },
+  "table_view_xml": {
+    "id": "room-ui/table_view_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_table_view_xml.bin",
+    "sha256": "5a0004fe059971403c604a51927f009154cfd43f61f0ea6230a9092ca3935e85",
+    "image": false
+  },
+  "new_furni_chooser_view": {
+    "id": "room-ui/new_furni_chooser_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_new_furni_chooser_view.bin",
+    "sha256": "c7798297eaf8b4dc495cabb22a4e481001ddf14a442571af886831c7e4fcd9b5",
+    "image": false
+  },
+  "new_furni_chooser_item": {
+    "id": "room-ui/new_furni_chooser_item.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_new_furni_chooser_item.bin",
+    "sha256": "039b30852034fbf64cad5a48895f6be5a40be6133202f6732a32f46a4dc0dcd4",
+    "image": false
+  },
+  "new_user_chooser_view": {
+    "id": "room-ui/new_user_chooser_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_new_user_chooser_view.bin",
+    "sha256": "df72540a8176e1965bc88a23f399fcf9453e4231ccd012c8cf73294056d07c55",
+    "image": false
+  },
+  "doorbell": {
+    "id": "room-ui/doorbell.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_doorbell.bin",
+    "sha256": "4f2a78d29bd5a08d9a1a9856777b32b7d69d11fb3fe63524cb0f28cc48ecc386",
+    "image": false
+  },
+  "doorbell_list_entry": {
+    "id": "room-ui/doorbell_list_entry.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_doorbell_list_entry.bin",
+    "sha256": "5164e69b5f048d5fcbead4db0140d18bfaec252484506e04564cde586b2b111c",
+    "image": false
+  },
+  "credit_redeem": {
+    "id": "room-ui/credit_redeem.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_credit_redeem.bin",
+    "sha256": "210580ae72410d968d89d821bbe4cf60898b7f63d542556104e44714d9cc6ca6",
+    "image": false
+  },
+  "ecotronbox_card": {
+    "id": "room-ui/ecotronbox_card.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_ecotronbox_card.bin",
+    "sha256": "7a09535bd85d9eda81b2c61370cf3e33b18463b227488e985809004575b6fd22",
+    "image": false
+  },
+  "ecotronbox_card_furnimatic": {
+    "id": "room-ui/ecotronbox_card_furnimatic.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_ecotronbox_card_furnimatic.bin",
+    "sha256": "7abf26fa6c67c66250c6b391a4e7a923d9fcb7f710e2834763d90cef7f28cdbb",
+    "image": false
+  },
+  "mystery_box_open_dialog": {
+    "id": "room-ui/mystery_box_open_dialog.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mystery_box_open_dialog.bin",
+    "sha256": "698680dafc741fe657d2998a4b521b0230b117fad150d7a486b67907cf7e24fd",
+    "image": false
+  },
+  "mystery_box_reward": {
+    "id": "room-ui/mystery_box_reward.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mystery_box_reward.bin",
+    "sha256": "90bb959db585996893ca386db5c4b8e30337fd12a1dd056ba74b9f32e0da00db",
+    "image": false
+  },
+  "mystery_box_toolbar_extension": {
+    "id": "room-ui/mystery_box_toolbar_extension.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mystery_box_toolbar_extension.bin",
+    "sha256": "805817bd35b49f49fc2bb76172b733fb41f23279b2e889a659578e1febca6206",
+    "image": false
+  },
+  "petpackage": {
+    "id": "room-ui/petpackage.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_petpackage.bin",
+    "sha256": "e0f2b49d0821eb4fa54b24d9d25315e326d588850de5cd83aff9c3139652783c",
+    "image": false
+  },
+  "petpackage_new": {
+    "id": "room-ui/petpackage_new.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_petpackage_new.bin",
+    "sha256": "a0ae1926697a9fff0bdf622fcad1e0cc740824fd85c5a37580f97ddbfb3aa082",
+    "image": false
+  },
+  "placeholder": {
+    "id": "room-ui/placeholder.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_placeholder.bin",
+    "sha256": "dc6ca5787249cdb7dbc53607c1df468b0f58e7a5e355b0a27542c84364cf0d44",
+    "image": false
+  },
+  "packagecard": {
+    "id": "room-ui/packagecard.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_packagecard.bin",
+    "sha256": "6205922541415cbec6e4236cb91eeef0591b63d21682cc5f8242c27d00c0aa41",
+    "image": false
+  },
+  "packagecard_new": {
+    "id": "room-ui/packagecard_new.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_packagecard_new.bin",
+    "sha256": "9283e73118ad3d68a731b0151a13ae7e7bb17ac688ccd213214fcd42246b4450",
+    "image": false
+  },
+  "packagecard_new_opened": {
+    "id": "room-ui/packagecard_new_opened.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_packagecard_new_opened.bin",
+    "sha256": "0b220d7fbcac0efdbac37287bc22ecadc4499d003764f1f4740a4eb7741cfcfa",
+    "image": false
+  },
+  "gift_icon_background": {
+    "id": "room-ui/gift_icon_background.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_gift_icon_background.png",
+    "sha256": "cba07d7a82908ab4b7a8c64a75b9e501e25a04719a3e9edc147b343cb603881e",
+    "image": true
+  },
+  "giftcard_blank": {
+    "id": "room-ui/giftcard_blank.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_giftcard_blank.png",
+    "sha256": "a8350c5991451874eb79e214dea80e0b4ca6ad6df1994134dcd03e4c77c14641",
+    "image": true
+  },
+  "gift_incognito": {
+    "id": "room-ui/gift_incognito.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_gift_incognito.png",
+    "sha256": "75b559ed7248a17e11fb660f1e7359b600dc839a72e5efbace5981c5e146ad62",
+    "image": true
+  },
+  "stickie": {
+    "id": "room-ui/stickie.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_stickie.bin",
+    "sha256": "0540e81f35daeedddbc16cc961120ba1fe5e72cd0cb2776b28ee0460d2225370",
+    "image": false
+  },
+  "notification_teaser": {
+    "id": "room-ui/notification_teaser.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_teaser.bin",
+    "sha256": "4b13c4720fd1bedb8f342a60868a9298eb751012d95ffb58813d7f3d3c7b2094",
+    "image": false
+  },
+  "notification_gift_locked": {
+    "id": "room-ui/notification_gift_locked.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_gift_locked.bin",
+    "sha256": "8048179749191c0df99d9ca8ca1ac1f08f067dd1796a53a25438094e8d2bc678",
+    "image": false
+  },
+  "notification_gift_unlocked": {
+    "id": "room-ui/notification_gift_unlocked.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_gift_unlocked.bin",
+    "sha256": "2a3c82ecaf4ba4a623447c9ac1e09ccec2916a370198599c7779cb3914dc10ab",
+    "image": false
+  },
+  "notification_gift_unlocked_notify": {
+    "id": "room-ui/notification_gift_unlocked_notify.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_gift_unlocked_notify.bin",
+    "sha256": "a76ed24c641050d2aa171ebf970d4f2150d00ebac8d814ec0da9eef6332d517e",
+    "image": false
+  },
+  "notification_gift_received": {
+    "id": "room-ui/notification_gift_received.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_gift_received.bin",
+    "sha256": "41467ad325ef604f9acb100d0398b1accf5ddae7023d4f523e4b9f0032690705",
+    "image": false
+  },
+  "notification_gift_alert": {
+    "id": "room-ui/notification_gift_alert.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification_gift_alert.bin",
+    "sha256": "2eae01fb864e5fda1888c35fa1e05a3030dc30311eb133ea0d0ad167823969fd",
+    "image": false
+  },
+  "trophy": {
+    "id": "room-ui/trophy.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_trophy.bin",
+    "sha256": "db3116fbb823fd18d3bd9501011cd18727389927c8aa2e3343765f7e030410fa",
+    "image": false
+  },
+  "niko_trophy": {
+    "id": "room-ui/niko_trophy.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_niko_trophy.bin",
+    "sha256": "2dfa1adc75af3415193368690e0490b1901b9517a4fd075bea568edff09a7675",
+    "image": false
+  },
+  "dimmer_ui": {
+    "id": "room-ui/dimmer_ui.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_dimmer_ui.bin",
+    "sha256": "2f779415f128165156a6c5b4bc378ea9a31f877115aba83aaad9ad032689bc00",
+    "image": false
+  },
+  "dimmer_color_chooser_cell": {
+    "id": "room-ui/dimmer_color_chooser_cell.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_dimmer_color_chooser_cell.bin",
+    "sha256": "fe9140f5ba32c49bcc96e32cd84af385e639931d18c8f658d3f73bda996959d1",
+    "image": false
+  },
+  "badge_details": {
+    "id": "room-ui/badge_details.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_badge_details.bin",
+    "sha256": "7edce128a692898a5bcfb213eaa4aef7349f7f8c3f06240d88fa90c99e0f983a",
+    "image": false
+  },
+  "furni_view": {
+    "id": "room-ui/furni_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_furni_view.bin",
+    "sha256": "e4a70ef84dac31ab4468c582b51e41165645d6a5397f0842382e2cf20d8f79ac",
+    "image": false
+  },
+  "furni_view_branding_element": {
+    "id": "room-ui/furni_view_branding_element.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_furni_view_branding_element.bin",
+    "sha256": "543f2df3ea93326a7f9c7c884eddfad3ffec0049c8e150aa6356753d722152dd",
+    "image": false
+  },
+  "furni_view_branding_element_numeric": {
+    "id": "room-ui/furni_view_branding_element_numeric.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_furni_view_branding_element_numeric.bin",
+    "sha256": "d842bec3d4974c06914c58dcce7689af904502ba99a1162198f93ae11492a5a8",
+    "image": false
+  },
+  "user_tag": {
+    "id": "room-ui/user_tag.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_user_tag.bin",
+    "sha256": "ce033b6d7cdc515f1dc46effdb1b619d11755b4a6f1e8d0e7735ab3154d1e3f4",
+    "image": false
+  },
+  "user_tag_highlighted": {
+    "id": "room-ui/user_tag_highlighted.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_user_tag_highlighted.bin",
+    "sha256": "2464106dce65f433e29d8f70c2aa56586068ec06b825165e76cbf7fe75353c0a",
+    "image": false
+  },
+  "user_view": {
+    "id": "room-ui/user_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_user_view.bin",
+    "sha256": "60b1ea36a153535f89ce6b63e64c0833867e25c7ed9e735bccc19a79ee06f772",
+    "image": false
+  },
+  "bot_view": {
+    "id": "room-ui/bot_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_bot_view.bin",
+    "sha256": "5ae267efc68ebf83cc518836509949a544dda8aa540388b6919dbd1efb7e0e45",
+    "image": false
+  },
+  "rentable_bot_view": {
+    "id": "room-ui/rentable_bot_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_rentable_bot_view.bin",
+    "sha256": "34723859bd89fb088a7578319ddbcf3d90af6eedff9bc94ad24482945f0058f8",
+    "image": false
+  },
+  "badge_entity": {
+    "id": "room-ui/badge_entity.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_badge_entity.bin",
+    "sha256": "1703384e373a079fe78c729c11e654de7dbd43d4f32ad3844887b3174c33419e",
+    "image": false
+  },
+  "room_loading_bar": {
+    "id": "room-ui/room_loading_bar.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_loading_bar.bin",
+    "sha256": "7a2c201f59e4d0a906992ffc3e2803e9b800fe4b7f7a475bbf75a21343c36b99",
+    "image": false
+  },
+  "memenu": {
+    "id": "room-ui/memenu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu.bin",
+    "sha256": "f11e17548d9d1c36cf085bcc879e2bd940abb6526f9a171ed287d1ca8996c6a1",
+    "image": false
+  },
+  "memenu_dance": {
+    "id": "room-ui/memenu_dance.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_dance.bin",
+    "sha256": "50c4582d7ac064b150df4e756da09f02ac0a37ad4ed6d59a017fdbd91e772036",
+    "image": false
+  },
+  "memenu_dance_button": {
+    "id": "room-ui/memenu_dance_button.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_dance_button.bin",
+    "sha256": "6115ad39e925755606e8515d0f9ff62c82fad979e0990e49d4db647fa521dc68",
+    "image": false
+  },
+  "memenu_effect_inactive": {
+    "id": "room-ui/memenu_effect_inactive.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_effect_inactive.bin",
+    "sha256": "7fb81d6cfcbeb131e75de95b75daf4d47f5de1a26e8f5b20d54c83c3941b8d19",
+    "image": false
+  },
+  "memenu_effect_selected": {
+    "id": "room-ui/memenu_effect_selected.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_effect_selected.bin",
+    "sha256": "e13e3b03a64de31ce5e277ae7b23ba4894515f2f2bf37467c70596dcc1b25c85",
+    "image": false
+  },
+  "memenu_effect_unselected": {
+    "id": "room-ui/memenu_effect_unselected.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_effect_unselected.bin",
+    "sha256": "d821e1a6519a3085dd3db1d6a96af031f4f36cc706fb33902b04651dd3d49544",
+    "image": false
+  },
+  "memenu_effects": {
+    "id": "room-ui/memenu_effects.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_effects.bin",
+    "sha256": "45e163ed399407d22218088e4a98cc771b2ea87ffa3b3080f14c776346702fc4",
+    "image": false
+  },
+  "memenu_main": {
+    "id": "room-ui/memenu_main.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_main.bin",
+    "sha256": "79b36b42e805c52a8a0148b7ffab1eff4d46c4d7877e6bdb931e27f75028085f",
+    "image": false
+  },
+  "memenu_main_simple": {
+    "id": "room-ui/memenu_main_simple.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_main_simple.bin",
+    "sha256": "ebd025b344b206335603381bffbf51580d0fe34a859ad21b4b59464bd236b0ed",
+    "image": false
+  },
+  "memenu_settings": {
+    "id": "room-ui/memenu_settings.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_settings.bin",
+    "sha256": "31a0e79d9aa30de290f4552f8ba2ab9e05136e4bd9b89a614320e51f23a0fb91",
+    "image": false
+  },
+  "memenu_chat_settings": {
+    "id": "room-ui/memenu_chat_settings.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_chat_settings.bin",
+    "sha256": "81c21b21d01302a21fdc15803d1e329c616ddf99998756798503866b444fa0f9",
+    "image": false
+  },
+  "memenu_settings_menu": {
+    "id": "room-ui/memenu_settings_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_memenu_settings_menu.bin",
+    "sha256": "212f9f82ad49478571483bdde0f3d4db2445f87fa95708009ff31831f8a12a2b",
+    "image": false
+  },
+  "notification": {
+    "id": "room-ui/notification.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_notification.bin",
+    "sha256": "2eaf6c564b2e1bdc364ba61b2bb89c5dcb398de034e74f7605fbcc1d575ed24d",
+    "image": false
+  },
+  "chat_history_pulldown": {
+    "id": "room-ui/chat_history_pulldown.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chat_history_pulldown.bin",
+    "sha256": "1ec696d5e6f5641d0cfb7fe8e4b27f485c23ff8adef8cf443b565cab48996516",
+    "image": false
+  },
+  "room_queue": {
+    "id": "room-ui/room_queue.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_queue.bin",
+    "sha256": "ed6fffb4487d39a51a4c715e440e19afed42ed33625a90b331d92a7e0bb1a1d4",
+    "image": false
+  },
+  "poll_offer": {
+    "id": "room-ui/poll_offer.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_offer.bin",
+    "sha256": "9d360988268f4dccf3ef6b3cedb6cf2a67adac916c38a409f936402340c9ce15",
+    "image": false
+  },
+  "poll_question": {
+    "id": "room-ui/poll_question.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_question.bin",
+    "sha256": "485a6063403204a7f4a83e5e5c2b1e16d89cbd07b736d3591a9bcd50659b4563",
+    "image": false
+  },
+  "poll_answer_text_input": {
+    "id": "room-ui/poll_answer_text_input.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_answer_text_input.bin",
+    "sha256": "759a20d0ee0c0738adb55c304080a0aac82ddcfd89b2e7e6f7cae8c72c355fe8",
+    "image": false
+  },
+  "poll_answer_checkbox_input": {
+    "id": "room-ui/poll_answer_checkbox_input.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_answer_checkbox_input.bin",
+    "sha256": "f2a2918300e31bbb7fbf27555b8651f57a052cdc027995e7c201999d0f22a007",
+    "image": false
+  },
+  "poll_answer_radiobutton_input": {
+    "id": "room-ui/poll_answer_radiobutton_input.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_answer_radiobutton_input.bin",
+    "sha256": "47284f8340438af06f4cb5ce71b70d8e7f8f8b70eef99fdc7d599692d769d428",
+    "image": false
+  },
+  "poll_cancel_confirm": {
+    "id": "room-ui/poll_cancel_confirm.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_poll_cancel_confirm.bin",
+    "sha256": "3011c57f4fc9f81ce8ee617ffb221f67e3a2d98c19575a879ba6e5b7934dabcc",
+    "image": false
+  },
+  "pet_commands": {
+    "id": "room-ui/pet_commands.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_pet_commands.bin",
+    "sha256": "74d7abdbac7206db90dfbbd4329709d30f39a525e66db43122b5ecb5ce0b66f1",
+    "image": false
+  },
+  "pet_view": {
+    "id": "room-ui/pet_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_pet_view.bin",
+    "sha256": "d8854f14af689d9c182375f416a56ddab9db9c0e7701905c1d450c19aa5c1efb",
+    "image": false
+  },
+  "instant_friend_request": {
+    "id": "room-ui/instant_friend_request.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_instant_friend_request.bin",
+    "sha256": "ee397926f3b4a742abd4733488b6e337b4493d4b2c569004b1433f32ea6ec216",
+    "image": false
+  },
+  "boygirl": {
+    "id": "room-ui/boygirl.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_boygirl.bin",
+    "sha256": "b722be619f3db335c058d471c435fdd440edb9373b3a26d459931543c77526d8",
+    "image": false
+  },
+  "avatar_info_widget": {
+    "id": "room-ui/avatar_info_widget.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_avatar_info_widget.bin",
+    "sha256": "97c0ca721e70bf1e39249a1c035f32c37c44f3916e2f796d4cbda068b38b93ba",
+    "image": false
+  },
+  "avatar_menu_widget": {
+    "id": "room-ui/avatar_menu_widget.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_avatar_menu_widget.bin",
+    "sha256": "dd475490f32226b7b877922123910ca0631bd4a56ef7ff261fe256261c67d205",
+    "image": false
+  },
+  "own_avatar_menu": {
+    "id": "room-ui/own_avatar_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_own_avatar_menu.bin",
+    "sha256": "4d727a17cb89173e1589965f37a9b0f808ca263f97a907643cd6a63099299a70",
+    "image": false
+  },
+  "own_avatar_decorating": {
+    "id": "room-ui/own_avatar_decorating.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_own_avatar_decorating.bin",
+    "sha256": "e819b1dd8b21e5e578c13818d2780f9966ef25b662ac0d1ed9c036678c0533f1",
+    "image": false
+  },
+  "new_user_help": {
+    "id": "room-ui/new_user_help.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_new_user_help.bin",
+    "sha256": "8f3cef59dc86f36c93572df0c94d0cf15ec8b69faa2825508bd91c3cd81d91e9",
+    "image": false
+  },
+  "own_pet_menu": {
+    "id": "room-ui/own_pet_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_own_pet_menu.bin",
+    "sha256": "e8e5a1e66a1ec7f6300b3de413881869dc680d873ea86480d34608737db954f7",
+    "image": false
+  },
+  "pet_menu": {
+    "id": "room-ui/pet_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_pet_menu.bin",
+    "sha256": "2dca33c3fbb775c4d5290254af72a04c64d5cd8dd9a5b33ec06220da7010dabb",
+    "image": false
+  },
+  "use_product_menu": {
+    "id": "room-ui/use_product_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_menu.bin",
+    "sha256": "5d2260625988d441bc999e09e5cbf06ee913e776694a0dcfde1692c368e34916",
+    "image": false
+  },
+  "breed_pet_menu": {
+    "id": "room-ui/breed_pet_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_breed_pet_menu.bin",
+    "sha256": "403e868485e2bcb6c65eb308682700a1bcc34c49f6d8314df130ad0409175028",
+    "image": false
+  },
+  "breed_pets_confirmation_xml": {
+    "id": "room-ui/breed_pets_confirmation_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_breed_pets_confirmation_xml.bin",
+    "sha256": "f38fd88c74a17fcf0ea49311e131451b30b13c8e3579261f87b1cf2861e1ca12",
+    "image": false
+  },
+  "confirm_pet_breeding_xml": {
+    "id": "room-ui/confirm_pet_breeding_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_confirm_pet_breeding_xml.bin",
+    "sha256": "7136fb6c6839e566484933b94d0e6780b141c30498063b258e53fbee3e877ed1",
+    "image": false
+  },
+  "pet_breeding_pet_preview_xml": {
+    "id": "room-ui/pet_breeding_pet_preview_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_pet_breeding_pet_preview_xml.bin",
+    "sha256": "df687327ef8f0c9745fb7a53406811a4f75f17f0c4becb5dd0d19c94fc564d7e",
+    "image": false
+  },
+  "nestBreedingSuccess_xml": {
+    "id": "room-ui/nestBreedingSuccess_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_nestBreedingSuccess_xml.bin",
+    "sha256": "5b77dba43b962880d47fec5ffafceab54043d7959d9fc6319d673fab98cbfb1e",
+    "image": false
+  },
+  "breed_pets_result_xml": {
+    "id": "room-ui/breed_pets_result_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_breed_pets_result_xml.bin",
+    "sha256": "3025328610ca65e5dc1544ffbc033f0266d828da4e511545d9e10d4ee2dd7532",
+    "image": false
+  },
+  "use_product_widget_frame_xml": {
+    "id": "room-ui/use_product_widget_frame_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_widget_frame_xml.bin",
+    "sha256": "e88be013cc00033a6db38abc3212ff61f079f0c0c87e0b04b4b249a3b27a1b7c",
+    "image": false
+  },
+  "use_product_controller_custom_part_xml": {
+    "id": "room-ui/use_product_controller_custom_part_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_custom_part_xml.bin",
+    "sha256": "3ca4b5a7b72570c63ed6bdb8b07e4bfeeb8d41319b070bcac2544a206e412170",
+    "image": false
+  },
+  "use_product_controller_shampoo_xml": {
+    "id": "room-ui/use_product_controller_shampoo_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_shampoo_xml.bin",
+    "sha256": "150aadc957b2a1982d70cdb745cea708464ddabdf883f000fbd89acf31bcdaa6",
+    "image": false
+  },
+  "use_product_controller_custom_part_shampoo_xml": {
+    "id": "room-ui/use_product_controller_custom_part_shampoo_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_custom_part_shampoo_xml.bin",
+    "sha256": "683b7b941fbe23b295ed80af6f8abd43c0f0cd67e56aecb23acf05e083966182",
+    "image": false
+  },
+  "use_product_controller_saddle_xml": {
+    "id": "room-ui/use_product_controller_saddle_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_saddle_xml.bin",
+    "sha256": "04c543ba77937c81c21814cb5412b8402df4378adad4b1d9c51f55ef4e14e9aa",
+    "image": false
+  },
+  "use_product_widget_frame_monsterplant_xml": {
+    "id": "room-ui/use_product_widget_frame_monsterplant_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_widget_frame_monsterplant_xml.bin",
+    "sha256": "f3288a06ec595c74d8f3df145b2fa8bce273f4549eb11e847becb3b88b7c0d45",
+    "image": false
+  },
+  "use_product_widget_frame_monsterplant_rebreed_xml": {
+    "id": "room-ui/use_product_widget_frame_monsterplant_rebreed_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_widget_frame_monsterplant_rebreed_xml.bin",
+    "sha256": "9fb7e05313996f5e57ab4765ff4bf8238bf94665c1729733d85114b0357fa06a",
+    "image": false
+  },
+  "use_product_widget_frame_monsterplant_fertilize_xml": {
+    "id": "room-ui/use_product_widget_frame_monsterplant_fertilize_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_widget_frame_monsterplant_fertilize_xml.bin",
+    "sha256": "a3fe668cd2a0bfe018294b54a025a1f57c180c994e13aca739656bb61a3f57c5",
+    "image": false
+  },
+  "use_product_controller_revive_monsterplant_xml": {
+    "id": "room-ui/use_product_controller_revive_monsterplant_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_revive_monsterplant_xml.bin",
+    "sha256": "f6fdcb3b36407d25a83dde4a341e88c581dc1d9d0c946d52a8c8ce2192215a2f",
+    "image": false
+  },
+  "use_product_controller_rebreed_monsterplant_xml": {
+    "id": "room-ui/use_product_controller_rebreed_monsterplant_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_rebreed_monsterplant_xml.bin",
+    "sha256": "a78c8c1e2adf1a169e7e3c8afbe26a8046ea751c29dd0d8b74abb439ce8d77da",
+    "image": false
+  },
+  "use_product_controller_fertilize_monsterplant_xml": {
+    "id": "room-ui/use_product_controller_fertilize_monsterplant_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_fertilize_monsterplant_xml.bin",
+    "sha256": "108078ece1d256fa0e21bb22e99a78f0d658d6a45d83e0e1cb8b59a96b75185c",
+    "image": false
+  },
+  "use_product_preview_bg_png": {
+    "id": "room-ui/use_product_preview_bg_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_use_product_preview_bg_png.png",
+    "sha256": "ad717ac2ed83eb5e4fb8559ffb038009d9a31ea48cf0c3ae6f02b61899c362cd",
+    "image": true
+  },
+  "breed_pets_preview_bg_png": {
+    "id": "room-ui/breed_pets_preview_bg_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_breed_pets_preview_bg_png.png",
+    "sha256": "ad717ac2ed83eb5e4fb8559ffb038009d9a31ea48cf0c3ae6f02b61899c362cd",
+    "image": true
+  },
+  "plant_seed_preview_bg_png": {
+    "id": "room-ui/plant_seed_preview_bg_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_plant_seed_preview_bg_png.png",
+    "sha256": "a9d526815673fe6ccbd4532d6dde4a14313d0af06e1b5bb3e6b809f863c9fe16",
+    "image": true
+  },
+  "plant_seed_preview_png": {
+    "id": "room-ui/plant_seed_preview_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_plant_seed_preview_png.png",
+    "sha256": "f890b7b6bbfddd20e4a22277cd850c10feb49f0166ee42168f856c86ae3b0aa4",
+    "image": true
+  },
+  "minimized_menu": {
+    "id": "room-ui/minimized_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_minimized_menu.bin",
+    "sha256": "e8a3b9aec9ec63fa939293b2d124708215521470172bcdce80ad50ff7cf83368",
+    "image": false
+  },
+  "welcome_gift_widget": {
+    "id": "room-ui/welcome_gift_widget.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_welcome_gift_widget.bin",
+    "sha256": "5d4326eac6d9904b7487cd317a8e37b987df368099990de3907cb7405168a57f",
+    "image": false
+  },
+  "welcome_gift_email_unverified": {
+    "id": "room-ui/welcome_gift_email_unverified.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_welcome_gift_email_unverified.bin",
+    "sha256": "d94a01a63f4f9363cd2d76d7061918656ff8824fce993770f80d9db823601241",
+    "image": false
+  },
+  "welcome_gift_email_verified": {
+    "id": "room-ui/welcome_gift_email_verified.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_welcome_gift_email_verified.bin",
+    "sha256": "d85324a68b63d75d90a7a6223965182babf9134d7407b55330e586dc78ac6062",
+    "image": false
+  },
+  "welcome_gift_email_change": {
+    "id": "room-ui/welcome_gift_email_change.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_welcome_gift_email_change.bin",
+    "sha256": "d8dcc250b2b6cebd76f8c8ac1d3852413b4d2bd8a923f3718509c19d9eb35a33",
+    "image": false
+  },
+  "jukebox_view": {
+    "id": "room-ui/jukebox_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_jukebox_view.bin",
+    "sha256": "c7026800f270a9e39d4bc3692430b958707f4f5bcf0a30c41f64e27c5301d8e5",
+    "image": false
+  },
+  "crackable_furni_view": {
+    "id": "room-ui/crackable_furni_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_crackable_furni_view.bin",
+    "sha256": "048e16365d55b2b6e03d46264ea331aa8d184e330451c84fcd6dd65ced259244",
+    "image": false
+  },
+  "songdisk_view": {
+    "id": "room-ui/songdisk_view.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_songdisk_view.bin",
+    "sha256": "ae7b1b922eba0debe6306f18b1b5a8042efc91ab8c39a9e0c440beb5101a9300",
+    "image": false
+  },
+  "playlisteditor_inventory_subwindow_get_more_music": {
+    "id": "room-ui/playlisteditor_inventory_subwindow_get_more_music.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_inventory_subwindow_get_more_music.bin",
+    "sha256": "589a3ddd7e58c7bebb553185c6dfd9c3b16d08bab2b214ca912630b0dc3b4daf",
+    "image": false
+  },
+  "playlisteditor_inventory_subwindow_play_preview": {
+    "id": "room-ui/playlisteditor_inventory_subwindow_play_preview.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_inventory_subwindow_play_preview.bin",
+    "sha256": "b1b1abf9d2681842d93d9cccfc563978542fc9c3d023c46dc39e4079279bd409",
+    "image": false
+  },
+  "playlisteditor_main_window": {
+    "id": "room-ui/playlisteditor_main_window.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_main_window.bin",
+    "sha256": "70475873bf377bf463481cf5d4a811f30a5c85a48b8be452201970f14123fb6a",
+    "image": false
+  },
+  "playlisteditor_music_inventory_item": {
+    "id": "room-ui/playlisteditor_music_inventory_item.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_music_inventory_item.bin",
+    "sha256": "8656b0fdd3938da3f0c070bb0af678e88f1b4d1477ee2ffb8ebeaa54693e41b4",
+    "image": false
+  },
+  "playlisteditor_playlist_item": {
+    "id": "room-ui/playlisteditor_playlist_item.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_playlist_item.bin",
+    "sha256": "58901e0bd0223ee777c9848fe63ce0a5d72d894e17c7f13ec8769ae7c47e6bf8",
+    "image": false
+  },
+  "playlisteditor_playlist_subwindow_add_songs": {
+    "id": "room-ui/playlisteditor_playlist_subwindow_add_songs.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_playlist_subwindow_add_songs.bin",
+    "sha256": "296b7cae65530b3484ada3b61139b97172c2ed18ef11fc7121495aff62102bf3",
+    "image": false
+  },
+  "playlisteditor_playlist_subwindow_nowplaying": {
+    "id": "room-ui/playlisteditor_playlist_subwindow_nowplaying.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_playlist_subwindow_nowplaying.bin",
+    "sha256": "da6ef19385548dc77265f6381ff7259a81fc8c5c24d0d9ddcfd78a263a6f7568",
+    "image": false
+  },
+  "playlisteditor_playlist_subwindow_play_now": {
+    "id": "room-ui/playlisteditor_playlist_subwindow_play_now.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_playlisteditor_playlist_subwindow_play_now.bin",
+    "sha256": "8cd4941481345249c8f72688c82f8b18827de1dbef951a03af9752996bd428c1",
+    "image": false
+  },
+  "effects_widget": {
+    "id": "room-ui/effects_widget.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_effects_widget.bin",
+    "sha256": "dd9b849d4c51e328dc650f79348888aa747a168c18317128ee7053bfde8f6aa8",
+    "image": false
+  },
+  "effect_selector": {
+    "id": "room-ui/effect_selector.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_effect_selector.bin",
+    "sha256": "c18ce9c64798fee27b3d8723ce26f7fce51224c8564df1d31cebb293860096c3",
+    "image": false
+  },
+  "mannequin_widget_frame_xml": {
+    "id": "room-ui/mannequin_widget_frame_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_widget_frame_xml.bin",
+    "sha256": "75faa161ea6d56535c075522cd2ed696df1fdf04af03e81e662fa3f30fb380cc",
+    "image": false
+  },
+  "mannequin_controller_main_xml": {
+    "id": "room-ui/mannequin_controller_main_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_controller_main_xml.bin",
+    "sha256": "09474a9bf8d7e754649e937cbc252c2ea7caf84dfe1651ac93ff127e3b38de28",
+    "image": false
+  },
+  "mannequin_controller_save_xml": {
+    "id": "room-ui/mannequin_controller_save_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_controller_save_xml.bin",
+    "sha256": "d229fb4bc364fe1a6f1fd4f64f67998a83cfa8c6be0a8f40b500eb69a23df1d5",
+    "image": false
+  },
+  "mannequin_peer_main_xml": {
+    "id": "room-ui/mannequin_peer_main_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_peer_main_xml.bin",
+    "sha256": "9c973bbc86c4b19d0bbe1e752e1f334f7641115ddcef237e98ab46fce9249eeb",
+    "image": false
+  },
+  "mannequin_no_club_xml": {
+    "id": "room-ui/mannequin_no_club_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_no_club_xml.bin",
+    "sha256": "3a689a4bd067dcc35a08ea817675e31612403c3e3d3a5bd6183555b1e5166889",
+    "image": false
+  },
+  "mannequin_wrong_gender_xml": {
+    "id": "room-ui/mannequin_wrong_gender_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mannequin_wrong_gender_xml.bin",
+    "sha256": "ede60d028acdb20f21dbdb11a225d600d0ef2d92edea4bf679d8058ed2aeae51",
+    "image": false
+  },
+  "mannequin_preview_bg_png": {
+    "id": "room-ui/mannequin_preview_bg_png.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_mannequin_preview_bg_png.png",
+    "sha256": "39e1ab12b8f339d22e40a63a67d7acd803f5ed1360d66adbb5e9edfdf614ed17",
+    "image": true
+  },
+  "guild_furni_menu": {
+    "id": "room-ui/guild_furni_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_guild_furni_menu.bin",
+    "sha256": "21aaa873a17a6b83d3878cf9e9093c436d4f9f1c9ad18109f1550ce6b0571bbe",
+    "image": false
+  },
+  "random_teleport_menu": {
+    "id": "room-ui/random_teleport_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_random_teleport_menu.bin",
+    "sha256": "0c1aecef5971444f46329186c230434f35246d1c3bce6ca819916726589c4df0",
+    "image": false
+  },
+  "monsterplant_seed_menu": {
+    "id": "room-ui/monsterplant_seed_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_monsterplant_seed_menu.bin",
+    "sha256": "0fb503e8838df3285af8ec9683b9bdc6704a4bd697b84545a30dbefdadcc0958",
+    "image": false
+  },
+  "mysterybox_menu": {
+    "id": "room-ui/mysterybox_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mysterybox_menu.bin",
+    "sha256": "8c4476f3057548442fd7f02dd5a59af3b8a2d1c5256db2fa3436790b69e34271",
+    "image": false
+  },
+  "use_product_widget_frame_plant_seed_xml": {
+    "id": "room-ui/use_product_widget_frame_plant_seed_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_widget_frame_plant_seed_xml.bin",
+    "sha256": "ed4061ff73c3473359887a6214732c30510f0989bc5060dec9fd91ad9e66ed3a",
+    "image": false
+  },
+  "generic_usable_menu": {
+    "id": "room-ui/generic_usable_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_generic_usable_menu.bin",
+    "sha256": "155386ac16458ad15945206b28e86aa738b15dcbda8e1444a4d5b20cdef07758",
+    "image": false
+  },
+  "effectbox_xml": {
+    "id": "room-ui/effectbox_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_effectbox_xml.bin",
+    "sha256": "f0e84e9604e37e9b42169cdff3cc308068ceb2770eb7ece65bceb9b33b293f53",
+    "image": false
+  },
+  "mysterytrophy_xml": {
+    "id": "room-ui/mysterytrophy_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_mysterytrophy_xml.bin",
+    "sha256": "fd15dd4cd9b3d98d893d7fa79667b1ed929712d2f2c4bb52c3ae0f5389165b4e",
+    "image": false
+  },
+  "use_product_controller_plant_seed_xml": {
+    "id": "room-ui/use_product_controller_plant_seed_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_plant_seed_xml.bin",
+    "sha256": "bc454ad4b9930a645cbbd72d188ce9ab184ab1cab4e09daf3aa8e6a63dc54743",
+    "image": false
+  },
+  "use_product_controller_purchasable_clothing_xml": {
+    "id": "room-ui/use_product_controller_purchasable_clothing_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_use_product_controller_purchasable_clothing_xml.bin",
+    "sha256": "bf3bc3eb594ea47d72e0341151ce19822618fce67f30870d824f5accadd0db1d",
+    "image": false
+  },
+  "sign_icon_heart": {
+    "id": "room-ui/sign_icon_heart.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_heart.png",
+    "sha256": "e92c45e507c160a596d001b2d6a192a3bf56f331d41187e02e2e72101fb37b10",
+    "image": true
+  },
+  "sign_icon_skull": {
+    "id": "room-ui/sign_icon_skull.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_skull.png",
+    "sha256": "2b2c58528d1678bfe04aa6b4eab2820083aa61177a3663d620299dc363d565ff",
+    "image": true
+  },
+  "sign_icon_13": {
+    "id": "room-ui/sign_icon_13.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_13.png",
+    "sha256": "a5ccf2c4994369dfa931562deb88227ec679246b37798cf6d3202c020ee4042c",
+    "image": true
+  },
+  "sign_icon_14": {
+    "id": "room-ui/sign_icon_14.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_14.png",
+    "sha256": "0ac22686384f8ceef12cc3c02191a0f1ef25b34e422cd5c17f4ed22c4f268fc7",
+    "image": true
+  },
+  "sign_icon_15": {
+    "id": "room-ui/sign_icon_15.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_15.png",
+    "sha256": "166cc81776b09f69c90139ee1fe8a5fa6928ca2966ca6059a3f7f6688754a389",
+    "image": true
+  },
+  "sign_icon_16": {
+    "id": "room-ui/sign_icon_16.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_16.png",
+    "sha256": "dd63723d7f47f5f8e6e3e75c8568fe9c1968b17843cf17b4c499710fc0e56cba",
+    "image": true
+  },
+  "sign_icon_17": {
+    "id": "room-ui/sign_icon_17.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_sign_icon_17.png",
+    "sha256": "f1f1779776e5b1be9e42c9b589a92d18118e40fe4db24aecb625835b81c8c04c",
+    "image": true
+  },
+  "pet_skill_level_0": {
+    "id": "room-ui/pet_skill_level_0.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_pet_skill_level_0.png",
+    "sha256": "32e4577422e4882d092d721193609237eb0bb3fd552d2e23d4ff431be6f73738",
+    "image": true
+  },
+  "pet_skill_level_1": {
+    "id": "room-ui/pet_skill_level_1.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_pet_skill_level_1.png",
+    "sha256": "f76d515e0d7f597fa7ee2507a064f7c7bc54350ff4444447e4b66ca6ae13a57b",
+    "image": true
+  },
+  "pet_skill_level_2": {
+    "id": "room-ui/pet_skill_level_2.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_pet_skill_level_2.png",
+    "sha256": "e946c511d11748553b2c3fce6fcb642a0cc98b2e927b1266d27a58b303dc9c7c",
+    "image": true
+  },
+  "pet_skill_level_3": {
+    "id": "room-ui/pet_skill_level_3.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_pet_skill_level_3.png",
+    "sha256": "e59932875f88edc131970b610c498552de1d5d5f5acc35de96466c7e2c2199d3",
+    "image": true
+  },
+  "pet_skill_level_4": {
+    "id": "room-ui/pet_skill_level_4.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_pet_skill_level_4.png",
+    "sha256": "6d6ad94a34d0b882cbe7c0a6039b374239f923171ed11ce946663d8c4d6d4d2c",
+    "image": true
+  },
+  "camera_interface_xml": {
+    "id": "room-ui/camera_interface_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_camera_interface_xml.bin",
+    "sha256": "9b73ede6cf6569e46b0cf9c6085dad19e7bff7ee3d1d769f619dca468e153ccd",
+    "image": false
+  },
+  "photo_purchase_confirmation_xml": {
+    "id": "room-ui/photo_purchase_confirmation_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_photo_purchase_confirmation_xml.bin",
+    "sha256": "fee13d50004a4f6bc7081c851ab3f5d13d0e12726807a9c7f18c28cc9ca7a4dd",
+    "image": false
+  },
+  "camera_editor_xml": {
+    "id": "room-ui/camera_editor_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_camera_editor_xml.bin",
+    "sha256": "0a02bb500b3f3a5e90a42fe291450cfb0e9da860f52361561ca90b27f422e775",
+    "image": false
+  },
+  "camera_filterbutton_xml": {
+    "id": "room-ui/camera_filterbutton_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_camera_filterbutton_xml.bin",
+    "sha256": "c910f2c76544f48c505bd6f8027446edf6630b690e78b0ae0e2eb06ac4df3c0f",
+    "image": false
+  },
+  "camera_typebutton_xml": {
+    "id": "room-ui/camera_typebutton_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_camera_typebutton_xml.bin",
+    "sha256": "d7afd72d96ccea802c8c3483943710662a5af6dd339a6b29e7bb0d599aefc71b",
+    "image": false
+  },
+  "background_color_ui_xml": {
+    "id": "room-ui/background_color_ui_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_background_color_ui_xml.bin",
+    "sha256": "83f01c27d151b28f4d05b0fdd3b6fe760701c3bcb81eb23b2b7dc0f6b2eff6b8",
+    "image": false
+  },
+  "area_hide_ui_xml": {
+    "id": "room-ui/area_hide_ui_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_area_hide_ui_xml.bin",
+    "sha256": "b80f39d891807e19ae7ac952214a1c0b5b2f9bb560d933d1ae5f9b0c4a20210f",
+    "image": false
+  },
+  "gamehall_board_xml": {
+    "id": "room-ui/gamehall_board_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_gamehall_board_xml.bin",
+    "sha256": "0fb7538761437ce39b3ee1d6a30acbbc9ba87e00f5689195f67c8c66eefdf95d",
+    "image": false
+  },
+  "gamehall_leaderboard_xml": {
+    "id": "room-ui/gamehall_leaderboard_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_gamehall_leaderboard_xml.bin",
+    "sha256": "15c89c3938a60652e07912d0086fd3c8e30992fa9655a265670a55333a0cbc3b",
+    "image": false
+  },
+  "viprequired_xml": {
+    "id": "room-ui/viprequired_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_viprequired_xml.bin",
+    "sha256": "f636f0b8b4a98c0fc9cfc8e9388155c57b6735208cd6c26d6ff1a1b1817e0622",
+    "image": false
+  },
+  "costumehopper_costumerequired_xml": {
+    "id": "room-ui/costumehopper_costumerequired_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_costumehopper_costumerequired_xml.bin",
+    "sha256": "b82504372976d9fbc25dac5f220b3d596c1ee958129e66ece457977455c8f195",
+    "image": false
+  },
+  "respect_giving_failed_notification_xml": {
+    "id": "room-ui/respect_giving_failed_notification_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_respect_giving_failed_notification_xml.bin",
+    "sha256": "18313d6ee74a4d2e7a76f670f045235fdda76915d89bc84af294ef1fac5a6c54",
+    "image": false
+  },
+  "chatinput_chatstyle_template_xml": {
+    "id": "room-ui/chatinput_chatstyle_template_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatinput_chatstyle_template_xml.bin",
+    "sha256": "d8fa8c84e0c680be1e428ad206ab025501169814730b40fbd8c841d770765905",
+    "image": false
+  },
+  "chatinput_chatfontsize_template_xml": {
+    "id": "room-ui/chatinput_chatfontsize_template_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatinput_chatfontsize_template_xml.bin",
+    "sha256": "4bab1826e35db1be9947809f5e2e9b401df68e9701220759083f8fc0e10d5cff",
+    "image": false
+  },
+  "roomchat_styles_chatstyles_xml": {
+    "id": "room-ui/roomchat_styles_chatstyles_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_chatstyles_xml.bin",
+    "sha256": "7f744ebc3f2be045922879731c474bae197aa7649a155c7993d3ca51b5db4bd7",
+    "image": false
+  },
+  "roomchat_styles_normal_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_style_xml.bin",
+    "sha256": "08f0141cfa14bbb448b71fddfbbf2b24e0368d54ee7bd920bb2394010bbe3bc3",
+    "image": false
+  },
+  "roomchat_styles_normal_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_bubble_whisper_xml.bin",
+    "sha256": "b0de96b3568f180f0f0ea8544f5b2e647d51e5cdb2f9e0711d4e6240ed61dda6",
+    "image": false
+  },
+  "roomchat_styles_normal_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_chat_bubble_left.png",
+    "sha256": "11880e1f4fc0b9861a16b58ff9f285cb74226bc99cfaf1c85ff1426fe6a69db0",
+    "image": true
+  },
+  "roomchat_styles_normal_chat_bubble_left_color": {
+    "id": "room-ui/roomchat_styles_normal_chat_bubble_left_color.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_chat_bubble_left_color.png",
+    "sha256": "c4c789cbf360ff1ca2d1ed1ac6e64754fcc6dae414764ed45225b5505bf05caa",
+    "image": true
+  },
+  "roomchat_styles_normal_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_chat_bubble_middle.png",
+    "sha256": "27af1a8ebd4e6330edaad8d3dc699cbc79d1a9b6ef04e8f7d2f16c91467ccfa4",
+    "image": true
+  },
+  "roomchat_styles_normal_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_chat_bubble_right.png",
+    "sha256": "c2af24a96d597ea72c9ac2445184c24880f5d8ccd1d9e579856aafd48c840136",
+    "image": true
+  },
+  "roomchat_styles_normal_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_chat_bubble_pointer.png",
+    "sha256": "5e4a3e6e81efac42e4086ec80c29cf756ce40656bbfc73e428be73d919f6a34b",
+    "image": true
+  },
+  "roomchat_styles_normal_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_selector_preview.png",
+    "sha256": "b8a2dc18d67a78599d823e1fd936bc1876da9e9dae7f0a1680a970bedbfc0c0f",
+    "image": true
+  },
+  "roomchat_styles_generic_style_xml": {
+    "id": "room-ui/roomchat_styles_generic_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_generic_style_xml.bin",
+    "sha256": "2483854150237e666eece803263b8d890dc26ed666f0d993c780f3f85aff55fd",
+    "image": false
+  },
+  "roomchat_styles_generic_bubble_generic_xml": {
+    "id": "room-ui/roomchat_styles_generic_bubble_generic_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_generic_bubble_generic_xml.bin",
+    "sha256": "8ff251a1fd0a1a29c2044b966ba551f3f9546bfff563eababcf5ff0d16c842b3",
+    "image": false
+  },
+  "roomchat_styles_generic_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_generic_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_generic_chat_bubble_left.png",
+    "sha256": "d2e2018f1b6b57e4abc2004a561e43c524861ee149e2d54b4a7dd55974ef51a3",
+    "image": true
+  },
+  "roomchat_styles_generic_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_generic_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_generic_chat_bubble_middle.png",
+    "sha256": "e7b7e343a609d6c1833543e74674ccc02b352a0b63e6d0f6ac9706a9a6be6991",
+    "image": true
+  },
+  "roomchat_styles_generic_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_generic_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_generic_chat_bubble_right.png",
+    "sha256": "ab3fa2715cc73997cdafcd7ecf62f098632a3c8f7455bc45f07fd42dd3a2fc2f",
+    "image": true
+  },
+  "roomchat_styles_generic_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_generic_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_generic_chat_bubble_pointer.png",
+    "sha256": "ffec71f6bb2d14df4b76377f933535d33dddf781fa0d1c1ca1f0cd82a06bf414",
+    "image": true
+  },
+  "roomchat_styles_bot_style_xml": {
+    "id": "room-ui/roomchat_styles_bot_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_bot_style_xml.bin",
+    "sha256": "d97d1f0f91900959e04f361debbbe36cf4f9ef0b29ec08533ea4c0f3a5f1f2de",
+    "image": false
+  },
+  "roomchat_styles_bot_bubble_bot_shout_xml": {
+    "id": "room-ui/roomchat_styles_bot_bubble_bot_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_bot_bubble_bot_shout_xml.bin",
+    "sha256": "6b84be7713257be71784b47ef70927032f9ce05018d891bfcdd0cf90361a70fe",
+    "image": false
+  },
+  "roomchat_styles_bot_bubble_bot_speak_xml": {
+    "id": "room-ui/roomchat_styles_bot_bubble_bot_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_bot_bubble_bot_speak_xml.bin",
+    "sha256": "f1d1898adf8fd2be7133820cbbabb1ea3e7d2e1e13cd3ab46f0187ba532301eb",
+    "image": false
+  },
+  "roomchat_styles_bot_bubble_bot_whisper_xml": {
+    "id": "room-ui/roomchat_styles_bot_bubble_bot_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_bot_bubble_bot_whisper_xml.bin",
+    "sha256": "e16b61b24bc7f3294380bf765e2b48e85da69081b84fa8be433ef5756b07dbaa",
+    "image": false
+  },
+  "roomchat_styles_bot_bot_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_bot_bot_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_bot_bot_chat_bubble_left.png",
+    "sha256": "1e524f0abca2d3005a0dc695b94009438e9380056e8f1679d3f6702ef9b96ff8",
+    "image": true
+  },
+  "roomchat_styles_bot_bot_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_bot_bot_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_bot_bot_chat_bubble_middle.png",
+    "sha256": "b0bf936b5b90fee48ab5f052df3ce5f88bcbbcc49cbcd66672a93d9b454ba51b",
+    "image": true
+  },
+  "roomchat_styles_bot_bot_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_bot_bot_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_bot_bot_chat_bubble_right.png",
+    "sha256": "72c3e37a27b566b0a755c2a36075e6b8ca17c781c46832341c299b11f91aa718",
+    "image": true
+  },
+  "roomchat_styles_bot_bot_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_bot_bot_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_bot_bot_chat_bubble_pointer.png",
+    "sha256": "47a1af4f76b6a2e85832a9193c7a7a1ae18e3991c4f1e12d7557cf143eb0deda",
+    "image": true
+  },
+  "roomchat_styles_firingmylazer_style_xml": {
+    "id": "room-ui/roomchat_styles_firingmylazer_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_firingmylazer_style_xml.bin",
+    "sha256": "f5533b16718a04d1329b3aa60970adf3ee92ed0961c12972d576c399e69b4696",
+    "image": false
+  },
+  "roomchat_styles_firingmylazer_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_firingmylazer_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_firingmylazer_bubble_shout_xml.bin",
+    "sha256": "12cd9345ed2c1f92b3effdb0d772db7f2c34fd3227ab173b64b6fa6f93962257",
+    "image": false
+  },
+  "roomchat_styles_firingmylazer_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_firingmylazer_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_firingmylazer_bubble_speak_xml.bin",
+    "sha256": "5a98b21254e2c886dfe6fceed14262f2f6e9346010df9a73ccbc0228c981aaf3",
+    "image": false
+  },
+  "roomchat_styles_firingmylazer_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_firingmylazer_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_firingmylazer_bubble_whisper_xml.bin",
+    "sha256": "9aaeb50db7af1382cc08676371b89b08d927c917490129391db31bd98e590506",
+    "image": false
+  },
+  "roomchat_styles_firingmylazer_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_firingmylazer_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_firingmylazer_chat_bubble_left.png",
+    "sha256": "b15ed8ec64047edb0f91c3b3d08761a9d67ec1b1337b307f512abe811d4e5ea3",
+    "image": true
+  },
+  "roomchat_styles_firingmylazer_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_firingmylazer_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_firingmylazer_chat_bubble_middle.png",
+    "sha256": "1790a40cac7b74da74c037e9f0e79e048d4a7d04bb24b1cc4acafcc24b009631",
+    "image": true
+  },
+  "roomchat_styles_firingmylazer_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_firingmylazer_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_firingmylazer_chat_bubble_right.png",
+    "sha256": "ef0eca86c91904b9da8026b4708c67b32ecdae4e3bfafb1c9a35091bde8980d6",
+    "image": true
+  },
+  "roomchat_styles_firingmylazer_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_firingmylazer_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_firingmylazer_chat_bubble_pointer.png",
+    "sha256": "97da9b5e19d733b914883a49ba817756b16ff785ee10ab9012daaf390a741e8f",
+    "image": true
+  },
+  "roomchat_styles_firingmylazer_selector_preview": {
+    "id": "room-ui/roomchat_styles_firingmylazer_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_firingmylazer_selector_preview.png",
+    "sha256": "66acea188a20d1f71068e5aa24a6b36ee6a2b5139fbe0620dabe2b125d556813",
+    "image": true
+  },
+  "roomchat_styles_gothicrose_style_xml": {
+    "id": "room-ui/roomchat_styles_gothicrose_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_gothicrose_style_xml.bin",
+    "sha256": "fd32ac49f9edd9baef18586cb4a7fc282a880e39ba225eda191ea6f960c287d7",
+    "image": false
+  },
+  "roomchat_styles_gothicrose_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_gothicrose_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_gothicrose_bubble_shout_xml.bin",
+    "sha256": "88d8ca2462a00a7361acaa75183b80303d7eb5bc928402ff049e67e1e700e806",
+    "image": false
+  },
+  "roomchat_styles_gothicrose_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_gothicrose_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_gothicrose_bubble_speak_xml.bin",
+    "sha256": "5ee581d1b30da00c9eb627d5391047166dae7927c350a71d467d00527c1cfdaf",
+    "image": false
+  },
+  "roomchat_styles_gothicrose_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_gothicrose_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_gothicrose_bubble_whisper_xml.bin",
+    "sha256": "a8cf1d3cf508313258888c6ec32df6b907c608418d4f0a8470b4a6fc031a5fec",
+    "image": false
+  },
+  "roomchat_styles_gothicrose_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_gothicrose_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_gothicrose_chat_bubble_left.png",
+    "sha256": "42a3ac0a0e28b4625318670432edf5fd72e2f095a3c419cc7f3a3150a3e2fd0d",
+    "image": true
+  },
+  "roomchat_styles_gothicrose_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_gothicrose_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_gothicrose_chat_bubble_middle.png",
+    "sha256": "7ffaf9fd77498ce46796539652150092258bd4d232261799380402a3d224262e",
+    "image": true
+  },
+  "roomchat_styles_gothicrose_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_gothicrose_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_gothicrose_chat_bubble_right.png",
+    "sha256": "9feee5b067961ae08d3bec203cd4697a0083c834bdb3c552e36222c458dd63de",
+    "image": true
+  },
+  "roomchat_styles_gothicrose_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_gothicrose_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_gothicrose_chat_bubble_pointer.png",
+    "sha256": "43bfcfea5f87ffe1addf6f1a5652228979ee932c649abdaaf0660e26e631b8a3",
+    "image": true
+  },
+  "roomchat_styles_gothicrose_selector_preview": {
+    "id": "room-ui/roomchat_styles_gothicrose_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_gothicrose_selector_preview.png",
+    "sha256": "5b754ead008c90bd8835ab0aa4a36ec140affdb4c26ab3bbfd46fa256895b32b",
+    "image": true
+  },
+  "roomchat_styles_piglet_style_xml": {
+    "id": "room-ui/roomchat_styles_piglet_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_piglet_style_xml.bin",
+    "sha256": "781fea19a48fc62be8b0fd7760ce6d4b841c9a6b906d33863bc0329d35245c53",
+    "image": false
+  },
+  "roomchat_styles_piglet_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_piglet_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_piglet_bubble_shout_xml.bin",
+    "sha256": "64c5ec960b7086b0352f91926507068b8ceb7e600454c1d7b76d17789c8aa415",
+    "image": false
+  },
+  "roomchat_styles_piglet_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_piglet_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_piglet_bubble_speak_xml.bin",
+    "sha256": "9942d84651ac4ea76c6cc1ba708f67fec6eef1e0707a23f2ebdacb7c23c82533",
+    "image": false
+  },
+  "roomchat_styles_piglet_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_piglet_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_piglet_bubble_whisper_xml.bin",
+    "sha256": "3e383666a480989c4363b4d1ac4f288f55e1cc8a952103648e1d5f29cf33160d",
+    "image": false
+  },
+  "roomchat_styles_piglet_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_piglet_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_piglet_chat_bubble_left.png",
+    "sha256": "084eba60efb36d4c730cfa815aab6072d261e9e0062cdfc9174e102dda29ddc0",
+    "image": true
+  },
+  "roomchat_styles_piglet_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_piglet_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_piglet_chat_bubble_middle.png",
+    "sha256": "81d50ed1e98784d0d91cb087756cd82a877a731c0e643d8e9a9064a55ab2fff0",
+    "image": true
+  },
+  "roomchat_styles_piglet_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_piglet_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_piglet_chat_bubble_right.png",
+    "sha256": "b020ab7c345214bdf798b8a1fab9889d12af3ad818a7d1c5a3aab72be7e1c3ab",
+    "image": true
+  },
+  "roomchat_styles_piglet_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_piglet_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_piglet_chat_bubble_pointer.png",
+    "sha256": "9b0fba7f998deaaac9d18811897ac33b1ffd8b1f7ad1af3d0043157894236c05",
+    "image": true
+  },
+  "roomchat_styles_piglet_selector_preview": {
+    "id": "room-ui/roomchat_styles_piglet_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_piglet_selector_preview.png",
+    "sha256": "f1a6055b8f690ddebb71c4ab59340e2fea57f559c88f5c8b756f19b61f19f42d",
+    "image": true
+  },
+  "roomchat_styles_sausagedog_style_xml": {
+    "id": "room-ui/roomchat_styles_sausagedog_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sausagedog_style_xml.bin",
+    "sha256": "0c4303c4b98a0b55254849a7004591f18b351928cc1c51b3b22d40df85de6da6",
+    "image": false
+  },
+  "roomchat_styles_sausagedog_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_sausagedog_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sausagedog_bubble_shout_xml.bin",
+    "sha256": "a299faac3a3eea1458876951cb44feb454ef56ac5ad62ad3522d34391fae4afb",
+    "image": false
+  },
+  "roomchat_styles_sausagedog_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_sausagedog_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sausagedog_bubble_speak_xml.bin",
+    "sha256": "d26c42eecb14040a1b0caae22cd23e339a04125850718175a491d17df5926853",
+    "image": false
+  },
+  "roomchat_styles_sausagedog_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_sausagedog_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sausagedog_bubble_whisper_xml.bin",
+    "sha256": "3e383666a480989c4363b4d1ac4f288f55e1cc8a952103648e1d5f29cf33160d",
+    "image": false
+  },
+  "roomchat_styles_sausagedog_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_sausagedog_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sausagedog_chat_bubble_left.png",
+    "sha256": "68776ea0fdea2461767b01245f6f018c25ea051385d6eda720f2f2bdebfab186",
+    "image": true
+  },
+  "roomchat_styles_sausagedog_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_sausagedog_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sausagedog_chat_bubble_middle.png",
+    "sha256": "d1e9b8733c74399973046527b2780b31a6d13334b180244b08860754b1bf16a7",
+    "image": true
+  },
+  "roomchat_styles_sausagedog_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_sausagedog_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sausagedog_chat_bubble_right.png",
+    "sha256": "07bf50604dc9f7cea65004842492e3efea62b434006e482453889cf2634b5a8b",
+    "image": true
+  },
+  "roomchat_styles_sausagedog_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_sausagedog_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sausagedog_chat_bubble_pointer.png",
+    "sha256": "b6579c8e665ce849e727a4ca070cb1b8696907ae463d5755f263341b2cda4ae4",
+    "image": true
+  },
+  "roomchat_styles_sausagedog_selector_preview": {
+    "id": "room-ui/roomchat_styles_sausagedog_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sausagedog_selector_preview.png",
+    "sha256": "e6781847511ea443008c7e2065b09eb60122e84fb010f90504657b8f6cb7a825",
+    "image": true
+  },
+  "roomchat_styles_dragon_style_xml": {
+    "id": "room-ui/roomchat_styles_dragon_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_dragon_style_xml.bin",
+    "sha256": "08cd7570c60752e70268195cc6cf116f3c6c69104771ed91d9e1fa7ad0cd1acd",
+    "image": false
+  },
+  "roomchat_styles_dragon_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_dragon_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_dragon_bubble_shout_xml.bin",
+    "sha256": "c44a5433855997353d899b08e86372630cecf938ae4c94b1d690eb0e03a05bb2",
+    "image": false
+  },
+  "roomchat_styles_dragon_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_dragon_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_dragon_bubble_speak_xml.bin",
+    "sha256": "24501643555d93f6f6c1c26f6a5feda48b3035bd5d20cf01dc331d67f46ddec9",
+    "image": false
+  },
+  "roomchat_styles_dragon_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_dragon_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_dragon_bubble_whisper_xml.bin",
+    "sha256": "bd1d4c23f98a620fed10ba2c8c699b9f960e08746c5daf4e20f88ac8df97ce16",
+    "image": false
+  },
+  "roomchat_styles_dragon_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_dragon_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_dragon_chat_bubble_left.png",
+    "sha256": "9fa83fa43a8ef33428783b4eafd6ee4df6c4986ecf6ed0e7248f0b2abe3230dd",
+    "image": true
+  },
+  "roomchat_styles_dragon_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_dragon_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_dragon_chat_bubble_middle.png",
+    "sha256": "05ab2324189f0fba9d85a782ac1b6e2dad22133c013e58f4efe19dde4a3b6f60",
+    "image": true
+  },
+  "roomchat_styles_dragon_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_dragon_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_dragon_chat_bubble_right.png",
+    "sha256": "bfab04e14fb6ce784a23e9b4ae45a5c170ad9e48597607db06b23f7c3d7fbcc2",
+    "image": true
+  },
+  "roomchat_styles_dragon_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_dragon_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_dragon_chat_bubble_pointer.png",
+    "sha256": "26cc315d85462cbba55131d2cf48a9c12dd3eb8b4730dda2bd27d738917aa290",
+    "image": true
+  },
+  "roomchat_styles_dragon_selector_preview": {
+    "id": "room-ui/roomchat_styles_dragon_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_dragon_selector_preview.png",
+    "sha256": "5cd9c1aefd805fb1f3bb6937504f8da66de5e99ab34ed7ef780957f77886f5b8",
+    "image": true
+  },
+  "roomchat_styles_hearts_style_xml": {
+    "id": "room-ui/roomchat_styles_hearts_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_hearts_style_xml.bin",
+    "sha256": "2b2884c6601b199d72d549f6d2170772d4fd845c761af77d0e55b5f58531cf6d",
+    "image": false
+  },
+  "roomchat_styles_hearts_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_hearts_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_hearts_bubble_shout_xml.bin",
+    "sha256": "a98728a52801da965d0a3429527fccee8c9c39ea5735e4307d22db627ec645c6",
+    "image": false
+  },
+  "roomchat_styles_hearts_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_hearts_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_hearts_bubble_speak_xml.bin",
+    "sha256": "246bef9e74f9734e6acffeeaecc465d81c03a66cabbed9ec48f6741e1e9b62e0",
+    "image": false
+  },
+  "roomchat_styles_hearts_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_hearts_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_hearts_bubble_whisper_xml.bin",
+    "sha256": "82ce6dfd8ffa3a39a6ed36ab8b81a7b27e945f1d520f86f8e2a3f9c844614001",
+    "image": false
+  },
+  "roomchat_styles_hearts_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_hearts_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_hearts_chat_bubble_left.png",
+    "sha256": "fd1acbe3ddbbab3b3a01a6623ac981aae6580f54d364aa326d020570acfcb761",
+    "image": true
+  },
+  "roomchat_styles_hearts_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_hearts_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_hearts_chat_bubble_middle.png",
+    "sha256": "2bfacf35127db3716be89d92682cbe776bdc47954e91c201bd28dc74740d4f54",
+    "image": true
+  },
+  "roomchat_styles_hearts_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_hearts_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_hearts_chat_bubble_right.png",
+    "sha256": "1db8203bda3b8457371d1dc1fd1cb12b00e98033d4f4917adc6380dd3f732bde",
+    "image": true
+  },
+  "roomchat_styles_hearts_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_hearts_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_hearts_chat_bubble_pointer.png",
+    "sha256": "67f24f87f552a87d1144d8fed207c2cdcb9278b2b25369ba6a3da163659bc541",
+    "image": true
+  },
+  "roomchat_styles_hearts_selector_preview": {
+    "id": "room-ui/roomchat_styles_hearts_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_hearts_selector_preview.png",
+    "sha256": "19ced7f209d58000238aaeb865568296d65846d209ba9e46d62c21c7298f73b2",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_turquoise_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_style_xml.bin",
+    "sha256": "9ee50447c1b7df639d509b8031ebfa10d4c31822f8abdcd6c8611667cb4782a0",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_turquoise_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_bubble_shout_xml.bin",
+    "sha256": "806673042db8f5e9bf7408110b262190f226084c1527054cf29285d01dc81624",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_turquoise_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_bubble_speak_xml.bin",
+    "sha256": "75d2a0ff9826cca9e9778f0cdf6635d2d2ed410dae95b9ccd964bbfcbb09c7f8",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_turquoise_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_bubble_whisper_xml.bin",
+    "sha256": "df4c28d7bba43a1777c6d387dc4e03e29830428adceccade821775ca71377aab",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_turquoise_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_chat_bubble_left.png",
+    "sha256": "7d10db7daa8a7193b12a8ef035336b53e5b20758a019915c25eaecf7d5bd3e01",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_turquoise_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_chat_bubble_middle.png",
+    "sha256": "56941b75ff883b33a8e98904ce33c7eed6226a2e81603c532bccde0f3e35639d",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_turquoise_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_chat_bubble_right.png",
+    "sha256": "84d1747bd64674fc02c42fb5191f19d8c278dc0348a41d3787895903a82a0172",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_turquoise_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_chat_bubble_pointer.png",
+    "sha256": "98a4bd116c7c6b9affe76afd7b969410f5ff09962b57735e6263b2bfb17c2247",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_turquoise_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_dark_turquoise_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_turquoise_selector_preview.png",
+    "sha256": "51fc5e603566b795702225314cc64d8e0fc35d7df946164811727781baa20831",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_yellow_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_yellow_style_xml.bin",
+    "sha256": "486bfb4d6c1549c8568cdffe0a2743c96fed5516b469232f4bd091476b4bd045",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_yellow_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_yellow_bubble_shout_xml.bin",
+    "sha256": "806673042db8f5e9bf7408110b262190f226084c1527054cf29285d01dc81624",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_yellow_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_yellow_bubble_speak_xml.bin",
+    "sha256": "75d2a0ff9826cca9e9778f0cdf6635d2d2ed410dae95b9ccd964bbfcbb09c7f8",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_yellow_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_dark_yellow_bubble_whisper_xml.bin",
+    "sha256": "c0fd0687b5b537ff89c10fef9dfdc304caf166a68bffd7525644b6002ca10b97",
+    "image": false
+  },
+  "roomchat_styles_normal_dark_yellow_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_yellow_chat_bubble_left.png",
+    "sha256": "102528c97e30535fa9dcc254f4865f0f2983121382f666e12579d75803ea6fc3",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_yellow_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_yellow_chat_bubble_middle.png",
+    "sha256": "a44fc37ecfc858e79d3ffe5ca0950b0bf493cfa9e29370b38d95b2fa32a76f08",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_yellow_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_yellow_chat_bubble_right.png",
+    "sha256": "19390b14bc64fef346573650f9dcc476be5eca09ea759326e6c0e797071b0910",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_yellow_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_yellow_chat_bubble_pointer.png",
+    "sha256": "048ae8b0ede36f3dd6d76d04f09adcf16d0d85095722a54a1b5916509e8e420c",
+    "image": true
+  },
+  "roomchat_styles_normal_dark_yellow_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_dark_yellow_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_dark_yellow_selector_preview.png",
+    "sha256": "88860a16d3949bd749e0794408106c068897c35a502a16a96f1f181252392a95",
+    "image": true
+  },
+  "roomchat_styles_normal_green_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_green_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_green_style_xml.bin",
+    "sha256": "249157c3c8495d591abbe69ca6f45eb219ab3b195d4a6b02b5cbc4096694fd8e",
+    "image": false
+  },
+  "roomchat_styles_normal_green_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_green_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_green_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_green_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_green_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_green_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_green_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_green_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_green_bubble_whisper_xml.bin",
+    "sha256": "b0de96b3568f180f0f0ea8544f5b2e647d51e5cdb2f9e0711d4e6240ed61dda6",
+    "image": false
+  },
+  "roomchat_styles_normal_green_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_green_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_green_chat_bubble_left.png",
+    "sha256": "c902fddc1feac76c8b8144666a95c8f5e74914ef63d823662483479726be75d7",
+    "image": true
+  },
+  "roomchat_styles_normal_green_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_green_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_green_chat_bubble_middle.png",
+    "sha256": "729ce366ff61f1f56f31e4f9b818030c88eef31560e2b4ba876316710200738a",
+    "image": true
+  },
+  "roomchat_styles_normal_green_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_green_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_green_chat_bubble_right.png",
+    "sha256": "f520fa598cd14cf5af1c5ec1605ce841a6f40efa5a6f50de59cb7a0ca56735b9",
+    "image": true
+  },
+  "roomchat_styles_normal_green_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_green_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_green_chat_bubble_pointer.png",
+    "sha256": "bed49e340d87128d45a24789087e301d8a5caf60707aeb07cdf895cd50cb5d4b",
+    "image": true
+  },
+  "roomchat_styles_normal_green_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_green_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_green_selector_preview.png",
+    "sha256": "5175b6197f44cd8ab46b6ce3a8acff8fcd63052584c99c1c47261cc69b549e12",
+    "image": true
+  },
+  "roomchat_styles_normal_pink_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_pink_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_pink_style_xml.bin",
+    "sha256": "1cabeaef195989d6c8400a5f424aefde42151a10eaa6b73918eea0e1474cd608",
+    "image": false
+  },
+  "roomchat_styles_normal_pink_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_pink_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_pink_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_pink_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_pink_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_pink_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_pink_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_pink_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_pink_bubble_whisper_xml.bin",
+    "sha256": "b0de96b3568f180f0f0ea8544f5b2e647d51e5cdb2f9e0711d4e6240ed61dda6",
+    "image": false
+  },
+  "roomchat_styles_normal_pink_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_pink_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_pink_chat_bubble_left.png",
+    "sha256": "00580195b03743fc8f739994ef3af7677d992bc27508c336dd321abfb5ce0509",
+    "image": true
+  },
+  "roomchat_styles_normal_pink_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_pink_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_pink_chat_bubble_middle.png",
+    "sha256": "646beea86c3370441a07c21e39939124238898430a0ab46ae95b59db0ead197d",
+    "image": true
+  },
+  "roomchat_styles_normal_pink_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_pink_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_pink_chat_bubble_right.png",
+    "sha256": "b28dd3be3cef8f40419b3b731ba0e734f7b34714165349ac2f62156d3cda3c34",
+    "image": true
+  },
+  "roomchat_styles_normal_pink_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_pink_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_pink_chat_bubble_pointer.png",
+    "sha256": "13cfb2e0bf318dc931e5b9b5eab1db31b4c4b2d2b91d33a084496cd5649de1db",
+    "image": true
+  },
+  "roomchat_styles_normal_pink_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_pink_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_pink_selector_preview.png",
+    "sha256": "e5eb91cc76e3a162b90a787d2b414e2c00438a16e8e8f1aec00917286f370b49",
+    "image": true
+  },
+  "roomchat_styles_normal_purple_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_purple_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_purple_style_xml.bin",
+    "sha256": "2a6c709d8f127c30debdd7e7fff929acfe6cf25bbd8f7358d3c63beaf9b01075",
+    "image": false
+  },
+  "roomchat_styles_normal_purple_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_purple_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_purple_bubble_shout_xml.bin",
+    "sha256": "389d7489f2d6e67e8a9173ae9e31af8b9cc6b6cff9878572654612676f57060d",
+    "image": false
+  },
+  "roomchat_styles_normal_purple_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_purple_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_purple_bubble_speak_xml.bin",
+    "sha256": "3f5cb4f689d6e80d4f2afd55335c05051c2856fa7b3d6f51bede9114a53ce504",
+    "image": false
+  },
+  "roomchat_styles_normal_purple_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_purple_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_purple_bubble_whisper_xml.bin",
+    "sha256": "c9cb7f0aa548ac20cc7497a3410796adfe590830f3115c00280c795470f17fff",
+    "image": false
+  },
+  "roomchat_styles_normal_purple_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_purple_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_purple_chat_bubble_left.png",
+    "sha256": "745600d9f4c6ff1abf7af165a71dce6db6f861d42847fb992e59742b165c0182",
+    "image": true
+  },
+  "roomchat_styles_normal_purple_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_purple_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_purple_chat_bubble_middle.png",
+    "sha256": "2e4000abae76ec35c485ce254bbe81e19750418bc61a690519e6a45214dfc10e",
+    "image": true
+  },
+  "roomchat_styles_normal_purple_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_purple_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_purple_chat_bubble_right.png",
+    "sha256": "8fd30e6e26e8ddd811d916ba5506eb0fe1aab45bfe3494e43bb57872bc807891",
+    "image": true
+  },
+  "roomchat_styles_normal_purple_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_purple_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_purple_chat_bubble_pointer.png",
+    "sha256": "baedc3919f2ecf41b2e43711ea26c6cc26c339ee5eade649f7d9c31599dadeb5",
+    "image": true
+  },
+  "roomchat_styles_normal_purple_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_purple_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_purple_selector_preview.png",
+    "sha256": "1cbc5962cc966ef2fe0cd7b7fcc618a7cc590ed390b3b54defbc39631cf31bee",
+    "image": true
+  },
+  "roomchat_styles_normal_sky_blue_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_sky_blue_style_xml.bin",
+    "sha256": "24349d60d86b64250f67c69ca9980b9430505866bd9551180b8caee29595a6a9",
+    "image": false
+  },
+  "roomchat_styles_normal_sky_blue_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_sky_blue_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_sky_blue_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_sky_blue_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_sky_blue_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_sky_blue_bubble_whisper_xml.bin",
+    "sha256": "bebb444edb4a8e5101631f368c12ac7a1b0049b8f117a050b23774b52ec707de",
+    "image": false
+  },
+  "roomchat_styles_normal_sky_blue_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_sky_blue_chat_bubble_left.png",
+    "sha256": "a5088bbc11ea6bf2c3b77d04930343c3c4dd87f429e3cbc2437ec97903a2b4b4",
+    "image": true
+  },
+  "roomchat_styles_normal_sky_blue_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_sky_blue_chat_bubble_middle.png",
+    "sha256": "028454ccf3682abfd62a279e20c6cd03f07d8aa881077534fda6bf5911a19ff0",
+    "image": true
+  },
+  "roomchat_styles_normal_sky_blue_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_sky_blue_chat_bubble_right.png",
+    "sha256": "60810f67b8f1d926678fcff1f7171173e45709f900d3d603e6548177f5fbffb8",
+    "image": true
+  },
+  "roomchat_styles_normal_sky_blue_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_sky_blue_chat_bubble_pointer.png",
+    "sha256": "df0daa64d7f72596c2b63dfbe821e638858b3cac2743f965847de47bac769807",
+    "image": true
+  },
+  "roomchat_styles_normal_sky_blue_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_sky_blue_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_sky_blue_selector_preview.png",
+    "sha256": "4bca266fa0619085b6a9029866559527b9448e41b96931303832e2569d99cd48",
+    "image": true
+  },
+  "roomchat_styles_normal_yellow_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_yellow_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_yellow_style_xml.bin",
+    "sha256": "0ef6074ab789b1d9343cc5b604b8e70d87320c3c97d7d8c97ca72d43dbf76eb8",
+    "image": false
+  },
+  "roomchat_styles_normal_yellow_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_yellow_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_yellow_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_yellow_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_yellow_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_yellow_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_yellow_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_yellow_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_yellow_bubble_whisper_xml.bin",
+    "sha256": "b0de96b3568f180f0f0ea8544f5b2e647d51e5cdb2f9e0711d4e6240ed61dda6",
+    "image": false
+  },
+  "roomchat_styles_normal_yellow_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_yellow_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_yellow_chat_bubble_left.png",
+    "sha256": "c5fb4fb0d45d5c488303883beb662c95fe99998b21cc102d01b747d73ae20353",
+    "image": true
+  },
+  "roomchat_styles_normal_yellow_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_yellow_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_yellow_chat_bubble_middle.png",
+    "sha256": "c4019c0bca080340576c68467dcee910a05d7df88f5bffd69c0252e3133699c1",
+    "image": true
+  },
+  "roomchat_styles_normal_yellow_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_yellow_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_yellow_chat_bubble_right.png",
+    "sha256": "239640e332123e66b0186266d3f7f2d8152806e125c4ecb397b558dc53f6260b",
+    "image": true
+  },
+  "roomchat_styles_normal_yellow_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_yellow_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_yellow_chat_bubble_pointer.png",
+    "sha256": "6c375af3f7c95e55d2a0845acdc8a9bd7191249aa6e69fa7dc9a0da905b2eb34",
+    "image": true
+  },
+  "roomchat_styles_normal_yellow_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_yellow_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_yellow_selector_preview.png",
+    "sha256": "bc37221dc5d39c271236e56d58b4dc768d56f7edbb032320c8a0fa99778f9f0d",
+    "image": true
+  },
+  "roomchat_styles_sticking_plaster_style_xml": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sticking_plaster_style_xml.bin",
+    "sha256": "0f614b98bf9dc180262a7084b4a48d8ea6143fe68bb9fda6233838ee6bc0234a",
+    "image": false
+  },
+  "roomchat_styles_sticking_plaster_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sticking_plaster_bubble_shout_xml.bin",
+    "sha256": "5a0207f2ba9c24f7d800dacd7becf73278e9c63f7ef0751bddc28648d1fe6377",
+    "image": false
+  },
+  "roomchat_styles_sticking_plaster_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sticking_plaster_bubble_speak_xml.bin",
+    "sha256": "5861590a595ade56e51c1255be63213228b5f389210767e34bf10f771871ddef",
+    "image": false
+  },
+  "roomchat_styles_sticking_plaster_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_sticking_plaster_bubble_whisper_xml.bin",
+    "sha256": "ba646c7844636df6627e6bbc75d5fc1a5de11f50d0b978fdb0ca56faa13b9365",
+    "image": false
+  },
+  "roomchat_styles_sticking_plaster_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sticking_plaster_chat_bubble_left.png",
+    "sha256": "3e7a3a546dd6e321fbc1692f6c18b0485dc3e115b942d3c3f8d70a58005c8c25",
+    "image": true
+  },
+  "roomchat_styles_sticking_plaster_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sticking_plaster_chat_bubble_middle.png",
+    "sha256": "7222276c03af99446351ea3dbe5f3986892ba9441ee0216b510ebba80b6078e9",
+    "image": true
+  },
+  "roomchat_styles_sticking_plaster_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sticking_plaster_chat_bubble_right.png",
+    "sha256": "6b2a0b1454f873a5cb191c2a5121ad7f778e5f88c45de96668c2e3a8e504c024",
+    "image": true
+  },
+  "roomchat_styles_sticking_plaster_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sticking_plaster_chat_bubble_pointer.png",
+    "sha256": "64f09a858951e722dd41e7fb00c27b3bd8c80d34be5ecd3c42d841363206d575",
+    "image": true
+  },
+  "roomchat_styles_sticking_plaster_selector_preview": {
+    "id": "room-ui/roomchat_styles_sticking_plaster_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_sticking_plaster_selector_preview.png",
+    "sha256": "c32ced52e9434e6fccf71b5eb8c40497ba064a974560cac50563655cfb902960",
+    "image": true
+  },
+  "roomchat_styles_normal_red_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_red_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_red_style_xml.bin",
+    "sha256": "f772019d66f7f5a4614dfdd486f3317c49b9e434784627c98e7820d8bc9fb5fc",
+    "image": false
+  },
+  "roomchat_styles_normal_red_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_red_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_red_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_red_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_red_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_red_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_red_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_red_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_red_bubble_whisper_xml.bin",
+    "sha256": "bebb444edb4a8e5101631f368c12ac7a1b0049b8f117a050b23774b52ec707de",
+    "image": false
+  },
+  "roomchat_styles_normal_red_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_red_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_red_chat_bubble_left.png",
+    "sha256": "5f669c49966166c05427fc9f250f713d578d167e9d791d94e6a6383e365f2ee8",
+    "image": true
+  },
+  "roomchat_styles_normal_red_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_red_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_red_chat_bubble_middle.png",
+    "sha256": "0ebc909c9f422d9aa4cc9636c5796a53ec5ff5b1acc736c04916d234a540ed65",
+    "image": true
+  },
+  "roomchat_styles_normal_red_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_red_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_red_chat_bubble_right.png",
+    "sha256": "8299881789a06f65c304c3f095fe6e28dc6020bcbccf637b3b3431a56ae6a5eb",
+    "image": true
+  },
+  "roomchat_styles_normal_red_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_red_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_red_chat_bubble_pointer.png",
+    "sha256": "04534a0c5c22ed386d9fa0a62c794c2985b749016cab635b844f6a75be0b1cca",
+    "image": true
+  },
+  "roomchat_styles_normal_red_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_red_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_red_selector_preview.png",
+    "sha256": "c21abec3a0df590c8acf92b0820b3cc3a1385aa4f011905a508216211186b29c",
+    "image": true
+  },
+  "roomchat_styles_normal_blue_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_blue_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_blue_style_xml.bin",
+    "sha256": "183c999059110f4ee0c2218b80af6af4a00d8a5b2ec581130481ba06c42c0b74",
+    "image": false
+  },
+  "roomchat_styles_normal_blue_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_blue_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_blue_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_blue_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_blue_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_blue_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_blue_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_blue_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_blue_bubble_whisper_xml.bin",
+    "sha256": "bebb444edb4a8e5101631f368c12ac7a1b0049b8f117a050b23774b52ec707de",
+    "image": false
+  },
+  "roomchat_styles_normal_blue_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_blue_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_blue_chat_bubble_left.png",
+    "sha256": "e38d2277d861ca4319517e0e2cb9ad688806b9233cc27765f45757de7901f46f",
+    "image": true
+  },
+  "roomchat_styles_normal_blue_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_blue_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_blue_chat_bubble_middle.png",
+    "sha256": "9e530b30ba661beada0837d39c082b7e23a3dd1551d2bd027da65789f626aa76",
+    "image": true
+  },
+  "roomchat_styles_normal_blue_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_blue_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_blue_chat_bubble_right.png",
+    "sha256": "732403ee015052bf8e6a1a5dd758e1b3b6b8b987c0912056a0c8b72694c44d16",
+    "image": true
+  },
+  "roomchat_styles_normal_blue_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_blue_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_blue_chat_bubble_pointer.png",
+    "sha256": "f1bef4d838f624891410b0ce8673d33943f7157ec470b82e272850fb61b876c8",
+    "image": true
+  },
+  "roomchat_styles_normal_blue_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_blue_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_blue_selector_preview.png",
+    "sha256": "c41f1b0a49e4f4784fe72d47b8ed02ee24d9564253fd369e97bb0b29e556cf85",
+    "image": true
+  },
+  "roomchat_styles_normal_grey_style_xml": {
+    "id": "room-ui/roomchat_styles_normal_grey_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_grey_style_xml.bin",
+    "sha256": "79178ee3b5dc2af0434a523d22e40d27ea586c99acde6535ecee8796d937b2f2",
+    "image": false
+  },
+  "roomchat_styles_normal_grey_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_normal_grey_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_grey_bubble_shout_xml.bin",
+    "sha256": "e91e3e8afa5eec18439c5b4f95df21d860f3a52a745d60302944499d61e0cccf",
+    "image": false
+  },
+  "roomchat_styles_normal_grey_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_normal_grey_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_grey_bubble_speak_xml.bin",
+    "sha256": "29a338c71a626160568a8500a576e3db9338e9985d50ceeafcc0e57d636bed8a",
+    "image": false
+  },
+  "roomchat_styles_normal_grey_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_normal_grey_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_normal_grey_bubble_whisper_xml.bin",
+    "sha256": "bebb444edb4a8e5101631f368c12ac7a1b0049b8f117a050b23774b52ec707de",
+    "image": false
+  },
+  "roomchat_styles_normal_grey_chat_bubble_left": {
+    "id": "room-ui/roomchat_styles_normal_grey_chat_bubble_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_grey_chat_bubble_left.png",
+    "sha256": "4cd972fc38dbeb0fdf13c7e4dc6b7daa5fdbda0adbeafa551111f5f52257f149",
+    "image": true
+  },
+  "roomchat_styles_normal_grey_chat_bubble_middle": {
+    "id": "room-ui/roomchat_styles_normal_grey_chat_bubble_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_grey_chat_bubble_middle.png",
+    "sha256": "7f0ff3fa3c4bc90d209ece2af8f67cbd419f24d42551338319ab72a57c7614f3",
+    "image": true
+  },
+  "roomchat_styles_normal_grey_chat_bubble_right": {
+    "id": "room-ui/roomchat_styles_normal_grey_chat_bubble_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_grey_chat_bubble_right.png",
+    "sha256": "525c94bcd394c2c44adc79820006f45932ac2c8aec449e7bfa6a06549c322cd8",
+    "image": true
+  },
+  "roomchat_styles_normal_grey_chat_bubble_pointer": {
+    "id": "room-ui/roomchat_styles_normal_grey_chat_bubble_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_grey_chat_bubble_pointer.png",
+    "sha256": "25c5a8f7a5b59d84f792c8c791c316158efe71a1ee1eb00d85da2794f24f4b74",
+    "image": true
+  },
+  "roomchat_styles_normal_grey_selector_preview": {
+    "id": "room-ui/roomchat_styles_normal_grey_selector_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_normal_grey_selector_preview.png",
+    "sha256": "ee23ee05920b32878f475c9f8f9c35248488d407ac27f4f9029596fe9aa266cf",
+    "image": true
+  },
+  "roomchat_styles_fortune_teller_style_xml": {
+    "id": "room-ui/roomchat_styles_fortune_teller_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_fortune_teller_style_xml.bin",
+    "sha256": "5d403e40d36ffa55fcb328a18c7947c98b46586dd88b22104190b47ff34eae27",
+    "image": false
+  },
+  "roomchat_styles_fortune_teller_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_fortune_teller_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_fortune_teller_bubble_shout_xml.bin",
+    "sha256": "da746fe7c0b95c9577db81fec17e339766c94a4cc8498ea0e9e39aca7c384d0c",
+    "image": false
+  },
+  "roomchat_styles_fortune_teller_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_fortune_teller_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_fortune_teller_bubble_speak_xml.bin",
+    "sha256": "69f1e1fac5788da105042646fbe5b93a99f0b32278fb1bec85ca7e5d1bd611f0",
+    "image": false
+  },
+  "roomchat_styles_fortune_teller_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_fortune_teller_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_fortune_teller_bubble_whisper_xml.bin",
+    "sha256": "a1153ef394f756ff2e25ae703ddba3a6df8311351d657cd9822d4b1fd9feb7c8",
+    "image": false
+  },
+  "roomchat_styles_fortune_teller_left": {
+    "id": "room-ui/roomchat_styles_fortune_teller_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_fortune_teller_left.png",
+    "sha256": "54ef7e9864ddc60c47b820dccd835addbec5de0ca9ddce59254b07d6d4f8e0c2",
+    "image": true
+  },
+  "roomchat_styles_fortune_teller_mid": {
+    "id": "room-ui/roomchat_styles_fortune_teller_mid.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_fortune_teller_mid.png",
+    "sha256": "812f785ea380df8068497aeda19d6089aea2a8dd45b4a80257c11918920b145f",
+    "image": true
+  },
+  "roomchat_styles_fortune_teller_right": {
+    "id": "room-ui/roomchat_styles_fortune_teller_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_fortune_teller_right.png",
+    "sha256": "a97739ef80a1727063a06e5d969edd20ca533494aeed821d3b5e13e62d9b940a",
+    "image": true
+  },
+  "roomchat_styles_fortune_teller_pointer": {
+    "id": "room-ui/roomchat_styles_fortune_teller_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_fortune_teller_pointer.png",
+    "sha256": "deee1af296802d01e0a0a68fc5ad321cbb9c5be5ab0e8d79157eb4d1ec90cad6",
+    "image": true
+  },
+  "roomchat_styles_zombie_hand_style_xml": {
+    "id": "room-ui/roomchat_styles_zombie_hand_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_zombie_hand_style_xml.bin",
+    "sha256": "d19f32e11025cdcf08a5252037f8de0d7e17f174ed5867d11af9c0b93a022d1e",
+    "image": false
+  },
+  "roomchat_styles_zombie_hand_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_zombie_hand_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_zombie_hand_bubble_shout_xml.bin",
+    "sha256": "b9829f32be7b617f3f0c5f193bf42b45863ee25b0544ff1ce24cd06e667a6013",
+    "image": false
+  },
+  "roomchat_styles_zombie_hand_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_zombie_hand_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_zombie_hand_bubble_speak_xml.bin",
+    "sha256": "896e439c394fb07f4297c92dcc9de4c2923c18f71359252e70d86898ab125440",
+    "image": false
+  },
+  "roomchat_styles_zombie_hand_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_zombie_hand_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_zombie_hand_bubble_whisper_xml.bin",
+    "sha256": "eb27d0babb794ff868a7497f14452d5c0b02c74220d9e7c530ac2dc8e2f01d88",
+    "image": false
+  },
+  "roomchat_styles_zombie_hand_left": {
+    "id": "room-ui/roomchat_styles_zombie_hand_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_zombie_hand_left.png",
+    "sha256": "79fb8146068804acca6029f1dba8a6a6595c3a80c580117d7de2d6f2e04ea5f3",
+    "image": true
+  },
+  "roomchat_styles_zombie_hand_middle": {
+    "id": "room-ui/roomchat_styles_zombie_hand_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_zombie_hand_middle.png",
+    "sha256": "90f3d925c967c5b9d783577e41dcc030dfebb7301542e6f8150ad1ac1aa45474",
+    "image": true
+  },
+  "roomchat_styles_zombie_hand_right": {
+    "id": "room-ui/roomchat_styles_zombie_hand_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_zombie_hand_right.png",
+    "sha256": "411da0aa27b2a50c82aa858399701eca7356d85c818e4c7b10a955eef4c4ee30",
+    "image": true
+  },
+  "roomchat_styles_zombie_hand_pointer": {
+    "id": "room-ui/roomchat_styles_zombie_hand_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_zombie_hand_pointer.png",
+    "sha256": "2d9cd6f19823b5fa35eb82698d75dffbe111d1b95d74c384fab8643444862954",
+    "image": true
+  },
+  "roomchat_styles_zombie_hand_preview": {
+    "id": "room-ui/roomchat_styles_zombie_hand_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_zombie_hand_preview.png",
+    "sha256": "a26d3a3a9ad94e7b5f9e32f42e009f3355e82e76c3331d64b4946a3d3d21e460",
+    "image": true
+  },
+  "roomchat_styles_skeleton_style_xml": {
+    "id": "room-ui/roomchat_styles_skeleton_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_skeleton_style_xml.bin",
+    "sha256": "dd5e2fe3dff91355d2451845a2937817aa84f1c217813bf94971005dcd5a153e",
+    "image": false
+  },
+  "roomchat_styles_skeleton_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_skeleton_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_skeleton_bubble_shout_xml.bin",
+    "sha256": "4c5a0a285f8a4f1dcf3ecc85b193daf9bf35d46d82f17c661f40414fdc992b95",
+    "image": false
+  },
+  "roomchat_styles_skeleton_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_skeleton_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_skeleton_bubble_speak_xml.bin",
+    "sha256": "112de4c8396babcb30ca6a15a57035c0cd20d97f2a4986f4f03ab99ed374f626",
+    "image": false
+  },
+  "roomchat_styles_skeleton_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_skeleton_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_skeleton_bubble_whisper_xml.bin",
+    "sha256": "9583434cc964b125e4765c2f03c9584af70a7c28844fb7749e073e3f09e9e612",
+    "image": false
+  },
+  "roomchat_styles_skeleton_left": {
+    "id": "room-ui/roomchat_styles_skeleton_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_skeleton_left.png",
+    "sha256": "415ed80436cf27a270f1d3c07a05e917374634a65c8c631245c6bd06a7672e22",
+    "image": true
+  },
+  "roomchat_styles_skeleton_middle": {
+    "id": "room-ui/roomchat_styles_skeleton_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_skeleton_middle.png",
+    "sha256": "67f3128fef6b03d1a2fed4f959633488c15301541dd812f57e8bcd3d38e9d5ff",
+    "image": true
+  },
+  "roomchat_styles_skeleton_right": {
+    "id": "room-ui/roomchat_styles_skeleton_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_skeleton_right.png",
+    "sha256": "9afaf9657bd8f81bf6cd9ae9a7349c745558d68fe256b30e27abf7be8c1f29fb",
+    "image": true
+  },
+  "roomchat_styles_skeleton_preview": {
+    "id": "room-ui/roomchat_styles_skeleton_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_skeleton_preview.png",
+    "sha256": "cba2b0e0bd475d92ea8c7354c8681e48ba306583b919141c9ed74651c9ca7fd5",
+    "image": true
+  },
+  "roomchat_styles_staff_style_xml": {
+    "id": "room-ui/roomchat_styles_staff_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_staff_style_xml.bin",
+    "sha256": "0ffa7e32a4608abdc8a4652642f5eb5b22fa206dfaa389279b0dede4801726a2",
+    "image": false
+  },
+  "roomchat_styles_staff_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_staff_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_staff_bubble_shout_xml.bin",
+    "sha256": "62cb39cf30329ba9495381b57e63f274acf3a2d40448a585f1a81ff379a1b28d",
+    "image": false
+  },
+  "roomchat_styles_staff_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_staff_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_staff_bubble_speak_xml.bin",
+    "sha256": "a3bd2331fe16341d1792e174cc88bbe7d23884247daeebf6448ec269b16a1b6b",
+    "image": false
+  },
+  "roomchat_styles_staff_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_staff_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_staff_bubble_whisper_xml.bin",
+    "sha256": "b4a9ca8a013bf2d656b109b6d4c735e82596cb298747a5ff8399a674b9c13b49",
+    "image": false
+  },
+  "roomchat_styles_staff_left": {
+    "id": "room-ui/roomchat_styles_staff_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_staff_left.png",
+    "sha256": "975a0fca3cd077ecf3e134c82da5b5238c90330ebd0eb3aa71876e6b0968814a",
+    "image": true
+  },
+  "roomchat_styles_staff_middle": {
+    "id": "room-ui/roomchat_styles_staff_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_staff_middle.png",
+    "sha256": "5785f3d77e1839e6d3b2e2f17a0ff8b0996e4c11e2c21f9a9c4bff8e48ddbbb3",
+    "image": true
+  },
+  "roomchat_styles_staff_right": {
+    "id": "room-ui/roomchat_styles_staff_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_staff_right.png",
+    "sha256": "13f30bf3367448bf6d990c6414a102906851c0b1dcc659cc9afc5b9fa3c6f8cf",
+    "image": true
+  },
+  "roomchat_styles_staff_pointer": {
+    "id": "room-ui/roomchat_styles_staff_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_staff_pointer.png",
+    "sha256": "0d589940613a8bd86dd1128d8a6ea994e0250c8375f1c3c7dd9fe88d55ff9164",
+    "image": true
+  },
+  "roomchat_styles_staff_preview": {
+    "id": "room-ui/roomchat_styles_staff_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_staff_preview.png",
+    "sha256": "caca5f4ae4dcc905f413a5949f18e8067fe11108ef54252208f48d5f2e80db8c",
+    "image": true
+  },
+  "roomchat_styles_pirate_style_xml": {
+    "id": "room-ui/roomchat_styles_pirate_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_pirate_style_xml.bin",
+    "sha256": "3c61fe1b331bf0cac7689255e4a631382c2899fd51c5827e2721a29f40a95517",
+    "image": false
+  },
+  "roomchat_styles_pirate_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_pirate_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_pirate_bubble_shout_xml.bin",
+    "sha256": "2214588ce5f560706c37669a2f85ddfbf8623114e5bfb0654155090aa8e31716",
+    "image": false
+  },
+  "roomchat_styles_pirate_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_pirate_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_pirate_bubble_speak_xml.bin",
+    "sha256": "a1be40f840fbba16401cf7aecd7705b1a873e9fd4c1105e00af653577d28ff47",
+    "image": false
+  },
+  "roomchat_styles_pirate_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_pirate_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_pirate_bubble_whisper_xml.bin",
+    "sha256": "3eeab1aba42fb760f880d0e2f40f4c5df7ad9a20bc21b42d36db9e0d75999e00",
+    "image": false
+  },
+  "roomchat_styles_pirate_left": {
+    "id": "room-ui/roomchat_styles_pirate_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_pirate_left.png",
+    "sha256": "9bff66ccfdd6a5a9a72a9cd8d1f326a8154a7cdbf434de8004715f7dc4bcad0c",
+    "image": true
+  },
+  "roomchat_styles_pirate_middle": {
+    "id": "room-ui/roomchat_styles_pirate_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_pirate_middle.png",
+    "sha256": "0756fa040463ce7616f359f9ebbb5f7c88e06f674b90c07ce6e180108de5ae86",
+    "image": true
+  },
+  "roomchat_styles_pirate_right": {
+    "id": "room-ui/roomchat_styles_pirate_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_pirate_right.png",
+    "sha256": "dc1841ff5164999c7feea236697f4b007a1782d4bf39d1d2c187143d18a0373d",
+    "image": true
+  },
+  "roomchat_styles_pirate_pointer": {
+    "id": "room-ui/roomchat_styles_pirate_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_pirate_pointer.png",
+    "sha256": "c5070ec78cfde041f77c7bdc23428f7236fbdcd5b29175c19f597b64470905d8",
+    "image": true
+  },
+  "roomchat_styles_pirate_preview": {
+    "id": "room-ui/roomchat_styles_pirate_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_pirate_preview.png",
+    "sha256": "3e9e9edc570c3e1f557953ee6bced71dfb124496d3a2924a5af9051c15c08f7f",
+    "image": true
+  },
+  "roomchat_styles_parrot_style_xml": {
+    "id": "room-ui/roomchat_styles_parrot_style_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_parrot_style_xml.bin",
+    "sha256": "ed9eb6a10d75d9c315ad846b32b5431ad3a6eff3183860c47e7be634c94b7672",
+    "image": false
+  },
+  "roomchat_styles_parrot_bubble_shout_xml": {
+    "id": "room-ui/roomchat_styles_parrot_bubble_shout_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_parrot_bubble_shout_xml.bin",
+    "sha256": "2214588ce5f560706c37669a2f85ddfbf8623114e5bfb0654155090aa8e31716",
+    "image": false
+  },
+  "roomchat_styles_parrot_bubble_speak_xml": {
+    "id": "room-ui/roomchat_styles_parrot_bubble_speak_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_parrot_bubble_speak_xml.bin",
+    "sha256": "a1be40f840fbba16401cf7aecd7705b1a873e9fd4c1105e00af653577d28ff47",
+    "image": false
+  },
+  "roomchat_styles_parrot_bubble_whisper_xml": {
+    "id": "room-ui/roomchat_styles_parrot_bubble_whisper_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_roomchat_styles_parrot_bubble_whisper_xml.bin",
+    "sha256": "3eeab1aba42fb760f880d0e2f40f4c5df7ad9a20bc21b42d36db9e0d75999e00",
+    "image": false
+  },
+  "roomchat_styles_parrot_left": {
+    "id": "room-ui/roomchat_styles_parrot_left.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_parrot_left.png",
+    "sha256": "54e0b085dd519a0dc1d742bb202e398f3522738c7205bedbf60cc9b4fc6145c4",
+    "image": true
+  },
+  "roomchat_styles_parrot_middle": {
+    "id": "room-ui/roomchat_styles_parrot_middle.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_parrot_middle.png",
+    "sha256": "87b1e1e603be12a8d47eab14d80a24a335b5ce1ec335eabeccd5914239bc7df1",
+    "image": true
+  },
+  "roomchat_styles_parrot_right": {
+    "id": "room-ui/roomchat_styles_parrot_right.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_parrot_right.png",
+    "sha256": "f9452cd362f5c35530e437da58e88a70d9879ce424df84dcf87be327a51e8fd2",
+    "image": true
+  },
+  "roomchat_styles_parrot_pointer": {
+    "id": "room-ui/roomchat_styles_parrot_pointer.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_parrot_pointer.png",
+    "sha256": "f3276440e39665f54e15402d6dea5fdf8c6e65b108430d0bcd6c5d7796eba649",
+    "image": true
+  },
+  "roomchat_styles_parrot_preview": {
+    "id": "room-ui/roomchat_styles_parrot_preview.png",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/images/HabboRoomUICom_roomchat_styles_parrot_preview.png",
+    "sha256": "d74011115886b8658865a3aa17b9537c8859f5df8094f07fe5d8b173f0b990aa",
+    "image": true
+  },
+  "styleselector_menu_xml": {
+    "id": "room-ui/styleselector_menu_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_styleselector_menu_xml.bin",
+    "sha256": "ebb039e96f6fc2ade81026fc95f8e7a91bd7974520058012562e8f38e7f52832",
+    "image": false
+  },
+  "styleselector_menu_new_xml": {
+    "id": "room-ui/styleselector_menu_new_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_styleselector_menu_new_xml.bin",
+    "sha256": "159f105bce84d7803d69febb8b129d2694a4fd29542dcf72775d143462aadf53",
+    "image": false
+  },
+  "chatter_configuration_xml": {
+    "id": "room-ui/chatter_configuration_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatter_configuration_xml.bin",
+    "sha256": "ffe04903524d5ee63ef7b79371369283cdcf160b5d751bf8476c4a0ea2f6683a",
+    "image": false
+  },
+  "name_configuration_xml": {
+    "id": "room-ui/name_configuration_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_name_configuration_xml.bin",
+    "sha256": "a8860210b1a8ff6925210abe5d8dfcc63a847ea4ca38ef3dbdad004265e76362",
+    "image": false
+  },
+  "motto_configuration_xml": {
+    "id": "room-ui/motto_configuration_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_motto_configuration.bin",
+    "sha256": "ef3cc6bf4d3077b2a0d3248373e7bf3c06d74ff7135573fab2b393db739be385",
+    "image": false
+  },
+  "lock_confirm_xml": {
+    "id": "room-ui/lock_confirm_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_lock_confirm_xml.bin",
+    "sha256": "c77e031e4051c0d7d63bed057517239aa0e15a204d4e2dd41a3a92d24baf1d32",
+    "image": false
+  },
+  "lovelock_engraving_xml": {
+    "id": "room-ui/lovelock_engraving_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_lovelock_engraving_xml.bin",
+    "sha256": "86dece51aaf4c8992288f04d669204ce0f57c685b0dd44a714e3ba58e84e1201",
+    "image": false
+  },
+  "habboween_engraving_xml": {
+    "id": "room-ui/habboween_engraving_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_habboween_engraving_xml.bin",
+    "sha256": "c627c130b6e50b6b4287b54ff36bdeef23a4e4bc08714b8ae7472aaa9688ea05",
+    "image": false
+  },
+  "wildwest_engraving_xml": {
+    "id": "room-ui/wildwest_engraving_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_wildwest_engraving_xml.bin",
+    "sha256": "b4beb3ae005172ea5cd663ab36e0ceb28826ea94adbfc371604f7bbc9b86cefb",
+    "image": false
+  },
+  "friendfurni_menu": {
+    "id": "room-ui/friendfurni_menu.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_friendfurni_menu.bin",
+    "sha256": "47364827a479a1eda29c90039189e5d0cc8da735151a36e6f3a9ff5f2ec7a8fc",
+    "image": false
+  },
+  "high_score_display_xml": {
+    "id": "room-ui/high_score_display_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_high_score_display_xml.bin",
+    "sha256": "6ec8ee80153a2ecc33db3a71845c80e2e8d024c0fec8b5b11f657709f08e321e",
+    "image": false
+  },
+  "custom_stack_height_xml": {
+    "id": "room-ui/custom_stack_height_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_custom_stack_height_xml.bin",
+    "sha256": "a563d561f7cc73a08bc851b425b06213a2cbd95a9183f6f590ca529ad0e803c7",
+    "image": false
+  },
+  "video_viewer_xml": {
+    "id": "room-ui/video_viewer_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_video_viewer_xml.bin",
+    "sha256": "ec65cf348a83d960f06301cbf22c7772edf412c589a17882a1222402cd30e30f",
+    "image": false
+  },
+  "rentablespace_xml": {
+    "id": "room-ui/rentablespace_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_rentablespace_xml.bin",
+    "sha256": "ad62b210c5a4259eb44d7959835fef07b02b9738e4c06fee9113954a3a9f41be",
+    "image": false
+  },
+  "vimeo_viewer_xml": {
+    "id": "room-ui/vimeo_viewer_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_vimeo_viewer_xml.bin",
+    "sha256": "150b14413b243b6dfe58cca892eb9aec14270f05e128fae9e43a7ed561b3785d",
+    "image": false
+  },
+  "room_tools_toolbar_xml": {
+    "id": "room-ui/room_tools_toolbar_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_tools_toolbar_xml.bin",
+    "sha256": "03f45f99bc537736c6151c0a4ac896f138eda8085b15e3e405f35923eb3f30aa",
+    "image": false
+  },
+  "room_tools_info_xml": {
+    "id": "room-ui/room_tools_info_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_tools_info_xml.bin",
+    "sha256": "53e6e36888955584e96d8cf1e7d971329721b5099468c25eb4bd2e9e1f00c53d",
+    "image": false
+  },
+  "stories_image_widget_xml": {
+    "id": "room-ui/stories_image_widget_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_stories_image_widget_xml.bin",
+    "sha256": "e8ea5eab23b9cc1993622e53691c2978eb9efbae2ac4c55c82e94032c6bf567f",
+    "image": false
+  },
+  "room_tools_history_xml": {
+    "id": "room-ui/room_tools_history_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_tools_history_xml.bin",
+    "sha256": "fdf69292c41cb5bf0ea1fb2eec4ece64a669dd9ad9c37c46a0acd53827df7a01",
+    "image": false
+  },
+  "room_tools_history_item_xml": {
+    "id": "room-ui/room_tools_history_item_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_room_tools_history_item_xml.bin",
+    "sha256": "caea1de740d2ca25ce900d0cce99df379a8582b7be9aedc49bc10b761ab596e9",
+    "image": false
+  },
+  "share_room_xml": {
+    "id": "room-ui/share_room_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_share_room_xml.bin",
+    "sha256": "fcf87e787f0b21836fb4fa6d114b30aa626cac972a551865b18273846fe55198",
+    "image": false
+  },
+  "report_photo_xml": {
+    "id": "room-ui/report_photo_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_report_photo_xml.bin",
+    "sha256": "e7fe3d91c798abdecc7a59af8e210f2d7a8f9cadef373d26d0b44b6e09b2aa93",
+    "image": false
+  },
+  "report_photo_poster_xml": {
+    "id": "room-ui/report_photo_poster_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_report_photo_poster_xml.bin",
+    "sha256": "4375cfbe2f992cc3237f5a7961bc4a94c9d3daa7eda0a7a2973c1c8ca1a52721",
+    "image": false
+  },
+  "wordquiz_question_xml": {
+    "id": "room-ui/wordquiz_question_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_wordquiz_question_xml.bin",
+    "sha256": "1d92689392a448ddf558b23927e0d27320924ac76c0cfeb949e20253e6964965",
+    "image": false
+  },
+  "wordquiz_result_xml": {
+    "id": "room-ui/wordquiz_result_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_wordquiz_result_xml.bin",
+    "sha256": "08ee7d3789d49be536ee96a219f049b4fe4801b32759cddbf8b88c1b3c7a74c9",
+    "image": false
+  },
+  "wordquiz_like_xml": {
+    "id": "room-ui/wordquiz_like_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_wordquiz_like_xml.bin",
+    "sha256": "ea78316a7c51fff9eba45a468621361d3511b347ada0137e34b19a7aa87b7ee5",
+    "image": false
+  },
+  "wordquiz_unlike_xml": {
+    "id": "room-ui/wordquiz_unlike_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_wordquiz_unlike_xml.bin",
+    "sha256": "b29b71f809f91811f93f3c4cb9c4a56eb2554d7a841bf87136c26339fc307135",
+    "image": false
+  },
+  "ui_help_bubble": {
+    "id": "room-ui/ui_help_bubble.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_ui_help_bubble.bin",
+    "sha256": "92e9fd86e34ce3ffb15489c9d7afe91ee205b33f5a6f0dda11bedbc7ab62acd6",
+    "image": false
+  },
+  "ui_help_modal": {
+    "id": "room-ui/ui_help_modal.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_ui_help_modal.bin",
+    "sha256": "b7ccbda946dd8fa9bc6f30e812e13fe6fb6efbcd7b38e099e77417a4e87df4f4",
+    "image": false
+  },
+  "iro_room_thumbnail_camera_xml": {
+    "id": "room-ui/iro_room_thumbnail_camera_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_iro_room_thumbnail_camera_xml.bin",
+    "sha256": "15f68f30a0c0fd6c7c636871698c5456c39138a7cde6222f9489d9b93b124bef",
+    "image": false
+  },
+  "craftingwidget_xml": {
+    "id": "room-ui/craftingwidget_xml.bin",
+    "source": "${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_craftingwidget_xml.bin",
+    "sha256": "0fb5783dc022a70a31cd7f6344be628a12c9de0eeb06592179c650a43e181953",
+    "image": false
+  }
+}

@@ -38,6 +38,9 @@ class SkyConnection extends EventDispatcher implements IConnection {
     /** Events whose class the registry does not know, reported once rather than per packet. */
     final _unmapped:Array<String> = [];
     var _disposed = false;
+    final _subscriptions = new haxe.ds.ObjectMap<IMessageEvent, {
+        id:Int, handler:com.sulake.core.communication.messages.IMessageDataWrapper->Void
+    }>();
 
     public function new(dispatcher:HabboMessageDispatcher, socket:Void->Null<Html5HabboConnection>) {
         super();
@@ -54,7 +57,7 @@ class SkyConnection extends EventDispatcher implements IConnection {
      * would look exactly like a server that never sends that packet.
      */
     public function addMessageEvent(event:IMessageEvent):Void {
-        if (event == null) return;
+        if (event == null || _disposed || _subscriptions.exists(event)) return;
         var qualified = Type.getClassName(Type.getClass(event));
         var name = qualified.split(".").pop();
         var id = GeneratedHabboMessageRegistry.incomingId(name);
@@ -66,7 +69,7 @@ class SkyConnection extends EventDispatcher implements IConnection {
             return;
         }
         event.connection = this;
-        _dispatcher.register(id, function(wrapper) {
+        var handler:com.sulake.core.communication.messages.IMessageDataWrapper->Void = function(wrapper) {
             // A fresh parser per packet: the client's own connection reuses one per event, but
             // reuse only matters when parsing is hot, and a shared parser holding the previous
             // packet's state is a class of bug not worth inviting.
@@ -75,11 +78,17 @@ class SkyConnection extends EventDispatcher implements IConnection {
             event.parser = parser;
             var callback = event.callback;
             if (callback != null) callback(event);
-        });
+        };
+        _subscriptions.set(event, {id:id, handler:handler});
+        _dispatcher.register(id, handler);
     }
 
     public function removeMessageEvent(event:IMessageEvent):Void {
-        // The demo's dispatcher holds one handler per id and nothing unregisters mid-session.
+        var subscription = _subscriptions.get(event);
+        if (subscription == null) return;
+        _dispatcher.unregister(subscription.id, subscription.handler);
+        _subscriptions.remove(event);
+        event.connection = null;
     }
 
     public var connected(get, never):Bool;
@@ -89,6 +98,7 @@ class SkyConnection extends EventDispatcher implements IConnection {
     inline function get_disposed():Bool return _disposed;
 
     public function dispose():Void {
+        for (event in [for (event in _subscriptions.keys()) event]) removeMessageEvent(event);
         _disposed = true;
     }
 

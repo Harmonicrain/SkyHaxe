@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="Original Friend List Services" package="org.nextgenhabbo.skyhaxe.v27" version="0.1.0" company="NextGenHabbo" />
+    <app main="V27FriendListServicesCompileMain" path="build/tests/v27-friend-list-services" file="v27-friend-list-services" />
+    <window width="1" height="1" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path=".toolchain/v21/generated" />
+    <source path=".toolchain/v24/generated" />
+    <source path=".toolchain/v25/generated" />
+    <source path=".toolchain/v26/generated" />
+    <source path=".toolchain/v27/generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxeflag name="-cp" value=".toolchain/v21/openfl" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+</project>

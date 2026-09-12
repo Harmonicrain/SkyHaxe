@@ -1,0 +1,250 @@
+package com.sulake.habbo.ui.handler
+;
+    import com.sulake.habbo.ui.IRoomWidgetHandler;
+    import com.sulake.habbo.ui.IRoomWidgetHandlerContainer;
+    import com.sulake.core.communication.connection.IConnection;
+    import com.sulake.core.communication.messages.IMessageEvent;
+    import com.sulake.habbo.ui.widget.enums.RoomWidgetEnum;
+    import com.sulake.habbo.sound.events.SongDiskInventoryReceivedEvent;
+    import com.sulake.habbo.sound.events.PlayListStatusEvent;
+    import com.sulake.habbo.sound.events.NowPlayingEvent;
+    import com.sulake.habbo.communication.messages.incoming.inventory.furni.FurniListEvent;
+    import com.sulake.habbo.communication.messages.incoming.inventory.furni.FurniListRemoveEvent;
+    import com.sulake.habbo.communication.messages.incoming.inventory.furni.FurniListAddOrUpdateEvent;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetFurniToWidgetMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetPlayListModificationMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetPlayListPlayStateMessage;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetPlayListUserActionMessage;
+    import com.sulake.room.object.IRoomObject;
+    import com.sulake.habbo.ui.widget.events._Str_2693;
+    import com.sulake.habbo.session._enum.RoomControllerLevel;
+    import com.sulake.habbo.communication.messages.outgoing.room.engine.UseFurnitureMessageComposer;
+    import com.sulake.habbo.communication.messages.outgoing.sound.AddJukeboxDiskComposer;
+    import com.sulake.habbo.communication.messages.outgoing.sound.RemoveJukeboxDiskComposer;
+    import com.sulake.habbo.ui.widget.messages.RoomWidgetMessage;
+    import com.sulake.habbo.ui.widget.events.RoomWidgetUpdateEvent;
+    import com.sulake.habbo.room.events.RoomObjectSoundMachineEvent;
+    import flash.events.Event;
+    import com.sulake.habbo.ui.widget.events._Str_3301;
+
+     class PlayListEditorWidgetHandler implements IRoomWidgetHandler 
+    {
+        var _disposed:Bool = false;
+        var _container:IRoomWidgetHandlerContainer;
+        var _connection:IConnection = null;
+        var _furniListUpdateListener:IMessageEvent;
+        var _furniListRemoveListener:IMessageEvent;
+        var _furniListInsertListener:IMessageEvent;
+
+
+        public var disposed(get,never):Bool;
+public function  get_disposed():Bool
+        {
+            return this._disposed;
+        }
+
+        public var type(get,never):String;
+public function  get_type():String
+        {
+            return RoomWidgetEnum.PLAYLIST_EDITOR_WIDGET;
+        }
+
+        public var container(never,set):IRoomWidgetHandlerContainer;
+public function  set_container(k:IRoomWidgetHandlerContainer):IRoomWidgetHandlerContainer        {
+            this._container = k;
+            if (this._container.soundManager != null)
+            {
+                this._container.soundManager.events.addEventListener(SongDiskInventoryReceivedEvent.SDIR_SONG_DISK_INVENTORY_RECEIVENT_EVENT, this._Str_4671);
+                this._container.soundManager.events.addEventListener(PlayListStatusEvent.PLUE_PLAY_LIST_UPDATED, this._Str_4671);
+                this._container.soundManager.events.addEventListener(PlayListStatusEvent.PLUE_PLAY_LIST_FULL, this._Str_4671);
+                this._container.soundManager.events.addEventListener(NowPlayingEvent.NPE_SONG_CHANGED, this._Str_4671);
+                this._container.soundManager.events.addEventListener(NowPlayingEvent.NPE_USER_PLAY_SONG, this._Str_4671);
+                this._container.soundManager.events.addEventListener(NowPlayingEvent.NPW_USER_STOP_SONG, this._Str_4671);
+            }
+return k;
+        }
+
+        public var connection(never,set):IConnection;
+public function  set_connection(k:IConnection):IConnection        {
+            this._furniListUpdateListener = new FurniListEvent(this._Str_11630);
+            this._furniListRemoveListener = new FurniListRemoveEvent(this._Str_11630);
+            this._furniListInsertListener = new FurniListAddOrUpdateEvent(this._Str_11630);
+            this._connection = k;
+            this._connection.addMessageEvent(this._furniListUpdateListener);
+            this._connection.addMessageEvent(this._furniListRemoveListener);
+            this._connection.addMessageEvent(this._furniListInsertListener);
+return k;
+        }
+
+        public function dispose()
+        {
+            if (!this._disposed)
+            {
+                this._disposed = true;
+                if (this._connection != null)
+                {
+                    this._connection.removeMessageEvent(this._furniListUpdateListener);
+                    this._connection.removeMessageEvent(this._furniListRemoveListener);
+                    this._connection.removeMessageEvent(this._furniListInsertListener);
+                }
+                this._connection = null;
+                this._furniListUpdateListener = null;
+                if (this._container != null)
+                {
+                    if (this._container.soundManager != null)
+                    {
+                        if (this._container.soundManager.events != null)
+                        {
+                            this._container.soundManager.events.removeEventListener(SongDiskInventoryReceivedEvent.SDIR_SONG_DISK_INVENTORY_RECEIVENT_EVENT, this._Str_4671);
+                            this._container.soundManager.events.removeEventListener(PlayListStatusEvent.PLUE_PLAY_LIST_UPDATED, this._Str_4671);
+                            this._container.soundManager.events.removeEventListener(PlayListStatusEvent.PLUE_PLAY_LIST_FULL, this._Str_4671);
+                            this._container.soundManager.events.removeEventListener(NowPlayingEvent.NPE_SONG_CHANGED, this._Str_4671);
+                            this._container.soundManager.events.removeEventListener(NowPlayingEvent.NPE_USER_PLAY_SONG, this._Str_4671);
+                            this._container.soundManager.events.removeEventListener(NowPlayingEvent.NPW_USER_STOP_SONG, this._Str_4671);
+                        }
+                    }
+                    this._container = null;
+                }
+            }
+        }
+
+        public function getWidgetMessages():Array<ASAny>
+        {
+            return [RoomWidgetFurniToWidgetMessage.RWFWM_MESSAGE_REQUEST_PLAYLIST_EDITOR, RoomWidgetPlayListModificationMessage.RWPLAM_ADD_TO_PLAYLIST, RoomWidgetPlayListModificationMessage.RWPLAM_REMOVE_FROM_PLAYLIST, RoomWidgetPlayListPlayStateMessage.RWPLPS_TOGGLE_PLAY_PAUSE, RoomWidgetPlayListUserActionMessage.RWPLUA_OPEN_CATALOGUE_BUTTON_PRESSED];
+        }
+
+        public function processWidgetMessage(k:RoomWidgetMessage):RoomWidgetUpdateEvent
+        {
+            var _local_2:RoomWidgetFurniToWidgetMessage = null;
+            var _local_3:IRoomObject = null;
+            var _local_4:RoomWidgetPlayListModificationMessage = null;
+            var _local_5:RoomWidgetPlayListModificationMessage = null;
+            var _local_6:RoomWidgetPlayListPlayStateMessage = null;
+            var _local_7 = false;
+            var _local_8 = false;
+            var _local_9:_Str_2693 = null;
+            switch (k.type)
+            {
+                case RoomWidgetFurniToWidgetMessage.RWFWM_MESSAGE_REQUEST_PLAYLIST_EDITOR:
+                    _local_2 = Std.downcast(k , RoomWidgetFurniToWidgetMessage);
+                    _local_3 = this._container.roomEngine.getRoomObject(_local_2.roomId, _local_2.id, _local_2.category);
+                    if (_local_3 != null)
+                    {
+                        _local_7 = this._container.isOwnerOfFurniture(_local_3);
+                        _local_8 = ((this._container.roomSession.isRoomOwner || (this._container.roomSession.roomControllerLevel >= RoomControllerLevel.GUEST)) || this._container.sessionDataManager.isAnyRoomController);
+                        if (_local_7)
+                        {
+                            _local_9 = new _Str_2693(_Str_2693.RWPLEE_SHOW_PLAYLIST_EDITOR, _local_2.id);
+                            this._container.events.dispatchEvent(_local_9);
+                        }
+                        else
+                        {
+                            if (_local_8)
+                            {
+                                if (this._connection != null)
+                                {
+                                    this._connection.send(new UseFurnitureMessageComposer(_local_3.getId(), -2));
+                                }
+                            }
+                        }
+                    }
+                    
+                case RoomWidgetPlayListModificationMessage.RWPLAM_ADD_TO_PLAYLIST:
+                    _local_4 = Std.downcast(k , RoomWidgetPlayListModificationMessage);
+                    if (this._connection != null)
+                    {
+                        this._connection.send(new AddJukeboxDiskComposer(_local_4.diskId, _local_4._Str_20440));
+                    }
+                    
+                case RoomWidgetPlayListModificationMessage.RWPLAM_REMOVE_FROM_PLAYLIST:
+                    _local_5 = Std.downcast(k , RoomWidgetPlayListModificationMessage);
+                    if (this._connection != null)
+                    {
+                        this._connection.send(new RemoveJukeboxDiskComposer(_local_5._Str_20440));
+                    }
+                    
+                case RoomWidgetPlayListPlayStateMessage.RWPLPS_TOGGLE_PLAY_PAUSE:
+                    _local_6 = Std.downcast(k , RoomWidgetPlayListPlayStateMessage);
+                    if (this._connection != null)
+                    {
+                        this._connection.send(new UseFurnitureMessageComposer(_local_6.furniId, _local_6.position));
+                    }
+                    
+                case RoomWidgetPlayListUserActionMessage.RWPLUA_OPEN_CATALOGUE_BUTTON_PRESSED:
+                    this._container.habboTracking.trackGoogle("playlistEditorPanelOpenCatalogue", "click");
+                    
+            }
+            return null;
+        }
+
+        public function getProcessedEvents():Array<ASAny>
+        {
+            var k:Array<ASAny> = [];
+            k.push(RoomObjectSoundMachineEvent.JUKEBOX_DISPOSE);
+            return k;
+        }
+
+        public function processEvent(k:Event)
+        {
+            var _local_2:RoomObjectSoundMachineEvent = null;
+            var _local_3:_Str_2693 = null;
+            switch (k.type)
+            {
+                case RoomObjectSoundMachineEvent.JUKEBOX_DISPOSE:
+                    _local_2 = Std.downcast(k , RoomObjectSoundMachineEvent);
+                    _local_3 = new _Str_2693(_Str_2693.RWPLEE_HIDE_PLAYLIST_EDITOR, _local_2.objectId);
+                    this._container.events.dispatchEvent(_local_3);
+                    return;
+            }
+        }
+
+        public function update()
+        {
+        }
+
+        function _Str_11630(k:IMessageEvent)
+        {
+            var _local_2= Std.downcast(k , FurniListEvent);
+            if (((_local_2 != null) && (_local_2.getParser().fragmentNo == 0)))
+            {
+                if (this._container != null)
+                {
+                    if (this._container.events != null)
+                    {
+                        this._container.events.dispatchEvent(new _Str_2693(_Str_2693.RWPLEE_INVENTORY_UPDATED, -1));
+                    }
+                }
+            }
+        }
+
+        function _Str_4671(k:Event)
+        {
+            var _local_2:NowPlayingEvent = null;
+            switch (k.type)
+            {
+                case SongDiskInventoryReceivedEvent.SDIR_SONG_DISK_INVENTORY_RECEIVENT_EVENT:
+                    this._container.events.dispatchEvent(new _Str_2693(_Str_2693.RWPLEE_SONG_DISK_INVENTORY_UPDATED));
+                    return;
+                case PlayListStatusEvent.PLUE_PLAY_LIST_UPDATED:
+                    this._container.events.dispatchEvent(new _Str_2693(_Str_2693.RWPLEE_PLAY_LIST_UPDATED));
+                    return;
+                case PlayListStatusEvent.PLUE_PLAY_LIST_FULL:
+                    this._container.events.dispatchEvent(new _Str_2693(_Str_2693.RWPLEE_PLAY_LIST_FULL));
+                    return;
+                case NowPlayingEvent.NPE_SONG_CHANGED:
+                    _local_2 = Std.downcast(k , NowPlayingEvent);
+                    this._container.events.dispatchEvent(new _Str_3301(_Str_3301.RWPLENPE_SONG_CHANGED, _local_2.id, _local_2.position, _local_2.priority));
+                    return;
+                case NowPlayingEvent.NPE_USER_PLAY_SONG:
+                    _local_2 = Std.downcast(k , NowPlayingEvent);
+                    this._container.events.dispatchEvent(new _Str_3301(_Str_3301.RWPLENPE_USER_PLAY_SONG, _local_2.id, _local_2.position, _local_2.priority));
+                    return;
+                case NowPlayingEvent.NPW_USER_STOP_SONG:
+                    _local_2 = Std.downcast(k , NowPlayingEvent);
+                    this._container.events.dispatchEvent(new _Str_3301(_Str_3301.RWPLENPW_USER_STOP_SONG, _local_2.id, _local_2.position, _local_2.priority));
+                    return;
+            }
+        }
+public function new(){}
+    }
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="Original Infostand Runtime Canary" package="org.nextgenhabbo.skyhaxe.infostandtest" version="0.1.0" company="NextGenHabbo" />
+    <app main="V24InfoStandRuntimeTest" path="build/tests/v24-infostand-runtime" file="v24-infostand-runtime" />
+    <window width="650" height="500" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path=".toolchain/v21/generated" />
+    <source path=".toolchain/v24/generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxeflag name="-cp" value=".toolchain/v21/openfl" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+    <include path=".toolchain/v21/window-assets.xml" />
+    <include path=".toolchain/v24/room-ui-assets.xml" />
+</project>

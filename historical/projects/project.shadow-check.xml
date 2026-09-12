@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <include path="project.xml" />
+    <app main="Main" path="build/tests/shadow-client" file="skyhaxe" />
+    <source path=".toolchain/v7-shadow/generated" />
+</project>

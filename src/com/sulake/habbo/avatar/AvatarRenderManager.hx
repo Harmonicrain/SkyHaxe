@@ -3,7 +3,10 @@ package com.sulake.habbo.avatar;
 #if html5
 // Generated code gets Vector from generated/import.hx; a hand-written file does not.
 import flash.Vector;
+import com.sulake.core.assets.AssetLibrary;
+import com.sulake.core.assets.AssetTypeDeclaration;
 import com.sulake.core.assets.AssetLibraryCollection;
+import com.sulake.core.assets.BitmapDataAsset;
 import com.sulake.core.assets.IAsset;
 import com.sulake.core.assets.IAssetLibrary;
 import com.sulake.habbo.avatar.alias.AssetAliasCollection;
@@ -62,6 +65,8 @@ class AvatarRenderManager implements IAvatarRenderManager {
 
     final _events:EventDispatcher;
     final _assets:AssetLibraryCollection;
+    /** See `assets`. Holds the avatar addition art, keyed by its AS3 embed name. */
+    final _additions:AssetLibrary;
     var _structure:Null<AvatarStructure>;
     var _isReady:Bool;
     /**
@@ -80,8 +85,31 @@ class AvatarRenderManager implements IAvatarRenderManager {
     public function new(?assets:AssetLibraryCollection) {
         _events = new EventDispatcher();
         _assets = assets != null ? assets : new AssetLibraryCollection("avatar");
+        // AvatarRenderManager.as:55 -- the component falls back to its own library when the
+        // context supplies none. This is that library.
+        _additions = new AssetLibrary("_internal_asset_library");
         _isReady = false;
     }
+
+    /**
+     * Register one addition bitmap under the name the converted code asks for.
+     *
+     * The addition classes request AS3 embed symbols -- `user_idle_left_1_png`,
+     * `user_blowkiss_small_png`, `number_3_png` -- so the loader hands the bitmap over under
+     * exactly that name rather than a file path.
+     */
+    public function setAdditionAsset(name:String, bitmap:openfl.display.BitmapData):Void {
+        if (name == null || bitmap == null) return;
+        var asset = new BitmapDataAsset(ADDITION_DECLARATION);
+        asset.setUnknownContent(bitmap);
+        // The bitmap belongs to OpenFL's asset cache, which hands out the same instance to every
+        // caller. Disposing the library must not free it underneath them.
+        asset.ownsData = false;
+        _additions.setAsset(name, asset);
+    }
+
+    static final ADDITION_DECLARATION =
+        new AssetTypeDeclaration("image/png", BitmapDataAsset, null, "png");
 
     function get_events():IEventDispatcher return _events;
     function get_isReady():Bool return _isReady;
@@ -180,11 +208,19 @@ class AvatarRenderManager implements IAvatarRenderManager {
     /**
      * The interface's asset accessor, which is the AS3 component's own single library.
      *
-     * This port holds many libraries rather than one -- see `libraries` -- and nothing on the room
-     * path reads this, so there is no single library to hand back that would be true.
+     * This used to return null, on the reasoning that the port keeps many libraries rather than
+     * one -- see `libraries` -- and that nothing on the room path read it. That was wrong, and
+     * expensively so: every avatar addition reads it through
+     * `AvatarVisualization.getAvatarRendererAsset`, so an idle avatar threw a TypeError out of
+     * `RoomEngine.update` on every frame. Because that exception escapes the update loop, it also
+     * abandoned the rest of the tick -- which is why an avatar stopped walking whenever anything
+     * else in the room was mid-animation.
+     *
+     * The figure part libraries are still a collection and stay in `libraries`. This is the small
+     * separate library the additions need, matching the AS3 component's own fallback.
      */
     public var assets(get, never):IAssetLibrary;
-    function get_assets():IAssetLibrary return null;
+    function get_assets():IAssetLibrary return _additions;
 
     public var mode(get, set):String;
     // RenderMode is not converted; the room never reads this and the AS3 default

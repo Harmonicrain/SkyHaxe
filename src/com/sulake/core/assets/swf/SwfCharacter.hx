@@ -61,7 +61,7 @@ class SwfCharacter {
 	 * SWF 8 allows PNG and GIF89a inside the "JPEG" tags, and Habbo leans on that: every one of
 	 * the 1,468 reachable Gordon `DefineBitsJPEG2` characters is PNG, and three `dcr/` files mix
 	 * JPEG and PNG inside a single SWF. The tag id therefore does not identify the codec -- only
-	 * the payload magic does. See `evidence/g2_embedded_format_survey.json`.
+	 * the payload magic does. See `historical/evidence/g2_embedded_format_survey.json`.
 	 */
 	public function encoding():String {
 		return switch (tag) {

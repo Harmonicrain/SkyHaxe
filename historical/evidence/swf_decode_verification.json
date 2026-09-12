@@ -1,0 +1,15 @@
+﻿{
+    "ok":  true,
+    "target":  "SwfFile.readAsync + worker/native decode + direct BitmapData handoff",
+    "baseline":  "evidence/swf_decode_baseline.json",
+    "recorded_this_run":  false,
+    "matches_baseline":  true,
+    "browser_exit":  0,
+    "fixtures":  [
+                     "C:/habbo/ngh/dcr/hof_furni/easter_c18_chair.swf",
+                     "C:/habbo/ngh/dcr/hof_furni/rainbow_ltd19_parasol.swf",
+                     "C:/habbo/ngh/gordon/PRODUCTION-201611291003-338511768/HabboRoomContent.swf",
+                     "C:/habbo/ngh/gordon/PRODUCTION-201611291003-338511768/hh_human_body.swf"
+                 ],
+    "bitmap_characters":  517
+}

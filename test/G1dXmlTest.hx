@@ -10,7 +10,20 @@ class G1dXmlTest {
         testMutationAndCopy();
         testSerializationAndNamespaces();
         testFlashParseDefaults();
+        testStringEquality();
         trace('G1D_XML_PASS assertions=$assertions');
+    }
+
+    private static function testStringEquality():Void {
+        var value = new XML('<item name="plain">hello</item>');
+        equal(true, XML.equalsStringOperands(value, "hello"), "simple XML equals text");
+        equal(true, XML.equalsStringOperands("plain", value.attribute("name")), "attribute equality reversed");
+        equal(false, XML.equalsStringOperands(value.attribute("missing"), ""), "absent is not empty string");
+        equal(false, XML.equalsStringOperands(new XML('<r><v>a</v><v>b</v></r>').child("v"), "ab"), "multi item is not concatenation");
+        var complex = new XML('<r><v/></r>');
+        equal(false, XML.equalsStringOperands(complex, complex.toXMLString()), "complex XML is not its markup string");
+        equal(true, XML.equalsStringOperands(new XML('<v>null</v>'), null), "simple XML comparison coerces null");
+        equal(true, XML.equalsStringOperands(null, null), "null typed references compare equal");
     }
 
     private static function fixture():XML {
@@ -44,6 +57,11 @@ class G1dXmlTest {
         equal("Hello & goodbye", assets.at(0).toString(), "simple-content coercion");
         equal("Hello & goodbye", assets.at(0).text().toString(), "text selection");
         equal("library", assets.at(0).parent().name(), "parent selection");
+        equal("library", manifest.child(0).at(0).name(), "numeric direct child");
+        equal(0, manifest.child(1).length(), "missing numeric child");
+        equal(0, manifest.child(-1).length(), "negative child index");
+        equal(0, manifest.child(0.5).length(), "fractional child index");
+        equal("Hello & goodbye", library.child(0).toString(), "XMLList numeric child");
     }
 
     private static function testListContract():Void {
@@ -96,6 +114,14 @@ class G1dXmlTest {
         var item = namespaced.child("h:item").at(0);
         equal("h:item", item.name(), "qualified name");
         equal("item", item.localName(), "qualified localName");
+        equal("7", namespaced.childByNamespace("urn:test", "item").attribute("id").toString(),
+            "namespace selection uses URI");
+
+        var alternatePrefix = new XML('<root xmlns:m="urn:test"><m:item id="8"/></root>');
+        equal("8", alternatePrefix.childByNamespace("urn:test", "item").attribute("id").toString(),
+            "namespace selection is independent of prefix");
+        equal(0, alternatePrefix.childByNamespace("urn:other", "item").length(),
+            "namespace selection rejects a different URI");
     }
 
     private static function testFlashParseDefaults():Void {

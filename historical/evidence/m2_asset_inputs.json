@@ -1,0 +1,250 @@
+{
+  "gate": "M2-asset-input-contract",
+  "clean_client_inputs": [
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCatalogCom_layout_frontpage_featured.bin",
+      "sha256": "52920afb4089ce45fae3bf7d37ceb9120a1d46879e9be7bffec952a65af16625"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboCommunicationDemoCom_login_window.bin",
+      "sha256": "753334f7d6bf7a5fcea3cc69b4dd37d1ef85d6acbe3818c3cbd0a24a8bba7734"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_element_description_xml.bin",
+      "sha256": "0d284f1276e2a6b3371fbc6609cf0e65967d3f68fe92b5b9aaabfa0243d13c1a"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_border_4_xml.bin",
+      "sha256": "86eceeec3d20a8ca405f8bcb45825c47d34f5a57cdfd686bd61fa3a7972a8841"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_border_colorless_xml.bin",
+      "sha256": "78c6e707903c933c4627adf8d30fa1eba4407c9d15ced5d45dd025de04896e84"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_button_shiny_default_xml.bin",
+      "sha256": "c3d700233e4076baac7f50dc5beb7219380d91d6981cbf8dbd53c85cc12667cf"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_button_shiny_thick_xml.bin",
+      "sha256": "eace199f41bcb8f092a7fe3719648a2db9fabb9221e91a4c42928e86ef2bd125"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_skin_frame_3_xml.bin",
+      "sha256": "5974667524c61c1c29030a943681448c6e8f03a441e106cf0620c38d8a5f550c"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_alert_xml.bin",
+      "sha256": "463c9d0fc512e4b1d1104dc300886c84a33aea10b44fc0cda65737e06c6f6234"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_bubble_7_xml.bin",
+      "sha256": "fc631f8afc316534f47c25ec2ba34eacb60e8ca4a598cf44fd1e5ed209f8c46c"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_bubble_xml.bin",
+      "sha256": "d8e190ab3170c6a52fbf4a6e8554861881e4e8ddc4040f9003f4e5bdc8c3776a"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_black_xml.bin",
+      "sha256": "1ee539c66d0afae7e8bc7c9148827355767c0ba0a7e4aaeaf989484ff0de24fc"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_black_xml.bin",
+      "sha256": "4fb1334db4187c9b13e2863a1022d50a3ae98446d7212eb1e5c20387739f824f"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_large_5_xml.bin",
+      "sha256": "d59f29e1e450c4195733b57c3f5f05eb359441fc9e4e9e5fe88e710b8d284e48"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_large_xml.bin",
+      "sha256": "442302264193d38e15bdec61cddf3b58a81c2d88b16b6bfaa01396cf71f1864f"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_thick_black_xml.bin",
+      "sha256": "3626cc0dd292eaeed85e15edfc20dc28c9c3aa8b92db6a8eaee6d0f63d9ba514"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_thick_xml.bin",
+      "sha256": "92a5a5a899afeb2e58a9f84a38880ce594abb664aa243b1a5e223392fa3126aa"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_shiny_xml.bin",
+      "sha256": "3f7c11e2a7fb8da5290bc59ef08ce9247e465042840fc56e3a27ff990242ff57"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_thick_black_xml.bin",
+      "sha256": "5414a8acca9b8c95c2994dbcb9bd9cdf3131d26c8cc28807861964acf42c34f3"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_thick_xml.bin",
+      "sha256": "bd13c92edb4a5df2bd00c9809b9e90edb6467a952de7f4d1d738486b877db308"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_button_xml.bin",
+      "sha256": "ace0ad280afdea9b04bfad01915f1853cf2715acd9c9697c9a86d82df49de784"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_droplist_xml.bin",
+      "sha256": "7dc107de2f35da0f0fa12e801d29711ad529f572dec0432418148ce523294b3c"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_3_xml.bin",
+      "sha256": "0e840ba0696e4a6c274157ab02374d94b99fb197e2292cba2cd94c2b886739c8"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_black_xml.bin",
+      "sha256": "0bde5246f4eadf0b90e5af700cf21586157a29b602872e615eb308c141dd586b"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_item_3_xml.bin",
+      "sha256": "6b259e5d7566aeba66d6f8cfa0bb92f4a5356b6a924210ac6678b09f2f61b452"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_item_black_xml.bin",
+      "sha256": "33ace59b912e539e67008516d3aa07a1666a12cd17dd742af77c94d28a82422d"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_item_xml.bin",
+      "sha256": "672400f74a472575becd24a94a0f5070ffb69fc09bb7c5698d73b8ed169091e2"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_dropmenu_xml.bin",
+      "sha256": "484aac87a549a1df431efc209c40ff7ce82a3900dee4f51feab95a68a9c70602"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_frame_3_xml.bin",
+      "sha256": "3526859bc8d0dd1907d98b45360a7d0ad53c52641707f64e8488923d16bdecad"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_frame_7_xml.bin",
+      "sha256": "4e08be95d4e4c5fcfb7f4d9e40514cb73cb86411f1b0a8802ba0a0b055a427dd"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_frame_leaderboard_xml.bin",
+      "sha256": "c90dda6910c0e1557273ffff61683b48d72e48e4b1ae4f51cdc93a20119f5bbc"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_frame_xml.bin",
+      "sha256": "9d7ef9ae6980b1a53c277330c73e413f79cdb7ea2f653905dda0176c11b3a7ad"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_header_3_xml.bin",
+      "sha256": "b5b76eb1632d3e85a565efa46fb956e926b5007fe61efd84e187570a08c40381"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_header_7_xml.bin",
+      "sha256": "41050d75be242b1479c2530d9a8cd0d2bfb97a54e284c42bd4c1ce0f99035e6c"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_header_black_xml.bin",
+      "sha256": "d1ca79ef7df92725ab22b2a8c4ec1e71e315f82301bd55b95579c55dfc2133ee"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_header_leaderboard_xml.bin",
+      "sha256": "11086ffdec7ececa10fe7e8deb4e52691a071adda33f6585d36129cb68049a03"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_header_xml.bin",
+      "sha256": "11af9ad692b81581f71905319bb589da67d02ec4c775155768a86b852e855821"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scaler_3_xml.bin",
+      "sha256": "3522140d0c1dc5547dd9475ec483cde08ff9fea3ebde624842528893cfc19c08"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scaler_xml.bin",
+      "sha256": "ac84c4209cfcfee874d0cba9078e01b3ac1354e676c1ec945e1dcd229b44e05a"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollable_itemgrid_vertical_ubuntu_xml.bin",
+      "sha256": "876139390c9c0a2eb495bd27227d70237f356003947d56d5de4e4281c4cef334"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollable_itemgrid_vertical_xml.bin",
+      "sha256": "4010b079cdb7811fc8e176c01c05b2d24cd4afcc8be07eb0384744370cc1fce2"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollable_itemlist_vertical_ubuntu_xml.bin",
+      "sha256": "f4769278ec3859406bc61b1783216d28a3e596ef90528dedb98d327bbb8b6afd"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollable_itemlist_vertical_xml.bin",
+      "sha256": "7f85f4edb50d14f68a8797f2802618f6a81688d6cc5db1f4e67c6489068a6a9d"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollbar_horizontal_xml.bin",
+      "sha256": "b02e139404342ad954a8c60967e993fd0e9a22ade7083ebe7dbb248f25c497c6"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_scrollbar_vertical_xml.bin",
+      "sha256": "d2a635ac32e5520ab3205a04111252456b60a420c5a9036960cab1f7a05ad925"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_simple_xml.bin",
+      "sha256": "05215d13ae5f49fa2d684273eed4310ee0abead791887ad4bd720764e3d8143e"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tab_button_3_xml.bin",
+      "sha256": "5329c33b5976155090047d91affe650e0e80378c8ecd49c3b5600b2625f024ee"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tab_button_black_xml.bin",
+      "sha256": "527141078a6239563d81913abe53d1de7aacc0c162747e8f5958c3a438ef94a3"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tab_button_xml.bin",
+      "sha256": "c31d505e6d6e21e1bdfb9502a03b716ac801629e8a122ca3712999b541927c7f"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tab_context_3_xml.bin",
+      "sha256": "d4889fba28735a8e705954141f8a0b7ef361aaca4dc26e79646b9814d6124bc8"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tab_context_xml.bin",
+      "sha256": "5239c267292f3e139005327ddae0ae8dc43323f82d54a733a5d177bfb04c0c52"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_habbo_window_layout_tooltip_xml.bin",
+      "sha256": "8393e9468156b69f5bb2b14129593cc7dcfa0a50b41dda8ad25f6538dd7c0d17"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\binaryData\\HabboWindowManagerCom_text_styles_css.bin",
+      "sha256": "f95cd66b587f5c4f807f307052396277fce8df8c161f7b52ccc0b90fc4fa2615"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\images\\HabboWindowManagerCom_habbo_blue_skin_png.png",
+      "sha256": "c7fc591d357fa0fcb95ec02770a572a6ab7bbbca3316d435f53ccd212792d9c9"
+    },
+    {
+      "path": "C:\\habbo\\client\\habbo-client-clean\\src\\images\\HabboWindowManagerCom_habbo_skin_ubuntu_png.png",
+      "sha256": "002dd86b33c265b699ee6bd638bffe40223a1fd34e268f7fce43c16b51a0f5a5"
+    }
+  ],
+  "counts": {
+    "clean_client_inputs": 55,
+    "internal_layouts": 44
+  },
+  "tool_inputs": [
+    {
+      "path": "package.json",
+      "sha256": "9173ae3b240dc33a97b98681275a0dee29bd2ff5ca2fe297788b8b2b83afe639"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "0ce9c75119cd11ad3c09495fd44500ae43a869afe9fe531d54dbdd5e463aa2e3"
+    },
+    {
+      "path": "scripts/build-truffle.mjs",
+      "sha256": "79ece78f1e5dd777dcccbaffc20bd00b8c37a0b8d27c84b9e67494416237c20a"
+    }
+  ],
+  "current_truffle_payload": {
+    "path": "public/assets/truffle",
+    "tree_sha256": "32865b8401d21105dc5b476578e28625837b8eca5239a5bf00d6a9453f62d63c",
+    "files": 57,
+    "bytes": 103325683
+  },
+  "refresh_gap": "The current Truffle payload is pinned but is not yet regenerated from HabboWindowManagerCom_text_styles_css.bin by a checked-in command. Any style-input change now stops sync; closing M2e requires an automatic catalogue/payload regeneration step and production pruning."
+}

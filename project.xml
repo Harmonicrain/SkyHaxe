@@ -1,74 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
     <meta title="SkyHaxe" package="org.nextgenhabbo.skyhaxe" version="0.1.0" company="NextGenHabbo" />
-    <app main="Main" path="build" file="skyhaxe" />
+    <app main="V32BrowserMain" path="build/client" file="skyhaxe" />
+    <define name="skyhaxe_full_candidate" />
+    <!-- Preserve original asset IDs, but fetch the embedded UI corpus in one request. -->
+    <library name="default" type="pak" preload="true" />
 
     <window width="0" height="0" background="#000000" hardware="true" vsync="true" resizable="true" />
 
     <source path="src" />
-    <!-- ax3 output references its own compatibility layer (ASAny, ASCompat, ASDictionary), so any
-         project consuming generated code needs it on the class path. -->
-    <source path=".toolchain/ax3/compat" />
-    <source path="generated" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboCommunicationDemoCom_login_window.bin" rename="layouts/login_window.bin" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboToolbarCom_bottom_bar_left_xml.bin" rename="layouts/bottom_bar_left.bin" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboFriendBarCom_new_bar_xml.bin" rename="layouts/friend_bar.bin" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_all_friends.png" rename="toolbar/friend_bar_all_friends.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_search_habbos.png" rename="toolbar/friend_bar_search_habbos.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger.png" rename="toolbar/friend_bar_friendlist_messenger.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger_notify_0.png" rename="toolbar/friend_bar_friendlist_messenger_notify_0.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger_notify_1.png" rename="toolbar/friend_bar_friendlist_messenger_notify_1.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_friend_bar_friends_browse_bg.png" rename="toolbar/friend_bar_friends_browse_bg.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboRoomUICom_chatinput_window_new.bin" rename="layouts/chat_input.bin" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_6_xml.bin" rename="skins/border_6.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_8_xml.bin" rename="skins/border_8.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_button_help_3_xml.bin" rename="skins/button_help_3.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_icon_set_xml.bin" rename="skins/icon_set.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbo_icons_png.png" rename="skins/habbo_icons.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_common_chat_style_block.png" rename="toolbar/common_chat_style_block.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_common_chat_styles.png" rename="toolbar/common_chat_styles.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbicons_sticky_note.png" rename="toolbar/habbicons_sticky_note.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbicons_clip.png" rename="toolbar/habbicons_clip.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbicons_sticky_note2.png" rename="toolbar/habbicons_sticky_note2.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboToolbarCom_bottom_background_border_xml.bin" rename="layouts/bottom_background_border.bin" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_9_xml.bin" rename="skins/border_9.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_skin_ubuntu_bg_9.png" rename="skins/ubuntu_bg_9.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_logo.png" rename="toolbar/bottom_bar_logo.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_home.png" rename="toolbar/bottom_bar_home.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_navigator.png" rename="toolbar/bottom_bar_navigator.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_quests.png" rename="toolbar/bottom_bar_quests.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_games.png" rename="toolbar/bottom_bar_games.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_stories.png" rename="toolbar/bottom_bar_stories.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_shop.png" rename="toolbar/bottom_bar_shop.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_buildersclub.png" rename="toolbar/bottom_bar_buildersclub.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_inventory.png" rename="toolbar/bottom_bar_inventory.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_memenu_bg.png" rename="toolbar/bottom_bar_memenu_bg.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_memenu_circle.png" rename="toolbar/bottom_bar_memenu_circle.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_camera.png" rename="toolbar/bottom_bar_camera.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_bottom_bar_divider_1px.png" rename="toolbar/bottom_bar_divider_1px.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_common_beta_sign.png" rename="toolbar/common_beta_sign.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_roomtools_minimizebutton.png" rename="toolbar/roomtools_minimizebutton.png" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_frame_3_xml.bin" rename="skins/frame_3.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_4_xml.bin" rename="skins/border_4.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_thick_xml.bin" rename="skins/button_shiny_thick.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_border_colorless_xml.bin" rename="skins/border_colorless.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_default_xml.bin" rename="skins/button_shiny.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbo_blue_skin_png.png" rename="skins/habbo_blue.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboWindowManagerCom_habbo_skin_ubuntu_png.png" rename="skins/habbo_ubuntu.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboAir_LoginBackground.png" rename="login/HabboAir_LoginBackground.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/images/HabboAir_LoginForeground.png" rename="login/HabboAir_LoginForeground.png" type="image" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboAvatarRenderLib_HabboAvatarGeometry.bin" rename="avatar/HabboAvatarGeometry.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboAvatarRenderLib_HabboAvatarPartSets.bin" rename="avatar/HabboAvatarPartSets.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboAvatarRenderLib_HabboAvatarAnimation.bin" rename="avatar/HabboAvatarAnimation.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_element_description_xml.bin" rename="theme/element_description.xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_thick_xml.bin" rename="theme/habbo_window_layout_button_shiny_thick_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_3_xml.bin" rename="theme/habbo_window_layout_frame_3_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_3_xml.bin" rename="theme/habbo_window_layout_header_3_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_xml.bin" rename="theme/habbo_window_layout_button_shiny_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_xml.bin" rename="theme/habbo_window_layout_frame_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_xml.bin" rename="theme/habbo_window_layout_header_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_thick_xml.bin" rename="theme/habbo_window_layout_button_thick_xml" />
-    <assets path="C:/habbo/client/habbo-client-clean/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_xml.bin" rename="theme/habbo_window_layout_button_xml" />
+    <source path=".skyhaxe/compat" />
+    <source path=".skyhaxe/generated" />
+    <!-- Patched platform classes must precede library and generated definitions. -->
+    <haxeflag name="-cp" value=".skyhaxe/platform" />
+    <source path="build-support/platform" />
+    <source path="client" />
+    <template path="client/config.ini" rename="config.ini" />
+    <template path="public/swf-decode-worker.js" rename="swf-decode-worker.js" />
+    <haxedef name="skyhaxe_component_embed_manifest" value="build-support/assets/component-library-embeds.json" />
+    <haxedef name="skyhaxe_embed_manifest" value="build-support/assets/embedded-assets-manifest.json" />
+    <include path="build-support/assets/component-library-assets.xml" />
+    <include path="build-support/assets/embedded-assets.xml" />
+    <include path="build-support/assets/window-assets.xml" />
+    <include path="build-support/assets/room-ui-assets.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboCommunicationDemoCom_login_window.bin" rename="layouts/login_window.bin" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboToolbarCom_bottom_bar_left_xml.bin" rename="layouts/bottom_bar_left.bin" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboFriendBarCom_new_bar_xml.bin" rename="layouts/friend_bar.bin" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_all_friends.png" rename="toolbar/friend_bar_all_friends.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_search_habbos.png" rename="toolbar/friend_bar_search_habbos.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger.png" rename="toolbar/friend_bar_friendlist_messenger.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger_notify_0.png" rename="toolbar/friend_bar_friendlist_messenger_notify_0.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_friendlist_messenger_notify_1.png" rename="toolbar/friend_bar_friendlist_messenger_notify_1.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_friend_bar_friends_browse_bg.png" rename="toolbar/friend_bar_friends_browse_bg.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboRoomUICom_chatinput_window_new.bin" rename="layouts/chat_input.bin" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_border_6_xml.bin" rename="skins/border_6.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_border_8_xml.bin" rename="skins/border_8.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_button_help_3_xml.bin" rename="skins/button_help_3.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_icon_set_xml.bin" rename="skins/icon_set.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbo_icons_png.png" rename="skins/habbo_icons.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_common_chat_style_block.png" rename="toolbar/common_chat_style_block.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_common_chat_styles.png" rename="toolbar/common_chat_styles.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbicons_sticky_note.png" rename="toolbar/habbicons_sticky_note.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbicons_clip.png" rename="toolbar/habbicons_clip.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbicons_sticky_note2.png" rename="toolbar/habbicons_sticky_note2.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboToolbarCom_bottom_background_border_xml.bin" rename="layouts/bottom_background_border.bin" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_border_9_xml.bin" rename="skins/border_9.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_skin_ubuntu_bg_9.png" rename="skins/ubuntu_bg_9.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_logo.png" rename="toolbar/bottom_bar_logo.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_home.png" rename="toolbar/bottom_bar_home.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_navigator.png" rename="toolbar/bottom_bar_navigator.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_quests.png" rename="toolbar/bottom_bar_quests.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_games.png" rename="toolbar/bottom_bar_games.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_stories.png" rename="toolbar/bottom_bar_stories.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_shop.png" rename="toolbar/bottom_bar_shop.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_buildersclub.png" rename="toolbar/bottom_bar_buildersclub.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_inventory.png" rename="toolbar/bottom_bar_inventory.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_memenu_bg.png" rename="toolbar/bottom_bar_memenu_bg.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_memenu_circle.png" rename="toolbar/bottom_bar_memenu_circle.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_camera.png" rename="toolbar/bottom_bar_camera.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_bottom_bar_divider_1px.png" rename="toolbar/bottom_bar_divider_1px.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_common_beta_sign.png" rename="toolbar/common_beta_sign.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_roomtools_minimizebutton.png" rename="toolbar/roomtools_minimizebutton.png" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_frame_3_xml.bin" rename="skins/frame_3.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_border_4_xml.bin" rename="skins/border_4.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_thick_xml.bin" rename="skins/button_shiny_thick.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_border_colorless_xml.bin" rename="skins/border_colorless.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_skin_button_shiny_default_xml.bin" rename="skins/button_shiny.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbo_blue_skin_png.png" rename="skins/habbo_blue.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboWindowManagerCom_habbo_skin_ubuntu_png.png" rename="skins/habbo_ubuntu.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAir_LoginBackground.png" rename="login/HabboAir_LoginBackground.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAir_LoginForeground.png" rename="login/HabboAir_LoginForeground.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboAvatarRenderLib_HabboAvatarGeometry.bin" rename="avatar/HabboAvatarGeometry.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboAvatarRenderLib_HabboAvatarPartSets.bin" rename="avatar/HabboAvatarPartSets.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboAvatarRenderLib_HabboAvatarAnimation.bin" rename="avatar/HabboAvatarAnimation.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_element_description_xml.bin" rename="theme/element_description.xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_thick_xml.bin" rename="theme/habbo_window_layout_button_shiny_thick_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_3_xml.bin" rename="theme/habbo_window_layout_frame_3_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_3_xml.bin" rename="theme/habbo_window_layout_header_3_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_shiny_xml.bin" rename="theme/habbo_window_layout_button_shiny_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_frame_xml.bin" rename="theme/habbo_window_layout_frame_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_header_xml.bin" rename="theme/habbo_window_layout_header_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_thick_xml.bin" rename="theme/habbo_window_layout_button_thick_xml" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/binaryData/HabboWindowManagerCom_habbo_window_layout_button_xml.bin" rename="theme/habbo_window_layout_button_xml" />
+
+    <!-- Volter, the face the client embeds itself (fonts/_Str_10363.as registers it through
+         FontEnum). Copied out as a plain file so SkyHaxe's development read-out can set itself
+         in it via @font-face; it is not registered with OpenFL. -->
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/fonts/Volter.ttf" rename="fonts/Volter.ttf" type="binary" />
+
+    <!-- The avatar addition art: the idle zZz, blow-kiss, typing, muted, number and guide
+         bubbles. The AS3 client embeds these in HabboAvatarRenderLib and reaches them through
+         AvatarRenderManager.assets; the port loads them here and registers them under the same
+         embed names, because that is what the converted addition classes ask for. -->
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_1_png.png" rename="avatar/additions/number_1_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_1_small_png.png" rename="avatar/additions/number_1_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_2_png.png" rename="avatar/additions/number_2_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_2_small_png.png" rename="avatar/additions/number_2_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_3_png.png" rename="avatar/additions/number_3_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_3_small_png.png" rename="avatar/additions/number_3_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_4_png.png" rename="avatar/additions/number_4_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_4_small_png.png" rename="avatar/additions/number_4_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_5_png.png" rename="avatar/additions/number_5_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_number_5_small_png.png" rename="avatar/additions/number_5_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_blowkiss_png.png" rename="avatar/additions/user_blowkiss_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_blowkiss_small_png.png" rename="avatar/additions/user_blowkiss_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_guide_bubble_png.png" rename="avatar/additions/user_guide_bubble_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_guide_requester_bubble_png.png" rename="avatar/additions/user_guide_requester_bubble_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_left_1_png.png" rename="avatar/additions/user_idle_left_1_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_left_1_small_png.png" rename="avatar/additions/user_idle_left_1_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_left_2_png.png" rename="avatar/additions/user_idle_left_2_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_left_2_small_png.png" rename="avatar/additions/user_idle_left_2_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_right_1_png.png" rename="avatar/additions/user_idle_right_1_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_right_1_small_png.png" rename="avatar/additions/user_idle_right_1_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_right_2_png.png" rename="avatar/additions/user_idle_right_2_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_idle_right_2_small_png.png" rename="avatar/additions/user_idle_right_2_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_muted_png.png" rename="avatar/additions/user_muted_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_muted_small_png.png" rename="avatar/additions/user_muted_small_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_typing_png.png" rename="avatar/additions/user_typing_png.png" type="image" />
+    <assets path="${SKYHAXE_SOURCE_ROOT}/src/images/HabboAvatarRenderLib_user_typing_small_png.png" rename="avatar/additions/user_typing_small_png.png" type="image" />
     <haxelib name="lime" version="8.3.2" />
     <haxelib name="openfl" version="9.5.2" />
 </project>

@@ -1,0 +1,14 @@
+{
+  "captured_from": "evidence/v32_boot_live_probe.json and evidence/v32_boot_profile.json",
+  "captured_at": "2026-09-10T13:56:09+01:00",
+  "usable_room_observed_seconds": 23,
+  "profile_window_seconds": 45,
+  "top_self_time_ms": {
+    "lime_ImageCanvasUtil_createImageData": 4357,
+    "garbage_collector": 2335,
+    "lime_HTML5HTTPRequest_loadImageFromBytes": 2069,
+    "SwfBitmap_toBitmapData_direct_samples": 246,
+    "SwfBitmap_decodePix24_direct_samples": 120
+  },
+  "limits": "The old profile retained aggregate self time but not caller stacks. ImageCanvasUtil and loadImageFromBytes include non-SWF callers, so these values are a ceiling rather than fully attributable SWF time. Phase-specific SWF telemetry was added by the implementation for subsequent runs."
+}

@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><body><script type="module">
+import {FontRegistry} from '../node_modules/truffle-text/src/font/registry.js';
+import {FlashFont} from '../node_modules/truffle-text/src/font/flashfont.js';
+const results = [];
+console.log = (...args) => { results.push(args.join(' ')); document.body.textContent = results.join('\n'); };
+window.onerror = (message) => { document.body.textContent = 'FAIL ' + message; };
+try {
+  window.__glyphRegistry = new FontRegistry();
+  for (const [bold, file] of [[false, 'Ubuntu-R.ttf'], [true, 'Ubuntu-B.ttf']]) {
+    const response = await fetch('../public/assets/truffle/fonts/' + file);
+    if (!response.ok) throw new Error('Font HTTP ' + response.status);
+    window.__glyphRegistry.add('Ubuntu', bold, new FlashFont(new Uint8Array(await response.arrayBuffer()), 'Ubuntu'));
+  }
+  await import('../.toolchain/v21/font-coverage.js');
+} catch (error) { document.body.textContent = 'FAIL ' + error.stack; }
+</script></body>

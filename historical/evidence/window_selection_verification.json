@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "fixture": "test/window-selection.html",
+  "browser_exit": 0,
+  "body": "test/V21SelectionTest.hx:41: V21_SELECTION_PASS real-canvas gray-highlight blur-retains-range toggle-restores-pixels",
+  "error": null
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe Embedded Assets Test" package="org.nextgenhabbo.skyhaxe.embedtest" version="0.1.0" company="NextGenHabbo" />
+    <app main="V22EmbeddedAssetsTest" path="build/tests/v22-embedded" file="v22-embedded" />
+    <window width="40" height="40" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path=".toolchain/v21/generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+</project>

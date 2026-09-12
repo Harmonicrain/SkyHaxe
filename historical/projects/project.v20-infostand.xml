@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe V20 Generated Infostand Closure" package="org.nextgenhabbo.skyhaxe.v20.infostand" version="0.1.0" company="NextGenHabbo" />
+    <app main="V20InfoStandCompileMain" path="build/tests/v20-infostand" file="v20-infostand" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <!-- Match the runtime class-path order: generated types win; src contains platform seams. -->
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <!-- Concrete window migration is isolated until its runtime canaries pass. -->
+    <source path=".toolchain/v21/generated" />
+    <!-- Explicit final class path: ordinary sources precede -lib and cannot override OpenFL. -->
+    <haxeflag name="-cp" value=".toolchain/v21/openfl" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

@@ -31,6 +31,9 @@ class ConvertedRoomInput {
     final displayProvider:Void->Null<DisplayObject>;
     final roomIdProvider:Void->Int;
     final canvasId:Int;
+    var pendingHover:MouseEvent;
+    var hoverTick:Int = -1;
+    var hoverStage:openfl.display.Stage;
 
     public function new(engineProvider:Void->Null<RoomEngine>,
             displayProvider:Void->Null<DisplayObject>, roomIdProvider:Void->Int, canvasId:Int) {
@@ -45,17 +48,65 @@ class ConvertedRoomInput {
         var engine = engineProvider();
         var display = displayProvider();
         var roomId = roomIdProvider();
-        if (engine == null || display == null || roomId == 0) return;
+        if (engine == null || roomId == 0) return;
+        var desktopOwned = display == null;
+        if (desktopOwned) {
+            // Original RoomUI owns the canvas now; the legacy host field is intentionally null.
+            // Keep only the public layout tile bridge, not a second desktop event dispatcher.
+            if (!engine.isPublicRoom(roomId)) return;
+            var canvas = engine.getRoomCanvas(roomId, canvasId);
+            if (canvas == null) return;
+            display = canvas.displayObject;
+        }
+        if (display == null) return;
 
         // Dragging changes the display object's position. Recomputing this for every event keeps
         // the pointer anchored to the room instead of allowing the canvas to drift beneath it.
         var local = display.globalToLocal(new Point(event.stageX, event.stageY));
+        #if debug
+        {
+            var map = engine.getFurniStackingHeightMap(roomId);
+            js.Browser.document.documentElement.setAttribute("data-skyhaxe-pointer", haxe.Json.stringify({
+                type:event.type, room:roomId, publicRoom:engine.isPublicRoom(roomId), x:local.x, y:local.y,
+                held:event.buttonDown, cursor:engine.getTileCursor(roomId) != null,
+                map:map == null ? "absent" : map.width + "x" + map.height,
+                legacy:engine.getLegacyGeometry(roomId) != null
+            }));
+        }
+        #end
         engine.setActiveRoom(roomId);
-        engine.handleRoomCanvasMouseEvent(canvasId, Std.int(local.x), Std.int(local.y), event.type,
-            event.altKey, event.ctrlKey, event.shiftKey, event.buttonDown);
+        if (!desktopOwned)
+            engine.handleRoomCanvasMouseEvent(canvasId, Std.int(local.x), Std.int(local.y), event.type,
+                event.altKey, event.ctrlKey, event.shiftKey, event.buttonDown);
 
-        if (engine.isPublicRoom(roomId) && !event.buttonDown)
-            handlePublicRoomPointer(engine, roomId, event, local);
+        if (engine.isPublicRoom(roomId) && !event.buttonDown) {
+            if (desktopOwned && (event.type == MouseEvent.MOUSE_MOVE || event.type == MouseEvent.MOUSE_UP)) {
+                // Original desktop consumes its mouse queue during the engine frame. Apply the
+                // public layout lookup afterwards, not before its floor-out cursor update.
+                pendingHover = cast event.clone();
+                @:privateAccess pendingHover.stageX = event.stageX;
+                @:privateAccess pendingHover.stageY = event.stageY;
+                hoverTick = RoomEngineRuntime.ticks;
+                if (hoverStage != display.stage) {
+                    if (hoverStage != null) hoverStage.removeEventListener(openfl.events.Event.ENTER_FRAME, flushHover);
+                    hoverStage = display.stage;
+                    if (hoverStage != null) hoverStage.addEventListener(openfl.events.Event.ENTER_FRAME, flushHover);
+                }
+            } else handlePublicRoomPointer(engine, roomId, event, local);
+        }
+    }
+
+    function flushHover(_:openfl.events.Event):Void {
+        if (pendingHover == null || RoomEngineRuntime.ticks <= hoverTick) return;
+        var event = pendingHover;
+        pendingHover = null;
+        var engine = engineProvider();
+        var roomId = roomIdProvider();
+        if (engine == null || !engine.isPublicRoom(roomId)) return;
+        var canvas = engine.getRoomCanvas(roomId, canvasId);
+        if (canvas == null || canvas.displayObject == null) return;
+        var local = canvas.displayObject.globalToLocal(new Point(event.stageX, event.stageY));
+        handlePublicRoomPointer(engine, roomId, event, local);
     }
 
     function handlePublicRoomPointer(engine:RoomEngine, roomId:Int, event:MouseEvent,
@@ -70,7 +121,7 @@ class ConvertedRoomInput {
             return;
 
         var tile = publicRoomTile(engine, roomId, local, canvas);
-        if (event.type == MouseEvent.MOUSE_MOVE) {
+        if (event.type == MouseEvent.MOUSE_MOVE || event.type == MouseEvent.MOUSE_UP) {
             var cursor = engine.getTileCursor(roomId);
             if (cursor != null && cursor.getEventHandler() != null) {
                 var location = tile == null ? null : new Vector3d(tile.x, tile.y, tile.z);

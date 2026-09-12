@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "gate": "SkyHaxe-v32-reproducible-working-generated-client",
+  "ok": true,
+  "created_utc": "2026-09-11T15:17:03.246426+00:00",
+  "composition_sha256": "4139ef145f668ee2befed3163f9e5f74ba893b98b485ef535c72bed004fa1492",
+  "inputs": {
+    "client_root": "C:\\habbo\\client\\habbo-client-clean",
+    "client_commit": "9b265927b2779d0756cdf4821af2098cdfa6c27f"
+  },
+  "run_root": "C:\\Users\\John\\Documents\\SkyHaxe-Batch2\\post-cleanup-20260911T1610",
+  "runs": 2,
+  "run_comparisons": {
+    "run-1-vs-run-2": {
+      "generated": {
+        "identical": true,
+        "missing": [],
+        "extra": [],
+        "changed": []
+      },
+      "platform": {
+        "identical": true,
+        "missing": [],
+        "extra": [],
+        "changed": []
+      },
+      "compat": {
+        "identical": true,
+        "missing": [],
+        "extra": [],
+        "changed": []
+      }
+    }
+  },
+  "preserved_baseline_manifest": "C:/Users/John/Documents/SkyHaxe-Baselines/v32-working-20260911T134136/metadata/working-implementation-tree.json",
+  "baseline_comparison": {
+    "generated": {
+      "identical": true,
+      "missing": [],
+      "extra": [],
+      "changed": []
+    },
+    "platform": {
+      "identical": true,
+      "missing": [],
+      "extra": [],
+      "changed": []
+    },
+    "compat": {
+      "identical": true,
+      "missing": [],
+      "extra": [],
+      "changed": []
+    }
+  },
+  "trees": {
+    "generated": {
+      "file_count": 5387,
+      "total_bytes": 21484216,
+      "aggregate_sha256": "71c9579339b550dcc8e7ed3a58b6377bcce9dd0a369ef2b61020f8cc9a59b265"
+    },
+    "platform": {
+      "file_count": 9,
+      "total_bytes": 227749,
+      "aggregate_sha256": "1a9981ef3009f9a90dda24b609c3029185b1873408ea431f3891b345835fc2c5"
+    },
+    "compat": {
+      "file_count": 15,
+      "total_bytes": 68950,
+      "aggregate_sha256": "998ee7f375e35003c923fbecc0d213e48b6e2cca92f8eaf6d9fbe535131c7c6e"
+    }
+  },
+  "differences_from_working_baseline": []
+}

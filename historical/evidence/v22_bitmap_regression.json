@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "fixture": "build/tests/g1d-bitmap-asset/html5/bin/index.html",
+  "browser_exit": 0,
+  "body": "pass"
+}

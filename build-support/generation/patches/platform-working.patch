@@ -1,0 +1,1793 @@
+diff --git a/com/sulake/core/assets/loaders/BitmapFileLoader.hx b/com/sulake/core/assets/loaders/BitmapFileLoader.hx
+index a5921ee..dc34866
+--- a/com/sulake/core/assets/loaders/BitmapFileLoader.hx
++++ b/com/sulake/core/assets/loaders/BitmapFileLoader.hx
+@@ -1,504 +1,525 @@
+-package com.sulake.core.assets.loaders
+-;
+-    import flash.display.Loader;
+-    import flash.system.LoaderContext;
+-    import flash.utils.Timer;
+-    import flash.events.Event;
+-    import flash.events.HTTPStatusEvent;
+-    import flash.events.ProgressEvent;
+-    import flash.events.IOErrorEvent;
+-    import flash.events.SecurityErrorEvent;
+-    import flash.net.URLLoader;
+-    import flash.net.URLLoaderDataFormat;
+-    import flash.net.URLRequest;
+-    import flash.net.URLRequestHeader;
+-    import flash.utils.ByteArray;
+-    import flash.display.Bitmap;
+-    import com.sulake.core.utils.PlayerVersionCheck;
+-    import com.sulake.habbo.utils.images.PNGEncoder;
+-    import flash.events.TimerEvent;
+-    import flash.system.Security;
+-    import com.sulake.habbo.utils.HabboWebTools;
+-
+-     class BitmapFileLoader extends AssetLoaderEventBroker implements IAssetLoader 
+-    {
+-        static inline final AIR_BITMAP_USER_AGENT= "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36";
+-        static inline final AIR_BITMAP_ACCEPT= "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
+-        static inline final AIR_BITMAP_REFERER= "https://swf.nextgenhabbo.com/index.php";
+-
+-        var _url:String;
+-        var _type:String;
+-        var _loader:Loader;
+-        var _loaderContext:LoaderContext;
+-        var _cacheKey:String = null;
+-        var _cacheRevision:Int = -1;
+-        var _fromCache:Bool = false;
+-        var _id:Int = -1;
+-        var _securityPollTimer:Timer;
+-        var _storedCompleteEvent:Event;
+-        var _securityPollCount:Int = 0;
+-        var _airBinaryFallbackLoader:URLLoader;
+-        var _airBinaryFallbackAttempted:Bool = false;
+-        var _airBinaryFallbackLoading:Bool = false;
+-        var _lastRequestedUrl:String;
+-
+-        public function new(type:String, urlRequest:URLRequest=null, cacheKey:String=null, cacheRevision:Int=-1, buffer:com.sulake.core.utils.ByteArray=null, id:Int=-1)
+-        {
++package com.sulake.core.assets.loaders
++;
++    import ASCompat.checkNullIteratee;
++    import flash.display.Loader;
++    import flash.system.LoaderContext;
++    import flash.utils.Timer;
++    import flash.events.Event;
++    import flash.events.HTTPStatusEvent;
++    import flash.events.ProgressEvent;
++    import flash.events.IOErrorEvent;
++    import flash.events.SecurityErrorEvent;
++    import flash.net.URLLoader;
++    import flash.net.URLLoaderDataFormat;
++    import flash.net.URLRequest;
++    import flash.net.URLRequestHeader;
++    import flash.utils.ByteArray;
++    import flash.display.Bitmap;
++    import com.sulake.core.utils.PlayerVersionCheck;
++    import com.sulake.habbo.utils.images.PNGEncoder;
++    import flash.events.TimerEvent;
++    import flash.system.Security;
++    import com.sulake.habbo.utils.HabboWebTools;
++
++     class BitmapFileLoader extends AssetLoaderEventBroker implements IAssetLoader 
++    {
++        static inline final AIR_BITMAP_USER_AGENT= "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36";
++        static inline final AIR_BITMAP_ACCEPT= "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
++        static inline final AIR_BITMAP_REFERER= "https://swf.nextgenhabbo.com/index.php";
++
++        var _url:String;
++        var _type:String;
++        var _loader:Loader;
++        var _loaderContext:LoaderContext;
++        var _cacheKey:String = null;
++        var _cacheRevision:Int = -1;
++        var _fromCache:Bool = false;
++        var _id:Int = -1;
++        var _securityPollTimer:Timer;
++        var _storedCompleteEvent:Event;
++        var _securityPollCount:Int = 0;
++        var _airBinaryFallbackLoader:URLLoader;
++        var _airBinaryFallbackAttempted:Bool = false;
++        var _airBinaryFallbackLoading:Bool = false;
++        var _lastRequestedUrl:String;
++
++        public function new(type:String, urlRequest:URLRequest=null, cacheKey:String=null, cacheRevision:Int=-1, buffer:com.sulake.core.utils.ByteArray=null, id:Int=-1)
++        {
+             super();
+-            this._url = ((urlRequest == null) ? "" : urlRequest.url);
+-            this._type = type;
+-            this._loader = new Loader();
+-            this._loaderContext = new LoaderContext();
++            this._url = ((urlRequest == null) ? "" : urlRequest.url);
++            this._type = type;
++            this._loader = new Loader();
++            this._loaderContext = new LoaderContext();
+             this._loaderContext.checkPolicyFile = !HabboWebTools.isAirApplication;
+-            this._loader.contentLoaderInfo.addEventListener(Event.COMPLETE, (this.completeEventHandler : ASAny));
+-            this._loader.contentLoaderInfo.addEventListener(Event.UNLOAD, (this.loaderEventHandler : ASAny));
+-            this._loader.contentLoaderInfo.addEventListener(HTTPStatusEvent.HTTP_STATUS, (this.loaderEventHandler : ASAny));
+-            this._loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, (this.loaderEventHandler : ASAny));
+-            this._loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, (this.loaderEventHandler : ASAny));
+-            this._loader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.loaderEventHandler : ASAny));
+-            this._cacheKey = cacheKey;
+-            this._cacheRevision = cacheRevision;
+-            this._id = id;
+-            this._lastRequestedUrl = this._url;
+-            if (((!(buffer == null)) && (buffer.length > 0)))
+-            {
+-                this._fromCache = true;
+-                this._loader.loadBytes(buffer);
+-            }
+-            else
+-            {
+-                if (((!(urlRequest == null)) && (!(urlRequest.url == null))))
+-                {
+-                    this.loadPreparedRequest(urlRequest, "START");
+-                }
+-            }
+-        }
+-
++            this._loader.contentLoaderInfo.addEventListener(Event.COMPLETE, (this.completeEventHandler : ASAny));
++            this._loader.contentLoaderInfo.addEventListener(Event.UNLOAD, (this.loaderEventHandler : ASAny));
++            this._loader.contentLoaderInfo.addEventListener(HTTPStatusEvent.HTTP_STATUS, (this.loaderEventHandler : ASAny));
++            this._loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, (this.loaderEventHandler : ASAny));
++            this._loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, (this.loaderEventHandler : ASAny));
++            this._loader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.loaderEventHandler : ASAny));
++            this._cacheKey = cacheKey;
++            this._cacheRevision = cacheRevision;
++            this._id = id;
++            this._lastRequestedUrl = this._url;
++            if (((!(buffer == null)) && (buffer.length > 0)))
++            {
++                this._fromCache = true;
++                this._loader.loadBytes(buffer);
++            }
++            else
++            {
++                if (((!(urlRequest == null)) && (!(urlRequest.url == null))))
++                {
++                    this.loadPreparedRequest(urlRequest, "START");
++                }
++            }
++        }
++
+         public var url(get,never):String;
+-public function  get_url():String
+-        {
+-            return this._url;
+-        }
+-
++public function  get_url():String
++        {
++            return this._url;
++        }
++
+         public var content(get,never):ASObject;
+-public function  get_content():ASObject
+-        {
+-            return (this._loader != null) ? this._loader.content : null;
+-        }
+-
++public function  get_content():ASObject
++        {
++            return (this._loader != null) ? this._loader.content : null;
++        }
++
+         public var bytes(get,never):com.sulake.core.utils.ByteArray;
+-public function  get_bytes():com.sulake.core.utils.ByteArray
+-        {
+-            var bitmap= ASCompat.dynamicAs(this.content , Bitmap);
+-            if (bitmap == null)
+-            {
+-                return null;
+-            }
+-            if (PlayerVersionCheck.isVersionAtLeast(11, 3))
+-            {
+-            }
+-            return PNGEncoder.encode(bitmap.bitmapData);
+-        }
+-
++public function  get_bytes():com.sulake.core.utils.ByteArray
++        {
++            var bitmap= ASCompat.dynamicAs(this.content , Bitmap);
++            if (bitmap == null)
++            {
++                return null;
++            }
++            if (PlayerVersionCheck.isVersionAtLeast(11, 3))
++            {
++            }
++            return PNGEncoder.encode(bitmap.bitmapData);
++        }
++
+         public var mimeType(get,never):String;
+-public function  get_mimeType():String
+-        {
+-            return this._type;
+-        }
+-
++public function  get_mimeType():String
++        {
++            return this._type;
++        }
++
+         public var bytesLoaded(get,never):UInt;
+-public function  get_bytesLoaded():UInt
+-        {
+-            return ASCompat.toUInt((this._loader != null) ? this._loader.contentLoaderInfo.bytesLoaded : 0);
+-        }
+-
++public function  get_bytesLoaded():UInt
++        {
++            return ASCompat.toUInt((this._loader != null) ? this._loader.contentLoaderInfo.bytesLoaded : 0);
++        }
++
+         public var bytesTotal(get,never):UInt;
+-public function  get_bytesTotal():UInt
+-        {
+-            return ASCompat.toUInt((this._loader != null) ? this._loader.contentLoaderInfo.bytesTotal : 0);
+-        }
+-
++public function  get_bytesTotal():UInt
++        {
++            return ASCompat.toUInt((this._loader != null) ? this._loader.contentLoaderInfo.bytesTotal : 0);
++        }
++
+         public var loaderContext(get,never):LoaderContext;
+-public function  get_loaderContext():LoaderContext
+-        {
+-            return this._loaderContext;
+-        }
+-
++public function  get_loaderContext():LoaderContext
++        {
++            return this._loaderContext;
++        }
++
+         public var cacheKey(get,never):String;
+-public function  get_cacheKey():String
+-        {
+-            return this._cacheKey;
+-        }
+-
++public function  get_cacheKey():String
++        {
++            return this._cacheKey;
++        }
++
+         public var cacheRevision(get,never):Int;
+-public function  get_cacheRevision():Int
+-        {
+-            return this._cacheRevision;
+-        }
+-
++public function  get_cacheRevision():Int
++        {
++            return this._cacheRevision;
++        }
++
+         public var fromCache(get,never):Bool;
+-public function  get_fromCache():Bool
+-        {
+-            return this._fromCache;
+-        }
+-
++public function  get_fromCache():Bool
++        {
++            return this._fromCache;
++        }
++
+         public var id(get,never):Int;
+-public function  get_id():Int
+-        {
+-            return this._id;
+-        }
+-
+-        public function load(urlRequest:URLRequest)
+-        {
+-            this._url = urlRequest.url;
+-            _retries = 0;
+-            this._airBinaryFallbackAttempted = false;
+-            this.cleanupAirBinaryFallbackLoader();
+-            this.loadPreparedRequest(urlRequest, "RELOAD");
+-        }
+-
+-        override function retry():Bool
+-        {
+-var retryUrl:String  = null;            if (!_disposed)
+-            {
+-                if (++_retries <= _attempts)
+-                {
+-                    try
+-                    {
+-                        this._loader.close();
+-                        this._loader.unload();
+-                    }
+-catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught); 					{
+-					} };
+-retryUrl= (((this._url + ((this._url.indexOf("?") == -1) ? "?" : "&")) + "retry=") + Std.string(_retries));
+-                    this.loadPreparedRequest(new URLRequest(retryUrl), "RETRY_LOAD attempt=" + Std.string(_retries));
+-                    return true;
+-                }
+-            }
+-            return false;
+-        }
+-
+-        override public function dispose()
+-        {
+-            if (!_disposed)
+-            {
+-                super.dispose();
+-                this._loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, (this.completeEventHandler : ASAny));
+-                this._loader.contentLoaderInfo.removeEventListener(Event.UNLOAD, (this.loaderEventHandler : ASAny));
+-                this._loader.contentLoaderInfo.removeEventListener(HTTPStatusEvent.HTTP_STATUS, (this.loaderEventHandler : ASAny));
+-                this._loader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, (this.loaderEventHandler : ASAny));
+-                this._loader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR, (this.loaderEventHandler : ASAny));
+-                this._loader.contentLoaderInfo.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.loaderEventHandler : ASAny));
+-                if (this._securityPollTimer != null)
+-                {
+-                    this._securityPollTimer.stop();
+-                    this._securityPollTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, (this.securityPollTimerEvent : ASAny));
+-                    this._securityPollTimer = null;
+-                }
+-                this.cleanupAirBinaryFallbackLoader();
+-                try
+-                {
+-                    this._loader.close();
+-                }
+-catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught);                 {
+-                }
+- }                this._loader.unload();
+-                this._loader = null;
+-                this._type = null;
+-                this._url = null;
+-            }
+-        }
+-
+-        function completeEventHandler(event:Event)
+-        {
++public function  get_id():Int
++        {
++            return this._id;
++        }
++
++        public function load(urlRequest:URLRequest)
++        {
++            this._url = urlRequest.url;
++            _retries = 0;
++            this._airBinaryFallbackAttempted = false;
++            this.cleanupAirBinaryFallbackLoader();
++            this.loadPreparedRequest(urlRequest, "RELOAD");
++        }
++
++        override function retry():Bool
++        {
++var retryUrl:String  = null;            if (!_disposed)
++            {
++                if (++_retries <= _attempts)
++                {
++                    try
++                    {
++                        this._loader.close();
++                        this._loader.unload();
++                    }
++catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught); 					{
++					} };
++retryUrl= (((this._url + ((this._url.indexOf("?") == -1) ? "?" : "&")) + "retry=") + Std.string(_retries));
++                    this.loadPreparedRequest(new URLRequest(retryUrl), "RETRY_LOAD attempt=" + Std.string(_retries));
++                    return true;
++                }
++            }
++            return false;
++        }
++
++        override public function dispose()
++        {
++            if (!_disposed)
++            {
++                super.dispose();
++                this._loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, (this.completeEventHandler : ASAny));
++                this._loader.contentLoaderInfo.removeEventListener(Event.UNLOAD, (this.loaderEventHandler : ASAny));
++                this._loader.contentLoaderInfo.removeEventListener(HTTPStatusEvent.HTTP_STATUS, (this.loaderEventHandler : ASAny));
++                this._loader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, (this.loaderEventHandler : ASAny));
++                this._loader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR, (this.loaderEventHandler : ASAny));
++                this._loader.contentLoaderInfo.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.loaderEventHandler : ASAny));
++                if (this._securityPollTimer != null)
++                {
++                    this._securityPollTimer.stop();
++                    this._securityPollTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, (this.securityPollTimerEvent : ASAny));
++                    this._securityPollTimer = null;
++                }
++                this.cleanupAirBinaryFallbackLoader();
++                try
++                {
++                    this._loader.close();
++                }
++catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught);                 {
++                }
++ }                this._loader.unload();
++                this._loader = null;
++                this._type = null;
++                this._url = null;
++            }
++        }
++
++        function completeEventHandler(event:Event)
++        {
++            #if html5
++            // The browser has already enforced origin access before COMPLETE. The transport URL
++            // may differ from Flash's configured asset identity, which must remain unchanged.
++            loadEventHandler(event);
++            return;
++            #end
+             if (HabboWebTools.isAirApplication)
+-            {
+-                loadEventHandler(event);
+-                return;
+-            }
+-            if (this._url == this._loader.contentLoaderInfo.url)
+-            {
+-                loadEventHandler(event);
+-                return;
+-            }
+-            this._storedCompleteEvent = event;
+-            var pathIndex= this._loader.contentLoaderInfo.url.indexOf("//");
+-            var crossdomainXml:ASAny = (this._loader.contentLoaderInfo.url.substring(0, (this._loader.contentLoaderInfo.url.indexOf("/", (pathIndex + 3)) + 1)) + "crossdomain.xml");
+-            Security.loadPolicyFile(crossdomainXml);
+-            this._securityPollCount = 0;
+-            this.startSecurityPolling();
+-        }
+-
+-        function securityPollTimerEvent(event:TimerEvent)
+-        {
+-            this._securityPollCount++;
+-            if (this._loader.contentLoaderInfo.childAllowsParent)
+-            {
+-                loadEventHandler(this._storedCompleteEvent);
+-            }
+-            else
+-            {
+-                this.startSecurityPolling();
+-            }
+-        }
+-
+-        function startSecurityPolling()
+-        {
+-            this._securityPollTimer = new Timer(250, 1);
+-            this._securityPollTimer.addEventListener(TimerEvent.TIMER_COMPLETE, (this.securityPollTimerEvent : ASAny));
+-            this._securityPollTimer.start();
+-        }
+-
+-        function loaderEventHandler(event:Event)
+-        {
+-            if (event.type == HTTPStatusEvent.HTTP_STATUS)
+-            {
+-            }
+-            else if (event.type == IOErrorEvent.IO_ERROR)
+-            {
+-                if (this.shouldUseAirBinaryFallback(event))
+-                {
+-                    this.startAirBinaryFallback();
+-                    return;
+-                }
+-            }
+-            else if (event.type == SecurityErrorEvent.SECURITY_ERROR)
+-            {
+-            }
+-            else if (event.type == Event.UNLOAD)
+-            {
+-            }
+-            loadEventHandler(event);
+-        }
+-
+-        override function loadEventHandler(event:Event)
+-        {
+-            var finalFailure= false;
+-            if (((event != null) && ((event.type == IOErrorEvent.IO_ERROR) || (event.type == SecurityErrorEvent.SECURITY_ERROR))))
+-            {
+-                finalFailure = this._retries >= this._attempts;
+-            }
+-            super.loadEventHandler(event);
++            {
++                loadEventHandler(event);
++                return;
++            }
++            if (this._url == this._loader.contentLoaderInfo.url)
++            {
++                loadEventHandler(event);
++                return;
++            }
++            this._storedCompleteEvent = event;
++            var pathIndex= this._loader.contentLoaderInfo.url.indexOf("//");
++            var crossdomainXml:ASAny = (this._loader.contentLoaderInfo.url.substring(0, (this._loader.contentLoaderInfo.url.indexOf("/", (pathIndex + 3)) + 1)) + "crossdomain.xml");
++            Security.loadPolicyFile(crossdomainXml);
++            this._securityPollCount = 0;
++            this.startSecurityPolling();
++        }
++
++        function securityPollTimerEvent(event:TimerEvent)
++        {
++            this._securityPollCount++;
++            if (this._loader.contentLoaderInfo.childAllowsParent)
++            {
++                loadEventHandler(this._storedCompleteEvent);
++            }
++            else
++            {
++                this.startSecurityPolling();
++            }
++        }
++
++        function startSecurityPolling()
++        {
++            this._securityPollTimer = new Timer(250, 1);
++            this._securityPollTimer.addEventListener(TimerEvent.TIMER_COMPLETE, (this.securityPollTimerEvent : ASAny));
++            this._securityPollTimer.start();
++        }
++
++        function loaderEventHandler(event:Event)
++        {
++            if (event.type == HTTPStatusEvent.HTTP_STATUS)
++            {
++            }
++            else if (event.type == IOErrorEvent.IO_ERROR)
++            {
++                if (this.shouldUseAirBinaryFallback(event))
++                {
++                    this.startAirBinaryFallback();
++                    return;
++                }
++            }
++            else if (event.type == SecurityErrorEvent.SECURITY_ERROR)
++            {
++            }
++            else if (event.type == Event.UNLOAD)
++            {
++            }
++            loadEventHandler(event);
++        }
++
++        override function loadEventHandler(event:Event)
++        {
++            var finalFailure= false;
++            if (((event != null) && ((event.type == IOErrorEvent.IO_ERROR) || (event.type == SecurityErrorEvent.SECURITY_ERROR))))
++            {
++                finalFailure = this._retries >= this._attempts;
++            }
++            super.loadEventHandler(event);
+             if ((finalFailure && HabboWebTools.isAirApplication))
+-            {
+-                HabboWebTools.airDebug((((("IMAGE FAIL: " + this.getFailureUrl(event)) + " status=") + Std.string(this._status)) + " event=") + event.type);
+-            }
+-        }
+-
+-        function loadPreparedRequest(urlRequest:URLRequest, label:String)
+-        {
+-            var preparedRequest= this.prepareAirBitmapRequest(urlRequest);
+-            var requestMode= (preparedRequest == urlRequest) ? "default" : "browser_headers";
+-            this.startLoaderLoad(preparedRequest, urlRequest, label, requestMode);
+-        }
+-
+-        function startLoaderLoad(preparedRequest:URLRequest, originalRequest:URLRequest, label:String, requestMode:String)
+-        {
+-            try
+-            {
+-                this.rememberRequestUrl(preparedRequest, originalRequest);
+-                this._loader.load(preparedRequest, this._loaderContext);
+-            }
+-catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
+-                if (preparedRequest != originalRequest)
+-                {
+-                    try
+-                    {
+-                        this.rememberRequestUrl(originalRequest, preparedRequest);
+-                        this._loader.load(originalRequest, this._loaderContext);
+-                        return;
+-                    }
+-catch (__as3Caught:Dynamic) { var fallbackError:ASError = ASError.caught(__as3Caught);                     {
+-                    }
+- }                }
+-                loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, error.message));
+-            }
+- }        }
+-
+-        function prepareAirBitmapRequest(urlRequest:URLRequest):URLRequest
+-        {
+-            var preparedRequest:URLRequest = null;
+-            var headers:Array<ASAny> = null;
+-            var existingHeader:URLRequestHeader = null;
+-            if (urlRequest == null || !this.isAirRemoteBitmapUrl(urlRequest.url))
+-            {
+-                return urlRequest;
+-            }
+-            preparedRequest = new URLRequest(urlRequest.url);
+-            preparedRequest.data = urlRequest.data;
+-            preparedRequest.method = urlRequest.method;
+-            preparedRequest.contentType = urlRequest.contentType;
+-            headers = [];
+-            if (urlRequest.requestHeaders != null)
+-            {
+-                final _iter_ = urlRequest.requestHeaders; if (checkNullIteratee(_iter_)) for (_tmp_ in _iter_)
+-                {
++            {
++                HabboWebTools.airDebug((((("IMAGE FAIL: " + this.getFailureUrl(event)) + " status=") + Std.string(this._status)) + " event=") + event.type);
++            }
++        }
++
++        function loadPreparedRequest(urlRequest:URLRequest, label:String)
++        {
++            var preparedRequest= this.prepareAirBitmapRequest(urlRequest);
++            preparedRequest = skyhaxe.compat.BrowserAssetUrl.normalizeRequest(preparedRequest);
++            var requestMode= (preparedRequest == urlRequest) ? "default" : "browser_headers";
++            this.startLoaderLoad(preparedRequest, urlRequest, label, requestMode);
++        }
++
++        function startLoaderLoad(preparedRequest:URLRequest, originalRequest:URLRequest, label:String, requestMode:String)
++        {
++            try
++            {
++                this.rememberRequestUrl(preparedRequest, originalRequest);
++                this._loader.load(preparedRequest, this._loaderContext);
++            }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
++                if (preparedRequest != originalRequest)
++                {
++                    try
++                    {
++                        this.rememberRequestUrl(originalRequest, preparedRequest);
++                        this._loader.load(originalRequest, this._loaderContext);
++                        return;
++                    }
++catch (__as3Caught:Dynamic) { var fallbackError:ASError = ASError.caught(__as3Caught);                     {
++                    }
++ }                }
++                loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, error.message));
++            }
++ }        }
++
++        function prepareAirBitmapRequest(urlRequest:URLRequest):URLRequest
++        {
++            var preparedRequest:URLRequest = null;
++            var headers:Array<ASAny> = null;
++            var existingHeader:URLRequestHeader = null;
++            if (urlRequest == null || !this.isAirRemoteBitmapUrl(urlRequest.url))
++            {
++                return urlRequest;
++            }
++            preparedRequest = new URLRequest(urlRequest.url);
++            preparedRequest.data = urlRequest.data;
++            preparedRequest.method = urlRequest.method;
++            preparedRequest.contentType = urlRequest.contentType;
++            headers = [];
++            if (urlRequest.requestHeaders != null)
++            {
++                final _iter_ = urlRequest.requestHeaders; if (checkNullIteratee(_iter_)) for (_tmp_ in _iter_)
++                {
+ existingHeader  = _tmp_;
+-                    if (!this.isManagedAirBitmapHeader(existingHeader.name))
+-                    {
+-                        headers.push(existingHeader);
+-                    }
+-                }
+-            }
+-            headers.push(new URLRequestHeader("User-Agent", AIR_BITMAP_USER_AGENT));
+-            headers.push(new URLRequestHeader("Accept", AIR_BITMAP_ACCEPT));
+-            headers.push(new URLRequestHeader("Referer", AIR_BITMAP_REFERER));
+-            preparedRequest.requestHeaders = (headers : ASAny);
+-            return preparedRequest;
+-        }
+-
+-        function isManagedAirBitmapHeader(name:String):Bool
+-        {
+-            var lowerName:String = null;
+-            if (name == null)
+-            {
+-                return false;
+-            }
+-            lowerName = name.toLowerCase();
+-            return lowerName == "user-agent" || lowerName == "accept" || lowerName == "referer";
+-        }
+-
+-        function isAirRemoteBitmapUrl(url:String=null):Bool
+-        {
+-            var lowerUrl:String = null;
+-            var value= (url == null) ? this._url : url;
++                    if (!this.isManagedAirBitmapHeader(existingHeader.name))
++                    {
++                        headers.push(existingHeader);
++                    }
++                }
++            }
++            headers.push(new URLRequestHeader("User-Agent", AIR_BITMAP_USER_AGENT));
++            headers.push(new URLRequestHeader("Accept", AIR_BITMAP_ACCEPT));
++            headers.push(new URLRequestHeader("Referer", AIR_BITMAP_REFERER));
++            preparedRequest.requestHeaders = (headers : ASAny);
++            return preparedRequest;
++        }
++
++        function isManagedAirBitmapHeader(name:String):Bool
++        {
++            var lowerName:String = null;
++            if (name == null)
++            {
++                return false;
++            }
++            lowerName = name.toLowerCase();
++            return lowerName == "user-agent" || lowerName == "accept" || lowerName == "referer";
++        }
++
++        function isAirRemoteBitmapUrl(url:String=null):Bool
++        {
++            var lowerUrl:String = null;
++            var value= (url == null) ? this._url : url;
+             if (!HabboWebTools.isAirApplication || value == null)
+-            {
+-                return false;
+-            }
+-            lowerUrl = value.toLowerCase();
+-            return ((lowerUrl.indexOf("http://") == 0) || (lowerUrl.indexOf("https://") == 0)) && (((lowerUrl.indexOf(".png") >= 0) || (lowerUrl.indexOf(".gif") >= 0)) || ((lowerUrl.indexOf(".jpg") >= 0) || (lowerUrl.indexOf(".jpeg") >= 0)));
+-        }
+-
+-        function shouldUseAirBinaryFallback(event:Event):Bool
+-        {
+-            return event.type == IOErrorEvent.IO_ERROR && this._status == 403 && this.isAirRemoteBitmapUrl() && !this._airBinaryFallbackAttempted && !this._airBinaryFallbackLoading;
+-        }
+-
+-        function startAirBinaryFallback()
+-        {
+-            var request= this.prepareAirBitmapRequest(new URLRequest(this._url));
+-            this._airBinaryFallbackAttempted = true;
+-            this._airBinaryFallbackLoading = true;
+-            this._airBinaryFallbackLoader = new URLLoader();
+-            this._airBinaryFallbackLoader.dataFormat = URLLoaderDataFormat.BINARY;
+-            this._airBinaryFallbackLoader.addEventListener(Event.COMPLETE, (this.airBinaryFallbackCompleteHandler : ASAny));
+-            this._airBinaryFallbackLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, (this.airBinaryFallbackStatusHandler : ASAny));
+-            this._airBinaryFallbackLoader.addEventListener(IOErrorEvent.IO_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
+-            this._airBinaryFallbackLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
+-            try
+-            {
+-                this.rememberRequestUrl(request, null);
+-                this._airBinaryFallbackLoader.load(request);
+-            }
+-catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
+-                this.cleanupAirBinaryFallbackLoader(false);
+-                loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, error.message));
+-            }
+- }        }
+-
+-        function airBinaryFallbackStatusHandler(event:HTTPStatusEvent)
+-        {
+-            this._status = event.status;
+-            loadEventHandler(event);
+-        }
+-
+-        function airBinaryFallbackCompleteHandler(event:Event)
+-        {
+-            var bytes= ASCompat.asByteArray(this._airBinaryFallbackLoader.data );
+-            this.cleanupAirBinaryFallbackLoader(false);
+-            if (bytes != null && bytes.length > 0)
+-            {
+-                try
+-                {
+-                    bytes.position = 0;
+-                    this._loader.loadBytes(bytes, this._loaderContext);
+-                    return;
+-                }
+-catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);                 {
+-                }
+- }            }
+-            loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, "AIR binary bitmap fallback produced no usable bytes"));
+-        }
+-
+-        function airBinaryFallbackErrorHandler(event:Event)
+-        {
+-            this.cleanupAirBinaryFallbackLoader(false);
+-            loadEventHandler(event);
+-        }
+-
+-        function rememberRequestUrl(primary:URLRequest, fallback:URLRequest)
+-        {
+-            if (((primary != null) && (primary.url != null) && (primary.url.length > 0)))
+-            {
+-                this._lastRequestedUrl = primary.url;
+-                this._url = primary.url;
+-                return;
+-            }
+-            if (((fallback != null) && (fallback.url != null) && (fallback.url.length > 0)))
+-            {
+-                this._lastRequestedUrl = fallback.url;
+-                this._url = fallback.url;
+-            }
+-        }
+-
+-        function getFailureUrl(event:Event):String
+-        {
+-            var text:String = null;
+-            if (((this._lastRequestedUrl != null) && (this._lastRequestedUrl.length > 0)))
+-            {
+-                return this._lastRequestedUrl;
+-            }
+-            if (((this._url != null) && (this._url.length > 0)))
+-            {
+-                return this._url;
+-            }
+-            try
+-            {
+-                if (((this._loader != null) && (this._loader.contentLoaderInfo != null) && (this._loader.contentLoaderInfo.url != null) && (this._loader.contentLoaderInfo.url.length > 0)))
+-                {
+-                    return this._loader.contentLoaderInfo.url;
+-                }
+-            }
+-catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
+-            }
+- }            if (Std.is(event , IOErrorEvent))
+-            {
+-                text = cast(event, IOErrorEvent).text;
+-            }
+-            else if (Std.is(event , SecurityErrorEvent))
+-            {
+-                text = cast(event, SecurityErrorEvent).text;
+-            }
+-            if (((text != null) && (text.length > 0)))
+-            {
+-                return text;
+-            }
+-            return "(unknown)";
+-        }
+-
+-        function cleanupAirBinaryFallbackLoader(closeLoader:Bool=true)
+-        {
+-            if (this._airBinaryFallbackLoader == null)
+-            {
+-                this._airBinaryFallbackLoading = false;
+-                return;
+-            }
+-            this._airBinaryFallbackLoader.removeEventListener(Event.COMPLETE, (this.airBinaryFallbackCompleteHandler : ASAny));
+-            this._airBinaryFallbackLoader.removeEventListener(HTTPStatusEvent.HTTP_STATUS, (this.airBinaryFallbackStatusHandler : ASAny));
+-            this._airBinaryFallbackLoader.removeEventListener(IOErrorEvent.IO_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
+-            this._airBinaryFallbackLoader.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
+-            if (closeLoader)
+-            {
+-                try
+-                {
+-                    this._airBinaryFallbackLoader.close();
+-                }
+-catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);                 {
+-                }
+- }            }
+-            this._airBinaryFallbackLoader = null;
+-            this._airBinaryFallbackLoading = false;
+-        }
+-    }
+-
++            {
++                return false;
++            }
++            lowerUrl = value.toLowerCase();
++            return ((lowerUrl.indexOf("http://") == 0) || (lowerUrl.indexOf("https://") == 0)) && (((lowerUrl.indexOf(".png") >= 0) || (lowerUrl.indexOf(".gif") >= 0)) || ((lowerUrl.indexOf(".jpg") >= 0) || (lowerUrl.indexOf(".jpeg") >= 0)));
++        }
++
++        function shouldUseAirBinaryFallback(event:Event):Bool
++        {
++            return event.type == IOErrorEvent.IO_ERROR && this._status == 403 && this.isAirRemoteBitmapUrl() && !this._airBinaryFallbackAttempted && !this._airBinaryFallbackLoading;
++        }
++
++        function startAirBinaryFallback()
++        {
++            var request= this.prepareAirBitmapRequest(new URLRequest(this._url));
++            this._airBinaryFallbackAttempted = true;
++            this._airBinaryFallbackLoading = true;
++            this._airBinaryFallbackLoader = new URLLoader();
++            this._airBinaryFallbackLoader.dataFormat = URLLoaderDataFormat.BINARY;
++            this._airBinaryFallbackLoader.addEventListener(Event.COMPLETE, (this.airBinaryFallbackCompleteHandler : ASAny));
++            this._airBinaryFallbackLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, (this.airBinaryFallbackStatusHandler : ASAny));
++            this._airBinaryFallbackLoader.addEventListener(IOErrorEvent.IO_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
++            this._airBinaryFallbackLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
++            try
++            {
++                this.rememberRequestUrl(request, null);
++                this._airBinaryFallbackLoader.load(request);
++            }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
++                this.cleanupAirBinaryFallbackLoader(false);
++                loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, error.message));
++            }
++ }        }
++
++        function airBinaryFallbackStatusHandler(event:HTTPStatusEvent)
++        {
++            this._status = event.status;
++            loadEventHandler(event);
++        }
++
++        function airBinaryFallbackCompleteHandler(event:Event)
++        {
++            var bytes= ASCompat.asByteArray(this._airBinaryFallbackLoader.data );
++            this.cleanupAirBinaryFallbackLoader(false);
++            if (bytes != null && bytes.length > 0)
++            {
++                try
++                {
++                    bytes.position = 0;
++                    this._loader.loadBytes(bytes, this._loaderContext);
++                    return;
++                }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);                 {
++                }
++ }            }
++            loadEventHandler(new IOErrorEvent(IOErrorEvent.IO_ERROR, false, false, "AIR binary bitmap fallback produced no usable bytes"));
++        }
++
++        function airBinaryFallbackErrorHandler(event:Event)
++        {
++            this.cleanupAirBinaryFallbackLoader(false);
++            loadEventHandler(event);
++        }
++
++        function rememberRequestUrl(primary:URLRequest, fallback:URLRequest)
++        {
++            #if html5
++            // AssetLibrary keys the pending request by the configured URL and later looks it up
++            // through loader.url. Keep that identity stable while remembering the real transport.
++            if (primary != null && primary.url != null && primary.url.length > 0)
++            {
++                this._lastRequestedUrl = primary.url;
++            }
++            else if (fallback != null && fallback.url != null && fallback.url.length > 0)
++            {
++                this._lastRequestedUrl = fallback.url;
++            }
++            return;
++            #end
++            if (((primary != null) && (primary.url != null) && (primary.url.length > 0)))
++            {
++                this._lastRequestedUrl = primary.url;
++                this._url = primary.url;
++                return;
++            }
++            if (((fallback != null) && (fallback.url != null) && (fallback.url.length > 0)))
++            {
++                this._lastRequestedUrl = fallback.url;
++                this._url = fallback.url;
++            }
++        }
++
++        function getFailureUrl(event:Event):String
++        {
++            var text:String = null;
++            if (((this._lastRequestedUrl != null) && (this._lastRequestedUrl.length > 0)))
++            {
++                return this._lastRequestedUrl;
++            }
++            if (((this._url != null) && (this._url.length > 0)))
++            {
++                return this._url;
++            }
++            try
++            {
++                if (((this._loader != null) && (this._loader.contentLoaderInfo != null) && (this._loader.contentLoaderInfo.url != null) && (this._loader.contentLoaderInfo.url.length > 0)))
++                {
++                    return this._loader.contentLoaderInfo.url;
++                }
++            }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
++            }
++ }            if (Std.is(event , IOErrorEvent))
++            {
++                text = cast(event, IOErrorEvent).text;
++            }
++            else if (Std.is(event , SecurityErrorEvent))
++            {
++                text = cast(event, SecurityErrorEvent).text;
++            }
++            if (((text != null) && (text.length > 0)))
++            {
++                return text;
++            }
++            return "(unknown)";
++        }
++
++        function cleanupAirBinaryFallbackLoader(closeLoader:Bool=true)
++        {
++            if (this._airBinaryFallbackLoader == null)
++            {
++                this._airBinaryFallbackLoading = false;
++                return;
++            }
++            this._airBinaryFallbackLoader.removeEventListener(Event.COMPLETE, (this.airBinaryFallbackCompleteHandler : ASAny));
++            this._airBinaryFallbackLoader.removeEventListener(HTTPStatusEvent.HTTP_STATUS, (this.airBinaryFallbackStatusHandler : ASAny));
++            this._airBinaryFallbackLoader.removeEventListener(IOErrorEvent.IO_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
++            this._airBinaryFallbackLoader.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, (this.airBinaryFallbackErrorHandler : ASAny));
++            if (closeLoader)
++            {
++                try
++                {
++                    this._airBinaryFallbackLoader.close();
++                }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);                 {
++                }
++ }            }
++            this._airBinaryFallbackLoader = null;
++            this._airBinaryFallbackLoading = false;
++        }
++    }
++
+diff --git a/com/sulake/core/window/services/WindowMouseOperator.hx b/com/sulake/core/window/services/WindowMouseOperator.hx
+index ab4fd00..5cc20d8
+--- a/com/sulake/core/window/services/WindowMouseOperator.hx
++++ b/com/sulake/core/window/services/WindowMouseOperator.hx
+@@ -1,148 +1,148 @@
+-package com.sulake.core.window.services
+-;
+-    import com.sulake.core.runtime.IDisposable;
+-    import flash.display.DisplayObject;
+-    import com.sulake.core.window.WindowController;
+-    import flash.geom.Point;
+-    import com.sulake.core.window.IWindow;
+-    import flash.events.MouseEvent;
+-    import flash.events.Event;
+-    import com.sulake.core.window.events.WindowEvent;
+-
+-     class WindowMouseOperator implements IDisposable 
+-    {
+-        var _root:DisplayObject;
+-        var window:WindowController;
+-        var _Str_5527:Bool = false;
+-        var _offset:Point;
+-        var _Str_3282:Point;
+-        var _Str_3368:Point;
+-        var _Str_829:UInt = 0;
+-        var _disposed:Bool = false;
+-
+-        public function new(k:DisplayObject)
+-        {
+-            this._root = k;
+-            this._Str_3368 = new Point();
+-            this._Str_3282 = new Point();
+-            this._offset = new Point();
+-            this._Str_5527 = false;
+-            this._Str_829 = 0;
+-        }
+-
++package com.sulake.core.window.services
++;
++    import com.sulake.core.runtime.IDisposable;
++    import flash.display.DisplayObject;
++    import com.sulake.core.window.WindowController;
++    import flash.geom.Point;
++    import com.sulake.core.window.IWindow;
++    import flash.events.MouseEvent;
++    import flash.events.Event;
++    import com.sulake.core.window.events.WindowEvent;
++
++     class WindowMouseOperator implements IDisposable 
++    {
++        var _root:DisplayObject;
++        var window:WindowController;
++        var _Str_5527:Bool = false;
++        var _offset:Point;
++        var _Str_3282:Point;
++        var _Str_3368:Point;
++        var _Str_829:UInt = 0;
++        var _disposed:Bool = false;
++
++        public function new(k:DisplayObject)
++        {
++            this._root = k.stage != null ? k.stage : k; // Release must also reach drags outside the window host.
++            this._Str_3368 = new Point();
++            this._Str_3282 = new Point();
++            this._offset = new Point();
++            this._Str_5527 = false;
++            this._Str_829 = 0;
++        }
++
+         public var disposed(get,never):Bool;
+-public function  get_disposed():Bool
+-        {
+-            return this._disposed;
+-        }
+-
+-        public function dispose()
+-        {
+-            this.end(this.window);
+-            this._offset = null;
+-            this._Str_3282 = null;
+-            this._Str_3368 = null;
+-            this._root = null;
+-            this._disposed = true;
+-        }
+-
+-        public function begin(k:IWindow, _arg_2:UInt=0):IWindow
+-        {
+-            this._Str_829 = _arg_2;
+-            var _local_3:IWindow = this.window;
+-            if (this.window != null)
+-            {
+-                this.end(this.window);
+-            }
+-            if (((k != null) && (!k.disposed)))
+-            {
+-                this._root.addEventListener(MouseEvent.MOUSE_DOWN, (this.handler : ASAny), false);
+-                this._root.addEventListener(MouseEvent.MOUSE_UP, (this.handler : ASAny), false);
+-                this._root.addEventListener(Event.ENTER_FRAME, (this.handler : ASAny));
+-                this._Str_3282.x = this._root.mouseX;
+-                this._Str_3282.y = this._root.mouseY;
+-                this.window = cast(k, WindowController);
+-                this.getMousePositionRelativeTo(k, this._Str_3282, this._offset);
+-                this.window.addEventListener(WindowEvent.WINDOW_EVENT_DESTROYED, this.clientWindowDestroyed);
+-                this._Str_5527 = true;
+-            }
+-            return _local_3;
+-        }
+-
+-        public function end(k:IWindow):IWindow
+-        {
+-            var _local_2:IWindow = this.window;
+-            if (this._Str_5527)
+-            {
+-                if ((this.window : ASAny) == (k : ASAny))
+-                {
+-                    this._root.removeEventListener(MouseEvent.MOUSE_DOWN, (this.handler : ASAny), false);
+-                    this._root.removeEventListener(MouseEvent.MOUSE_UP, (this.handler : ASAny), false);
+-                    this._root.removeEventListener(Event.ENTER_FRAME, (this.handler : ASAny));
+-                    if (!this.window.disposed)
+-                    {
+-                        this.window.removeEventListener(WindowEvent.WINDOW_EVENT_DESTROYED, this.clientWindowDestroyed);
+-                    }
+-                    this.window = null;
+-                    this._Str_5527 = false;
+-                }
+-            }
+-            return _local_2;
+-        }
+-
+-        function handler(k:Event)
+-        {
+-            var _local_2:MouseEvent = null;
+-            if (this._Str_5527)
+-            {
+-                if (k.type == Event.ENTER_FRAME)
+-                {
+-                    if (this.window.disposed)
+-                    {
+-                        this.end(this.window);
+-                    }
+-                    else
+-                    {
+-                        if (((!(this._Str_3282.x == this._root.mouseX)) || (!(this._Str_3282.y == this._root.mouseY))))
+-                        {
+-                            this.operate(Std.int(this._root.mouseX), Std.int(this._root.mouseY));
+-                            this._Str_3282.x = this._root.mouseX;
+-                            this._Str_3282.y = this._root.mouseY;
+-                        }
+-                    }
+-                    return;
+-                }
+-                _local_2 = Std.downcast(k , MouseEvent);
+-                if (_local_2 != null)
+-                {
+-                    switch (_local_2.type)
+-                    {
+-                        case MouseEvent.MOUSE_UP:
+-                            this.end(this.window);
+-                            return;
+-                    }
+-                }
+-            }
+-        }
+-
+-        public function operate(k:Int, _arg_2:Int)
+-        {
+-            this._Str_3282.x = k;
+-            this._Str_3282.y = _arg_2;
+-            this.getMousePositionRelativeTo(this.window, this._Str_3282, this._Str_3368);
+-            this.window.offset((this._Str_3368.x - this._offset.x), (this._Str_3368.y - this._offset.y));
+-        }
+-
+-        function clientWindowDestroyed(k:WindowEvent)
+-        {
+-            this.end(this.window);
+-        }
+-
+-        function getMousePositionRelativeTo(k:IWindow, _arg_2:Point, _arg_3:Point)
+-        {
+-            k.getGlobalPosition(_arg_3);
+-            _arg_3.x = (_arg_2.x - _arg_3.x);
+-            _arg_3.y = (_arg_2.y - _arg_3.y);
+-        }
+-    }
+-
++public function  get_disposed():Bool
++        {
++            return this._disposed;
++        }
++
++        public function dispose()
++        {
++            this.end(this.window);
++            this._offset = null;
++            this._Str_3282 = null;
++            this._Str_3368 = null;
++            this._root = null;
++            this._disposed = true;
++        }
++
++        public function begin(k:IWindow, _arg_2:UInt=0):IWindow
++        {
++            this._Str_829 = _arg_2;
++            var _local_3:IWindow = this.window;
++            if (this.window != null)
++            {
++                this.end(this.window);
++            }
++            if (((k != null) && (!k.disposed)))
++            {
++                this._root.addEventListener(MouseEvent.MOUSE_DOWN, (this.handler : ASAny), false);
++                this._root.addEventListener(MouseEvent.MOUSE_UP, (this.handler : ASAny), false);
++                this._root.addEventListener(Event.ENTER_FRAME, (this.handler : ASAny));
++                this._Str_3282.x = this._root.mouseX;
++                this._Str_3282.y = this._root.mouseY;
++                this.window = cast(k, WindowController);
++                this.getMousePositionRelativeTo(k, this._Str_3282, this._offset);
++                this.window.addEventListener(WindowEvent.WINDOW_EVENT_DESTROYED, this.clientWindowDestroyed);
++                this._Str_5527 = true;
++            }
++            return _local_3;
++        }
++
++        public function end(k:IWindow):IWindow
++        {
++            var _local_2:IWindow = this.window;
++            if (this._Str_5527)
++            {
++                if ((this.window : ASAny) == (k : ASAny))
++                {
++                    this._root.removeEventListener(MouseEvent.MOUSE_DOWN, (this.handler : ASAny), false);
++                    this._root.removeEventListener(MouseEvent.MOUSE_UP, (this.handler : ASAny), false);
++                    this._root.removeEventListener(Event.ENTER_FRAME, (this.handler : ASAny));
++                    if (!this.window.disposed)
++                    {
++                        this.window.removeEventListener(WindowEvent.WINDOW_EVENT_DESTROYED, this.clientWindowDestroyed);
++                    }
++                    this.window = null;
++                    this._Str_5527 = false;
++                }
++            }
++            return _local_2;
++        }
++
++        function handler(k:Event)
++        {
++            var _local_2:MouseEvent = null;
++            if (this._Str_5527)
++            {
++                if (k.type == Event.ENTER_FRAME)
++                {
++                    if (this.window.disposed)
++                    {
++                        this.end(this.window);
++                    }
++                    else
++                    {
++                        if (((!(this._Str_3282.x == this._root.mouseX)) || (!(this._Str_3282.y == this._root.mouseY))))
++                        {
++                            this.operate(Std.int(this._root.mouseX), Std.int(this._root.mouseY));
++                            this._Str_3282.x = this._root.mouseX;
++                            this._Str_3282.y = this._root.mouseY;
++                        }
++                    }
++                    return;
++                }
++                _local_2 = Std.downcast(k , MouseEvent);
++                if (_local_2 != null)
++                {
++                    switch (_local_2.type)
++                    {
++                        case MouseEvent.MOUSE_UP:
++                            this.end(this.window);
++                            return;
++                    }
++                }
++            }
++        }
++
++        public function operate(k:Int, _arg_2:Int)
++        {
++            this._Str_3282.x = k;
++            this._Str_3282.y = _arg_2;
++            this.getMousePositionRelativeTo(this.window, this._Str_3282, this._Str_3368);
++            this.window.offset((this._Str_3368.x - this._offset.x), (this._Str_3368.y - this._offset.y));
++        }
++
++        function clientWindowDestroyed(k:WindowEvent)
++        {
++            this.end(this.window);
++        }
++
++        function getMousePositionRelativeTo(k:IWindow, _arg_2:Point, _arg_3:Point)
++        {
++            k.getGlobalPosition(_arg_3);
++            _arg_3.x = (_arg_2.x - _arg_3.x);
++            _arg_3.y = (_arg_2.y - _arg_3.y);
++        }
++    }
++
+diff --git a/com/sulake/core/window/utils/MouseEventQueue.hx b/com/sulake/core/window/utils/MouseEventQueue.hx
+index 151f12c..4ce17ea
+--- a/com/sulake/core/window/utils/MouseEventQueue.hx
++++ b/com/sulake/core/window/utils/MouseEventQueue.hx
+@@ -1,50 +1,67 @@
+-package com.sulake.core.window.utils
+-;
+-    import flash.geom.Point;
+-    import flash.events.MouseEvent;
+-    import flash.events.IEventDispatcher;
+-
+-     class MouseEventQueue extends GenericEventQueue 
+-    {
+-        var _Str_15049:Point;
+-
+-        public function new(k:IEventDispatcher)
+-        {
+-            super(k);
+-            this._Str_15049 = new Point();
+-            _eventDispatcher.addEventListener(MouseEvent.CLICK, this._Str_4614, false);
+-            _eventDispatcher.addEventListener(MouseEvent.DOUBLE_CLICK, this._Str_4614, false);
+-            _eventDispatcher.addEventListener(MouseEvent.MOUSE_DOWN, this._Str_4614, false);
+-            _eventDispatcher.addEventListener(MouseEvent.MOUSE_MOVE, this._Str_4614, false);
+-            _eventDispatcher.addEventListener(MouseEvent.MOUSE_UP, this._Str_4614, false);
+-            _eventDispatcher.addEventListener(MouseEvent.MOUSE_WHEEL, this._Str_4614, false);
+-        }
+-
++package com.sulake.core.window.utils
++;
++    import flash.geom.Point;
++    import flash.events.MouseEvent;
++    import flash.events.IEventDispatcher;
++
++     class MouseEventQueue extends GenericEventQueue 
++    {
++        var _Str_15049:Point;
++
++        public function new(k:IEventDispatcher)
++        {
++            super(k);
++            this._Str_15049 = new Point();
++            _eventDispatcher.addEventListener(MouseEvent.CLICK, this._Str_4614, false);
++            _eventDispatcher.addEventListener(MouseEvent.DOUBLE_CLICK, this._Str_4614, false);
++            _eventDispatcher.addEventListener(MouseEvent.MOUSE_DOWN, this._Str_4614, false);
++            _eventDispatcher.addEventListener(MouseEvent.MOUSE_MOVE, this._Str_4614, false);
++            _eventDispatcher.addEventListener(MouseEvent.MOUSE_UP, this._Str_4614, false);
++            _eventDispatcher.addEventListener(MouseEvent.MOUSE_WHEEL, this._Str_4614, false);
++        }
++
+         public var _Str_26151(get,never):Point;
+-public function  get__Str_26151():Point
+-        {
+-            return this._Str_15049;
+-        }
+-
+-        override public function dispose()
+-        {
+-            if (!_disposed)
+-            {
+-                _eventDispatcher.removeEventListener(MouseEvent.CLICK, this._Str_4614, false);
+-                _eventDispatcher.removeEventListener(MouseEvent.DOUBLE_CLICK, this._Str_4614, false);
+-                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_DOWN, this._Str_4614, false);
+-                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_MOVE, this._Str_4614, false);
+-                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_UP, this._Str_4614, false);
+-                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_WHEEL, this._Str_4614, false);
+-                super.dispose();
+-            }
+-        }
+-
+-        function _Str_4614(k:MouseEvent)
+-        {
+-            this._Str_15049.x = k.stageX;
+-            this._Str_15049.y = k.stageY;
+-            _Str_4751.push(k);
+-        }
+-    }
+-
++public function  get__Str_26151():Point
++        {
++            return this._Str_15049;
++        }
++
++        override public function dispose()
++        {
++            if (!_disposed)
++            {
++                _eventDispatcher.removeEventListener(MouseEvent.CLICK, this._Str_4614, false);
++                _eventDispatcher.removeEventListener(MouseEvent.DOUBLE_CLICK, this._Str_4614, false);
++                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_DOWN, this._Str_4614, false);
++                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_MOVE, this._Str_4614, false);
++                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_UP, this._Str_4614, false);
++                _eventDispatcher.removeEventListener(MouseEvent.MOUSE_WHEEL, this._Str_4614, false);
++                super.dispose();
++            }
++        }
++
++        function _Str_4614(k:MouseEvent)
++        {
++            this._Str_15049.x = k.stageX;
++            this._Str_15049.y = k.stageY;
++            // OpenFL dispatches CLICK for the second release before DOUBLE_CLICK,
++            // whereas Flash's window queue expects the second release to be represented by
++            // DOUBLE_CLICK. Remove only that adjacent duplicate so MouseEventProcessor retains
++            // its second MOUSE_DOWN target and accepts the double click.
++            if (k.type == MouseEvent.DOUBLE_CLICK && _Str_4751.length > 0)
++            {
++                var previous = Std.downcast(_Str_4751[ASCompat.toInt(_Str_4751.length - 1)], MouseEvent);
++                if (previous != null && previous.type == MouseEvent.CLICK
++                    && previous.stageX == k.stageX && previous.stageY == k.stageY)
++                {
++                    _Str_4751.pop();
++                }
++            }
++            // OpenFL recycles events and its clone omits stage coordinates.
++            var snapshot:MouseEvent = cast k.clone();
++            @:privateAccess snapshot.stageX = k.stageX;
++            @:privateAccess snapshot.stageY = k.stageY;
++            _Str_4751.push(snapshot);
++        }
++    }
++
+diff --git a/openfl/display/_internal/CanvasTextField.hx b/openfl/display/_internal/CanvasTextField.hx
+index c20a3b8..cae63a9
+--- a/openfl/display/_internal/CanvasTextField.hx
++++ b/openfl/display/_internal/CanvasTextField.hx
+@@ -221,7 +221,7 @@
+ 						context.font = TextEngine.getFont(group.format);
+ 						context.fillStyle = color;
+ 
+-						context.fillText(text.substring(group.startIndex, group.endIndex), group.offsetX
++						com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(group.startIndex, group.endIndex), group.offsetX
+ 							+ scrollX
+ 							- bounds.x,
+ 							group.offsetY
+@@ -229,7 +229,8 @@
+ 							+ scrollY
+ 							- bounds.y);
+ 
+-						if (textField.__caretIndex > -1 && textEngine.selectable)
++						if (textField.__caretIndex > -1 && textEngine.selectable
++                            && ((textField.stage != null && textField.stage.focus == textField) || textField.alwaysShowSelection))
+ 						{
+ 							if (textField.__selectionIndex == textField.__caretIndex)
+ 							{
+@@ -309,13 +310,13 @@
+ 
+ 								if (start != null && end != null)
+ 								{
+-									context.fillStyle = "#000000";
++									context.fillStyle = (textField.stage != null && textField.stage.focus == textField) ? "#000000" : "#808080";
+ 									context.fillRect(start.x + scrollX - bounds.x, start.y + scrollY, end.x - start.x, group.height);
+ 									context.fillStyle = "#FFFFFF";
+ 
+ 									// TODO: fill only once
+ 
+-									context.fillText(text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
++									com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
+ 										group.offsetY + group.ascent + scrollY);
+ 								}
+ 							}
+diff --git a/openfl/text/TextField.hx b/openfl/text/TextField.hx
+index 286643d..41ec715
+--- a/openfl/text/TextField.hx
++++ b/openfl/text/TextField.hx
+@@ -127,7 +127,39 @@
+ @:access(openfl.text.TextFormat)
+ class TextField extends InteractiveObject
+ {
++
++	/** Flash selection visibility while unfocused. HTML5 Canvas/WebGL platform boundary. */
++	public var alwaysShowSelection(default, set):Bool = false;
++	private function set_alwaysShowSelection(value:Bool):Bool {
++		if (alwaysShowSelection != value) {
++			alwaysShowSelection = value;
++			__dirty = true;
++			__setRenderDirty();
++		}
++		return value;
++	}
+ 	@:noCompletion private static var __defaultTextFormat:TextFormat;
++
++	/** Flash glyph-edge thickness. The HTML5 raster path forwards it to Truffle. */
++	public var thickness(default, set):Float = 0;
++	/** OpenFL has no inline-image loader. An image-free field has no image references;
++	    fail explicitly for image markup until that browser boundary is implemented. */
++	public function getImageReference(id:String):openfl.display.DisplayObject {
++		if (id == null) return null;
++		if (~/\x3cimg\b/i.match(htmlText))
++			throw new haxe.Exception("Inline HTML image references are not yet supported by the window text adapter");
++		return null;
++	}
++	private function set_thickness(value:Float):Float {
++		value = Math.max(-200, Math.min(200, value));
++		if (thickness != value) {
++			thickness = value;
++			__layoutDirty = true;
++			__dirty = true;
++			__setRenderDirty();
++		}
++		return value;
++	}
+ 	@:noCompletion private static var __missingFontWarning:Map<String, Bool> = new Map();
+ 
+ 	#if false
+@@ -3461,7 +3493,7 @@
+ 
+ 		if (__selectionIndex != __caretIndex)
+ 		{
+-			__selectionIndex = __caretIndex;
++			// Losing focus hides the selection; it must not destroy the selected range.
+ 			__dirty = true;
+ 			__setRenderDirty();
+ 		}
+diff --git a/openfl/text/_internal/TextEngine.hx b/openfl/text/_internal/TextEngine.hx
+index dfbc942..cd67bcd
+--- a/openfl/text/_internal/TextEngine.hx
++++ b/openfl/text/_internal/TextEngine.hx
+@@ -884,57 +884,11 @@
+ 			}
+ 
+ 			#if (js && html5)
+-			function html5Positions():Array<Float>
+-			{
+-				var positions:Array<Float> = [];
+-
+-				if (__useIntAdvances == null)
+-				{
+-					__useIntAdvances = ~/Trident\/7.0/.match(Browser.navigator.userAgent); // IE
+-				}
+-
+-				if (__useIntAdvances)
+-				{
+-					// slower, but more accurate if browser returns Int measurements
+-
+-					var previousWidth = 0.0;
+-					var width:Float;
+-
+-					for (i in startIndex...endIndex)
+-					{
+-						width = measureText(text.substring(startIndex, i + 1));
+-						// if (i > 0) width += letterSpacing;
+-
+-						positions.push(width - previousWidth);
+-
+-						previousWidth = width;
+-					}
+-				}
+-				else
+-				{
+-					for (i in startIndex...endIndex)
+-					{
+-						var advance:Float;
+-
+-						if (i < text.length - 1)
+-						{
+-							// Advance can be less for certain letter combinations, e.g. 'Yo' vs. 'Do'
+-							var nextWidth = measureText(text.charAt(i + 1));
+-							var twoWidths = measureText(text.substr(i, 2));
+-							advance = twoWidths - nextWidth;
+-						}
+-						else
+-						{
+-							advance = __context.measureText(text.charAt(i)).width;
+-						}
+-
+-						// if (i > 0) advance += letterSpacing;
+-
+-						positions.push(advance);
+-					}
+-				}
+-
+-				return positions;
++
++			function html5Positions():Array<Float> {
++				// Keep the format-run shaping context when OpenFL measures smaller word chunks.
++				return com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat,
++					text.substring(formatRange.start, formatRange.end)).slice(startIndex - formatRange.start, endIndex - formatRange.start);
+ 			}
+ 			// TODO: Smarter caching for justify
+ 			if (currentFormat.align == JUSTIFY)
+@@ -945,7 +899,7 @@
+ 			#if openfl_disable_text_measurement_cache
+ 			return html5Positions();
+ 			#else
+-			return __shapeCache.cache(formatRange, html5Positions, text.substring(startIndex, endIndex));
++			return html5Positions();
+ 			#end
+ 			#else
+ 			if (__textLayout == null)
+@@ -1004,7 +958,7 @@
+ 
+ 		{
+ 			#if (js && html5)
+-			return measureText(text);
++			var total = 0.0; for (advance in com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat, text)) total += advance; return total;
+ 			#else
+ 			if (__textLayout == null)
+ 			{
+@@ -1068,24 +1022,10 @@
+ 		#if !js inline #end function setLineMetrics():Void
+ 
+ 		{
+-			if (currentFormat.__ascent != null)
+-			{
+-				ascent = currentFormat.size * currentFormat.__ascent;
+-				descent = currentFormat.size * currentFormat.__descent;
+-			}
+-			else if (#if lime font != null && font.unitsPerEM != 0 #else false #end)
+-			{
+-				#if lime
+-				ascent = (font.ascender / font.unitsPerEM) * currentFormat.size;
+-				descent = Math.abs((font.descender / font.unitsPerEM) * currentFormat.size);
+-				#end
+-			}
+-			else
+-			{
+-				ascent = currentFormat.size;
+-				descent = currentFormat.size * 0.185;
+-			}
+-
++
++			var metrics = com.sulake.core.window.text.TruffleText.openFLMetrics(textField, currentFormat);
++			ascent = metrics.ascent;
++			descent = metrics.descent;
+ 			leading = currentFormat.leading;
+ 
+ 			heightValue = Math.ceil(ascent + descent + leading);
+diff --git a/openfl/ui/Mouse.hx b/openfl/ui/Mouse.hx
+index b8c6ae7..81f6c43
+--- a/openfl/ui/Mouse.hx
++++ b/openfl/ui/Mouse.hx
+@@ -1,6 +1,12 @@
+ package openfl.ui;
+ 
+ #if !flash
++#if html5
++import haxe.crypto.Base64;
++import js.Browser;
++import js.html.CanvasElement;
++import openfl.display.PNGEncoderOptions;
++#end
+ #if lime
+ import lime.app.Application;
+ import lime.ui.MouseCursor as LimeMouseCursor;
+@@ -66,7 +72,9 @@
+ 	public static var supportsNativeCursor(default, null):Bool = #if !mobile true; #else false; #end
+ 
+ 	@:noCompletion private static var __cursor:MouseCursor = MouseCursor.AUTO;
++
+ 	@:noCompletion private static var __hidden:Bool;
++	@:noCompletion private static var __customCursors:Map<String, String> = new Map();
+ 
+ 	#if openfljs
+ 	@:noCompletion private static function __init__()
+@@ -104,17 +112,24 @@
+ 		#end
+ 	}
+ 
+-	#if false
+-	/**
+-		Registers a native cursor under the given name, with the given data.
+-
+-		@param name   The name to use as a reference to the native cursor
+-					  instance.
+-		@param cursor The properties for the native cursor, such as icon
+-					  bitmap, specified as a MouseCursorData instance.
+-	**/
+-	// @:noCompletion @:dox(hide) @:require(flash10_2) public static function registerCursor (name:String, cursor:openfl.ui.MouseCursorData):Void;
+-	#end
++
++	/** Register the first Flash native-cursor frame as an HTML5 CSS cursor. */
++	public static function registerCursor(name:String, cursor:MouseCursorData):Void
++	{
++		if (name == null || cursor == null || cursor.data == null || cursor.data.length == 0)
++			throw new haxe.Exception("A custom cursor requires a name and bitmap frame");
++		#if html5
++		var frame = cursor.data[0];
++		var png = frame.encode(frame.rect, new PNGEncoderOptions());
++		var encoded = Base64.encode(cast png);
++		var x = cursor.hotSpot == null ? 0 : Std.int(cursor.hotSpot.x);
++		var y = cursor.hotSpot == null ? 0 : Std.int(cursor.hotSpot.y);
++		__customCursors.set(name, 'url("data:image/png;base64,$encoded") $x $y, auto');
++		#else
++		throw new haxe.Exception("Custom bitmap cursors are only available on the HTML5 target");
++		#end
++	}
++
+ 
+ 	/**
+ 		Displays the pointer. The pointer is visible by default.
+@@ -133,14 +148,13 @@
+ 		cursor = cacheCursor;
+ 	}
+ 
+-	#if false
+-	/**
+-		Unregisters the native cursor with the given name.
+-
+-		@param name The name referring to the native cursor instance.
+-	**/
+-	// @:noCompletion @:dox(hide) @:require(flash11) public static function unregisterCursor (name:String):Void;
+-	#end
++
++	public static function unregisterCursor(name:String):Void
++	{
++		if (__cursor == name) cursor = MouseCursor.AUTO;
++		__customCursors.remove(name);
++	}
++
+ 	// Get & Set Methods
+ 	@:noCompletion private static function get_cursor():MouseCursor
+ 	{
+@@ -150,6 +164,16 @@
+ 	@:noCompletion private static function set_cursor(value:MouseCursor):MouseCursor
+ 	{
+ 		if (value == null) value = AUTO;
++
++
++		#if html5
++		if (__customCursors.exists(cast value))
++		{
++			var canvas:CanvasElement = cast Browser.document.querySelector("canvas");
++			if (canvas != null) canvas.style.cursor = __customCursors.get(cast value);
++			return __cursor = value;
++		}
++		#end
+ 
+ 		#if lime
+ 		var setCursor:LimeMouseCursor = null;
+diff --git a/openfl/ui/MouseCursorData.hx b/openfl/ui/MouseCursorData.hx
+new file mode 100644
+index e69de29..8029fad
+--- /dev/null
++++ b/openfl/ui/MouseCursorData.hx
+@@ -0,0 +1,12 @@
++package openfl.ui;
++
++import openfl.display.BitmapData;
++import openfl.geom.Point;
++
++/** Flash native-cursor data contract implemented by the HTML5 Mouse candidate adapter. */
++class MouseCursorData {
++    public var data:Vector<BitmapData>;
++    public var frameRate:Float = 0;
++    public var hotSpot:Point = new Point();
++    public function new() {}
++}
+diff --git a/skyhaxe/assets/EmbeddedFontCatalog.hx b/skyhaxe/assets/EmbeddedFontCatalog.hx
+new file mode 100644
+index e69de29..28cdc7e
+--- /dev/null
++++ b/skyhaxe/assets/EmbeddedFontCatalog.hx
+@@ -0,0 +1,23 @@
++package skyhaxe.assets;
++
++/** Generated from hash-pinned AS3 FontAsset Embed declarations. */
++class EmbeddedFontCatalog {
++    public static function metadataFor(className:String):{name:String, style:String} {
++        return switch (className) {
++            case "fonts._Str_10176": {name: "Ubuntu Medium", style: "regular"};
++            case "fonts._Str_10339": {name: "Volter Bold", style: "regular"};
++            case "fonts._Str_10363": {name: "Volter", style: "regular"};
++            case "fonts._Str_10537": {name: "UbuntuThick", style: "regular"};
++            case "fonts._Str_10581": {name: "Ubuntu", style: "boldItalic"};
++            case "fonts._Str_10940": {name: "Ubuntu", style: "regular"};
++            case "fonts._Str_11108": {name: "Ubuntu condensed", style: "regular"};
++            case "fonts._Str_11970": {name: "Ubuntu", style: "bold"};
++            case "fonts._Str_11991": {name: "Ubuntu", style: "italic"};
++            case "onBoardingHcUi._Str_1000": {name: "Ubuntu Italic", style: "regular"};
++            case "onBoardingHcUi._Str_666": {name: "Ubuntu Bold Italic", style: "regular"};
++            case "onBoardingHcUi._Str_771": {name: "Ubuntu", style: "regular"};
++            case "onBoardingHcUi._Str_955": {name: "Ubuntu bold", style: "regular"};
++            default: throw new haxe.Exception('Unregistered embedded font class: ' + className);
++        };
++    }
++}

@@ -26,12 +26,16 @@ class XMLList {
         return index < 0 || index >= _items.length ? null : _items[index];
     }
 
-    public function child(name:String):XMLList {
+    public function child(name:Dynamic):XMLList {
         return flatten(function(item) return item.child(name));
     }
 
     public function children():XMLList {
         return flatten(function(item) return item.children());
+    }
+
+    public function descendants(name:String = "*"):XMLList {
+        return flatten(function(item) return item.descendants(name));
     }
 
     public function text():XMLList {
@@ -40,6 +44,19 @@ class XMLList {
 
     public function attribute(name:String):XMLList {
         return flatten(function(item) return item.attribute(name));
+    }
+
+    public function filterAttributeEquals(name:String, value:String):XMLList {
+        return new XMLList([for (item in _items)
+            if (item.attribute(name).toString() == value) item]);
+    }
+
+    /** The normalized form of JSONEncoder's describeType E4X predicate. */
+    public function filterVariablesAndReadableAccessors():XMLList {
+        return new XMLList([for (item in _items)
+            if (item.localName() == "variable"
+                || (item.localName() == "accessor"
+                    && StringTools.startsWith(item.attribute("access").toString(), "r"))) item]);
     }
 
     public function setAttribute(name:String, value:Dynamic):XMLList {

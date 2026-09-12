@@ -19,4 +19,4 @@ foreach ($required in @(
 $env:PATH = "$haxeRoot;$nekoRoot;$env:PATH"
 $env:HAXE_STD_PATH = Join-Path $haxeRoot "std"
 $env:NEKOPATH = $nekoRoot
-
+$env:HAXELIB_PATH = Join-Path $repoRoot ".haxelib"

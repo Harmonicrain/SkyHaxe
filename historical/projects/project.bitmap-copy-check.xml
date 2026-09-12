@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe bitmap copy clipping" package="org.nextgenhabbo.skyhaxe.bitmapcopy" version="0.1.0" />
+    <app main="BitmapCopyPixelsTest" path="build/tests/bitmap-copy" file="bitmap-copy" />
+    <source path="src" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+</project>

@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "fixture": "test/window-assets.html",
+  "browser_exit": 0,
+  "body": "V22_ASSET_LOADING_PASS",
+  "error": null,
+  "http_errors": [
+    "code 404, message File not found",
+    "code 404, message File not found"
+  ],
+  "browser_stderr_tail": []
+}

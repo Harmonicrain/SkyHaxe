@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="Original Infostand Services" package="org.nextgenhabbo.skyhaxe.v25" version="0.1.0" company="NextGenHabbo" />
+    <app main="V25InfoStandServicesCompileMain" path="build/tests/v25-infostand-services" file="v25-infostand-services" />
+    <window width="1" height="1" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path=".toolchain/v21/generated" />
+    <source path=".toolchain/v24/generated" />
+    <source path=".toolchain/v25/generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxeflag name="-cp" value=".toolchain/v21/openfl" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+</project>

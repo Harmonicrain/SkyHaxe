@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "browser_exit": 0,
+  "body": "V21ConverterRegressionTest.hx:234: V21_CONVERTER_PASS XML-index-string XML-index-bool XML-string-equality interface-loop reference-equality inherited-accessors runtime-class\nV21ConverterRegressionTest.hx:235: SHADOW_INT_COERCION_PASS nonfinite-zero finite-lift number-NaN wraparound",
+  "workspace": "C:\\habbo\\client\\SkyHaxe\\.toolchain\\tests\\window-conversion\\run-2_pm8_z1",
+  "fixture_count": 13,
+  "target": "AS3 -> generated Haxe -> browser JavaScript"
+}

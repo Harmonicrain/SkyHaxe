@@ -1,0 +1,29 @@
+package org.openvideoads.vast.server.request.oasis
+;
+    import org.openvideoads.vast.server.config.AdServerConfig;
+    import org.openvideoads.vast.server.config.CustomProperties;
+
+     class _Str_10310 extends AdServerConfig 
+    {
+        public function new(k:ASObject=null)
+        {
+            this.oneAdPerRequest = true;
+            super("OASIS", k);
+        }
+
+        override function  get_defaultTemplate():String
+        {
+            return "__api-address__?s=__zone__&w=__w__&h=__h__&k=__k__&t=__t__&cb=__random-number__";
+        }
+
+        override function  get_defaultCustomProperties():CustomProperties
+        {
+            return new CustomProperties({
+                "w":"1",
+                "h":"1",
+                "k":"",
+                "t":"_blank"
+            });
+        }
+    }
+

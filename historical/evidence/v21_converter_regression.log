@@ -1,0 +1,2 @@
+V21ConverterRegressionTest.hx:22: V21_CONVERTER_PASS XML-index-string XML-index-bool XML-string-equality interface-loop reference-equality inherited-accessors runtime-class
+V21ConverterRegressionTest.hx:23: SHADOW_INT_COERCION_PASS nonfinite-zero finite-lift number-NaN wraparound

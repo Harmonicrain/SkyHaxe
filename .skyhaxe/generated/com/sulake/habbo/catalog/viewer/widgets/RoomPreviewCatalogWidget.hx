@@ -1,0 +1,237 @@
+package com.sulake.habbo.catalog.viewer.widgets
+;
+    import com.sulake.habbo.room.IGetImageListener;
+    import com.sulake.habbo.catalog.viewer.IDragAndDropDoneReceiver;
+    import flash.display.BitmapData;
+    import com.sulake.habbo.catalog.IPurchasableOffer;
+    import com.sulake.core.window.IWindowContainer;
+    import com.sulake.habbo.catalog.viewer.widgets.events.CatalogWidgetEvent;
+    import com.sulake.core.window.components.IBitmapWrapperWindow;
+    import com.sulake.habbo.catalog.viewer.widgets.events.SelectProductEvent;
+    import com.sulake.core.window.events.WindowMouseEvent;
+    import com.sulake.habbo.catalog.HabboCatalog;
+    import com.sulake.core.window.events.WindowEvent;
+    import com.sulake.core.window.IWindow;
+    import com.sulake.habbo.catalog.viewer.widgets.events.CatalogWidgetInitPurchaseEvent;
+    import com.sulake.room.utils.Vector3d;
+    import com.sulake.habbo.catalog.viewer.widgets.events.CatalogWidgetUpdateRoomPreviewEvent;
+    import flash.geom.Point;
+
+     class RoomPreviewCatalogWidget extends CatalogWidget implements IGetImageListener implements  IDragAndDropDoneReceiver
+    {
+        var _imageResultIdRoom:Int = -1;
+        var _imageResultIdWindow:Int = -1;
+        var _imageStoreBg:BitmapData = null;
+        var _imageStoreWindow:BitmapData = null;
+        var _lastTargetMouseDown:ASObject;
+        var _offer:IPurchasableOffer;
+
+        public function new(k:IWindowContainer)
+        {
+            super(k);
+        }
+
+        override public function dispose()
+        {
+            if (this._imageStoreBg != null)
+            {
+                this._imageStoreBg.dispose();
+                this._imageStoreBg = null;
+            }
+            if (this._imageStoreWindow != null)
+            {
+                this._imageStoreWindow.dispose();
+                this._imageStoreWindow = null;
+            }
+            events.removeEventListener(CatalogWidgetEvent.UPDATE_ROOM_PREVIEW, this._Str_19245);
+            super.dispose();
+        }
+
+        override public function init():Bool
+        {
+            if (!super.init())
+            {
+                return false;
+            }
+            var k= Std.downcast(window.getChildByName("catalog_floor_preview_example") , IBitmapWrapperWindow);
+            k.procedure = this._Str_5162;
+            events.addEventListener(CatalogWidgetEvent.UPDATE_ROOM_PREVIEW, this._Str_19245);
+            events.addEventListener(CatalogWidgetEvent.SELECT_PRODUCT, this._Str_4806);
+            return true;
+        }
+
+        function _Str_4806(k:SelectProductEvent)
+        {
+            if (k == null)
+            {
+                return;
+            }
+            this._offer = k.offer;
+        }
+
+        function _Str_5162(k:WindowEvent, _arg_2:IWindow)
+        {
+            if (k.type == WindowMouseEvent.UP)
+            {
+                this._lastTargetMouseDown = null;
+            }
+            else
+            {
+                if (k.type == WindowMouseEvent.DOWN)
+                {
+                    if (_arg_2 == null)
+                    {
+                        return;
+                    }
+                    this._lastTargetMouseDown = _arg_2;
+                }
+                else
+                {
+                    if ((((k.type == WindowMouseEvent.OUT) && (!(this._lastTargetMouseDown == null))) && (this._lastTargetMouseDown == _arg_2)))
+                    {
+                        if (this._offer != null)
+                        {
+                            Std.downcast(page.viewer.catalog , HabboCatalog).requestSelectedItemToMover(this, this._offer);
+                            this._lastTargetMouseDown = null;
+                        }
+                    }
+                    else
+                    {
+                        if (k.type == WindowMouseEvent.UP)
+                        {
+                            (this._lastTargetMouseDown == null);
+                        }
+                        else
+                        {
+                            if (k.type == WindowMouseEvent.CLICK)
+                            {
+                                (this._lastTargetMouseDown == null);
+                            }
+                            else
+                            {
+                                if (k.type == WindowMouseEvent.DOUBLE_CLICK)
+                                {
+                                    this._lastTargetMouseDown = null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public function onDragAndDropDone(k:Bool, _arg_2:String)
+        {
+            if (disposed)
+            {
+                return;
+            }
+            if (k)
+            {
+                events.dispatchEvent(new CatalogWidgetInitPurchaseEvent(false, _arg_2));
+            }
+        }
+
+        public function _Str_22911()
+        {
+        }
+
+        function _Str_19245(k:CatalogWidgetUpdateRoomPreviewEvent)
+        {
+            var _local_5:BitmapData = null;
+            var _local_6:BitmapData = null;
+            var _local_2= "ads_twi_windw";
+            var _local_3= page.viewer.roomEngine.getRoomImage(k.floorType, k.wallType, k.landscapeType, k.tileSize, this, _local_2);
+            var _local_4= page.viewer.roomEngine.getGenericRoomObjectImage(_local_2, "", new Vector3d(180, 0, 0), k.tileSize, this);
+            if (((!(_local_3 == null)) && (!(_local_4 == null))))
+            {
+                this._imageResultIdRoom = _local_3.id;
+                this._imageResultIdWindow = _local_4.id;
+                _local_5 = _local_3.data ;
+                _local_6 = _local_4.data ;
+                if (this._imageStoreBg != null)
+                {
+                    this._imageStoreBg.dispose();
+                }
+                if (this._imageStoreWindow != null)
+                {
+                    this._imageStoreWindow.dispose();
+                }
+                this._imageStoreBg = _local_5;
+                this._imageStoreWindow = _local_6;
+                this._Str_19491(_local_5, _local_6);
+            }
+        }
+
+        function _Str_19491(k:BitmapData, _arg_2:BitmapData)
+        {
+            var _local_3:IBitmapWrapperWindow = null;
+            var _local_4 = 0;
+            var _local_5 = 0;
+            var _local_6 = 0;
+            var _local_7 = 0;
+            var _local_8 = 0;
+            var _local_9 = 0;
+            if ((((!(k == null)) && (!(_arg_2 == null))) && (!window.disposed)))
+            {
+                _local_3 = Std.downcast(window.getChildByName("catalog_floor_preview_example") , IBitmapWrapperWindow);
+                if (_local_3 != null)
+                {
+                    if (_local_3.bitmap == null)
+                    {
+                        _local_3.bitmap = new BitmapData(_local_3.width, _local_3.height, true, 0xFFFFFF);
+                    }
+                    _local_4 = -45;
+                    _local_5 = 20;
+                    _local_3.bitmap.fillRect(_local_3.bitmap.rect, 0xFFFFFF);
+                    _local_6 = Std.int(((_local_3.width - k.width) / 2) + _local_4);
+                    _local_7 = Std.int(((_local_3.height - k.height) / 2) + _local_5);
+                    _local_3.bitmap.copyPixels(k, k.rect, new Point(_local_6, _local_7), null, null, true);
+                    _local_8 = Std.int((_local_3.width / 2) + _local_4);
+                    _local_9 = Std.int(((_local_3.height / 2) + _local_5) - _arg_2.height);
+                    _local_8 = (_local_8 + 1);
+                    _local_9 = (_local_9 + 44);
+                    _local_3.bitmap.copyPixels(_arg_2, _arg_2.rect, new Point(_local_8, _local_9), null, null, true);
+                    _local_3.invalidate();
+                }
+            }
+        }
+
+        public function imageReady(k:Int, _arg_2:BitmapData)
+        {
+            if (disposed)
+            {
+                return;
+            }
+            switch (k)
+            {
+                case (_ == this._imageResultIdRoom => true):
+                    this._imageResultIdRoom = 0;
+                    if (this._imageStoreBg != null)
+                    {
+                        this._imageStoreBg.dispose();
+                    }
+                    this._imageStoreBg = _arg_2;
+                    
+                case (_ == this._imageResultIdWindow => true):
+                    this._imageResultIdWindow = 0;
+                    if (this._imageStoreWindow != null)
+                    {
+                        this._imageStoreWindow.dispose();
+                    }
+                    this._imageStoreWindow = _arg_2;
+                    
+
+default:
+            }
+            if (((!(this._imageStoreBg == null)) && (!(this._imageStoreWindow == null))))
+            {
+                this._Str_19491(this._imageStoreBg, this._imageStoreWindow);
+            }
+        }
+
+        public function imageFailed(k:Int)
+        {
+        }
+    }
+

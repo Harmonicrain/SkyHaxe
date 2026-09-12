@@ -2,6 +2,7 @@ package com.sulake.habbo.communication;
 
 #if html5
 import com.sulake.core.communication.connection.IConnection;
+import com.sulake.core.communication.messages.IMessageEvent;
 import com.sulake.core.runtime.IUnknown;
 
 /**
@@ -14,5 +15,9 @@ import com.sulake.core.runtime.IUnknown;
  */
 interface IHabboCommunicationManager extends IUnknown {
     var connection(get, never):IConnection;
+    var port(get, never):Int;
+    function addHabboConnectionMessageEvent(event:IMessageEvent):IMessageEvent;
+    function removeHabboConnectionMessageEvent(event:IMessageEvent):Void;
+    function setMessageQueueErrorDebugData():Void;
 }
 #end

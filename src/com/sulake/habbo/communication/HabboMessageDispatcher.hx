@@ -7,14 +7,25 @@ import js.lib.ArrayBuffer;
 
 /** Packet-id dispatch separated from the HTML5 transport boundary. */
 class HabboMessageDispatcher {
-    final handlers = new IntMap<IMessageDataWrapper->Void>();
+    final handlers = new IntMap<Array<IMessageDataWrapper->Void>>();
     final observers = new IntMap<Array<IMessageDataWrapper->Void>>();
 
     public function new() {}
 
     public function register(id:Int, handler:IMessageDataWrapper->Void):Void {
-        if (handlers.exists(id)) throw 'A handler is already registered for packet $id';
-        handlers.set(id, handler);
+        var list = handlers.get(id);
+        if (list == null) {
+            list = [];
+            handlers.set(id, list);
+        }
+        if (list.indexOf(handler) < 0) list.push(handler);
+    }
+
+    public function unregister(id:Int, handler:IMessageDataWrapper->Void):Void {
+        var list = handlers.get(id);
+        if (list == null) return;
+        list.remove(handler);
+        if (list.length == 0) handlers.remove(id);
     }
 
     /**
@@ -41,10 +52,14 @@ class HabboMessageDispatcher {
             observer(new EvaMessageDataWrapper(id, packet));
             handled = true;
         }
-        var handler = handlers.get(id);
-        if (handler != null) {
-            handler(new EvaMessageDataWrapper(id, packet));
-            handled = true;
+        var listeners = handlers.get(id);
+        if (listeners != null) {
+            for (handler in listeners.copy()) {
+                // A callback may unsubscribe another listener while handling this packet.
+                if (listeners.indexOf(handler) < 0) continue;
+                handler(new EvaMessageDataWrapper(id, packet));
+                handled = true;
+            }
         }
         return handled;
     }

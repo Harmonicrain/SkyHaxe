@@ -1,0 +1,6 @@
+﻿{
+    "ok":  true,
+    "target":  "isolated candidate generated GraphicContext + IGraphicContext",
+    "browser_exit":  0,
+    "body":  "test/V21GraphicContextTest.hx:30: V21_GRAPHIC_CONTEXT_PASS attach reparent mouse filters dispose\r\n"
+}

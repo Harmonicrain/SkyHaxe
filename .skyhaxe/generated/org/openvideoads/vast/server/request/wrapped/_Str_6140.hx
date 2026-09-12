@@ -1,0 +1,42 @@
+package org.openvideoads.vast.server.request.wrapped
+;
+    import org.openvideoads.vast.server.request.AdServerRequest;
+    import org.openvideoads.vast.server.config.AdServerConfig;
+    import org.openvideoads.util.NetworkResource;
+
+     class _Str_6140 extends AdServerRequest 
+    {
+        var _Str_577:String = null;
+
+        public function new(k:String, _arg_2:AdServerConfig)
+        {
+            super(new _Str_10949(_arg_2));
+            if (parseWrappedAdTags())
+            {
+                this._Str_577 = _Str_15243(k);
+            }
+            else
+            {
+                this._Str_577 = k;
+            }
+        }
+
+        override public function isWrapped():Bool
+        {
+            return true;
+        }
+
+        override public function formRequest(k:Array<ASAny>=null):String
+        {
+            if (_Str_19077())
+            {
+                _Str_4164 = NetworkResource._Str_24693(this._Str_577, ("cache-buster=" + Std.string(Math.random())));
+            }
+            else
+            {
+                _Str_4164 = this._Str_577;
+            }
+            return _Str_4164;
+        }
+    }
+

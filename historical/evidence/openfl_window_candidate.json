@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "scope": "candidate only; not installed OpenFL or production",
+  "files": [
+    {
+      "source": ".haxelib/openfl/9,5,2/src/openfl/text/_internal/TextEngine.hx",
+      "source_sha256": "2327d18d73fcbd5c1f678864b211eb8dd90351d734bc5d98d55f4475fac65af4",
+      "candidate": ".toolchain/v21/openfl/openfl/text/_internal/TextEngine.hx",
+      "candidate_sha256": "cceb102b4cbe6c91cb4652f612c1d5a7832252d02a7f29ce1bfc07203d5c3fa4"
+    },
+    {
+      "source": ".haxelib/openfl/9,5,2/src/openfl/text/TextField.hx",
+      "source_sha256": "99942a9340f005ee8fc7c4be18cdc4117bd0434fca356c0313aed13f07d23687",
+      "candidate": ".toolchain/v21/openfl/openfl/text/TextField.hx",
+      "candidate_sha256": "7454418b26793cd93f9c93c66cf97d2f75d86359c21aebc72b38500344274f69"
+    },
+    {
+      "source": ".haxelib/openfl/9,5,2/src/openfl/display/_internal/CanvasTextField.hx",
+      "source_sha256": "4cabda18c92f323fa71b189addf482ec49b84e7de68af9f733ba1832048cf5a3",
+      "candidate": ".toolchain/v21/openfl/openfl/display/_internal/CanvasTextField.hx",
+      "candidate_sha256": "5583b55f793217b67d1631201f98fdec91d2c78bc7720bf13005b602c0f2bf99"
+    },
+    {
+      "source": ".haxelib/openfl/9,5,2/src/openfl/ui/Mouse.hx",
+      "source_sha256": "adce2e45b56dea1e399f49ac2cf5caa1ddea29c760624c3853012015f8d75324",
+      "candidate": ".toolchain/v21/openfl/openfl/ui/Mouse.hx",
+      "candidate_sha256": "496a0a09a1e32f7243763b608727422e5435935b1d91094a9f305a34a0354c3f"
+    },
+    {
+      "source": null,
+      "source_sha256": null,
+      "candidate": ".toolchain/v21/openfl/openfl/ui/MouseCursorData.hx",
+      "candidate_sha256": "bea61e7dbef6d0edc4524a783a514a28c0cce53cda78db73964d1c10d68ed623"
+    }
+  ],
+  "contracts": [
+    "test/V21SelectionTest.hx",
+    "test/V21ThicknessTest.hx",
+    "project.compile-all.xml"
+  ],
+  "limitations": [
+    "Canvas/WebGL; DOM renderer not adapted",
+    "Inline HTML images fail explicitly; loader not implemented",
+    "Wrapped/mixed-style metrics still need Flash reference tests"
+  ]
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "fn": "(idle)",
+    "at": "",
+    "ms": 19756
+  },
+  {
+    "fn": "(program)",
+    "at": "",
+    "ms": 2040
+  },
+  {
+    "fn": "(garbage collector)",
+    "at": "",
+    "ms": 2006
+  },
+  {
+    "fn": "lime__$internal_backend_html5_HTML5HTTPRequest.loadImageFromBytes",
+    "at": "skyhaxe-v32.js:418804",
+    "ms": 1073
+  },
+  {
+    "fn": "HxOverrides.remove",
+    "at": "skyhaxe-v32.js:43387",
+    "ms": 520
+  },
+  {
+    "fn": "V",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 512
+  },
+  {
+    "fn": "lime__$internal_backend_html5_HTML5HTTPRequest.loadImageFromBytes",
+    "at": "skyhaxe-v32.js:418804",
+    "ms": 504
+  },
+  {
+    "fn": "q",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 382
+  },
+  {
+    "fn": "vt",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 314
+  },
+  {
+    "fn": "getGlyphInfosAndPositions",
+    "at": "truffle.js:6780",
+    "ms": 236
+  },
+  {
+    "fn": "getString",
+    "at": "skyhaxe-v32.js:12446",
+    "ms": 231
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 227
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 221
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 212
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 167
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 146
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 129
+  },
+  {
+    "fn": "com_sulake_core_assets_swf_SwfDecodeWorkerPool.pump",
+    "at": "skyhaxe-v32.js:55107",
+    "ms": 113
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 107
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 106
+  },
+  {
+    "fn": "haxe_xml_Parser.doParse",
+    "at": "skyhaxe-v32.js:417414",
+    "ms": 103
+  },
+  {
+    "fn": "i",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 93
+  },
+  {
+    "fn": "haxe_xml_Parser.doParse",
+    "at": "skyhaxe-v32.js:417414",
+    "ms": 90
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 87
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 87
+  },
+  {
+    "fn": "child",
+    "at": "skyhaxe-v32.js:48233",
+    "ms": 83
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 81
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 81
+  },
+  {
+    "fn": "sr",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 80
+  },
+  {
+    "fn": "(anonymous)",
+    "at": "skyhaxe-v32.js:2",
+    "ms": 76
+  },
+  {
+    "fn": "lime__$internal_backend_html5_HTML5HTTPRequest.__loadImage",
+    "at": "skyhaxe-v32.js:418912",
+    "ms": 67
+  },
+  {
+    "fn": "lime_media_AudioContext",
+    "at": "skyhaxe-v32.js:429772",
+    "ms": 65
+  },
+  {
+    "fn": "monotoneRoot",
+    "at": "truffle.js:9305",
+    "ms": 64
+  },
+  {
+    "fn": "monotoneRoot",
+    "at": "truffle.js:9305",
+    "ms": 62
+  },
+  {
+    "fn": "monotoneRoot",
+    "at": "truffle.js:9305",
+    "ms": 61
+  },
+  {
+    "fn": "windingNumberIndexed",
+    "at": "truffle.js:9270",
+    "ms": 61
+  },
+  {
+    "fn": "windingNumberIndexed",
+    "at": "truffle.js:9270",
+    "ms": 59
+  },
+  {
+    "fn": "M",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 58
+  },
+  {
+    "fn": "EReg",
+    "at": "skyhaxe-v32.js:17185",
+    "ms": 53
+  },
+  {
+    "fn": "lime__$internal_backend_html5_HTML5HTTPRequest.__revokeBlobURI",
+    "at": "skyhaxe-v32.js:418963",
+    "ms": 51
+  },
+  {
+    "fn": "EReg",
+    "at": "skyhaxe-v32.js:17185",
+    "ms": 51
+  },
+  {
+    "fn": "worker.onmessage",
+    "at": "skyhaxe-v32.js:55098",
+    "ms": 48
+  },
+  {
+    "fn": "readUTFBytes",
+    "at": "skyhaxe-v32.js:12803",
+    "ms": 48
+  },
+  {
+    "fn": "windingNumberIndexed",
+    "at": "truffle.js:9270",
+    "ms": 48
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 48
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 48
+  },
+  {
+    "fn": "com_sulake_core_utils_xml_XML.removeInsignificantWhitespace",
+    "at": "skyhaxe-v32.js:48058",
+    "ms": 48
+  },
+  {
+    "fn": "layout",
+    "at": "truffle.js:10419",
+    "ms": 47
+  },
+  {
+    "fn": "createShapedGlyph",
+    "at": "truffle.js:7023",
+    "ms": 47
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 45
+  },
+  {
+    "fn": "vt",
+    "at": "skyhaxe-v32.js:542473",
+    "ms": 45
+  },
+  {
+    "fn": "parseFurnitureData",
+    "at": "skyhaxe-v32.js:326314",
+    "ms": 45
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 43
+  },
+  {
+    "fn": "haxe_xml_Parser.doParse",
+    "at": "skyhaxe-v32.js:417414",
+    "ms": 41
+  },
+  {
+    "fn": "yAt",
+    "at": "truffle.js:9326",
+    "ms": 41
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 40
+  },
+  {
+    "fn": "parseFloorItem",
+    "at": "skyhaxe-v32.js:326372",
+    "ms": 40
+  },
+  {
+    "fn": "windingNumberIndexed",
+    "at": "truffle.js:9270",
+    "ms": 39
+  },
+  {
+    "fn": "monotoneRoot",
+    "at": "truffle.js:9305",
+    "ms": 39
+  },
+  {
+    "fn": "lime__$internal_graphics_ImageCanvasUtil.createImageData",
+    "at": "skyhaxe-v32.js:10561",
+    "ms": 37
+  }
+]

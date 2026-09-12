@@ -1,0 +1,76 @@
+package com.sulake.habbo.navigator
+;
+    import com.sulake.core.assets.IAssetLibrary;
+    import com.sulake.habbo.window.IHabboWindowManager;
+    import com.sulake.habbo.navigator.domain.NavigatorData;
+    import com.sulake.habbo.navigator.mainview.ITransitionalMainViewCtrl;
+    import com.sulake.habbo.navigator.domain.Tabs;
+    import com.sulake.habbo.navigator.inroom.RoomInfoViewCtrl;
+    import com.sulake.habbo.navigator.roomsettings.RoomCreateViewCtrl;
+    import com.sulake.habbo.communication.IHabboCommunicationManager;
+    import com.sulake.habbo.navigator.roomsettings.RoomSettingsCtrl;
+    import com.sulake.habbo.session.ISessionDataManager;
+    import com.sulake.habbo.navigator.inroom.RoomEventViewCtrl;
+    import com.sulake.habbo.localization.IHabboLocalizationManager;
+    import com.sulake.habbo.navigator.mainview.OfficialRoomEntryManager;
+    import com.sulake.habbo.toolbar.IHabboToolbar;
+    import com.sulake.habbo.help.IHabboHelp;
+    import com.sulake.habbo.navigator.inroom.RoomEventInfoCtrl;
+    import com.sulake.habbo.navigator.roomsettings.RoomFilterCtrl;
+    import com.sulake.habbo.session.IRoomSessionManager;
+    import com.sulake.habbo.navigator.roomsettings.EnforceCategoryCtrl;
+    import com.sulake.core.communication.messages.IMessageComposer;
+    import com.sulake.core.window.IWindow;
+    import com.sulake.core.window.components.IBitmapWrapperWindow;
+    import com.sulake.core.window.IWindowContainer;
+    import flash.display.BitmapData;
+    import com.sulake.habbo.tracking.IHabboTracking;
+
+     interface IHabboTransitionalNavigator extends IHabboNavigator 
+    {
+        var assets(get,never):IAssetLibrary;
+        var windowManager(get,never):IHabboWindowManager;
+        var data(get,never):NavigatorData;
+        var mainViewCtrl(get,never):ITransitionalMainViewCtrl;
+        var tabs(get,never):Tabs;
+        var roomInfoViewCtrl(get,never):RoomInfoViewCtrl;
+        var roomCreateViewCtrl(get,never):RoomCreateViewCtrl;
+        var communication(get,never):IHabboCommunicationManager;
+        var roomSettingsCtrl(get,never):RoomSettingsCtrl;
+        var sessionData(get,never):ISessionDataManager;
+        var passwordInput(get,never):GuestRoomPasswordInput;
+        var doorbell(get,never):GuestRoomDoorbell;
+        var roomEventViewCtrl(get,never):RoomEventViewCtrl;
+        var localization(get,never):IHabboLocalizationManager;
+        var officialRoomEntryManager(get,never):OfficialRoomEntryManager;
+        var toolbar(get,never):IHabboToolbar;
+        var habboHelp(get,never):IHabboHelp;
+        var roomEventInfoCtrl(get,never):RoomEventInfoCtrl;
+        var roomFilterCtrl(get,never):RoomFilterCtrl;
+        var roomSessionManager(get,never):IRoomSessionManager;
+        var enforceCategoryCtrl(get,never):EnforceCategoryCtrl;
+        function send(_arg_1:IMessageComposer, _arg_2:Bool=false):Void;
+        function getXmlWindow(_arg_1:String, _arg_2:UInt=1):IWindow;
+        function getText(_arg_1:String):String;
+        function registerParameter(_arg_1:String, _arg_2:String, _arg_3:String):String;
+        function getButton(_arg_1:String, _arg_2:String, _arg_3:ASFunction, _arg_4:Int=0, _arg_5:Int=0, _arg_6:Int=0):IBitmapWrapperWindow;
+        function refreshButton(_arg_1:IWindowContainer, _arg_2:String, _arg_3:Bool, _arg_4:ASFunction, _arg_5:Int, _arg_6:String=null):Void;
+        function getButtonImage(_arg_1:String, _arg_2:String="_png"):BitmapData;
+        function openCatalogClubPage(_arg_1:String):Void;
+        function openCatalogRoomAdsPage():Void;
+        function openCatalogRoomAdsExtendPage(_arg_1:String, _arg_2:String, _arg_3:Date, _arg_4:Int):Void;
+        function showFavouriteRooms():Void;
+        function showHistoryRooms():Void;
+        function showFrequentRooms():Void;
+        var tracking(get,never):IHabboTracking;
+        function goToMainView():Void;
+        function goToRoom(_arg_1:Int, _arg_2:Bool, _arg_3:String="", _arg_4:Int=-1):Void;
+        function isPerkAllowed(_arg_1:String):Bool;
+        function trackGoogle(_arg_1:String, _arg_2:String, _arg_3:Int=-1):Void;
+        var isDoorModeOverriddenInCurrentRoom(get,never):Bool;
+        function trackNavigationDataPoint(_arg_1:String, _arg_2:String, _arg_3:String="", _arg_4:Int=0):Void;
+        function getBoolean(_arg_1:String):Bool;
+        function getInteger(_arg_1:String, _arg_2:Int):Int;
+        function getProperty(_arg_1:String, _arg_2:ASDictionary<ASAny,ASAny>=null):String;
+    }
+

@@ -1,14 +1,22 @@
 package com.sulake.habbo.communication.demo;
 
 #if html5
-import com.sulake.core.localization.Localization;
+import com.sulake.core.assets.AssetLibrary;
 import com.sulake.core.utils.xml.XML;
-import com.sulake.core.window.WindowController;
-import com.sulake.core.window.graphics.WindowSkinRenderer;
+import com.sulake.core.window.IWindow;
+import com.sulake.core.window.IWindowContainer;
+import com.sulake.core.window.components.IBitmapWrapperWindow;
+import com.sulake.core.window.components.ITextFieldWindow;
+import com.sulake.core.window.events.WindowKeyboardEvent;
+import com.sulake.core.window.events.WindowMouseEvent;
+import com.sulake.core.window.utils.TextStyleManager;
 import com.sulake.core.window.text.TruffleText;
-import com.sulake.core.window.theme.ElementDescription;
-import com.sulake.core.window.theme.InternalLayouts;
-import com.sulake.core.window.utils.WindowParser;
+import com.sulake.habbo.localization.HabboLocalizationManager;
+import com.sulake.habbo.localization._enum.HabboLocalizationFlags;
+import com.sulake.habbo.window.HabboWindowManagerComponent;
+import com.sulake.iid.IIDHabboConfigurationManager;
+import com.sulake.iid.IIDHabboLocalizationManager;
+import com.sulake.iid.IIDHabboWindowManager;
 import com.sulake.habbo.communication.connection.Html5HabboConnection;
 import com.sulake.habbo.communication.connection.Html5HabboConnection.HabboMessageField;
 import com.sulake.habbo.communication.GeneratedHabboMessageRegistry;
@@ -17,12 +25,15 @@ import com.sulake.habbo.communication.messages.parser.navigator.NavigatorSetting
 import com.sulake.habbo.communication.SkyConnection;
 import com.sulake.habbo.room.RoomEngine;
 import com.sulake.habbo.room.events.RoomEngineEvent;
+import com.sulake.habbo.room.events.RoomEngineObjectEvent;
 import com.sulake.habbo.communication.messages.parser.handshake.UserObjectMessageParser;
 import com.sulake.habbo.configuration.ExternalVariables;
+import com.sulake.habbo.configuration.ExternalConfigurationManager;
 import com.sulake.habbo.avatar.AvatarRoomRenderer;
 import com.sulake.habbo.room.object.visualization.room.publicroom.PublicRoomVisualizationLoader;
-import com.sulake.habbo.toolbar.BottomBarView;
 import com.sulake.habbo.room.RoomEngineRuntime;
+import com.sulake.habbo.room.RoomEngineContext;
+import com.sulake.habbo.room.object.RoomObjectCategoryEnum;
 import com.sulake.habbo.room.ConvertedRoomInput;
 import js.Browser;
 import openfl.display.Sprite;
@@ -30,6 +41,8 @@ import openfl.display.StageAlign;
 import openfl.display.StageScaleMode;
 import openfl.events.Event;
 import openfl.events.KeyboardEvent;
+import skyhaxe.PerformanceHud;
+import skyhaxe.PerformanceHud.HudRow;
 import openfl.events.MouseEvent;
 import openfl.text.TextFieldType;
 import openfl.ui.Keyboard;
@@ -45,13 +58,15 @@ import openfl.utils.Assets;
 class HabboCommunicationDemo extends Sprite {
     static inline var VARIABLES_URL:String = "/ngh/gamedata/external_dev_vars.txt";
 
-    var loginRoot:WindowController;
-    var skinRenderer:Null<WindowSkinRenderer>;
-    var bottomBar:Null<openfl.display.Sprite>;
-    var bottomBarRoot:Null<WindowController>;
-    var bottomBarBackground:Null<WindowController>;
-    var friendBar:Null<WindowController>;
-    var chatInput:Null<WindowController>;
+    var componentContext:Null<RoomEngineContext>;
+    var configuration:Null<ExternalConfigurationManager>;
+    var localization:Null<HabboLocalizationManager>;
+    var windowManager:Null<HabboWindowManagerComponent>;
+    var loginRoot:IWindowContainer;
+    var bottomBarRoot:Null<IWindowContainer>;
+    var bottomBarBackground:Null<IWindow>;
+    var friendBar:Null<IWindowContainer>;
+    var chatInput:Null<IWindowContainer>;
     /** RoomChatInputView.as:50 -- the gap kept between the chat row and what flanks it. */
     static inline var CHAT_GAP = 12;
     /** RoomChatInputView.as:621 and :630 -- the row's two authored heights above the desktop. */
@@ -66,9 +81,9 @@ class HabboCommunicationDemo extends Sprite {
     // The logged-in player's own figure, which the me-menu button draws as a head.
     var ownFigure:String = "";
     var ownGender:String = "M";
-    var input:WindowController;
-    var status:WindowController;
-    var loginButton:WindowController;
+    var input:ITextFieldWindow;
+    var status:IWindow;
+    var loginButton:IWindow;
     var loginBackground:LoginBackgroundView;
     var connection:Null<Html5HabboConnection>;
     var variables:Null<ExternalVariables>;
@@ -82,6 +97,7 @@ class HabboCommunicationDemo extends Sprite {
     var roomViewportHeight:Int = 0;
     /** The generated room engine driven by the live connection. */
     var roomEngine:Null<RoomEngine>;
+    var liveRoomUI:Null<com.sulake.habbo.ui.InfostandRoomUI>;
     /** The display object the converted engine draws the room into. */
     var convertedCanvas:Null<openfl.display.DisplayObject>;
     /** RoomEngine keys canvases per room; the client only ever asks for one. */
@@ -104,10 +120,26 @@ class HabboCommunicationDemo extends Sprite {
             configureStage();
         });
         Browser.document.documentElement.setAttribute("data-skyhaxe-client", "loading");
+        skyhaxe.BootMetrics.mark("client-start");
+        var fontsReady = false;
+        var configReady:ExternalVariables = null;
+        var bootFailed = false;
+        function joinBootstrap():Void {
+            if (!bootFailed && fontsReady && configReady != null) loadVariables(configReady);
+        }
+        ExternalVariables.load(VARIABLES_URL, function(loaded) {
+            configReady = loaded;
+            skyhaxe.BootMetrics.mark("variables-ready");
+            joinBootstrap();
+        }, function(error) { bootFailed = true; fail('Could not load $VARIABLES_URL: $error'); });
         TruffleText.load("/assets/truffle",
             ["u_regular", "u_bold", "u_small", "u_frame_title", "button_shiny_bold"],
-            loadVariables,
-            function(error) fail("Text renderer failed to load: " + Std.string(error)));
+            function() {
+                fontsReady = true;
+                skyhaxe.BootMetrics.mark("fonts-ready");
+                joinBootstrap();
+            },
+            function(error) { bootFailed = true; fail("Text renderer failed to load: " + Std.string(error)); });
     }
 
     function configureStage():Void {
@@ -125,72 +157,134 @@ class HabboCommunicationDemo extends Sprite {
                 MouseEvent.CLICK, MouseEvent.DOUBLE_CLICK])
             stage.addEventListener(type, convertedInput.forward);
         stage.doubleClickEnabled = true;
+        #if debug
+        // Development builds only -- `scripts/build-html5.ps1 -Final` compiles without `debug`,
+        // so a release never carries the read-out. F2 hides it when it is in the way.
+        PerformanceHud.show(roomHudRows);
+        stage.addEventListener(KeyboardEvent.KEY_DOWN, function(event:KeyboardEvent) {
+            if (event.keyCode == 113) PerformanceHud.toggle();
+        });
+        #end
     }
 
-    function loadVariables():Void {
-        ExternalVariables.load(VARIABLES_URL, function(loaded) {
+    /**
+     * The room's own numbers, for the development read-out.
+     *
+     * Read through a callback so `PerformanceHud` imports nothing from the port and keeps
+     * reporting while the engine is still starting, absent, or disposed.
+     */
+    function roomHudRows():Array<HudRow> {
+        // Reported then reset, so the number is the worst tick since the last HUD paint rather
+        // than an all-time high that never decays.
+        var worstTick = RoomEngineRuntime.worstTickMs;
+        RoomEngineRuntime.clearWorstTickMs();
+        var rows:Array<HudRow> = [
+            {label: "tick", value: Std.string(RoomEngineRuntime.ticks)},
+            {label: "tickMs", value: Std.string(Math.round(worstTick * 10) / 10),
+                warn: worstTick > 25}
+        ];
+        var engine = RoomEngineRuntime.engine;
+        if (engine == null || activeRoomId == 0) {
+            rows.push({label: "room", value: "-"});
+            return rows;
+        }
+        var room = engine.getRoom(activeRoomId);
+        if (room == null) {
+            rows.push({label: "room", value: Std.string(activeRoomId) + " (no instance)", warn: true});
+            return rows;
+        }
+        rows.push({label: "room", value: Std.string(activeRoomId)});
+        for (entry in [
+            {name: "furni", category: RoomObjectCategoryEnum.OBJECT_CATEGORY_FURNITURE},
+            {name: "wall", category: RoomObjectCategoryEnum.OBJECT_CATEGORY_WALLITEM},
+            {name: "users", category: RoomObjectCategoryEnum.OBJECT_CATEGORY_USER}
+        ]) {
+            var objects = room.getObjects(entry.category);
+            rows.push({label: entry.name, value: Std.string(objects == null ? 0 : objects.length)});
+        }
+        return rows;
+    }
+
+    function loadVariables(loaded:ExternalVariables):Void {
             variables = loaded;
             Browser.document.documentElement.setAttribute("data-skyhaxe-variables", VARIABLES_URL);
-            var loadTextsAndLogin = function() {
-                // Every window caption is a ${key} against this table, so it has to be in place
-                // before any layout is parsed. A missing table leaves the tokens visible rather
-                // than blanking the UI, so a failure here is reported and the client still starts.
-                var textsUrl = PublicRoomVisualizationLoader.assetUrl(
-                    loaded.get("external.texts.txt"));
-                Localization.load(textsUrl, function() {
-                    Browser.console.info('SKYHAXE_TEXTS keys=${Localization.size}');
-                    buildLogin();
-                }, function(error) {
-                    Browser.console.error("SKYHAXE_TEXTS_FAILED: " + Std.string(error));
-                    buildLogin();
+            initializeWindowServices(loaded, function() {
+                // RoomMessageHandler must register before authentication can deliver one-shot
+                // room entry packets, so engine initialization is part of boot rather than a
+                // probe. It shares this component context with the original window and
+                // localization services.
+                startRoomEngine(loaded, buildLogin);
+            });
+    }
+
+    /** Build the original component services once, before any authored window is parsed. */
+    function initializeWindowServices(loaded:ExternalVariables, onReady:Void->Void):Void {
+        try {
+            var context = new RoomEngineContext(this);
+            componentContext = context;
+            var configurationService = new ExternalConfigurationManager(context, loaded);
+            context.configuration = configurationService;
+            configuration = configurationService;
+            context.provide(new IIDHabboConfigurationManager(), configurationService);
+
+            var localizationService = new HabboLocalizationManager(context,
+                HabboLocalizationFlags._Str_16746);
+            localization = localizationService;
+            context.provide(new IIDHabboLocalizationManager(), localizationService);
+
+            var records:Dynamic = haxe.Json.parse(Assets.getText("window-service/assets.json"));
+            var library = new AssetLibrary("habbo-window-manager");
+            library.loadFromManifest(new XML(Assets.getText("window-service/manifest.bin")),
+                function(name) {
+                    var record:Dynamic = Reflect.field(records, name);
+                    if (record == null) return null;
+                    return record.image ? cast Assets.getBitmapData(record.id)
+                        : cast Assets.getText(record.id);
                 });
-            };
-            // RoomMessageHandler must register before authentication can deliver one-shot room
-            // entry packets, so engine initialization is part of boot rather than a probe.
-            startRoomEngine(loaded, loadTextsAndLogin);
-        }, function(error) fail('Could not load $VARIABLES_URL: $error'));
+            var styles = library.getAssetByName("text_styles_css");
+            if (styles != null)
+                TextStyleManager.setStyles(TextStyleManager.parseCSS(cast styles.content));
+            var manager = new HabboWindowManagerComponent(context, 0, library);
+            windowManager = manager;
+            context.provide(new IIDHabboWindowManager(), manager);
+            skyhaxe.BootMetrics.mark("windows-ready");
+
+            // The browser fetch is the platform boundary; every parsed key is registered on the
+            // original localization manager, which remains the sole runtime localization owner.
+            var textsUrl = PublicRoomVisualizationLoader.assetUrl(
+                loaded.get("external.texts.txt"));
+            Browser.window.fetch(textsUrl).then(function(response) {
+                if (!response.ok) throw 'HTTP ${response.status} for $textsUrl';
+                return response.text();
+            }).then(function(body) {
+                var count = 0;
+                for (line in body.split("\n")) {
+                    var text = StringTools.rtrim(line);
+                    if (text == "" || StringTools.startsWith(text, "#")) continue;
+                    var split = text.indexOf("=");
+                    if (split <= 0) continue;
+                    localizationService.updateLocalization(text.substr(0, split),
+                        text.substr(split + 1));
+                    count++;
+                }
+                Browser.console.info('SKYHAXE_TEXTS keys=$count');
+                skyhaxe.BootMetrics.mark("localization-ready");
+                onReady();
+                return null;
+            }).catchError(function(error) {
+                Browser.console.error("SKYHAXE_TEXTS_FAILED: " + Std.string(error));
+                onReady();
+            });
+        } catch (error:Dynamic) {
+            fail("Window services failed to initialize: " + Std.string(error));
+        }
     }
 
     function buildLogin():Void {
-        ElementDescription.load(new XML(Assets.getText("theme/element_description.xml")));
-        for (name in ["button_shiny_thick", "frame_3", "header_3", "button_shiny", "frame",
-                "header", "button_thick", "button"]) {
-            InternalLayouts.register("habbo_window_layout_" + name + "_xml",
-                new XML(Assets.getText("theme/habbo_window_layout_" + name + "_xml")));
-        }
-
-        // Kept on the instance: the toolbar is built from the same registered skins.
-        skinRenderer = new WindowSkinRenderer();
-        var renderer = skinRenderer;
-        var blue = Assets.getBitmapData("skins/habbo_blue.png");
-        var ubuntu = Assets.getBitmapData("skins/habbo_ubuntu.png");
-        renderer.register("frame", 3, "frame_3", Assets.getText("skins/frame_3.xml"), ubuntu);
-        renderer.register("border", 4, "border_4", Assets.getText("skins/border_4.xml"), blue);
-        renderer.register("button_thick", 3, "button_shiny_thick",
-            Assets.getText("skins/button_shiny_thick.xml"), blue);
-        renderer.register("border", 2, "border_colorless",
-            Assets.getText("skins/border_colorless.xml"), blue);
-        renderer.register("button", 3, "button_shiny", Assets.getText("skins/button_shiny.xml"), blue);
-        // The toolbar's background border. habbo_skin_border_9_xml names its own atlas
-        // (`skin_ubuntu_bg_9`) rather than sharing the blue or ubuntu sheet.
-        renderer.register("border", 9, "border_9", Assets.getText("skins/border_9.xml"),
-            Assets.getBitmapData("skins/ubuntu_bg_9.png"));
-        // The friend bar and the chat input, resolved from habbo_element_description_xml:
-        // border 6 and 8 and the help button all draw from the ubuntu sheet; icons have their own.
-        var icons = Assets.getBitmapData("skins/habbo_icons.png");
-        renderer.register("border", 6, "border_6", Assets.getText("skins/border_6.xml"), ubuntu);
-        renderer.register("border", 8, "border_8", Assets.getText("skins/border_8.xml"), ubuntu);
-        renderer.register("closebutton", 4, "button_help_3",
-            Assets.getText("skins/button_help_3.xml"), ubuntu);
-        renderer.register("container_button", 3, "button_shiny_thick",
-            Assets.getText("skins/button_shiny_thick.xml"), blue);
-        for (style in [2, 3, 4, 5, 7])
-            renderer.register("icon", style, "icon_set", Assets.getText("skins/icon_set.xml"),
-                icons);
-
-        loginRoot = new WindowParser(renderer).parseLayout(
+        if (windowManager == null) throw "Window manager is not initialized";
+        loginRoot = cast windowManager.buildFromXML(
             new XML(Assets.getText("layouts/login_window.bin")));
-        input = require("name_field");
+        input = cast require("name_field");
         status = require("status_text");
         loginButton = require("login_btn");
         loginBackground = new LoginBackgroundView(
@@ -198,35 +292,22 @@ class HabboCommunicationDemo extends Sprite {
             Assets.getBitmapData("login/HabboAir_LoginForeground.png"));
         addChildAt(loginBackground, 0);
         resizeLoginBackground();
-        addChild(loginRoot);
         centerLogin();
 
         var ticket = fragmentValue("sso", "");
-        if (ticket != "") input.textField.text = ticket;
-        input.textField.addEventListener(KeyboardEvent.KEY_UP, function(event:KeyboardEvent) {
+        if (ticket != "") input.text = ticket;
+        input.addEventListener(WindowKeyboardEvent.WINDOW_EVENT_KEY_UP,
+            function(event:WindowKeyboardEvent) {
             if (event.keyCode == Keyboard.ENTER) submit();
         });
-        loginButton.buttonMode = true;
-        loginButton.mouseChildren = false;
-        loginButton.addEventListener("windowSkinState", function(_) {
-            Browser.document.documentElement.setAttribute("data-skyhaxe-login-button-state",
-                loginButton.skinState);
-        });
-        loginButton.addEventListener(MouseEvent.CLICK, function(_) submit());
-        var loginFrame = require("habbo_login_dialog");
-        loginFrame.addEventListener("windowDragStart", function(_) {
-            Browser.document.documentElement.setAttribute("data-skyhaxe-login-drag", "started");
-        });
-        loginFrame.addEventListener("windowDrag", function(_) {
-            Browser.document.documentElement.setAttribute("data-skyhaxe-login-drag",
-                '${Math.round(loginFrame.x)},${Math.round(loginFrame.y)}');
-        });
+        loginButton.addEventListener(WindowMouseEvent.CLICK, function(_) submit());
         // The AIR view leaves status_text empty until an attempt starts or fails.
         setStatus("");
-        input.textField.stage.focus = input.textField;
-        input.textField.setSelection(input.textField.text.length, input.textField.text.length);
+        input.activate();
+        input.setSelection(input.text.length, input.text.length);
         Browser.document.documentElement.setAttribute("data-skyhaxe-client", "login-ready");
         Browser.console.info("SKYHAXE_LOGIN_READY");
+        skyhaxe.BootMetrics.mark("login-ready");
         if (ticket != "") submit();
     }
 
@@ -250,6 +331,7 @@ class HabboCommunicationDemo extends Sprite {
                 Browser.document.documentElement.setAttribute("data-skyhaxe-client", "authenticated");
                 Browser.document.documentElement.setAttribute("data-skyhaxe-user", username);
                 Browser.console.info('SKYHAXE_AUTHENTICATED user=$username');
+                skyhaxe.BootMetrics.mark("authenticated");
             },
             onClosed: function(code, clean) {
                 if (Browser.document.documentElement.getAttribute("data-skyhaxe-client")
@@ -265,7 +347,7 @@ class HabboCommunicationDemo extends Sprite {
                 Browser.console.error("SKYHAXE_LOGIN_FAILED: " + message);
             }
         });
-        connection.connect(input.textField.text);
+        connection.connect(input.text);
     }
 
     function onNavigatorSettings(wrapper:com.sulake.core.communication.messages.IMessageDataWrapper):Void {
@@ -283,8 +365,9 @@ class HabboCommunicationDemo extends Sprite {
         Browser.console.info('SKYHAXE_NAVIGATOR_SETTINGS home=$homeRoomId enter=$roomIdToEnter');
         if (!roomRequested && roomIdToEnter > 0 && connection != null) {
             roomRequested = true;
-            // OpenFlatConnectionMessageComposer(roomId, password="", worldId=-1).
-            connection.sendMessage(2312, [Int32(roomIdToEnter), String16(""), Int32(-1)]);
+            // Original session creation emits CREATED; RoomUI constructs the desktop, which
+            // starts the session through the original composer and registers its room handlers.
+            RoomEngineRuntime.roomSessions.gotoRoom(roomIdToEnter);
             Browser.document.documentElement.setAttribute("data-skyhaxe-room-requested",
                 Std.string(roomIdToEnter));
             Browser.console.info('SKYHAXE_ROOM_REQUESTED room=$roomIdToEnter');
@@ -299,11 +382,26 @@ class HabboCommunicationDemo extends Sprite {
                 Browser.document.documentElement.setAttribute(
                     "data-skyhaxe-converted-room-engine", "ready");
                 roomEngine = engine;
+                var records:Dynamic = haxe.Json.parse(Assets.getText("room-ui/assets.json"));
+                var uiAssets = new AssetLibrary("room-ui");
+                uiAssets.loadFromManifest(new XML(Assets.getText("room-ui/manifest.bin")), function(name) {
+                    var record:Dynamic = Reflect.field(records, name);
+                    return record == null ? null : (record.image ? cast Assets.getBitmapData(record.id)
+                        : cast Assets.getText(record.id));
+                });
+                liveRoomUI = new com.sulake.habbo.ui.InfostandRoomUI(componentContext, uiAssets);
+                Browser.document.documentElement.setAttribute("data-skyhaxe-infostand", "services-created");
+                skyhaxe.BootMetrics.mark("engine-ready");
                 Browser.console.info("SKYHAXE_ROOM_ENGINE_PROBE_READY");
                 engine.events.addEventListener(RoomEngineEvent.INITIALIZED, function(event) {
                     var initialized:RoomEngineEvent = cast event;
                     onConvertedRoomInitialized(initialized.roomId);
                 });
+                #if debug
+                engine.events.addEventListener(RoomEngineObjectEvent.DESELECTED, function(event) {
+                    Browser.console.warn("SKYHAXE_ROOM_DESELECT " + js.Syntax.code("new Error().stack"));
+                });
+                #end
                 Browser.document.documentElement.setAttribute(
                     "data-skyhaxe-room-engine-mode", "generated");
                 if (whenReady != null) whenReady();
@@ -311,7 +409,7 @@ class HabboCommunicationDemo extends Sprite {
                 Browser.document.documentElement.setAttribute(
                     "data-skyhaxe-converted-room-engine", "error:" + Std.string(error));
                 Browser.console.error("SKYHAXE_ROOM_ENGINE_FAILED " + Std.string(error));
-            }, engineConnection);
+            }, engineConnection, componentContext);
     }
 
     /**
@@ -326,6 +424,13 @@ class HabboCommunicationDemo extends Sprite {
     function onConvertedRoomInitialized(roomId:Int):Void {
         if (roomEngine == null) return;
         activeRoomId = roomId;
+        if (liveRoomUI != null) {
+            // RoomUI's earlier listener owns the original desktop/canvas and widget creation.
+            Browser.document.documentElement.setAttribute("data-skyhaxe-converted-room-canvas", Std.string(roomId));
+            Browser.document.documentElement.setAttribute("data-skyhaxe-infostand", "desktop-created");
+            return;
+        }
+        skyhaxe.BootMetrics.mark("room-created");
         // In AIR Room UI owns this hand-off. SkyHaxe currently hosts the engine directly, so it
         // must select the newly-created room before the update clock and camera can target it.
         roomEngine.setActiveRoom(roomId);
@@ -376,7 +481,9 @@ class HabboCommunicationDemo extends Sprite {
         AvatarRoomRenderer.composeHead(ownFigure, ownGender,
             variables.get("flash.client.url"), function(head) {
                 if (bottomBarRoot != root) return;
-                var placed = BottomBarView.setMeMenuHead(root, head);
+                var target = root.findChildByName("icon_me_menu");
+                var placed = target != null && Std.isOfType(target, IBitmapWrapperWindow);
+                if (placed) cast(target, IBitmapWrapperWindow).bitmap = head.clone();
                 Browser.console.info('SKYHAXE_TOOLBAR_HEAD placed=$placed '
                     + '${head.width}x${head.height}');
             }, function(error) {
@@ -385,19 +492,19 @@ class HabboCommunicationDemo extends Sprite {
     }
 
     function setBusy(value:Bool):Void {
-        loginButton.mouseEnabled = !value;
-        loginButton.alpha = value ? 0.55 : 1;
-        input.textField.type = value ? TextFieldType.DYNAMIC : TextFieldType.INPUT;
+        if (value) loginButton.disable(); else loginButton.enable();
+        loginButton.alpha = value ? 140 : 255;
+        input.editable = !value;
     }
 
     function setStatus(message:String):Void {
-        if (status != null) status.setCaption(message);
+        if (status != null) status.caption = message;
     }
 
     function centerLogin():Void {
         if (loginRoot == null || stage == null) return;
-        loginRoot.x = Math.round((stage.stageWidth - loginRoot.layoutWidth) / 2);
-        loginRoot.y = Math.round((stage.stageHeight - loginRoot.layoutHeight) / 2);
+        loginRoot.x = Math.round((stage.stageWidth - loginRoot.width) / 2);
+        loginRoot.y = Math.round((stage.stageHeight - loginRoot.height) / 2);
     }
 
     function resizeLoginBackground():Void {
@@ -434,47 +541,43 @@ class HabboCommunicationDemo extends Sprite {
         if (stage == null) return;
         if (bottomBarBackground != null) {
             // BottomBackgroundBorder.updatePosition: offset -10, three pixels of overhang.
-            bottomBarBackground.resizeTo(stage.stageWidth + 20,
-                bottomBarBackground.layoutHeight);
+            bottomBarBackground.width = stage.stageWidth + 20;
             bottomBarBackground.x = -10;
-            bottomBarBackground.y = stage.stageHeight - (bottomBarBackground.layoutHeight - 3);
+            bottomBarBackground.y = stage.stageHeight - (bottomBarBackground.height - 3);
         }
         // BottomBarLeft.as:193 -- bottom-aligned, and sized to the icons it is showing rather
         // than to the width its layout happens to declare.
         var barAreaWidth = 0.0;
-        if (bottomBarRoot != null && bottomBar != null) {
-            var toggles = bottomBarRoot.childrenWithTag("TOGGLE");
+        if (bottomBarRoot != null) {
+            var toggles:Array<ASAny> = [];
+            bottomBarRoot.groupChildrenWithTag("TOGGLE", toggles, 10);
             var shown = 1;
             for (window in toggles) if (window.visible) shown++;
-            bottomBarRoot.resizeTo(BAR_ICON_WIDTH * shown + BAR_PADDING + BAR_TAIL,
-                bottomBarRoot.layoutHeight);
-            bottomBar.x = 0;
-            bottomBar.y = stage.stageHeight - bottomBarRoot.layoutHeight;
+            bottomBarRoot.width = BAR_ICON_WIDTH * shown + BAR_PADDING + BAR_TAIL;
+            bottomBarRoot.x = 0;
+            bottomBarRoot.y = stage.stageHeight - bottomBarRoot.height;
             // BottomBarLeft.as:853 -- the toolbar "area" ends at the divider, not at the window
             // edge, and that is what the chat row is kept clear of.
             var divider = bottomBarRoot.findChildByName("line");
-            barAreaWidth = divider == null ? bottomBarRoot.layoutWidth : divider.x + bottomBar.x;
+            barAreaWidth = divider == null ? bottomBarRoot.width : divider.x + bottomBarRoot.x;
         }
         // HabboFriendBarView.as:498 and :1097 -- right-aligned, one pixel off the bottom.
         var friendBarWidth = 0.0;
         if (friendBar != null) {
-            friendBarWidth = friendBar.layoutWidth;
-            friendBar.x = stage.stageWidth - friendBarWidth;
+            friendBarWidth = friendBar.width;
+            friendBar.x = Std.int(stage.stageWidth - friendBarWidth);
             friendBar.y = stage.stageHeight
-                - (friendBar.layoutHeight + FRIEND_BAR_BOTTOM_OFFSET);
+                - (friendBar.height + FRIEND_BAR_BOTTOM_OFFSET);
         }
         positionChatRow(barAreaWidth, friendBarWidth);
         Browser.document.documentElement.setAttribute("data-skyhaxe-bar-layout",
             haxe.Json.stringify({
                 stage: stage.stageWidth,
                 background: bottomBarBackground == null ? -1
-                    : Std.int(bottomBarBackground.layoutWidth),
+                    : Std.int(bottomBarBackground.width),
                 backgroundX: bottomBarBackground == null ? -1
                     : Std.int(bottomBarBackground.x),
-                backgroundSkin: bottomBarBackground == null ? -1
-                    : bottomBarBackground.renderedSkinWidth(),
-                barSkin: bottomBarRoot == null ? -1 : bottomBarRoot.renderedSkinWidth(),
-                bar: bottomBarRoot == null ? -1 : Std.int(bottomBarRoot.layoutWidth),
+                bar: bottomBarRoot == null ? -1 : Std.int(bottomBarRoot.width),
                 barArea: Std.int(barAreaWidth),
                 friendBar: Std.int(friendBarWidth),
                 friendBarX: friendBar == null ? -1 : Std.int(friendBar.x)
@@ -496,53 +599,60 @@ class HabboCommunicationDemo extends Sprite {
      */
     function positionChatRow(barAreaWidth:Float, friendBarWidth:Float):Void {
         if (chatInput == null || stage == null) return;
-        chatInput.resizeTo(stage.stageWidth, stage.stageHeight);
+        chatInput.width = stage.stageWidth;
+        chatInput.height = stage.stageHeight;
         chatInput.x = 0;
         chatInput.y = 0;
         var row = chatInput.findChildByName("bubblecont");
         if (row == null) return;
-        var centred = stage.stageWidth / 2 - row.layoutWidth / 2;
+        var centred = stage.stageWidth / 2 - row.width / 2;
         var leftLimit = 0.0;
-        if (stage.stageWidth - barAreaWidth - friendBarWidth > row.layoutWidth + CHAT_GAP) {
+        if (stage.stageWidth - barAreaWidth - friendBarWidth > row.width + CHAT_GAP) {
             leftLimit = barAreaWidth + CHAT_GAP;
             row.y = stage.stageHeight - CHAT_ROW_BOTTOM;
-            if (centred + row.layoutWidth > stage.stageWidth - friendBarWidth) centred = 0;
+            if (centred + row.width > stage.stageWidth - friendBarWidth) centred = 0;
         } else {
             leftLimit = CHAT_GAP;
             row.y = stage.stageHeight - CHAT_ROW_BOTTOM_CRAMPED;
         }
-        row.x = Math.max(centred, leftLimit);
+        row.x = Std.int(Math.max(centred, leftLimit));
     }
 
     function showBottomBar():Void {
-        if (bottomBar != null || skinRenderer == null) return;
+        // Temporarily opt-in: construction currently throws after attaching an orphan border.
+        // Keep the original layouts available, but do not expose the unfinished toolbar live.
+        #if skyhaxe_toolbar_candidate
+        if (bottomBarRoot != null || windowManager == null) return;
         try {
-            // Behind the bar, and full width: BottomBackgroundBorder is a separate layout.
-            bottomBarBackground = BottomBarView.buildBackground(skinRenderer,
-                stage == null ? 1024 : stage.stageWidth);
-            addChild(bottomBarBackground);
-            var built = BottomBarView.build(skinRenderer);
-            bottomBar = built.view;
-            bottomBarRoot = built.root;
-            addChild(built.view);
-            friendBar = BottomBarView.buildFriendBar(skinRenderer);
-            addChild(friendBar);
-            chatInput = BottomBarView.buildChatInput(skinRenderer);
-            addChild(chatInput);
+            bottomBarBackground = windowManager.buildFromXML(
+                new XML(Assets.getText("layouts/bottom_background_border.bin")));
+            var backgroundContainer:IWindowContainer = cast bottomBarBackground;
+            if (backgroundContainer.numChildren == 1)
+                bottomBarBackground = backgroundContainer.getChildAt(0);
+            bottomBarRoot = cast windowManager.buildFromXML(
+                new XML(Assets.getText("layouts/bottom_bar_left.bin")));
+            friendBar = cast windowManager.buildFromXML(
+                new XML(Assets.getText("layouts/friend_bar.bin")));
+            chatInput = cast windowManager.buildFromXML(
+                new XML(Assets.getText("layouts/chat_input.bin")));
+            var help = chatInput.findChildByName("helpbutton");
+            if (help != null) help.visible = false;
             positionBottomBar();
             applyMeMenuHead();
             Browser.document.documentElement.setAttribute("data-skyhaxe-toolbar",
-                haxe.Json.stringify(built.report));
-            Browser.console.info('SKYHAXE_TOOLBAR ${built.report.width}x${built.report.height} '
-                + 'icons=${built.report.icons} missing=${built.report.missingAssets.join(",")}');
+                haxe.Json.stringify({width: bottomBarRoot.width, height: bottomBarRoot.height,
+                    runtime: "original"}));
+            Browser.console.info('SKYHAXE_TOOLBAR ${bottomBarRoot.width}x${bottomBarRoot.height} '
+                + 'runtime=original');
         } catch (error:Dynamic) {
             var message = Std.string(error);
             Browser.document.documentElement.setAttribute("data-skyhaxe-toolbar-error", message);
             Browser.console.error("SKYHAXE_TOOLBAR_FAILED: " + message);
         }
+        #end
     }
 
-    function require(name:String):WindowController {
+    function require(name:String):IWindow {
         var value = loginRoot.findChildByName(name);
         if (value == null) throw 'Login layout is missing $name';
         return value;

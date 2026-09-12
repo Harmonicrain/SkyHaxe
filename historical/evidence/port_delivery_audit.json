@@ -1,0 +1,181 @@
+{
+  "date": "2026-09-05",
+  "scope": "Local source inventory; counts are not percentage of features working.",
+  "src": {
+    "files": 85,
+    "lines": 10291
+  },
+  "generated": {
+    "files": 2131,
+    "lines": 138394
+  },
+  "window_candidate": {
+    "files": 500,
+    "lines": 54070
+  },
+  "published_identity_collisions": {
+    "com.sulake.core.runtime.Component": [
+      "src/com/sulake/core/runtime/Component.hx",
+      "generated/com/sulake/core/runtime/Component.hx"
+    ],
+    "com.sulake.habbo.room.IAreaHideInfo": [
+      "src/com/sulake/habbo/room/IAreaHideInfo.hx",
+      "generated/com/sulake/habbo/room/IAreaHideInfo.hx"
+    ]
+  },
+  "candidate_identity_collisions": {
+    "com.sulake.core.localization.Localization": [
+      "src/com/sulake/core/localization/Localization.hx",
+      ".toolchain/v21/generated/com/sulake/core/localization/Localization.hx"
+    ],
+    "com.sulake.core.window.IWindow": [
+      "src/com/sulake/core/window/IWindow.hx",
+      ".toolchain/v21/generated/com/sulake/core/window/IWindow.hx"
+    ],
+    "com.sulake.core.window.WindowController": [
+      "src/com/sulake/core/window/WindowController.hx",
+      ".toolchain/v21/generated/com/sulake/core/window/WindowController.hx"
+    ],
+    "com.sulake.core.window.utils.ParamCodeTable": [
+      "src/com/sulake/core/window/utils/ParamCodeTable.hx",
+      ".toolchain/v21/generated/com/sulake/core/window/utils/ParamCodeTable.hx"
+    ],
+    "com.sulake.core.window.utils.WindowParser": [
+      "src/com/sulake/core/window/utils/WindowParser.hx",
+      ".toolchain/v21/generated/com/sulake/core/window/utils/WindowParser.hx"
+    ]
+  },
+  "gates": {
+    "concrete_windows": {
+      "log": ".toolchain/v21-compile.log",
+      "primary_diagnostics": [],
+      "note": "No runtime claim. Compiler may stop before all errors."
+    },
+    "all_generated": {
+      "log": ".toolchain/compile-all.log",
+      "primary_diagnostics": [
+        "generated/com/sulake/core/runtime/IProfiler.hx:3: characters 12-56 : Type not found : com.sulake.core.utils.profiler.ProfilerAgent",
+        "generated/com/sulake/core/runtime/Profiler.hx:8: characters 12-69 : Type not found : com.sulake.core.utils.profiler.tracking.TrackedBitmapData",
+        "generated/com/sulake/core/runtime/Profiler.hx:13: characters 12-56 : Type not found : com.sulake.core.utils.profiler.ProfilerAgent",
+        "generated/com/sulake/habbo/communication/messages/parser/battleball/BattleBallMessageParser.hx:5: characters 12-58 : Type not found : com.sulake.habbo.battleball.BattleBallProtocol",
+        "generated/com/sulake/habbo/communication/messages/incoming/catalog/FireworkChargeStringBuilder.hx:5: characters 9-46 : Type not found : com.sulake.habbo.catalog.HabboCatalog",
+        "generated/com/sulake/habbo/communication/messages/parser/competition/CompetitionVotingInfoMessageParser.hx:5: characters 43-47 : Missing ;"
+      ],
+      "note": "No runtime claim. Compiler may stop before all errors."
+    },
+    "v20_infostand_sync": {
+      "ok": true,
+      "published": true,
+      "deterministic": true,
+      "generated_tree_sha256": "af4173c9794685f1b74e7a3a310df639706470a6540d191c688857d3e44c2753"
+    },
+    "v21_window_runtime_sync": {
+      "ok": true,
+      "published": true,
+      "deterministic": true,
+      "generated_tree_sha256": "c4ddb5b608f7231f3a17d9fefadaa91e0c34ca16a7517f7e9f884e1a73d1e874"
+    },
+    "v22_window_manager_sync": {
+      "ok": true,
+      "published": true,
+      "deterministic": true,
+      "generated_tree_sha256": "49aecdd322049d1c43cc929101b36aab6cdcd1a09d8d8d35aaeaaf4cad71c9a5"
+    },
+    "v7_guest_room_sync": {
+      "ok": true,
+      "published": true,
+      "deterministic": true,
+      "generated_tree_sha256": "f5a628fe1c9fa1eada1c05e359af60a006c02d07035bba35421f263a79bcaf43"
+    },
+    "shadow_verification": {
+      "ok": true,
+      "target": "published generated FurnitureVisualization + RoomObjectModel + RoomObjectSprite",
+      "browser": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "assertions": [
+        "absent lift remains NaN",
+        "shadow coordinates finite at scales 32 and 64",
+        "finite lift preserved"
+      ],
+      "browser_exit": 0,
+      "body": "test/V7ShadowCoercionTest.hx:23: V7_SHADOW_COERCION_PASS actual-generated-visualization model-NaN sprite-offset scales32+64\r\n"
+    },
+    "window_graphics_verification": {
+      "ok": true,
+      "target": "isolated candidate generated GraphicContext + IGraphicContext",
+      "browser_exit": 0,
+      "body": "test/V21GraphicContextTest.hx:30: V21_GRAPHIC_CONTEXT_PASS attach reparent mouse filters dispose\r\n"
+    },
+    "font_coverage_verification": {
+      "ok": true,
+      "fixture": "test/font-coverage.html",
+      "browser_exit": 0,
+      "body": "test/V21FontCoverageTest.hx:21: V21_FONT_COVERAGE_PASS actual-ttf present absent-unicode bold unknown-face",
+      "error": null
+    },
+    "window_selection_verification": {
+      "ok": true,
+      "fixture": "test/window-selection.html",
+      "browser_exit": 0,
+      "body": "test/V21SelectionTest.hx:41: V21_SELECTION_PASS real-canvas gray-highlight blur-retains-range toggle-restores-pixels",
+      "error": null
+    },
+    "window_thickness_verification": {
+      "ok": true,
+      "fixture": "test/window-thickness.html",
+      "browser_exit": 0,
+      "body": "test/V21ThicknessTest.hx:50: V21_THICKNESS_PASS actual-truffle-canvas pixel-coverage clamp metrics normal-AA-no-browser-fallback",
+      "error": null
+    },
+    "v21_converter_regression": {
+      "ok": true,
+      "browser_exit": 0,
+      "body": "V21ConverterRegressionTest.hx:93: V21_CONVERTER_PASS XML-index-string XML-index-bool XML-string-equality interface-loop reference-equality inherited-accessors runtime-class\nV21ConverterRegressionTest.hx:94: SHADOW_INT_COERCION_PASS nonfinite-zero finite-lift number-NaN wraparound",
+      "workspace": "C:\\habbo\\client\\SkyHaxe\\.toolchain\\tests\\window-conversion\\run-55k_70rr",
+      "fixture_count": 7,
+      "target": "AS3 -> generated Haxe -> browser JavaScript"
+    },
+    "embedded_verification": {
+      "ok": true,
+      "fixture": "build/tests/v22-embedded/html5/bin/index.html",
+      "browser_exit": 0,
+      "body": "V22_EMBEDDED_PASS\n\t\n\t",
+      "error": null,
+      "http_errors": [],
+      "browser_stderr_tail": []
+    },
+    "window_host_verification": {
+      "ok": true,
+      "fixture": "test/window-host.html",
+      "browser_exit": 0,
+      "body": "V22_HOST_PASS\n",
+      "error": null,
+      "http_errors": [
+        "code 404, message File not found"
+      ],
+      "browser_stderr_tail": []
+    },
+    "window_asset_verification": {
+      "ok": true,
+      "fixture": "test/window-assets.html",
+      "browser_exit": 0,
+      "body": "V22_ASSET_LOADING_PASS",
+      "error": null,
+      "http_errors": [
+        "code 404, message File not found",
+        "code 404, message File not found"
+      ],
+      "browser_stderr_tail": []
+    },
+    "window_runtime_verification": {
+      "ok": true,
+      "fixture": "test/window-runtime.html",
+      "browser_exit": 0,
+      "body": "V22_WINDOW_RUNTIME_PASS visible=57046 hover click list infostand-layout dispose styles=frame:0,button:0,frame:1,button:1,frame:2,button:2,frame:3,button:3,frame:4,button:4,button:5,button:6,frame:7,frame:10000,frame:100,frame:101,frame:102,frame:103,button:100,button:101,button:102,button:103,button:104,button:105,frame:200,button:200,button:106,frame:10001,frame:10002,frame:10003,frame:10004,frame:10005,frame:10006,frame:10007",
+      "error": null,
+      "http_errors": [
+        "code 404, message File not found"
+      ],
+      "browser_stderr_tail": []
+    }
+  }
+}

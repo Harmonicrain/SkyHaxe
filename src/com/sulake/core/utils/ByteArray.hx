@@ -38,6 +38,11 @@ abstract ByteArray(OpenFLByteArray) {
         return value;
     }
 
+    /** Keep converted IEncryption results inside the SkyHaxe ByteArray contract. */
+    public inline function writeBytes(bytes:ByteArray, offset:Int = 0, length:Int = 0):Void {
+        this.writeBytes(bytes.toOpenFL(), offset, length);
+    }
+
     /** AS3 coerces Number arguments to uint; Haxe otherwise rejects large decimal PNG constants. */
     public inline function writeUnsignedInt(value:Dynamic):Void {
         this.writeUnsignedInt(cast ASCompat.toUInt(value));

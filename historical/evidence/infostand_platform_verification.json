@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "fixture": "test/infostand-platform.html",
+  "browser_exit": 0,
+  "body": "V24_PLATFORM_PASS\n",
+  "error": null,
+  "http_errors": [
+    "code 404, message File not found"
+  ],
+  "browser_stderr_tail": []
+}

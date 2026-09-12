@@ -44,6 +44,16 @@ class G1dMapTest {
         arrayEqual(["a", "b"], iterated, "Haxe iteration follows AS3 key iteration");
         equal("Map", map.toString(), "Proxy toString contract");
 
+        var numericKeyMap = new Map();
+        numericKeyMap.add(7, "seven");
+        equal("seven", numericKeyMap.getValue("7"),
+            "AS3 Dictionary numeric keys are readable through their property string");
+        equal(false, numericKeyMap.add("7", "duplicate"),
+            "numeric and decimal-string keys share one Dictionary slot");
+        equal("seven", numericKeyMap.remove("7"),
+            "decimal-string removal resolves a numeric Dictionary key");
+        equal(0, numericKeyMap.length, "cross-form removal updates ordered storage");
+
         var keys = map.getKeys();
         keys.push("mutation");
         equal(2, map.length, "getKeys returns a defensive copy");
@@ -61,12 +71,12 @@ class G1dMapTest {
         var objectKeyA = {};
         var objectKeyB = {};
         map.add(1, "integer");
-        map.add("1", "string");
+        equal(false, map.add("1", "string"), "numeric primitive key is canonicalised");
         map.add(objectKeyA, "object-a");
 
-        equal(3, map.length, "dynamic keys remain distinct");
+        equal(2, map.length, "primitive property keys coalesce while object keys remain distinct");
         equal("integer", map.getValue(1), "integer key lookup");
-        equal("string", map.getValue("1"), "string key lookup");
+        equal("integer", map.getValue("1"), "decimal-string lookup shares the numeric slot");
         equal("object-a", map.getValue(objectKeyA), "object identity lookup");
         equal(null, map.getValue(objectKeyB), "different object is a different key");
     }

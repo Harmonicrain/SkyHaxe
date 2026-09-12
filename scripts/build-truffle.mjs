@@ -5,7 +5,7 @@
 // have to sit in the same directory. esbuild's `file` loader emits them there and rewrites the
 // URLs to match.
 import { build } from 'esbuild';
-import { copyFile, mkdir } from 'node:fs/promises';
+import { copyFile, mkdir, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const OUT_DIR = 'public/assets/truffle/lib';
@@ -23,6 +23,31 @@ const result = await build({
   assetNames: '[name]',
   external: ['react'],          // the React entry point is not used here
   plugins: [{
+    // SkyHaxe only needs the baked raster chunks for its known boot styles. Upstream
+    // `ensureStyles()` also enables the three legacy calibration tables first, which downloads
+    // and JSON-parses roughly 50 MiB before HabboMain can start. Add an explicit fast path while
+    // preserving upstream `ensureStyles()` for callers which genuinely need generative fallback.
+    name: 'skyhaxe-baked-styles',
+    setup(build) {
+      const packed = /[\\/]truffle-text[\\/]src[\\/]packed\.js$/;
+      build.onLoad({ filter: packed }, async args => {
+        let contents = await readFile(args.path, 'utf8');
+        const marker = '  /** Lazily add raster chunks for more styles, then invalidate cached engines. */\n'
+          + '  truffle.ensureStyles = async styleList => {';
+        if (!contents.includes(marker)) {
+          throw new Error('truffle-text packed loader changed; baked-style fast path was not applied');
+        }
+        contents = contents.replace(marker,
+          '  /** Load only already-baked raster chunks; no legacy calibration JSON is required. */\n'
+          + '  truffle.ensureBakedStyles = async styleList => {\n'
+          + '    await loadSignatures(signaturesForStyles(styleList, manifest));\n'
+          + '    truffle._engines.clear();\n'
+          + '  };\n\n'
+          + marker);
+        return { contents, loader: 'js' };
+      });
+    },
+  }, {
     // truffle and freetype-wasm keep Node-only branches behind `await import('node:...')`.
     // Those paths never run in a browser, so resolve them to an empty module rather than
     // letting esbuild fail on built-ins that do not exist here.

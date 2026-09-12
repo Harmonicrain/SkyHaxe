@@ -102,7 +102,10 @@ class G1dAssetLibraryTest {
                 + '</aliases></library></manifest>'
             ), _ -> null);
         } catch (_:Dynamic) aliasThrew = true;
-        equal(true, aliasThrew, "missing alias reference fails explicitly");
+        // Native SWF libraries may intentionally filter scales/assets. The existing loader
+        // skips aliases whose source was filtered, so later libraries can supply them.
+        equal(false, aliasThrew, "filtered alias source does not poison the library");
+        equal(false, badAlias.hasAsset("bad"), "filtered alias is not registered as a null asset");
         badAlias.dispose();
         library.dispose();
     }
@@ -111,7 +114,13 @@ class G1dAssetLibraryTest {
         var source = Assets.getText("fixtures/HabboCatalogCom_manifest.bin");
         equal(true, source != null && source.length > 0, "real catalog manifest packaged read-only");
         var library = new AssetLibrary("real-catalog");
-        library.loadFromManifest(new XML(source), name -> '<asset name="$name"/>');
+        // This fixture supplies XML payloads only; bitmap support is now implemented, so
+        // don't pass synthetic XML strings to real bitmap declarations.
+        var manifest = new XML(source);
+        var xmlNames = new haxe.ds.StringMap<Bool>();
+        for (item in manifest.child("component").child("assets").child("asset"))
+            if (item.attribute("mimeType").toString() == "text/xml") xmlNames.set(item.attribute("name").toString(), true);
+        library.loadFromManifest(manifest, name -> xmlNames.exists(name) ? '<asset name="$name"/>' : null);
         equal(153, library.numAssets, "all supported real catalog XML assets and aliases load");
         equal(true, library.hasAsset("layout_default_3x3"), "real source asset loaded");
         equal(true, library.hasAsset("layout_default_3x3_extrainfo"), "real alias loaded");
@@ -120,7 +129,7 @@ class G1dAssetLibraryTest {
             library.getAssetByName("layout_default_3x3_extrainfo").content,
             "real alias preserves content identity"
         );
-        equal(false, library.hasAsset("bot_thumb_bg"), "unsupported bitmap waits for BitmapData gate");
+        equal(false, library.hasAsset("bot_thumb_bg"), "XML-only fixture deliberately omits bitmap payloads");
         library.dispose();
     }
 

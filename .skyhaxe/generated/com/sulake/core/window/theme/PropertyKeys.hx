@@ -1,0 +1,90 @@
+package com.sulake.core.window.theme
+;
+    import flash.text.AntiAliasType;
+    import com.sulake.core.window.utils.TextStyle;
+    import com.sulake.core.window._enum.LinkTarget;
+    import com.sulake.core.window._enum.PivotPoint;
+
+     class PropertyKeys 
+    {
+        public static inline final ALWAYS_SHOW_SELECTION= "always_show_selection";
+        public static inline final ANTIALIAS_TYPE= "antialias_type";
+        public static inline final ASSET_URI= "asset_uri";
+        public static inline final AUTO_ARRANGE_ITEMS= "auto_arrange_items";
+        public static inline final AUTO_SIZE= "auto_size";
+        public static inline final BITMAP_ASSET_NAME= "bitmap_asset_name";
+        public static inline final BORDER= "border";
+        public static inline final BORDER_COLOR= "border_color";
+        public static inline final CONDENSE_WHITE= "condense_white";
+        public static inline final CONTAINER_RESIZE_TO_COLUMNS= "container_resize_to_columns";
+        public static inline final DIRECTION= "direction";
+        public static inline final DISPLAY_AS_PASSWORD= "display_as_password";
+        public static inline final DISPLAY_RAW= "display_raw";
+        public static inline final EDITABLE= "editable";
+        public static inline final FIT_SIZE_TO_CONTENTS= "fit_size_to_contents";
+        public static inline final FOCUS_CAPTURER= "focus_capturer";
+        public static inline final GREYSCALE= "greyscale";
+        public static inline final GRID_FIT_TYPE= "grid_fit_type";
+        public static inline final HANDLE_BITMAP_DISPOSING= "handle_bitmap_disposing";
+        public static inline final HELP_PAGE= "help_page";
+        public static inline final LINK_TARGET= "link_target";
+        public static inline final ITEM_SPACING= "spacing";
+        public static inline final KEEP_OPEN_ON_DEACTIVATE= "keep_open_on_deactivate";
+        public static inline final MARGIN_LEFT= "margin_left";
+        public static inline final MARGIN_TOP= "margin_top";
+        public static inline final MARGIN_RIGHT= "margin_right";
+        public static inline final MARGIN_BOTTOM= "margin_bottom";
+        public static inline final MAX_CHARS= "max_chars";
+        public static inline final MAX_LINES= "max_lines";
+        public static inline final MENU_ITEM_ARRAY= "item_array";
+        public static inline final MOUSE_WHEEL_ENABLED= "mouse_wheel_enabled";
+        public static inline final MULTILINE= "multiline";
+        public static inline final OPEN_UPWARD= "open_upward";
+        public static inline final PADDING_HORIZONTAL= "padding_horizontal";
+        public static inline final PADDING_VERTICAL= "padding_vertical";
+        public static inline final PIVOT_POINT= "pivot_point";
+        public static inline final POINTER_OFFSET= "pointer_offset";
+        public static inline final RESIZE_ON_ITEM_UPDATE= "resize_on_item_update";
+        public static inline final RESTRICT= "restrict";
+        public static inline final SCALE_TO_FIT_ITEMS= "scale_to_fit_items";
+        public static inline final SCROLLABLE= "scrollable";
+        public static inline final SCROLL_STEP_HORIZONTAL= "scroll_step_h";
+        public static inline final SCROLL_STEP_VERTICAL= "scroll_step_v";
+        public static inline final SELECTABLE= "selectable";
+        public static inline final STRETCHED_X= "stretched_x";
+        public static inline final STRETCHED_Y= "stretched_y";
+        public static inline final TEXT_COLOR= "text_color";
+        public static inline final TEXT_STYLE= "text_style";
+        public static inline final TOOL_TIP_CAPTION= "tool_tip_caption";
+        public static inline final TOOL_TIP_DELAY= "tool_tip_delay";
+        public static inline final TOOL_TIP_IS_DYNAMIC= "tool_tip_is_dynamic";
+        public static inline final VERTICAL= "vertical";
+        public static inline final WIDGET_TYPE= "widget_type";
+        public static inline final WORD_WRAP= "word_wrap";
+        public static inline final WRAP_X= "wrap_x";
+        public static inline final WRAP_Y= "wrap_y";
+        public static inline final ZOOM_X= "zoom_x";
+        public static inline final ZOOM_Y= "zoom_y";
+        public static inline final OVERFLOW_REPLACE= "overflow_replace";
+        public static inline final TEST_ID= "test_id_key";
+        public static inline final BOLD= "bold";
+        public static inline final ETCHING_COLOR= "etching_color";
+        public static inline final ETCHING_POSITION= "etching_position";
+        public static inline final FONT_FACE= "font_face";
+        public static inline final FONT_SIZE= "font_size";
+        public static inline final ITALIC= "italic";
+        public static inline final KERNING= "kerning";
+        public static inline final LEADING= "leading";
+        public static inline final SHARPNESS= "sharpness";
+        public static inline final SPACING= "spacing";
+        public static inline final THICKNESS= "thickness";
+        public static inline final UNDERLINE= "underline";
+        public static final ANTIALIAS_TYPE_RANGE:Array<ASAny> = [AntiAliasType.NORMAL, AntiAliasType.ADVANCED];
+        public static final ETCHING_POSITION_RANGE:Array<ASAny> = [TextStyle.TOP_LEFT, TextStyle.TOP, TextStyle.TOP_RIGHT, TextStyle.LEFT, TextStyle.RIGHT, TextStyle.BOTTOM_LEFT, TextStyle.BOTTOM, TextStyle.BOTTOM_RIGHT];
+        public static final HTML_LINK_TARGET_VALUE:String = LinkTarget.DEFAULT;
+        public static final HTML_LINK_TARGET_RANGE:Array<ASAny> = [LinkTarget.DEFAULT, LinkTarget.BLANK, LinkTarget.PARENT, LinkTarget.SELF, LinkTarget.TOP, LinkTarget.INTERNAL];
+        public static final PIVOT_POINT_RANGE:Array<ASAny> = PivotPoint.PIVOT_NAMES;
+
+	public function new() {}
+    }
+

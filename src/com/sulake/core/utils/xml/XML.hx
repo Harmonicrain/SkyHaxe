@@ -7,6 +7,8 @@ package com.sulake.core.utils.xml;
  * `xml.child("childName")`, and `xml.@id` becomes `xml.attribute("id")`.
  */
 class XML {
+    // ECMA-357 13.4.3.4: affects construction, never existing XML trees.
+    public static var ignoreWhitespace:Bool = true;
     @:allow(com.sulake.core.utils.xml.XMLList)
     private var _node:Null<Xml>;
 
@@ -36,6 +38,7 @@ class XML {
         }
 
         var document = Xml.parse(Std.string(value));
+        if (ignoreWhitespace) removeInsignificantWhitespace(document);
         var first = firstSignificantChild(document);
         _node = first == null ? document : first;
     }
@@ -78,7 +81,16 @@ class XML {
         return index == 0 ? this : null;
     }
 
-    public function child(name:String):XMLList {
+    public function child(name:Dynamic):XMLList {
+        // E4X child(index) selects a direct child; child("name") selects named elements.
+        // Skin property XML uses child(0) to read its typed value element.
+        if (Std.isOfType(name, Int) || Std.isOfType(name, Float)) {
+            var number:Float = name;
+            if (!Math.isFinite(number) || number < 0 || number != Math.floor(number))
+                return new XMLList();
+            var selected = children().at(Std.int(number));
+            return new XMLList(selected == null ? [] : [selected]);
+        }
         if (isAttribute()) {
             return new XMLList();
         }
@@ -89,6 +101,36 @@ class XML {
         }
         for (candidate in node) {
             if (candidate.nodeType == Xml.Element && (name == "*" || candidate.nodeName == name)) {
+                result.push(fromNative(candidate));
+            }
+        }
+        return new XMLList(result);
+    }
+
+    /**
+     * E4X `node.namespace::name` selection. The namespace URI, rather than the
+     * document's chosen prefix, identifies a match.
+     */
+    public function childByNamespace(namespaceUri:Dynamic, localName:String):XMLList {
+        if (isAttribute()) {
+            return new XMLList();
+        }
+        var result:Array<XML> = [];
+        var node = requireNode();
+        if (!isContainer(node)) {
+            return new XMLList(result);
+        }
+        var expectedUri = Std.string(namespaceUri);
+        for (candidate in node) {
+            if (candidate.nodeType != Xml.Element) continue;
+            var qualifiedName = candidate.nodeName;
+            var separator = qualifiedName.indexOf(":");
+            var candidateLocalName = separator < 0
+                ? qualifiedName
+                : qualifiedName.substr(separator + 1);
+            if (candidateLocalName != localName) continue;
+            var prefix = separator < 0 ? "" : qualifiedName.substr(0, separator);
+            if (resolveNamespaceUri(candidate, prefix) == expectedUri) {
                 result.push(fromNative(candidate));
             }
         }
@@ -109,6 +151,25 @@ class XML {
                 result.push(fromNative(candidate));
             }
         }
+        return new XMLList(result);
+    }
+
+    /** ECMA-357 9.1.1.8: depth-first descendants, excluding the receiver.
+     * Wildcards include text nodes, not just elements. Qualified selectors still
+     * require the namespace-aware E4X boundary rather than stripping prefixes.
+     */
+    public function descendants(name:String = "*"):XMLList {
+        if (name == null || name.indexOf(":") >= 0 || StringTools.startsWith(name, "@"))
+            throw new ASError("Qualified/attribute descendant selectors are not implemented");
+        var result:Array<XML> = [];
+        function visit(current:XML):Void {
+            for (candidate in current.children()) {
+                if (name == "*" || (candidate._node.nodeType == Xml.Element
+                    && candidate._node.nodeName == name)) result.push(candidate);
+                visit(candidate);
+            }
+        }
+        visit(this);
         return new XMLList(result);
     }
 
@@ -170,6 +231,18 @@ class XML {
         }
         var separator = qualified.indexOf(":");
         return separator == -1 ? qualified : qualified.substr(separator + 1);
+    }
+
+    private static function resolveNamespaceUri(node:Xml, prefix:String):Null<String> {
+        var declaration = prefix == "" ? "xmlns" : "xmlns:" + prefix;
+        var current:Null<Xml> = node;
+        while (current != null) {
+            if (current.nodeType == Xml.Element && current.exists(declaration)) {
+                return current.get(declaration);
+            }
+            current = current.parent;
+        }
+        return prefix == "" ? "" : null;
     }
 
     public function parent():Null<XML> {
@@ -263,6 +336,45 @@ class XML {
         return requireNode().toString();
     }
 
+    /** ECMA-357 13.4.4.18: attributes/text and elements without element children. */
+    public function hasSimpleContent():Bool {
+        if (isAttribute()) return true;
+        var node = requireNode();
+        return switch (node.nodeType) {
+            case Xml.PCData, Xml.CData: true;
+            case Xml.Element: !hasElementChild(node);
+            case Xml.Document:
+                var first = firstSignificantChild(node);
+                first == null || fromNative(first).hasSimpleContent();
+            default: false;
+        };
+    }
+
+    /** Narrow E4X == bridge for one statically String operand, preserving operand order.
+        ECMA-357 9.2.1.9 and 11.5.1; not XML/XML structural equality. */
+    public static function equalsStringOperands(left:Dynamic, right:Dynamic):Bool {
+        if (Std.isOfType(left, XMLList)) {
+            var list:XMLList = cast left;
+            return (list.length() == 0 && right == null)
+                || (list.length() == 1 && equalsStringOperands(list.at(0), right));
+        }
+        if (Std.isOfType(right, XMLList)) {
+            var list:XMLList = cast right;
+            return (list.length() == 0 && left == null)
+                || (list.length() == 1 && equalsStringOperands(left, list.at(0)));
+        }
+        if (Std.isOfType(left, XML)) {
+            var value:XML = cast left;
+            return value.hasSimpleContent() && value.toString() == Std.string(right);
+        }
+        if (Std.isOfType(right, XML)) {
+            var value:XML = cast right;
+            return value.hasSimpleContent() && Std.string(left) == value.toString();
+        }
+        // Typed XML/XMLList references can be null, as can a typed AS3 String.
+        return left == right;
+    }
+
     public function toString():String {
         if (isAttribute()) {
             return attributeValue();
@@ -326,7 +438,19 @@ class XML {
         if (node.nodeType == Xml.Comment || node.nodeType == Xml.ProcessingInstruction) {
             return true;
         }
-        return node.nodeType == Xml.PCData && StringTools.trim(node.nodeValue) == "";
+        return false;
+    }
+
+    private static function removeInsignificantWhitespace(node:Xml):Void {
+        if (!isContainer(node)) return;
+        // Copy the child sequence before removal; preserve text containing any
+        // character outside E4X's four XML whitespace characters.
+        for (child in [for (value in node) value]) {
+            if (child.nodeType == Xml.PCData && ~/^[ \t\r\n]*$/.match(child.nodeValue))
+                node.removeChild(child);
+            else
+                removeInsignificantWhitespace(child);
+        }
     }
 
     private static function firstSignificantChild(document:Xml):Null<Xml> {

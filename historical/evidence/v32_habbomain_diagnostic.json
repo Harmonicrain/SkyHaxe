@@ -1,0 +1,15 @@
+{
+  "gate": "V32-HabboMain-diagnostic",
+  "closure": [
+    "ClientEnum.as",
+    "HabboMain.as",
+    "IHabboLoadingScreen.as"
+  ],
+  "context": [
+    "Logger.as",
+    "com/sulake/core/runtime/ILogger.as"
+  ],
+  "seams": {
+    "Habbo.as": "browser preloader host"
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe compile-all inventory" package="org.nextgenhabbo.skyhaxe.compileall" version="0.1.0" />
+    <app main="AllGeneratedCompileMain" path="build/tests/compile-all" file="compile-all" />
+    <window width="1" height="1" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <!-- One isolated candidate only. Older generated roots are evidence, not dependencies: if a
+         v31 seam is absent they must never silently supply a stale implementation. Haxe resolves
+         the later classpath first, so v31 owns every converted identity and src supplies only
+         identities intentionally absent from the candidate. -->
+    <source path=".toolchain/v31/generated" />
+    <haxeflag name="-cp" value=".toolchain/v31/platform" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <!-- Converted [Embed] wrappers are an original Flash platform boundary. Keep the same
+         hash-pinned asset manifest used by the dedicated embedded-assets gate. -->
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+</project>

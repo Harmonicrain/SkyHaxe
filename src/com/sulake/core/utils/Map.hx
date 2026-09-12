@@ -225,6 +225,7 @@ class Map implements IDisposable {
     }
 
     private function dictionaryGet(key:Dynamic):Dynamic {
+        key = canonicalDictionaryKey(key);
         #if js
         var dictionary = _dictionary;
         return dictionary == null || !dictionary.has(key) ? null : dictionary.get(key);
@@ -240,6 +241,7 @@ class Map implements IDisposable {
     }
 
     private function dictionarySet(key:Dynamic, value:Dynamic):Void {
+        key = canonicalDictionaryKey(key);
         #if js
         var dictionary = _dictionary;
         if (dictionary != null) {
@@ -261,6 +263,7 @@ class Map implements IDisposable {
     }
 
     private function dictionaryDelete(key:Dynamic):Void {
+        key = canonicalDictionaryKey(key);
         #if js
         var dictionary = _dictionary;
         if (dictionary != null) {
@@ -294,5 +297,19 @@ class Map implements IDisposable {
         #else
         return left == right;
         #end
+    }
+
+    /**
+     * AS3 Dictionary square-bracket access treats a numeric property key and its
+     * decimal string as the same slot. The clean client relies on that behaviour:
+     * several Maps add an Int key but deliberately read it through String(id).
+     * JavaScript Map uses strict key identity, so preserve the AVM2 coercion at
+     * this platform boundary while leaving object keys identity-based.
+     */
+    private static function canonicalDictionaryKey(key:Dynamic):Dynamic {
+        return switch (Type.typeof(key)) {
+            case TInt | TFloat: Std.string(key);
+            default: key;
+        }
     }
 }

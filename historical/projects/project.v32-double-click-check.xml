@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <include path="project.v32-runtime.xml" />
+    <source path="test" />
+    <app main="DoubleClickInputBoundaryTest" path="build/v32-double-click" file="probe" />
+</project>

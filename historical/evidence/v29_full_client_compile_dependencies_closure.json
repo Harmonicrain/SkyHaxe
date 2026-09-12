@@ -1,0 +1,13 @@
+{
+  "gate": "V29-full-client-compile-dependencies",
+  "roots": [
+    "com/sulake/habbo/battleball/BattleBallProtocol.as"
+  ],
+  "closure": [
+    "com/sulake/habbo/battleball/BattleBallProtocol.as"
+  ],
+  "context": [],
+  "seams": {},
+  "closure_files": 1,
+  "state": "Compile-gate dependency only; generated and isolated from runtime wiring."
+}

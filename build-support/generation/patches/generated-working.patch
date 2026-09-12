@@ -1,0 +1,262 @@
+diff --git a/HabboMain.hx b/HabboMain.hx
+index d985622..5fd01c5
+--- a/HabboMain.hx
++++ b/HabboMain.hx
+@@ -35,6 +35,9 @@
+         var coreRunning:Bool = false;
+         var _prepareCoreOnNextFrame:Bool = true;
+         var _corePrepared:Bool = false;
++        var _componentPreparationComplete:Bool = false;
++        var _coreFilesComplete:Bool = false;
++        var _coreInitializationStarted:Bool = false;
+         var _startupErrorShown:Bool = false;
+         var _disposed:Bool = false;
+         var _coreDisplayContainer:DisplayObjectContainer;
+@@ -148,42 +151,42 @@
+             ;
+             this._core.readConfigDocument(_local_2, this);
+             this._totalSteps = ASCompat.toInt((this._core.getNumberOfFilesPending() + this._core.getNumberOfFilesLoaded()) + INIT_STEPS);
+-            this._core.prepareComponent(CoreCommunicationFrameworkLib);
+-            this._core.prepareComponent(HabboRoomObjectLogicLib);
+-            this._core.prepareComponent(HabboRoomObjectVisualizationLib);
+-            this._core.prepareComponent(RoomManagerLib);
+-            this._core.prepareComponent(RoomSpriteRendererLib);
+-            this._core.prepareComponent(HabboRoomSessionManagerLib);
+-            this._core.prepareComponent(HabboAvatarRenderLib);
+-            this._core.prepareComponent(HabboSessionDataManagerLib);
+-            this._core.prepareComponent(HabboConfigurationCom);
+-            this._core.prepareComponent(HabboLocalizationCom);
+-            this._core.prepareComponent(HabboWindowManagerCom);
+-            this._core.prepareComponent(HabboCommunicationCom);
+-            this._core.prepareComponent(HabboCommunicationDemoCom);
+-            this._core.prepareComponent(HabboNavigatorCom);
+-            this._core.prepareComponent(HabboFriendListCom);
+-            this._core.prepareComponent(HabboMessengerCom);
+-            this._core.prepareComponent(HabboInventoryCom);
+-            this._core.prepareComponent(HabboToolbarCom);
+-            this._core.prepareComponent(HabboCatalogCom);
+-            this._core.prepareComponent(HabboRoomEngineCom);
+-            this._core.prepareComponent(HabboRoomUICom);
+-            this._core.prepareComponent(HabboAvatarEditorCom);
+-            this._core.prepareComponent(HabboNotificationsCom);
+-            this._core.prepareComponent(HabboHelpCom);
+-            this._core.prepareComponent(HabboAdManagerCom);
+-            this._core.prepareComponent(HabboModerationCom);
+-            this._core.prepareComponent(HabboUserDefinedRoomEventsCom);
+-            this._core.prepareComponent(HabboSoundManagerFlash10Com);
+-            this._core.prepareComponent(HabboQuestEngineCom);
+-            this._core.prepareComponent(HabboFriendBarCom);
+-            this._core.prepareComponent(HabboGroupsCom);
+-            this._core.prepareComponent(HabboGamesCom);
+-            this._core.prepareComponent(HabboFreeFlowChatCom);
+-            this._core.prepareComponent(HabboNewNavigatorCom);
+-            this.addInitializationProgressListeners();
+-			Habbo.trackLoginStep("addInitializationProgressListeners");
++            this.prepareComponentsCooperatively([
++                CoreCommunicationFrameworkLib,
++                HabboRoomObjectLogicLib,
++                HabboRoomObjectVisualizationLib,
++                RoomManagerLib,
++                RoomSpriteRendererLib,
++                HabboRoomSessionManagerLib,
++                HabboAvatarRenderLib,
++                HabboSessionDataManagerLib,
++                HabboConfigurationCom,
++                HabboLocalizationCom,
++                HabboWindowManagerCom,
++                HabboCommunicationCom,
++                HabboCommunicationDemoCom,
++                HabboNavigatorCom,
++                HabboFriendListCom,
++                HabboMessengerCom,
++                HabboInventoryCom,
++                HabboToolbarCom,
++                HabboCatalogCom,
++                HabboRoomEngineCom,
++                HabboRoomUICom,
++                HabboAvatarEditorCom,
++                HabboNotificationsCom,
++                HabboHelpCom,
++                HabboAdManagerCom,
++                HabboModerationCom,
++                HabboUserDefinedRoomEventsCom,
++                HabboSoundManagerFlash10Com,
++                HabboQuestEngineCom,
++                HabboFriendBarCom,
++                HabboGroupsCom,
++                HabboGamesCom,
++                HabboFreeFlowChatCom,
++                HabboNewNavigatorCom
++            ], 0);
+ 			}
+ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught); 			{
+ 				Habbo.trackLoginStep("Error in HabboMain (" + error.message + "): " + error.getStackTrace());
+@@ -194,6 +197,46 @@
+ 			}
+  }        }
+ 
++        /**
++         * Browser scheduling boundary for the original component list.
++         *
++         * Flash spread this work across player frames while embedded library symbols became
++         * available. In the HTML5 bundle every symbol is already addressable, so the converted
++         * calls otherwise form one long JavaScript task. Preserve the exact order and graph, but
++         * return to the event loop after a small time budget so rendering and socket callbacks can
++         * run between batches.
++         */
++        function prepareComponentsCooperatively(components:Array<Class<Dynamic>>, index:Int)
++        {
++            try
++            {
++                var deadline = flash.Lib.getTimer() + 8;
++                while ((index < components.length) && (flash.Lib.getTimer() < deadline))
++                {
++                    this._core.prepareComponent(components[index]);
++                    index++;
++                }
++                if (index < components.length)
++                {
++                    var next = index;
++                    ASCompat.setTimeout(function ()
++                    {
++                        this.prepareComponentsCooperatively(components, next);
++                    }, 0);
++                    return;
++                }
++                this.addInitializationProgressListeners();
++                Habbo.trackLoginStep("addInitializationProgressListeners");
++                this._componentPreparationComplete = true;
++                this.initializeCoreWhenReady();
++            }
++catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);             {
++                Habbo.trackLoginStep("Error while preparing component batch: " + error.message);
++                Habbo.reportCrash(("Failed to prepare component batch: " + error.message), Core.ERROR_CATEGORY_PREPARE_COMPONENT, true, error);
++                Core.dispose();
++            }
++ }        }
++
+         function updateProgressBar()
+         {
+             var k = Math.NaN;
+@@ -215,6 +258,17 @@
+         {
+             removeEventListener(ProgressEvent.PROGRESS, (this.onProgressEvent : ASAny));
+             removeEventListener(Event.COMPLETE, (this.onCompleteEvent : ASAny));
++            this._coreFilesComplete = true;
++            this.initializeCoreWhenReady();
++        }
++
++        function initializeCoreWhenReady()
++        {
++            if (this._coreInitializationStarted || !this._coreFilesComplete || !this._componentPreparationComplete)
++            {
++                return;
++            }
++            this._coreInitializationStarted = true;
+             this.initializeCore();
+         }
+ 
+diff --git a/com/sulake/core/window/graphics/WindowRenderer.hx b/com/sulake/core/window/graphics/WindowRenderer.hx
+index 78f9950..8a49b7f
+--- a/com/sulake/core/window/graphics/WindowRenderer.hx
++++ b/com/sulake/core/window/graphics/WindowRenderer.hx
+@@ -615,4 +615,3 @@
+             }
+         }
+     }
+-
+diff --git a/com/sulake/habbo/room/RoomContentLoader.hx b/com/sulake/habbo/room/RoomContentLoader.hx
+index 3f4ef1a..970bd6a
+--- a/com/sulake/habbo/room/RoomContentLoader.hx
++++ b/com/sulake/habbo/room/RoomContentLoader.hx
+@@ -204,10 +204,16 @@
+                 return;
+             }
+             this._sessionDataManager.removeFurniDataListener(this);
+-            this.populateFurniData(k);
+-            this._dataInitialized = true;
+-            this._Str_23030();
+-            this.continueInitilization();
++            this.populateFurniData(k, 0, function ()
++            {
++                if (this._isDisposed)
++                {
++                    return;
++                }
++                this._dataInitialized = true;
++                this._Str_23030();
++                this.continueInitilization();
++            });
+         }
+ 
+         public function dispose()
+@@ -384,7 +390,7 @@
+             return (this._ignoredFurniTypes != null) ? (!(this._ignoredFurniTypes.indexOf(k) == -1)) : false;
+         }
+ 
+-        function populateFurniData(k:Vector<IFurnitureData>)
++        function populateFurniData(k:Vector<IFurnitureData>, start:Int, complete:ASFunction)
+         {
+             var _local_2:IFurnitureData = null;
+             var _local_3 = 0;
+@@ -393,9 +399,11 @@
+             var _local_6:String = null;
+             var _local_7:String = null;
+             var _local_8 = 0;
+-            if (checkNullIteratee(k)) for (_tmp_ in k)
+-            {
+-_local_2  = _tmp_;
++            var index = start;
++            var deadline = flash.Lib.getTimer() + 8;
++            while ((index < k.length) && (flash.Lib.getTimer() < deadline))
++            {
++                _local_2 = k[index];
+                 _local_3 = _local_2.id;
+                 _local_4 = _local_2.className;
+                 if (_local_2.hasIndexedColor)
+@@ -446,6 +454,23 @@
+                     this._furniRevisions.remove(_local_7);
+                     this._furniRevisions.add(_local_7, _local_5);
+                 }
++                index++;
++            }
++            if (index < k.length)
++            {
++                var next = index;
++                ASCompat.setTimeout(function ()
++                {
++                    if (!this._isDisposed)
++                    {
++                        this.populateFurniData(k, next, complete);
++                    }
++                }, 0);
++                return;
++            }
++            if (complete != null)
++            {
++                complete();
+             }
+         }
+ 
+@@ -2035,4 +2060,3 @@
+             return this._iconListener = k;
+         }
+     }
+-
+diff --git a/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx b/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
+index 28fa154..f1dc624
+--- a/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
++++ b/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
+@@ -572,6 +572,7 @@
+             }
+             this.stopPlaceMore();
+             this.hideChildren();
++            this.mainContainer.visible = false;
+             if (this._updateTimer != null)
+             {
+                 this._updateTimer.stop();
+@@ -725,4 +726,3 @@
+             }
+         }
+     }
+-

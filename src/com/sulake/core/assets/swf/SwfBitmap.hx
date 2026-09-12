@@ -2,6 +2,11 @@ package com.sulake.core.assets.swf;
 
 import haxe.io.Bytes;
 import lime.app.Future;
+import lime.graphics.Image;
+import lime.graphics.ImageBuffer;
+import lime.graphics.ImageType;
+import lime.graphics.PixelFormat;
+import lime.utils.UInt8Array;
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
 import openfl.utils.ByteArray;
@@ -28,16 +33,26 @@ typedef SwfPixels = {
  *     padding shears the image progressively -- again fine on a width that happens to be a
  *     multiple of four.
  *
- * The reference implementation in `evidence/g2_reader_contract.py` computes the same contract
+ * The reference implementation in `historical/evidence/g2_reader_contract.py` computes the same contract
  * independently, in Python, and the browser test compares SHA-256 of these bytes against it.
  */
 class SwfBitmap {
-	/** Convert the reader's straight RGBA contract into OpenFL's ARGB pixel stream. */
+	/** Wrap the reader's straight RGBA contract directly in OpenFL's Lime image backing. */
 	public static function toBitmapData(pixels:SwfPixels):BitmapData {
+		#if (js && html5)
+		var started = js.Browser.window.performance.now();
+		// Bytes and Lime's UInt8Array share this ArrayBuffer. The old path rewrote RGBA to an
+		// ARGB ByteArray one byte at a time, then setPixels walked it again and Lime copied it
+		// into ImageData. ImageBuffer already describes exactly the straight RGBA data we have.
+		var data = new UInt8Array(pixels.rgba.getData());
+		var buffer = new ImageBuffer(data, pixels.width, pixels.height, 32, PixelFormat.RGBA32);
+		buffer.premultiplied = false;
+		var result = BitmapData.fromImage(new Image(buffer, 0, 0, pixels.width, pixels.height, null,
+			ImageType.DATA), true);
+		SwfLoadMetrics.add("handoffMs", js.Browser.window.performance.now() - started);
+		return result;
+		#else
 		var bytes = new ByteArray();
-		// Flash/AIR ByteArray defaults to big-endian, but OpenFL follows the host and therefore
-		// defaults to little-endian in browsers. BitmapData.setPixels reads ARGB32 according to
-		// this flag; leaving it implicit swaps channels and alpha on HTML5.
 		bytes.endian = Endian.BIG_ENDIAN;
 		var source = pixels.rgba;
 		var offset = 0;
@@ -52,6 +67,47 @@ class SwfBitmap {
 		var bitmap = new BitmapData(pixels.width, pixels.height, true, 0);
 		bitmap.setPixels(new Rectangle(0, 0, pixels.width, pixels.height), bytes);
 		return bitmap;
+		#end
+	}
+
+	/** Decode directly to the object consumers need, retaining native PNG/JPEG decode output. */
+	public static function decodeBitmapAsync(character:SwfCharacter):Future<BitmapData> {
+		if (character.encoding() == "zlib") {
+			#if (js && html5)
+			var started = js.Browser.window.performance.now();
+			return SwfDecodeWorkerPool.decode(character).then(function(pixels) {
+				SwfLoadMetrics.add("losslessDecodeWallMs", js.Browser.window.performance.now() - started);
+				return Future.withValue(toBitmapData(pixels));
+			});
+			#else
+			return Future.withValue(toBitmapData(decode(character)));
+			#end
+		}
+		var encoding = character.encoding();
+		if (encoding != "png" && encoding != "jpeg") {
+			return cast Future.withError(new SwfError('unsupported embedded image encoding $encoding'));
+		}
+		var encoded = normalizedImageData(character, encoding);
+		var alpha:Null<ByteArray> = null;
+		var compressedAlpha = character.alphaData();
+		if (compressedAlpha != null)
+			alpha = ByteArray.fromBytes(SwfFile.inflate(compressedAlpha, true));
+		#if (js && html5)
+		var started = js.Browser.window.performance.now();
+		if (alpha == null) {
+			return skyhaxe.assets.NativeImageDecodeQueue.decode(encoded, "image/" + encoding).then(function(bitmap) {
+				SwfLoadMetrics.add("encodedDecodeMs", js.Browser.window.performance.now() - started);
+				return Future.withValue(bitmap);
+			});
+		}
+		#end
+		return BitmapData.loadFromBytes(ByteArray.fromBytes(encoded), alpha).then(function(bitmap) {
+			if (bitmap == null) throw new SwfError('$encoding decoder returned no bitmap');
+			#if (js && html5)
+			SwfLoadMetrics.add("encodedDecodeMs", js.Browser.window.performance.now() - started);
+			#end
+			return Future.withValue(bitmap);
+		});
 	}
 
 	public static function decode(character:SwfCharacter):SwfPixels {
@@ -95,13 +151,9 @@ class SwfBitmap {
 		if (encoding != "png" && encoding != "jpeg") {
 			return cast Future.withError(new SwfError('unsupported embedded image encoding $encoding'));
 		}
-		var encoded = character.imageData();
+		var encoded = normalizedImageData(character, encoding);
 		// Old authoring tools sometimes wrote EOI+SOI in front of the real JPEG stream. Flash and
 		// PIL ignore it; browsers are less uniform, so normalize it explicitly.
-		if (encoding == "jpeg" && encoded.length >= 4 && encoded.get(0) == 0xFF
-			&& encoded.get(1) == 0xD9 && encoded.get(2) == 0xFF && encoded.get(3) == 0xD8) {
-			encoded = encoded.sub(4, encoded.length - 4);
-		}
 		var alpha:Null<ByteArray> = null;
 		var compressedAlpha = character.alphaData();
 		if (compressedAlpha != null) {
@@ -125,6 +177,14 @@ class SwfBitmap {
 			bitmap.dispose();
 			return Future.withValue(result);
 		});
+	}
+
+	static function normalizedImageData(character:SwfCharacter, encoding:String):Bytes {
+		var encoded = character.imageData();
+		if (encoding == "jpeg" && encoded.length >= 4 && encoded.get(0) == 0xFF
+			&& encoded.get(1) == 0xD9 && encoded.get(2) == 0xFF && encoded.get(3) == 0xD8)
+			return encoded.sub(4, encoded.length - 4);
+		return encoded;
 	}
 
 	static function decodeColorMapped(data:Bytes, rgba:Bytes, width:Int, height:Int,

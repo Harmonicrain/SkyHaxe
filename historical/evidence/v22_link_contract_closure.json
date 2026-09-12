@@ -1,0 +1,6 @@
+{
+  "gate": "V22-host-link-contract",
+  "closure": ["com/sulake/core/runtime/events/ILinkEventTracker.as", "com/sulake/core/assets/AssetLoaderStruct.as"],
+  "context": [],
+  "note": "Original link listener and asset-load event ticket required by the HTML5 host. No UI implementation is promoted."
+}

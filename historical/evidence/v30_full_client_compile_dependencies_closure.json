@@ -1,0 +1,45 @@
+{
+  "gate": "V30-full-client-compile-dependencies",
+  "roots": [
+    "com/sulake/habbo/communication/enum/CompetitionVotingInfoResult.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrack.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackPrize.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackTask.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackTaskLevel.as",
+    "com/sulake/habbo/snowstorm/SnowStormProtocol.as",
+    "com/sulake/habbo/communication/messages/tickets/TicketProtocol.as"
+    ,"adobe/serialization/json/JSONEncoder.as"
+    ,"com/sulake/core/utils/Player.as"
+    ,"com/sulake/habbo/avatar/structure/AvatarStructureDownload.as"
+    ,"com/sulake/core/runtime/Profiler.as"
+    ,"com/sulake/core/utils/PurgeTrigger.as"
+    ,"com/sulake/habbo/catalog/offers/OfferCenter.as"
+    ,"com/sulake/habbo/sound/music/TraxSampleManager.as"
+    ,"com/sulake/habbo/sound/HabboSoundWithPitch.as"
+    ,"com/sulake/habbo/toolbar/extensions/CitizenshipVipDiscountPromoExtension.as"
+    ,"com/sulake/habbo/toolbar/extensions/CitizenshipVipQuestsPromoExtension.as"
+  ],
+  "closure": [
+    "com/sulake/habbo/communication/enum/CompetitionVotingInfoResult.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrack.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackPrize.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackTask.as",
+    "com/sulake/habbo/quest/rewardtrack/data/RewardTrackTaskLevel.as",
+    "com/sulake/habbo/snowstorm/SnowStormProtocol.as",
+    "com/sulake/habbo/communication/messages/tickets/TicketProtocol.as"
+    ,"adobe/serialization/json/JSONEncoder.as"
+    ,"com/sulake/core/utils/Player.as"
+    ,"com/sulake/habbo/avatar/structure/AvatarStructureDownload.as"
+    ,"com/sulake/core/runtime/Profiler.as"
+    ,"com/sulake/core/utils/PurgeTrigger.as"
+    ,"com/sulake/habbo/catalog/offers/OfferCenter.as"
+    ,"com/sulake/habbo/sound/music/TraxSampleManager.as"
+    ,"com/sulake/habbo/sound/HabboSoundWithPitch.as"
+    ,"com/sulake/habbo/toolbar/extensions/CitizenshipVipDiscountPromoExtension.as"
+    ,"com/sulake/habbo/toolbar/extensions/CitizenshipVipQuestsPromoExtension.as"
+  ],
+  "context": [],
+  "seams": {},
+  "closure_files": 17,
+  "state": "Compile-gate dependencies only; generated and isolated from runtime wiring."
+}

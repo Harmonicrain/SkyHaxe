@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><body><script type="module">
+import {loadPackedTruffle} from '../public/assets/truffle/lib/truffle.js';
+const results = [];
+console.log = (...args) => { results.push(args.join(' ')); document.body.textContent = results.join('\n'); };
+window.onerror = (message) => { document.body.textContent = 'FAIL ' + message; };
+try {
+  window.__truffleAPI = await loadPackedTruffle({base: '../public/assets/truffle', loadCalibration: false});
+  await import('../.toolchain/v21/thickness-test.js');
+} catch (error) { document.body.textContent = 'FAIL ' + error.stack; }
+</script></body>

@@ -1,0 +1,27 @@
+.toolchain/v32/generated/deng/fzip/FZip.hx:281: characters 26-35 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/wardrobe/WardrobeSlot.hx:52: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/wardrobe/WardrobeSlot.hx:57: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/wardrobe/Outfit.hx:28: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/wardrobe/Outfit.hx:33: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/HabboAvatarEditor.hx:148: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/avatar/HabboAvatarEditor.hx:153: characters 22-25 : Warning : (WUnusedPattern) This pattern is unused
+.toolchain/v32/generated/com/sulake/habbo/room/object/logic/room/RoomLogic.hx:206: lines 206-207 : Warning : (WUnusedPattern) This case is unused
+.toolchain/v32/generated/com/sulake/core/window/WindowController.hx:2716: characters 22-41 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/configuration/HabboConfigurationManager.hx:335: characters 43-58 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/localization/CoreLocalizationManager.hx:359: characters 43-58 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/assets/BitmapDataAsset.hx:197: characters 17-46 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/assets/SoundAsset.hx:67: characters 17-40 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/assets/TextAsset.hx:61: characters 17-40 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/assets/TypeFaceAsset.hx:55: characters 21-44 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/assets/XmlAsset.hx:68: characters 17-46 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/communication/wireformat/EvaWireFormat.hx:32: characters 25-44 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/core/runtime/ComponentContext.hx:217: characters 25-47 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/avatar/EffectAssetDownloadLibrary.hx:82: characters 21-45 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/battleball/BattleBallAssets.hx:45: characters 17-40 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/battleball/BattleBallAssets.hx:66: characters 22-45 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/battleball/BattleBallAssets.hx:101: characters 17-38 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/snowstorm/SnowStormAssets.hx:74: characters 17-38 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/snowstorm/SnowStormAssets.hx:95: characters 22-43 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/snowstorm/SnowStormAssets.hx:125: characters 17-38 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/habbo/ui/widget/furniture/gamehall/GamehallAssetLibrary.hx:73: characters 17-40 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.
+.toolchain/v32/generated/com/sulake/room/object/visualization/utils/GraphicAssetCollection.hx:249: characters 29-61 : Warning : (WDeprecated) Std.is is deprecated. Use Std.isOfType instead.

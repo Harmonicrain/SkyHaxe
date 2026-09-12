@@ -1,0 +1,5 @@
+<project>
+    <include path="project.xml" />
+    <source path="test" />
+    <app main="WindowInputBoundaryTest" path="build/html5/bin/window-input-check" file="probe" />
+</project>

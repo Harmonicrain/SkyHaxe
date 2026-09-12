@@ -1,0 +1,12 @@
+﻿{
+    "ok":  true,
+    "target":  "published generated FurnitureVisualization + RoomObjectModel + RoomObjectSprite",
+    "browser":  "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "assertions":  [
+                       "absent lift remains NaN",
+                       "shadow coordinates finite at scales 32 and 64",
+                       "finite lift preserved"
+                   ],
+    "browser_exit":  0,
+    "body":  "test/V7ShadowCoercionTest.hx:23: V7_SHADOW_COERCION_PASS actual-generated-visualization model-NaN sprite-offset scales32+64\r\n"
+}

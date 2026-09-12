@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="SkyHaxe V22 Original Window Manager" package="org.nextgenhabbo.skyhaxe.v22" version="0.1.0" company="NextGenHabbo" />
+    <app main="V22WindowManagerCompileMain" path="build/tests/v22-window-manager" file="v22-window-manager" />
+    <window width="1" height="1" background="#000000" hardware="false" />
+    <source path="src" />
+    <source path=".toolchain/ax3/compat" />
+    <source path="generated" />
+    <source path=".toolchain/v21/generated" />
+    <source path="test" />
+    <haxelib name="lime" version="8.3.2" />
+    <haxelib name="openfl" version="9.5.2" />
+    <haxeflag name="-cp" value=".toolchain/v21/openfl" />
+    <haxedef name="skyhaxe_embed_manifest" value="evidence/embedded_candidate.json" />
+    <include path=".toolchain/v21/embedded-assets.xml" />
+</project>

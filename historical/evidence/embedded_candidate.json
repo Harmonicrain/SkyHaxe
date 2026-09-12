@@ -1,0 +1,906 @@
+{
+  "com.sulake.core.window.tools.binaryData.ProfilerOutput__Str_15863": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15863.as",
+    "source_sha256": "4b2af2c86902d143269719495c44419825cdcc7a1d458964731724e8f9381f16",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15863.bin",
+    "asset_sha256": "0a8c05549b3a60f828eacfae1b24ff7abf4ddc6e9df9218917adb3b3d65e53ce",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15863.bin"
+  },
+  "com.sulake.core.window.tools.binaryData.ProfilerOutput__Str_15882": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15882.as",
+    "source_sha256": "ae11d228882ab1559491830d7ed97aa9090eef8945b0598956dd9bb120a5e889",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15882.bin",
+    "asset_sha256": "1f8961012ac13c761ef66cb11530b480b648d2186447477e1289dcc0bee12e98",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/core/window/tools/binaryData/ProfilerOutput__Str_15882.bin"
+  },
+  "com.sulake.habbo.roomevents.userdefinedroomevents.binaryData.SelectionShader": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/roomevents/userdefinedroomevents/binaryData/SelectionShader.as",
+    "source_sha256": "8686ed99665c03ac60035fdcbfd541bfb889635d62feef16ba8d71d801309adf",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/roomevents/userdefinedroomevents/binaryData/SelectionShader.bin",
+    "asset_sha256": "51ebf8411d66d6361019abf2166254d94a75d4ee028924d85fa67b3ada82b9a7",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/roomevents/userdefinedroomevents/binaryData/SelectionShader.bin"
+  },
+  "com.sulake.habbo.ui.widget.infobuspolls.binaryData.VoteChoiceXML": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteChoiceXML.as",
+    "source_sha256": "73af0902bf92af70e0869a78a39b2a664c2565f24c1abdb5b044274be777cb1d",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteChoiceXML.bin",
+    "asset_sha256": "8e47836ce701d23cbfbeb586d9ed88486ba15c7c374e74d7b4f3e73028c6a913",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteChoiceXML.bin"
+  },
+  "com.sulake.habbo.ui.widget.infobuspolls.binaryData.VoteQuestionXML": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteQuestionXML.as",
+    "source_sha256": "b5c78a6502b70e2dafcd7e1d72ca55eee3b099cc115d551437df5d8906c9c526",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteQuestionXML.bin",
+    "asset_sha256": "6253cb83fbd850679d6681fd0e0a5b5daca6ddf1f0f5667902651f8704af8004",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/ui/widget/infobuspolls/binaryData/VoteQuestionXML.bin"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.binaryData.BCFloorPlanEditor__Str_12857": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_12857.as",
+    "source_sha256": "45d3bb436d16083f911d37ff4e75139326b3132e4df7e6e46f7043315345e838",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_12857.bin",
+    "asset_sha256": "515ffa44c0fcbb3e28b5a653adccfb350ac40dbb44a8eb1a033ab47baecd3b5f",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_12857.bin"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.binaryData.BCFloorPlanEditor__Str_13244": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_13244.as",
+    "source_sha256": "b4bce5e05ee5c970b938cd7c0b8ff4813d178d5fc82642a71a67d390ad448cce",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_13244.bin",
+    "asset_sha256": "9385fca868fa0bcc2a1f2121f2569ff65f3825aa46787ae3c8338db7643f5f15",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/binaryData/BCFloorPlanEditor__Str_13244.bin"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorEditorTileBase": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBase.as",
+    "source_sha256": "a4538d9c72ab8addd3a15ee663cf41c09a473fe7137ee05ffe386409a5ee5de3",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBase.png",
+    "asset_sha256": "78525b22180224192e41445ddb61b977d5934b8aaccdc0bdaf41ca59235562d3",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBase.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorEditorTileBaseLarge": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBaseLarge.as",
+    "source_sha256": "c56cc8e71e62b33e9bc4dd66cb4016e4f92bd091981d21e7f0d00316be372fd5",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBaseLarge.png",
+    "asset_sha256": "aada2e13f1255ce1ae6801da750a6017fce82f1a975608e72e03e89302a45a18",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileBaseLarge.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorEditorTileEntry": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntry.as",
+    "source_sha256": "7d0fc7febb2f5f9accc33259dfc3904c7c15e2f728bd539263831c8835bc8b0c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntry.png",
+    "asset_sha256": "659b983dde2e16bc873514b5a205d109b69aa5a77d5b6bd921a6fa356e585510",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntry.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorEditorTileEntryLarge": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntryLarge.as",
+    "source_sha256": "887815f4b274b1fbcd7722021194ce9791138da7a4097021f472e25eda76cf4f",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntryLarge.png",
+    "asset_sha256": "df1498d8ce431b3fabe0f371aa9de4e2acf7f0c8d4cea384122a52d7f508db2e",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorEditorTileEntryLarge.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_0": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_0.as",
+    "source_sha256": "0e0881c351486dc098e68dec4e670f5068bd3ecaf3b866556eb5736a07a83c2b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_0.png",
+    "asset_sha256": "e91da54cdae714e5f6f186f5f557f555c3426e4ab8ca67f3714c0f23646a3ad3",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_0.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_1": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_1.as",
+    "source_sha256": "9126d6d4f66ca18d787ac5669c34ca2f5b18265f69d23e0ad52e50af663dcba1",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_1.png",
+    "asset_sha256": "a67b91106c669855c289812fb819e8ea67cc650598d950775c55543eea31a09f",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_1.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_2": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_2.as",
+    "source_sha256": "66b4683d2410b5e83f0f99a67bb86b38ce2ed7a0603c7bae694135ed8d003d5e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_2.png",
+    "asset_sha256": "301353cacb6048e5f2ae79a3eb0ae4767e530d7897488344f6beea089ce760e4",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_2.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_3": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_3.as",
+    "source_sha256": "3d3c73a43887a3e4838b41c0918a243918e0f93bc5b223a2eb6fbd79f22c6f8c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_3.png",
+    "asset_sha256": "9283c551d6ca6575005e0f87c9e8c13189e85bfb32b22fb20ad0cbbaddf59c10",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_3.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_4": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_4.as",
+    "source_sha256": "a2bd04a3948f78694a70e5f20a984f7383b8ca61eabbb01b352bbf16089094b0",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_4.png",
+    "asset_sha256": "3e0403017910a226311bf4739600a3799063916c31e8552c6e4210b9adcc2c52",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_4.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_5": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_5.as",
+    "source_sha256": "c219877ef3bc8c3cd624e20be8e63eb8c460ea3f35e7dcf709716f115ce9d794",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_5.png",
+    "asset_sha256": "5c4688b5aceb90cb6cc33f91760ee105b6cf4cc49854e2069330bbf82bbe100c",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_5.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_6": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_6.as",
+    "source_sha256": "b90c883999f1be9294cfd426e5f8eda6465b8dc1cb2672904ca161b68897a903",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_6.png",
+    "asset_sha256": "6c6ef3d9e7032e9d70da5f45a13c2e8fc2b79ad38b5f926ed54d42c004071346",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_6.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_7": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_7.as",
+    "source_sha256": "e66f83ca6f34570b64a6d63da3e5cbabea3d6781e740af9af8aa4844c0e56fe8",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_7.png",
+    "asset_sha256": "8b2665b3c666a17d742f5de51880d67dcaf2aeb45129472e2b75669e06ed8a59",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_7.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_8": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_8.as",
+    "source_sha256": "293c1d86c2a6278b089cae212557cea369cb5c9b6a36fba95b1a014b9a03fd26",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_8.png",
+    "asset_sha256": "b98f159af2246079ebde9d5678e8ea87fba9eb2d184a6bd0040c3d7e32d62302",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_8.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_9": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_9.as",
+    "source_sha256": "9c6c4ea3030f6eb73f075075723321160a8a3ba000636abae0b24d3d2ee2aa99",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_9.png",
+    "asset_sha256": "08d458ec539cc2f37af72d05bd465d721346e2b8ff49f3bf97168858c0bcbdfe",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_9.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_a": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_a.as",
+    "source_sha256": "11bdae8515d67578e3ee0345002f7bdf137ed9dcac3b72052e20d71ece7d5d05",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_a.png",
+    "asset_sha256": "612f16a07a5e6baa16a825856708ef99b174af85a3e8a1682349c101a2c59ff7",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_a.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_b": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_b.as",
+    "source_sha256": "ff76c00bff7f1b7b8f6562aca46a0901fb77f7e0380f5f94f539fbb3d3103a3b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_b.png",
+    "asset_sha256": "7acafb6ddaa6bcc4aaa627b3abb1459fbc512e4da3396b0642e8a61acf117d77",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_b.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_c": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_c.as",
+    "source_sha256": "2f01146f0abbe84c048841c6552b7b5c290f7ec3662e7622a944924ad5da14dc",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_c.png",
+    "asset_sha256": "9a67c4514139d2e16a15c8d3a276341dcaf51c3b7f688065864324bcaf23cd1b",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_c.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_d": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_d.as",
+    "source_sha256": "1492b66d9842b95e152cceef2376c268fb7401720f52d70ca159acf2f12aa551",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_d.png",
+    "asset_sha256": "a85d23b49d5dd792b726b23f02b5f2dd8aa135272604d71a1b7d705ca9daac5d",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_d.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_e": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_e.as",
+    "source_sha256": "19faa3c5a5930c92a18c05121de1b5fbd8d5d13b456315da7b0c43d180860581",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_e.png",
+    "asset_sha256": "0d659281deec9aa7e6b1d352c39b6dd1e6e139fdc82b2808af04f20611a3301f",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_e.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_entry": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_entry.as",
+    "source_sha256": "3bf2eee9bbbb90f758a0f8622cac816d47236fbd59209025d32d8b9f7cff768c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_entry.png",
+    "asset_sha256": "70ba23d9c096893d80f7c28df5faa51ff32453f9de0c1f10ea24270ba185ea68",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_entry.png"
+  },
+  "com.sulake.habbo.window.utils.floorplaneditor.images.FloorPlanPreviewer_tile_preview_f": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_f.as",
+    "source_sha256": "4c2a68e8479df011acf804dba3d1dae77334fe1455412e9e43d9a073c9d14fb3",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_f.png",
+    "asset_sha256": "949ce75731e75a57cc89f7cc407ebe17f500b8464dbffe22043e894244a7f338",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/floorplaneditor/images/FloorPlanPreviewer_tile_preview_f.png"
+  },
+  "com.sulake.habbo.window.utils.habbopedia.binaryData._Str_7787__Str_15204": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_15204.as",
+    "source_sha256": "65117cbde86ba445ff8466acc3cf2acc8152b293c3ad7406f4913b042173658f",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_15204.bin",
+    "asset_sha256": "df4c0521304f53fa17c873364dd27ee3b5a0635c89f55cdab4177f902f972b43",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_15204.bin"
+  },
+  "com.sulake.habbo.window.utils.habbopedia.binaryData._Str_7787__Str_18774": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_18774.as",
+    "source_sha256": "de10ded395b52d3657474795ce7ce7c90f7be8103d64a979b738834f1c7c9fe8",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_18774.bin",
+    "asset_sha256": "9b5e06d235e11707c9e4f59e0539e6f2f2597b68263b346ae0e4ff6b6181a15d",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_18774.bin"
+  },
+  "com.sulake.habbo.window.utils.habbopedia.binaryData._Str_7787__Str_20822": {
+    "source": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_20822.as",
+    "source_sha256": "d0b4404dce69a89bda12df727e1355d04048f22f1c32dc0aaa04cd13b4ca5b94",
+    "asset": "C:/habbo/client/habbo-client-clean/src/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_20822.bin",
+    "asset_sha256": "7c3f00adef96333547c34651980c1fa0e2428e7a43cacfa7ba1ad0b1a9b895b2",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/com/sulake/habbo/window/utils/habbopedia/binaryData/_Str_7787__Str_20822.bin"
+  },
+  "onBoardingHcUi.images.LoaderUI__Str_1115": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1115.as",
+    "source_sha256": "6d9d36ac9d50bc359f68c3a0090e98004e462754adac7905dacd8712407dc01b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1115.png",
+    "asset_sha256": "ae7502c862412fc97279beb296ad6d294747cc796b31300a8630aa92f9ff8762",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/LoaderUI__Str_1115.png"
+  },
+  "onBoardingHcUi.images.LoaderUI__Str_1249": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1249.as",
+    "source_sha256": "896fc5e2a4fe260719726d68c7f3167182294b7def1f8cd9e7802d9b70ad4fc6",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1249.png",
+    "asset_sha256": "596305812bc55b2d06e8a3ea67e020c22d15fa8995b68281acc3273d25c8ab31",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/LoaderUI__Str_1249.png"
+  },
+  "onBoardingHcUi.images.LoaderUI__Str_1325": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1325.as",
+    "source_sha256": "ad7992ac8e806fd4cd20119e69e84a7db2032d48bbc88e2c53fba6019cdc39a0",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1325.png",
+    "asset_sha256": "38d82db07f2600038b47ff2389f557f016abd6e5db26870540f96a412ee7a303",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/LoaderUI__Str_1325.png"
+  },
+  "onBoardingHcUi.images.LoaderUI__Str_1832": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1832.as",
+    "source_sha256": "a038fb8704790e76b9ba2af717b6b2fe3e8d2c3d0c3dc5e9cbe4e68e34e5d407",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_1832.png",
+    "asset_sha256": "4af549d8d214ce21ffeab720500a032d3691f8ce3c6ca8a0fec36c7b9d5278f0",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/LoaderUI__Str_1832.png"
+  },
+  "onBoardingHcUi.images.LoaderUI__Str_2054": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_2054.as",
+    "source_sha256": "2e13eb3f2fb4113a91b9525b57d9b86a4a61b366fd444edab266c8a7fae2af0f",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/LoaderUI__Str_2054.png",
+    "asset_sha256": "7765b61ba1bb3c612a53e40aa0099e44fed21da77aff35a6b92f93d97f91b57e",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/LoaderUI__Str_2054.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1026": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1026.as",
+    "source_sha256": "9d073a399fe46bf240925647a21365f9900056915b863e191eb3bc42738e7410",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1026.png",
+    "asset_sha256": "764746b9d61fc9e1f4d0ce7c01d3c982d6669add3b2a7ced98b84fc440fde0e4",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1026.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1051": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1051.as",
+    "source_sha256": "f37aa327ff330051ced00fbdd75079b09838c8bd2e86097741a4c77cb8dea429",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1051.png",
+    "asset_sha256": "ab7906d6088330335110531e71f2744e0025e36a797a279cf33298e8caa17f76",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1051.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1071": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1071.as",
+    "source_sha256": "79428ba88ef00450a9e4b4481f4abb37ea295a5ecff8351d63cf2be4415dc3a2",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1071.png",
+    "asset_sha256": "0a1a31a7ae5b5e1b113eca1018a746e8233502baab47aef50d2ff4ab8e66136c",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1071.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1290": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1290.as",
+    "source_sha256": "b04fec0f7af334661daa34ad8c743d6bd5ade78b54ebb59a3c0dd6c91de013fa",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1290.png",
+    "asset_sha256": "0f026370343d1d4bf7516c3ec57fc2a9e5ef0522e7049a57171fb9de9cfabfa1",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1290.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1597": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1597.as",
+    "source_sha256": "186689aec1c4393a7a96c96b17896492790a73d86d2c330acd24245895d9d16c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1597.png",
+    "asset_sha256": "ceb590d2b19f8b399399774dd16dc5bf7760897a6abdc53cc60f704bd53e9806",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1597.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1716": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1716.as",
+    "source_sha256": "ce58f7537bba59bd1ac88e4590d2e0c59dd69fdb06315244152cb0d23c8f2377",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1716.png",
+    "asset_sha256": "7438cb77cde4270f11982c02d4c219119cf9aa6ee567443f92d985ad975d47f2",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1716.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1839": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1839.as",
+    "source_sha256": "6e73a406ede159337b0b0f14735cd7177b3fc6e7555f9f9641cff6bda786431c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1839.png",
+    "asset_sha256": "b052233738a0ecbc84fa022ab0358303cb28d15b50a9bf7b487bf2367e9d8ca7",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1839.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1844": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1844.as",
+    "source_sha256": "006202c9e49b1d5ab4b4952a763f2a22e4c642a4c06eaecd5e8a22ffb90e5954",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1844.png",
+    "asset_sha256": "57481f13eeacb68f0be1dd91fbe2f2e9a0e7513f6655a34b4594267fb15662ab",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1844.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1879": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1879.as",
+    "source_sha256": "4419ee901b42821b6a6e6a97c1d1ab0ab743ccf774e08f19838c07b4f416b0eb",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1879.png",
+    "asset_sha256": "7ab137be161b7403637bbaf1c94a80d3dc3ba08598eee52c3341580b9abdd057",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1879.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_1905": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1905.as",
+    "source_sha256": "d7f147e224e39ef60e215a69d4b68a608e9277d5a7693d18f74a57483c1e1aa5",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_1905.png",
+    "asset_sha256": "3d2cff84db4b21b75ff3fbc59951cd7ed00f1b69cfed29072d51dfacd0b5ef5d",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_1905.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_2007": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_2007.as",
+    "source_sha256": "db64e1fcfb864933f43e5913253ebcd83c55b32605f2998c5807ba7fc5dfc85a",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_2007.png",
+    "asset_sha256": "7e0daf4bcffd2693073f21c5c45e20ca24afb19f6b75dba02d63da0d65c06594",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_2007.png"
+  },
+  "onBoardingHcUi.images.NineSplitSprite__Str_2137": {
+    "source": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_2137.as",
+    "source_sha256": "88bf5589a2e7b206d43da489e93c18755a0af92cfee3cccad29e5307f7f0e60c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/onBoardingHcUi/images/NineSplitSprite__Str_2137.png",
+    "asset_sha256": "33dbb6e4a57e95fbffae1dd3a691ca6f13e5b87f09e808ef6481dd3c6f4731f7",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/onBoardingHcUi/images/NineSplitSprite__Str_2137.png"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_counter": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_counter.as",
+    "source_sha256": "45456e1f61a834ea7e47abd6bb54625070945b084a98f0bf9e0989d6a189f3f9",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_counter.bin",
+    "asset_sha256": "eed9ca27a234054db8a4a327695aafaea1d4032099ddf6ac61cabcd9fe1f2085",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_counter.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_figure": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_figure.as",
+    "source_sha256": "553231aebb45b2060f33b349541e1db73c98c9f76a2eddda0f7d74c9f312b0d1",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_figure.bin",
+    "asset_sha256": "c3a37e5c1d6e349fc96e9674e1594045e13688aefb87a7f88e3733d719571423",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_figure.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_games_main": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_games_main.as",
+    "source_sha256": "283f4ac907a7f2d82559147dea8042324801e07cda573f4f06ee2a6bf955171c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_games_main.bin",
+    "asset_sha256": "c54a91683e29cab06ad6576ac8b16bff06eadec2c901f7c8ab371208ebc2ca0c",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_games_main.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_instructions_list_item": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_instructions_list_item.as",
+    "source_sha256": "61a5eaa070ea8fa4f8d003afcb2afd034eeebe73b773fc853e03c38a473681e1",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_instructions_list_item.bin",
+    "asset_sha256": "039730ff52bfb75617741c0258cb5551ccf80986c0616e97afb4a3ff92729b03",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_instructions_list_item.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_ending": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_ending.as",
+    "source_sha256": "56d41009031f93fc3bffacf5fa80c8b9de7f64365f96936d77d76413f09fd872",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_ending.bin",
+    "asset_sha256": "806c699d0aaa599f5c3d5c4714881c0a9f35580d1914c0c1ea61a665e3f70487",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_ending.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_exit": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit.as",
+    "source_sha256": "e5b583902fcfbb23445a8b8b50bb9f7f8822f1c3ddc0515da1da96c6b007a16e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit.bin",
+    "asset_sha256": "352aee2b3f5b556c5ab571be484c0d42b16e23555d0bbc39f57028eacd5ab7ed",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_exit_confirmation": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit_confirmation.as",
+    "source_sha256": "2f2ea240ecb41f419db80124cfbb0a4dca17c569c7f37636539c320c9bd2039b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit_confirmation.bin",
+    "asset_sha256": "1b4386e0d79ae2e166b09d1d0b90ee0b2b459ec6a1fba707731c037739aba99c",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_exit_confirmation.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_leaderboard": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard.as",
+    "source_sha256": "47a59cca146a6d147cc6975da970a113d10e74bd2a043386ae7c1174f8347663",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard.bin",
+    "asset_sha256": "0408a01014b6b0a03550e1a21abd953e625807879beb284e584535bc60ed4840",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_leaderboard_entry": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard_entry.as",
+    "source_sha256": "d6249169be48151d2cacb465f24f74a795c674a72cbb4823d9a5b13467510f94",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard_entry.bin",
+    "asset_sha256": "1258469803b2ed169c9a754329b167f83757af19270a904e2d2494fd25154777",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_leaderboard_entry.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_loading_background": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_loading_background.as",
+    "source_sha256": "d0e69734ede0ed5d795deb56a13aa8ef17d43a64fecce07330a2b4ace0025626",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_loading_background.bin",
+    "asset_sha256": "e8b12c8dbe00a93ca6809b4ce8b1a92ae953f6ba9ba8b63eff0bf3349d4f5ade",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_loading_background.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_lobby_player": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player.as",
+    "source_sha256": "933bb07a2d5704ba3c0f2c3643781b3fdceed8a6568ffe175c9dd220c48b2a9c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player.bin",
+    "asset_sha256": "395017c358ccc1a0a1652fcc368bccd22f1128857b70e243e6827b6e293f3bbd",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_lobby_player_team_1": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_1.as",
+    "source_sha256": "dc235180663bc85a505d545c9a9e1d522bc8e4b151c7caa9e617a5cf8984dac2",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_1.bin",
+    "asset_sha256": "c3f87dcff7824472cc42fc86ac16d32a07fc5e78ffef80c2d4f81aa4d2d838a5",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_1.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_lobby_player_team_2": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_2.as",
+    "source_sha256": "04729b257c3812831a6db5887d729ebe93bb7a6078a711cb36d642fb7fbb9909",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_2.bin",
+    "asset_sha256": "c3f87dcff7824472cc42fc86ac16d32a07fc5e78ffef80c2d4f81aa4d2d838a5",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_lobby_player_team_2.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_own_stats": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_own_stats.as",
+    "source_sha256": "b391f9379ea4bbac771bd370efa34c0f0d8308dbb5944427be739edc2c1b5859",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_own_stats.bin",
+    "asset_sha256": "a032b315d9f4b4b3560a572373ba6076ada6a5c2c888b1134283e7c7e5335ab8",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_own_stats.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_results_player_team_1": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_1.as",
+    "source_sha256": "57bd747c80680f17b86cc632a887dd98a39fda74322aec4faa4b0f75e6b98851",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_1.bin",
+    "asset_sha256": "5aa1f7bf109cacf7be5bb2144eb021279246f349e25a2ed6979e30be6b7a6855",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_1.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_results_player_team_2": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_2.as",
+    "source_sha256": "2da94e3a000391bcc63db0c918b86632e2c4128d22aa185adaa705c5a3ddea51",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_2.bin",
+    "asset_sha256": "d264a7e6f98568bb28dd60ee2019af856fd296053e444c87abf7bd0b9926f42d",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_results_player_team_2.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_snowballs": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_snowballs.as",
+    "source_sha256": "11ce74d4eb4b891b3e0c097aa642d588138152e00606ef35cf7a200000a15b21",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_snowballs.bin",
+    "asset_sha256": "e017bc7122b086ede3f5d078ca4a3cc4f9e9755ddae88c5d1948e4aadf630cc6",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_snowballs.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_team_scores": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_team_scores.as",
+    "source_sha256": "08cb059afacc4ac8087c49a07d9e33aa2c3a7ffe02bb0cf23212e46c2b1c4586",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_team_scores.bin",
+    "asset_sha256": "a92a097fcc99a8a0144b0c560af29da588054a07b8fdfb1ced7592da693d92c1",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_team_scores.bin"
+  },
+  "snowwar.assets.binaryData.HabboGamesCom_snowwar_timer": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_timer.as",
+    "source_sha256": "b1d71577bde5bafb06a10acbe90729133c89cda68e9c54bac02477514d39547d",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/HabboGamesCom_snowwar_timer.bin",
+    "asset_sha256": "2dba8db7f6a2635b8d9a27f03035bb3ddd199eb2684749d4d607460335f51744",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/HabboGamesCom_snowwar_timer.bin"
+  },
+  "snowwar.assets.binaryData.PlaySnowstormTabXML": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/PlaySnowstormTabXML.as",
+    "source_sha256": "e39a0aebf745eb61fa7902ecb9c72bcfe0ca443af9cc7324721fba14bb32e0c9",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/binaryData/PlaySnowstormTabXML.bin",
+    "asset_sha256": "b01069a115ac73f39075f11105a3994f738ded4a088c88f6d0f29c243ff81ba0",
+    "kind": "ByteArrayAsset",
+    "id": "skyhaxe/embed/snowwar/assets/binaryData/PlaySnowstormTabXML.bin"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0001": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0001.as",
+    "source_sha256": "760133029555758d633311b5358ce4180accc0138bd7e99858966cd511a4d24e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0001.png",
+    "asset_sha256": "1fff8b8685f57d8b7b9ea401fb684a951d347eae2e308b9daa914b16fa5faede",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0001.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0002": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0002.as",
+    "source_sha256": "c73645df7ae03b054e9c7b72703b324717287dbae15f6b4dc0866aef5d773d9e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0002.png",
+    "asset_sha256": "e8b9c2c9206104cff18b512ef1b4485a8089708d8675629af0435be904726341",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0002.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0003": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0003.as",
+    "source_sha256": "7eb6c0c31756d689dbb7f24a1c4a339025c55314490e9d2c345c382b7777495c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0003.png",
+    "asset_sha256": "eb030d0bd040d5cd1a6ff02464ce93f2ac75f69ee03e06b4484d4916c9fdd95b",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0003.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0004": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0004.as",
+    "source_sha256": "70fe9f89a9c09b43ac0aefbecb86b2a6be3603d86ea4bbb62eeeefad5451e2fb",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0004.png",
+    "asset_sha256": "3e09ce7a330b5854e99415d8220094fd495572a3884eae93d35de84a34e9467a",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0004.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0005": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0005.as",
+    "source_sha256": "6491f8ce17494c8cdcfb1dd81895e5e55fcbb1034496ee35be16c087b17fcef3",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0005.png",
+    "asset_sha256": "7b53ad0053d7b44532dcef159ae196f2fc81a30dde32f4e40d67615d977f3b63",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0005.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0006": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0006.as",
+    "source_sha256": "f2dd9ab3f3cffc4953a65159a2c13c8de8bc019ceac196db9067cfc73b2cdcaa",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0006.png",
+    "asset_sha256": "8deffc4a8003a20d4189b0342a17b64867ea8b4ab4897a6eddce1084c25ce8c3",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0006.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0007": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0007.as",
+    "source_sha256": "629529fd07d120098670a38608bc139d687f25d994e9911310c8d3ec01f6cc1c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0007.png",
+    "asset_sha256": "e0ef2fc26e7cd2263ddb90c712ad3857f1c27f8b810dc5d9288819edcfcd917f",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0007.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0008": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0008.as",
+    "source_sha256": "84851943f30d7ee61ec28d8a981ac724d92192b1acee028c5b3050253331745c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0008.png",
+    "asset_sha256": "00193fc3d9b998e33df5c33e315cb1ff9126819f4417e1efd60fc0ae96a9023e",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0008.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0009": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0009.as",
+    "source_sha256": "2ae2c956a7e3e0114e2583cdc5b4f1887cb3123f604288344b299095f821d191",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0009.png",
+    "asset_sha256": "50e64f4e1fe256460d409af76d68bc7f895202e067640b24fa6a1cdf07e329e9",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0009.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0010": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0010.as",
+    "source_sha256": "d2c7e61df3352dd2313afc493c16ff5fd2ee5681fa88c856b840defca70b3a78",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0010.png",
+    "asset_sha256": "a019603e7bd275dc92dc08d3772f9c91726f6894618b5f07839383da03dfe893",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0010.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0011": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0011.as",
+    "source_sha256": "ac3647d584d22ab04595ced8c750b708575d5b6c3d2e2ee9baa9d7846b15b61b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0011.png",
+    "asset_sha256": "a6ca68ad986c6c6f4b868b9899f14dc028d1e9d9b585a571ed60fc51e21342b5",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0011.png"
+  },
+  "snowwar.assets.images.HabboGamesCom_explosion0012": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0012.as",
+    "source_sha256": "d08f882ffe5bb4be5a549add35b96c371341ac0b23742e3bf81bc056079da707",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/HabboGamesCom_explosion0012.png",
+    "asset_sha256": "d6fd1f5c21826a7705a8ca98243a659dfba562768f540040b935cbbb58983966",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/HabboGamesCom_explosion0012.png"
+  },
+  "snowwar.assets.images.PlaySnowstormIcon": {
+    "source": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/PlaySnowstormIcon.as",
+    "source_sha256": "93e292e921d61028eb867082907f5cbd9ba055fc165c695076a4ab19eb259d3e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/snowwar/assets/images/PlaySnowstormIcon.png",
+    "asset_sha256": "10f29a306029c211726e4e645a92d4d60743198f613f96a37bcc2b15c8c2ff42",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/snowwar/assets/images/PlaySnowstormIcon.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg1": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg1.as",
+    "source_sha256": "e6f92b051d3d65ea5b2ab34a32f1197039c9c80f8fd605cc3e015640fa60c219",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg1.png",
+    "asset_sha256": "1ca40471bde94a71ef589caa5184cb3161d62aa230f2d9c0318248f589057c16",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg1.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg10": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg10.as",
+    "source_sha256": "f474acbb5326e709142deddcac28f1cc80e46f9bd294ce76c1e873d1f96f8274",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg10.png",
+    "asset_sha256": "8373a8201f2abb5d772231332766cad7770647a008133234d793f731f7c746f2",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg10.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg11": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg11.as",
+    "source_sha256": "57b4cd45f5dfa7d890dc92e161ca8af1b01404d0c319e13a440d2208f88415fd",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg11.png",
+    "asset_sha256": "21390eab1575e7273a4b91091b40d4f9aa7f861c8aa1d455ec37c443cac1836a",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg11.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg12": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg12.as",
+    "source_sha256": "b0596f8985f8f43635d2c5cbe325b819381c483e6a3de1b730cca0d3f60ed473",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg12.png",
+    "asset_sha256": "d407d63c93ba70f07b42fb51d4fdcd276825426ef1f9f1d1386caae2cd1ec2e6",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg12.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg13": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg13.as",
+    "source_sha256": "238899203c75f9348352affa1ab8c262991f306f0ce65abe06b0708d986f6e9e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg13.png",
+    "asset_sha256": "9176dc065a7ba100993191bead89ba76d84bb015a043506773eed8edc29ec457",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg13.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg14": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg14.as",
+    "source_sha256": "c5c6ac3ec36633cb0ff0b8e451b4f2175557bed472cfb1ad4bb51d09295847c4",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg14.png",
+    "asset_sha256": "2ac3b7f4932d03c2ca138428d3a7c599990928f587b8feffd7e0e39f02b1af62",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg14.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg15": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg15.as",
+    "source_sha256": "7deaec974913767ea8df397d0e3144dcdac29b8dafae65436cc738d97f90d412",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg15.png",
+    "asset_sha256": "de354eb761599b3f8ac7d017f74800a1a39e5283c15cd5c864f0c8752307b059",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg15.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg16": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg16.as",
+    "source_sha256": "91ee2048c1ec91b8db4186af99994d8d1720063b953a2c31848fe87589e95364",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg16.png",
+    "asset_sha256": "3462693888f6faef4b02666747aecdd29ae1a80b5e0643eca53f47330beb3f2d",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg16.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg17": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg17.as",
+    "source_sha256": "63c315eaa859de52febb5840349e3c2160ec6fca09c2634fd3cbb72e962cd6a3",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg17.png",
+    "asset_sha256": "7d5b7f9c698b0eef3323bc89c4d603207427a0a3677f583c1e090ca883cbd281",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg17.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg18": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg18.as",
+    "source_sha256": "9041d6474deb5f59390c5323ecc874d73d78aa42c1d0160937bb39c72bb403d0",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg18.png",
+    "asset_sha256": "3466afc3cf492694a2b6cdea90e2325907b423aa8d919d6281eee9b7c04afcc4",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg18.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg19": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg19.as",
+    "source_sha256": "dff4daaad8e8c8c8b964a4889c410baa74b366802ccb48297002ee35a4a6d473",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg19.png",
+    "asset_sha256": "76a9bcb4a813ab18ad541fe63c4a2d644307c3aade5f10beceadbb01b6d19a40",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg19.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg2": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg2.as",
+    "source_sha256": "08e0a644195401ec4d70a84f7c84e7da6ce576d72525062fbf320b013d0537a4",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg2.png",
+    "asset_sha256": "d4e7a69ef506804feb30a33a48b75004374f8e43448e9cfbd4d8a1074ef8c8f9",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg2.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg20": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg20.as",
+    "source_sha256": "4749543ee663ad69dfd3a7d831600da72272558408624fcbdfa5c52f29c6a1a8",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg20.png",
+    "asset_sha256": "c3bbbea352b1c5521e13a3f6aa0a8744ebdb2217d9de271b5f788eae5a33f206",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg20.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg21": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg21.as",
+    "source_sha256": "3e390060294ef8aaecfb911254c8eb12491b2a06b245703120d2ea42f244aad1",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg21.png",
+    "asset_sha256": "44900962d27dc82ededafe704943be1794d64471be5d4988e98098714dca7f29",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg21.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg22": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg22.as",
+    "source_sha256": "c44b1f87ce414ddfb04dd9d6287fcf6f84b30dacfd21e3331dc076a5011ec43e",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg22.png",
+    "asset_sha256": "1c88135795c69fb0faa40c80349767b6ff7822bdd61070a70740de839cb85583",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg22.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg23": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg23.as",
+    "source_sha256": "4b55abfcdb4268a102a0b72cf76d9aadabf809abc3c6356d80ceffe6f6fa203d",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg23.png",
+    "asset_sha256": "9176dc065a7ba100993191bead89ba76d84bb015a043506773eed8edc29ec457",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg23.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg24": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg24.as",
+    "source_sha256": "f051e29f9d0ba2dccf39f2c3b8d19b24c9d7be9fded24cc18b1cccf187a65f4a",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg24.png",
+    "asset_sha256": "8373a8201f2abb5d772231332766cad7770647a008133234d793f731f7c746f2",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg24.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg25": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg25.as",
+    "source_sha256": "799e44d5a96cf4f5c0f47856000aecf5fad377b6fcc00fdad50c173886291dd4",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg25.png",
+    "asset_sha256": "21390eab1575e7273a4b91091b40d4f9aa7f861c8aa1d455ec37c443cac1836a",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg25.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg26": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg26.as",
+    "source_sha256": "fa936649f22b1d73e7656c14ae49f0d53df2f17f61c0e1989b126dccc0f88839",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg26.png",
+    "asset_sha256": "72fa936414493bde9296f7e955812aac05c8bac2e25bfb91d8fcfe400119fab5",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg26.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg27": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg27.as",
+    "source_sha256": "d31978c49512e8689b12397a751d24107aeeffbaa1f1ed1f14fe535f2aa011c8",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg27.png",
+    "asset_sha256": "3f92e1c7228a967977e8b0105c1b6e746a696eb59aadbf3c8ebf001035d53626",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg27.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg28": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg28.as",
+    "source_sha256": "c7ed69207a57defa2c2e6b9b6319e625a17d6860af902fbb8b58fe7ad73ce38c",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg28.png",
+    "asset_sha256": "4fdbf2ae72ee99cf0881abefa978f1c8fb8567887f9ecf077738524cb469d41f",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg28.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg29": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg29.as",
+    "source_sha256": "ee6f4b0cae4ed873df2d9697d1801e7f3be689904ce6b302d0ea2d56a7ead86b",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg29.png",
+    "asset_sha256": "b76c2e33c4ce12887c4a22270928a547f32c60644c2d6c0752123174fcd8af70",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg29.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg3": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg3.as",
+    "source_sha256": "aba4de86d242017ce75958b3d6c3cd7a76e6c9bd986ff7e652ae0f10d7b50279",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg3.png",
+    "asset_sha256": "72fa936414493bde9296f7e955812aac05c8bac2e25bfb91d8fcfe400119fab5",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg3.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg30": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg30.as",
+    "source_sha256": "29c4eae06f71e8f1b78fa770b305f26467e74108862c638f5f9c4b9047aca3ef",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg30.png",
+    "asset_sha256": "f85150cdd5cf79dd141ab212116875ea87d0d3422df84783f29ba9cb996bc056",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg30.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg4": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg4.as",
+    "source_sha256": "bb38b0ebaf635a5748706b717b8344b8bb5a3fe075ab4ac0030c04eac2ed8988",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg4.png",
+    "asset_sha256": "c3bbbea352b1c5521e13a3f6aa0a8744ebdb2217d9de271b5f788eae5a33f206",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg4.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg5": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg5.as",
+    "source_sha256": "5bd8c64071c15115f3b49feaf486b6dd1552f49fbebbd020ada0606eb7202e30",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg5.png",
+    "asset_sha256": "1ca40471bde94a71ef589caa5184cb3161d62aa230f2d9c0318248f589057c16",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg5.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg6": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg6.as",
+    "source_sha256": "93d6f66cf4809f4854dadba4154d51510826b63d8691bed9b9a18b00c9f892de",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg6.png",
+    "asset_sha256": "1c88135795c69fb0faa40c80349767b6ff7822bdd61070a70740de839cb85583",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg6.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg7": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg7.as",
+    "source_sha256": "8b04cdf2d3b8cb97c8e27ca4bc51d5a6aff846f8ae80baef9dce7d7917b40374",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg7.png",
+    "asset_sha256": "2ac3b7f4932d03c2ca138428d3a7c599990928f587b8feffd7e0e39f02b1af62",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg7.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg8": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg8.as",
+    "source_sha256": "ee827b2722434a846317efbc99c123e062bc4f6100f221d3ed42753e5ba2f2ed",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg8.png",
+    "asset_sha256": "de354eb761599b3f8ac7d017f74800a1a39e5283c15cd5c864f0c8752307b059",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg8.png"
+  },
+  "splash.images.PhotoSplashScreen_splashImg9": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg9.as",
+    "source_sha256": "ef70ab700038250c87384d4975cf4db8ad33074594662f51d7786a3a968e6cf2",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/PhotoSplashScreen_splashImg9.png",
+    "asset_sha256": "d407d63c93ba70f07b42fb51d4fdcd276825426ef1f9f1d1386caae2cd1ec2e6",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/PhotoSplashScreen_splashImg9.png"
+  },
+  "splash.images._Str_857": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/_Str_857.as",
+    "source_sha256": "2c12169c328e49b8f119b048a262c6e87264f28ddeb79efc85b23ae16023f7ed",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/_Str_857.png",
+    "asset_sha256": "e5f2abdd29dbf1c72e33492073c9aa64c083b6900aed58eebd1c455b27ec2c81",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/_Str_857.png"
+  },
+  "splash.images._Str_905": {
+    "source": "C:/habbo/client/habbo-client-clean/src/splash/images/_Str_905.as",
+    "source_sha256": "cc19612764cd04fc61d3daa0dbdc81176f7c6333bd3d3fcaa1523d8662b61088",
+    "asset": "C:/habbo/client/habbo-client-clean/src/splash/images/_Str_905.png",
+    "asset_sha256": "8eee415d5417e27ff96dae2a7749ec2b68dae5989577634f0c7672ab2aa18658",
+    "kind": "BitmapAsset",
+    "id": "skyhaxe/embed/splash/images/_Str_905.png"
+  }
+}

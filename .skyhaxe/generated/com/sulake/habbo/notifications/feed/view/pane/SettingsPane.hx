@@ -1,0 +1,59 @@
+package com.sulake.habbo.notifications.feed.view.pane
+;
+    import com.sulake.habbo.notifications.feed.NotificationView;
+    import com.sulake.core.window.IWindowContainer;
+    import com.sulake.habbo.notifications.feed.FeedSettings;
+    import com.sulake.core.window.events.WindowMouseEvent;
+    import com.sulake.core.window.events.WindowEvent;
+    import com.sulake.core.window.IWindow;
+
+     class SettingsPane extends AbstractPane 
+    {
+        public function new(k:String, _arg_2:NotificationView, _arg_3:IWindowContainer)
+        {
+            super(k, _arg_2, _arg_3, AbstractPane.PANE_VIEW_LEVEL_MODAL);
+            this._Str_21774();
+            window.procedure = this._Str_25027;
+        }
+
+        override public function dispose()
+        {
+            super.dispose();
+        }
+
+        function _Str_21774()
+        {
+            var k= _mainView.controller.getSettings();
+            k._Str_22647();
+        }
+
+        public function _Str_25027(k:WindowEvent, _arg_2:IWindow)
+        {
+            var _local_3:FeedSettings = null;
+            var _local_4 = 0;
+            var _local_5:String = null;
+            if (k.type == WindowMouseEvent.CLICK)
+            {
+                _local_3 = _mainView.controller.getSettings();
+                final _iter_ = _arg_2.tags; if (checkNullIteratee(_iter_)) for (_tmp_ in _iter_)
+                {
+_local_5  = _tmp_;
+                    switch (_local_5)
+                    {
+                        case "ME":
+                            _local_4 = FeedSettings.FEED_CATEGORY_ME;
+                            
+                        case "HOTEL":
+                            _local_4 = FeedSettings.FEED_CATEGORY_HOTEL;
+                            
+                        case "FRIENDS":
+                            _local_4 = FeedSettings.FEED_CATEGORY_FRIENDS;
+                            
+                    }
+                    _local_3._Str_24684(_local_4);
+                }
+                this._Str_21774();
+            }
+        }
+    }
+

@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "fixture": "test/window-thickness.html",
+  "browser_exit": 0,
+  "body": "test/V21ThicknessTest.hx:50: V21_THICKNESS_PASS actual-truffle-canvas pixel-coverage clamp metrics normal-AA-no-browser-fallback",
+  "error": null
+}

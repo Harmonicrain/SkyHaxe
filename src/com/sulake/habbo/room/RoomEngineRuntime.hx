@@ -10,10 +10,14 @@ import com.sulake.habbo.avatar.AvatarRoomRenderer;
 import com.sulake.habbo.advertisement.IAdManager;
 import com.sulake.habbo.advertisement.events.AdEvent;
 import com.sulake.habbo.communication.IHabboCommunicationManager;
+import com.sulake.core.communication.messages.IMessageEvent;
 import com.sulake.habbo.room.RoomObjectLogicComponent;
 import com.sulake.habbo.session.UserDataManager;
+import com.sulake.habbo.session.SessionDataManager;
+import com.sulake.habbo.session.RoomSessionManager;
 import com.sulake.habbo.session.IRoomSession;
 import com.sulake.habbo.session.IRoomSessionManager;
+import com.sulake.habbo.tracking.HabboTracking;
 import com.sulake.habbo.communication.messages.incoming.roomsettings.RoomModerationSettings;
 import com.sulake.habbo.room.object.RoomObjectVisualizationFactory;
 import com.sulake.iid.IIDAvatarRenderManager;
@@ -27,6 +31,8 @@ import com.sulake.iid.IIDRoomObjectFactory;
 import com.sulake.iid.IIDRoomObjectVisualizationFactory;
 import com.sulake.iid.IIDRoomRendererFactory;
 import com.sulake.iid.IIDSessionDataManager;
+import com.sulake.iid.IIDRoomEngine;
+import com.sulake.iid.IIDHabboTracking;
 import com.sulake.room.RoomManager;
 import com.sulake.room.renderer.IRoomRenderer;
 import com.sulake.room.renderer.IRoomRendererFactory;
@@ -34,6 +40,7 @@ import com.sulake.room.renderer.RoomRenderer;
 import js.Browser;
 import openfl.display.DisplayObjectContainer;
 import openfl.display.BitmapData;
+import openfl.events.Event;
 import openfl.events.EventDispatcher;
 
 /**
@@ -46,16 +53,49 @@ import openfl.events.EventDispatcher;
 class RoomEngineRuntime {
     static var _context:Null<RoomEngineContext>;
     static var _engine:Null<RoomEngine>;
-    static var _timer:Null<haxe.Timer>;
+    static var _sessionData:Null<SessionDataManager>;
+    static var _roomSessions:Null<RoomSessionManager>;
+    /** The display object whose ENTER_FRAME drives the engine; see startClock. */
+    static var _clock:Null<DisplayObjectContainer>;
+    static var _startedAt:Float = 0;
     static var _starting = false;
     static var _waiting:Array<{ready:RoomEngine->Void, failed:Dynamic->Void}> = [];
 
     public static var engine(get, never):Null<RoomEngine>;
     static inline function get_engine():Null<RoomEngine> return _engine;
+    public static var sessionData(get, never):Null<SessionDataManager>;
+    static inline function get_sessionData():Null<SessionDataManager> return _sessionData;
+    public static var roomSessions(get, never):Null<RoomSessionManager>;
+    static inline function get_roomSessions():Null<RoomSessionManager> return _roomSessions;
+
+    /**
+     * Completed engine ticks.
+     *
+     * One per rendered frame, so at the stage frame rate. Reported beside `fps` because the two
+     * are now the same scheduler and a divergence between them means a frame was dropped rather
+     * than that the engine stalled. Incremented after `update` returns, so a tick lost to a throw
+     * is not counted.
+     */
+    public static var ticks(default, null):Int = 0;
+
+    /**
+     * Longest `update` seen, in milliseconds, since `clearWorstTickMs`.
+     *
+     * A stall is either the engine doing too much in one tick or the renderer doing too much
+     * afterwards, and from a frame time alone the two are indistinguishable. Timing the call
+     * separates them: a long frame with a short tick is render or browser work, a long frame with
+     * a matching tick is the room's own update.
+     */
+    public static var worstTickMs(default, null):Float = 0;
+
+    public static function clearWorstTickMs():Void {
+        worstTickMs = 0;
+    }
 
     public static function ensure(container:DisplayObjectContainer, furniBase:String,
             contentBase:String, furnidataUrl:String, onReady:RoomEngine->Void,
-            onError:Dynamic->Void, ?roomConnection:IConnection):Void {
+            onError:Dynamic->Void, ?roomConnection:IConnection,
+            ?sharedContext:RoomEngineContext):Void {
         if (_engine != null && _engine.isInitialized) {
             onReady(_engine);
             return;
@@ -67,13 +107,23 @@ class RoomEngineRuntime {
         AvatarRoomRenderer.prepare(contentBase, function() {
             try {
                 RoomContentLoader.configure(furniBase, contentBase, furnidataUrl);
-                var context = new RoomEngineContext(container);
-                context.provide(new IIDHabboConfigurationManager(), context);
+                var context = sharedContext != null ? sharedContext
+                    : new RoomEngineContext(container);
+                _clock = container;
+                if (sharedContext == null)
+                    context.provide(new IIDHabboConfigurationManager(), context);
                 context.provide(new IIDAvatarRenderManager(), AvatarRoomRenderer.renderManager());
-                if (roomConnection != null)
-                    context.provide(new IIDHabboCommunicationManager(),
-                        new RoomEngineCommunicationService(roomConnection));
+                if (roomConnection == null)
+                    throw "The original room/session graph requires an authenticated connection";
+                var communication = new RoomEngineCommunicationService(roomConnection);
+                context.provide(new IIDHabboCommunicationManager(), communication);
                 context.provide(new IIDHabboAdManager(), new RoomAdManagerHost(context, furniBase));
+
+                var tracking = new HabboTracking(context);
+                context.provide(new IIDHabboTracking(), tracking);
+
+                _sessionData = new SessionDataManager(context);
+                context.provide(new IIDSessionDataManager(), _sessionData);
 
                 var objectFactory = new RoomObjectLogicComponent(context);
                 context.provide(new IIDRoomObjectFactory(), objectFactory);
@@ -84,17 +134,22 @@ class RoomEngineRuntime {
                 context.provide(new IIDRoomManager(), roomManager);
                 context.provide(new IIDRoomRendererFactory(), new Html5RoomRendererFactory());
 
-                // RoomEngine requires these two services even though room construction does not
-                // use their UI/data surfaces. Keep the boundary explicit and fail if a new room
-                // path starts relying on a member that is not supplied here.
-                var session = new RoomEngineHostService();
-                context.provide(new IIDSessionDataManager(), cast session);
-                context.provide(new IIDHabboWindowManager(), cast new RoomEngineHostService());
-                context.provide(new IIDHabboRoomSessionManager(),
-                    cast new RoomSessionManagerHost(context, roomConnection));
+                if (sharedContext == null)
+                    context.provide(new IIDHabboWindowManager(), cast new RoomEngineHostService());
 
                 _context = context;
+                // Keep the engine dependency queued until the session constructor has finished.
+                _roomSessions = new RoomSessionManager(context);
+                context.provide(new IIDHabboRoomSessionManager(), _roomSessions);
                 _engine = new RoomEngine(context, RoomEngine.SETUP_WITHOUT_COMMUNICATION);
+                context.provide(new IIDRoomEngine(), _engine);
+
+                // Configuration is a lifecycle event in the original graph, not merely a bag of
+                // strings. Fire it only after every live dependant has attached its listener.
+                var configuration:IUnknown = context.queueInterface(
+                    new IIDHabboConfigurationManager());
+                if (Std.isOfType(configuration, Component))
+                    cast(configuration, Component).events.dispatchEvent(new Event(Event.COMPLETE));
                 startClock();
             } catch (error:Dynamic) {
                 fail(error);
@@ -102,23 +157,69 @@ class RoomEngineRuntime {
         }, fail);
     }
 
+    /**
+     * Drive the engine from the stage frame, as the AS3 client does.
+     *
+     * `CoreComponentContext.as:59` updates every component from `Event.ENTER_FRAME`, so in Flash
+     * the room advances exactly once per rendered frame at the SWF's declared rate -- 30fps for
+     * the NGH build. This used a 16ms `haxe.Timer` instead, which ran the engine at ~63/s.
+     *
+     * That is not merely a smoothness difference. Habbo furniture animation is a frame *counter*,
+     * not a clock: `FurnitureAnimatedVisualization` advances by `frameIncrease` per call, and
+     * `RoomSpriteCanvas.render` halves that with its `_skipObjectUpdate` toggle. Animation speed
+     * is therefore exactly half the tick rate, so a looping furni ran at 31.7 steps/s against
+     * Flash's 15 -- 2.11x too fast. Anything else counting calls rather than milliseconds was
+     * wrong by the same factor.
+     *
+     * ENTER_FRAME alone is not enough, because on HTML5 it follows the display refresh -- 75/s on
+     * a 75Hz panel, and Lime's `fps` window attribute is ignored on this target. So the frame is
+     * the pump and this gates it to Flash's rate explicitly. Using the frame rather than a
+     * `haxe.Timer` still matters: a timer is throttled to 1/s in a hidden tab and drifts under
+     * load, which made animation speed depend on browser state.
+     */
     static function startClock():Void {
-        if (_timer != null) return;
-        var started = haxe.Timer.stamp();
-        _timer = new haxe.Timer(16);
-        _timer.run = function() {
-            if (_context == null || _engine == null) return;
-            _context.update(Std.int(haxe.Timer.stamp() * 1000));
-            if (_starting && _engine.isInitialized) {
-                _starting = false;
-                var waiting = _waiting;
-                _waiting = [];
-                Browser.console.info("SKYHAXE_ROOM_ENGINE_READY");
-                for (entry in waiting) entry.ready(_engine);
-            } else if (_starting && haxe.Timer.stamp() - started > 20) {
-                fail("converted RoomEngine did not initialize within 20 seconds");
-            }
-        };
+        if (_clock == null) {
+            fail("no display container to drive the room engine from");
+            return;
+        }
+        _startedAt = haxe.Timer.stamp();
+        _accumulator = 0;
+        _lastFrameAt = 0;
+        _clock.removeEventListener(Event.ENTER_FRAME, onFrame);
+        _clock.addEventListener(Event.ENTER_FRAME, onFrame);
+    }
+
+    /** The NGH HabboAir.swf header declares 30fps, and the AS3 room advances once per frame. */
+    static inline var UPDATE_INTERVAL_MS = 1000 / 30;
+
+    static var _accumulator:Float = 0;
+    static var _lastFrameAt:Float = 0;
+
+    static function onFrame(_:Event):Void {
+        if (_context == null || _engine == null) return;
+        var now = haxe.Timer.stamp() * 1000;
+        if (_lastFrameAt == 0) _lastFrameAt = now;
+        _accumulator += now - _lastFrameAt;
+        _lastFrameAt = now;
+        if (_accumulator < UPDATE_INTERVAL_MS) return;
+        // At most one update per displayed frame, and the remainder is taken modulo rather than
+        // replayed. Flash dropped frames when it fell behind; catching up here would speed the
+        // animation counter back up, which is the bug this exists to prevent.
+        _accumulator = _accumulator % UPDATE_INTERVAL_MS;
+        var startedAt = haxe.Timer.stamp();
+        _context.update(Std.int(haxe.Timer.stamp() * 1000));
+        var elapsed = (haxe.Timer.stamp() - startedAt) * 1000;
+        if (elapsed > worstTickMs) worstTickMs = elapsed;
+        ticks++;
+        if (_starting && _engine.isInitialized) {
+            _starting = false;
+            var waiting = _waiting;
+            _waiting = [];
+            Browser.console.info("SKYHAXE_ROOM_ENGINE_READY");
+            for (entry in waiting) entry.ready(_engine);
+        } else if (_starting && haxe.Timer.stamp() - _startedAt > 20) {
+            fail("converted RoomEngine did not initialize within 20 seconds");
+        }
     }
 
     static function fail(error:Dynamic):Void {
@@ -129,11 +230,13 @@ class RoomEngineRuntime {
     }
 
     public static function reset():Void {
-        if (_timer != null) _timer.stop();
-        _timer = null;
+        if (_clock != null) _clock.removeEventListener(Event.ENTER_FRAME, onFrame);
+        _clock = null;
         if (_engine != null && !_engine.disposed) _engine.dispose();
         if (_context != null && !_context.disposed) _context.dispose();
         _engine = null;
+        _sessionData = null;
+        _roomSessions = null;
         _context = null;
         _starting = false;
         _waiting = [];
@@ -211,6 +314,16 @@ private class RoomEngineCommunicationService implements IHabboCommunicationManag
     public function new(connection:IConnection) _connection = connection;
     public var connection(get, never):IConnection;
     inline function get_connection():IConnection return _connection;
+    public var port(get, never):Int;
+    inline function get_port():Int return 0;
+    public function addHabboConnectionMessageEvent(event:IMessageEvent):IMessageEvent {
+        _connection.addMessageEvent(event);
+        return event;
+    }
+    public function removeHabboConnectionMessageEvent(event:IMessageEvent):Void {
+        _connection.removeMessageEvent(event);
+    }
+    public function setMessageQueueErrorDebugData():Void {}
     public var disposed(get, never):Bool;
     inline function get_disposed():Bool return _disposed;
     public function dispose():Void _disposed = true;

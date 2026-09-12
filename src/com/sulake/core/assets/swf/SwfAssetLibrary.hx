@@ -4,11 +4,13 @@ package com.sulake.core.assets.swf;
 import com.sulake.core.assets.AssetLibrary;
 import com.sulake.core.assets.AssetTypeDeclaration;
 import com.sulake.core.assets.BitmapDataAsset;
+import com.sulake.core.assets.SoundAsset;
 import com.sulake.core.utils.xml.XML;
-import haxe.ds.StringMap;
 import haxe.io.Bytes;
+import haxe.ds.IntMap;
+import haxe.ds.StringMap;
 import js.Browser;
-import js.html.Uint8Array;
+import lime.app.Future;
 import openfl.display.BitmapData;
 
 /**
@@ -36,13 +38,13 @@ class SwfAssetLibrary {
     /** Fetch `url`, read it as a SWF, and build a library named `name` from its exports. */
     public static function load(name:String, url:String, onLoaded:AssetLibrary->Void,
             onError:Dynamic->Void, ?includeAsset:String->Bool):Void {
-        fetchBytes(url, function(raw) {
-            try {
-                build(name, url, SwfFile.read(raw), onLoaded, onError, includeAsset);
-            } catch (error:Dynamic) {
-                onError('Could not read $url as a SWF: $error');
-            }
-        }, onError);
+        SwfByteCache.fetch(url).then(function(raw) {
+            SwfFile.readAsync(raw).onComplete(function(file) {
+                try build(name, url, file, onLoaded, onError, includeAsset)
+                catch (error:Dynamic) onError('Could not read $url as a SWF: $error');
+            }).onError(function(error) onError('Could not read $url as a SWF: $error'));
+            return null;
+        }).catchError(onError);
     }
 
     public static function build(name:String, url:String, file:SwfFile,
@@ -52,6 +54,8 @@ class SwfAssetLibrary {
         var prefix = name + "_";
         var manifest:Null<XML> = null;
         var characters = new StringMap<SwfCharacter>();
+        var soundBytes = new StringMap<Bytes>();
+        var undecodable:Array<String> = [];
 
         for (symbol in file.exportedNames()) {
             var character = file.symbols.get(symbol);
@@ -87,20 +91,29 @@ class SwfAssetLibrary {
         for (symbol in file.exportedNames()) {
             var character = file.symbols.get(symbol);
             if (character == null || symbol == manifestSymbol) continue;
+            // Short name: what the manifest lists and the compositor asks for.
+            var shortName = StringTools.startsWith(symbol, prefix)
+                ? symbol.substr(prefix.length) : symbol;
+            var wanted = includeAsset == null || includeAsset(shortName)
+                || aliasTargets.exists(shortName);
             switch (character.kind) {
                 case Bitmap:
-                    // Short name: what the manifest lists and the compositor asks for.
-                    var shortName = StringTools.startsWith(symbol, prefix)
-                        ? symbol.substr(prefix.length) : symbol;
-                    if (includeAsset == null || includeAsset(shortName)
-                            || aliasTargets.exists(shortName))
-                        characters.set(shortName, character);
+                    if (wanted) characters.set(shortName, character);
+                case Sound:
+                    // Decoded here rather than through the bitmaps' Future machinery: reading a
+                    // DefineSound header is a few field reads, and SoundAsset defers the expensive
+                    // part -- base64 into a Howler source -- until something actually plays.
+                    if (wanted) {
+                        try soundBytes.set(shortName, SwfSound.decodeMp3(character).mp3)
+                        catch (error:Dynamic) undecodable.push('$shortName ($error)');
+                    }
                 case _:
             }
         }
 
         var bitmaps = new StringMap<BitmapData>();
-        var undecodable:Array<String> = [];
+        var decodes = new IntMap<Future<BitmapData>>();
+        var decodeOwners = new IntMap<Int>();
         var pending = 0;
         for (_ in characters.keys()) pending++;
 
@@ -113,13 +126,24 @@ class SwfAssetLibrary {
             new AssetTypeDeclaration("image/png", BitmapDataAsset, null, "png"), false);
         library.registerAssetTypeDeclaration(
             new AssetTypeDeclaration("image/jpeg", BitmapDataAsset, null, "jpg", "jpeg"), false);
+        // Same reasoning for sound, and the same MIME the converted AssetLibrary declares for it.
+        // Without this the manifest's sound entries find no type, register nothing, and
+        // HabboSoundManagerFlash10.playSound dereferences the missing asset.
+        library.registerAssetTypeDeclaration(
+            new AssetTypeDeclaration("sound/mp3", SoundAsset, null, "mp3"), false);
         function register():Void {
             if (undecodable.length > 0)
                 Browser.console.warn('SKYHAXE_LIBRARY_ASSETS_UNDECODABLE $name: '
                     + undecodable.length + " asset(s) -- "
                     + undecodable.slice(0, 8).join(", "));
             try {
-                library.loadFromManifest(manifest, function(assetName) return bitmaps.get(assetName));
+                library.loadFromManifest(manifest, function(assetName):Dynamic {
+                    var bitmap = bitmaps.get(assetName);
+                    if (bitmap != null) return bitmap;
+                    // MP3 frames, not a Sound: SoundAsset builds the Sound on first play, so a
+                    // library's samples cost nothing until one is used.
+                    return soundBytes.get(assetName);
+                });
                 onLoaded(library);
             } catch (error:Dynamic) {
                 onError('Could not register $url from its manifest: $error');
@@ -143,8 +167,18 @@ class SwfAssetLibrary {
         // compositor's own fallback chain handles it, exactly as it does for a part the filter
         // never decoded.
         for (assetName => character in characters) {
-            SwfBitmap.decodeAsync(character).onComplete(function(pixels) {
-                bitmaps.set(assetName, SwfBitmap.toBitmapData(pixels));
+            var decode = decodes.get(character.id);
+            if (decode == null) {
+                decode = SwfBitmap.decodeBitmapAsync(character);
+                decodes.set(character.id, decode);
+            }
+            decode.onComplete(function(bitmap) {
+                // AssetLibrary owns mutable surfaces. Aliases share through the manifest, while
+                // genuinely repeated export names get independent BitmapData instances.
+                var owners = decodeOwners.get(character.id);
+                if (owners == null) owners = 0;
+                bitmaps.set(assetName, owners == 0 ? bitmap : bitmap.clone());
+                decodeOwners.set(character.id, owners + 1);
                 if (--pending == 0) register();
             }).onError(function(error) {
                 undecodable.push('$assetName ($error)');
@@ -153,23 +187,5 @@ class SwfAssetLibrary {
         }
     }
 
-    static function countKeys<T>(map:StringMap<T>):Int {
-        var total = 0;
-        for (_ in map.keys()) total++;
-        return total;
-    }
-
-    static function fetchBytes(url:String, onLoaded:Bytes->Void, onError:Dynamic->Void):Void {
-        Browser.window.fetch(url).then(function(response) {
-            if (!response.ok) throw 'HTTP ${response.status} for $url';
-            return response.arrayBuffer();
-        }).then(function(buffer) {
-            var array = new Uint8Array(buffer);
-            var bytes = Bytes.alloc(array.length);
-            for (index in 0...array.length) bytes.set(index, array[index]);
-            onLoaded(bytes);
-            return null;
-        }).catchError(onError);
-    }
 }
 #end

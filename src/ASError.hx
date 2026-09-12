@@ -9,6 +9,25 @@ import haxe.CallStack.StackItem;
  * AS3's `override`, so inheriting Haxe's toString would make faithful generated code illegal.
  */
 class ASError {
+    /** Root AS3 Error catches VM errors, but not arbitrary values thrown by application code. */
+    public static function caught(value:Dynamic):ASError {
+        if (Std.isOfType(value, ASError)) return value;
+        var nativeError = false;
+        #if openfl
+        nativeError = Std.isOfType(value, openfl.errors.Error);
+        #end
+        #if js
+        nativeError = nativeError || Std.isOfType(value, js.lib.Error);
+        #end
+        if (nativeError || Std.isOfType(value, haxe.Exception)) {
+            var result = new ASError(Std.string(value.message));
+            if (Reflect.field(value, "name") != null) result.name = value.name;
+            result.nativeStack = Reflect.field(value, "stack");
+            return result;
+        }
+        throw value;
+    }
+    var nativeStack:Null<String>;
     public var message(default, null):String;
     public var name:String;
     public var errorID(default, null):Int;
@@ -23,6 +42,7 @@ class ASError {
     }
 
     public function getStackTrace():String {
+        if (nativeStack != null) return nativeStack;
         return CallStack.toString(creationStack);
     }
 

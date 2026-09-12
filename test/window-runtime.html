@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8">
+<base href="../build/tests/v22-window-runtime/html5/bin/">
+<body><div id="openfl-content"></div><script>
+window.addEventListener('error', event => {
+  document.body.insertBefore(document.createTextNode('FAIL ' + (event.error?.stack || event.message)), document.body.firstChild);
+});
+window.addEventListener('unhandledrejection', event => {
+  document.body.insertBefore(document.createTextNode('FAIL ' + (event.reason?.stack || event.reason)), document.body.firstChild);
+});
+</script><script src="v22-window-runtime.js"></script><script>
+lime.embed('v22-window-runtime', 'openfl-content', 400, 260, {parameters: {}});
+</script></body>
