@@ -1,0 +1,6 @@
+# These inputs are pinned by byte hashes, including their original mixed line endings.
+# Preserve their bytes across Git checkouts regardless of core.autocrlf or host OS.
+.skyhaxe/** -text
+build-support/generation/** -text
+src/** -text
+public/assets/habbo-text/** -text
