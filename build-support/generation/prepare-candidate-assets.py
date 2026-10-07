@@ -91,7 +91,7 @@ def main() -> int:
         for identity, record in sorted(fonts.items()))
     (root / "EmbeddedFontCatalog.hx").write_text(
         "package skyhaxe.assets;\n\n"
-        "/** Generated from the update candidate's pinned FontAsset declarations; Truffle renders them. */\n"
+        "/** Generated from the update candidate's pinned FontAsset declarations; HabboText renders them. */\n"
         "class EmbeddedFontCatalog {\n"
         "    public static function metadataFor(className:String):{name:String, style:String} {\n"
         "        return switch (className) {\n" + cases + "\n"

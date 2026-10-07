@@ -121,7 +121,7 @@ icon= ASCompat.getDynamicProperty(BattleBallChrome.ROW_ICONS, state);
                     ASCompat.toInt(status.x + 32), ASCompat.toInt(status.y + 4), ASCompat.toInt(ASCompat.toNumber(status.w) - 37), 13, 0x1E2A2B, false, "left");
                 this._shell.chrome.text(this._services.text("gs_info_waiting"), ASCompat.toInt(status.x + 32), ASCompat.toInt(status.y + 20), ASCompat.toInt(ASCompat.toNumber(status.w) - 37), 13,
                     0x1E2A2B, false, "left");
-                this._shell.chrome.text(this._services.text("gs_info_spectators").replace("%count%", this.countSpectators(model)),
+                this._shell.chrome.text((this._services.text("gs_info_spectators") : ASAny).replace("%count%", this.countSpectators(model)),
                     ASCompat.toInt(status.x + 32), ASCompat.toInt(status.y + 36), ASCompat.toInt(ASCompat.toNumber(status.w) - 37), 13, 0x1E2A2B, false, "left");
             }
             var start:ASObject = this._shell.elementById("bb_link_gameInfo");
@@ -172,7 +172,7 @@ object = _tmp_;
                 }
                 else if (summaries != null && summaries[team] != null)
                 {
-                    this._shell.chrome.text(this._services.text("gs_info_players").replace("%players%", summaries[team].playerCount)
+                    this._shell.chrome.text(((this._services.text("gs_info_players") : ASAny).replace("%players%", summaries[team].playerCount) : ASAny)
                         .replace("%capacity%", summaries[team].capacity),
                         ASCompat.toInt(area.x + 26), ASCompat.toInt(area.y + 2), 146, 13, 0x1E2A2B, false, "left");
                 }

@@ -359,12 +359,12 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught); 	
 
         public function getWindowByName(k:String, _arg_2:UInt=1):IWindow
         {
-            return this._windowContextArray[ASCompat.toInt(_arg_2)].getDesktopWindow().getChildByName(k);
+            return (this._windowContextArray[ASCompat.toInt(_arg_2)].getDesktopWindow() : ASAny).getChildByName(k);
         }
 
         public function getActiveWindow(k:UInt=1):IWindow
         {
-            return this._windowContextArray[ASCompat.toInt(k)].getDesktopWindow().getChildAt((this._windowContext.getDesktopWindow().numChildren - 1));
+            return (this._windowContextArray[ASCompat.toInt(k)].getDesktopWindow() : ASAny).getChildAt((this._windowContext.getDesktopWindow().numChildren - 1));
         }
 
         public function getWindowContext(k:UInt):IWindowContext

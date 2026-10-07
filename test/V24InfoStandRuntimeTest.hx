@@ -1,6 +1,6 @@
 import com.sulake.core.assets.AssetLibrary;
 import com.sulake.core.utils.xml.XML;
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import com.sulake.core.window.utils.TextStyleManager;
 import com.sulake.habbo.room.RoomEngineContext;
 import com.sulake.habbo.localization.HabboLocalizationManager;
@@ -28,7 +28,7 @@ class V24InfoStandRuntimeTest extends openfl.display.Sprite {
         stage.scaleMode = openfl.display.StageScaleMode.NO_SCALE;
         stage.align = openfl.display.StageAlign.TOP_LEFT;
         js.Syntax.code("CanvasRenderingContext2D.prototype.fillText = function() { throw new Error('Browser font fallback in Infostand'); }");
-        TruffleText.load("/public/assets/truffle", ["u_regular", "u_bold", "u_small", "u_frame_title"],
+        HabboText.load("/assets/habbo-text", ["u_regular", "u_bold", "u_small", "u_frame_title"],
             function() { try { run(); } catch (error:Dynamic) { fail(error); } }, fail);
     }
     function fail(error:Dynamic):Void {
@@ -96,7 +96,7 @@ class V24InfoStandRuntimeTest extends openfl.display.Sprite {
             throw "Original desktop/handler action routing changed: " + engine.operations;
         for (_ in 0...4) manager.update(16);
         if (!widget.mainWindow.visible) throw "Original Infostand did not become visible";
-        js.Browser.document.body.insertBefore(js.Browser.document.createTextNode("V24_INFOSTAND_RUNTIME_PASS original-factory desktop-routing move rotate pickup widget-construction disposal Truffle"), js.Browser.document.body.firstChild);
+        js.Browser.document.body.insertBefore(js.Browser.document.createTextNode("V24_INFOSTAND_RUNTIME_PASS original-factory desktop-routing move rotate pickup widget-construction disposal Habbo HTML5"), js.Browser.document.body.firstChild);
     }
 }
 

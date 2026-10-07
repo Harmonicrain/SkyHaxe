@@ -68,7 +68,7 @@ try {
     if (-not $match.Success) { throw "Decode baseline produced no result: $html" }
     $observed = $match.Groups[1].Value
 
-    $baselinePath = 'evidence/swf_decode_baseline.json'
+    $baselinePath = 'historical/evidence/swf_decode_baseline.json'
     $recorded = $false
     if ($Record -or -not (Test-Path -LiteralPath $baselinePath)) {
         Set-Content -LiteralPath $baselinePath -Value $observed -Encoding utf8

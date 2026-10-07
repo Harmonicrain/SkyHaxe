@@ -1483,6 +1483,9 @@ _local_3  = _tmp_;
             this._layoutManager.addRoomView(_local_9);
             this._androidRoomGestures = AndroidRoomGestureController.create(this._roomCanvasWrapper, this.onRoomZoomGesture);
             this._canvasIDs.push(k);
+            #if html5
+            skyhaxe.CmsBridge.ready();
+            #end
         }
 
         function checkAndEnableMouseZoomEvent(k:DisplayObject)

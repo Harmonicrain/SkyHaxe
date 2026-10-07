@@ -20,46 +20,125 @@
     }
   ],
   "tracked_inputs": [
-    {"path": "build-support/generation/sync.py", "sha256": "2f7821d28cbd32e680ca83d893acbd1fa30b41aebda768eef5d8215db40af98b"},
-    {"path": "build-support/generation/m2_rules.py", "sha256": "5bc709f551c05fb8c433592b5a91d0e10fd7acaeedf02d82c758af160846fcf3"},
-    {"path": "build-support/generation/exceptions.json", "sha256": "0b0186969dd064d104796e86e09a98c6061868ffaebb59997398d4bc532fbb31"},
-    {"path": "build-support/generation/asset-inputs.json", "sha256": "a8222277ae95ba108a4b37cabedfe66f6afd1510347258e212ce91ee631fbe13"},
-    {"path": "build-support/generation/patch-converter.py", "sha256": "aa1c99c5a2747647bd8c37a1a1d578aecd9b15e13e4ffa7b98e381c05384938e"},
-    {"path": "build-support/generation/generate-exceptions.py", "sha256": "92c321e2badae8fd4058a93c11687481569018a2410fe019ff87001718fbc219"},
-    {"path": "build-support/generation/build-converter.ps1", "sha256": "f4050819dacb3dc948344c4e4f55949995ea1c3f9ff186deb2b594c7d40f318a"}
+    {
+      "path": "build-support/generation/sync.py",
+      "sha256": "2f7821d28cbd32e680ca83d893acbd1fa30b41aebda768eef5d8215db40af98b"
+    },
+    {
+      "path": "build-support/generation/m2_rules.py",
+      "sha256": "5bc709f551c05fb8c433592b5a91d0e10fd7acaeedf02d82c758af160846fcf3"
+    },
+    {
+      "path": "build-support/generation/exceptions.json",
+      "sha256": "670bdbda0462c9eb56019e4a334e3466bab52ad3b9aad983eb38653e523160b9"
+    },
+    {
+      "path": "build-support/generation/asset-inputs.json",
+      "sha256": "9d2b757c36a45d976c8b8bf4e34c1737f3f3d9de6bc137beed2a1f2f85a8d796"
+    },
+    {
+      "path": "build-support/generation/patch-converter.py",
+      "sha256": "11a29229d8844352e60d287b78317448e9c9b7891b7aaaba6ce027ff4d9b8138"
+    },
+    {
+      "path": "build-support/generation/generate-exceptions.py",
+      "sha256": "839d068efa81859133efe132eca185a6de169e85b90ddba167d3feeae8f78fe0"
+    },
+    {
+      "path": "build-support/generation/build-converter.ps1",
+      "sha256": "f4050819dacb3dc948344c4e4f55949995ea1c3f9ff186deb2b594c7d40f318a"
+    }
   ],
   "binary_inputs": [
-    {"path": ".toolchain/ax3/converter-m2.jar", "sha256": "db76c62d7243f2e947e7fdaeDE8c43856aff846e6464d9cd8b10bf801f34479b"},
-    {"path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/player/32.0/playerglobal.swc", "sha256": "b3045adb27c0ddbcb17e051f582e7dbd8ac5acc98664fd80b3586a401d0f975d"},
-    {"path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/air/airglobal.swc", "sha256": "6132254bee64aa96f3f451e3facf69d6c811bfa57282948774cacaa405a2c43c"},
-    {"path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/framework.swc", "sha256": "235a642dde9d7b44dd4c5fa0d2e0979c4e034d9fac8a10c7ac744e3682e516f3"},
-    {"path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/mx/mx.swc", "sha256": "21b3cc5c9d60d07a63222545df3bbca24a41f67494c6949cd3bd56cec5301c35"},
-    {"path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/air/airframework.swc", "sha256": "0bf99ab42683fa844ef0a7866611c52d9f0394d1e0c4d39e691f40685ccc1d32"},
-    {"path": ".toolchain/ax3/habbo-client.swc", "sha256": "e2734c6db2071c321d7d406053518c1ad77648cc846c06293e8feA1a4a2c28a9"}
+    {
+      "path": ".toolchain/ax3/converter-m2.jar",
+      "sha256": "7003058bd764dd67659e266e42a6213435316c9b38ed55eba0bbb10704cb134c"
+    },
+    {
+      "path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/player/32.0/playerglobal.swc",
+      "sha256": "b3045adb27c0ddbcb17e051f582e7dbd8ac5acc98664fd80b3586a401d0f975d"
+    },
+    {
+      "path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/air/airglobal.swc",
+      "sha256": "6132254bee64aa96f3f451e3facf69d6c811bfa57282948774cacaa405a2c43c"
+    },
+    {
+      "path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/framework.swc",
+      "sha256": "235a642dde9d7b44dd4c5fa0d2e0979c4e034d9fac8a10c7ac744e3682e516f3"
+    },
+    {
+      "path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/mx/mx.swc",
+      "sha256": "21b3cc5c9d60d07a63222545df3bbca24a41f67494c6949cd3bd56cec5301c35"
+    },
+    {
+      "path": "${SKYHAXE_FLEX_ROOT}/frameworks/libs/air/airframework.swc",
+      "sha256": "0bf99ab42683fa844ef0a7866611c52d9f0394d1e0c4d39e691f40685ccc1d32"
+    },
+    {
+      "path": ".toolchain/ax3/habbo-client.swc",
+      "sha256": "e2734c6db2071c321d7d406053518c1ad77648cc846c06293e8feA1a4a2c28a9"
+    }
   ],
   "post_generation_patch": {
     "path": "build-support/generation/patches/generated-working.patch",
-    "sha256": "7f992575b00525db8264e1b81c312370815543da24b8d3fdd87b3ad50ab443c8",
+    "sha256": "4924828fbc9834f2e892cfa8fe58e54d3df55ea497cb67a1f769714c386cd3e9",
     "adaptations": [
       "Cooperative HabboMain component preparation with readiness gates",
       "Cooperative RoomContentLoader furniture registration",
       "Infostand main-container visibility reset",
-      "WindowRenderer byte parity (terminal blank-line removal)"
+      "WindowRenderer byte parity (terminal blank-line removal)",
+      "CMS lifecycle ready, disconnect and return-to-website events",
+      "HTML5 socket host legacy null-suffix normalization",
+      "Compile-time-gated room, renderer and avatar profiling probes",
+      "Compile-time-gated room display-list marker for the bounded renderer",
+      "HTML5 avatar coloured-part cache bounded by entry count and owned bitmap bytes",
+      "Lightweight navigation-to-first-render boot timeline and per-library readiness measurements",
+      "On-demand classic-game and ticket asset loading outside ordinary room startup",
+      "Habbo HTML5 embedded-font coverage adapter"
     ]
   },
   "platform_patch": {
     "path": "build-support/generation/patches/platform-working.patch",
-    "sha256": "eef5ba15689b82bdc08426a2cbfcd90ba8f07d6fd75ec9ae9aec5ff036f49963",
+    "sha256": "c0da5a44ea1d3ae838a2b6a2ee6a9b30afa9c908280c0c49a86c918d85c89799",
     "generated_bases": [
-      {"path": "com/sulake/core/assets/loaders/BitmapFileLoader.hx", "sha256": "44cb8921e4fdc728b7cb8a8178f63c42cf5b89cc072fa32a7e6936a247a9e0a6"},
-      {"path": "com/sulake/core/window/services/WindowMouseOperator.hx", "sha256": "ba00a9e10f99dbaf16b0ef1b3df3c8be68d0beb1d669e63d9380f08862428751"},
-      {"path": "com/sulake/core/window/utils/MouseEventQueue.hx", "sha256": "23a3d7a1591f4ead0d89f20cd70b87a66fbf3da4e189ca74da198dc93690d1bf"}
+      {
+        "path": "com/sulake/core/assets/loaders/BitmapFileLoader.hx",
+        "sha256": "44cb8921e4fdc728b7cb8a8178f63c42cf5b89cc072fa32a7e6936a247a9e0a6"
+      },
+      {
+        "path": "com/sulake/core/window/services/WindowMouseOperator.hx",
+        "sha256": "ba00a9e10f99dbaf16b0ef1b3df3c8be68d0beb1d669e63d9380f08862428751"
+      },
+      {
+        "path": "com/sulake/core/window/utils/MouseEventQueue.hx",
+        "sha256": "23a3d7a1591f4ead0d89f20cd70b87a66fbf3da4e189ca74da198dc93690d1bf"
+      }
     ],
     "openfl_bases": [
-      {"path": "openfl/display/_internal/CanvasTextField.hx", "sha256": "4cabda18c92f323fa71b189addf482ec49b84e7de68af9f733ba1832048cf5a3"},
-      {"path": "openfl/text/TextField.hx", "sha256": "99942a9340f005ee8fc7c4be18cdc4117bd0434fca356c0313aed13f07d23687"},
-      {"path": "openfl/text/_internal/TextEngine.hx", "sha256": "2327d18d73fcbd5c1f678864b211eb8dd90351d734bc5d98d55f4475fac65af4"},
-      {"path": "openfl/ui/Mouse.hx", "sha256": "adce2e45b56dea1e399f49ac2cf5caa1ddea29c760624c3853012015f8d75324"}
+      {
+        "path": "openfl/display/_internal/CanvasTextField.hx",
+        "sha256": "4cabda18c92f323fa71b189addf482ec49b84e7de68af9f733ba1832048cf5a3"
+      },
+      {
+        "path": "openfl/text/TextField.hx",
+        "sha256": "99942a9340f005ee8fc7c4be18cdc4117bd0434fca356c0313aed13f07d23687"
+      },
+      {
+        "path": "openfl/text/_internal/TextEngine.hx",
+        "sha256": "2327d18d73fcbd5c1f678864b211eb8dd90351d734bc5d98d55f4475fac65af4"
+      },
+      {
+        "path": "openfl/ui/Mouse.hx",
+        "sha256": "adce2e45b56dea1e399f49ac2cf5caa1ddea29c760624c3853012015f8d75324"
+      },
+      {
+        "path": "openfl/display/BitmapData.hx",
+        "sha256": "2c174f19095cdee190ff4640a01b6212e444745cd5b230573bf7efab22ef07fa"
+      },
+      {
+        "path": "openfl/text/StyleSheet.hx",
+        "sha256": "97a3da6d7f8d7a5c39c2f12652da7360b7612e1aeb373233313257fc3aa9f641"
+      }
     ],
     "new_adapters": [
       "openfl/ui/MouseCursorData.hx",
@@ -70,14 +149,28 @@
       "Window mouse routing and queued-event parity",
       "Joint source/destination bitmap clipping",
       "Cursor data and browser cursor support",
-      "Truffle-backed embedded font discovery and OpenFL text integration"
+      "Habbo HTML5 AIR51 measurement, selection, font coverage and retained bitmap compositing",
+      "Flash-compatible custom CSS property names preserve Habbo native antialiasing for cached labels",
+      "Direct HTML5 getVector/setVector pixel paths without the ByteArray round trip"
     ]
   },
   "compatibility_source": ".skyhaxe/compat",
-  "baseline_manifest": "build-support/generation/manifests/working-implementation-tree.json",
+  "baseline_manifest": "build-support/generation/manifests/working-implementation-tree-bitmap-vector.json",
   "expected_trees": {
-    "generated": {"file_count": 5387, "total_bytes": 21484216, "aggregate_sha256": "71c9579339b550dcc8e7ed3a58b6377bcce9dd0a369ef2b61020f8cc9a59b265"},
-    "platform": {"file_count": 9, "total_bytes": 227749, "aggregate_sha256": "1a9981ef3009f9a90dda24b609c3029185b1873408ea431f3891b345835fc2c5"},
-    "compat": {"file_count": 15, "total_bytes": 68950, "aggregate_sha256": "998ee7f375e35003c923fbecc0d213e48b6e2cca92f8eaf6d9fbe535131c7c6e"}
+    "generated": {
+      "file_count": 5387,
+      "total_bytes": 21500403,
+      "aggregate_sha256": "605fa0cf84f2a43e554c6811b74a999167f845a3be5c737db91fa57fb474ed9a"
+    },
+    "platform": {
+      "file_count": 11,
+      "total_bytes": 371968,
+      "aggregate_sha256": "eae5e3c5dbc90e9263c9e7ce94665ac12b75dc2a2c3c167d887dabf1bb36a793"
+    },
+    "compat": {
+      "file_count": 15,
+      "total_bytes": 68950,
+      "aggregate_sha256": "998ee7f375e35003c923fbecc0d213e48b6e2cca92f8eaf6d9fbe535131c7c6e"
+    }
   }
 }

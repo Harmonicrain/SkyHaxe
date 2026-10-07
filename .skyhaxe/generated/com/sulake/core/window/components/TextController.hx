@@ -1103,7 +1103,7 @@ _local_5  = _tmp_;
             {
                 return k;
             }
-            if (com.sulake.core.window.text.TruffleText.fontHasGlyphs(_local_4, k))
+            if (com.sulake.core.window.text.HabboText.fontHasGlyphs(_local_4, k))
             {
                 return k;
             }
@@ -1112,7 +1112,7 @@ _local_5  = _tmp_;
             while (_local_7 < k.length)
             {
                 _local_8 = k.charAt(_local_7);
-                if ((((!com.sulake.core.window.text.TruffleText.fontHasGlyphs(_local_4, _local_8)) && (!(_local_8 == "\r"))) && (!(_local_8 == "\n"))))
+                if ((((!com.sulake.core.window.text.HabboText.fontHasGlyphs(_local_4, _local_8)) && (!(_local_8 == "\r"))) && (!(_local_8 == "\n"))))
                 {
                     _local_6 = (_local_6 + REPLACE_RANDOM_CHARS[Std.int(Math.ffloor((Math.random() * REPLACE_RANDOM_CHARS.length)))]);
                 }

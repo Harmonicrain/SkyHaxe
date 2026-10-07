@@ -10,7 +10,7 @@ import com.sulake.core.window.components.ITextFieldWindow;
 import com.sulake.core.window.events.WindowKeyboardEvent;
 import com.sulake.core.window.events.WindowMouseEvent;
 import com.sulake.core.window.utils.TextStyleManager;
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import com.sulake.habbo.localization.HabboLocalizationManager;
 import com.sulake.habbo.localization._enum.HabboLocalizationFlags;
 import com.sulake.habbo.window.HabboWindowManagerComponent;
@@ -132,7 +132,7 @@ class HabboCommunicationDemo extends Sprite {
             skyhaxe.BootMetrics.mark("variables-ready");
             joinBootstrap();
         }, function(error) { bootFailed = true; fail('Could not load $VARIABLES_URL: $error'); });
-        TruffleText.load("/assets/truffle",
+        HabboText.load("/assets/habbo-text",
             ["u_regular", "u_bold", "u_small", "u_frame_title", "button_shiny_bold"],
             function() {
                 fontsReady = true;

@@ -732,6 +732,9 @@ return k;
 
         public function update(k:UInt)
         {
+            #if skyhaxe_profile
+            var _skyhaxeProfileStart = skyhaxe.ProfileRuntime.begin();
+            #end
             var _local_2 = 0;
             var _local_3:IRoomInstance = null;
             RoomEnterEffect.turnVisualizationOn();
@@ -756,6 +759,9 @@ return k;
                 }
             }
             RoomEnterEffect.turnVisualizationOff();
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.end("roomUpdateMs", _skyhaxeProfileStart);
+            #end
         }
 
         function updateMouseCursor()

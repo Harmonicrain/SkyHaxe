@@ -137,6 +137,11 @@ try {
     & haxelib set lime 8.3.2 | Out-Null
     & haxelib set openfl 9.5.2 | Out-Null
 
+    & (Join-Path $PSScriptRoot "apply-toolchain-patches.ps1")
+    if ($LASTEXITCODE -ne 0) {
+        throw "Could not apply guarded toolchain adaptations"
+    }
+
     Write-Host "Haxe   $(& haxe --version)"
     Write-Host "Neko   $(& neko -version)"
     Write-Host "Haxelib $(& haxelib version)"
@@ -146,4 +151,3 @@ try {
 finally {
     Pop-Location
 }
-

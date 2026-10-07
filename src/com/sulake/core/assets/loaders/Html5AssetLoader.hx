@@ -76,20 +76,7 @@ class Html5AssetLoader extends EventDispatcherWrapper implements IAssetLoader {
                 emit(AssetLoaderEvent.ASSETLOADEREVENTCOMPLETE);
             }
         });
-        // The local NGH corpus is mounted by the client server. Port 80 is a different
-        // browser origin; preserve arbitrary remote URLs and only remap this known mount.
-        var actual = request;
-        #if html5
-        var parsed = new js.html.URL(request.url, js.Browser.window.location.href);
-        if ((parsed.hostname == "localhost" || parsed.hostname == "127.0.0.1")
-                && StringTools.startsWith(parsed.pathname, "/ngh/")) {
-            actual = new URLRequest(parsed.pathname + parsed.search);
-            actual.method = request.method;
-            actual.data = request.data;
-            actual.contentType = request.contentType;
-            actual.requestHeaders = request.requestHeaders;
-        }
-        #end
+        var actual = skyhaxe.compat.BrowserAssetUrl.normalizeRequest(request);
         transport.load(actual);
     }
     inline function active(ticket:Int):Bool return !disposed && ticket == generation;

@@ -3,7 +3,7 @@ import openfl.text.TextFormat;
 import openfl.display.BitmapData;
 
 @:access(openfl.text.TextField)
-@:access(com.sulake.core.window.text.TruffleText)
+@:access(com.sulake.core.window.text.HabboText)
 class V21SelectionTest {
     static function draw(field:TextField):BitmapData {
         var pixels = new BitmapData(160, 40, true, 0xFFFFFFFF);
@@ -11,7 +11,9 @@ class V21SelectionTest {
         return pixels;
     }
     static function main() {
-        com.sulake.core.window.text.TruffleText.instance = new com.sulake.core.window.text.TruffleText(js.Syntax.code("window.__truffleAPI"));
+        com.sulake.core.window.text.HabboText.load("/assets/habbo-text", [], run, function(e) { throw e; });
+    }
+    static function run() {
         var field = new TextField();
         field.width = 160;
         field.height = 40;

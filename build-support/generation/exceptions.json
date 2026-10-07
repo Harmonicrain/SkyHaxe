@@ -2,10 +2,10 @@
   "gate": "M2a-exception-manifest",
   "generated_by": "build-support/generation/generate-exceptions.py",
   "rule": "Every hand-maintained Haxe file under com/sulake/core is listed. Files with an AS3 counterpart pin that source's hash: the sync stops if it changes.",
-  "core_haxe_files": 57,
-  "tracked_haxe_files": 72,
+  "core_haxe_files": 63,
+  "tracked_haxe_files": 78,
   "hand_written_ports": 33,
-  "platform_exceptions": 39,
+  "platform_exceptions": 45,
   "unannotated": [],
   "note": "Ports are not legitimate exceptions. They are the current cost of having reached G2-G4b before the conversion pipeline existed, and M2b/M2d must replace them with generated output.",
   "exceptions": [
@@ -1878,7 +1878,7 @@
     },
     {
       "haxe": "src/com/sulake/core/window/WindowController.hx",
-      "haxe_sha256": "188bcd151f2614224b318fc9925ec7632c8475f2c461b0ac6cbca9bcc268d018",
+      "haxe_sha256": "5f41d283279656d384f800cf0e20af8e16b5cefda92a733e13f481a9a0b6c01c",
       "reason": "Phase 2 contract slice, written before the sync pipeline existed. Not a designed exception: replace with generated output.",
       "contract_tests": [
         "test/G1dWindowLayoutTest.hx",
@@ -2051,6 +2051,8 @@
           "boolProperty",
           "buildInternalChildren",
           "captionFormat",
+          "captionLayoutOptions",
+          "captionStyle",
           "childWindows",
           "childrenWithTag",
           "configureContentHost",
@@ -2060,10 +2062,10 @@
           "displayObject",
           "dispose",
           "drawDiagnosticSkin",
+          "drawHabboTextCaption",
           "drawNamedBitmap",
           "drawSkin",
           "drawText",
-          "drawTruffleCaption",
           "endParamDrag",
           "finalizeLayout",
           "findChildByName",
@@ -2096,8 +2098,6 @@
           "set_scrollV",
           "stretchTo",
           "themeSaysInvisible",
-          "truffleLayoutOptions",
-          "truffleStyle",
           "updateScrollBounds"
         ],
         "source_names_absent_from_haxe": [
@@ -2251,11 +2251,86 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/loaders/Html5AssetLoader.hx",
-      "haxe_sha256": "46098e6af9f6303993ac01120f892afe3370d9c71561c9f34e48b4c13e5b5ccd",
+      "haxe_sha256": "ca496bed39c95338cf0b1c9a3cd7bb3701521ab207e586f523142be77dbd77ee",
       "reason": "Unavoidable browser individual-file transport and image decode boundary, exposing the original AssetLoaderStruct event contract without Flash LibraryLoader/FZip.",
       "contract_tests": [
         "test/V22AssetLoadingTest.hx",
         "historical/tooling/scripts/verify-window-services.ps1"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/HabAtlas.hx",
+      "haxe_sha256": "bf2ded295bb7c78a21be1d8529ab716ca258740401bf6f86b6777562553dd76b",
+      "reason": "HTML5 shared atlas decode and bitmap ownership boundary for converted HAB bundles; Flash materialized equivalent exported bitmap classes through its SWF loader.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/HabFrame.hx",
+      "haxe_sha256": "f8c31c95e83a50c6fc67d7cfb01d0f59281c7381582b9d24f0b52d073d8425a7",
+      "reason": "HAB atlas-frame view preserving the exported bitmap dimensions and class identity without eagerly copying every frame from its shared browser atlas.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/HabPng.hx",
+      "haxe_sha256": "f1e39622b27f8cc899be070f1b5efb346d8af30a256cfb7935d9e22280f21b11",
+      "reason": "Deterministic PNG-to-straight-RGBA browser boundary for HAB atlases and embedded assets; avoids the alpha rounding introduced by Canvas image readback.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/HabReader.hx",
+      "haxe_sha256": "3f70d752760623215b41b5917b93de1ffae442aaec97187c5d639f384f1751d0",
+      "reason": "HAB container reader exposing the same named bitmap, binary and sound export contract as SwfFile; the browser has no Flash Loader or SymbolClass registry.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
+      "haxe": "src/com/sulake/core/assets/swf/HabUrl.hx",
+      "haxe_sha256": "21031307e844c3ade9aed399a23b22806a6866b4877da20f7525787329c76ba7",
+      "reason": "Browser asset transport boundary mapping configured SWF prefixes to HAB mirrors and falling back to the original SWF when a HAB download fails.",
+      "contract_tests": [
+        "test/G2SwfReaderTest.hx",
+        "test/G2SwfReaderBrowserMain.hx"
       ],
       "as3_source": null,
       "state": "platform exception -- no AS3 counterpart",
@@ -2281,7 +2356,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfBitmap.hx",
-      "haxe_sha256": "241aa4af32aa63d8312637b48495acbe1b1825c2cb5ef5e59edf9411624de8d9",
+      "haxe_sha256": "aa876cd90e3d14c0160c174fea4864d3c6381e586996085a48b7b192d5528a83",
       "reason": "SWF bitmap decoding, as above.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2296,7 +2371,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfByteCache.hx",
-      "haxe_sha256": "1c6d6edf4535af33fe19ecabe14f88ef90d315d82769b08a5a9db18bf3893357",
+      "haxe_sha256": "493ec0bec370ea22f4bd8cdc8d3cb6661a40c7f2c92256d101faa928cb7d14ce",
       "reason": "Browser SWF transport boundary. It deduplicates immutable response bytes and keeps a bounded revision-aware session cache; mutable decoded assets remain separately owned.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2311,7 +2386,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfCharacter.hx",
-      "haxe_sha256": "9a655416e95a661d87c32eee0186e41a4131d7957a631b5cb5b82adb297c9184",
+      "haxe_sha256": "f8874d3279355fecb2e6a4848b6812bd92c244186f3d0a65ebd11b542c4f308c",
       "reason": "SWF character model, as above.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2326,7 +2401,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfDecodeWorkerPool.hx",
-      "haxe_sha256": "00a541c64ed22c4b225a1c6c204c57e9f9f94c8a88fc3018524e7bcf903cc1b3",
+      "haxe_sha256": "4bba11eabbe19d58023d744bbfe3f4d846e92d770f5696afadd23fbe488ddb32",
       "reason": "Browser worker scheduler for the existing deterministic lossless SWF decoder. Flash decoded these images natively; HTML5 must keep that CPU work off the UI/network thread.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2356,7 +2431,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfFile.hx",
-      "haxe_sha256": "d2978dcbd296d9a0707b4584af17688542f71fc12b95e5fb4fc17d2ce13e5cb0",
+      "haxe_sha256": "5b85afe29132d402807396e8a3f9e11fbcf0118b56a994f4f19344d9fd96d771",
       "reason": "SWF container reader. Flash loaded SWFs natively; nothing in the AS3 corresponds to parsing one by hand.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2371,7 +2446,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfLoadMetrics.hx",
-      "haxe_sha256": "8cae1048b4bfd3fe4b8bf28788d2e93b1f340b508f01140f5680892abbdf92c6",
+      "haxe_sha256": "01eb8df7093fec614bb13d2a16c9c983221a2e83c4213777dcb8327bcd976b8f",
       "reason": "Browser-only phase telemetry for measuring SWF fetch, parse, decode and registration without changing the converted client lifecycle.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2401,7 +2476,7 @@
     },
     {
       "haxe": "src/com/sulake/core/assets/swf/SwfTag.hx",
-      "haxe_sha256": "2091d839b57a2d447df1e3a1cc9b175918e91c28e393b1caf711e42ed03ca246",
+      "haxe_sha256": "e6d5e9190cf042eb313446d44f27484661cb64e100b32c154b2c6db14e2f4772",
       "reason": "SWF tag constants, as above.",
       "contract_tests": [
         "test/G2SwfReaderTest.hx",
@@ -2520,7 +2595,7 @@
     },
     {
       "haxe": "src/com/sulake/core/utils/xml/XML.hx",
-      "haxe_sha256": "9502bfee29c36867e071929ed6bd23f4487f49307576c9352b7afca9df4d3241",
+      "haxe_sha256": "3d8f16ef932a60f96ef9d36667a8ac4a163ca1a0c8637a0f74cfdf5bea62d3f4",
       "reason": "HTML5 E4X compatibility adapter. Haxe/JavaScript has no native AS3 XML type.",
       "contract_tests": [
         "test/G1dXmlTest.hx"
@@ -2562,9 +2637,24 @@
       }
     },
     {
+      "haxe": "src/com/sulake/core/window/text/HabboText.hx",
+      "haxe_sha256": "866a3f5e74603c45d81adeed02fc01a4935b89ae94ec9912fff80f04a898198d",
+      "reason": "Platform adapter for the pinned Habbo HTML5 AIR51 font renderer, measured OpenFL text, font-program coverage and retained BitmapData compositing.",
+      "contract_tests": [
+        "test/G1dWindowLayoutTest.hx",
+        "test/G4bWindowBrowserMain.hx"
+      ],
+      "as3_source": null,
+      "state": "platform exception -- no AS3 counterpart",
+      "api_surface_check": {
+        "mode": "platform adapter with no AS3 class identity",
+        "status": "covered by declared contract tests"
+      }
+    },
+    {
       "haxe": "src/com/sulake/core/window/text/TruffleText.hx",
-      "haxe_sha256": "74aacd44d826de96b6135d7a04617b96aadca90baeb9aa3e70d994915a28a6cf",
-      "reason": "Platform adapter. Flash rasterised text in the VM; HTML5 needs an explicit engine to reproduce Ubuntu at advanced anti-aliasing with sharpness 80 and thickness -15.",
+      "haxe_sha256": "d90e85750a489d0de01e66aeccf55ec9bb7ea595201d15f562861613702b6a00",
+      "reason": "Compatibility typedef for retained probes and the pinned converter; resolves to HabboText.",
       "contract_tests": [
         "test/G1dWindowLayoutTest.hx",
         "test/G4bWindowBrowserMain.hx"
@@ -2721,8 +2811,8 @@
     },
     {
       "haxe": "src/mx/core/FontAsset.hx",
-      "haxe_sha256": "823a373a83aa8aaf1fe80167d2871294ab369d24940d8662260e498fde3a444a",
-      "reason": "Flex embedded-font identity boundary. Generated FontAsset subclasses retain their hash-pinned AS3 family/style metadata while Truffle owns all browser glyph measurement and rasterization.",
+      "haxe_sha256": "1441b010f4ba7db956103e3b7df6d881adaee315da22e800a1ba1cf0df641b8e",
+      "reason": "Flex embedded-font identity boundary. Generated FontAsset subclasses retain their hash-pinned AS3 family/style metadata while HabboText owns browser glyph measurement and rasterization.",
       "contract_tests": [
         "test/V21FontCoverageTest.hx",
         "historical/evidence/prepare_embedded_candidate.py"

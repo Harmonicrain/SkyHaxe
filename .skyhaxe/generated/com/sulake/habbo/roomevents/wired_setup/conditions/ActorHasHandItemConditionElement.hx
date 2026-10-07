@@ -117,7 +117,7 @@ _local_2 = _tmp_;
             {
                 return;
             }
-            this.setSelectedHandItemByCode(ASCompat.toInt(_local_1.getModel().getNumber(RoomObjectVariableEnum.FIGURE_CARRY_OBJECT)));
+            this.setSelectedHandItemByCode(ASCompat.toInt((_local_1.getModel() : ASAny).getNumber(RoomObjectVariableEnum.FIGURE_CARRY_OBJECT)));
         }
 
 	public function new() { super(); }

@@ -229,22 +229,30 @@
   "tool_inputs": [
     {
       "path": "package.json",
-      "sha256": "798b49e7dc904ab5a967fe137ab6904f00f5f3bda3e5de3047c4aea1ea07dbac"
+      "sha256": "6f88df4f7a7369e51fa1adf20720f99c14d15a90c40cae918d9c0e98497052d2"
     },
     {
       "path": "package-lock.json",
-      "sha256": "0ce9c75119cd11ad3c09495fd44500ae43a869afe9fe531d54dbdd5e463aa2e3"
+      "sha256": "70009a0ae40196c51ddf4bcec38ba8ba1af06292ec39c0009f3296e1e98a7b0f"
     },
     {
-      "path": "scripts/build-truffle.mjs",
-      "sha256": "79ece78f1e5dd777dcccbaffc20bd00b8c37a0b8d27c84b9e67494416237c20a"
+      "path": "scripts/build-habbo-text.mjs",
+      "sha256": "ad356283c03418d0f8c5f929acd75ec573b8c6e9c15499b2c4b7afa93fecc1ad"
+    },
+    {
+      "path": "scripts/extract-habbo-fonts.mjs",
+      "sha256": "4f8f11b91578d65ba6a6cb8a65a0917796b4548ca6eb8517e299446e418320e9"
+    },
+    {
+      "path": "src/skyhaxe/text/habbo-text.mjs",
+      "sha256": "fdd4cc9984c44bbcf6077959fdc0c29750eb9bc216221932c28321f396b3ea04"
     }
   ],
-  "current_truffle_payload": {
-    "path": "public/assets/truffle",
-    "tree_sha256": "32865b8401d21105dc5b476578e28625837b8eca5239a5bf00d6a9453f62d63c",
-    "files": 57,
-    "bytes": 103325683
-  },
-  "refresh_gap": "The current Truffle payload is pinned but is not yet regenerated from HabboWindowManagerCom_text_styles_css.bin by a checked-in command. Any style-input change now stops sync; closing M2e requires an automatic catalogue/payload regeneration step and production pruning."
+  "reference": "Pinned Habbo HTML5 AIR51 assets; regenerate with scripts/extract-habbo-fonts.mjs and the hash-checked reference ASAR.",
+  "current_text_payload": {
+    "path": "public/assets/habbo-text",
+    "tree_sha256": "3e2c86dddb5ee21d06d341a694ce5da0c5cf4548c651c05e0c7ea99c7834a69c",
+    "files": 19,
+    "bytes": 10509074
+  }
 }

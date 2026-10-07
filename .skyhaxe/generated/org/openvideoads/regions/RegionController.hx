@@ -107,7 +107,7 @@ function  get__Str_26134():Array<ASAny>
                 {
                     if (this._Str_3178[_local_3].hasContentTypes())
                     {
-                        if (this._Str_3178[_local_3].contentTypes.toUpperCase().indexOf(_arg_2.toUpperCase()) > -1)
+                        if ((this._Str_3178[_local_3].contentTypes.toUpperCase() : ASAny).indexOf(_arg_2.toUpperCase()) > -1)
                         {
                             return this._Str_3178[_local_3];
                         }

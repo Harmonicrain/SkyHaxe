@@ -162,7 +162,11 @@ ASCompat.setDynamicProperty(                    parameters, key, ASCompat.getDyn
             if (returnToAirLoginCallback != null)
             {
                 returnToAirLoginCallback();
+                return;
             }
+            #if html5
+            skyhaxe.CmsBridge.returnToWebsite();
+            #end
         }
 
         public static function showAirLoginError(message:String)

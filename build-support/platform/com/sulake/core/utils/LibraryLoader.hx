@@ -59,6 +59,7 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
     var _end:Int = 0;
     var _errorMsg = "";
     var _debugMsg = "";
+    var _metricsId = -1;
 
     public function new(context:LoaderContext = null, paused:Bool = false, debug:Bool = false) {
         super();
@@ -99,9 +100,12 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
         _request = request;
         _request.url = browserUrl(request.url);
         _name = parseName(_request.url);
+        _metricsId = SwfLoadMetrics.beginLibrary(_name, _request.url);
         _ready = false;
         if (!_paused) start();
     }
+
+    public function markQueued():Void SwfLoadMetrics.libraryMark(_metricsId, "queuedMs");
 
     public function resume():Void {
         if (_paused && !disposed) {
@@ -112,9 +116,12 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
 
     function start():Void {
         if (_request == null || disposed) return;
+        SwfLoadMetrics.libraryMark(_metricsId, "startedMs");
         _start = flash.Lib.getTimer();
         var target = _request.url;
         SwfByteCache.fetch(target).then(function(bytes) {
+            SwfLoadMetrics.libraryMark(_metricsId, "transportReadyMs");
+            SwfLoadMetrics.libraryValue(_metricsId, "bytes", bytes.length);
             _status = 200;
             _bytesLoaded = _bytesTotal = bytes.length;
             dispatchEvent(new LibraryLoaderEvent(LibraryLoaderEvent.LIBRARY_LOADER_EVENT_PROGRESS,
@@ -123,6 +130,7 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
             SwfFile.readAsync(bytes).onComplete(function(file) {
                 SwfLoadMetrics.add("parseWallMs", Browser.window.performance.now() - parseStarted);
                 SwfLoadMetrics.count("filesParsed");
+                SwfLoadMetrics.libraryMark(_metricsId, "parseReadyMs");
                 materialize(file);
             }).onError(function(error) {
                 fail('Could not read $target as a SWF: $error');
@@ -153,10 +161,12 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
         var decoded = new IntMap<Future<BitmapData>>();
         var lazyLossless = new IntMap<LazySwfBitmap>();
         var planned = new StringMap<Bool>();
+        var encodedDecodes = 0;
         function schedule(assetName:String, character:SwfCharacter, source:String):Void {
             if (planned.exists(assetName)) return;
             planned.set(assetName, true);
-            if (character.encoding() == "zlib") {
+            // .hab atlas frames are cut out of an already-decoded sheet, so they stay lazy too.
+            if (character.encoding() == "zlib" || character.encoding() == "atlas") {
                 var lazy = lazyLossless.get(character.id);
                 if (lazy == null) {
                     lazy = new LazySwfBitmap(character);
@@ -167,6 +177,7 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
                 return;
             }
             pending++;
+            encodedDecodes++;
             var future = decoded.get(character.id);
             if (future == null) {
                 SwfLoadMetrics.count("bitmapDecodes");
@@ -228,6 +239,8 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
         }
 
         _scanning = false;
+        SwfLoadMetrics.libraryValue(_metricsId, "encodedDecodes", encodedDecodes);
+        SwfLoadMetrics.libraryValue(_metricsId, "decodePending", pending);
         if (pending == 0) finish(resource, failed);
     }
 
@@ -239,6 +252,7 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
 
     function finish(resource:Dynamic, failed:Array<String>):Void {
         if (disposed || _ready) return;
+        SwfLoadMetrics.libraryMark(_metricsId, "decodeReadyMs");
         if (failed.length > 0)
             Browser.console.warn("SKYHAXE_SWF_LIBRARY_PARTIAL " + _name + " " + failed.slice(0, 8).join(" | "));
         var registerStarted = Browser.window.performance.now();
@@ -250,6 +264,7 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
         dispatchEvent(new Event(LIBRARY_LOADER_FINALIZE));
         SwfLoadMetrics.add("registrationMs", Browser.window.performance.now() - registerStarted);
         SwfLoadMetrics.count("librariesReady");
+        SwfLoadMetrics.libraryMark(_metricsId, "completeMs");
     }
 
     function fail(message:String):Void {
@@ -283,12 +298,9 @@ class LibraryLoader extends EventDispatcherWrapper implements IDisposable {
     }
 
     static function browserUrl(value:String):String {
-        var parsed = new js.html.URL(value, Browser.location.href);
-        if ((parsed.hostname == "localhost" || parsed.hostname == "127.0.0.1")
-                && parsed.port == "") {
-            parsed.protocol = Browser.location.protocol;
-            parsed.host = Browser.location.host;
-        }
-        return parsed.href;
+        // Preserve explicit origins exactly. Replacing a portless localhost host with the page's
+        // host silently moved operator-supplied URLs from Apache on port 80 to the SkyHaxe server.
+        // Relative URLs still resolve normally against the browser client page.
+        return new js.html.URL(value, Browser.location.href).href;
     }
 }

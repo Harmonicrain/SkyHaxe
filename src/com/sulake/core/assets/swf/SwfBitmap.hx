@@ -72,6 +72,13 @@ class SwfBitmap {
 
 	/** Decode directly to the object consumers need, retaining native PNG/JPEG decode output. */
 	public static function decodeBitmapAsync(character:SwfCharacter):Future<BitmapData> {
+		if (character.atlas != null) {
+			#if (js && html5)
+			return character.atlas.pixelsAsync().then(function(pixels) return Future.withValue(toBitmapData(pixels)));
+			#else
+			return Future.withValue(toBitmapData(character.atlas.pixels()));
+			#end
+		}
 		if (character.encoding() == "zlib") {
 			#if (js && html5)
 			var started = js.Browser.window.performance.now();
@@ -111,6 +118,7 @@ class SwfBitmap {
 	}
 
 	public static function decode(character:SwfCharacter):SwfPixels {
+		if (character.atlas != null) return character.atlas.pixels();
 		var payload = character.payload;
 		var format = payload.get(2);
 		var width = payload.getUInt16(3);
@@ -144,6 +152,13 @@ class SwfBitmap {
 	 * browser image decoder; lossless SWF bitmaps stay on the deterministic synchronous path.
 	 */
 	public static function decodeAsync(character:SwfCharacter):Future<SwfPixels> {
+		if (character.atlas != null) {
+			#if (js && html5)
+			return character.atlas.pixelsAsync();
+			#else
+			return Future.withValue(character.atlas.pixels());
+			#end
+		}
 		if (character.encoding() == "zlib") {
 			return Future.withValue(decode(character));
 		}

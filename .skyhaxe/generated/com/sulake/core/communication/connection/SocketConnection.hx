@@ -122,6 +122,13 @@ package com.sulake.core.communication.connection
 
         public function init(k:String, _arg_2:UInt=0):Bool
         {
+            #if (js && html5)
+            var nullIndex = k.indexOf(String.fromCharCode(0));
+            if (nullIndex >= 0)
+            {
+                k = k.substring(0, nullIndex);
+            }
+            #end
             if (this._stateListener != null)
             {
                 this._stateListener.connectionInit(k, ASCompat.toInt(_arg_2));
@@ -445,6 +452,9 @@ public function  get_connected():Bool
         function onClose(k:Event)
         {
             this._timeOutTimer.stop();
+            #if html5
+            skyhaxe.CmsBridge.disconnected(0, false);
+            #end
             ErrorReportStorage.addDebugData(this.getKeyValue([([65223, 65178, 65178, 65177] : Array<Dynamic>), ([65185, 65186, 65168, 65178] : Array<Dynamic>), ([65171, 65171, 65196, 65174] : Array<Dynamic>), ([65169, 65176, 65162] : Array<Dynamic>)], 0), (this.getKeyValue([([65223, 65181, 65177, 65172] : Array<Dynamic>), ([65185, 65185, 65252, 65178] : Array<Dynamic>), ([65172, 65249] : Array<Dynamic>)], 0) + Std.string(flash.Lib.getTimer() - this._timeOutStarted)));
             //ErrorReportStorage.addDebugData("ConnectionTimer", ("Closed in " + (getTimer() - this._timeOutStarted)));
             dispatchEvent(k);

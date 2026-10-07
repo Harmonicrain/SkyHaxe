@@ -75,7 +75,7 @@ EXTRA_PLATFORM_FILES = {
     },
     "src/mx/core/FontAsset.hx": {
         "reason": "Flex embedded-font identity boundary. Generated FontAsset subclasses retain "
-                  "their hash-pinned AS3 family/style metadata while Truffle owns all browser "
+                  "their hash-pinned AS3 family/style metadata while HabboText owns browser "
                   "glyph measurement and rasterization.",
         "contract_tests": ["test/V21FontCoverageTest.hx", "historical/evidence/prepare_embedded_candidate.py"],
     },
@@ -114,6 +114,21 @@ EXTRA_PLATFORM_FILES = {
 SEAM_REPLACEMENTS = {}
 
 ANNOTATIONS = {
+    "assets/swf/HabAtlas.hx":
+        "HTML5 shared atlas decode and bitmap ownership boundary for converted HAB bundles; "
+        "Flash materialized equivalent exported bitmap classes through its SWF loader.",
+    "assets/swf/HabFrame.hx":
+        "HAB atlas-frame view preserving the exported bitmap dimensions and class identity "
+        "without eagerly copying every frame from its shared browser atlas.",
+    "assets/swf/HabPng.hx":
+        "Deterministic PNG-to-straight-RGBA browser boundary for HAB atlases and embedded "
+        "assets; avoids the alpha rounding introduced by Canvas image readback.",
+    "assets/swf/HabReader.hx":
+        "HAB container reader exposing the same named bitmap, binary and sound export "
+        "contract as SwfFile; the browser has no Flash Loader or SymbolClass registry.",
+    "assets/swf/HabUrl.hx":
+        "Browser asset transport boundary mapping configured SWF prefixes to HAB mirrors "
+        "and falling back to the original SWF when a HAB download fails.",
     "assets/SoundAsset.hx":
         "Platform adapter for the sound/mp3 asset type on the SWF-library path. Flash embedded an "
         "MP3 as a class extending Sound and decoded it in the VM; nothing constructs a Sound on "
@@ -124,9 +139,11 @@ ANNOTATIONS = {
     "utils/ASProxy.hx": "Flash VM enumeration adapter: invokes the converted nextNameIndex/nextValue hooks for window IIterator values; never enumerates implementation fields.",
     "utils/ASNumericType.hx": "AS3 numeric type-test boundary: Haxe UInt is an erased abstract on JavaScript, "
         "so uint instance tests require a numeric/range check rather than a class object.",
+    "window/text/HabboText.hx":
+        "Platform adapter for the pinned Habbo HTML5 AIR51 font renderer, measured OpenFL text, "
+        "font-program coverage and retained BitmapData compositing.",
     "window/text/TruffleText.hx":
-        "Platform adapter. Flash rasterised text in the VM; HTML5 needs an explicit engine to "
-        "reproduce Ubuntu at advanced anti-aliasing with sharpness 80 and thickness -15.",
+        "Compatibility typedef for retained probes and the pinned converter; resolves to HabboText.",
     "window/theme/ElementDescription.hx":
         "Loader for habbo_element_description_xml.bin. The AS3 reaches this table through "
         "SkinParserUtil and the component factory; SkyHaxe reads it directly.",

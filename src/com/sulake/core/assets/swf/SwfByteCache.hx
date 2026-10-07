@@ -27,12 +27,8 @@ class SwfByteCache {
             return flight;
         }
         var started = now();
-        flight = Browser.window.fetch(url).then(function(response) {
-            if (!response.ok) throw 'HTTP ${response.status} for $url';
-            return response.arrayBuffer();
-        }).then(function(buffer) {
-            // Bytes.ofData wraps the fetched ArrayBuffer on JS instead of copying it byte by byte.
-            var bytes = Bytes.ofData(buffer);
+        // The .hab twin when one is configured (HabUrl), else the SWF; both read via SwfFile.
+        flight = HabUrl.download(url).then(function(bytes) {
             pending.remove(url);
             SwfLoadMetrics.add("fetchMs", now() - started);
             SwfLoadMetrics.add("fetchedBytes", bytes.length);

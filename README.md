@@ -1,7 +1,7 @@
 # SkyHaxe
 
 SkyHaxe is the browser/OpenFL port of the NGH Habbo client. The supported client uses the
-converted original component graph and narrow browser/platform adaptations; Truffle renders its
+converted original component graph and narrow browser/platform adaptations; the pinned Habbo HTML5 AIR51 renderer draws its
 fonts.
 
 ## Build the client
@@ -27,18 +27,18 @@ Then open `http://localhost:8766/#sso=YOUR_TICKET`.
 
 ## Where to work
 
-- `project.xml` — the one supported OpenFL project.
-- `client/` — browser entry point and editable client configuration.
-- `src/` — deliberate browser/OpenFL seams and hand-maintained runtime code.
-- `.skyhaxe/generated/` — generated Haxe component graph.
-- `.skyhaxe/platform/` — generated/platform patch result used by the supported build.
-- `.skyhaxe/compat/` — AS3 compatibility layer used by converted code.
-- `build-support/generation/` — pinned conversion rules, closures, manifests and guarded patches.
-- `build-support/assets/` — OpenFL indexes for original clean-client assets.
-- `build-support/platform/` — tracked platform overrides that take precedence at compile time.
-- `public/` — browser payloads, including the SWF decoder worker and Truffle resources.
-- `test/` — retained semantic regression sources.
-- `historical/` — superseded projects, probes, tooling and delivery records; not supported entrypoints.
+- `project.xml` â€” the one supported OpenFL project.
+- `client/` â€” browser entry point and editable client configuration.
+- `src/` â€” deliberate browser/OpenFL seams and hand-maintained runtime code.
+- `.skyhaxe/generated/` â€” generated Haxe component graph.
+- `.skyhaxe/platform/` â€” generated/platform patch result used by the supported build.
+- `.skyhaxe/compat/` â€” AS3 compatibility layer used by converted code.
+- `build-support/generation/` â€” pinned conversion rules, closures, manifests and guarded patches.
+- `build-support/assets/` â€” OpenFL indexes for original clean-client assets.
+- `build-support/platform/` â€” tracked platform overrides that take precedence at compile time.
+- `public/` â€” browser payloads, including the SWF decoder worker and Habbo font resources.
+- `test/` â€” retained semantic regression sources.
+- `historical/` â€” superseded projects, probes, tooling and delivery records; not supported entrypoints.
 
 ## Source and asset ownership
 
@@ -95,3 +95,22 @@ verification; the changed feature and compact client journeys still need runtime
 
 Historical migration detail is retained under `historical/docs/`. Current layout ownership is
 described in `REPOSITORY_LAYOUT.md`.
+
+## Font rendering
+
+The font engine and matching assets come from the pinned 6 October 2026 Habbo HTML5 release.
+`src/com/sulake/core/window/text/HabboText.hx` adapts OpenFL measurements, drawing and coverage;
+`src/skyhaxe/text/habbo-text.mjs` selects the native AIR51 path and the reference fallback paths.
+The deployable, hash-checked resources are tracked under `public/assets/habbo-text/`.
+`text.resource.base` can select a different resource URL; its default is relative to the page.
+
+Recreate the engine dependency closure and font resources from the reference archive:
+
+```powershell
+node scripts/extract-habbo-fonts.mjs C:\path\to\app.asar
+```
+
+The extractor checks the archive hash and parses the launcher without running its entry point.
+Ordinary builds verify the packaged fonts and copy the maintained adapter, without needing ASAR.
+See [font integration and verification](docs/habbo-font-rendering.md) for the architecture,
+reference comparison commands, supported fallbacks and provenance.

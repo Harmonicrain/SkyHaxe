@@ -2,7 +2,7 @@ package com.sulake.core.window;
 
 import com.sulake.core.window.enums.WindowParam;
 import com.sulake.core.window.graphics.WindowSkinRenderer;
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import haxe.ds.StringMap;
 import com.sulake.core.window.theme.ElementDescription;
 import openfl.display.Bitmap;
@@ -290,7 +290,7 @@ class WindowController extends Sprite implements IWindow {
     /**
      * Runtime equivalent of the clean client's writable `IWindow.caption` property.
      * Route updates through the same invalidation path as inherited captions so labels are
-     * re-rasterised by Truffle instead of mutating an obsolete TextField fallback.
+     * re-rasterised by HabboText instead of mutating an obsolete TextField fallback.
      */
     public function setCaption(value:String):Void {
         inheritCaption(value == null ? "" : value);
@@ -306,12 +306,12 @@ class WindowController extends Sprite implements IWindow {
     function resolveIntrinsicSize():Void {
         if (caption == "" || !isTextual()) return;
         if (!hasParam(WindowParam.INHERIT_CAPTION)) return;
-        var truffle = TruffleText.instance;
-        if (truffle == null) return;
-        var style = truffleStyle();
-        layoutWidth = truffle.measureWidth(caption, style) + margin("left") + margin("right");
+        var renderer = HabboText.instance;
+        if (renderer == null) return;
+        var style = captionStyle();
+        layoutWidth = renderer.measureWidth(caption, style) + margin("left") + margin("right");
         layoutHeight = Math.max(layoutHeight,
-            truffle.measureHeight(caption, style) + margin("top") + margin("bottom"));
+            renderer.measureHeight(caption, style) + margin("top") + margin("bottom"));
     }
 
     function margin(edge:String):Float {
@@ -557,20 +557,20 @@ class WindowController extends Sprite implements IWindow {
     }
 
     /**
-     * Draw the caption with Truffle when it is available, returning true if it handled it.
+     * Draw the caption with HabboText when it is available, returning true if it handled it.
      *
      * `input` and `html` deliberately stay on `TextField`: one needs a live caret and selection,
      * the other needs `htmlText` link events. Everything else is static glyphs, and rasterising
-     * those through Truffle is the only way to get Ubuntu with Flash's `advanced` anti-aliasing,
+     * those through HabboText is the only way to get Ubuntu with Flash's `advanced` anti-aliasing,
      * sharpness and thickness -- which is what makes the text look like the client rather than
      * like a browser.
      */
-    function drawTruffleCaption():Bool {
-        var truffle = TruffleText.instance;
-        if (truffle == null || caption == "") return false;
+    function drawHabboTextCaption():Bool {
+        var renderer = HabboText.instance;
+        if (renderer == null || caption == "") return false;
         if (typeName == "input" || typeName == "html" || typeName == "formatted_text") return false;
 
-        var pixels = truffle.render(caption, truffleStyle(), truffleLayoutOptions());
+        var pixels = renderer.render(caption, captionStyle(), captionLayoutOptions());
         if (pixels == null) return false;
 
         var display = new Bitmap(pixels);
@@ -586,10 +586,10 @@ class WindowController extends Sprite implements IWindow {
     }
 
     /**
-     * Truffle names its styles exactly as `HabboWindowManagerCom_text_styles_css.bin` does, so a
+     * HabboText names its styles exactly as `HabboWindowManagerCom_text_styles_css.bin` does, so a
      * layout's `text_style` maps straight through with no translation table.
      */
-    function truffleStyle():Dynamic {
+    function captionStyle():Dynamic {
         var name:Dynamic = properties.get("text_style");
         // Defaults come from the skins' own internal layouts, not from taste. The button's
         // `_BTN_TEXT` label declares `text_style = button_shiny_bold`
@@ -604,11 +604,11 @@ class WindowController extends Sprite implements IWindow {
         var configuredColor:Dynamic = properties.get("text_color");
         if (configuredColor != null) color = Std.int(configuredColor);
         var configuredSize:Dynamic = properties.get("font_size");
-        return TruffleText.style(styleName, color,
+        return HabboText.style(styleName, color,
             configuredSize == null ? null : Std.int(configuredSize));
     }
 
-    function truffleLayoutOptions():Dynamic {
+    function captionLayoutOptions():Dynamic {
         if (isButton() || typeName == "frame") return null;
         return {
             wordWrap: boolProperty("word_wrap", false),
@@ -779,7 +779,7 @@ class WindowController extends Sprite implements IWindow {
         // itself, or the text renders twice -- once in this window's own style and once in the
         // child's. The child is the authority: it carries the real text style and margins.
         if (delegatesCaption()) return;
-        if (drawTruffleCaption()) return;
+        if (drawHabboTextCaption()) return;
         var field = new TextField();
         field.name = "__caption";
         var button = isButton();
@@ -817,7 +817,7 @@ class WindowController extends Sprite implements IWindow {
      *
      * In the AS3 client this is not a constant -- it falls out of where `ButtonController` places
      * its `_BTN_TEXT` child, and the button then expands to that child's bounding box. Until the
-     * caption is measured in the real face (see the Truffle work), the exact inset cannot be
+     * caption is measured in the real face (see the HabboText work), the exact inset cannot be
      * derived from the layout alone, so it is named here to be tuned against the AIR reference
      * rather than buried in an expression.
      */

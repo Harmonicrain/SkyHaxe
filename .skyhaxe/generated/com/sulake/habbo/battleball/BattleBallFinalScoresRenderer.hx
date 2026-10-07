@@ -193,9 +193,9 @@ team++;
 var             slot = 0, area:ASObject  = null, rows:Array<ASAny>  = null,                 line = 0;            this._shell.clearBindings();
             if (!this._historical)
             {
-                this._shell.bindText("bb_info_tmToJoin", this._services.text("gs_info_secondstojoin")
+                this._shell.bindText("bb_info_tmToJoin", (this._services.text("gs_info_secondstojoin") : ASAny)
                     .replace("%count%", this._secondsToJoin));
-                this._shell.bindText("bb_info_joinedPlrs", this._services.text("gs_info_playersjoined")
+                this._shell.bindText("bb_info_joinedPlrs", (this._services.text("gs_info_playersjoined") : ASAny)
                     .replace("%count%", this._joined));
             }
             if (this._scoreTiny)

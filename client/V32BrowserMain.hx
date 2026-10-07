@@ -1,9 +1,10 @@
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import com.sulake.habbo.configuration.ExternalVariables;
 import com.sulake.habbo.utils.HabboWebTools;
 import js.Browser;
 import openfl.display.Sprite;
 import openfl.display.StageAlign;
+import openfl.display.StageQuality;
 import openfl.display.StageScaleMode;
 import openfl.events.Event;
 
@@ -19,31 +20,8 @@ class V32BrowserMain extends Sprite {
      * the same way and neither carries hardcoded URLs. See `skyhaxe.BrowserConfig`.
      */
     static inline final CONFIG_URL = "config.ini";
-    /**
-     * The same bundle and style set the working host warms (`HabboCommunicationDemo`).
-     *
-     * Both are needed before any component runs. `WindowParser` measures a caption the moment it
-     * builds a window, which reaches `TruffleText.openFLMetrics` -- and unlike `drawOpenFLRun`,
-     * which refuses with a clear message, `openFLMetrics` dereferences the instance unguarded. In
-     * Flash the faces are embedded in the SWF and are simply present; on HTML5 the host has to
-     * fetch them, so the host is what has to wait.
-     */
-    static final TRUFFLE_BASE = "/assets/truffle";
-    /**
-     * Faces the browser renders itself, rather than through Truffle.
-     *
-     * Truffle is the pixel-exact path for the client's Ubuntu text. Volter is a plain bitmap-style
-     * face with no such requirement, so it goes through the normal text path -- but `FontAsset`
-     * only ever registered a name and a style, never any glyph data, so the family has to exist as
-     * a real CSS face before anything can draw with it.
-     */
-    static final NATIVE_FACES = [
-        {family: "Volter", file: "Volter.ttf", weight: "normal"},
-        {family: "Volter Bold", file: "Volter-Bold.ttf", weight: "normal"}
-    ];
-    static final TRUFFLE_STYLES =
-        ["u_regular", "u_bold", "u_small", "u_frame_title", "button_shiny_bold"];
-
+    /** Fonts and native profiles must finish loading before WindowParser measures captions. */
+    static var textBase = "/assets/habbo-text";
     public function new() {
         super();
         if (stage == null) addEventListener(Event.ADDED_TO_STAGE, added);
@@ -56,6 +34,7 @@ class V32BrowserMain extends Sprite {
     }
 
     function boot():Void {
+        com.sulake.core.assets.swf.SwfLoadMetrics.mark("hostBootMs");
         // Flash clips source and destination as one mapping. Lime 8.3.2 clips them in sequence,
         // double-applying paired negative offsets and shifting bottom-aligned room panoramas.
         skyhaxe.compat.BitmapCopyPixels.install();
@@ -69,6 +48,9 @@ class V32BrowserMain extends Sprite {
         stage.scaleMode = StageScaleMode.NO_SCALE;
         stage.align = StageAlign.TOP_LEFT;
         stage.color = 0x000000;
+        // HabboAir.as sets StageQuality.LOW at startup, as does the Habbo HTML5 host. Flash applies
+        // it globally, including to text drawn into window bitmaps, so Volter stays pixel-crisp.
+        stage.quality = StageQuality.LOW;
         // The NGH HabboAir.swf header declares 30fps, and the client's animation is a frame
         // counter rather than a clock: `CoreComponentContext.onFrameUpdate` advances the room once
         // per ENTER_FRAME, so the rate the browser paints at *is* the animation speed. Left at the
@@ -78,29 +60,32 @@ class V32BrowserMain extends Sprite {
         // frame period for its animation-frame loop -- unlike the `fps` attribute in project.xml,
         // which does not reach it.
         stage.frameRate = 30;
-        #if debug
-        // Development builds only -- `scripts/build-html5.ps1 -Final` compiles without `debug`, so
-        // a release never carries the read-out. F2 hides it when it is over something.
-        //
-        // Both options exist because this host differs from the one the read-out was written for.
-        // The faces live on the Truffle mount rather than in a `fonts/` directory beside the page,
-        // and the cap set immediately above is half the default, so the stock threshold would hold
-        // the row red while the client was hitting its target exactly.
-        skyhaxe.PerformanceHud.show(null, {
-            fontUrl: TRUFFLE_BASE + "/fonts/Volter.ttf",
-            warnBelowFps: 27
-        });
-        stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN,
-            function(event:openfl.events.KeyboardEvent) {
-                if (event.keyCode == 113) skyhaxe.PerformanceHud.toggle();
-            });
-        #end
+        skyhaxe.ProfileRuntime.init(stage);
         Browser.document.documentElement.setAttribute("data-skyhaxe-candidate", "loading-variables");
 
         // The config decides where the variables live, so it has to arrive first. Everything after
         // it is fetched at once and joined rather than chained, so a slow font bundle does not
         // serialize behind the variables request.
         skyhaxe.BrowserConfig.load(CONFIG_URL, function(config) {
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("configReadyMs");
+            skyhaxe.CmsBridge.configure(config);
+            com.sulake.core.assets.swf.HabUrl.configure(config.get("asset.hab.url"),
+                config.get("asset.hab.source.url"), urlValue("assets"));
+            var configuredText = config.get("text.resource.base");
+            if (configuredText != null && configuredText != "")
+                textBase = trimTrailingSlash(configuredText);
+            #if debug
+            // Configuration owns the Habbo font mount. Initialising this any earlier makes a client
+            // hosted below a path prefix request Volter from the website root instead.
+            skyhaxe.PerformanceHud.show(null, {
+                fontUrl: textBase + "/fonts/volter.ttf",
+                warnBelowFps: 27
+            });
+            stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN,
+                function(event:openfl.events.KeyboardEvent) {
+                    if (event.keyCode == 113) skyhaxe.PerformanceHud.toggle();
+                });
+            #end
             var variablesUrl = config.get("external.variables.txt");
             var fontsReady = false;
             var loadedVariables:ExternalVariables = null;
@@ -109,47 +94,26 @@ class V32BrowserMain extends Sprite {
                 if (!failed && fontsReady && loadedVariables != null) startClient(config, loadedVariables);
             }
             ExternalVariables.load(variablesUrl, function(loaded) {
+                com.sulake.core.assets.swf.SwfLoadMetrics.mark("variablesReadyMs");
                 loadedVariables = loaded;
                 startWhenReady();
             }, function(error) {
                 failed = true;
                 fail("Could not load " + variablesUrl + ": " + Std.string(error));
             });
-            loadNativeFaces();
-        TruffleText.load(TRUFFLE_BASE, TRUFFLE_STYLES, function() {
+            HabboText.load(textBase, [], function() {
+                com.sulake.core.assets.swf.SwfLoadMetrics.mark("fontsReadyMs");
                 fontsReady = true;
                 startWhenReady();
             }, function(error) {
                 failed = true;
                 fail("Text renderer failed to load: " + Std.string(error));
             });
-        });
-    }
-
-    /**
-     * Declare the non-Truffle faces to the browser and start fetching them.
-     *
-     * Not joined into the boot gate: a missing Volter costs a fallback face on some labels, which
-     * is not worth holding the whole client for, and the browser re-lays-out text once the face
-     * arrives anyway.
-     */
-    function loadNativeFaces():Void {
-        var css = new StringBuf();
-        for (face in NATIVE_FACES) {
-            css.add("@font-face{font-family:'" + face.family + "';");
-            css.add("src:url('" + TRUFFLE_BASE + "/fonts/" + face.file + "') format('truetype');");
-            css.add("font-weight:" + face.weight + ";font-style:normal;font-display:block;}");
-        }
-        var style = Browser.document.createStyleElement();
-        style.textContent = css.toString();
-        Browser.document.head.appendChild(style);
-        for (face in NATIVE_FACES) {
-            var fonts:Dynamic = untyped Browser.document.fonts;
-            if (fonts != null) fonts.load("9px '" + face.family + "'");
-        }
+        }, urlValue("boot"));
     }
 
     function startClient(config:skyhaxe.BrowserConfig, variables:ExternalVariables):Void {
+        com.sulake.core.assets.swf.SwfLoadMetrics.mark("clientStartMs");
         var parameters = new ASObject();
         for (key => value in variables.values)
             ASCompat.setDynamicProperty(parameters, key, value);
@@ -163,12 +127,19 @@ class V32BrowserMain extends Sprite {
         var ticket = urlValue("sso");
         if (ticket != null && ticket != "")
             ASCompat.setDynamicProperty(parameters, "sso.ticket", ticket);
-        var host = urlValue("host");
-        if (host != null && host != "")
-            ASCompat.setDynamicProperty(parameters, "connection.info.host", host);
-        var port = urlValue("port");
-        if (port != null && port != "")
-            ASCompat.setDynamicProperty(parameters, "connection.info.port", port);
+        // Production launch URLs can supply only the ticket. Endpoint overrides are a deliberate
+        // local-development escape hatch and must be enabled in config.ini first.
+        if (config.get("development.allow_endpoint_override") == "1") {
+            var host = urlValue("host");
+            if (host != null && host != "")
+                ASCompat.setDynamicProperty(parameters, "connection.info.host", host);
+            var port = urlValue("port");
+            if (port != null && port != "")
+                ASCompat.setDynamicProperty(parameters, "connection.info.port", port);
+            var websocket = urlValue("ws");
+            if (websocket != null && websocket != "")
+                ASCompat.setDynamicProperty(parameters, "connection.websocket.url", websocket);
+        }
         HabboWebTools.airParameters = parameters;
         HabboWebTools.rootLoaderInfo = loaderInfo;
         HabboWebTools.isSpaWeb = false;
@@ -403,5 +374,12 @@ class V32BrowserMain extends Sprite {
     function fail(message:String):Void {
         Browser.document.documentElement.setAttribute("data-skyhaxe-candidate", "error");
         Browser.console.error("SKYHAXE_V32_VARIABLES_FAILED " + message);
+        skyhaxe.CmsBridge.fatal(message);
+    }
+
+    static function trimTrailingSlash(value:String):String {
+        while (value.length > 1 && StringTools.endsWith(value, "/"))
+            value = value.substr(0, value.length - 1);
+        return value;
     }
 }

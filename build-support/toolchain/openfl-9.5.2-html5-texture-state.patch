@@ -1,0 +1,117 @@
+diff --git a/src/openfl/display3D/Context3D.hx b/src/openfl/display3D/Context3D.hx
+index 479c8e7..ebd4682 100644
+--- a/src/openfl/display3D/Context3D.hx
++++ b/src/openfl/display3D/Context3D.hx
+@@ -1989,26 +1989,31 @@ import lime.math.Vector2;
+ 
+ 	@:noCompletion private function __bindGLTexture2D(texture:GLTexture):Void
+ 	{
+-		// TODO: Need to consider activeTexture ID
+-
+-		// if (#if openfl_disable_context_cache true #else __contextState.__currentGLTexture2D != texture #end) {
+-
+-		gl.bindTexture(gl.TEXTURE_2D, texture);
+-		__contextState.__currentGLTexture2D = texture;
+-
+-		// }
++		var sampler = __contextState.__activeGLTextureSampler;
++		if (#if openfl_disable_context_cache true #else __contextState.__currentGLTexture2DBySampler[sampler] != texture #end)
++		{
++			gl.bindTexture(gl.TEXTURE_2D, texture);
++			__contextState.__currentGLTexture2DBySampler[sampler] = texture;
++		}
+ 	}
+ 
+ 	@:noCompletion private function __bindGLTextureCubeMap(texture:GLTexture):Void
+ 	{
+-		// TODO: Need to consider activeTexture ID
+-
+-		// if (#if openfl_disable_context_cache true #else __contextState.__currentGLTextureCubeMap != texture #end) {
+-
+-		gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+-		__contextState.__currentGLTextureCubeMap = texture;
++		var sampler = __contextState.__activeGLTextureSampler;
++		if (#if openfl_disable_context_cache true #else __contextState.__currentGLTextureCubeMapBySampler[sampler] != texture #end)
++		{
++			gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
++			__contextState.__currentGLTextureCubeMapBySampler[sampler] = texture;
++		}
++	}
+ 
+-		// }
++	@:noCompletion private function __activateGLTexture(sampler:Int):Void
++	{
++		if (#if openfl_disable_context_cache true #else __contextState.__activeGLTextureSampler != sampler #end)
++		{
++			gl.activeTexture(gl.TEXTURE0 + sampler);
++			__contextState.__activeGLTextureSampler = sampler;
++		}
+ 	}
+ 
+ 	@:noCompletion private function __dispose():Void
+@@ -2375,13 +2380,13 @@ import lime.math.Vector2;
+ 				samplerState = __state.samplerStates[i];
+ 			}
+ 
+-			gl.activeTexture(gl.TEXTURE0 + sampler);
+-
+ 			if (texture != null)
+ 			{
+-				// if (#if openfl_disable_context_cache true #else texture != __contextState.textures[i] #end) {
++				__activateGLTexture(sampler);
+ 
+-				// TODO: Cleaner approach?
++				// A texture upload may bind and unbind this unit outside the renderer state
++				// cache, so real textures must still be rebound here. Empty sampler slots are
++				// the only state that is safe to skip below.
+ 				if (texture.__textureTarget == gl.TEXTURE_2D)
+ 				{
+ 					__bindGLTexture2D(texture.__getTexture());
+@@ -2398,18 +2403,18 @@ import lime.math.Vector2;
+ 
+ 				__contextState.textures[i] = texture;
+ 
+-				// }
+-
+ 				texture.__setSamplerState(samplerState);
+ 			}
+-			else
++			else if (#if openfl_disable_context_cache true #else __contextState.textures[i] != null #end)
+ 			{
++				__activateGLTexture(sampler);
+ 				__bindGLTexture2D(null);
++				__contextState.textures[i] = null;
+ 			}
+ 
+ 			if (__state.program != null && __state.program.__format == AGAL && samplerState.textureAlpha)
+ 			{
+-				gl.activeTexture(gl.TEXTURE0 + sampler + 4);
++				__activateGLTexture(sampler + 4);
+ 
+ 				if (texture != null && texture.__alphaTexture != null)
+ 				{
+
+diff --git a/src/openfl/display3D/_internal/Context3DState.hx b/src/openfl/display3D/_internal/Context3DState.hx
+index d7361b2..7b44560 100644
+--- a/src/openfl/display3D/_internal/Context3DState.hx
++++ b/src/openfl/display3D/_internal/Context3DState.hx
+@@ -58,6 +58,9 @@ class Context3DState
+ 	private var __currentGLArrayBuffer:GLBuffer;
+ 	private var __currentGLElementArrayBuffer:GLBuffer;
+ 	private var __currentGLFramebuffer:GLFramebuffer;
++	private var __activeGLTextureSampler:Int;
++	private var __currentGLTexture2DBySampler:Array<GLTexture>;
++	private var __currentGLTextureCubeMapBySampler:Array<GLTexture>;
+ 	private var __currentGLTexture2D:GLTexture;
+ 	private var __currentGLTextureCubeMap:GLTexture;
+ 	private var __enableGLBlend:Bool;
+@@ -98,6 +101,9 @@ class Context3DState
+ 		stencilTriangleFace = FRONT_AND_BACK;
+ 		stencilWriteMask = 0xFF;
+ 		textures = new Array();
++		__activeGLTextureSampler = 0;
++		__currentGLTexture2DBySampler = new Array();
++		__currentGLTextureCubeMapBySampler = new Array();
+ 		__frontFaceGLCCW = true;
+ 
+ 		#if lime

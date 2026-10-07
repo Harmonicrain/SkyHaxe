@@ -36,10 +36,12 @@ class BrowserConfig {
      * A missing file is not an error: the derived defaults alone are a working same-origin setup,
      * which keeps a plain checkout runnable without one.
      */
-    public static function load(url:String, onReady:BrowserConfig->Void):Void {
+    public static function load(url:String, onReady:BrowserConfig->Void,
+            ?publicLaunchConfig:String):Void {
         var config = new BrowserConfig();
         function finish(text:Null<String>):Void {
             if (text != null) config.parse(text);
+            config.applyPublicLaunchConfig(publicLaunchConfig);
             config.applyDefaults();
             onReady(config);
         }
@@ -50,6 +52,34 @@ class BrowserConfig {
             finish(text);
             return null;
         }).catchError(function(_) finish(null));
+    }
+
+    /**
+     * CMS-integrated launches carry public, non-secret settings in the URL fragment. Only this
+     * fixed allowlist can override the standalone config.ini values; arbitrary client properties
+     * and endpoint query-string overrides remain unavailable.
+     */
+    function applyPublicLaunchConfig(encoded:Null<String>):Void {
+        if (encoded == null || encoded == "") return;
+        var allowed = [
+            "base.url", "external.variables.txt", "external.texts.txt",
+            "connection.websocket.url", "text.resource.base", "image.proxy.source.url",
+            "image.proxy.url", "cms.parent.origin"
+        ];
+        try {
+            var parsed:Dynamic = haxe.Json.parse(encoded);
+            if (parsed == null || Std.isOfType(parsed, Array)) throw "configuration is not an object";
+            for (key in Reflect.fields(parsed)) {
+                if (allowed.indexOf(key) < 0) throw "unsupported public setting " + key;
+                var value:Dynamic = Reflect.field(parsed, key);
+                if (!Std.isOfType(value, String)) throw "non-string public setting " + key;
+                values.set(key, cast value);
+            }
+        } catch (error:Dynamic) {
+            Browser.document.documentElement.setAttribute("data-skyhaxe-config-error",
+                "Invalid CMS launch configuration");
+            Browser.console.warn("SKYHAXE_CMS_CONFIG_IGNORED " + Std.string(error));
+        }
     }
 
     static function Promise_resolveNull():js.lib.Promise<Null<String>> {
@@ -76,7 +106,7 @@ class BrowserConfig {
 
     function get_baseUrl():String {
         var base = values.get(BASE_URL_KEY);
-        if (base == null || base == "") base = Browser.location.origin + "/ngh";
+        if (base == null || base == "") base = Browser.location.origin + "/runtime";
         // A trailing slash would double up against every path appended below.
         while (StringTools.endsWith(base, "/")) base = base.substring(0, base.length - 1);
         return base;
@@ -93,8 +123,18 @@ class BrowserConfig {
         var gordon = values.get(GORDON_PATH_KEY);
         if (gordon == null || gordon == "") gordon = "/gordon/PRODUCTION-201611291003-338511768/";
 
-        setDefault("connection.info.host", Browser.location.hostname);
-        setDefault("connection.info.port", "2096");
+        var websocketScheme = Browser.location.protocol == "https:" ? "wss" : "ws";
+        setDefault("connection.websocket.url",
+            websocketScheme + "://" + Browser.location.hostname + ":2096/");
+        applyWebSocketEndpoint(values.get("connection.websocket.url"));
+        setDefault("text.resource.base", new js.html.URL("assets/habbo-text", Browser.document.baseURI).href);
+        setDefault("cms.parent.origin", "");
+        setDefault("image.proxy.url", "");
+        setDefault("image.proxy.source.url", "");
+        setDefault("development.allow_endpoint_override", "0");
+        // .hab asset bundles (swf2hab): empty mirror = load SWFs. See HabUrl.
+        setDefault("asset.hab.url", "");
+        setDefault("asset.hab.source.url", base + "/");
 
         setDefault("client.allow.cross.domain", "1");
         setDefault("client.notify.cross.domain", "0");
@@ -138,6 +178,31 @@ class BrowserConfig {
 
         values.remove(BASE_URL_KEY);
         values.remove(GORDON_PATH_KEY);
+    }
+
+    /**
+     * OpenFL's original Socket API still accepts host + port, then constructs the browser
+     * WebSocket and preserves a path encoded after the host. Adapt the public URL here so the
+     * generated communication graph remains unchanged.
+     */
+    function applyWebSocketEndpoint(value:String):Void {
+        try {
+            var endpoint = new js.html.URL(value);
+            var securePage = Browser.location.protocol == "https:";
+            if ((securePage && endpoint.protocol != "wss:")
+                    || (!securePage && endpoint.protocol != "ws:" && endpoint.protocol != "wss:"))
+                throw "WebSocket scheme does not match this page";
+            var port = endpoint.port;
+            if (port == "") port = endpoint.protocol == "wss:" ? "443" : "80";
+            var path = endpoint.pathname;
+            while (StringTools.startsWith(path, "/")) path = path.substr(1);
+            values.set("connection.info.host", endpoint.hostname + (path == "" ? "" : "/" + path));
+            values.set("connection.info.port", port);
+        } catch (error:Dynamic) {
+            Browser.document.documentElement.setAttribute("data-skyhaxe-config-error",
+                "Invalid connection.websocket.url");
+            throw error;
+        }
     }
 
     public function get(key:String):Null<String> {

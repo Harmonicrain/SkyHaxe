@@ -1,0 +1,120 @@
+diff --git a/src/openfl/display/_internal/Context3DDisplayObjectContainer.hx b/src/openfl/display/_internal/Context3DDisplayObjectContainer.hx
+--- a/src/openfl/display/_internal/Context3DDisplayObjectContainer.hx
++++ b/src/openfl/display/_internal/Context3DDisplayObjectContainer.hx
+@@ -26,11 +26,22 @@ class Context3DDisplayObjectContainer
+ 
+ 			if (renderer.__stage != null)
+ 			{
++				#if skyhaxe_room_batch
++				if (displayObjectContainer.name == "__skyhaxe_room_batch")
++				{
++					skyhaxe.render.RoomBitmapBatch.renderChildren(displayObjectContainer, renderer);
++				}
++				else
++				{
++					#end
+ 				for (child in displayObjectContainer.__children)
+ 				{
+ 					renderer.__renderDrawable(child);
+ 					child.__renderDirty = false;
+ 				}
++				#if skyhaxe_room_batch
++				}
++				#end
+ 
+ 				displayObjectContainer.__renderDirty = false;
+ 			}
+diff --git a/src/openfl/display/_internal/Context3DBitmap.hx b/src/openfl/display/_internal/Context3DBitmap.hx
+--- a/src/openfl/display/_internal/Context3DBitmap.hx
++++ b/src/openfl/display/_internal/Context3DBitmap.hx
+@@ -23,12 +23,90 @@ import openfl.display._internal.stats.DrawCallContext;
+ @SuppressWarnings("checkstyle:FieldDocComment")
+ class Context3DBitmap
+ {
++	#if skyhaxe_profile
++	private static var __probeFrame = -1;
++	private static var __probeDraws = 0;
++	private static var __probeEligible = 0;
++	private static var __probeAtlasRuns = 0;
++	private static var __probeAtlasAdjacent = 0;
++	private static var __probeTextureRuns = 0;
++	private static var __probeTextureAdjacent = 0;
++	private static var __probeMask = 0;
++	private static var __probeFilter = 0;
++	private static var __probeScrollRect = 0;
++	private static var __probeLastEligible = false;
++	private static var __probeLastBitmapData:BitmapData;
++	private static var __probeLastBlend:Dynamic;
++	private static var __probeLastShader:Dynamic;
++	private static var __probeLastSmoothing = false;
++
++	private static function __flushBatchProbe():Void
++	{
++		if (__probeDraws == 0) return;
++		skyhaxe.ProfileRuntime.count("batchProbe.draws", __probeDraws);
++		skyhaxe.ProfileRuntime.count("batchProbe.eligible", __probeEligible);
++		skyhaxe.ProfileRuntime.count("batchProbe.atlasRuns", __probeAtlasRuns);
++		skyhaxe.ProfileRuntime.count("batchProbe.atlasCompatibleAdjacent", __probeAtlasAdjacent);
++		skyhaxe.ProfileRuntime.count("batchProbe.sameTextureRuns", __probeTextureRuns);
++		skyhaxe.ProfileRuntime.count("batchProbe.sameTextureCompatibleAdjacent", __probeTextureAdjacent);
++		skyhaxe.ProfileRuntime.count("batchProbe.ineligibleMask", __probeMask);
++		skyhaxe.ProfileRuntime.count("batchProbe.ineligibleFilter", __probeFilter);
++		skyhaxe.ProfileRuntime.count("batchProbe.ineligibleScrollRect", __probeScrollRect);
++		__probeDraws = __probeEligible = __probeAtlasRuns = __probeAtlasAdjacent = 0;
++		__probeTextureRuns = __probeTextureAdjacent = __probeMask = __probeFilter = __probeScrollRect = 0;
++	}
++
++	private static function __recordBatchProbe(bitmap:Bitmap, renderer:OpenGLRenderer):Void
++	{
++		var frame = skyhaxe.ProfileRuntime.frameSerial();
++		if (frame <= 0) return;
++		if (frame != __probeFrame)
++		{
++			__flushBatchProbe();
++			__probeFrame = frame;
++			__probeLastEligible = false;
++		}
++		__probeDraws++;
++		var hasMask = bitmap.__mask != null;
++		var hasFilters = bitmap.__filters != null && bitmap.__filters.length > 0;
++		var hasScrollRect = bitmap.__scrollRect != null;
++		if (hasMask) __probeMask++;
++		if (hasFilters) __probeFilter++;
++		if (hasScrollRect) __probeScrollRect++;
++		var eligible = !hasMask && !hasFilters && !hasScrollRect;
++		if (!eligible)
++		{
++			__probeLastEligible = false;
++			return;
++		}
++		__probeEligible++;
++		var smoothing = renderer.__allowSmoothing && (bitmap.smoothing || renderer.__upscaled);
++		var compatible = __probeLastEligible
++			&& __probeLastBlend == bitmap.__worldBlendMode
++			&& __probeLastShader == bitmap.__worldShader
++			&& __probeLastSmoothing == smoothing;
++		if (compatible) __probeAtlasAdjacent++; else __probeAtlasRuns++;
++		if (compatible && __probeLastBitmapData == bitmap.__bitmapData)
++			__probeTextureAdjacent++;
++		else
++			__probeTextureRuns++;
++		__probeLastEligible = true;
++		__probeLastBitmapData = bitmap.__bitmapData;
++		__probeLastBlend = bitmap.__worldBlendMode;
++		__probeLastShader = bitmap.__worldShader;
++		__probeLastSmoothing = smoothing;
++	}
++	#end
++
+ 	public static function render(bitmap:Bitmap, renderer:OpenGLRenderer):Void
+ 	{
+ 		if (!bitmap.__renderable || bitmap.__worldAlpha <= 0) return;
+ 
+ 		if (bitmap.__bitmapData != null && bitmap.__bitmapData.__isValid)
+ 		{
++			#if skyhaxe_profile
++			__recordBatchProbe(bitmap, renderer);
++			#end
+ 			var context = renderer.__context3D;
+ 
+ 			renderer.__setBlendMode(bitmap.__worldBlendMode);

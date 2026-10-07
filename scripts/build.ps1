@@ -1,6 +1,10 @@
 [CmdletBinding()]
 param(
     [switch] $SkipBootstrap,
+    [switch] $Release,
+    [switch] $Profile,
+    [switch] $RoomBatchPrototype,
+    [switch] $NoRoomBatch,
     [string] $SourceRoot = $env:SKYHAXE_SOURCE_ROOT,
     [string] $CandidateRoot,
     [string] $OutputDirectory
@@ -9,6 +13,9 @@ param(
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
+if ($Profile -and -not $Release) {
+    throw "Profiling requires -Release so measurements are not taken from a debug build"
+}
 
 $projectFile = Join-Path $repoRoot "project.xml"
 if (-not [string]::IsNullOrWhiteSpace($CandidateRoot)) {
@@ -66,9 +73,16 @@ foreach ($relative in $required) {
 
 Push-Location $repoRoot
 try {
+    & node (Join-Path $repoRoot 'scripts/build-habbo-text.mjs')
+    if ($LASTEXITCODE -ne 0) { throw 'Habbo font adapter build failed' }
     $previousPreference = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    try { & haxelib run openfl build $projectFile html5 -debug }
+    $buildArguments = @('run', 'openfl', 'build', $projectFile, 'html5')
+    if ($Profile) { $buildArguments += @('-D', 'skyhaxe_profile') }
+    # Room batching is on by default (project.xml); -RoomBatchPrototype is kept as a no-op alias.
+    if ($NoRoomBatch) { $buildArguments += @('-D', 'skyhaxe_no_room_batch') }
+    if (-not $Release) { $buildArguments += '-debug' }
+    try { & haxelib @buildArguments }
     finally { $ErrorActionPreference = $previousPreference }
     if ($LASTEXITCODE -ne 0) { throw "OpenFL HTML5 build failed with exit code $LASTEXITCODE" }
 
@@ -76,6 +90,37 @@ try {
     $index = Join-Path $effectiveOutput "html5\bin\index.html"
     if (-not (Test-Path -LiteralPath $index -PathType Leaf)) {
         throw "OpenFL reported success but did not produce $index"
+    }
+    if ($Profile) {
+        $binDirectory = Split-Path -Parent $index
+        $head = (& git -C $repoRoot rev-parse HEAD 2>$null)
+        if ($LASTEXITCODE -ne 0) { $head = "unavailable" }
+        $fingerprintInput = [System.Text.StringBuilder]::new()
+        [void]$fingerprintInput.AppendLine($head)
+        [void]$fingerprintInput.AppendLine((& git -C $repoRoot diff --binary HEAD 2>$null | Out-String))
+        $untracked = @(& git -C $repoRoot ls-files --others --exclude-standard 2>$null |
+            Where-Object { $_ -notlike 'evidence/*' } | Sort-Object)
+        foreach ($relative in $untracked) {
+            $untrackedPath = Join-Path $repoRoot $relative
+            if (Test-Path -LiteralPath $untrackedPath -PathType Leaf) {
+                [void]$fingerprintInput.AppendLine($relative + " " + (Get-FileHash -LiteralPath $untrackedPath -Algorithm SHA256).Hash.ToLowerInvariant())
+            }
+        }
+        $fingerprintBytes = [System.Text.Encoding]::UTF8.GetBytes($fingerprintInput.ToString())
+        $fingerprint = [Convert]::ToHexString([System.Security.Cryptography.SHA256]::HashData($fingerprintBytes)).ToLowerInvariant()
+        $buildMetadata = [ordered]@{
+            schema = 1
+            revision = $head
+            worktreeFingerprint = $fingerprint
+            options = @("html5", "release", "skyhaxe_profile") + $(if (-not $NoRoomBatch) { "skyhaxe_room_batch" })
+        }
+        $metadataPath = Join-Path $binDirectory "profile-build.json"
+        [System.IO.File]::WriteAllText($metadataPath, ($buildMetadata | ConvertTo-Json -Depth 4), [System.Text.UTF8Encoding]::new($false))
+    } else {
+        $metadataPath = Join-Path (Split-Path -Parent $index) "profile-build.json"
+        if (Test-Path -LiteralPath $metadataPath -PathType Leaf) {
+            Remove-Item -LiteralPath $metadataPath -Force
+        }
     }
     Write-Host "Built $index"
 }

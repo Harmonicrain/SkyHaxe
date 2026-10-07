@@ -68,7 +68,7 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);  
         {
             this._shell.clearBindings();
             this._shell.bindText("ticket_title", this._services.text("bb_ticket_title"));
-            this._shell.bindText("ticket_balance", this._services.text("bb_ticket_balance")
+            this._shell.bindText("ticket_balance", (this._services.text("bb_ticket_balance") : ASAny)
                 .replace("%count%", this._state.ticketBalance));
             this._shell.bindText("ticket_choose", this._services.text("bb_ticket_choose_bundle"));
             this._shell.bindText("ticket_bundle_1_title", this._services.text("bb_ticket_bundle_small"));
@@ -101,7 +101,7 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);  
             if (this._shell == null || this._state == null || this._services == null) return;
             var balance= Std.downcast(this._shell.xmlWindow("ticket_balance") , ITextWindow);
             if (balance != null)
-                balance.caption = this._services.text("bb_ticket_balance")
+                balance.caption = (this._services.text("bb_ticket_balance") : ASAny)
                     .replace("%count%", this._state.ticketBalance);
         }
 
@@ -162,8 +162,8 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);  
         public function finish(recipient:String, ticketsAdded:Int)
         {
             this.completePurchase();
-            this._ticketMessage = this._services.text("bb_ticket_purchase_success")
-                .replace("%count%", ticketsAdded).replace("%recipient%", recipient);
+            this._ticketMessage = ((this._services.text("bb_ticket_purchase_success") : ASAny)
+                .replace("%count%", ticketsAdded) : ASAny).replace("%recipient%", recipient);
             this._ticketMessageSuccess = true;
             this.render();
         }

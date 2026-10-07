@@ -6,8 +6,12 @@ the served artifact, or port 8766. The authoritative client source is the pinned
 
 The ordered composition is the complete v32 component-graph closure followed by the v33 original
 loading-screen closure. It then applies two hash-guarded patches: proven post-generation behavior
-fixes, followed by the browser/OpenFL platform adaptations (including Truffle font integration).
+fixes, followed by the browser/OpenFL platform adaptations (including Habbo HTML5 font integration).
 The existing ax3 compatibility layer is copied as a separately hashed platform boundary.
+
+`.gitattributes` preserves the exact bytes of generated trees, generation inputs, runtime seams
+and packaged font resources. Some converter outputs contain mixed line endings; those bytes are
+part of the pinned hashes. Do not normalize them independently of the reproduction manifests.
 
 Run two isolated reproductions in a new directory outside this repository:
 

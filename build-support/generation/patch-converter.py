@@ -40,6 +40,7 @@ ADDITIONS = {
     "src/ax3/filters/OpenFLTextTypes.hx": "ax3-additions/OpenFLTextTypes.hx",
     "src/ax3/filters/FunctionScopedVars.hx": "ax3-additions/FunctionScopedVars.hx",
     "src/ax3/filters/VoidValues.hx": "ax3-additions/VoidValues.hx",
+    "src/ax3/filters/UntypedCallResultReceiver.hx": "ax3-additions/UntypedCallResultReceiver.hx",
 }
 
 PATCHES = [
@@ -3883,6 +3884,29 @@ PATCHES.append({
 })
 
 
+PATCHES.append({
+    "file": "src/ax3/filters/RewriteMeta.hx",
+    "reason": "[Embed] is Flash packaging metadata. SkyHaxe resolves embeds through its audited asset-input pipeline, so the converter drops the metadata instead of emitting it as Haxe metadata. This was a hand edit to the converter checkout before it was recorded here.",
+    "old": '\t\t\t\t\t\t\t\t\tcase "Inline":\n\t\t\t\t\t\t\t\t\t\tnewMetadata.push(meta);\n',
+    "new": '\t\t\t\t\t\t\t\t\tcase "Inline":\n\t\t\t\t\t\t\t\t\t\tnewMetadata.push(meta);\n'
+           '\t\t\t\t\t\t\t\t\tcase "Embed":\n'
+           '\t\t\t\t\t\t\t\t\t\t// Flash packaging metadata is consumed by SkyHaxe\'s audited\n'
+           '\t\t\t\t\t\t\t\t\t\t// browser asset-input pipeline, not emitted as Haxe metadata.\n',
+    "present": 'case "Embed":',
+    "count": 1,
+})
+
+
+PATCHES.append({
+    "file": "src/ax3/Filters.hx",
+    "reason": "Bind methods called on the result of an untyped Function call. @:callable returns Dynamic, so Haxe could hoist `fn(...).method` into a temporary and call it without its receiver; SnowStorm's bot label crashed with String.prototype.replace called on null.",
+    "old": "\t\t\tnew CheckUntypedMethodCalls(context),",
+    "new": "\t\t\tnew UntypedCallResultReceiver(context),\n\t\t\tnew CheckUntypedMethodCalls(context),",
+    "present": "\t\t\tnew UntypedCallResultReceiver(context),",
+    "count": 1,
+})
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -4029,6 +4053,15 @@ PATCHES.append({
 })
 
 
+HISTORICAL_SCRIPT = "evidence/m2_patch_ax3.py"
+
+
+def _historical_wording(new: str) -> str | None:
+    """The patch text as the historical script wrote it, if it differs only by that name."""
+    variant = new.replace("build-support/generation/patch-converter.py", HISTORICAL_SCRIPT)
+    return variant if variant != new else None
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--verify", action="store_true")
@@ -4055,7 +4088,10 @@ def main() -> int:
         if patch.get("present", patch["new"]) in text:
             already += 1
             continue
-        legacy = patch.get("legacy")
+        # The same patches were first applied by historical/evidence/m2_patch_ax3.py, whose
+        # comments name that script. Without this the old wording looked absent, and a re-run
+        # applied the patch a second time (duplicate methods and switch cases in the converter).
+        legacy = patch.get("legacy") or _historical_wording(patch["new"])
         if legacy and legacy in text:
             if not args.verify:
                 path.write_text(text.replace(legacy, patch["new"]), encoding="utf-8", newline="\n")

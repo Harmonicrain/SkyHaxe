@@ -10,20 +10,23 @@ class BrowserAssetUrl {
 
         try {
             var parsed = new js.html.URL(request.url, js.Browser.window.location.href);
-            var localCorpus = (parsed.hostname == "localhost" || parsed.hostname == "127.0.0.1")
-                && StringTools.startsWith(parsed.pathname, "/ngh/");
-            var remoteImageCorpus = parsed.hostname == "swf.nextgenhabbo.com"
-                && StringTools.startsWith(parsed.pathname, "/c_images/");
-            if ((!localCorpus || parsed.origin == js.Browser.window.location.origin)
-                    && !remoteImageCorpus) return request;
+            if (parsed.origin == js.Browser.window.location.origin) return request;
+            var parameters = com.sulake.habbo.utils.HabboWebTools.getParameterMap(null);
+            var sourceValue:Dynamic = ASCompat.getDynamicProperty(parameters,
+                "image.proxy.source.url");
+            var proxyValue:Dynamic = ASCompat.getDynamicProperty(parameters, "image.proxy.url");
+            var source = sourceValue == null ? null : Std.string(sourceValue);
+            var proxy = proxyValue == null ? null : Std.string(proxyValue);
+            if (source == null || proxy == null || source == "" || proxy == "") return request;
+            var sourceUrl = new js.html.URL(source);
+            if (parsed.origin != sourceUrl.origin
+                    || !StringTools.startsWith(parsed.pathname, sourceUrl.pathname)) return request;
 
-            // Flash can read these directly. HTML5 uses same-origin mounts: local NGH files are
-            // mounted as-is, while the single approved remote image host has a bounded bridge.
-            var path = remoteImageCorpus
-                ? "/__skyhaxe_remote__" + parsed.pathname
-                : parsed.pathname;
-            var normalized = new URLRequest(js.Browser.window.location.origin
-                + path + parsed.search + parsed.hash);
+            // Only the configured source prefix can cross this boundary. The proxy receives a
+            // relative path, not an arbitrary URL, so it cannot become an open proxy.
+            var relative = parsed.pathname.substr(sourceUrl.pathname.length);
+            var proxyBase = StringTools.endsWith(proxy, "/") ? proxy : proxy + "/";
+            var normalized = new URLRequest(proxyBase + relative + parsed.search + parsed.hash);
             normalized.method = request.method;
             normalized.data = request.data;
             normalized.contentType = request.contentType;

@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "date": "2026-10-07",
+  "referenceArchiveSha256": "f6a080f39dcdb10f920ce7c4153e4e04687b7e4c5f533d738fd8e9256f3b8ae9",
+  "referenceLauncherSha256": "0827769ec42c99aa6206e6746007a5cbd159d99ea40f059f22a7377e69a65b3b",
+  "renderer": "habbo-html5-air51",
+  "resources": {
+    "fonts": 9,
+    "files": 19,
+    "bytes": 10509074
+  },
+  "browserTests": {
+    "schema": 1,
+    "browser": "Chrome headless",
+    "errors": [],
+    "reference": {
+      "ok": true,
+      "referenceCases": 88,
+      "fallbackCases": 8,
+      "fonts": 9,
+      "stats": {
+        "nativeRuns": 0,
+        "fallbackRuns": 6,
+        "widthEntries": 6,
+        "positionEntries": 85
+      }
+    },
+    "openfl": {
+      "ok": true,
+      "cases": 18,
+      "stats": {
+        "nativeRuns": 2,
+        "fallbackRuns": 3,
+        "widthEntries": 18,
+        "positionEntries": 21
+      }
+    },
+    "ok": true
+  },
+  "extraction": {
+    "runs": 2,
+    "byteIdenticalToDeployedResources": true
+  },
+  "build": {
+    "release": true,
+    "package": "build/font-release"
+  },
+  "liveClient": {
+    "url": "http://localhost:8766/",
+    "authenticated": true,
+    "roomVisible": true,
+    "startupWarnings": 0,
+    "startupErrors": 0,
+    "screenshot": "evidence/habbo-fonts-live-client.jpg"
+  },
+  "regeneration": {
+    "status": "running",
+    "runRoot": "C:/habbo/client/SkyHaxe-font-reproduction-20261007"
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serve the runnable client, Truffle payload, and NGH corpus read-only on one origin."""
+"""Serve the runnable client, Habbo font payload, and NGH corpus read-only on one origin."""
 from __future__ import annotations
 
 import argparse
@@ -19,13 +19,15 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 DEFAULT_WEB_ROOT = (REPO / "build/client/html5/bin").resolve()
 WEB_ROOT = DEFAULT_WEB_ROOT
-TRUFFLE_ROOT = (REPO / "public/assets/truffle").resolve()
-NGH_ROOT: Path | None = None
-REMOTE_IMAGE_PREFIX = "/__skyhaxe_remote__/c_images/"
-REMOTE_IMAGE_ORIGIN = "https://swf.nextgenhabbo.com/c_images/"
+TEXT_ROOT = (REPO / "public/assets/habbo-text").resolve()
+RUNTIME_ROOT: Path | None = None
+RUNTIME_PREFIX = "/runtime/"
+REMOTE_IMAGE_PREFIX: str | None = None
+REMOTE_IMAGE_ORIGIN: str | None = None
 
 mimetypes.add_type("application/wasm", ".wasm")
 mimetypes.add_type("application/javascript", ".js")
+mimetypes.add_type("application/javascript", ".mjs")
 mimetypes.add_type("application/octet-stream", ".tfc")
 
 
@@ -35,7 +37,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def translate_path(self, path: str) -> str:
         clean = urllib.parse.urlparse(path).path
-        mounts = (("/assets/truffle/", TRUFFLE_ROOT), ("/ngh/", NGH_ROOT))
+        mounts = (("/assets/habbo-text/", TEXT_ROOT), (RUNTIME_PREFIX, RUNTIME_ROOT))
         for prefix, root in mounts:
             if clean.startswith(prefix):
                 if root is None:
@@ -60,7 +62,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # Sending it raw is the whole of the slow first load: the build itself cannot be minified,
     # because `-final` runs Closure, whose property renaming breaks the dynamic property access
     # this port relies on for every SWF symbol and embed.
-    COMPRESSIBLE = (".js", ".json", ".txt", ".xml", ".html", ".css", ".svg", ".map", ".ini")
+    COMPRESSIBLE = (".js", ".mjs", ".json", ".txt", ".xml", ".html", ".css", ".svg", ".map", ".ini",
+                    ".pak", ".ttf")  # default.pak 19.0 -> 6.3 MB; Habbo TTFs compress ~2x
     _gzip_cache: OrderedDict = OrderedDict()
     _gzip_lock = threading.Lock()
     _gzip_limit = 64 * 1024 * 1024
@@ -71,7 +74,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def _remote_image(self):
         """Fetch one allow-listed image tree for Flash-equivalent browser loading."""
         parsed = urllib.parse.urlparse(self.path)
-        if not parsed.path.startswith(REMOTE_IMAGE_PREFIX):
+        if REMOTE_IMAGE_PREFIX is None or REMOTE_IMAGE_ORIGIN is None or not parsed.path.startswith(REMOTE_IMAGE_PREFIX):
             return None
         relative = posixpath.normpath(urllib.parse.unquote(parsed.path[len(REMOTE_IMAGE_PREFIX):]))
         if relative in ("", ".") or relative == ".." or relative.startswith("../"):
@@ -96,7 +99,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 headers={
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) SkyHaxe/1.0",
                     "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
-                    "Referer": "https://swf.nextgenhabbo.com/index.php",
                 },
             )
             try:
@@ -194,7 +196,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 def main() -> int:
-    global WEB_ROOT, NGH_ROOT
+    global WEB_ROOT, RUNTIME_ROOT, RUNTIME_PREFIX, REMOTE_IMAGE_PREFIX, REMOTE_IMAGE_ORIGIN
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--bind", default="127.0.0.1")
@@ -202,6 +204,12 @@ def main() -> int:
     parser.add_argument("--runtime-root", type=Path,
                         default=os.environ.get("SKYHAXE_RUNTIME_ROOT"),
                         help="SWF/gamedata corpus root (or set SKYHAXE_RUNTIME_ROOT)")
+    parser.add_argument("--runtime-prefix", default="/runtime/",
+                        help="URL prefix used to mount the runtime corpus")
+    parser.add_argument("--image-proxy-prefix",
+                        help="optional constrained local URL prefix for remote images")
+    parser.add_argument("--image-proxy-origin",
+                        help="optional fixed HTTPS upstream paired with --image-proxy-prefix")
     args = parser.parse_args()
     web_root = args.web_root.resolve()
     if not (web_root / "index.html").is_file():
@@ -213,7 +221,14 @@ def main() -> int:
         raise SystemExit(f"runtime corpus not found at {runtime_root}")
     server = http.server.ThreadingHTTPServer((args.bind, args.port), Handler)
     WEB_ROOT = web_root
-    NGH_ROOT = runtime_root
+    RUNTIME_ROOT = runtime_root
+    RUNTIME_PREFIX = "/" + args.runtime_prefix.strip("/") + "/"
+    if bool(args.image_proxy_prefix) != bool(args.image_proxy_origin):
+        raise SystemExit("--image-proxy-prefix and --image-proxy-origin must be supplied together")
+    if args.image_proxy_origin and not args.image_proxy_origin.startswith("https://"):
+        raise SystemExit("--image-proxy-origin must use HTTPS")
+    REMOTE_IMAGE_PREFIX = "/" + args.image_proxy_prefix.strip("/") + "/" if args.image_proxy_prefix else None
+    REMOTE_IMAGE_ORIGIN = args.image_proxy_origin.rstrip("/") + "/" if args.image_proxy_origin else None
     print(f"SkyHaxe http://localhost:{args.port}/", flush=True)
     server.serve_forever()
     return 0

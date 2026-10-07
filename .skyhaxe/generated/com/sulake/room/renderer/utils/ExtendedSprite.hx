@@ -150,6 +150,12 @@ public function  set__Str_13379(k:Int):Int        {
 
         public function _Str_17574(k:Int, _arg_2:Int):Bool
         {
+            #if skyhaxe_profile
+            if (k != this._updateID1)
+                skyhaxe.ProfileRuntime.count("spriteRefresh.slotIdentityChanged");
+            else if (_arg_2 != this._updateID2)
+                skyhaxe.ProfileRuntime.count("spriteRefresh.updateIdChanged");
+            #end
             if (((!(k == this._updateID1)) || (!(_arg_2 == this._updateID2))))
             {
                 this._updateID1 = k;
@@ -158,8 +164,14 @@ public function  set__Str_13379(k:Int):Int        {
             }
             if (((!(this._bitmapData == null)) && this._bitmapData.disposed))
             {
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.count("spriteRefresh.disposedBitmap");
+                #end
                 return true;
             }
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.count("spriteRefresh.unchangedGateClosed");
+            #end
             return false;
         }
 

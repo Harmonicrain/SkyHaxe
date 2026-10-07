@@ -8,3 +8,7 @@ __pycache__/
 *.tmp
 node_modules/
 public/assets/truffle/
+evidence/profiles-*/
+.tmp-*/
+
+.tmp-font-project.xml

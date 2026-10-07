@@ -1,7 +1,7 @@
 import com.sulake.core.utils.xml.XML;
 import com.sulake.core.window.WindowController;
 import com.sulake.core.window.graphics.WindowSkinRenderer;
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import com.sulake.core.window.theme.ElementDescription;
 import com.sulake.core.window.theme.InternalLayouts;
 import com.sulake.core.window.utils.WindowParser;
@@ -28,14 +28,14 @@ class G4bWindowBrowserMain extends Sprite {
 
     public function new() {
         super();
-        // Truffle owns the typography, and it loads WASM plus font/raster payloads over HTTP.
+        // Habbo HTML5 owns the typography, and it loads its matching TTFs and native profiles over HTTP.
         // Layout parsing measures text synchronously, so nothing may be parsed until it is ready.
-        TruffleText.load("/assets/truffle",
+        HabboText.load("/assets/habbo-text",
             ["u_regular", "u_bold", "u_small", "u_frame_title", "button_shiny_bold"],
             function() {
                 try run() catch (error:Dynamic) fail(error);
             },
-            function(error:Dynamic) fail("Truffle failed to load: " + Std.string(error)));
+            function(error:Dynamic) fail("Habbo HTML5 failed to load: " + Std.string(error)));
     }
 
     function run():Void {
@@ -168,7 +168,7 @@ class G4bWindowBrowserMain extends Sprite {
         var status = require(loginRoot.findChildByName("status_text"), "runtime status label");
         status.setCaption("Login failed: Enter an SSO ticket.");
         truth(Std.isOfType(status.getChildByName("__caption"), Bitmap),
-            "runtime status updates stay on the Truffle bitmap path");
+            "runtime status updates stay on the Habbo HTML5 bitmap path");
         truth(status.textField == null, "runtime status does not retain the removed TextField fallback");
         status.setCaption("");
     }

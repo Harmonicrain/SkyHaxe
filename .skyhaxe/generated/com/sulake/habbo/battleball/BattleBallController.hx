@@ -37,11 +37,13 @@ package com.sulake.habbo.battleball
         var _skillLevel:Int = 1;
         var _music:SoundChannel;
         var _pendingCreate:Bool = false;
+        var _openPending:Bool = false;
         var _arena:BattleBallArena;
         var _roomUI:IRoomUI;
         var _soundManager:IHabboSoundManager;
         var _localization:IHabboLocalizationManager;
         var _ticketDialog:HotelTicketDialog;
+        var _assetBaseUrl:String;
         /** Final standings are modal: nothing replaces them until the player chooses. */
         var _showingFinalScores:Bool = false;
         var _historicalResult:ASObject;
@@ -74,11 +76,11 @@ package com.sulake.habbo.battleball
             this._soundManager = soundManager;
             this._localization = localization;
             this._ticketDialog = ticketDialog;
+            this._assetBaseUrl = assetBaseUrl;
             this._arena = new BattleBallArena(roomEngine);
             this._assets = new BattleBallAssets();
             this._assets.addEventListener(BattleBallAssets.READY, (this.onAssetsReady : ASAny));
             this._assets.addEventListener(BattleBallAssets.ERROR, (this.onAssetsError : ASAny));
-            this._assets.load(assetBaseUrl);
             this._view = new BattleBallView(windows, this._assets, componentAssets, avatars, session,
                 this._arena, roomUI, localization, ticketDialog == null ? null : ticketDialog.open);
             if (this._ticketDialog != null)
@@ -93,6 +95,12 @@ package com.sulake.habbo.battleball
 
         public function open()
         {
+            if (!this.ensureAssetsLoaded())
+            {
+                this._openPending = true;
+                return;
+            }
+            this._openPending = false;
             if (this._model.instanceId > 0)
             {
                 this._view.open();
@@ -319,10 +327,11 @@ scoredPlayer = _tmp_;
             this._inLobbyRoom = inLobby;
             if (inLobby)
             {
-                if (this._assets != null && this._assets.isReady) this.open();
+                this.open();
                 return;
             }
             this._showingFinalScores = false;
+            this._openPending = false;
             // Tell the server before forgetting the match. Resetting the model locally without sending
             // Leave orphaned server membership: the player stayed seated in game.players() with no
             // instance id left to leave with, so every later create or join was refused as "already in
@@ -349,11 +358,21 @@ scoredPlayer = _tmp_;
         function onAssetsReady(event:Event)
         {
             // The lounge may already have been entered while the three libraries were still downloading.
-            if (this._inLobbyRoom) this.open();
+            if (this._inLobbyRoom || this._openPending) this.open();
         }
+
+        function ensureAssetsLoaded():Bool
+        {
+            if (this._assets == null) return false;
+            if (this._assets.isReady) return true;
+            this._assets.load(this._assetBaseUrl);
+            return false;
+        }
+
 
         function onAssetsError(event:Event)
         {
+            this._openPending = false;
             this._view.showError(this.text("bb_error_assets"));
         }
 
@@ -738,4 +757,3 @@ if (value.instanceId == instanceId) return value;
             return value == null || value == "" ? key : value;
         }
     }
-

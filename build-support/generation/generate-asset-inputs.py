@@ -51,8 +51,8 @@ def main() -> None:
     if missing:
         raise SystemExit("missing clean-client asset inputs: " + repr(missing))
 
-    truffle_root = REPO / "public/assets/truffle"
-    truffle_hash, truffle_files, truffle_bytes = tree_hash(truffle_root)
+    text_root = REPO / "public/assets/habbo-text"
+    text_hash, text_files, text_bytes = tree_hash(text_root)
     result = {
         "gate": "M2-asset-input-contract",
         "clean_client_inputs": [
@@ -67,23 +67,21 @@ def main() -> None:
         "tool_inputs": [
             {"path": path.relative_to(REPO).as_posix(), "sha256": sha256(path)}
             for path in (REPO / "package.json", REPO / "package-lock.json",
-                         REPO / "scripts/build-truffle.mjs")
+                         REPO / "scripts/build-habbo-text.mjs", REPO / "scripts/extract-habbo-fonts.mjs",
+                         REPO / "src/skyhaxe/text/habbo-text.mjs")
         ],
-        "current_truffle_payload": {
-            "path": "public/assets/truffle",
-            "tree_sha256": truffle_hash,
-            "files": truffle_files,
-            "bytes": truffle_bytes,
+        "current_text_payload": {
+            "path": "public/assets/habbo-text",
+            "tree_sha256": text_hash,
+            "files": text_files,
+            "bytes": text_bytes,
         },
-        "refresh_gap": "The current Truffle payload is pinned but is not yet regenerated from "
-                       "HabboWindowManagerCom_text_styles_css.bin by a checked-in command. Any "
-                       "style-input change now stops sync; closing M2e requires an automatic "
-                       "catalogue/payload regeneration step and production pruning.",
+        "reference": "Pinned Habbo HTML5 AIR51 assets; regenerate with scripts/extract-habbo-fonts.mjs and the hash-checked reference ASAR.",
     }
     OUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print("M2_ASSET_INPUTS_PASS clean={} layouts={} truffle_files={}".format(
+    print("M2_ASSET_INPUTS_PASS clean={} layouts={} text_files={}".format(
         result["counts"]["clean_client_inputs"], result["counts"]["internal_layouts"],
-        truffle_files))
+        text_files))
 
 
 if __name__ == "__main__":

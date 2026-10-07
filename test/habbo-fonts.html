@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>Habbo font reference comparison</title>
+<body style="background:#273846;color:white;font:14px sans-serif"><pre id="result">Testing…</pre><script type="module">
+import { run } from './habbo-fonts.mjs';
+window.__fontTestsPromise = run().then(result => { document.querySelector('#result').textContent = JSON.stringify(result, null, 2); return result; })
+  .catch(error => { const result = {ok:false,error:String(error),stack:error.stack}; document.querySelector('#result').textContent=JSON.stringify(result,null,2); return result; });
+</script>

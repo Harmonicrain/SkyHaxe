@@ -8,16 +8,17 @@
   },
   "scripts": {
     "build": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/build.ps1",
-    "test": "npm run build"
+    "test": "npm run build",
+    "fonts:extract": "node scripts/extract-habbo-fonts.mjs",
+    "fonts:test:build": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-font-tests.ps1",
+    "fonts:test": "node scripts/verify-habbo-fonts.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "dependencies": {
-    "truffle-text": "^2.0.0"
-  },
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "acorn": "^8.19.0",
+    "eslint-scope": "^9.1.2"
   }
 }

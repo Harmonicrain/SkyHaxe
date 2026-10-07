@@ -23,6 +23,7 @@ import lime.app.Promise;
  * Scope comes from measurement, not assumption. See `historical/evidence/g0_scan_swf_exports.py`,
  * `historical/evidence/g0_gordon_contract.py`, and `historical/evidence/g2_embedded_format_survey.py`.
  */
+@:allow(com.sulake.core.assets.swf.HabReader)
 class SwfFile {
 	/** Exported characters, keyed by the name in SymbolClass. */
 	public var symbols(default, null):Map<String, SwfCharacter>;
@@ -33,11 +34,17 @@ class SwfFile {
 	public var frameRate(default, null):Float;
 	public var bodyBytes(default, null):Int;
 
+	/** Atlases of a .hab bundle (empty for a real SWF); the main one is decoded first. */
+	public var atlases(default, null):Array<HabAtlas> = [];
+	public var mainAtlas(default, null):Null<HabAtlas>;
+
 	function new() {
 		symbols = new Map();
 	}
 
 	public static function read(raw:Bytes):SwfFile {
+		// A .hab bundle (swf2hab, or Habbo's own HTML5 format) presents the same export table.
+		if (HabReader.isHab(raw)) return HabReader.read(raw);
 		var file = new SwfFile();
 		var declared = raw.getInt32(4) - 8;
 		// Byte-wise: getString decodes UTF-8 and would throw on a non-SWF instead of reporting one.
@@ -65,6 +72,7 @@ class SwfFile {
 	/** Browser-native asynchronous CWS inflate; tag indexing stays deterministic. */
 	#if (js && html5)
 	public static function readAsync(raw:Bytes):Future<SwfFile> {
+		if (HabReader.isHab(raw)) return HabReader.readAsync(raw);
 		var signature = String.fromCharCode(raw.get(0)) + String.fromCharCode(raw.get(1))
 			+ String.fromCharCode(raw.get(2));
 		if (signature != "CWS" || !untyped js.Syntax.code("typeof DecompressionStream !== 'undefined'"))
@@ -166,7 +174,28 @@ class SwfFile {
 		}
 	}
 
+	/**
+	 * zlib inflate. Uses pako when present -- Lime 8 embeds it in every HTML5 build -- because
+	 * the pure-Haxe `InflateImpl` measured 2.3-2.4x slower on this corpus, and this runs
+	 * synchronously on the main thread for every lazily constructed lossless bitmap.
+	 * `tools/bench` in swf2hab compiles this exact routine to compare the two.
+	 */
 	public static function inflate(compressed:Bytes, verifyChecksum:Bool):Bytes {
+		#if (js && html5)
+		if (js.Syntax.code("typeof pako !== 'undefined'")) {
+			var input = new Uint8Array(compressed.getData(), 0, compressed.length);
+			// pako.inflate checks Adler-32 like InflateImpl(verify=true); without verification
+			// the zlib header is skipped and the raw deflate stream ends at its final block.
+			var output:Uint8Array = verifyChecksum
+				? js.Syntax.code("pako.inflate({0})", input)
+				: js.Syntax.code("pako.inflateRaw({0}.subarray(2))", input);
+			// pako may hand back a view into a larger chunk buffer; Bytes needs an exact buffer.
+			if (output.byteOffset != 0 || output.byteLength != output.buffer.byteLength)
+				output = output.slice();
+			SwfLoadMetrics.count("pakoInflates");
+			return Bytes.ofData(output.buffer);
+		}
+		#end
 		var impl = new InflateImpl(new BytesInput(compressed), true, verifyChecksum);
 		var buffer = Bytes.alloc(65536);
 		var out = new haxe.io.BytesBuffer();

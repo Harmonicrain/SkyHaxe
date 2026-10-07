@@ -493,9 +493,14 @@ class TextEngine
 		return fontSet.getFont(bold, italic);
 	}
 
-	public static function getFormatHeight(format:TextFormat):Float
+	public static function getFormatHeight(format:TextFormat, ?field:openfl.text.TextField):Float
 	{
 		var ascent:Float, descent:Float, leading:Int;
+		#if (js && html5)
+		if (com.sulake.core.window.text.HabboText.instance != null)
+			return com.sulake.core.window.text.HabboText.openFLMetrics(field, format).lineHeight;
+		#end
+
 
 		#if (js && html5)
 		var font = getFont(format);
@@ -750,6 +755,10 @@ class TextEngine
 			var leading:Int;
 			var heightValue:Int;
 
+			#if (js && html5)
+			var metrics = com.sulake.core.window.text.HabboText.openFLMetrics(textField, currentFormat);
+			ascent = metrics.ascent; descent = metrics.descent;
+			#else
 			var font = getFontInstance(currentFormat);
 
 			if (currentFormat.__ascent != null)
@@ -772,6 +781,8 @@ class TextEngine
 				ascent = currentFormat.size;
 				descent = currentFormat.size * 0.185;
 			}
+
+			#end
 
 			leading = currentFormat.leading;
 
@@ -887,7 +898,7 @@ class TextEngine
 
 			function html5Positions():Array<Float> {
 				// Keep the format-run shaping context when OpenFL measures smaller word chunks.
-				return com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat,
+				return com.sulake.core.window.text.HabboText.openFLPositions(textField, currentFormat,
 					text.substring(formatRange.start, formatRange.end)).slice(startIndex - formatRange.start, endIndex - formatRange.start);
 			}
 			// TODO: Smarter caching for justify
@@ -958,7 +969,7 @@ class TextEngine
 
 		{
 			#if (js && html5)
-			var total = 0.0; for (advance in com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat, text)) total += advance; return total;
+			var total = 0.0; for (advance in com.sulake.core.window.text.HabboText.openFLPositions(textField, currentFormat, text)) total += advance; return total;
 			#else
 			if (__textLayout == null)
 			{
@@ -1023,7 +1034,7 @@ class TextEngine
 
 		{
 
-			var metrics = com.sulake.core.window.text.TruffleText.openFLMetrics(textField, currentFormat);
+			var metrics = com.sulake.core.window.text.HabboText.openFLMetrics(textField, currentFormat);
 			ascent = metrics.ascent;
 			descent = metrics.descent;
 			leading = currentFormat.leading;

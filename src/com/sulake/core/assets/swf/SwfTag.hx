@@ -20,4 +20,7 @@ class SwfTag {
 	public static inline var DEFINE_BITS_LOSSLESS2 = 36;
 	public static inline var SYMBOL_CLASS = 76;
 	public static inline var DEFINE_BINARY_DATA = 87;
+
+	/** Not a SWF tag: marks a bitmap read from a .hab atlas (see HabReader). */
+	public static inline var HAB_ATLAS_FRAME = 0x10000;
 }

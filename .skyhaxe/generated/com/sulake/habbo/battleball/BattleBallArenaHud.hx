@@ -88,7 +88,7 @@ var team = 0, scoreBar:IBitmapWrapperWindow  = null, old:IWindow  = null, kickIn
             this._arenaHud.visible = true;
 
             if (this._arenaHudTime != null)
-                this._arenaHudTime.caption = this._services.text("bb_hud_remaining_time")
+                this._arenaHudTime.caption = (this._services.text("bb_hud_remaining_time") : ASAny)
                     .replace("%time%", this.formatTime(model.displayedTimeRemainingMs));
             if (model.state != this._lastArenaState)
             {
@@ -192,7 +192,7 @@ shortName= this._services.playerDisplayName(candidate);
 kickX= 194 + (kickIndex % KICK_COLUMNS) * 73;
 kickY= 28 + Std.int(kickIndex / KICK_COLUMNS) * 21;
                     this.positionArenaHudButton("battleball_hud_kick_" + candidate.userId,
-                        this._services.text("bb_hud_kick").replace("%player%", shortName),
+                        (this._services.text("bb_hud_kick") : ASAny).replace("%player%", shortName),
                         kickX, kickY, 70, 19, this._services.kickPlayer, candidate.userId);
                     kickIndex++;
                 }
@@ -247,7 +247,7 @@ kickY= 28 + Std.int(kickIndex / KICK_COLUMNS) * 21;
             var powerKey= "bb_powerup_" + Std.string(ASCompat.toInt(held.powerType));
             var powerName:String = this._services.text(powerKey);
             if (powerName == powerKey) powerName = ASCompat.toString(held.powerType);
-            var tooltip:String = this._services.text("bb_hud_use_power").replace("%power%", powerName);
+            var tooltip:String = (this._services.text("bb_hud_use_power") : ASAny).replace("%power%", powerName);
 
             // A missing converted member should never make activation impossible: leave a compact
             // native button in its place while keeping the same action and localised power name.

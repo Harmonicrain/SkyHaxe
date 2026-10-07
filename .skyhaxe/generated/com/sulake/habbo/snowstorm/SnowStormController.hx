@@ -50,6 +50,7 @@ package com.sulake.habbo.snowstorm
         var _skillLevel:Int = 1;
         var _rankedPoints:Int = 0;
         var _pendingCreate:Bool = false;
+        var _openPending:Bool = false;
         var _inLobbyRoom:Bool = false;
         var _screen:String = SCREEN_LOBBY;
         var _historicalResult:ASObject;
@@ -63,6 +64,7 @@ package com.sulake.habbo.snowstorm
         var _soundAmmo:Int = -1;
         var _recoveryTimer:Timer;
         var _disposed:Bool = false;
+        var _assetBaseUrl:String;
 
         public function new(communication:IHabboCommunicationManager,
                                             windows:IHabboWindowManager,
@@ -79,6 +81,7 @@ package com.sulake.habbo.snowstorm
             this._session = session;
             this._localization = localization;
             this._ticketDialog = ticketDialog;
+            this._assetBaseUrl = assetBaseUrl;
             this._assets = new SnowStormAssets();
             this._assets.addEventListener(SnowStormAssets.READY, (this.onAssetsReady : ASAny));
             this._assets.addEventListener(SnowStormAssets.ERROR, (this.onAssetsError : ASAny));
@@ -93,12 +96,17 @@ package com.sulake.habbo.snowstorm
             this._model.playbackEventHandler = this.playSubturnSounds;
             this._view.setEventHandler(this.onViewEvent);
             this.registerMessages();
-            this._assets.load(assetBaseUrl);
         }
 
         public function open()
         {
             if (this._disposed || this._view == null) return;
+            if (!this.ensureAssetsLoaded())
+            {
+                this._openPending = true;
+                return;
+            }
+            this._openPending = false;
             if (this._model.instanceId > 0 && this._model.map != null)
             {
                 this.requestFull(3);
@@ -318,11 +326,12 @@ soundPlayer= this._model.localPlayer();
             this._inLobbyRoom = inLobby;
             if (inLobby)
             {
-                if (this._assets != null && this._assets.isReady) this.open();
+                this.open();
                 return;
             }
             if (this._model.instanceId > 0)
                 this.send(new SnowStormLeaveComposer(this._model.instanceId));
+            this._openPending = false;
             this.resetMembership();
             if (this._view != null) this._view.hide();
         }
@@ -656,10 +665,22 @@ var value:ASObject  = null;            final _iter_ = this._instances; if (check
         }
 
         function onAssetsReady(event:Event)
-        { if (this._inLobbyRoom) this.open(); }
+        { if (this._inLobbyRoom || this._openPending) this.open(); }
+
+        function ensureAssetsLoaded():Bool
+        {
+            if (this._assets == null || this._disposed) return false;
+            if (this._assets.isReady) return true;
+            this._assets.load(this._assetBaseUrl);
+            return false;
+        }
+
 
         function onAssetsError(event:Event)
-        { if (this._view != null) this._view.showError(this.text("sw_error_assets")); }
+        {
+            this._openPending = false;
+            if (this._view != null) this._view.showError(this.text("sw_error_assets"));
+        }
 
         function send(composer:IMessageComposer)
         {
@@ -667,4 +688,3 @@ var value:ASObject  = null;            final _iter_ = this._instances; if (check
                 this._communication.connection.send(composer);
         }
     }
-

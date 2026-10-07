@@ -22,6 +22,9 @@ package com.sulake.habbo.avatar.cache
     import com.sulake.habbo.avatar._enum.AvatarDirectionAngle;
     import com.sulake.habbo.avatar._enum.AvatarFigurePartType;
     import flash.geom.Rectangle;
+    #if (js && html5)
+    import haxe.ds.ObjectMap;
+    #end
 
      class AvatarImageCache 
     {
@@ -40,6 +43,13 @@ package com.sulake.habbo.avatar.cache
         var _colorTransform:ColorTransform;
         var _matrix:Matrix;
         var _serverRenderData:Array<ASAny>;
+        #if (js && html5)
+        static inline final SKYHAXE_COLOR_CACHE_LIMIT:Int = 192;
+        static inline final SKYHAXE_COLOR_CACHE_BYTE_LIMIT:Int = 4194304;
+        var _skyhaxeColorCache:ObjectMap<BitmapData, Map>;
+        var _skyhaxeColorCacheEntries:Array<Dynamic>;
+        var _skyhaxeColorCacheBytes:Int = 0;
+        #end
 
         public function new(k:AvatarStructure, _arg_2:IAvatarImage, _arg_3:AssetAliasCollection, _arg_4:String)
         {
@@ -47,6 +57,10 @@ package com.sulake.habbo.avatar.cache
             this._colorTransform = new ColorTransform();
             this._matrix = new Matrix();
             this._serverRenderData = new Array<ASAny>();
+            #if (js && html5)
+            this._skyhaxeColorCache = new ObjectMap();
+            this._skyhaxeColorCacheEntries = [];
+            #end
             this._structure = k;
             this._avatar = _arg_2;
             this._assets = _arg_3;
@@ -82,6 +96,19 @@ _local_3  = _tmp_;
                 this._cache = null;
             }
             this._canvas = null;
+            #if (js && html5)
+            if (this._skyhaxeColorCache != null)
+            {
+                for (entry in this._skyhaxeColorCacheEntries)
+                {
+                    var cachedBitmap = ASCompat.dynamicAs(entry.bitmap, BitmapData);
+                    if (cachedBitmap != null) cachedBitmap.dispose();
+                }
+                this._skyhaxeColorCache = null;
+            }
+            this._skyhaxeColorCacheEntries = null;
+            this._skyhaxeColorCacheBytes = 0;
+            #end
             this._disposed = true;
         }
 
@@ -282,10 +309,22 @@ _local_4  = _tmp_;
                 _local_12._Str_2168(_local_5, _local_13);
             }
             var _local_14= _local_13.getImageContainer(_local_6);
+            #if skyhaxe_profile
+            if (_local_14 == null || _arg_3)
+                skyhaxe.ProfileRuntime.count("avatarFrameCacheMisses");
+            else
+                skyhaxe.ProfileRuntime.count("avatarFrameCacheHits");
+            #end
             if (((_local_14 == null) || _arg_3))
             {
                 _local_20 = _local_13._Str_1699();
+                #if skyhaxe_profile
+                var _skyhaxeAvatarStart = skyhaxe.ProfileRuntime.begin();
+                #end
                 _local_14 = this._Str_1834(_local_5, _local_20, _local_6, _local_7, _arg_3);
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.end("avatarCompositionMs", _skyhaxeAvatarStart);
+                #end
                 if (((!(_local_14 == null)) && (!_arg_3)))
                 {
                     if (_local_14.isCacheable)
@@ -604,6 +643,22 @@ _local_4  = _tmp_;
                 _local_8 = ((!(_arg_2 && _local_4.flipH)) && (_arg_2 || _local_4.flipH));
                 if (_local_8)
                 {
+                    #if (js && html5)
+                    if (_local_4.colorTransform != null)
+                    {
+                        var transformed = this._skyhaxeColorizedPart(_local_4);
+                        this._matrix.a = -1;
+                        this._matrix.tx = (transformed.width + _local_5.x);
+                        this._matrix.ty = _local_5.y;
+                        _local_3.x = _local_5.x;
+                        _local_3.y = _local_5.y;
+                        _local_3.width = transformed.width;
+                        _local_3.height = transformed.height;
+                        _local_7.draw(transformed, this._matrix, null, null, _local_3);
+                    }
+                    else
+                    {
+                    #end
                     this._matrix.a = -1;
                     this._matrix.tx = ((_local_4.rect.x + _local_4.rect.width) + _local_5.x);
                     this._matrix.ty = (_local_5.y - _local_4.rect.y);
@@ -612,11 +667,18 @@ _local_4  = _tmp_;
                     _local_3.width = _local_4.rect.width;
                     _local_3.height = _local_4.rect.height;
                     _local_7.draw(_local_4.bitmap, this._matrix, _local_4.colorTransform, null, _local_3);
+                    #if (js && html5)
+                    }
+                    #end
                 }
                 else
                 {
                     if (_local_4.colorTransform != null)
                     {
+                        #if (js && html5)
+                        var transformed = this._skyhaxeColorizedPart(_local_4);
+                        _local_7.copyPixels(transformed, transformed.rect, _local_5, null, null, true);
+                        #else
                         this._matrix.a = 1;
                         this._matrix.tx = (_local_5.x - _local_4.rect.x);
                         this._matrix.ty = (_local_5.y - _local_4.rect.y);
@@ -625,6 +687,7 @@ _local_4  = _tmp_;
                         _local_3.width = _local_4.rect.width;
                         _local_3.height = _local_4.rect.height;
                         _local_7.draw(_local_4.bitmap, this._matrix, _local_4.colorTransform, null, _local_3);
+                        #end
                     }
                     else
                     {
@@ -634,6 +697,60 @@ _local_4  = _tmp_;
             }
             return new ImageData(_local_7, _local_7.rect, _local_6, _arg_2, null);
         }
+
+        #if (js && html5)
+        function _skyhaxeColorizedPart(image:ImageData):BitmapData
+        {
+            var transform = image.colorTransform;
+            var rect = image.rect;
+            var key = rect.x + ":" + rect.y + ":" + rect.width + ":" + rect.height
+                + ":" + transform.redMultiplier + ":" + transform.greenMultiplier + ":" + transform.blueMultiplier
+                + ":" + transform.alphaMultiplier + ":" + transform.redOffset + ":" + transform.greenOffset
+                + ":" + transform.blueOffset + ":" + transform.alphaOffset;
+            var sourceCache = this._skyhaxeColorCache.get(image.bitmap);
+            if (sourceCache == null)
+            {
+                sourceCache = new Map();
+                this._skyhaxeColorCache.set(image.bitmap, sourceCache);
+            }
+            var cached = ASCompat.dynamicAs(sourceCache.getValue(key), BitmapData);
+            if (cached != null)
+            {
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.count("avatarColorPartCacheHits");
+                #end
+                return cached;
+            }
+            cached = new BitmapData(Std.int(rect.width), Std.int(rect.height), true, 0);
+            cached.copyPixels(image.bitmap, rect, new Point(), null, null, true);
+            cached.colorTransform(cached.rect, transform);
+            sourceCache.add(key, cached);
+            var cachedBytes = cached.width * cached.height * 4;
+            this._skyhaxeColorCacheBytes += cachedBytes;
+            this._skyhaxeColorCacheEntries.push({source: image.bitmap, key: key, bitmap: cached, bytes: cachedBytes});
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.count("avatarColorPartCacheMisses");
+            #end
+            while (this._skyhaxeColorCacheEntries.length > SKYHAXE_COLOR_CACHE_LIMIT
+                || this._skyhaxeColorCacheBytes > SKYHAXE_COLOR_CACHE_BYTE_LIMIT)
+            {
+                var oldest = this._skyhaxeColorCacheEntries.shift();
+                var oldestSourceCache = this._skyhaxeColorCache.get(oldest.source);
+                var removed = ASCompat.dynamicAs(oldestSourceCache.remove(oldest.key), BitmapData);
+                if (removed != null)
+                {
+                    this._skyhaxeColorCacheBytes -= Std.int(oldest.bytes);
+                    removed.dispose();
+                }
+                if (oldestSourceCache.length == 0) this._skyhaxeColorCache.remove(oldest.source);
+            }
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.gauge("avatarColorPartCacheEntries", this._skyhaxeColorCacheEntries.length);
+            skyhaxe.ProfileRuntime.gauge("avatarColorPartCacheBytes", this._skyhaxeColorCacheBytes);
+            #end
+            return cached;
+        }
+        #end
 
         function drawBorders(k:BitmapData, _arg_2:Rectangle, _arg_3:UInt)
         {
@@ -660,5 +777,3 @@ _local_4  = _tmp_;
             Logger.log([("[AvatarImageCache] " + k)]);
         }
     }
-
-

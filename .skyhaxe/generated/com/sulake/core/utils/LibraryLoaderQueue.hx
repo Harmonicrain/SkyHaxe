@@ -50,6 +50,7 @@ loader  = _tmp_;
         {
             if ((((!disposed) && (!this.isUrlInQueue(loader.url))) && (!(this.findLibraryLoaderByURL(loader.url) != null))))
             {
+                loader.markQueued();
                 if (loader.paused)
                 {
                     this._queue.push(loader);
@@ -195,4 +196,3 @@ loader = _tmp_;
             return null;
         }
     }
-

@@ -443,14 +443,32 @@ class XML {
 
     private static function removeInsignificantWhitespace(node:Xml):Void {
         if (!isContainer(node)) return;
-        // Copy the child sequence before removal; preserve text containing any
-        // character outside E4X's four XML whitespace characters.
-        for (child in [for (value in node) value]) {
-            if (child.nodeType == Xml.PCData && ~/^[ \t\r\n]*$/.match(child.nodeValue))
-                node.removeChild(child);
-            else
-                removeInsignificantWhitespace(child);
+        // One filtering pass per node. Removing whitespace children one at a time with
+        // removeChild is O(children^2): furnidata.xml alone spent ~1.3 s of boot here.
+        // Text containing any character outside E4X's four XML whitespace characters is kept.
+        @:privateAccess {
+            var children:Array<Xml> = node.children;
+            var kept:Array<Xml> = [];
+            for (child in children) {
+                if (child.nodeType == Xml.PCData && isXmlWhitespace(child.nodeValue)) {
+                    child.parent = null;
+                } else {
+                    kept.push(child);
+                    removeInsignificantWhitespace(child);
+                }
+            }
+            if (kept.length != children.length) node.children = kept;
         }
+    }
+
+    private static function isXmlWhitespace(text:String):Bool {
+        for (index in 0...text.length) {
+            switch (StringTools.fastCodeAt(text, index)) {
+                case 0x20, 0x09, 0x0D, 0x0A:
+                default: return false;
+            }
+        }
+        return true;
     }
 
     private static function firstSignificantChild(document:Xml):Null<Xml> {

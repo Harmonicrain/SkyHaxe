@@ -301,6 +301,9 @@ return k;
 
         function onRoomReady(k:IMessageEvent)
         {
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomReadyPacketMs");
+            #end
             var _local_2= Std.downcast(k , RoomReadyMessageEvent);
             if ((((_local_2 == null) || (_local_2.getParser() == null)) || (k.connection == null)))
             {
@@ -803,6 +806,9 @@ _local_3  = _tmp_;
 
         function onObjects(k:IMessageEvent)
         {
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomObjectsPacketMs");
+            #end
             var _local_6:ObjectMessageData = null;
             var _local_2= Std.downcast(k , ObjectsMessageEvent);
             if (((_local_2 == null) || (_local_2.getParser() == null)))
@@ -818,6 +824,10 @@ _local_3  = _tmp_;
                 this.addActiveObject(this._currentRoomId, _local_6);
                 _local_5++;
             }
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.add("initialRoomObjects", _local_4);
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomObjectsAppliedMs");
+            #end
         }
 
         function onObjectAdd(k:IMessageEvent)
@@ -1064,6 +1074,9 @@ _local_3  = _tmp_;
 
         function onUsers(k:IMessageEvent)
         {
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomUsersPacketMs");
+            #end
             var _local_5:UserMessageData = null;
             var _local_6:IVector3d = null;
             var _local_7:IVector3d = null;
@@ -1109,6 +1122,9 @@ _local_3  = _tmp_;
                 _local_4++;
             }
             this.updateGuideMarker();
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomUsersAppliedMs");
+            #end
         }
 
         function onUserUpdate(k:IMessageEvent)
@@ -1802,4 +1818,3 @@ _local_6  = _tmp_;
             }
         }
     }
-

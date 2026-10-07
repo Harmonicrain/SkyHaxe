@@ -10,7 +10,7 @@ import skyhaxe.assets.EmbeddedFontCatalog;
  *
  * The original generated subclasses remain the class identities registered by FontEnum. Their
  * family and style come from a generated, hash-pinned catalogue of the AS3 Embed declarations.
- * Browser text never rasterizes through this object: the OpenFL text path is patched to Truffle.
+ * Browser text never rasterizes through this object: the OpenFL text path is patched to HabboText.
  */
 class FontAsset extends Font {
     public function new() {

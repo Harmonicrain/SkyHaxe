@@ -111,7 +111,7 @@ names= "";
                 {
                     if (slot > 0) names += "\n";
                     names += ASCompat.toInt(players[slot].userId) < 0
-                        ? this._services.text("gs_bot_name").replace(
+                        ? (this._services.text("gs_bot_name") : ASAny).replace(
                             "%index%", Std.string(-ASCompat.toInt(players[slot].userId)))
                         : ASCompat.toString(players[slot].name);
 kick= this._shell.elementById("bb_kick" + Std.string(team + 1) + "_" + Std.string(slot + 1));

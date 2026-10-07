@@ -24,6 +24,9 @@ class SwfCharacter {
 	/** Set once the SymbolClass table is read; unexported characters never get one. */
 	public var name:String;
 
+	/** For a bitmap read from a .hab bundle: its rectangle in the bundle's atlas. */
+	public var atlas(default, null):Null<HabFrame>;
+
 	function new(id:Int, kind:SwfCharacterKind, tag:Int, payload:Bytes) {
 		this.id = id;
 		this.kind = kind;
@@ -43,6 +46,13 @@ class SwfCharacter {
 		return new SwfCharacter(id, Sound, SwfTag.DEFINE_SOUND, payload);
 	}
 
+	/** A bitmap that lives in a .hab atlas rather than in its own SWF tag. */
+	public static function atlasFrame(id:Int, frame:HabFrame):SwfCharacter {
+		var character = new SwfCharacter(id, Bitmap, SwfTag.HAB_ATLAS_FRAME, Bytes.alloc(0));
+		character.atlas = frame;
+		return character;
+	}
+
 	public function tagName():String {
 		return switch (tag) {
 			case SwfTag.DEFINE_BITS_LOSSLESS: "DefineBitsLossless";
@@ -51,6 +61,7 @@ class SwfCharacter {
 			case SwfTag.DEFINE_BITS_JPEG3: "DefineBitsJPEG3";
 			case SwfTag.DEFINE_BINARY_DATA: "DefineBinaryData";
 			case SwfTag.DEFINE_SOUND: "DefineSound";
+			case SwfTag.HAB_ATLAS_FRAME: "HabAtlasFrame";
 			case other: "tag-" + other;
 		}
 	}
@@ -64,6 +75,7 @@ class SwfCharacter {
 	 * the payload magic does. See `historical/evidence/g2_embedded_format_survey.json`.
 	 */
 	public function encoding():String {
+		if (atlas != null) return "atlas";
 		return switch (tag) {
 			case SwfTag.DEFINE_BITS_LOSSLESS, SwfTag.DEFINE_BITS_LOSSLESS2: "zlib";
 			case SwfTag.DEFINE_BITS_JPEG2, SwfTag.DEFINE_BITS_JPEG3: imageMagic();

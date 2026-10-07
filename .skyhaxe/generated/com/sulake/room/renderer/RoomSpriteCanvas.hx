@@ -96,7 +96,11 @@ package com.sulake.room.renderer
             this._master = new Sprite();
             this._master.mouseEnabled = false;
             this._display = new Sprite();
+            #if skyhaxe_room_batch
+            this._display.name = "__skyhaxe_room_batch";
+            #else
             this._display.name = "canvas";
+            #end
             this._display.mouseEnabled = false;
             this._master.addChild(this._display);
             this._display.mouseEnabled = true;
@@ -388,6 +392,9 @@ public function  get_scale():Float
             {
                 return;
             }
+            #if skyhaxe_profile
+            var _skyhaxeRenderStart = skyhaxe.ProfileRuntime.begin();
+            #end
             this._Str_24182(k);
             this._bitmapDataCache.compress();
             var _local_4= this._container.getRoomObjectCount();
@@ -408,6 +415,9 @@ public function  get_scale():Float
                 _arg_2 = true;
             }
             _local_5 = 0;
+            #if skyhaxe_profile
+            var _skyhaxeVisualizationStart = skyhaxe.ProfileRuntime.begin();
+            #end
             while (_local_5 < _local_4)
             {
                 _local_8 = this._container.getRoomObjectWithIndex(_local_5);
@@ -418,13 +428,25 @@ public function  get_scale():Float
                 }
                 _local_5++;
             }
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.end("visualizationUpdateMs", _skyhaxeVisualizationStart);
+            #end
+            #if skyhaxe_profile
+            var _skyhaxeSortStart = skyhaxe.ProfileRuntime.begin();
+            #end
             ASCompat.ASArray.sortOn(this._sortableSpriteList, "z", (ASCompat.toInt(ASCompat.ASArray.DESCENDING )| ASCompat.toInt(ASCompat.ASArray.NUMERIC)));
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.end("depthSortMs", _skyhaxeSortStart);
+            #end
             if (_local_6 < this._sortableSpriteList.length)
             {
                 ASCompat.arraySpliceAll(this._sortableSpriteList, _local_6);
             }
             var _local_9:SortableSprite = null;
             _local_5 = 0;
+            #if skyhaxe_profile
+            var _skyhaxeSpriteStart = skyhaxe.ProfileRuntime.begin();
+            #end
             while (_local_5 < _local_6)
             {
                 _local_9 = ASCompat.dynamicAs(this._sortableSpriteList[_local_5] , SortableSprite);
@@ -434,10 +456,42 @@ public function  get_scale():Float
                 }
                 _local_5++;
             }
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.end("spriteUpdateMs", _skyhaxeSpriteStart);
+            #end
             this._Str_20677(_local_6);
             this._renderTimeStamp = k;
             this._renderedWd = this._wd;
             this._renderedHt = this._ht;
+            #if html5
+            // The first staged canvas with actual room contents is a closer boot boundary than
+            // the desktop view being attached. Preview canvases have at most a couple of objects.
+            if (this._display.stage != null && _local_4 > 2 && _local_6 > 0)
+                com.sulake.core.assets.swf.SwfLoadMetrics.mark("firstRoomRenderedMs");
+            #end
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.gauge("roomObjects", _local_4);
+            skyhaxe.ProfileRuntime.gauge("visibleSprites", _local_6);
+            skyhaxe.ProfileRuntime.gauge("roomScale", this._scale);
+            // Preview canvases (for example Infostand) render after the room and can
+            // overwrite the generic gauges. Keep explicit evidence for the large
+            // benchmark canvas and record its scale on every rendered frame.
+            if (_local_4 >= 1000)
+            {
+                skyhaxe.ProfileRuntime.gauge("mainRoomObjects", _local_4);
+                skyhaxe.ProfileRuntime.gauge("mainRoomVisibleSprites", _local_6);
+                skyhaxe.ProfileRuntime.gauge("mainRoomScale", this._scale);
+                skyhaxe.ProfileRuntime.gauge("mainRoomRunningSlow", this._runningSlow ? 1 : 0);
+                if (this._display.stage != null)
+                    skyhaxe.ProfileRuntime.gauge("stageFrameRate", this._display.stage.frameRate);
+                skyhaxe.ProfileRuntime.count("mainRoomFrames.total");
+                skyhaxe.ProfileRuntime.count((this._scale <= 0.51) ? "mainRoomFrames.scaleHalf" : "mainRoomFrames.scaleOther");
+                if (this._runningSlow) skyhaxe.ProfileRuntime.count("mainRoomFrames.runningSlow");
+                if (this._runningSlow && this._skipObjectUpdate)
+                    skyhaxe.ProfileRuntime.count("mainRoomFrames.visualizationSkipRequested");
+            }
+            skyhaxe.ProfileRuntime.end("roomRenderMs", _skyhaxeRenderStart);
+            #end
         }
 
         function _Str_24182(k:Int)
@@ -505,6 +559,11 @@ public function  get_scale():Float
                 this._roomObjectCache.removeObjectCache(_arg_2);
                 return 0;
             }
+            #if skyhaxe_profile
+            var _skyhaxeCategory = profileCategory(_local_6);
+            skyhaxe.ProfileRuntime.count("objectsTraversed." + _skyhaxeCategory);
+            var _skyhaxeVisualizationObjectStart = skyhaxe.ProfileRuntime.begin();
+            #end
             var _local_7= this._Str_23739(_arg_2);
             _local_7.objectId = k.getId();
             var _local_8= _local_7.location;
@@ -516,6 +575,9 @@ public function  get_scale():Float
                 return 0;
             }
             _local_6.update(this._geometry, _arg_3, ((!_local_9.isEmpty) || _arg_4), (this._skipObjectUpdate && this._runningSlow));
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.end("visualizationObjectMs." + _skyhaxeCategory, _skyhaxeVisualizationObjectStart);
+            #end
             var _local_11= _local_8.locationChanged;
             if (_local_11)
             {
@@ -523,8 +585,15 @@ public function  get_scale():Float
             }
             if (((!_local_9._Str_17574(_local_6.getInstanceId(), _local_6.getUpdateID())) && (!_arg_4)))
             {
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.count("objectsSkippedUnchanged." + _skyhaxeCategory);
+                #end
                 return _local_9.spriteCount;
             }
+            #if skyhaxe_profile
+            skyhaxe.ProfileRuntime.count("objectsRebuilt." + _skyhaxeCategory);
+            var _skyhaxeOwnAvatar = false;
+            #end
             var _local_12= _local_6.spriteCount;
             var _local_13= Std.int(_local_10.x);
             var _local_14= Std.int(_local_10.y);
@@ -570,19 +639,52 @@ public function  get_scale():Float
                             {
                                 _local_17.sprite.libraryAssetName = ("avatar_" + Std.string(k.getId()));
                             }
+                            #if skyhaxe_profile
+                            skyhaxe.ProfileRuntime.count("visibleSprites." + _skyhaxeCategory);
+                            if (_local_18.spriteType == RoomObjectSpriteType.AVATAR_OWN) _skyhaxeOwnAvatar = true;
+                            #end
                             _local_17.x = (_local_19 - this._screenOffsetX);
                             _local_17.y = (_local_20 - this._screenOffsetY);
+                            #if skyhaxe_profile
+                            if (_local_18.spriteType == RoomObjectSpriteType.AVATAR_OWN)
+                            {
+                                var _skyhaxeAvatarScreen = this._display.localToGlobal(new Point(_local_17.x, _local_17.y));
+                                skyhaxe.ProfileRuntime.gauge("ownAvatarScreenX", _skyhaxeAvatarScreen.x);
+                                skyhaxe.ProfileRuntime.gauge("ownAvatarScreenY", _skyhaxeAvatarScreen.y);
+                            }
+                            #end
                             _local_17.z = ((_local_15 + _local_18.relativeDepth) + (3.7E-11 * _arg_5));
                             _local_16++;
                             _arg_5++;
                         }
+                        #if skyhaxe_profile
+                        else skyhaxe.ProfileRuntime.count("spritesCulled." + _skyhaxeCategory);
+                        #end
                     }
                 }
                 _local_21++;
             }
             _local_9.setSpriteCount(_local_16);
+            #if skyhaxe_profile
+            if (_local_11) {
+                skyhaxe.ProfileRuntime.count("objectLocationChanges." + _skyhaxeCategory);
+                if (_skyhaxeOwnAvatar) skyhaxe.ProfileRuntime.count("ownAvatarLocationChanges");
+            }
+            #end
             return _local_16;
         }
+
+        #if skyhaxe_profile
+        static function profileCategory(visualization:Dynamic):String
+        {
+            var cls = Type.getClass(visualization);
+            var name = cls == null ? "" : Type.getClassName(cls).toLowerCase();
+            if (name.indexOf(".visualization.room.") >= 0) return "roomPlanes";
+            if (name.indexOf(".visualization.pet.") >= 0) return "pets";
+            if (name.indexOf(".visualization.avatar.") >= 0 || name.indexOf("avatarvisualization") >= 0) return "avatars";
+            return "furniture";
+        }
+        #end
 
         function _Str_22622(k:Int, _arg_2:Int, _arg_3:Int, _arg_4:Int):Bool
         {
@@ -694,6 +796,9 @@ _local_5  = _tmp_;
             var _local_6:BitmapData = null;
             if (k >= this._spriteCount)
             {
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.count("displayObjects.inserted");
+                #end
                 this._Str_20892(_arg_2);
                 return true;
             }
@@ -703,6 +808,9 @@ _local_5  = _tmp_;
             {
                 if (_local_4.varyingDepth != _local_3.varyingDepth)
                 {
+                    #if skyhaxe_profile
+                    skyhaxe.ProfileRuntime.count("displayObjects.varyingDepthChanged");
+                    #end
                     if ((_local_4.varyingDepth && (!_local_3.varyingDepth)))
                     {
                         this._display.removeChildAt(k);
@@ -712,8 +820,20 @@ _local_5  = _tmp_;
                     this._Str_20892(_arg_2, k);
                     return true;
                 }
+                #if skyhaxe_profile
+                var _skyhaxeSpriteChanged = _local_4._Str_17574(_local_3.instanceId, _local_3.updateId);
+                var _skyhaxeEnterEffect = RoomEnterEffect.isVisualizationOn();
+                if ((_skyhaxeSpriteChanged || _skyhaxeEnterEffect))
+                #else
                 if ((_local_4._Str_17574(_local_3.instanceId, _local_3.updateId) || RoomEnterEffect.isVisualizationOn()))
+                #end
                 {
+                    #if skyhaxe_profile
+                    skyhaxe.ProfileRuntime.count(_skyhaxeEnterEffect ? "spriteRefresh.roomEnterEffect" : "spriteRefresh.contentChanged");
+                    skyhaxe.ProfileRuntime.count("spriteProperties.filterAssigned");
+                    if (_local_4.filters == cast _local_3.filters)
+                        skyhaxe.ProfileRuntime.count("spriteProperties.sameFilterReference");
+                    #end
                     _local_4.alphaTolerance = _local_3.alphaTolerance;
                     _local_5 = (_local_3.alpha / 0xFF);
                     if (_local_4.alpha != _local_5)
@@ -787,6 +907,9 @@ _local_5  = _tmp_;
             var _local_3:ExtendedSprite = null;
             if (((k < this._activeSpriteCount) || (this._activeSpriteCount == 0)))
             {
+                #if skyhaxe_profile
+                if (this._spriteCount > k) skyhaxe.ProfileRuntime.count("displayObjects.removed", this._spriteCount - k);
+                #end
                 _local_4 = (this._spriteCount - 1);
                 while (_local_4 >= k)
                 {
@@ -828,6 +951,9 @@ _local_5  = _tmp_;
             _arg_5 = (_arg_5 & 0xFFFFFF);
             if ((((!_arg_3) && (!_arg_4)) && (_arg_5 == 0xFFFFFF)))
             {
+                #if skyhaxe_profile
+                skyhaxe.ProfileRuntime.count("bitmapVariants.direct");
+                #end
                 return k;
             }
             var _local_6:ExtendedBitmapData = null;
@@ -838,6 +964,9 @@ _local_5  = _tmp_;
                 if (_arg_2.length > 0)
                 {
                     _local_6 = this._bitmapDataCache.getBitmapData(_local_7);
+                    #if skyhaxe_profile
+                    skyhaxe.ProfileRuntime.count(_local_6 == null ? "bitmapVariants.cacheMiss" : "bitmapVariants.cacheHit");
+                    #end
                 }
                 if (_local_6 == null)
                 {
@@ -1255,4 +1384,3 @@ object= this._container.getRoomObject(
             return this._id;
         }
     }
-

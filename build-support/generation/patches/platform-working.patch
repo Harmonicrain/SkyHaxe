@@ -1,5 +1,4 @@
 diff --git a/com/sulake/core/assets/loaders/BitmapFileLoader.hx b/com/sulake/core/assets/loaders/BitmapFileLoader.hx
-index a5921ee..dc34866
 --- a/com/sulake/core/assets/loaders/BitmapFileLoader.hx
 +++ b/com/sulake/core/assets/loaders/BitmapFileLoader.hx
 @@ -1,504 +1,525 @@
@@ -1016,7 +1015,6 @@ index a5921ee..dc34866
 +    }
 +
 diff --git a/com/sulake/core/window/services/WindowMouseOperator.hx b/com/sulake/core/window/services/WindowMouseOperator.hx
-index ab4fd00..5cc20d8
 --- a/com/sulake/core/window/services/WindowMouseOperator.hx
 +++ b/com/sulake/core/window/services/WindowMouseOperator.hx
 @@ -1,148 +1,148 @@
@@ -1316,7 +1314,6 @@ index ab4fd00..5cc20d8
 +    }
 +
 diff --git a/com/sulake/core/window/utils/MouseEventQueue.hx b/com/sulake/core/window/utils/MouseEventQueue.hx
-index 151f12c..4ce17ea
 --- a/com/sulake/core/window/utils/MouseEventQueue.hx
 +++ b/com/sulake/core/window/utils/MouseEventQueue.hx
 @@ -1,50 +1,67 @@
@@ -1437,7 +1434,6 @@ index 151f12c..4ce17ea
 +    }
 +
 diff --git a/openfl/display/_internal/CanvasTextField.hx b/openfl/display/_internal/CanvasTextField.hx
-index c20a3b8..cae63a9
 --- a/openfl/display/_internal/CanvasTextField.hx
 +++ b/openfl/display/_internal/CanvasTextField.hx
 @@ -221,7 +221,7 @@
@@ -1445,7 +1441,7 @@ index c20a3b8..cae63a9
  						context.fillStyle = color;
  
 -						context.fillText(text.substring(group.startIndex, group.endIndex), group.offsetX
-+						com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(group.startIndex, group.endIndex), group.offsetX
++						com.sulake.core.window.text.HabboText.drawOpenFLRun(textField, context, group.format, text.substring(group.startIndex, group.endIndex), group.offsetX
  							+ scrollX
  							- bounds.x,
  							group.offsetY
@@ -1459,6 +1455,15 @@ index c20a3b8..cae63a9
  						{
  							if (textField.__selectionIndex == textField.__caretIndex)
  							{
+@@ -261,7 +262,7 @@
+ 										- textField.scrollH
+ 										- bounds.x,
+ 										scrollY
+-										+ TextEngine.getFormatHeight(textField.defaultTextFormat)
++										+ TextEngine.getFormatHeight(textField.defaultTextFormat, textField)
+ 										- 1
+ 										- bounds.y);
+ 									context.stroke();
 @@ -309,13 +310,13 @@
  
  								if (start != null && end != null)
@@ -1471,12 +1476,20 @@ index c20a3b8..cae63a9
  									// TODO: fill only once
  
 -									context.fillText(text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
-+									com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
++									com.sulake.core.window.text.HabboText.drawOpenFLRun(textField, context, group.format, text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
  										group.offsetY + group.ascent + scrollY);
  								}
  							}
+@@ -391,7 +392,7 @@
+ 						context.strokeStyle = "#" + StringTools.hex(textField.defaultTextFormat.color & 0xFFFFFF, 6);
+ 						context.moveTo(scrollX + 2.5, scrollY + 2.5);
+ 						context.lineWidth = 1;
+-						context.lineTo(scrollX + 2.5, scrollY + TextEngine.getFormatHeight(textField.defaultTextFormat) - 1);
++						context.lineTo(scrollX + 2.5, scrollY + TextEngine.getFormatHeight(textField.defaultTextFormat, textField) - 1);
+ 						context.stroke();
+ 						context.closePath();
+ 					}
 diff --git a/openfl/text/TextField.hx b/openfl/text/TextField.hx
-index 286643d..41ec715
 --- a/openfl/text/TextField.hx
 +++ b/openfl/text/TextField.hx
 @@ -127,7 +127,39 @@
@@ -1529,10 +1542,45 @@ index 286643d..41ec715
  			__setRenderDirty();
  		}
 diff --git a/openfl/text/_internal/TextEngine.hx b/openfl/text/_internal/TextEngine.hx
-index dfbc942..cd67bcd
 --- a/openfl/text/_internal/TextEngine.hx
 +++ b/openfl/text/_internal/TextEngine.hx
-@@ -884,57 +884,11 @@
+@@ -493,9 +493,14 @@
+ 		return fontSet.getFont(bold, italic);
+ 	}
+ 
+-	public static function getFormatHeight(format:TextFormat):Float
++	public static function getFormatHeight(format:TextFormat, ?field:openfl.text.TextField):Float
+ 	{
+ 		var ascent:Float, descent:Float, leading:Int;
++		#if (js && html5)
++		if (com.sulake.core.window.text.HabboText.instance != null)
++			return com.sulake.core.window.text.HabboText.openFLMetrics(field, format).lineHeight;
++		#end
++
+ 
+ 		#if (js && html5)
+ 		var font = getFont(format);
+@@ -750,6 +755,10 @@
+ 			var leading:Int;
+ 			var heightValue:Int;
+ 
++			#if (js && html5)
++			var metrics = com.sulake.core.window.text.HabboText.openFLMetrics(textField, currentFormat);
++			ascent = metrics.ascent; descent = metrics.descent;
++			#else
+ 			var font = getFontInstance(currentFormat);
+ 
+ 			if (currentFormat.__ascent != null)
+@@ -772,6 +781,8 @@
+ 				ascent = currentFormat.size;
+ 				descent = currentFormat.size * 0.185;
+ 			}
++
++			#end
+ 
+ 			leading = currentFormat.leading;
+ 
+@@ -884,57 +895,11 @@
  			}
  
  			#if (js && html5)
@@ -1590,12 +1638,12 @@ index dfbc942..cd67bcd
 +
 +			function html5Positions():Array<Float> {
 +				// Keep the format-run shaping context when OpenFL measures smaller word chunks.
-+				return com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat,
++				return com.sulake.core.window.text.HabboText.openFLPositions(textField, currentFormat,
 +					text.substring(formatRange.start, formatRange.end)).slice(startIndex - formatRange.start, endIndex - formatRange.start);
  			}
  			// TODO: Smarter caching for justify
  			if (currentFormat.align == JUSTIFY)
-@@ -945,7 +899,7 @@
+@@ -945,7 +910,7 @@
  			#if openfl_disable_text_measurement_cache
  			return html5Positions();
  			#else
@@ -1604,16 +1652,16 @@ index dfbc942..cd67bcd
  			#end
  			#else
  			if (__textLayout == null)
-@@ -1004,7 +958,7 @@
+@@ -1004,7 +969,7 @@
  
  		{
  			#if (js && html5)
 -			return measureText(text);
-+			var total = 0.0; for (advance in com.sulake.core.window.text.TruffleText.openFLPositions(textField, currentFormat, text)) total += advance; return total;
++			var total = 0.0; for (advance in com.sulake.core.window.text.HabboText.openFLPositions(textField, currentFormat, text)) total += advance; return total;
  			#else
  			if (__textLayout == null)
  			{
-@@ -1068,24 +1022,10 @@
+@@ -1068,24 +1033,10 @@
  		#if !js inline #end function setLineMetrics():Void
  
  		{
@@ -1636,14 +1684,13 @@ index dfbc942..cd67bcd
 -			}
 -
 +
-+			var metrics = com.sulake.core.window.text.TruffleText.openFLMetrics(textField, currentFormat);
++			var metrics = com.sulake.core.window.text.HabboText.openFLMetrics(textField, currentFormat);
 +			ascent = metrics.ascent;
 +			descent = metrics.descent;
  			leading = currentFormat.leading;
  
  			heightValue = Math.ceil(ascent + descent + leading);
 diff --git a/openfl/ui/Mouse.hx b/openfl/ui/Mouse.hx
-index b8c6ae7..81f6c43
 --- a/openfl/ui/Mouse.hx
 +++ b/openfl/ui/Mouse.hx
 @@ -1,6 +1,12 @@
@@ -1744,9 +1791,259 @@ index b8c6ae7..81f6c43
  
  		#if lime
  		var setCursor:LimeMouseCursor = null;
+diff --git a/openfl/display/BitmapData.hx b/openfl/display/BitmapData.hx
+--- a/openfl/display/BitmapData.hx
++++ b/openfl/display/BitmapData.hx
+@@ -906,6 +906,11 @@
+ 			clipRect:Rectangle = null, smoothing:Bool = false):Void
+ 	{
+ 		if (source == null) return;
++		#if (js && html5)
++		if (Std.isOfType(source, openfl.text.TextField)
++			&& com.sulake.core.window.text.HabboText.drawToBitmap(this, cast source, matrix, colorTransform, blendMode, clipRect)) return;
++		#end
++
+ 
+ 		var wasVisible = true;
+ 		var sourceAsDisplayObject:DisplayObject = null;
+@@ -1469,13 +1474,13 @@
+ 				{
+ 					__indexBufferData = new UInt16Array(54);
+ 
+-					// 3 ——— 2 ——— 5 ——— 7
++					// 3 â€”â€”â€” 2 â€”â€”â€” 5 â€”â€”â€” 7
+ 					// |  /  |  /  |  /  |
+-					// 1 ——— 0 ——— 4 ——— 6
++					// 1 â€”â€”â€” 0 â€”â€”â€” 4 â€”â€”â€” 6
+ 					// |  /  |  /  |  /  |
+-					// 9 ——— 8 —— 10 —— 11
++					// 9 â€”â€”â€” 8 â€”â€” 10 â€”â€” 11
+ 					// |  /  |  /  |  /  |
+-					// 13 — 12 —— 14 —— 15
++					// 13 â€” 12 â€”â€” 14 â€”â€” 15
+ 
+ 					// top left
+ 					__indexBufferData[0] = 0;
+@@ -1555,13 +1560,13 @@
+ 				{
+ 					__indexBufferData = new UInt16Array(18);
+ 
+-					// 3 ——— 2
++					// 3 â€”â€”â€” 2
+ 					// |  /  |
+-					// 1 ——— 0
++					// 1 â€”â€”â€” 0
+ 					// |  /  |
+-					// 5 ——— 4
++					// 5 â€”â€”â€” 4
+ 					// |  /  |
+-					// 7 ——— 6
++					// 7 â€”â€”â€” 6
+ 
+ 					// top
+ 					__indexBufferData[0] = 0;
+@@ -1593,9 +1598,9 @@
+ 				{
+ 					__indexBufferData = new UInt16Array(18);
+ 
+-					// 3 ——— 2 ——— 5 ——— 7
++					// 3 â€”â€”â€” 2 â€”â€”â€” 5 â€”â€”â€” 7
+ 					// |  /  |  /  |  /  |
+-					// 1 ——— 0 ——— 4 ——— 6
++					// 1 â€”â€”â€” 0 â€”â€”â€” 4 â€”â€”â€” 6
+ 
+ 					// left
+ 					__indexBufferData[0] = 0;
+@@ -1761,13 +1766,13 @@
+ 					var renderedCenterX = (targetObject.width / targetObject.scaleX) - renderedLeft - renderedRight;
+ 					var renderedCenterY = (targetObject.height / targetObject.scaleY) - renderedTop - renderedBottom;
+ 
+-					// 3 ——— 2 ——— 5 ——— 7
++					// 3 â€”â€”â€” 2 â€”â€”â€” 5 â€”â€”â€” 7
+ 					// |  /  |  /  |  /  |
+-					// 1 ——— 0 ——— 4 ——— 6
++					// 1 â€”â€”â€” 0 â€”â€”â€” 4 â€”â€”â€” 6
+ 					// |  /  |  /  |  /  |
+-					// 9 ——— 8 —— 10 —— 11
++					// 9 â€”â€”â€” 8 â€”â€” 10 â€”â€” 11
+ 					// |  /  |  /  |  /  |
+-					// 13 — 12 —— 14 —— 15
++					// 13 â€” 12 â€”â€” 14 â€”â€” 15
+ 
+ 					// top left <0-1-2> <2-1-3>
+ 					__vertexBufferData[0] = renderedLeft;
+@@ -1860,13 +1865,13 @@
+ 
+ 					var renderedWidth = targetObject.width / targetObject.scaleX;
+ 
+-					// 3 ——— 2
++					// 3 â€”â€”â€” 2
+ 					// |  /  |
+-					// 1 ——— 0
++					// 1 â€”â€”â€” 0
+ 					// |  /  |
+-					// 5 ——— 4
++					// 5 â€”â€”â€” 4
+ 					// |  /  |
+-					// 7 ——— 6
++					// 7 â€”â€”â€” 6
+ 
+ 					// top <0-1-2> <2-1-3>
+ 					__vertexBufferData[0] = renderedWidth;
+@@ -1917,9 +1922,9 @@
+ 
+ 					var renderedHeight = targetObject.height / targetObject.scaleY;
+ 
+-					// 3 ——— 2 ——— 5 ——— 7
++					// 3 â€”â€”â€” 2 â€”â€”â€” 5 â€”â€”â€” 7
+ 					// |  /  |  /  |  /  |
+-					// 1 ——— 0 ——— 4 ——— 6
++					// 1 â€”â€”â€” 0 â€”â€”â€” 4 â€”â€”â€” 6
+ 
+ 					// top left <0-1-2> <2-1-3>
+ 					__vertexBufferData[0] = renderedLeft;
+@@ -2331,6 +2336,11 @@
+ 	**/
+ 	public function getVector(rect:Rectangle):Vector<UInt>
+ 	{
++		#if (lime && js && html5)
++		var fast = __getVectorFast(rect);
++		if (fast != null) return fast;
++		#end
++
+ 		var pixels = getPixels(rect);
+ 		var length = Std.int(pixels.length / 4);
+ 		var result = new Vector<UInt>(length, true);
+@@ -3018,6 +3028,10 @@
+ 	**/
+ 	public function setVector(rect:Rectangle, inputVector:Vector<UInt>):Void
+ 	{
++		#if (lime && js && html5)
++		if (__setVectorFast(rect, inputVector)) return;
++		#end
++
+ 		var byteArray = new ByteArray();
+ 		byteArray.length = inputVector.length * 4;
+ 
+@@ -3299,6 +3313,116 @@
+ 	}
+ 
+ 	@SuppressWarnings("checkstyle:Dynamic")
++	#if (lime && js && html5)
++	/**
++		SkyHaxe: getVector without the ByteArray round trip. For the usual HTML5 pixel store
++		(RGBA32, not premultiplied) this produces exactly what getPixels(rect) followed by
++		readUnsignedInt per pixel produces: the same convertToData, the same rectangle clamping
++		as Lime's ImageDataView (which getPixels uses), the same signed big-endian ARGB values,
++		and zero padding when the clamped view is smaller than rect. Returns null to fall back
++		to the original path for anything else. Room planes (RoomPlane._skyHardEdgedDraw) read
++		whole textures this way on every draw.
++	**/
++	@:noCompletion private function __getVectorFast(rect:Rectangle):Vector<UInt>
++	{
++		if (!readable || image == null || image.buffer == null || (image.type != CANVAS && image.type != DATA)) return null;
++		var buffer = image.buffer;
++		if (buffer.format != RGBA32 || buffer.premultiplied) return null;
++		var limeRect = (rect != null ? rect : this.rect).__toLimeRectangle();
++		var length = Std.int(limeRect.width * limeRect.height);
++		if (length < 0) return null;
++		ImageCanvasUtil.convertToData(image);
++		var data = buffer.data;
++		if (data == null) return null;
++
++		// lime._internal.graphics.ImageDataView: clamp the rectangle, then ceil/floor it.
++		if (limeRect.x < 0) limeRect.x = 0;
++		if (limeRect.y < 0) limeRect.y = 0;
++		if (limeRect.x + limeRect.width > image.width) limeRect.width = image.width - limeRect.x;
++		if (limeRect.y + limeRect.height > image.height) limeRect.height = image.height - limeRect.y;
++		if (limeRect.width < 0) limeRect.width = 0;
++		if (limeRect.height < 0) limeRect.height = 0;
++		var viewX = Math.ceil(limeRect.x);
++		var viewY = Math.ceil(limeRect.y);
++		var viewWidth = Math.floor(limeRect.width);
++		var viewHeight = Math.floor(limeRect.height);
++		var stride = buffer.stride;
++		var byteOffset = (stride * (viewY + image.offsetY)) + ((viewX + image.offsetX) * 4);
++
++		var values = new Array<Int>();
++		var index = 0;
++		for (y in 0...viewHeight)
++		{
++			if (index >= length) break;
++			var position = byteOffset + stride * y;
++			for (x in 0...viewWidth)
++			{
++				if (index >= length) break;
++				values[index++] = (data[position + 3] << 24) | (data[position] << 16) | (data[position + 1] << 8) | data[position + 2];
++				position += 4;
++			}
++		}
++		while (index < length) values[index++] = 0;
++		return new Vector<UInt>(0, true, cast values);
++	}
++
++	/**
++		SkyHaxe: setVector without the ByteArray round trip, for the same RGBA32, not
++		premultiplied store. Mirrors setPixels -> Image.setPixels -> ImageDataUtil.setPixels: the
++		2030 EOF check, Image.__clipRect, convertToData, ImageDataView clamping, colours consumed
++		in order, opaque images forced to alpha 0xFF, then dirty and version++. Returns false to
++		run the original path.
++	**/
++	@:noCompletion private function __setVectorFast(rect:Rectangle, inputVector:Vector<UInt>):Bool
++	{
++		if (inputVector == null || !readable || rect == null || image == null || image.buffer == null
++			|| (image.type != CANVAS && image.type != DATA)) return false;
++		var buffer = image.buffer;
++		if (buffer.format != RGBA32 || buffer.premultiplied) return false;
++
++		if (inputVector.length * 4 < (rect.width * rect.height * 4)) throw new Error("End of file was encountered.", 2030);
++
++		var limeRect = image.__clipRect(rect.__toLimeRectangle());
++		if (limeRect == null) return true;
++		ImageCanvasUtil.convertToData(image);
++		var data = buffer.data;
++		if (data == null) return true;
++
++		if (limeRect.x < 0) limeRect.x = 0;
++		if (limeRect.y < 0) limeRect.y = 0;
++		if (limeRect.x + limeRect.width > image.width) limeRect.width = image.width - limeRect.x;
++		if (limeRect.y + limeRect.height > image.height) limeRect.height = image.height - limeRect.y;
++		if (limeRect.width < 0) limeRect.width = 0;
++		if (limeRect.height < 0) limeRect.height = 0;
++		var viewX = Math.ceil(limeRect.x);
++		var viewY = Math.ceil(limeRect.y);
++		var viewWidth = Math.floor(limeRect.width);
++		var viewHeight = Math.floor(limeRect.height);
++		var stride = buffer.stride;
++		var byteOffset = (stride * (viewY + image.offsetY)) + ((viewX + image.offsetX) * 4);
++		var opaque = !image.transparent;
++
++		var index = 0;
++		for (y in 0...viewHeight)
++		{
++			var position = byteOffset + stride * y;
++			for (x in 0...viewWidth)
++			{
++				var color:Int = inputVector[index++];
++				data[position] = (color >> 16) & 0xFF;
++				data[position + 1] = (color >> 8) & 0xFF;
++				data[position + 2] = color & 0xFF;
++				data[position + 3] = opaque ? 0xFF : (color >> 24) & 0xFF;
++				position += 4;
++			}
++		}
++
++		image.dirty = true;
++		image.version++;
++		return true;
++	}
++	#end
++
+ 	@:noCompletion private function __fromImage(image:#if lime Image #else Dynamic #end):Void
+ 	{
+ 		#if lime
 diff --git a/openfl/ui/MouseCursorData.hx b/openfl/ui/MouseCursorData.hx
 new file mode 100644
-index e69de29..8029fad
 --- /dev/null
 +++ b/openfl/ui/MouseCursorData.hx
 @@ -0,0 +1,12 @@
@@ -1764,7 +2061,6 @@ index e69de29..8029fad
 +}
 diff --git a/skyhaxe/assets/EmbeddedFontCatalog.hx b/skyhaxe/assets/EmbeddedFontCatalog.hx
 new file mode 100644
-index e69de29..28cdc7e
 --- /dev/null
 +++ b/skyhaxe/assets/EmbeddedFontCatalog.hx
 @@ -0,0 +1,23 @@
@@ -1791,3 +2087,20 @@ index e69de29..28cdc7e
 +        };
 +    }
 +}
+diff --git a/openfl/text/StyleSheet.hx b/openfl/text/StyleSheet.hx
+--- a/openfl/text/StyleSheet.hx
++++ b/openfl/text/StyleSheet.hx
+@@ -174,7 +174,12 @@
+ 									case "text-indent":
+ 										object.textIndent = value;
+ 									default:
+-										Reflect.setField(object, property, value);
++										// Flash camel-cases custom CSS properties too. Habbo reads
++										// antiAliasType and etchingColor from the parsed style object.
++										var parts = property.split("-");
++										var field = parts.shift();
++										for (part in parts) field += part.charAt(0).toUpperCase() + part.substr(1);
++										Reflect.setField(object, field, value);
+ 								}
+ 							}
+ 						}

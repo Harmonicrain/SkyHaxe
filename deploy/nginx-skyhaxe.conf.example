@@ -1,0 +1,63 @@
+# Example only: replace all example.test names and filesystem paths.
+map $http_origin $skyhaxe_origin_allowed {
+    default 0;
+    # WebSocket Origin is the iframe document's origin, not its parent CMS origin.
+    "https://client.example.test" 1;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name client.example.test;
+    root /srv/skyhaxe/current;
+
+    gzip on;
+    gzip_vary on;
+    gzip_types application/javascript application/json text/css text/plain application/wasm font/ttf application/x-font-ttf;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    location = /index.html {
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+    location ~* \.(?:js|mjs|wasm|pak)$ {
+        types { application/javascript js mjs; application/wasm wasm; application/octet-stream pak; }
+        # lib/default.pak holds the embedded UI assets: 19.0 MB raw, 6.3 MB gzipped.
+        gzip_types application/javascript application/wasm application/octet-stream;
+        # These filenames are stable across releases. Revalidate so switching the `current`
+        # symlink upgrades and rolls back existing browsers correctly.
+        add_header Cache-Control "public, no-cache" always;
+        try_files $uri =404;
+    }
+    location = /config.ini {
+        default_type text/plain;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+
+    # The path must match connection.websocket.url. This example assumes the compatible gateway
+    # listens on 127.0.0.1:2096 and accepts WebSocket frames at /.
+    location /gateway/ {
+        if ($skyhaxe_origin_allowed = 0) { return 403; }
+        proxy_pass http://127.0.0.1:2096/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Origin $http_origin;
+        proxy_read_timeout 90s;
+        proxy_send_timeout 90s;
+    }
+
+    # Optional bounded CORS bridge. Never accept a target URL from the request.
+    location /image-proxy/ {
+        proxy_pass https://images.example.test/c_images/;
+        proxy_set_header Host images.example.test;
+        add_header Access-Control-Allow-Origin "https://client.example.test" always;
+        add_header Vary Origin always;
+        add_header Cache-Control "public, max-age=86400" always;
+    }
+}
+
+# Deploy atomically: upload a new /srv/skyhaxe/releases/<version>, verify SHA256SUMS, then point
+# /srv/skyhaxe/current at it. Roll back by switching the symlink to the previous verified release.

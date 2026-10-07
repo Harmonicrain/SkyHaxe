@@ -488,6 +488,9 @@ catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught);      
 
         function onAuthenticationOK(k:IMessageEvent)
         {
+            #if html5
+            com.sulake.core.assets.swf.SwfLoadMetrics.mark("authenticationMs");
+            #end
             var _local_2= k.connection;
             var _local_3= Std.downcast(k , AuthenticationOKMessageEvent);
             HabboWebTools.airDebug("onAuthenticationOK fired");
@@ -899,4 +902,3 @@ function  get_isRoomViewerMode():Bool
             _local_7[1] = _local_4.substr((_local_5 + 2), _local_6);
         }
     }
-

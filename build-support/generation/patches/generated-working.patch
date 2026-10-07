@@ -1,8 +1,8 @@
 diff --git a/HabboMain.hx b/HabboMain.hx
-index d985622..5fd01c5
+index d985622..5fd01c5 100644
 --- a/HabboMain.hx
 +++ b/HabboMain.hx
-@@ -35,6 +35,9 @@
+@@ -35,6 +35,9 @@ import com.sulake.core.runtime.ICoreErrorLogger;
          var coreRunning:Bool = false;
          var _prepareCoreOnNextFrame:Bool = true;
          var _corePrepared:Bool = false;
@@ -12,7 +12,7 @@ index d985622..5fd01c5
          var _startupErrorShown:Bool = false;
          var _disposed:Bool = false;
          var _coreDisplayContainer:DisplayObjectContainer;
-@@ -148,42 +151,42 @@
+@@ -148,42 +151,42 @@ _local_2= new com.sulake.core.utils.xml.XML(("<config><asset-libraries><library
              ;
              this._core.readConfigDocument(_local_2, this);
              this._totalSteps = ASCompat.toInt((this._core.getNumberOfFilesPending() + this._core.getNumberOfFilesLoaded()) + INIT_STEPS);
@@ -91,7 +91,7 @@ index d985622..5fd01c5
  			}
  catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught); 			{
  				Habbo.trackLoginStep("Error in HabboMain (" + error.message + "): " + error.getStackTrace());
-@@ -194,6 +197,46 @@
+@@ -194,6 +197,46 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);
  			}
   }        }
  
@@ -138,7 +138,7 @@ index d985622..5fd01c5
          function updateProgressBar()
          {
              var k = Math.NaN;
-@@ -215,6 +258,17 @@
+@@ -215,6 +258,17 @@ catch (__as3Caught:Dynamic) { var error:ASError = ASError.caught(__as3Caught);
          {
              removeEventListener(ProgressEvent.PROGRESS, (this.onProgressEvent : ASAny));
              removeEventListener(Event.COMPLETE, (this.onCompleteEvent : ASAny));
@@ -156,20 +156,368 @@ index d985622..5fd01c5
              this.initializeCore();
          }
  
+diff --git a/com/sulake/core/communication/connection/SocketConnection.hx b/com/sulake/core/communication/connection/SocketConnection.hx
+index 5a9dbc8..a73dac1 100644
+--- a/com/sulake/core/communication/connection/SocketConnection.hx
++++ b/com/sulake/core/communication/connection/SocketConnection.hx
+@@ -122,6 +122,13 @@ package com.sulake.core.communication.connection
+ 
+         public function init(k:String, _arg_2:UInt=0):Bool
+         {
++            #if (js && html5)
++            var nullIndex = k.indexOf(String.fromCharCode(0));
++            if (nullIndex >= 0)
++            {
++                k = k.substring(0, nullIndex);
++            }
++            #end
+             if (this._stateListener != null)
+             {
+                 this._stateListener.connectionInit(k, ASCompat.toInt(_arg_2));
+@@ -445,6 +452,9 @@ public function  get_connected():Bool
+         function onClose(k:Event)
+         {
+             this._timeOutTimer.stop();
++            #if html5
++            skyhaxe.CmsBridge.disconnected(0, false);
++            #end
+             ErrorReportStorage.addDebugData(this.getKeyValue([([65223, 65178, 65178, 65177] : Array<Dynamic>), ([65185, 65186, 65168, 65178] : Array<Dynamic>), ([65171, 65171, 65196, 65174] : Array<Dynamic>), ([65169, 65176, 65162] : Array<Dynamic>)], 0), (this.getKeyValue([([65223, 65181, 65177, 65172] : Array<Dynamic>), ([65185, 65185, 65252, 65178] : Array<Dynamic>), ([65172, 65249] : Array<Dynamic>)], 0) + Std.string(flash.Lib.getTimer() - this._timeOutStarted)));
+             //ErrorReportStorage.addDebugData("ConnectionTimer", ("Closed in " + (getTimer() - this._timeOutStarted)));
+             dispatchEvent(k);
+diff --git a/com/sulake/core/utils/LibraryLoaderQueue.hx b/com/sulake/core/utils/LibraryLoaderQueue.hx
+index 8efc006..d58b55b 100644
+--- a/com/sulake/core/utils/LibraryLoaderQueue.hx
++++ b/com/sulake/core/utils/LibraryLoaderQueue.hx
+@@ -50,6 +50,7 @@ loader  = _tmp_;
+         {
+             if ((((!disposed) && (!this.isUrlInQueue(loader.url))) && (!(this.findLibraryLoaderByURL(loader.url) != null))))
+             {
++                loader.markQueued();
+                 if (loader.paused)
+                 {
+                     this._queue.push(loader);
+@@ -195,4 +196,3 @@ loader = _tmp_;
+             return null;
+         }
+     }
+-
 diff --git a/com/sulake/core/window/graphics/WindowRenderer.hx b/com/sulake/core/window/graphics/WindowRenderer.hx
-index 78f9950..8a49b7f
+index 78f9950..8a49b7f 100644
 --- a/com/sulake/core/window/graphics/WindowRenderer.hx
 +++ b/com/sulake/core/window/graphics/WindowRenderer.hx
-@@ -615,4 +615,3 @@
+@@ -615,4 +615,3 @@ _local_7  = _tmp_;
              }
          }
      }
 -
+diff --git a/com/sulake/habbo/avatar/cache/AvatarImageCache.hx b/com/sulake/habbo/avatar/cache/AvatarImageCache.hx
+index 6f29a1a..fd7487e 100644
+--- a/com/sulake/habbo/avatar/cache/AvatarImageCache.hx
++++ b/com/sulake/habbo/avatar/cache/AvatarImageCache.hx
+@@ -22,6 +22,9 @@ package com.sulake.habbo.avatar.cache
+     import com.sulake.habbo.avatar._enum.AvatarDirectionAngle;
+     import com.sulake.habbo.avatar._enum.AvatarFigurePartType;
+     import flash.geom.Rectangle;
++    #if (js && html5)
++    import haxe.ds.ObjectMap;
++    #end
+ 
+      class AvatarImageCache 
+     {
+@@ -40,6 +43,13 @@ package com.sulake.habbo.avatar.cache
+         var _colorTransform:ColorTransform;
+         var _matrix:Matrix;
+         var _serverRenderData:Array<ASAny>;
++        #if (js && html5)
++        static inline final SKYHAXE_COLOR_CACHE_LIMIT:Int = 192;
++        static inline final SKYHAXE_COLOR_CACHE_BYTE_LIMIT:Int = 4194304;
++        var _skyhaxeColorCache:ObjectMap<BitmapData, Map>;
++        var _skyhaxeColorCacheEntries:Array<Dynamic>;
++        var _skyhaxeColorCacheBytes:Int = 0;
++        #end
+ 
+         public function new(k:AvatarStructure, _arg_2:IAvatarImage, _arg_3:AssetAliasCollection, _arg_4:String)
+         {
+@@ -47,6 +57,10 @@ package com.sulake.habbo.avatar.cache
+             this._colorTransform = new ColorTransform();
+             this._matrix = new Matrix();
+             this._serverRenderData = new Array<ASAny>();
++            #if (js && html5)
++            this._skyhaxeColorCache = new ObjectMap();
++            this._skyhaxeColorCacheEntries = [];
++            #end
+             this._structure = k;
+             this._avatar = _arg_2;
+             this._assets = _arg_3;
+@@ -82,6 +96,19 @@ _local_3  = _tmp_;
+                 this._cache = null;
+             }
+             this._canvas = null;
++            #if (js && html5)
++            if (this._skyhaxeColorCache != null)
++            {
++                for (entry in this._skyhaxeColorCacheEntries)
++                {
++                    var cachedBitmap = ASCompat.dynamicAs(entry.bitmap, BitmapData);
++                    if (cachedBitmap != null) cachedBitmap.dispose();
++                }
++                this._skyhaxeColorCache = null;
++            }
++            this._skyhaxeColorCacheEntries = null;
++            this._skyhaxeColorCacheBytes = 0;
++            #end
+             this._disposed = true;
+         }
+ 
+@@ -282,10 +309,22 @@ _local_4  = _tmp_;
+                 _local_12._Str_2168(_local_5, _local_13);
+             }
+             var _local_14= _local_13.getImageContainer(_local_6);
++            #if skyhaxe_profile
++            if (_local_14 == null || _arg_3)
++                skyhaxe.ProfileRuntime.count("avatarFrameCacheMisses");
++            else
++                skyhaxe.ProfileRuntime.count("avatarFrameCacheHits");
++            #end
+             if (((_local_14 == null) || _arg_3))
+             {
+                 _local_20 = _local_13._Str_1699();
++                #if skyhaxe_profile
++                var _skyhaxeAvatarStart = skyhaxe.ProfileRuntime.begin();
++                #end
+                 _local_14 = this._Str_1834(_local_5, _local_20, _local_6, _local_7, _arg_3);
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.end("avatarCompositionMs", _skyhaxeAvatarStart);
++                #end
+                 if (((!(_local_14 == null)) && (!_arg_3)))
+                 {
+                     if (_local_14.isCacheable)
+@@ -604,6 +643,22 @@ _local_4  = _tmp_;
+                 _local_8 = ((!(_arg_2 && _local_4.flipH)) && (_arg_2 || _local_4.flipH));
+                 if (_local_8)
+                 {
++                    #if (js && html5)
++                    if (_local_4.colorTransform != null)
++                    {
++                        var transformed = this._skyhaxeColorizedPart(_local_4);
++                        this._matrix.a = -1;
++                        this._matrix.tx = (transformed.width + _local_5.x);
++                        this._matrix.ty = _local_5.y;
++                        _local_3.x = _local_5.x;
++                        _local_3.y = _local_5.y;
++                        _local_3.width = transformed.width;
++                        _local_3.height = transformed.height;
++                        _local_7.draw(transformed, this._matrix, null, null, _local_3);
++                    }
++                    else
++                    {
++                    #end
+                     this._matrix.a = -1;
+                     this._matrix.tx = ((_local_4.rect.x + _local_4.rect.width) + _local_5.x);
+                     this._matrix.ty = (_local_5.y - _local_4.rect.y);
+@@ -612,11 +667,18 @@ _local_4  = _tmp_;
+                     _local_3.width = _local_4.rect.width;
+                     _local_3.height = _local_4.rect.height;
+                     _local_7.draw(_local_4.bitmap, this._matrix, _local_4.colorTransform, null, _local_3);
++                    #if (js && html5)
++                    }
++                    #end
+                 }
+                 else
+                 {
+                     if (_local_4.colorTransform != null)
+                     {
++                        #if (js && html5)
++                        var transformed = this._skyhaxeColorizedPart(_local_4);
++                        _local_7.copyPixels(transformed, transformed.rect, _local_5, null, null, true);
++                        #else
+                         this._matrix.a = 1;
+                         this._matrix.tx = (_local_5.x - _local_4.rect.x);
+                         this._matrix.ty = (_local_5.y - _local_4.rect.y);
+@@ -625,6 +687,7 @@ _local_4  = _tmp_;
+                         _local_3.width = _local_4.rect.width;
+                         _local_3.height = _local_4.rect.height;
+                         _local_7.draw(_local_4.bitmap, this._matrix, _local_4.colorTransform, null, _local_3);
++                        #end
+                     }
+                     else
+                     {
+@@ -635,6 +698,60 @@ _local_4  = _tmp_;
+             return new ImageData(_local_7, _local_7.rect, _local_6, _arg_2, null);
+         }
+ 
++        #if (js && html5)
++        function _skyhaxeColorizedPart(image:ImageData):BitmapData
++        {
++            var transform = image.colorTransform;
++            var rect = image.rect;
++            var key = rect.x + ":" + rect.y + ":" + rect.width + ":" + rect.height
++                + ":" + transform.redMultiplier + ":" + transform.greenMultiplier + ":" + transform.blueMultiplier
++                + ":" + transform.alphaMultiplier + ":" + transform.redOffset + ":" + transform.greenOffset
++                + ":" + transform.blueOffset + ":" + transform.alphaOffset;
++            var sourceCache = this._skyhaxeColorCache.get(image.bitmap);
++            if (sourceCache == null)
++            {
++                sourceCache = new Map();
++                this._skyhaxeColorCache.set(image.bitmap, sourceCache);
++            }
++            var cached = ASCompat.dynamicAs(sourceCache.getValue(key), BitmapData);
++            if (cached != null)
++            {
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.count("avatarColorPartCacheHits");
++                #end
++                return cached;
++            }
++            cached = new BitmapData(Std.int(rect.width), Std.int(rect.height), true, 0);
++            cached.copyPixels(image.bitmap, rect, new Point(), null, null, true);
++            cached.colorTransform(cached.rect, transform);
++            sourceCache.add(key, cached);
++            var cachedBytes = cached.width * cached.height * 4;
++            this._skyhaxeColorCacheBytes += cachedBytes;
++            this._skyhaxeColorCacheEntries.push({source: image.bitmap, key: key, bitmap: cached, bytes: cachedBytes});
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.count("avatarColorPartCacheMisses");
++            #end
++            while (this._skyhaxeColorCacheEntries.length > SKYHAXE_COLOR_CACHE_LIMIT
++                || this._skyhaxeColorCacheBytes > SKYHAXE_COLOR_CACHE_BYTE_LIMIT)
++            {
++                var oldest = this._skyhaxeColorCacheEntries.shift();
++                var oldestSourceCache = this._skyhaxeColorCache.get(oldest.source);
++                var removed = ASCompat.dynamicAs(oldestSourceCache.remove(oldest.key), BitmapData);
++                if (removed != null)
++                {
++                    this._skyhaxeColorCacheBytes -= Std.int(oldest.bytes);
++                    removed.dispose();
++                }
++                if (oldestSourceCache.length == 0) this._skyhaxeColorCache.remove(oldest.source);
++            }
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.gauge("avatarColorPartCacheEntries", this._skyhaxeColorCacheEntries.length);
++            skyhaxe.ProfileRuntime.gauge("avatarColorPartCacheBytes", this._skyhaxeColorCacheBytes);
++            #end
++            return cached;
++        }
++        #end
++
+         function drawBorders(k:BitmapData, _arg_2:Rectangle, _arg_3:UInt)
+         {
+             var _local_4 = 0;
+@@ -660,5 +777,3 @@ _local_4  = _tmp_;
+             Logger.log([("[AvatarImageCache] " + k)]);
+         }
+     }
+-
+-
+diff --git a/com/sulake/habbo/battleball/BattleBallController.hx b/com/sulake/habbo/battleball/BattleBallController.hx
+index c0785b5..810b0d8 100644
+--- a/com/sulake/habbo/battleball/BattleBallController.hx
++++ b/com/sulake/habbo/battleball/BattleBallController.hx
+@@ -37,11 +37,13 @@ package com.sulake.habbo.battleball
+         var _skillLevel:Int = 1;
+         var _music:SoundChannel;
+         var _pendingCreate:Bool = false;
++        var _openPending:Bool = false;
+         var _arena:BattleBallArena;
+         var _roomUI:IRoomUI;
+         var _soundManager:IHabboSoundManager;
+         var _localization:IHabboLocalizationManager;
+         var _ticketDialog:HotelTicketDialog;
++        var _assetBaseUrl:String;
+         /** Final standings are modal: nothing replaces them until the player chooses. */
+         var _showingFinalScores:Bool = false;
+         var _historicalResult:ASObject;
+@@ -74,11 +76,11 @@ package com.sulake.habbo.battleball
+             this._soundManager = soundManager;
+             this._localization = localization;
+             this._ticketDialog = ticketDialog;
++            this._assetBaseUrl = assetBaseUrl;
+             this._arena = new BattleBallArena(roomEngine);
+             this._assets = new BattleBallAssets();
+             this._assets.addEventListener(BattleBallAssets.READY, (this.onAssetsReady : ASAny));
+             this._assets.addEventListener(BattleBallAssets.ERROR, (this.onAssetsError : ASAny));
+-            this._assets.load(assetBaseUrl);
+             this._view = new BattleBallView(windows, this._assets, componentAssets, avatars, session,
+                 this._arena, roomUI, localization, ticketDialog == null ? null : ticketDialog.open);
+             if (this._ticketDialog != null)
+@@ -93,6 +95,12 @@ package com.sulake.habbo.battleball
+ 
+         public function open()
+         {
++            if (!this.ensureAssetsLoaded())
++            {
++                this._openPending = true;
++                return;
++            }
++            this._openPending = false;
+             if (this._model.instanceId > 0)
+             {
+                 this._view.open();
+@@ -319,10 +327,11 @@ scoredPlayer = _tmp_;
+             this._inLobbyRoom = inLobby;
+             if (inLobby)
+             {
+-                if (this._assets != null && this._assets.isReady) this.open();
++                this.open();
+                 return;
+             }
+             this._showingFinalScores = false;
++            this._openPending = false;
+             // Tell the server before forgetting the match. Resetting the model locally without sending
+             // Leave orphaned server membership: the player stayed seated in game.players() with no
+             // instance id left to leave with, so every later create or join was refused as "already in
+@@ -349,11 +358,21 @@ scoredPlayer = _tmp_;
+         function onAssetsReady(event:Event)
+         {
+             // The lounge may already have been entered while the three libraries were still downloading.
+-            if (this._inLobbyRoom) this.open();
++            if (this._inLobbyRoom || this._openPending) this.open();
++        }
++
++        function ensureAssetsLoaded():Bool
++        {
++            if (this._assets == null) return false;
++            if (this._assets.isReady) return true;
++            this._assets.load(this._assetBaseUrl);
++            return false;
+         }
+ 
++
+         function onAssetsError(event:Event)
+         {
++            this._openPending = false;
+             this._view.showError(this.text("bb_error_assets"));
+         }
+ 
+@@ -738,4 +757,3 @@ if (value.instanceId == instanceId) return value;
+             return value == null || value == "" ? key : value;
+         }
+     }
+-
+diff --git a/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx b/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx
+index 147e9bf..fedb832 100644
+--- a/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx
++++ b/com/sulake/habbo/communication/demo/HabboCommunicationDemo.hx
+@@ -488,6 +488,9 @@ catch (__as3Caught:Dynamic) { var e:ASError = ASError.caught(__as3Caught);
+ 
+         function onAuthenticationOK(k:IMessageEvent)
+         {
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("authenticationMs");
++            #end
+             var _local_2= k.connection;
+             var _local_3= Std.downcast(k , AuthenticationOKMessageEvent);
+             HabboWebTools.airDebug("onAuthenticationOK fired");
+@@ -899,4 +902,3 @@ function  get_isRoomViewerMode():Bool
+             _local_7[1] = _local_4.substr((_local_5 + 2), _local_6);
+         }
+     }
+-
 diff --git a/com/sulake/habbo/room/RoomContentLoader.hx b/com/sulake/habbo/room/RoomContentLoader.hx
-index 3f4ef1a..970bd6a
+index 3f4ef1a..970bd6a 100644
 --- a/com/sulake/habbo/room/RoomContentLoader.hx
 +++ b/com/sulake/habbo/room/RoomContentLoader.hx
-@@ -204,10 +204,16 @@
+@@ -204,10 +204,16 @@ _local_4  = _tmp_;
                  return;
              }
              this._sessionDataManager.removeFurniDataListener(this);
@@ -190,7 +538,7 @@ index 3f4ef1a..970bd6a
          }
  
          public function dispose()
-@@ -384,7 +390,7 @@
+@@ -384,7 +390,7 @@ k = _tmp_;
              return (this._ignoredFurniTypes != null) ? (!(this._ignoredFurniTypes.indexOf(k) == -1)) : false;
          }
  
@@ -199,22 +547,21 @@ index 3f4ef1a..970bd6a
          {
              var _local_2:IFurnitureData = null;
              var _local_3 = 0;
-@@ -393,9 +399,11 @@
+@@ -393,9 +399,11 @@ k = _tmp_;
              var _local_6:String = null;
              var _local_7:String = null;
              var _local_8 = 0;
 -            if (checkNullIteratee(k)) for (_tmp_ in k)
--            {
--_local_2  = _tmp_;
 +            var index = start;
 +            var deadline = flash.Lib.getTimer() + 8;
 +            while ((index < k.length) && (flash.Lib.getTimer() < deadline))
-+            {
+             {
+-_local_2  = _tmp_;
 +                _local_2 = k[index];
                  _local_3 = _local_2.id;
                  _local_4 = _local_2.className;
                  if (_local_2.hasIndexedColor)
-@@ -446,6 +454,23 @@
+@@ -446,6 +454,23 @@ _local_2  = _tmp_;
                      this._furniRevisions.remove(_local_7);
                      this._furniRevisions.add(_local_7, _local_5);
                  }
@@ -238,16 +585,247 @@ index 3f4ef1a..970bd6a
              }
          }
  
-@@ -2035,4 +2060,3 @@
+@@ -2035,4 +2060,3 @@ public function  set_iconListener(k:IRoomContentListener):IRoomContentListener
              return this._iconListener = k;
          }
      }
 -
+diff --git a/com/sulake/habbo/room/RoomEngine.hx b/com/sulake/habbo/room/RoomEngine.hx
+index ebb0392..7dffa75 100644
+--- a/com/sulake/habbo/room/RoomEngine.hx
++++ b/com/sulake/habbo/room/RoomEngine.hx
+@@ -732,6 +732,9 @@ return k;
+ 
+         public function update(k:UInt)
+         {
++            #if skyhaxe_profile
++            var _skyhaxeProfileStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             var _local_2 = 0;
+             var _local_3:IRoomInstance = null;
+             RoomEnterEffect.turnVisualizationOn();
+@@ -756,6 +759,9 @@ return k;
+                 }
+             }
+             RoomEnterEffect.turnVisualizationOff();
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.end("roomUpdateMs", _skyhaxeProfileStart);
++            #end
+         }
+ 
+         function updateMouseCursor()
+diff --git a/com/sulake/habbo/room/RoomMessageHandler.hx b/com/sulake/habbo/room/RoomMessageHandler.hx
+index 3278b0d..217b28c 100644
+--- a/com/sulake/habbo/room/RoomMessageHandler.hx
++++ b/com/sulake/habbo/room/RoomMessageHandler.hx
+@@ -301,6 +301,9 @@ return k;
+ 
+         function onRoomReady(k:IMessageEvent)
+         {
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomReadyPacketMs");
++            #end
+             var _local_2= Std.downcast(k , RoomReadyMessageEvent);
+             if ((((_local_2 == null) || (_local_2.getParser() == null)) || (k.connection == null)))
+             {
+@@ -803,6 +806,9 @@ _local_3  = _tmp_;
+ 
+         function onObjects(k:IMessageEvent)
+         {
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomObjectsPacketMs");
++            #end
+             var _local_6:ObjectMessageData = null;
+             var _local_2= Std.downcast(k , ObjectsMessageEvent);
+             if (((_local_2 == null) || (_local_2.getParser() == null)))
+@@ -818,6 +824,10 @@ _local_3  = _tmp_;
+                 this.addActiveObject(this._currentRoomId, _local_6);
+                 _local_5++;
+             }
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.add("initialRoomObjects", _local_4);
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomObjectsAppliedMs");
++            #end
+         }
+ 
+         function onObjectAdd(k:IMessageEvent)
+@@ -1064,6 +1074,9 @@ _local_3  = _tmp_;
+ 
+         function onUsers(k:IMessageEvent)
+         {
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomUsersPacketMs");
++            #end
+             var _local_5:UserMessageData = null;
+             var _local_6:IVector3d = null;
+             var _local_7:IVector3d = null;
+@@ -1109,6 +1122,9 @@ _local_3  = _tmp_;
+                 _local_4++;
+             }
+             this.updateGuideMarker();
++            #if html5
++            com.sulake.core.assets.swf.SwfLoadMetrics.mark("roomUsersAppliedMs");
++            #end
+         }
+ 
+         function onUserUpdate(k:IMessageEvent)
+@@ -1802,4 +1818,3 @@ _local_6  = _tmp_;
+             }
+         }
+     }
+-
+diff --git a/com/sulake/habbo/snowstorm/SnowStormController.hx b/com/sulake/habbo/snowstorm/SnowStormController.hx
+index c588f8b..31de14e 100644
+--- a/com/sulake/habbo/snowstorm/SnowStormController.hx
++++ b/com/sulake/habbo/snowstorm/SnowStormController.hx
+@@ -50,6 +50,7 @@ package com.sulake.habbo.snowstorm
+         var _skillLevel:Int = 1;
+         var _rankedPoints:Int = 0;
+         var _pendingCreate:Bool = false;
++        var _openPending:Bool = false;
+         var _inLobbyRoom:Bool = false;
+         var _screen:String = SCREEN_LOBBY;
+         var _historicalResult:ASObject;
+@@ -63,6 +64,7 @@ package com.sulake.habbo.snowstorm
+         var _soundAmmo:Int = -1;
+         var _recoveryTimer:Timer;
+         var _disposed:Bool = false;
++        var _assetBaseUrl:String;
+ 
+         public function new(communication:IHabboCommunicationManager,
+                                             windows:IHabboWindowManager,
+@@ -79,6 +81,7 @@ package com.sulake.habbo.snowstorm
+             this._session = session;
+             this._localization = localization;
+             this._ticketDialog = ticketDialog;
++            this._assetBaseUrl = assetBaseUrl;
+             this._assets = new SnowStormAssets();
+             this._assets.addEventListener(SnowStormAssets.READY, (this.onAssetsReady : ASAny));
+             this._assets.addEventListener(SnowStormAssets.ERROR, (this.onAssetsError : ASAny));
+@@ -93,12 +96,17 @@ package com.sulake.habbo.snowstorm
+             this._model.playbackEventHandler = this.playSubturnSounds;
+             this._view.setEventHandler(this.onViewEvent);
+             this.registerMessages();
+-            this._assets.load(assetBaseUrl);
+         }
+ 
+         public function open()
+         {
+             if (this._disposed || this._view == null) return;
++            if (!this.ensureAssetsLoaded())
++            {
++                this._openPending = true;
++                return;
++            }
++            this._openPending = false;
+             if (this._model.instanceId > 0 && this._model.map != null)
+             {
+                 this.requestFull(3);
+@@ -318,11 +326,12 @@ soundPlayer= this._model.localPlayer();
+             this._inLobbyRoom = inLobby;
+             if (inLobby)
+             {
+-                if (this._assets != null && this._assets.isReady) this.open();
++                this.open();
+                 return;
+             }
+             if (this._model.instanceId > 0)
+                 this.send(new SnowStormLeaveComposer(this._model.instanceId));
++            this._openPending = false;
+             this.resetMembership();
+             if (this._view != null) this._view.hide();
+         }
+@@ -656,10 +665,22 @@ var value:ASObject  = null;            final _iter_ = this._instances; if (check
+         }
+ 
+         function onAssetsReady(event:Event)
+-        { if (this._inLobbyRoom) this.open(); }
++        { if (this._inLobbyRoom || this._openPending) this.open(); }
++
++        function ensureAssetsLoaded():Bool
++        {
++            if (this._assets == null || this._disposed) return false;
++            if (this._assets.isReady) return true;
++            this._assets.load(this._assetBaseUrl);
++            return false;
++        }
++
+ 
+         function onAssetsError(event:Event)
+-        { if (this._view != null) this._view.showError(this.text("sw_error_assets")); }
++        {
++            this._openPending = false;
++            if (this._view != null) this._view.showError(this.text("sw_error_assets"));
++        }
+ 
+         function send(composer:IMessageComposer)
+         {
+@@ -667,4 +688,3 @@ var value:ASObject  = null;            final _iter_ = this._instances; if (check
+                 this._communication.connection.send(composer);
+         }
+     }
+-
+diff --git a/com/sulake/habbo/tickets/HotelTicketDialog.hx b/com/sulake/habbo/tickets/HotelTicketDialog.hx
+index fe7381d..83a40f7 100644
+--- a/com/sulake/habbo/tickets/HotelTicketDialog.hx
++++ b/com/sulake/habbo/tickets/HotelTicketDialog.hx
+@@ -36,6 +36,7 @@ package com.sulake.habbo.tickets
+         var _events:Array<ASAny> = [];
+         var _ready:Bool = false;
+         var _openPending:Bool = false;
++        var _assetBaseUrl:String;
+ 
+         public function new(communication:IHabboCommunicationManager,
+                                           windows:IHabboWindowManager,
+@@ -47,9 +48,9 @@ package com.sulake.habbo.tickets
+             super();
+             this._communication = communication;
+             this._localization = localization;
++            this._assetBaseUrl = assetBaseUrl;
+             this._assets = new BattleBallAssets();
+             this._assets.addEventListener(BattleBallAssets.READY, (this.onAssetsReady : ASAny));
+-            this._assets.load(assetBaseUrl);
+             this._host = new BattleBallWindowHost(windows, roomUI);
+             this._shell = new BattleBallLobbyWindow(windows, this._assets, componentAssets,
+                 this._host, this.text, this.noop, this.noop, this.arenaAbsent, this.noop);
+@@ -64,7 +65,12 @@ package com.sulake.habbo.tickets
+ 
+         public function open(data:ASObject=null)
+         {
+-            if (!this._ready) { this._openPending = true; return; }
++            if (!this._ready)
++            {
++                this._openPending = true;
++                if (this._assets != null) this._assets.load(this._assetBaseUrl);
++                return;
++            }
+             if (this._renderer != null) this._renderer.open();
+         }
+ 
+@@ -164,4 +170,3 @@ var event:IMessageEvent  = null;            final _iter_ = this._events; if (che
+             this._communication = null; this._localization = null;
+         }
+     }
+-
+diff --git a/com/sulake/habbo/ui/RoomDesktop.hx b/com/sulake/habbo/ui/RoomDesktop.hx
+index 5013dd7..33c591e 100644
+--- a/com/sulake/habbo/ui/RoomDesktop.hx
++++ b/com/sulake/habbo/ui/RoomDesktop.hx
+@@ -1483,6 +1483,9 @@ _local_3  = _tmp_;
+             this._layoutManager.addRoomView(_local_9);
+             this._androidRoomGestures = AndroidRoomGestureController.create(this._roomCanvasWrapper, this.onRoomZoomGesture);
+             this._canvasIDs.push(k);
++            #if html5
++            skyhaxe.CmsBridge.ready();
++            #end
+         }
+ 
+         function checkAndEnableMouseZoomEvent(k:DisplayObject)
 diff --git a/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx b/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
-index 28fa154..f1dc624
+index 28fa154..f1dc624 100644
 --- a/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
 +++ b/com/sulake/habbo/ui/widget/infostand/InfoStandWidget.hx
-@@ -572,6 +572,7 @@
+@@ -572,6 +572,7 @@ _local_3  = _tmp_;
              }
              this.stopPlaceMore();
              this.hideChildren();
@@ -255,8 +833,350 @@ index 28fa154..f1dc624
              if (this._updateTimer != null)
              {
                  this._updateTimer.stop();
-@@ -725,4 +726,3 @@
+@@ -725,4 +726,3 @@ _local_3  = _tmp_;
              }
          }
      }
 -
+diff --git a/com/sulake/habbo/utils/HabboWebTools.hx b/com/sulake/habbo/utils/HabboWebTools.hx
+index 20e4875..239d2b9 100644
+--- a/com/sulake/habbo/utils/HabboWebTools.hx
++++ b/com/sulake/habbo/utils/HabboWebTools.hx
+@@ -162,7 +162,11 @@ ASCompat.setDynamicProperty(                    parameters, key, ASCompat.getDyn
+             if (returnToAirLoginCallback != null)
+             {
+                 returnToAirLoginCallback();
++                return;
+             }
++            #if html5
++            skyhaxe.CmsBridge.returnToWebsite();
++            #end
+         }
+ 
+         public static function showAirLoginError(message:String)
+diff --git a/com/sulake/room/renderer/RoomSpriteCanvas.hx b/com/sulake/room/renderer/RoomSpriteCanvas.hx
+index bf69c5d..59341df 100644
+--- a/com/sulake/room/renderer/RoomSpriteCanvas.hx
++++ b/com/sulake/room/renderer/RoomSpriteCanvas.hx
+@@ -96,7 +96,11 @@ package com.sulake.room.renderer
+             this._master = new Sprite();
+             this._master.mouseEnabled = false;
+             this._display = new Sprite();
++            #if skyhaxe_room_batch
++            this._display.name = "__skyhaxe_room_batch";
++            #else
+             this._display.name = "canvas";
++            #end
+             this._display.mouseEnabled = false;
+             this._master.addChild(this._display);
+             this._display.mouseEnabled = true;
+@@ -388,6 +392,9 @@ public function  get_scale():Float
+             {
+                 return;
+             }
++            #if skyhaxe_profile
++            var _skyhaxeRenderStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             this._Str_24182(k);
+             this._bitmapDataCache.compress();
+             var _local_4= this._container.getRoomObjectCount();
+@@ -408,6 +415,9 @@ public function  get_scale():Float
+                 _arg_2 = true;
+             }
+             _local_5 = 0;
++            #if skyhaxe_profile
++            var _skyhaxeVisualizationStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             while (_local_5 < _local_4)
+             {
+                 _local_8 = this._container.getRoomObjectWithIndex(_local_5);
+@@ -418,13 +428,25 @@ public function  get_scale():Float
+                 }
+                 _local_5++;
+             }
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.end("visualizationUpdateMs", _skyhaxeVisualizationStart);
++            #end
++            #if skyhaxe_profile
++            var _skyhaxeSortStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             ASCompat.ASArray.sortOn(this._sortableSpriteList, "z", (ASCompat.toInt(ASCompat.ASArray.DESCENDING )| ASCompat.toInt(ASCompat.ASArray.NUMERIC)));
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.end("depthSortMs", _skyhaxeSortStart);
++            #end
+             if (_local_6 < this._sortableSpriteList.length)
+             {
+                 ASCompat.arraySpliceAll(this._sortableSpriteList, _local_6);
+             }
+             var _local_9:SortableSprite = null;
+             _local_5 = 0;
++            #if skyhaxe_profile
++            var _skyhaxeSpriteStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             while (_local_5 < _local_6)
+             {
+                 _local_9 = ASCompat.dynamicAs(this._sortableSpriteList[_local_5] , SortableSprite);
+@@ -434,10 +456,42 @@ public function  get_scale():Float
+                 }
+                 _local_5++;
+             }
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.end("spriteUpdateMs", _skyhaxeSpriteStart);
++            #end
+             this._Str_20677(_local_6);
+             this._renderTimeStamp = k;
+             this._renderedWd = this._wd;
+             this._renderedHt = this._ht;
++            #if html5
++            // The first staged canvas with actual room contents is a closer boot boundary than
++            // the desktop view being attached. Preview canvases have at most a couple of objects.
++            if (this._display.stage != null && _local_4 > 2 && _local_6 > 0)
++                com.sulake.core.assets.swf.SwfLoadMetrics.mark("firstRoomRenderedMs");
++            #end
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.gauge("roomObjects", _local_4);
++            skyhaxe.ProfileRuntime.gauge("visibleSprites", _local_6);
++            skyhaxe.ProfileRuntime.gauge("roomScale", this._scale);
++            // Preview canvases (for example Infostand) render after the room and can
++            // overwrite the generic gauges. Keep explicit evidence for the large
++            // benchmark canvas and record its scale on every rendered frame.
++            if (_local_4 >= 1000)
++            {
++                skyhaxe.ProfileRuntime.gauge("mainRoomObjects", _local_4);
++                skyhaxe.ProfileRuntime.gauge("mainRoomVisibleSprites", _local_6);
++                skyhaxe.ProfileRuntime.gauge("mainRoomScale", this._scale);
++                skyhaxe.ProfileRuntime.gauge("mainRoomRunningSlow", this._runningSlow ? 1 : 0);
++                if (this._display.stage != null)
++                    skyhaxe.ProfileRuntime.gauge("stageFrameRate", this._display.stage.frameRate);
++                skyhaxe.ProfileRuntime.count("mainRoomFrames.total");
++                skyhaxe.ProfileRuntime.count((this._scale <= 0.51) ? "mainRoomFrames.scaleHalf" : "mainRoomFrames.scaleOther");
++                if (this._runningSlow) skyhaxe.ProfileRuntime.count("mainRoomFrames.runningSlow");
++                if (this._runningSlow && this._skipObjectUpdate)
++                    skyhaxe.ProfileRuntime.count("mainRoomFrames.visualizationSkipRequested");
++            }
++            skyhaxe.ProfileRuntime.end("roomRenderMs", _skyhaxeRenderStart);
++            #end
+         }
+ 
+         function _Str_24182(k:Int)
+@@ -505,6 +559,11 @@ public function  get_scale():Float
+                 this._roomObjectCache.removeObjectCache(_arg_2);
+                 return 0;
+             }
++            #if skyhaxe_profile
++            var _skyhaxeCategory = profileCategory(_local_6);
++            skyhaxe.ProfileRuntime.count("objectsTraversed." + _skyhaxeCategory);
++            var _skyhaxeVisualizationObjectStart = skyhaxe.ProfileRuntime.begin();
++            #end
+             var _local_7= this._Str_23739(_arg_2);
+             _local_7.objectId = k.getId();
+             var _local_8= _local_7.location;
+@@ -516,6 +575,9 @@ public function  get_scale():Float
+                 return 0;
+             }
+             _local_6.update(this._geometry, _arg_3, ((!_local_9.isEmpty) || _arg_4), (this._skipObjectUpdate && this._runningSlow));
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.end("visualizationObjectMs." + _skyhaxeCategory, _skyhaxeVisualizationObjectStart);
++            #end
+             var _local_11= _local_8.locationChanged;
+             if (_local_11)
+             {
+@@ -523,8 +585,15 @@ public function  get_scale():Float
+             }
+             if (((!_local_9._Str_17574(_local_6.getInstanceId(), _local_6.getUpdateID())) && (!_arg_4)))
+             {
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.count("objectsSkippedUnchanged." + _skyhaxeCategory);
++                #end
+                 return _local_9.spriteCount;
+             }
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.count("objectsRebuilt." + _skyhaxeCategory);
++            var _skyhaxeOwnAvatar = false;
++            #end
+             var _local_12= _local_6.spriteCount;
+             var _local_13= Std.int(_local_10.x);
+             var _local_14= Std.int(_local_10.y);
+@@ -570,20 +639,53 @@ public function  get_scale():Float
+                             {
+                                 _local_17.sprite.libraryAssetName = ("avatar_" + Std.string(k.getId()));
+                             }
++                            #if skyhaxe_profile
++                            skyhaxe.ProfileRuntime.count("visibleSprites." + _skyhaxeCategory);
++                            if (_local_18.spriteType == RoomObjectSpriteType.AVATAR_OWN) _skyhaxeOwnAvatar = true;
++                            #end
+                             _local_17.x = (_local_19 - this._screenOffsetX);
+                             _local_17.y = (_local_20 - this._screenOffsetY);
++                            #if skyhaxe_profile
++                            if (_local_18.spriteType == RoomObjectSpriteType.AVATAR_OWN)
++                            {
++                                var _skyhaxeAvatarScreen = this._display.localToGlobal(new Point(_local_17.x, _local_17.y));
++                                skyhaxe.ProfileRuntime.gauge("ownAvatarScreenX", _skyhaxeAvatarScreen.x);
++                                skyhaxe.ProfileRuntime.gauge("ownAvatarScreenY", _skyhaxeAvatarScreen.y);
++                            }
++                            #end
+                             _local_17.z = ((_local_15 + _local_18.relativeDepth) + (3.7E-11 * _arg_5));
+                             _local_16++;
+                             _arg_5++;
+                         }
++                        #if skyhaxe_profile
++                        else skyhaxe.ProfileRuntime.count("spritesCulled." + _skyhaxeCategory);
++                        #end
+                     }
+                 }
+                 _local_21++;
+             }
+             _local_9.setSpriteCount(_local_16);
++            #if skyhaxe_profile
++            if (_local_11) {
++                skyhaxe.ProfileRuntime.count("objectLocationChanges." + _skyhaxeCategory);
++                if (_skyhaxeOwnAvatar) skyhaxe.ProfileRuntime.count("ownAvatarLocationChanges");
++            }
++            #end
+             return _local_16;
+         }
+ 
++        #if skyhaxe_profile
++        static function profileCategory(visualization:Dynamic):String
++        {
++            var cls = Type.getClass(visualization);
++            var name = cls == null ? "" : Type.getClassName(cls).toLowerCase();
++            if (name.indexOf(".visualization.room.") >= 0) return "roomPlanes";
++            if (name.indexOf(".visualization.pet.") >= 0) return "pets";
++            if (name.indexOf(".visualization.avatar.") >= 0 || name.indexOf("avatarvisualization") >= 0) return "avatars";
++            return "furniture";
++        }
++        #end
++
+         function _Str_22622(k:Int, _arg_2:Int, _arg_3:Int, _arg_4:Int):Bool
+         {
+             if (this._noSpriteVisibilityChecking)
+@@ -694,6 +796,9 @@ _local_5  = _tmp_;
+             var _local_6:BitmapData = null;
+             if (k >= this._spriteCount)
+             {
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.count("displayObjects.inserted");
++                #end
+                 this._Str_20892(_arg_2);
+                 return true;
+             }
+@@ -703,6 +808,9 @@ _local_5  = _tmp_;
+             {
+                 if (_local_4.varyingDepth != _local_3.varyingDepth)
+                 {
++                    #if skyhaxe_profile
++                    skyhaxe.ProfileRuntime.count("displayObjects.varyingDepthChanged");
++                    #end
+                     if ((_local_4.varyingDepth && (!_local_3.varyingDepth)))
+                     {
+                         this._display.removeChildAt(k);
+@@ -712,8 +820,20 @@ _local_5  = _tmp_;
+                     this._Str_20892(_arg_2, k);
+                     return true;
+                 }
++                #if skyhaxe_profile
++                var _skyhaxeSpriteChanged = _local_4._Str_17574(_local_3.instanceId, _local_3.updateId);
++                var _skyhaxeEnterEffect = RoomEnterEffect.isVisualizationOn();
++                if ((_skyhaxeSpriteChanged || _skyhaxeEnterEffect))
++                #else
+                 if ((_local_4._Str_17574(_local_3.instanceId, _local_3.updateId) || RoomEnterEffect.isVisualizationOn()))
++                #end
+                 {
++                    #if skyhaxe_profile
++                    skyhaxe.ProfileRuntime.count(_skyhaxeEnterEffect ? "spriteRefresh.roomEnterEffect" : "spriteRefresh.contentChanged");
++                    skyhaxe.ProfileRuntime.count("spriteProperties.filterAssigned");
++                    if (_local_4.filters == cast _local_3.filters)
++                        skyhaxe.ProfileRuntime.count("spriteProperties.sameFilterReference");
++                    #end
+                     _local_4.alphaTolerance = _local_3.alphaTolerance;
+                     _local_5 = (_local_3.alpha / 0xFF);
+                     if (_local_4.alpha != _local_5)
+@@ -787,6 +907,9 @@ _local_5  = _tmp_;
+             var _local_3:ExtendedSprite = null;
+             if (((k < this._activeSpriteCount) || (this._activeSpriteCount == 0)))
+             {
++                #if skyhaxe_profile
++                if (this._spriteCount > k) skyhaxe.ProfileRuntime.count("displayObjects.removed", this._spriteCount - k);
++                #end
+                 _local_4 = (this._spriteCount - 1);
+                 while (_local_4 >= k)
+                 {
+@@ -828,6 +951,9 @@ _local_5  = _tmp_;
+             _arg_5 = (_arg_5 & 0xFFFFFF);
+             if ((((!_arg_3) && (!_arg_4)) && (_arg_5 == 0xFFFFFF)))
+             {
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.count("bitmapVariants.direct");
++                #end
+                 return k;
+             }
+             var _local_6:ExtendedBitmapData = null;
+@@ -838,6 +964,9 @@ _local_5  = _tmp_;
+                 if (_arg_2.length > 0)
+                 {
+                     _local_6 = this._bitmapDataCache.getBitmapData(_local_7);
++                    #if skyhaxe_profile
++                    skyhaxe.ProfileRuntime.count(_local_6 == null ? "bitmapVariants.cacheMiss" : "bitmapVariants.cacheHit");
++                    #end
+                 }
+                 if (_local_6 == null)
+                 {
+@@ -1255,4 +1384,3 @@ object= this._container.getRoomObject(
+             return this._id;
+         }
+     }
+-
+diff --git a/com/sulake/room/renderer/utils/ExtendedSprite.hx b/com/sulake/room/renderer/utils/ExtendedSprite.hx
+index 80bf71d..a5497e0 100644
+--- a/com/sulake/room/renderer/utils/ExtendedSprite.hx
++++ b/com/sulake/room/renderer/utils/ExtendedSprite.hx
+@@ -150,6 +150,12 @@ public function  set__Str_13379(k:Int):Int        {
+ 
+         public function _Str_17574(k:Int, _arg_2:Int):Bool
+         {
++            #if skyhaxe_profile
++            if (k != this._updateID1)
++                skyhaxe.ProfileRuntime.count("spriteRefresh.slotIdentityChanged");
++            else if (_arg_2 != this._updateID2)
++                skyhaxe.ProfileRuntime.count("spriteRefresh.updateIdChanged");
++            #end
+             if (((!(k == this._updateID1)) || (!(_arg_2 == this._updateID2))))
+             {
+                 this._updateID1 = k;
+@@ -158,8 +164,14 @@ public function  set__Str_13379(k:Int):Int        {
+             }
+             if (((!(this._bitmapData == null)) && this._bitmapData.disposed))
+             {
++                #if skyhaxe_profile
++                skyhaxe.ProfileRuntime.count("spriteRefresh.disposedBitmap");
++                #end
+                 return true;
+             }
++            #if skyhaxe_profile
++            skyhaxe.ProfileRuntime.count("spriteRefresh.unchangedGateClosed");
++            #end
+             return false;
+         }
+ 
+diff --git a/com/sulake/core/window/components/TextController.hx b/com/sulake/core/window/components/TextController.hx
+--- a/com/sulake/core/window/components/TextController.hx
++++ b/com/sulake/core/window/components/TextController.hx
+@@ -1103,7 +1103,7 @@
+             {
+                 return k;
+             }
+-            if (com.sulake.core.window.text.TruffleText.fontHasGlyphs(_local_4, k))
++            if (com.sulake.core.window.text.HabboText.fontHasGlyphs(_local_4, k))
+             {
+                 return k;
+             }
+@@ -1112,7 +1112,7 @@
+             while (_local_7 < k.length)
+             {
+                 _local_8 = k.charAt(_local_7);
+-                if ((((!com.sulake.core.window.text.TruffleText.fontHasGlyphs(_local_4, _local_8)) && (!(_local_8 == "\r"))) && (!(_local_8 == "\n"))))
++                if ((((!com.sulake.core.window.text.HabboText.fontHasGlyphs(_local_4, _local_8)) && (!(_local_8 == "\r"))) && (!(_local_8 == "\n"))))
+                 {
+                     _local_6 = (_local_6 + REPLACE_RANDOM_CHARS[Std.int(Math.ffloor((Math.random() * REPLACE_RANDOM_CHARS.length)))]);
+                 }

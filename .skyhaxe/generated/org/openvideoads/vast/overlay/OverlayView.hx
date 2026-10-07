@@ -56,7 +56,7 @@ public function  get__Str_5530():AdSlot
             }
             if (Std.is(_Str_2297.height , String))
             {
-                if (_Str_2297.height.toUpperCase().indexOf("BOTTOM-MARGIN-ADJUSTED") > -1)
+                if ((_Str_2297.height.toUpperCase() : ASAny).indexOf("BOTTOM-MARGIN-ADJUSTED") > -1)
                 {
                     height = _Str_2758.getMarginAdjustedHeight(_Str_2297.useOverrideMargin);
                     return !(height == _local_1);

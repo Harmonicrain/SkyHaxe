@@ -36,6 +36,7 @@ package com.sulake.habbo.tickets
         var _events:Array<ASAny> = [];
         var _ready:Bool = false;
         var _openPending:Bool = false;
+        var _assetBaseUrl:String;
 
         public function new(communication:IHabboCommunicationManager,
                                           windows:IHabboWindowManager,
@@ -47,9 +48,9 @@ package com.sulake.habbo.tickets
             super();
             this._communication = communication;
             this._localization = localization;
+            this._assetBaseUrl = assetBaseUrl;
             this._assets = new BattleBallAssets();
             this._assets.addEventListener(BattleBallAssets.READY, (this.onAssetsReady : ASAny));
-            this._assets.load(assetBaseUrl);
             this._host = new BattleBallWindowHost(windows, roomUI);
             this._shell = new BattleBallLobbyWindow(windows, this._assets, componentAssets,
                 this._host, this.text, this.noop, this.noop, this.arenaAbsent, this.noop);
@@ -64,7 +65,12 @@ package com.sulake.habbo.tickets
 
         public function open(data:ASObject=null)
         {
-            if (!this._ready) { this._openPending = true; return; }
+            if (!this._ready)
+            {
+                this._openPending = true;
+                if (this._assets != null) this._assets.load(this._assetBaseUrl);
+                return;
+            }
             if (this._renderer != null) this._renderer.open();
         }
 
@@ -164,4 +170,3 @@ var event:IMessageEvent  = null;            final _iter_ = this._events; if (che
             this._communication = null; this._localization = null;
         }
     }
-

@@ -3,6 +3,11 @@
     <meta title="SkyHaxe" package="org.nextgenhabbo.skyhaxe" version="0.1.0" company="NextGenHabbo" />
     <app main="V32BrowserMain" path="build/client" file="skyhaxe" />
     <define name="skyhaxe_full_candidate" />
+    <!-- Room sprites render through skyhaxe.render.RoomBitmapBatch: adjacent compatible Bitmaps
+         share one draw call (pixel-identical to OpenFL's per-Bitmap path; idle-room CPU ~82% -> ~44%).
+         Build with -D skyhaxe_no_room_batch (scripts/build.ps1 -NoRoomBatch) to compare against the
+         stock renderer. Needs the guarded OpenFL boundary from apply-toolchain-patches.ps1. -->
+    <haxedef name="skyhaxe_room_batch" unless="skyhaxe_no_room_batch" />
     <!-- Preserve original asset IDs, but fetch the embedded UI corpus in one request. -->
     <library name="default" type="pak" preload="true" />
 

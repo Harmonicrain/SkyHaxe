@@ -21,7 +21,7 @@ typedef HudOptions = {
      *
      * Each host lays its output out differently: the original slice copies the client's `fonts/`
      * directory beside `index.html`, while the v32 candidate serves the same faces from the
-     * Truffle mount and ships no `fonts/` at all. A `@font-face` whose `src` 404s fails *silently*
+     * Habbo font mount and ships no `fonts/` at all. A `@font-face` whose `src` 404s fails *silently*
      * into the next family in the stack, so the wrong path costs a fringed pixel font and no
      * error -- which is worth a parameter rather than a guess.
      */

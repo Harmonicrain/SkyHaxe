@@ -85,6 +85,15 @@ def apply_patch(root: Path, patch: Path) -> None:
     run(common + [str(patch)], cwd=root)
 
 
+def normalize_generated_patch_context(root: Path) -> None:
+    """Normalize the one mixed-EOL converter result used by the guarded patch."""
+    path = root / "com/sulake/room/renderer/utils/ExtendedSprite.hx"
+    content = path.read_bytes()
+    normalized = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    if normalized != content:
+        path.write_bytes(normalized)
+
+
 def compare_files(left: dict, right: dict) -> dict:
     left_files = {item["path"]: item for item in left["files"]}
     right_files = {item["path"]: item for item in right["files"]}
@@ -182,6 +191,7 @@ def reproduce_once(config: dict, client_root: Path, run_root: Path,
         sync_manifests.append({"batch": batch["name"], "path": manifest.name,
                                "sha256": sha256_file(manifest)})
 
+    normalize_generated_patch_context(generated)
     apply_patch(generated, REPO / config["post_generation_patch"]["path"])
     platform = run_root / "platform"
     platform.mkdir()

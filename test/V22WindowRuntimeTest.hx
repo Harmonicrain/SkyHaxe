@@ -1,7 +1,7 @@
 import com.sulake.core.assets.AssetLibrary;
 import com.sulake.core.utils.xml.XML;
 import com.sulake.core.window.utils.TextStyleManager;
-import com.sulake.core.window.text.TruffleText;
+import com.sulake.core.window.text.HabboText;
 import com.sulake.habbo.room.RoomEngineContext;
 import com.sulake.habbo.window.HabboWindowManagerComponent;
 import com.sulake.habbo.localization.HabboLocalizationManager;
@@ -37,7 +37,7 @@ class V22WindowRuntimeTest extends openfl.display.Sprite {
         stage.scaleMode = openfl.display.StageScaleMode.NO_SCALE;
         stage.align = openfl.display.StageAlign.TOP_LEFT;
         js.Syntax.code("CanvasRenderingContext2D.prototype.fillText = function() { throw new Error('Browser font fallback in generated window runtime'); }");
-        TruffleText.load("/public/assets/truffle", ["u_regular", "u_bold", "u_small", "u_frame_title"],
+        HabboText.load("/assets/habbo-text", ["u_regular", "u_bold", "u_small", "u_frame_title"],
             function() { try { initialize(); } catch (error:Dynamic) { fail(error); } }, fail);
     }
     function fail(error:Dynamic):Void {
@@ -63,7 +63,7 @@ class V22WindowRuntimeTest extends openfl.display.Sprite {
         context.provide(new IIDHabboLocalizationManager(), localization);
         manager = new HabboWindowManagerComponent(context, 0, library);
         if (!manager._isInitialized) throw "Original window manager did not initialize";
-        var window = manager.buildFromXML(new XML('<layout><window><frame name="canary" x="20" y="20" width="300" height="180" style="0" caption="%24%7Bfixture.title%7D"><children><button name="test_button" x="30" y="65" width="180" height="28" style="0" caption="Generated button"/><text name="test_text" x="30" y="30" width="200" height="20" caption="Truffle text"/></children></frame></window></layout>'));
+        var window = manager.buildFromXML(new XML('<layout><window><frame name="canary" x="20" y="20" width="300" height="180" style="0" caption="%24%7Bfixture.title%7D"><children><button name="test_button" x="30" y="65" width="180" height="28" style="0" caption="Generated button"/><text name="test_text" x="30" y="30" width="200" height="20" caption="Habbo HTML5 text"/></children></frame></window></layout>'));
         if (window == null || cast(window, com.sulake.core.window.IWindowContainer).findChildByName("test_button") == null) throw "Generated XML window construction failed";
         manager.update(16);
         haxe.Timer.delay(function() {

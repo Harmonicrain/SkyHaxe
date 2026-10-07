@@ -33,7 +33,7 @@ entry  = _tmp_;
 entry  = _tmp_;
                 if (entry[0] == tag)
                 {
-                    return "#" + entry[1].toString(16).toUpperCase();
+                    return "#" + (entry[1].toString(16) : ASAny).toUpperCase();
                 }
             }
             return null;
@@ -49,7 +49,7 @@ entry  = _tmp_;
 entry  = _tmp_;
                 if (text.indexOf("@" + entry[0] + "@") == 0)
                 {
-                    hex = "#" + entry[1].toString(16).toUpperCase();
+                    hex = "#" + (entry[1].toString(16) : ASAny).toUpperCase();
                     body = text.substring(ASCompat.toInt(entry[0].length + 2), text.length);
                     if (body.charAt(0) == " ")
                     {

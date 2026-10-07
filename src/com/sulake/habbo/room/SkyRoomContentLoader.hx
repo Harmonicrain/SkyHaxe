@@ -363,13 +363,9 @@ class SkyRoomContentLoader implements IRoomContentLoader {
     }
 
     static function fetchBytes(url:String, onLoaded:Bytes->Void, onError:Dynamic->Void):Void {
-        Browser.window.fetch(url).then(function(response) {
-            if (!response.ok) throw 'HTTP ${response.status} for $url';
-            return response.arrayBuffer();
-        }).then(function(buffer) {
-            var array = new Uint8Array(buffer);
-            var bytes = Bytes.alloc(array.length);
-            for (index in 0...array.length) bytes.set(index, array[index]);
+        // .hab twin first when configured (falls back to the SWF per file); SwfFile.read takes
+        // either. The buffer is wrapped, not copied byte by byte.
+        com.sulake.core.assets.swf.HabUrl.download(url).then(function(bytes) {
             onLoaded(bytes);
             return null;
         }).catchError(onError);

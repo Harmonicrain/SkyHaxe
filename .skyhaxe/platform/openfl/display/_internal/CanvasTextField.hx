@@ -221,7 +221,7 @@ class CanvasTextField
 						context.font = TextEngine.getFont(group.format);
 						context.fillStyle = color;
 
-						com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(group.startIndex, group.endIndex), group.offsetX
+						com.sulake.core.window.text.HabboText.drawOpenFLRun(textField, context, group.format, text.substring(group.startIndex, group.endIndex), group.offsetX
 							+ scrollX
 							- bounds.x,
 							group.offsetY
@@ -262,7 +262,7 @@ class CanvasTextField
 										- textField.scrollH
 										- bounds.x,
 										scrollY
-										+ TextEngine.getFormatHeight(textField.defaultTextFormat)
+										+ TextEngine.getFormatHeight(textField.defaultTextFormat, textField)
 										- 1
 										- bounds.y);
 									context.stroke();
@@ -316,7 +316,7 @@ class CanvasTextField
 
 									// TODO: fill only once
 
-									com.sulake.core.window.text.TruffleText.drawOpenFLRun(textField, context, group.format, text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
+									com.sulake.core.window.text.HabboText.drawOpenFLRun(textField, context, group.format, text.substring(selectionStart, selectionEnd), scrollX + start.x - bounds.x,
 										group.offsetY + group.ascent + scrollY);
 								}
 							}
@@ -392,7 +392,7 @@ class CanvasTextField
 						context.strokeStyle = "#" + StringTools.hex(textField.defaultTextFormat.color & 0xFFFFFF, 6);
 						context.moveTo(scrollX + 2.5, scrollY + 2.5);
 						context.lineWidth = 1;
-						context.lineTo(scrollX + 2.5, scrollY + TextEngine.getFormatHeight(textField.defaultTextFormat) - 1);
+						context.lineTo(scrollX + 2.5, scrollY + TextEngine.getFormatHeight(textField.defaultTextFormat, textField) - 1);
 						context.stroke();
 						context.closePath();
 					}

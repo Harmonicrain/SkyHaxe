@@ -12,7 +12,10 @@ import js.html.Worker;
 
 private typedef SwfWorkerJob = {
     var id:Int;
-    var character:SwfCharacter;
+    var kind:String;          // "lossless" (a DefineBitsLossless tag) or "png" (a .hab atlas)
+    var tag:Int;
+    var payload:haxe.io.Bytes;
+    var fallback:Void->SwfPixels;
     var promise:Promise<SwfPixels>;
     var bytes:Int;
 }
@@ -30,14 +33,25 @@ class SwfDecodeWorkerPool {
     static var nextId = 1;
 
     public static function decode(character:SwfCharacter):Future<SwfPixels> {
+        return submit("lossless", character.tag, character.payload,
+            function() return SwfBitmap.decode(character));
+    }
+
+    /** Decode a .hab atlas PNG to straight RGBA off the main thread (exact, no canvas). */
+    public static function decodePng(png:haxe.io.Bytes, fallback:Void->SwfPixels):Future<SwfPixels> {
+        return submit("png", 0, png, fallback);
+    }
+
+    static function submit(kind:String, tag:Int, payload:haxe.io.Bytes,
+            fallback:Void->SwfPixels):Future<SwfPixels> {
         initialize();
-        if (!supported || queuedBytes + character.payload.length > QUEUE_BUDGET) {
+        if (!supported || queuedBytes + payload.length > QUEUE_BUDGET) {
             SwfLoadMetrics.count("workerFallbacks");
-            return Future.withValue(SwfBitmap.decode(character));
+            return Future.withValue(fallback());
         }
         var promise = new Promise<SwfPixels>();
-        var job = {id: nextId++, character: character, promise: promise,
-            bytes: character.payload.length};
+        var job = {id: nextId++, kind: kind, tag: tag, payload: payload, fallback: fallback,
+            promise: promise, bytes: payload.length};
         queue.push(job);
         queuedBytes += job.bytes;
         pump();
@@ -75,10 +89,10 @@ class SwfDecodeWorkerPool {
             var worker = idle.pop();
             var job = queue.shift();
             jobs.set(job.id, job);
-            var source = new Uint8Array(job.character.payload.getData());
+            var source = new Uint8Array(job.payload.getData(), 0, job.payload.length);
             var payload = new Uint8Array(source.length);
             payload.set(source);
-            worker.postMessage({id: job.id, tag: job.character.tag, payload: payload.buffer},
+            worker.postMessage({id: job.id, kind: job.kind, tag: job.tag, payload: payload.buffer},
                 [payload.buffer]);
             Reflect.setField(worker, "__skyhaxeJob", job.id);
         }
@@ -94,7 +108,7 @@ class SwfDecodeWorkerPool {
             if (data.error != null) {
                 // Browser codec support varies. Preserve correctness with the proven decoder.
                 SwfLoadMetrics.count("workerFallbacks");
-                try job.promise.complete(SwfBitmap.decode(job.character))
+                try job.promise.complete(job.fallback())
                 catch (error:Dynamic) job.promise.error(error);
             } else {
                 var array = new Uint8Array(data.rgba);
@@ -115,7 +129,7 @@ class SwfDecodeWorkerPool {
             jobs.remove(id);
             if (job != null) {
                 queuedBytes -= job.bytes;
-                try job.promise.complete(SwfBitmap.decode(job.character))
+                try job.promise.complete(job.fallback())
                 catch (error:Dynamic) job.promise.error(error);
             }
         }
